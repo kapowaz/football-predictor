@@ -61,6 +61,59 @@ function applyResult(standing: TeamStanding, goalsFor: number, goalsAgainst: num
   }
 }
 
+/**
+ * Head-to-head tiebreaker: compares two teams by their mutual matches.
+ * Returns < 0 if team A ranks higher, > 0 if team B ranks higher, 0 if still tied.
+ * Compares by: h2h points, then h2h goal difference, then away goals scored.
+ */
+function getHeadToHead(teamAId: number, teamBId: number, results: MatchResult[]): number {
+  const h2hMatches = results.filter(
+    (r) =>
+      (r.homeTeamId === teamAId && r.awayTeamId === teamBId) ||
+      (r.homeTeamId === teamBId && r.awayTeamId === teamAId),
+  );
+
+  if (h2hMatches.length === 0) return 0;
+
+  let aPoints = 0;
+  let bPoints = 0;
+  let aGoalsFor = 0;
+  let aGoalsAgainst = 0;
+  let aAwayGoals = 0;
+  let bAwayGoals = 0;
+
+  for (const match of h2hMatches) {
+    const aIsHome = match.homeTeamId === teamAId;
+    const aGoals = aIsHome ? match.homeGoals : match.awayGoals;
+    const bGoals = aIsHome ? match.awayGoals : match.homeGoals;
+
+    aGoalsFor += aGoals;
+    aGoalsAgainst += bGoals;
+
+    if (!aIsHome) aAwayGoals += aGoals;
+    else bAwayGoals += bGoals;
+
+    if (aGoals > bGoals) {
+      aPoints += 3;
+    } else if (aGoals === bGoals) {
+      aPoints += 1;
+      bPoints += 1;
+    } else {
+      bPoints += 3;
+    }
+  }
+
+  if (aPoints !== bPoints) return bPoints - aPoints;
+
+  const aGD = aGoalsFor - aGoalsAgainst;
+  const bGD = -aGD;
+  if (aGD !== bGD) return bGD - aGD;
+
+  if (aAwayGoals !== bAwayGoals) return bAwayGoals - aAwayGoals;
+
+  return 0;
+}
+
 export function calculateStandings(
   teams: Team[],
   matches: Match[],
@@ -121,7 +174,12 @@ export function calculateStandings(
   standings.sort((a, b) => {
     if (b.points !== a.points) return b.points - a.points;
     if (b.goalDifference !== a.goalDifference) return b.goalDifference - a.goalDifference;
-    return b.goalsFor - a.goalsFor;
+    if (b.goalsFor !== a.goalsFor) return b.goalsFor - a.goalsFor;
+
+    const h2h = getHeadToHead(a.team.id, b.team.id, results);
+    if (h2h !== 0) return h2h;
+
+    return a.team.name.localeCompare(b.team.name);
   });
 
   return standings;
