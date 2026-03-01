@@ -1,0 +1,95 @@
+{
+  "lastUpdated": "2026-03-01T12:00:00Z",
+  "matches": [
+    {
+      "id": 500001,
+      "homeTeamId": 338,
+      "awayTeamId": 341,
+      "utcDate": "2025-08-09T14:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 2,
+      "awayGoals": 1
+    },
+    {
+      "id": 500002,
+      "homeTeamId": 356,
+      "awayTeamId": 74,
+      "utcDate": "2025-08-09T14:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 1
+    },
+    {
+      "id": 500003,
+      "homeTeamId": 332,
+      "awayTeamId": 68,
+      "utcDate": "2025-08-09T14:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 3,
+      "awayGoals": 0
+    },
+    {
+      "id": 500004,
+      "homeTeamId": 349,
+      "awayTeamId": 322,
+      "utcDate": "2025-08-09T14:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 2,
+      "awayGoals": 2
+    },
+    {
+      "id": 500005,
+      "homeTeamId": 72,
+      "awayTeamId": 343,
+      "utcDate": "2025-08-09T14:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 0,
+      "awayGoals": 1
+    },
+    {
+      "id": 500006,
+      "homeTeamId": 332,
+      "awayTeamId": 343,
+      "utcDate": "2026-03-02T20:00:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 500007,
+      "homeTeamId": 349,
+      "awayTeamId": 322,
+      "utcDate": "2026-03-03T19:45:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 500008,
+      "homeTeamId": 338,
+      "awayTeamId": 356,
+      "utcDate": "2026-03-07T15:00:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 500009,
+      "homeTeamId": 341,
+      "awayTeamId": 74,
+      "utcDate": "2026-03-07T15:00:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 500010,
+      "homeTeamId": 68,
+      "awayTeamId": 72,
+      "utcDate": "2026-03-07T15:00:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    }
+  ]
+}

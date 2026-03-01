@@ -1,0 +1,76 @@
+{
+  "competition": "Championship",
+  "season": "2025-26",
+  "teams": [
+    {
+      "id": 332,
+      "name": "Birmingham City FC",
+      "shortName": "Birmingham",
+      "tla": "BIR",
+      "crest": "https://crests.football-data.org/332.png"
+    },
+    {
+      "id": 322,
+      "name": "Hull City FC",
+      "shortName": "Hull City",
+      "tla": "HUL",
+      "crest": "https://crests.football-data.org/322.png"
+    },
+    {
+      "id": 349,
+      "name": "Ipswich Town FC",
+      "shortName": "Ipswich",
+      "tla": "IPS",
+      "crest": "https://crests.football-data.org/349.png"
+    },
+    {
+      "id": 341,
+      "name": "Leeds United FC",
+      "shortName": "Leeds",
+      "tla": "LEE",
+      "crest": "https://crests.football-data.org/341.png"
+    },
+    {
+      "id": 338,
+      "name": "Leicester City FC",
+      "shortName": "Leicester",
+      "tla": "LEI",
+      "crest": "https://crests.football-data.org/338.png"
+    },
+    {
+      "id": 343,
+      "name": "Middlesbrough FC",
+      "shortName": "Middlesbrough",
+      "tla": "MID",
+      "crest": "https://crests.football-data.org/343.png"
+    },
+    {
+      "id": 68,
+      "name": "Norwich City FC",
+      "shortName": "Norwich",
+      "tla": "NOR",
+      "crest": "https://crests.football-data.org/68.png"
+    },
+    {
+      "id": 356,
+      "name": "Sheffield United FC",
+      "shortName": "Sheffield Utd",
+      "tla": "SHU",
+      "crest": "https://crests.football-data.org/356.png"
+    },
+    {
+      "id": 74,
+      "name": "Southampton FC",
+      "shortName": "Southampton",
+      "tla": "SOU",
+      "crest": "https://crests.football-data.org/74.png"
+    },
+    {
+      "id": 72,
+      "name": "Swansea City AFC",
+      "shortName": "Swansea",
+      "tla": "SWA",
+      "crest": "https://crests.football-data.org/72.png"
+    }
+  ]
+}
