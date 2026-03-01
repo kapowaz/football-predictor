@@ -58,7 +58,7 @@ export function SeasonSummaryModal({ standings, isOpen, onClose }: SeasonSummary
 
   return (
     <>
-      {showConfetti && (
+      {isOpen && showConfetti && (
         <Confetti
           isLooping={false}
           particleDensity={20}

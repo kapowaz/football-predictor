@@ -1,3 +1,4 @@
+import { useState, useMemo, useEffect, useRef } from 'react';
 import teamsData from './data/teams.json';
 import matchesData from './data/matches.json';
 import overridesData from './data/overrides.json';
@@ -9,6 +10,7 @@ import { useStandings } from './hooks/useStandings';
 import { calculateStandings } from './utils/standings';
 import { validateStandings } from './utils/validateStandings';
 import { StandingsTable } from './components/StandingsTable/StandingsTable';
+import { SeasonSummaryModal } from './components/SeasonSummaryModal';
 import { MatchList } from './components/MatchList/MatchList';
 import eflLogo from './assets/efl-championship-logo.svg';
 import * as styles from './App.css';
@@ -34,6 +36,21 @@ validateStandings(calculatedFromResults, apiStandings);
 function App() {
   const { predictions, setPrediction, removePrediction, resetAllPredictions } = usePredictions();
   const standings = useStandings(teams, matches, predictions, deductions);
+
+  const allFixturesResolved = useMemo(() => {
+    return matches.every(
+      (m) => m.status === 'FINISHED' || String(m.id) in predictions.predictions,
+    );
+  }, [predictions]);
+
+  const [summaryDismissed, setSummaryDismissed] = useState(false);
+  const prevResolved = useRef(allFixturesResolved);
+  useEffect(() => {
+    if (prevResolved.current && !allFixturesResolved) {
+      setSummaryDismissed(false);
+    }
+    prevResolved.current = allFixturesResolved;
+  }, [allFixturesResolved]);
 
   const predictedCount = Object.keys(predictions.predictions).length;
 
@@ -70,6 +87,12 @@ function App() {
           />
         </div>
       </main>
+
+      <SeasonSummaryModal
+        standings={standings}
+        isOpen={allFixturesResolved && !summaryDismissed}
+        onClose={() => setSummaryDismissed(true)}
+      />
     </div>
   );
 }
