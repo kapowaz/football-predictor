@@ -1,4 +1,4 @@
-import type { TeamStanding } from '../../types'
+import type { TeamStanding, FormResult } from '../../types'
 import { getCrest } from '../../assets/crests'
 import * as styles from './StandingsTable.css'
 
@@ -9,6 +9,12 @@ interface StandingsTableProps {
 function formatGD(gd: number): string {
   if (gd > 0) return `+${gd}`
   return String(gd)
+}
+
+const formStyles: Record<FormResult, string> = {
+  W: styles.formWin,
+  D: styles.formDraw,
+  L: styles.formLoss,
 }
 
 export function StandingsTable({ standings }: StandingsTableProps) {
@@ -27,6 +33,7 @@ export function StandingsTable({ standings }: StandingsTableProps) {
             <th className={styles.thCenter}>GA</th>
             <th className={styles.thCenter}>GD</th>
             <th className={styles.thRight}>Pts</th>
+            <th className={styles.thRight}>Form</th>
           </tr>
         </thead>
         <tbody>
@@ -61,6 +68,15 @@ export function StandingsTable({ standings }: StandingsTableProps) {
                 {formatGD(standing.goalDifference)}
               </td>
               <td className={`${styles.tdRight} ${styles.points}`}>{standing.points}</td>
+              <td className={styles.td}>
+                <div className={styles.formCell}>
+                  {standing.form.map((result, i) => (
+                    <span key={i} className={`${styles.formBadge} ${formStyles[result]}`}>
+                      {result}
+                    </span>
+                  ))}
+                </div>
+              </td>
             </tr>
           ))}
         </tbody>

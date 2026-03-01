@@ -109,3 +109,34 @@ export const positive = style({
 export const negative = style({
   color: '#dc2626',
 })
+
+export const formCell = style({
+  display: 'flex',
+  gap: '4px',
+  justifyContent: 'flex-end',
+})
+
+export const formBadge = style({
+  display: 'inline-flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  width: '22px',
+  height: '22px',
+  borderRadius: '4px',
+  fontSize: '11px',
+  fontWeight: 700,
+  color: '#fff',
+  lineHeight: 1,
+})
+
+export const formWin = style({
+  backgroundColor: '#16a34a',
+})
+
+export const formDraw = style({
+  backgroundColor: '#9ca3af',
+})
+
+export const formLoss = style({
+  backgroundColor: '#dc2626',
+})

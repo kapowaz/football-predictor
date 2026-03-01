@@ -1,10 +1,18 @@
-import type { Team, Match, TeamStanding, PredictionsStore } from '../types'
+import type { Team, Match, TeamStanding, FormResult, PredictionsStore } from '../types'
+
+const FORM_LENGTH = 6
 
 interface MatchResult {
   homeTeamId: number
   awayTeamId: number
   homeGoals: number
   awayGoals: number
+}
+
+function getFormResult(goalsFor: number, goalsAgainst: number): FormResult {
+  if (goalsFor > goalsAgainst) return 'W'
+  if (goalsFor === goalsAgainst) return 'D'
+  return 'L'
 }
 
 function createEmptyStanding(team: Team): TeamStanding {
@@ -18,6 +26,7 @@ function createEmptyStanding(team: Team): TeamStanding {
     goalsAgainst: 0,
     goalDifference: 0,
     points: 0,
+    form: [],
   }
 }
 
@@ -26,6 +35,12 @@ function applyResult(standing: TeamStanding, goalsFor: number, goalsAgainst: num
   standing.goalsFor += goalsFor
   standing.goalsAgainst += goalsAgainst
   standing.goalDifference = standing.goalsFor - standing.goalsAgainst
+
+  const result = getFormResult(goalsFor, goalsAgainst)
+  standing.form.push(result)
+  if (standing.form.length > FORM_LENGTH) {
+    standing.form = standing.form.slice(-FORM_LENGTH)
+  }
 
   if (goalsFor > goalsAgainst) {
     standing.won += 1

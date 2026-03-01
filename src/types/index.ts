@@ -38,6 +38,8 @@ export interface PredictionsStore {
   lastModified: string
 }
 
+export type FormResult = 'W' | 'D' | 'L'
+
 export interface TeamStanding {
   team: Team
   played: number
@@ -48,4 +50,5 @@ export interface TeamStanding {
   goalsAgainst: number
   goalDifference: number
   points: number
+  form: FormResult[]
 }
