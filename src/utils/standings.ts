@@ -1,4 +1,4 @@
-import type { Team, Match, TeamStanding, FormResult, PredictionsStore } from '../types';
+import type { Team, Match, TeamStanding, FormResult, PointDeduction, PredictionsStore } from '../types';
 
 const FORM_LENGTH = 6;
 
@@ -26,6 +26,7 @@ function createEmptyStanding(team: Team): TeamStanding {
     goalsAgainst: 0,
     goalDifference: 0,
     points: 0,
+    deduction: 0,
     form: [],
   };
 }
@@ -56,7 +57,8 @@ function applyResult(standing: TeamStanding, goalsFor: number, goalsAgainst: num
 export function calculateStandings(
   teams: Team[],
   matches: Match[],
-  predictions: PredictionsStore
+  predictions: PredictionsStore,
+  deductions: PointDeduction[] = []
 ): TeamStanding[] {
   const standingsMap = new Map<number, TeamStanding>();
 
@@ -96,6 +98,14 @@ export function calculateStandings(
     }
     if (awayStanding) {
       applyResult(awayStanding, result.awayGoals, result.homeGoals);
+    }
+  }
+
+  for (const deduction of deductions) {
+    const standing = standingsMap.get(deduction.teamId);
+    if (standing) {
+      standing.deduction = deduction.amount;
+      standing.points -= deduction.amount;
     }
   }
 

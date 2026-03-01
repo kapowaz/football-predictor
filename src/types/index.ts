@@ -6,10 +6,17 @@ export interface Team {
   crest: string;
 }
 
+export interface PointDeduction {
+  teamId: number;
+  amount: number;
+  reason: string;
+}
+
 export interface TeamsData {
   competition: string;
   season: string;
   teams: Team[];
+  deductions: PointDeduction[];
 }
 
 export interface Match {
@@ -50,5 +57,6 @@ export interface TeamStanding {
   goalsAgainst: number;
   goalDifference: number;
   points: number;
+  deduction: number;
   form: FormResult[];
 }

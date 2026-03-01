@@ -9,10 +9,11 @@ import * as styles from './App.css';
 
 const teams = (teamsData as TeamsData).teams;
 const matches = (matchesData as MatchesData).matches;
+const deductions = (teamsData as TeamsData).deductions ?? [];
 
 function App() {
   const { predictions, setPrediction, removePrediction, resetAllPredictions } = usePredictions();
-  const standings = useStandings(teams, matches, predictions);
+  const standings = useStandings(teams, matches, predictions, deductions);
 
   const predictedCount = Object.keys(predictions.predictions).length;
 
