@@ -1,20 +1,31 @@
 import { style } from '@vanilla-extract/css';
+import {
+  colorBgSurface,
+  colorTextPrimary,
+  colorTextSecondary,
+  fontSizeBase,
+  fontSizeSm,
+  space3,
+  space4,
+  radiusLg,
+  shadowSm,
+} from '../../theme.css';
 
 export const card = style({
   display: 'flex',
   alignItems: 'flex-start',
   justifyContent: 'space-between',
-  padding: '16px',
-  backgroundColor: '#fff',
-  borderRadius: '6px',
-  boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)',
-  gap: '16px',
+  padding: space4,
+  backgroundColor: colorBgSurface,
+  borderRadius: radiusLg,
+  boxShadow: shadowSm,
+  gap: space4,
 });
 
 export const team = style({
   display: 'flex',
   alignItems: 'center',
-  gap: '12px',
+  gap: space3,
   flex: 1,
 });
 
@@ -41,14 +52,14 @@ export const crest = style({
 });
 
 export const teamName = style({
-  fontSize: '14px',
+  fontSize: fontSizeBase,
   fontWeight: 500,
-  color: '#1f2937',
+  color: colorTextPrimary,
 });
 
 export const kickoff = style({
-  fontSize: '12px',
-  color: '#6b7280',
+  fontSize: fontSizeSm,
+  color: colorTextSecondary,
   marginTop: '2px',
 });
 

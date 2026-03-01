@@ -1,10 +1,20 @@
 import { style } from '@vanilla-extract/css';
+import {
+  colorTextSecondary,
+  colorBorder,
+  fontSizeSm,
+  fontSizeBase,
+  space2,
+  space3,
+  space6,
+  space12,
+} from '../../theme.css';
 
 export const container = style({
   position: 'relative',
   display: 'flex',
   flexDirection: 'column',
-  gap: '24px',
+  gap: space6,
   overflow: 'auto',
   maxHeight: 'calc(100vh - 140px)',
 });
@@ -17,11 +27,11 @@ export const dateGroup = style({
 export const dateHeader = style({
   display: 'flex',
   alignItems: 'center',
-  gap: '8px',
+  gap: space2,
   fontFamily: 'inherit',
-  fontSize: '12px',
+  fontSize: fontSizeSm,
   fontWeight: 600,
-  color: '#6b7280',
+  color: colorTextSecondary,
   textTransform: 'uppercase',
   letterSpacing: '-0.02em',
   cursor: 'pointer',
@@ -30,8 +40,8 @@ export const dateHeader = style({
   border: 'none',
   borderBottomStyle: 'solid',
   borderBottomWidth: '1px',
-  borderBottomColor: '#e5e7eb',
-  padding: '0 0 8px 0',
+  borderBottomColor: colorBorder,
+  padding: `0 0 ${space2} 0`,
   width: '100%',
   textAlign: 'left',
 });
@@ -50,13 +60,13 @@ export const chevronExpanded = style({
 export const matchesList = style({
   display: 'flex',
   flexDirection: 'column',
-  gap: '8px',
-  paddingTop: '12px',
+  gap: space2,
+  paddingTop: space3,
 });
 
 export const emptyState = style({
   textAlign: 'center',
-  padding: '48px 24px',
-  color: '#6b7280',
-  fontSize: '14px',
+  padding: `${space12} ${space6}`,
+  color: colorTextSecondary,
+  fontSize: fontSizeBase,
 });

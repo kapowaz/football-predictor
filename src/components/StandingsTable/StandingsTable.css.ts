@@ -1,32 +1,55 @@
 import { style, globalStyle } from '@vanilla-extract/css';
+import {
+  colorBgSurface,
+  colorBgSurfaceHover,
+  colorTextPrimary,
+  colorTextSecondary,
+  colorTextWhite,
+  colorBorder,
+  colorBorderLight,
+  colorBorderMedium,
+  colorSuccess,
+  colorDanger,
+  colorNeutral,
+  fontSizeXs,
+  fontSizeSm,
+  fontSizeBase,
+  fontSizeMd,
+  space1,
+  space2,
+  space3,
+  radiusMd,
+  radiusLg,
+  shadowSm,
+} from '../../theme.css';
 
 export const container = style({
-  backgroundColor: '#fff',
-  borderRadius: '6px',
-  boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)',
+  backgroundColor: colorBgSurface,
+  borderRadius: radiusLg,
+  boxShadow: shadowSm,
   overflow: 'hidden',
 });
 
 export const table = style({
   width: '100%',
   borderCollapse: 'collapse',
-  fontSize: '14px',
+  fontSize: fontSizeBase,
 });
 
 export const thead = style({
-  backgroundColor: '#f9fafb',
+  backgroundColor: colorBgSurfaceHover,
 });
 
 export const th = style({
-  padding: '12px 8px',
+  padding: `${space3} ${space2}`,
   textAlign: 'left',
   fontWeight: 600,
-  color: '#6b7280',
-  fontSize: '12px',
+  color: colorTextSecondary,
+  fontSize: fontSizeSm,
   textTransform: 'uppercase',
   letterSpacing: '0.05em',
   fontVariantNumeric: 'tabular-nums',
-  borderBottom: '1px solid #e5e7eb',
+  borderBottom: `1px solid ${colorBorder}`,
 });
 
 export const thCenter = style([
@@ -39,14 +62,14 @@ export const thCenter = style([
 export const tr = style({
   transition: 'background-color 0.2s',
   ':hover': {
-    backgroundColor: '#f9fafb',
+    backgroundColor: colorBgSurfaceHover,
   },
 });
 
 export const td = style({
-  padding: '12px 8px',
-  borderBottom: '1px solid #f3f4f6',
-  color: '#1f2937',
+  padding: `${space3} ${space2}`,
+  borderBottom: `1px solid ${colorBorderLight}`,
+  color: colorTextPrimary,
   fontVariantNumeric: 'tabular-nums',
 });
 
@@ -66,7 +89,7 @@ export const tdRight = style([
 
 export const position = style({
   fontWeight: 600,
-  color: '#6b7280',
+  color: colorTextSecondary,
   width: '32px',
   textAlign: 'center',
   fontVariantNumeric: 'tabular-nums',
@@ -90,7 +113,7 @@ export const teamName = style({
 
 export const points = style({
   fontWeight: 700,
-  fontSize: '15px',
+  fontSize: fontSizeMd,
 });
 
 export const goalDiff = style({
@@ -98,22 +121,22 @@ export const goalDiff = style({
 });
 
 export const positive = style({
-  color: '#16a34a',
+  color: colorSuccess,
 });
 
 export const negative = style({
-  color: '#dc2626',
+  color: colorDanger,
 });
 
 export const zoneBoundary = style({});
 
 globalStyle(`${zoneBoundary} td`, {
-  borderBottomColor: '#9ca3af',
+  borderBottomColor: colorBorderMedium,
 });
 
 export const formCell = style({
   display: 'flex',
-  gap: '4px',
+  gap: space1,
   justifyContent: 'flex-end',
 });
 
@@ -123,21 +146,21 @@ export const formBadge = style({
   justifyContent: 'center',
   width: '22px',
   height: '22px',
-  borderRadius: '4px',
-  fontSize: '11px',
+  borderRadius: radiusMd,
+  fontSize: fontSizeXs,
   fontWeight: 700,
-  color: '#fff',
+  color: colorTextWhite,
   lineHeight: 1,
 });
 
 export const formWin = style({
-  backgroundColor: '#16a34a',
+  backgroundColor: colorSuccess,
 });
 
 export const formDraw = style({
-  backgroundColor: '#9ca3af',
+  backgroundColor: colorNeutral,
 });
 
 export const formLoss = style({
-  backgroundColor: '#dc2626',
+  backgroundColor: colorDanger,
 });

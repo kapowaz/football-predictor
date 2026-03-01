@@ -1,4 +1,24 @@
 import { style, globalStyle } from '@vanilla-extract/css';
+import {
+  colorBgPage,
+  colorTextPrimary,
+  colorTextHeading,
+  colorDanger,
+  colorDangerBg,
+  colorDangerBgHover,
+  colorDangerBorder,
+  fontFamily,
+  fontSizeXl,
+  fontSizeLg,
+  fontSizeSm,
+  space2,
+  space3,
+  space4,
+  space6,
+  space8,
+  radiusSm,
+  maxWidthContent,
+} from './theme.css';
 
 globalStyle('*, *::before, *::after', {
   boxSizing: 'border-box',
@@ -6,24 +26,23 @@ globalStyle('*, *::before, *::after', {
 
 globalStyle('body', {
   margin: 0,
-  fontFamily:
-    'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
-  backgroundColor: '#f3f4f6',
-  color: '#1f2937',
+  fontFamily: fontFamily,
+  backgroundColor: colorBgPage,
+  color: colorTextPrimary,
   lineHeight: 1.5,
 });
 
 export const app = style({
   minHeight: '100vh',
-  padding: '24px',
+  padding: space6,
 });
 
 export const header = style({
   display: 'flex',
   alignItems: 'center',
-  gap: '12px',
-  maxWidth: '1400px',
-  margin: '0 auto 32px',
+  gap: space3,
+  maxWidth: maxWidthContent,
+  margin: `0 auto ${space8}`,
 });
 
 export const logo = style({
@@ -32,17 +51,17 @@ export const logo = style({
 });
 
 export const title = style({
-  fontSize: '28px',
+  fontSize: fontSizeXl,
   fontWeight: 700,
-  color: '#111827',
+  color: colorTextHeading,
   margin: 0,
 });
 
 export const main = style({
   display: 'grid',
   gridTemplateColumns: '1fr 1fr',
-  gap: '32px',
-  maxWidth: '1400px',
+  gap: space8,
+  maxWidth: maxWidthContent,
   margin: '0 auto',
   '@media': {
     'screen and (max-width: 1024px)': {
@@ -54,7 +73,7 @@ export const main = style({
 export const panel = style({
   display: 'flex',
   flexDirection: 'column',
-  gap: '16px',
+  gap: space4,
 });
 
 export const panelHeader = style({
@@ -64,27 +83,26 @@ export const panelHeader = style({
 });
 
 export const panelTitle = style({
-  fontSize: '18px',
+  fontSize: fontSizeLg,
   fontWeight: 600,
-  color: '#111827',
+  color: colorTextHeading,
   margin: 0,
 });
 
 export const resetButton = style({
-  padding: '8px 16px',
-  fontFamily:
-    'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
-  fontSize: '12px',
+  padding: `${space2} ${space4}`,
+  fontFamily: fontFamily,
+  fontSize: fontSizeSm,
   fontWeight: 600,
   textTransform: 'uppercase',
   letterSpacing: '-0.02em',
-  color: '#dc2626',
-  backgroundColor: '#fef2f2',
-  border: '1px solid #fecaca',
-  borderRadius: '3px',
+  color: colorDanger,
+  backgroundColor: colorDangerBg,
+  border: `1px solid ${colorDangerBorder}`,
+  borderRadius: radiusSm,
   cursor: 'pointer',
   transition: 'background-color 0.2s',
   ':hover': {
-    backgroundColor: '#fee2e2',
+    backgroundColor: colorDangerBgHover,
   },
 });
