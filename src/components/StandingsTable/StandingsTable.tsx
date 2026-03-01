@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import type { TeamStanding, FormResult } from '../../types';
 import { getCrest } from '../../assets/crests';
 import * as styles from './StandingsTable.css';
@@ -42,9 +43,9 @@ export function StandingsTable({ standings }: StandingsTableProps) {
           {standings.map((standing, index) => (
             <tr
               key={standing.team.id}
-              className={`${styles.tr} ${ZONE_BOUNDARY_POSITIONS.has(index + 1) ? styles.zoneBoundary : ''}`}
+              className={clsx(styles.tr, ZONE_BOUNDARY_POSITIONS.has(index + 1) && styles.zoneBoundary)}
             >
-              <td className={`${styles.td} ${styles.position}`}>{index + 1}</td>
+              <td className={clsx(styles.td, styles.position)}>{index + 1}</td>
               <td className={styles.td}>
                 <div className={styles.teamCell}>
                   <img
@@ -62,21 +63,18 @@ export function StandingsTable({ standings }: StandingsTableProps) {
               <td className={styles.tdCenter}>{standing.goalsFor}</td>
               <td className={styles.tdCenter}>{standing.goalsAgainst}</td>
               <td
-                className={`${styles.tdCenter} ${styles.goalDiff} ${
-                  standing.goalDifference > 0
-                    ? styles.positive
-                    : standing.goalDifference < 0
-                      ? styles.negative
-                      : ''
-                }`}
+                className={clsx(styles.tdCenter, styles.goalDiff, {
+                  [styles.positive]: standing.goalDifference > 0,
+                  [styles.negative]: standing.goalDifference < 0,
+                })}
               >
                 {formatGD(standing.goalDifference)}
               </td>
-              <td className={`${styles.tdCenter} ${styles.points}`}>{standing.points}</td>
+              <td className={clsx(styles.tdCenter, styles.points)}>{standing.points}</td>
               <td className={styles.td}>
                 <div className={styles.formCell}>
                   {standing.form.map((result, i) => (
-                    <span key={i} className={`${styles.formBadge} ${formStyles[result]}`}>
+                    <span key={i} className={clsx(styles.formBadge, formStyles[result])}>
                       {result}
                     </span>
                   ))}

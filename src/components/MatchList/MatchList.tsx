@@ -1,4 +1,5 @@
 import { useMemo, useCallback, useRef, useState } from 'react';
+import clsx from 'clsx';
 import { AnimatePresence, motion } from 'framer-motion';
 import type { Match, Team, PredictionsStore } from '../../types';
 import { MatchCard } from '../MatchCard/MatchCard';
@@ -7,7 +8,7 @@ import * as styles from './MatchList.css';
 function Chevron({ expanded }: { expanded: boolean }) {
   return (
     <svg
-      className={`${styles.chevron} ${expanded ? styles.chevronExpanded : ''}`}
+      className={clsx(styles.chevron, expanded && styles.chevronExpanded)}
       viewBox="0 0 16 16"
       fill="currentColor"
     >
@@ -138,7 +139,7 @@ export function MatchList({
             }}
           >
             <button
-              className={`${styles.dateHeader}${allPredicted ? ` ${styles.dateHeaderComplete}` : ''}`}
+              className={clsx(styles.dateHeader, allPredicted && styles.dateHeaderComplete)}
               onClick={() => toggleDate(group.date)}
               aria-expanded={isExpanded}
             >
