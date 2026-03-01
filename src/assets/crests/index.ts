@@ -3,7 +3,7 @@ import blackburnRovers from './blackburn-rovers.svg';
 import bristolCity from './bristol-city.svg';
 import charltonAthletic from './charlton-athletic.svg';
 import coventryCity from './coventry-city.svg';
-import derby from './derby.svg';
+import derbyCounty from './derby-county.svg';
 import hullCity from './hull-city.svg';
 import ipswichTown from './ipswich-town.svg';
 import leicesterCity from './leicester-city.svg';
@@ -29,7 +29,7 @@ const crests: Record<string, string> = {
   'bristol-city': bristolCity,
   'charlton-athletic': charltonAthletic,
   'coventry-city': coventryCity,
-  derby: derby,
+  'derby-county': derbyCounty,
   'hull-city': hullCity,
   'ipswich-town': ipswichTown,
   'leicester-city': leicesterCity,
