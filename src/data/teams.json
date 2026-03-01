@@ -170,17 +170,5 @@
       "tla": "OXF",
       "crest": "oxford-united"
     }
-  ],
-  "deductions": [
-    {
-      "teamId": 338,
-      "amount": 6,
-      "reason": "Financial Fair Play breach"
-    },
-    {
-      "teamId": 345,
-      "amount": 18,
-      "reason": "Financial Fair Play breach"
-    }
   ]
 }

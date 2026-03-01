@@ -1,6 +1,7 @@
 import teamsData from './data/teams.json';
 import matchesData from './data/matches.json';
-import type { TeamsData, MatchesData } from './types';
+import deductionsData from './data/deductions.json';
+import type { TeamsData, MatchesData, PointDeduction } from './types';
 import { usePredictions } from './hooks/usePredictions';
 import { useStandings } from './hooks/useStandings';
 import { StandingsTable } from './components/StandingsTable/StandingsTable';
@@ -9,7 +10,7 @@ import * as styles from './App.css';
 
 const teams = (teamsData as TeamsData).teams;
 const matches = (matchesData as MatchesData).matches;
-const deductions = (teamsData as TeamsData).deductions ?? [];
+const deductions = deductionsData as PointDeduction[];
 
 function App() {
   const { predictions, setPrediction, removePrediction, resetAllPredictions } = usePredictions();

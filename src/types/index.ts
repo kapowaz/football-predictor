@@ -16,7 +16,6 @@ export interface TeamsData {
   competition: string;
   season: string;
   teams: Team[];
-  deductions: PointDeduction[];
 }
 
 export interface Match {
