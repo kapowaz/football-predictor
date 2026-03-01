@@ -1,12 +1,57 @@
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback, useEffect, useRef } from 'react';
 import type { PredictionsStore } from '../types';
 import { loadPredictions, savePredictions, clearPredictions } from '../utils/storage';
+import { encodePredictions, decodePredictions } from '../utils/serialization';
+
+function buildUrl(params: URLSearchParams): string {
+  const search = params.toString();
+  return window.location.pathname + (search ? `?${search}` : '');
+}
+
+function loadInitialPredictions(): PredictionsStore {
+  const params = new URLSearchParams(window.location.search);
+  const encoded = params.get('predictions');
+
+  if (encoded) {
+    try {
+      const decoded = decodePredictions(encoded);
+      return {
+        predictions: decoded,
+        lastModified: new Date().toISOString(),
+      };
+    } catch (e) {
+      console.error('Failed to decode predictions from URL:', e);
+    }
+  }
+
+  return loadPredictions();
+}
 
 export function usePredictions() {
-  const [predictions, setPredictions] = useState<PredictionsStore>(() => loadPredictions());
+  const [predictions, setPredictions] = useState<PredictionsStore>(loadInitialPredictions);
+  const isInitialRender = useRef(true);
 
   useEffect(() => {
     savePredictions(predictions);
+
+    const params = new URLSearchParams(window.location.search);
+    const entries = Object.keys(predictions.predictions);
+
+    if (entries.length > 0) {
+      const encoded = encodePredictions(predictions.predictions);
+      console.log('Encoded predictions:', encoded);
+      params.set('predictions', encoded);
+    } else {
+      params.delete('predictions');
+    }
+
+    const url = buildUrl(params);
+    if (isInitialRender.current) {
+      window.history.replaceState(null, '', url);
+      isInitialRender.current = false;
+    } else {
+      window.history.pushState(null, '', url);
+    }
   }, [predictions]);
 
   const setPrediction = useCallback((matchId: number, homeGoals: number, awayGoals: number) => {
