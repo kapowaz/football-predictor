@@ -11,7 +11,7 @@ export const input = style({
   height: '32px',
   textAlign: 'center',
   fontFamily:
-    '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
+    'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
   fontSize: '14px',
   fontWeight: 600,
   border: '2px solid #e0e0e0',

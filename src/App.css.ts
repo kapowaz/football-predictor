@@ -7,7 +7,7 @@ globalStyle('*, *::before, *::after', {
 globalStyle('body', {
   margin: 0,
   fontFamily:
-    '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
+    'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
   backgroundColor: '#f3f4f6',
   color: '#1f2937',
   lineHeight: 1.5,
@@ -73,7 +73,7 @@ export const panelTitle = style({
 export const resetButton = style({
   padding: '8px 16px',
   fontFamily:
-    '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
+    'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
   fontSize: '12px',
   fontWeight: 600,
   textTransform: 'uppercase',
