@@ -40,6 +40,20 @@ export const modal = style({
   width: '90vw',
   position: 'relative',
   outline: 'none',
+  overflow: 'hidden',
+});
+
+export const backgroundCrest = style({
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  width: '80%',
+  height: 'auto',
+  transform: 'translate(-50%, -50%) rotate(-15deg)',
+  opacity: 0.06,
+  pointerEvents: 'none',
+  userSelect: 'none',
+  objectFit: 'contain',
 });
 
 export const championHeading = style({

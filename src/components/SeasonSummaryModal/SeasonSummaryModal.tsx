@@ -88,6 +88,15 @@ export function SeasonSummaryModal({ standings, isOpen, onClose }: SeasonSummary
                   transition={{ type: 'spring', damping: 25, stiffness: 300 }}
                   {...getFloatingProps()}
                 >
+                  {champion && (
+                    <img
+                      src={getCrest(champion.team.crest)}
+                      alt=""
+                      className={styles.backgroundCrest}
+                      aria-hidden="true"
+                    />
+                  )}
+
                   <button className={styles.closeButton} onClick={onClose} aria-label="Close">
                     ✕
                   </button>
