@@ -51,6 +51,36 @@ interface ApiMatchesResponse {
   matches: ApiMatch[]
 }
 
+interface ApiStandingEntry {
+  position: number
+  team: {
+    id: number
+    name: string
+    shortName: string
+    tla: string
+  }
+  playedGames: number
+  form: string
+  won: number
+  draw: number
+  lost: number
+  points: number
+  goalsFor: number
+  goalsAgainst: number
+  goalDifference: number
+}
+
+interface ApiStandingsGroup {
+  stage: string
+  type: string
+  group: string | null
+  table: ApiStandingEntry[]
+}
+
+interface ApiStandingsResponse {
+  standings: ApiStandingsGroup[]
+}
+
 async function fetchFromApi<T>(endpoint: string): Promise<T> {
   const url = new URL(endpoint, API_BASE)
   const response = await fetch(url.toString(), {
@@ -125,12 +155,46 @@ async function fetchMatches(): Promise<void> {
   console.log(`✓ Wrote ${matchesData.matches.length} matches to src/data/matches.json`)
 }
 
+async function fetchStandings(): Promise<void> {
+  console.log('Fetching standings...')
+  const data = await fetchFromApi<ApiStandingsResponse>(
+    `/v4/competitions/${COMPETITION_CODE}/standings`
+  )
+
+  const totalStandings = data.standings.find((s) => s.type === 'TOTAL')
+  if (!totalStandings) {
+    throw new Error('No TOTAL standings found in API response')
+  }
+
+  const standingsData = {
+    lastUpdated: new Date().toISOString(),
+    standings: totalStandings.table.map((entry) => ({
+      position: entry.position,
+      teamId: entry.team.id,
+      teamName: entry.team.name,
+      playedGames: entry.playedGames,
+      won: entry.won,
+      drawn: entry.draw,
+      lost: entry.lost,
+      points: entry.points,
+      goalsFor: entry.goalsFor,
+      goalsAgainst: entry.goalsAgainst,
+      goalDifference: entry.goalDifference,
+    })),
+  }
+
+  const outputPath = path.join(import.meta.dirname, '../src/data/standings.json')
+  fs.writeFileSync(outputPath, JSON.stringify(standingsData, null, 2))
+  console.log(`✓ Wrote ${standingsData.standings.length} standings to src/data/standings.json`)
+}
+
 async function main(): Promise<void> {
   console.log('Fetching data from football-data.org...\n')
 
   try {
     await fetchTeams()
     await fetchMatches()
+    await fetchStandings()
     console.log('\n✓ Data fetch complete!')
   } catch (error) {
     console.error('Error fetching data:', error)

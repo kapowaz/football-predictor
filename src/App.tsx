@@ -1,16 +1,34 @@
 import teamsData from './data/teams.json';
 import matchesData from './data/matches.json';
+import overridesData from './data/overrides.json';
 import deductionsData from './data/deductions.json';
-import type { TeamsData, MatchesData, PointDeduction } from './types';
+import apiStandingsData from './data/standings.json';
+import type { TeamsData, MatchesData, PointDeduction, Match, ApiStandingsData } from './types';
 import { usePredictions } from './hooks/usePredictions';
 import { useStandings } from './hooks/useStandings';
+import { calculateStandings } from './utils/standings';
+import { validateStandings } from './utils/validateStandings';
 import { StandingsTable } from './components/StandingsTable/StandingsTable';
 import { MatchList } from './components/MatchList/MatchList';
 import * as styles from './App.css';
 
 const teams = (teamsData as TeamsData).teams;
-const matches = (matchesData as MatchesData).matches;
+
+function applyOverrides(base: Match[], overrides: Match[]): Match[] {
+  const overrideMap = new Map(overrides.map((m) => [m.id, m]));
+  return base.map((match) => overrideMap.get(match.id) ?? match);
+}
+
+const matches = applyOverrides(
+  (matchesData as MatchesData).matches,
+  (overridesData as unknown as MatchesData).matches
+);
 const deductions = deductionsData as PointDeduction[];
+const apiStandings = apiStandingsData as ApiStandingsData;
+
+const emptyPredictions = { predictions: {}, lastModified: '' };
+const calculatedFromResults = calculateStandings(teams, matches, emptyPredictions, deductions);
+validateStandings(calculatedFromResults, apiStandings);
 
 function App() {
   const { predictions, setPrediction, removePrediction, resetAllPredictions } = usePredictions();

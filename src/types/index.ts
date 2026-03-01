@@ -44,6 +44,25 @@ export interface PredictionsStore {
   lastModified: string;
 }
 
+export interface ApiStandingEntry {
+  position: number;
+  teamId: number;
+  teamName: string;
+  playedGames: number;
+  won: number;
+  drawn: number;
+  lost: number;
+  points: number;
+  goalsFor: number;
+  goalsAgainst: number;
+  goalDifference: number;
+}
+
+export interface ApiStandingsData {
+  lastUpdated: string;
+  standings: ApiStandingEntry[];
+}
+
 export type FormResult = 'W' | 'D' | 'L';
 
 export interface TeamStanding {
