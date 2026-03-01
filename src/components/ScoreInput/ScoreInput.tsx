@@ -1,30 +1,30 @@
-import { useCallback } from 'react'
-import * as styles from './ScoreInput.css'
+import { useCallback } from 'react';
+import * as styles from './ScoreInput.css';
 
 interface ScoreInputProps {
-  homeGoals: number | null
-  awayGoals: number | null
-  onChange: (homeGoals: number | null, awayGoals: number | null) => void
+  homeGoals: number | null;
+  awayGoals: number | null;
+  onChange: (homeGoals: number | null, awayGoals: number | null) => void;
 }
 
 export function ScoreInput({ homeGoals, awayGoals, onChange }: ScoreInputProps) {
   const handleHomeChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
-      const value = e.target.value
-      const parsed = value === '' ? null : Math.max(0, parseInt(value, 10) || 0)
-      onChange(parsed, awayGoals)
+      const value = e.target.value;
+      const parsed = value === '' ? null : Math.max(0, parseInt(value, 10) || 0);
+      onChange(parsed, awayGoals);
     },
     [awayGoals, onChange]
-  )
+  );
 
   const handleAwayChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
-      const value = e.target.value
-      const parsed = value === '' ? null : Math.max(0, parseInt(value, 10) || 0)
-      onChange(homeGoals, parsed)
+      const value = e.target.value;
+      const parsed = value === '' ? null : Math.max(0, parseInt(value, 10) || 0);
+      onChange(homeGoals, parsed);
     },
     [homeGoals, onChange]
-  )
+  );
 
   return (
     <div className={styles.container}>
@@ -50,5 +50,5 @@ export function ScoreInput({ homeGoals, awayGoals, onChange }: ScoreInputProps) 
         aria-label="Away team goals"
       />
     </div>
-  )
+  );
 }

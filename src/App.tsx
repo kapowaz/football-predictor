@@ -1,20 +1,20 @@
-import teamsData from './data/teams.json'
-import matchesData from './data/matches.json'
-import type { TeamsData, MatchesData } from './types'
-import { usePredictions } from './hooks/usePredictions'
-import { useStandings } from './hooks/useStandings'
-import { StandingsTable } from './components/StandingsTable/StandingsTable'
-import { MatchList } from './components/MatchList/MatchList'
-import * as styles from './App.css'
+import teamsData from './data/teams.json';
+import matchesData from './data/matches.json';
+import type { TeamsData, MatchesData } from './types';
+import { usePredictions } from './hooks/usePredictions';
+import { useStandings } from './hooks/useStandings';
+import { StandingsTable } from './components/StandingsTable/StandingsTable';
+import { MatchList } from './components/MatchList/MatchList';
+import * as styles from './App.css';
 
-const teams = (teamsData as TeamsData).teams
-const matches = (matchesData as MatchesData).matches
+const teams = (teamsData as TeamsData).teams;
+const matches = (matchesData as MatchesData).matches;
 
 function App() {
-  const { predictions, setPrediction, removePrediction, resetAllPredictions } = usePredictions()
-  const standings = useStandings(teams, matches, predictions)
+  const { predictions, setPrediction, removePrediction, resetAllPredictions } = usePredictions();
+  const standings = useStandings(teams, matches, predictions);
 
-  const predictedCount = Object.keys(predictions.predictions).length
+  const predictedCount = Object.keys(predictions.predictions).length;
 
   return (
     <div className={styles.app}>
@@ -52,7 +52,7 @@ function App() {
         </div>
       </main>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

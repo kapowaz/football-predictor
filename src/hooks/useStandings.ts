@@ -1,6 +1,6 @@
-import { useMemo } from 'react'
-import type { Team, Match, TeamStanding, PredictionsStore } from '../types'
-import { calculateStandings } from '../utils/standings'
+import { useMemo } from 'react';
+import type { Team, Match, TeamStanding, PredictionsStore } from '../types';
+import { calculateStandings } from '../utils/standings';
 
 export function useStandings(
   teams: Team[],
@@ -8,6 +8,6 @@ export function useStandings(
   predictions: PredictionsStore
 ): TeamStanding[] {
   return useMemo(() => {
-    return calculateStandings(teams, matches, predictions)
-  }, [teams, matches, predictions])
+    return calculateStandings(teams, matches, predictions);
+  }, [teams, matches, predictions]);
 }

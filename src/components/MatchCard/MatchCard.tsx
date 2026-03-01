@@ -1,21 +1,21 @@
-import { useCallback } from 'react'
-import type { Match, Team } from '../../types'
-import { getCrest } from '../../assets/crests'
-import { ScoreInput } from '../ScoreInput/ScoreInput'
-import * as styles from './MatchCard.css'
+import { useCallback } from 'react';
+import type { Match, Team } from '../../types';
+import { getCrest } from '../../assets/crests';
+import { ScoreInput } from '../ScoreInput/ScoreInput';
+import * as styles from './MatchCard.css';
 
 interface MatchCardProps {
-  match: Match
-  homeTeam: Team
-  awayTeam: Team
-  prediction: { homeGoals: number; awayGoals: number } | null
-  onPredictionChange: (matchId: number, homeGoals: number, awayGoals: number) => void
-  onPredictionRemove: (matchId: number) => void
+  match: Match;
+  homeTeam: Team;
+  awayTeam: Team;
+  prediction: { homeGoals: number; awayGoals: number } | null;
+  onPredictionChange: (matchId: number, homeGoals: number, awayGoals: number) => void;
+  onPredictionRemove: (matchId: number) => void;
 }
 
 function formatKickoff(utcDate: string): string {
-  const date = new Date(utcDate)
-  return date.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' })
+  const date = new Date(utcDate);
+  return date.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
 }
 
 export function MatchCard({
@@ -29,13 +29,13 @@ export function MatchCard({
   const handleScoreChange = useCallback(
     (homeGoals: number | null, awayGoals: number | null) => {
       if (homeGoals !== null && awayGoals !== null) {
-        onPredictionChange(match.id, homeGoals, awayGoals)
+        onPredictionChange(match.id, homeGoals, awayGoals);
       } else if (homeGoals === null && awayGoals === null) {
-        onPredictionRemove(match.id)
+        onPredictionRemove(match.id);
       }
     },
     [match.id, onPredictionChange, onPredictionRemove]
-  )
+  );
 
   return (
     <div className={styles.card}>
@@ -62,5 +62,5 @@ export function MatchCard({
         </div>
       </div>
     </div>
-  )
+  );
 }

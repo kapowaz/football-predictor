@@ -1,10 +1,10 @@
-import { style } from '@vanilla-extract/css'
+import { style } from '@vanilla-extract/css';
 
 export const container = style({
   display: 'flex',
   alignItems: 'center',
   gap: '8px',
-})
+});
 
 export const input = style({
   width: '48px',
@@ -27,10 +27,10 @@ export const input = style({
   '::-webkit-outer-spin-button': {
     appearance: 'none',
   },
-})
+});
 
 export const separator = style({
   fontSize: '20px',
   fontWeight: 600,
   color: '#666',
-})
+});

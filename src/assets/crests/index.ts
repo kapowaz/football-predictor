@@ -1,27 +1,27 @@
-import birminghamCity from './birmingham-city.svg'
-import blackburnRovers from './blackburn-rovers.svg'
-import bristolCity from './bristol-city.svg'
-import charltonAthletic from './charlton-athletic.svg'
-import coventryCity from './coventry-city.svg'
-import derby from './derby.svg'
-import hullCity from './hull-city.svg'
-import ipswichTown from './ipswich-town.svg'
-import leicesterCity from './leicester-city.svg'
-import middlesbrough from './middlesbrough.svg'
-import millwall from './millwall.svg'
-import norwichCity from './norwich-city.svg'
-import oxfordUnited from './oxford-united.svg'
-import portsmouth from './portsmouth.svg'
-import prestonNorthEnd from './preston-north-end.svg'
-import queensParkRangers from './queens-park-rangers.svg'
-import sheffieldUnited from './sheffield-united.svg'
-import sheffieldWednesday from './sheffield-wednesday.svg'
-import southampton from './southampton.svg'
-import stokeCity from './stoke-city.svg'
-import swanseaCity from './swansea-city.svg'
-import watford from './watford.svg'
-import westBromwichAlbion from './west-bromwich-albion.svg'
-import wrexham from './wrexham.svg'
+import birminghamCity from './birmingham-city.svg';
+import blackburnRovers from './blackburn-rovers.svg';
+import bristolCity from './bristol-city.svg';
+import charltonAthletic from './charlton-athletic.svg';
+import coventryCity from './coventry-city.svg';
+import derby from './derby.svg';
+import hullCity from './hull-city.svg';
+import ipswichTown from './ipswich-town.svg';
+import leicesterCity from './leicester-city.svg';
+import middlesbrough from './middlesbrough.svg';
+import millwall from './millwall.svg';
+import norwichCity from './norwich-city.svg';
+import oxfordUnited from './oxford-united.svg';
+import portsmouth from './portsmouth.svg';
+import prestonNorthEnd from './preston-north-end.svg';
+import queensParkRangers from './queens-park-rangers.svg';
+import sheffieldUnited from './sheffield-united.svg';
+import sheffieldWednesday from './sheffield-wednesday.svg';
+import southampton from './southampton.svg';
+import stokeCity from './stoke-city.svg';
+import swanseaCity from './swansea-city.svg';
+import watford from './watford.svg';
+import westBromwichAlbion from './west-bromwich-albion.svg';
+import wrexham from './wrexham.svg';
 
 const crests: Record<string, string> = {
   'birmingham-city': birminghamCity,
@@ -48,10 +48,10 @@ const crests: Record<string, string> = {
   watford: watford,
   'west-bromwich-albion': westBromwichAlbion,
   wrexham: wrexham,
-}
+};
 
 export function getCrest(crestKey: string): string {
-  return crests[crestKey] ?? ''
+  return crests[crestKey] ?? '';
 }
 
-export default crests
+export default crests;

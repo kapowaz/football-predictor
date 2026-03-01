@@ -1,23 +1,23 @@
-import type { TeamStanding, FormResult } from '../../types'
-import { getCrest } from '../../assets/crests'
-import * as styles from './StandingsTable.css'
+import type { TeamStanding, FormResult } from '../../types';
+import { getCrest } from '../../assets/crests';
+import * as styles from './StandingsTable.css';
 
 interface StandingsTableProps {
-  standings: TeamStanding[]
+  standings: TeamStanding[];
 }
 
 function formatGD(gd: number): string {
-  if (gd > 0) return `+${gd}`
-  return String(gd)
+  if (gd > 0) return `+${gd}`;
+  return String(gd);
 }
 
 const formStyles: Record<FormResult, string> = {
   W: styles.formWin,
   D: styles.formDraw,
   L: styles.formLoss,
-}
+};
 
-const ZONE_BOUNDARY_POSITIONS = new Set([2, 6, 21])
+const ZONE_BOUNDARY_POSITIONS = new Set([2, 6, 21]);
 
 export function StandingsTable({ standings }: StandingsTableProps) {
   return (
@@ -87,5 +87,5 @@ export function StandingsTable({ standings }: StandingsTableProps) {
         </tbody>
       </table>
     </div>
-  )
+  );
 }

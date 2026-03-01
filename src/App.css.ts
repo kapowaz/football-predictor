@@ -1,8 +1,8 @@
-import { style, globalStyle } from '@vanilla-extract/css'
+import { style, globalStyle } from '@vanilla-extract/css';
 
 globalStyle('*, *::before, *::after', {
   boxSizing: 'border-box',
-})
+});
 
 globalStyle('body', {
   margin: 0,
@@ -11,29 +11,29 @@ globalStyle('body', {
   backgroundColor: '#f3f4f6',
   color: '#1f2937',
   lineHeight: 1.5,
-})
+});
 
 export const app = style({
   minHeight: '100vh',
   padding: '24px',
-})
+});
 
 export const header = style({
   marginBottom: '32px',
-})
+});
 
 export const title = style({
   fontSize: '28px',
   fontWeight: 700,
   color: '#111827',
   margin: 0,
-})
+});
 
 export const subtitle = style({
   fontSize: '14px',
   color: '#6b7280',
   marginTop: '4px',
-})
+});
 
 export const main = style({
   display: 'grid',
@@ -46,26 +46,26 @@ export const main = style({
       gridTemplateColumns: '1fr',
     },
   },
-})
+});
 
 export const panel = style({
   display: 'flex',
   flexDirection: 'column',
   gap: '16px',
-})
+});
 
 export const panelHeader = style({
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',
-})
+});
 
 export const panelTitle = style({
   fontSize: '18px',
   fontWeight: 600,
   color: '#111827',
   margin: 0,
-})
+});
 
 export const resetButton = style({
   padding: '8px 16px',
@@ -80,4 +80,4 @@ export const resetButton = style({
   ':hover': {
     backgroundColor: '#fee2e2',
   },
-})
+});
