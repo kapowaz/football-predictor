@@ -2,7 +2,7 @@ import { style, globalStyle } from '@vanilla-extract/css';
 
 export const container = style({
   backgroundColor: '#fff',
-  borderRadius: '12px',
+  borderRadius: '6px',
   boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)',
   overflow: 'hidden',
 });
@@ -75,6 +75,8 @@ export const position = style({
   fontWeight: 600,
   color: '#6b7280',
   width: '32px',
+  textAlign: 'center',
+  fontVariantNumeric: 'tabular-nums',
 });
 
 export const teamCell = style({

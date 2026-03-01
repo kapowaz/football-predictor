@@ -38,7 +38,7 @@ export function MatchCard({
   );
 
   return (
-    <div className={styles.card}>
+    <div className={styles.card} data-match-id={match.id}>
       <div className={styles.homeTeam}>
         <div>
           <div className={styles.teamName}>{homeTeam.shortName}</div>

@@ -6,7 +6,7 @@ export const card = style({
   justifyContent: 'space-between',
   padding: '16px',
   backgroundColor: '#fff',
-  borderRadius: '12px',
+  borderRadius: '6px',
   boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)',
   gap: '16px',
 });
@@ -56,5 +56,4 @@ export const scoreSection = style({
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
-  minWidth: '120px',
 });
