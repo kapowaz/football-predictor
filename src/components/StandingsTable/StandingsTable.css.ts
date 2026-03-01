@@ -1,4 +1,4 @@
-import { style } from '@vanilla-extract/css'
+import { style, globalStyle } from '@vanilla-extract/css'
 
 export const container = style({
   backgroundColor: '#fff',
@@ -108,6 +108,12 @@ export const positive = style({
 
 export const negative = style({
   color: '#dc2626',
+})
+
+export const zoneBoundary = style({})
+
+globalStyle(`${zoneBoundary} td`, {
+  borderBottomColor: '#9ca3af',
 })
 
 export const formCell = style({

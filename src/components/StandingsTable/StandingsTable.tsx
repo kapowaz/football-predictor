@@ -17,6 +17,8 @@ const formStyles: Record<FormResult, string> = {
   L: styles.formLoss,
 }
 
+const ZONE_BOUNDARY_POSITIONS = new Set([2, 6, 21])
+
 export function StandingsTable({ standings }: StandingsTableProps) {
   return (
     <div className={styles.container}>
@@ -38,7 +40,10 @@ export function StandingsTable({ standings }: StandingsTableProps) {
         </thead>
         <tbody>
           {standings.map((standing, index) => (
-            <tr key={standing.team.id} className={styles.tr}>
+            <tr
+              key={standing.team.id}
+              className={`${styles.tr} ${ZONE_BOUNDARY_POSITIONS.has(index + 1) ? styles.zoneBoundary : ''}`}
+            >
               <td className={`${styles.td} ${styles.position}`}>{index + 1}</td>
               <td className={styles.td}>
                 <div className={styles.teamCell}>

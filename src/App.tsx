@@ -15,7 +15,6 @@ function App() {
   const standings = useStandings(teams, matches, predictions)
 
   const predictedCount = Object.keys(predictions.predictions).length
-  const scheduledCount = matches.filter((m) => m.status === 'SCHEDULED').length
 
   return (
     <div className={styles.app}>
