@@ -21,7 +21,7 @@ function applyOverrides(base: Match[], overrides: Match[]): Match[] {
 
 const matches = applyOverrides(
   (matchesData as MatchesData).matches,
-  (overridesData as unknown as MatchesData).matches
+  (overridesData as unknown as MatchesData).matches,
 );
 const deductions = deductionsData as PointDeduction[];
 const apiStandings = apiStandingsData as ApiStandingsData;
@@ -40,9 +40,6 @@ function App() {
     <div className={styles.app}>
       <header className={styles.header}>
         <h1 className={styles.title}>EFL Championship Predictor</h1>
-        <p className={styles.subtitle}>
-          Enter your predicted scores for upcoming matches to see how the table could look
-        </p>
       </header>
 
       <main className={styles.main}>

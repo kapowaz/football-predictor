@@ -7,13 +7,13 @@ export const container = style({
 });
 
 export const input = style({
-  width: '36px',
+  width: '32px',
   height: '32px',
   textAlign: 'center',
   fontSize: '18px',
   fontWeight: 600,
   border: '2px solid #e0e0e0',
-  borderRadius: '8px',
+  borderRadius: '6px',
   backgroundColor: '#fff',
   transition: 'border-color 0.2s, box-shadow 0.2s',
   ':focus': {
@@ -30,7 +30,7 @@ export const input = style({
 });
 
 export const separator = style({
-  fontSize: '20px',
+  fontSize: '12px',
   fontWeight: 600,
   color: '#666',
 });

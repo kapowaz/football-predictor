@@ -37,7 +37,7 @@ export function ScoreInput({ homeGoals, awayGoals, onChange }: ScoreInputProps) 
         onChange={handleHomeChange}
         aria-label="Home team goals"
       />
-      <span className={styles.separator}>-</span>
+      <span className={styles.separator}>vs</span>
       <input
         type="number"
         min="0"

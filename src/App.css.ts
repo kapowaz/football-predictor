@@ -29,12 +29,6 @@ export const title = style({
   margin: 0,
 });
 
-export const subtitle = style({
-  fontSize: '14px',
-  color: '#6b7280',
-  marginTop: '4px',
-});
-
 export const main = style({
   display: 'grid',
   gridTemplateColumns: '1fr 1fr',
