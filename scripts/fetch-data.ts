@@ -72,6 +72,14 @@ function formatSeason(startDate: string, endDate: string): string {
   return `${startYear}-${String(endYear).slice(2)}`
 }
 
+function teamNameToCrestKey(name: string): string {
+  return name
+    .replace(/\s*(FC|AFC)\s*$/i, '')
+    .trim()
+    .toLowerCase()
+    .replace(/\s+/g, '-')
+}
+
 async function fetchTeams(): Promise<void> {
   console.log('Fetching teams...')
   const data = await fetchFromApi<ApiTeamsResponse>(`/v4/competitions/${COMPETITION_CODE}/teams`)
@@ -84,7 +92,7 @@ async function fetchTeams(): Promise<void> {
       name: team.name,
       shortName: team.shortName,
       tla: team.tla,
-      crest: team.crest,
+      crest: teamNameToCrestKey(team.name),
     })),
   }
 

@@ -25,6 +25,7 @@ export const th = style({
   fontSize: '12px',
   textTransform: 'uppercase',
   letterSpacing: '0.05em',
+  fontVariantNumeric: 'tabular-nums',
   borderBottom: '1px solid #e5e7eb',
 })
 
@@ -53,6 +54,7 @@ export const td = style({
   padding: '12px 8px',
   borderBottom: '1px solid #f3f4f6',
   color: '#1f2937',
+  fontVariantNumeric: 'tabular-nums',
 })
 
 export const tdCenter = style([

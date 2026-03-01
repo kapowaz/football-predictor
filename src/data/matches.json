@@ -1,53 +1,3770 @@
 {
-  "lastUpdated": "2026-03-01T12:00:00Z",
+  "lastUpdated": "2026-03-01T13:06:04.092Z",
   "matches": [
     {
-      "id": 500001,
-      "homeTeamId": 338,
-      "awayTeamId": 341,
-      "utcDate": "2025-08-09T14:00:00Z",
-      "status": "FINISHED",
-      "homeGoals": 2,
-      "awayGoals": 1
-    },
-    {
-      "id": 500002,
-      "homeTeamId": 356,
-      "awayTeamId": 74,
-      "utcDate": "2025-08-09T14:00:00Z",
+      "id": 540712,
+      "homeTeamId": 332,
+      "awayTeamId": 349,
+      "utcDate": "2025-08-08T19:00:00Z",
       "status": "FINISHED",
       "homeGoals": 1,
       "awayGoals": 1
     },
     {
-      "id": 500003,
-      "homeTeamId": 332,
-      "awayTeamId": 68,
-      "utcDate": "2025-08-09T14:00:00Z",
+      "id": 540713,
+      "homeTeamId": 348,
+      "awayTeamId": 346,
+      "utcDate": "2025-08-09T11:30:00Z",
       "status": "FINISHED",
-      "homeGoals": 3,
+      "homeGoals": 1,
       "awayGoals": 0
     },
     {
-      "id": 500004,
-      "homeTeamId": 349,
+      "id": 540714,
+      "homeTeamId": 1076,
       "awayTeamId": 322,
-      "utcDate": "2025-08-09T14:00:00Z",
+      "utcDate": "2025-08-09T11:30:00Z",
+      "status": "FINISHED",
+      "homeGoals": 0,
+      "awayGoals": 0
+    },
+    {
+      "id": 540715,
+      "homeTeamId": 340,
+      "awayTeamId": 404,
+      "utcDate": "2025-08-09T11:30:00Z",
       "status": "FINISHED",
       "homeGoals": 2,
+      "awayGoals": 1
+    },
+    {
+      "id": 540716,
+      "homeTeamId": 343,
+      "awayTeamId": 72,
+      "utcDate": "2025-08-09T14:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 0
+    },
+    {
+      "id": 540717,
+      "homeTeamId": 68,
+      "awayTeamId": 384,
+      "utcDate": "2025-08-09T14:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
       "awayGoals": 2
     },
     {
-      "id": 500005,
-      "homeTeamId": 72,
-      "awayTeamId": 343,
+      "id": 540718,
+      "homeTeamId": 1082,
+      "awayTeamId": 325,
       "utcDate": "2025-08-09T14:00:00Z",
       "status": "FINISHED",
       "homeGoals": 0,
       "awayGoals": 1
     },
     {
-      "id": 500006,
+      "id": 540719,
+      "homeTeamId": 69,
+      "awayTeamId": 1081,
+      "utcDate": "2025-08-09T14:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 1
+    },
+    {
+      "id": 540720,
+      "homeTeamId": 70,
+      "awayTeamId": 342,
+      "utcDate": "2025-08-09T14:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 3,
+      "awayGoals": 1
+    },
+    {
+      "id": 540721,
+      "homeTeamId": 74,
+      "awayTeamId": 59,
+      "utcDate": "2025-08-09T14:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 0
+    },
+    {
+      "id": 540722,
+      "homeTeamId": 356,
+      "awayTeamId": 387,
+      "utcDate": "2025-08-09T16:30:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 4
+    },
+    {
+      "id": 540723,
+      "homeTeamId": 338,
+      "awayTeamId": 345,
+      "utcDate": "2025-08-10T15:30:00Z",
+      "status": "FINISHED",
+      "homeGoals": 2,
+      "awayGoals": 1
+    },
+    {
+      "id": 540726,
+      "homeTeamId": 342,
+      "awayTeamId": 1076,
+      "utcDate": "2025-08-16T11:30:00Z",
+      "status": "FINISHED",
+      "homeGoals": 3,
+      "awayGoals": 5
+    },
+    {
+      "id": 540730,
+      "homeTeamId": 325,
+      "awayTeamId": 68,
+      "utcDate": "2025-08-16T11:30:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 2
+    },
+    {
+      "id": 540735,
+      "homeTeamId": 404,
+      "awayTeamId": 74,
+      "utcDate": "2025-08-16T11:30:00Z",
+      "status": "FINISHED",
+      "homeGoals": 2,
+      "awayGoals": 3
+    },
+    {
+      "id": 540724,
+      "homeTeamId": 59,
+      "awayTeamId": 332,
+      "utcDate": "2025-08-16T14:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 2
+    },
+    {
+      "id": 540725,
+      "homeTeamId": 387,
+      "awayTeamId": 348,
+      "utcDate": "2025-08-16T14:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 0,
+      "awayGoals": 0
+    },
+    {
+      "id": 540729,
+      "homeTeamId": 384,
+      "awayTeamId": 343,
+      "utcDate": "2025-08-16T14:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 0,
+      "awayGoals": 3
+    },
+    {
+      "id": 540731,
+      "homeTeamId": 1081,
+      "awayTeamId": 338,
+      "utcDate": "2025-08-16T14:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 2,
+      "awayGoals": 1
+    },
+    {
+      "id": 540732,
+      "homeTeamId": 345,
+      "awayTeamId": 70,
+      "utcDate": "2025-08-16T14:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 0,
+      "awayGoals": 3
+    },
+    {
+      "id": 540733,
+      "homeTeamId": 72,
+      "awayTeamId": 356,
+      "utcDate": "2025-08-16T14:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 0
+    },
+    {
+      "id": 540734,
+      "homeTeamId": 346,
+      "awayTeamId": 69,
+      "utcDate": "2025-08-16T14:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 2,
+      "awayGoals": 1
+    },
+    {
+      "id": 540728,
+      "homeTeamId": 349,
+      "awayTeamId": 340,
+      "utcDate": "2025-08-17T11:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 1
+    },
+    {
+      "id": 540727,
+      "homeTeamId": 322,
+      "awayTeamId": 1082,
+      "utcDate": "2025-08-17T14:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 3,
+      "awayGoals": 2
+    },
+    {
+      "id": 540739,
+      "homeTeamId": 342,
+      "awayTeamId": 387,
+      "utcDate": "2025-08-22T19:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 1
+    },
+    {
+      "id": 540737,
+      "homeTeamId": 348,
+      "awayTeamId": 338,
+      "utcDate": "2025-08-23T11:30:00Z",
+      "status": "FINISHED",
+      "homeGoals": 0,
+      "awayGoals": 1
+    },
+    {
+      "id": 540740,
+      "homeTeamId": 322,
+      "awayTeamId": 59,
+      "utcDate": "2025-08-23T11:30:00Z",
+      "status": "FINISHED",
+      "homeGoals": 0,
+      "awayGoals": 3
+    },
+    {
+      "id": 540745,
+      "homeTeamId": 72,
+      "awayTeamId": 346,
+      "utcDate": "2025-08-23T11:30:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 1
+    },
+    {
+      "id": 540736,
+      "homeTeamId": 332,
+      "awayTeamId": 1082,
+      "utcDate": "2025-08-23T14:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 0
+    },
+    {
+      "id": 540738,
+      "homeTeamId": 1076,
+      "awayTeamId": 69,
+      "utcDate": "2025-08-23T14:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 7,
+      "awayGoals": 1
+    },
+    {
+      "id": 540741,
+      "homeTeamId": 68,
+      "awayTeamId": 343,
+      "utcDate": "2025-08-23T14:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 2
+    },
+    {
+      "id": 540742,
+      "homeTeamId": 1081,
+      "awayTeamId": 349,
+      "utcDate": "2025-08-23T14:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 0
+    },
+    {
+      "id": 540743,
+      "homeTeamId": 356,
+      "awayTeamId": 384,
+      "utcDate": "2025-08-23T14:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 0,
+      "awayGoals": 1
+    },
+    {
+      "id": 540744,
+      "homeTeamId": 340,
+      "awayTeamId": 70,
+      "utcDate": "2025-08-23T14:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 2
+    },
+    {
+      "id": 540746,
+      "homeTeamId": 74,
+      "awayTeamId": 325,
+      "utcDate": "2025-08-23T14:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 1
+    },
+    {
+      "id": 540747,
+      "homeTeamId": 404,
+      "awayTeamId": 345,
+      "utcDate": "2025-08-23T14:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 2,
+      "awayGoals": 2
+    },
+    {
+      "id": 540751,
+      "homeTeamId": 338,
+      "awayTeamId": 332,
+      "utcDate": "2025-08-29T19:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 2,
+      "awayGoals": 0
+    },
+    {
+      "id": 540752,
+      "homeTeamId": 343,
+      "awayTeamId": 356,
+      "utcDate": "2025-08-30T11:30:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 0
+    },
+    {
+      "id": 540756,
+      "homeTeamId": 69,
+      "awayTeamId": 348,
+      "utcDate": "2025-08-30T11:30:00Z",
+      "status": "FINISHED",
+      "homeGoals": 3,
+      "awayGoals": 1
+    },
+    {
+      "id": 540758,
+      "homeTeamId": 70,
+      "awayTeamId": 74,
+      "utcDate": "2025-08-30T11:30:00Z",
+      "status": "FINISHED",
+      "homeGoals": 0,
+      "awayGoals": 1
+    },
+    {
+      "id": 540748,
+      "homeTeamId": 59,
+      "awayTeamId": 68,
+      "utcDate": "2025-08-30T14:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 0,
+      "awayGoals": 2
+    },
+    {
+      "id": 540749,
+      "homeTeamId": 387,
+      "awayTeamId": 322,
+      "utcDate": "2025-08-30T14:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 4,
+      "awayGoals": 2
+    },
+    {
+      "id": 540750,
+      "homeTeamId": 349,
+      "awayTeamId": 342,
+      "utcDate": "2025-08-30T14:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 2,
+      "awayGoals": 2
+    },
+    {
+      "id": 540753,
+      "homeTeamId": 384,
+      "awayTeamId": 404,
+      "utcDate": "2025-08-30T14:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 0,
+      "awayGoals": 2
+    },
+    {
+      "id": 540754,
+      "homeTeamId": 1082,
+      "awayTeamId": 1076,
+      "utcDate": "2025-08-30T14:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 2,
+      "awayGoals": 2
+    },
+    {
+      "id": 540755,
+      "homeTeamId": 325,
+      "awayTeamId": 1081,
+      "utcDate": "2025-08-30T14:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 0
+    },
+    {
+      "id": 540757,
+      "homeTeamId": 345,
+      "awayTeamId": 72,
+      "utcDate": "2025-08-30T14:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 0,
+      "awayGoals": 2
+    },
+    {
+      "id": 540759,
+      "homeTeamId": 346,
+      "awayTeamId": 340,
+      "utcDate": "2025-08-30T14:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 2,
+      "awayGoals": 2
+    },
+    {
+      "id": 540762,
+      "homeTeamId": 349,
+      "awayTeamId": 356,
+      "utcDate": "2025-09-12T19:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 5,
+      "awayGoals": 0
+    },
+    {
+      "id": 540760,
+      "homeTeamId": 348,
+      "awayTeamId": 384,
+      "utcDate": "2025-09-13T11:30:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 1
+    },
+    {
+      "id": 540763,
+      "homeTeamId": 1082,
+      "awayTeamId": 338,
+      "utcDate": "2025-09-13T11:30:00Z",
+      "status": "FINISHED",
+      "homeGoals": 2,
+      "awayGoals": 2
+    },
+    {
+      "id": 540764,
+      "homeTeamId": 1081,
+      "awayTeamId": 343,
+      "utcDate": "2025-09-13T11:30:00Z",
+      "status": "FINISHED",
+      "homeGoals": 2,
+      "awayGoals": 2
+    },
+    {
+      "id": 540761,
+      "homeTeamId": 1076,
+      "awayTeamId": 68,
+      "utcDate": "2025-09-13T14:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 1
+    },
+    {
+      "id": 540765,
+      "homeTeamId": 345,
+      "awayTeamId": 387,
+      "utcDate": "2025-09-13T14:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 0,
+      "awayGoals": 3
+    },
+    {
+      "id": 540767,
+      "homeTeamId": 70,
+      "awayTeamId": 332,
+      "utcDate": "2025-09-13T14:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 0
+    },
+    {
+      "id": 540768,
+      "homeTeamId": 72,
+      "awayTeamId": 322,
+      "utcDate": "2025-09-13T14:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 2,
+      "awayGoals": 2
+    },
+    {
+      "id": 540769,
+      "homeTeamId": 346,
+      "awayTeamId": 59,
+      "utcDate": "2025-09-13T14:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 0,
+      "awayGoals": 1
+    },
+    {
+      "id": 540770,
+      "homeTeamId": 74,
+      "awayTeamId": 342,
+      "utcDate": "2025-09-13T14:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 0,
+      "awayGoals": 1
+    },
+    {
+      "id": 540771,
+      "homeTeamId": 404,
+      "awayTeamId": 69,
+      "utcDate": "2025-09-13T14:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 3
+    },
+    {
+      "id": 540766,
+      "homeTeamId": 340,
+      "awayTeamId": 325,
+      "utcDate": "2025-09-14T11:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 0,
+      "awayGoals": 0
+    },
+    {
+      "id": 540778,
+      "homeTeamId": 343,
+      "awayTeamId": 74,
+      "utcDate": "2025-09-19T19:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 2,
+      "awayGoals": 1
+    },
+    {
+      "id": 540772,
+      "homeTeamId": 332,
+      "awayTeamId": 72,
+      "utcDate": "2025-09-20T11:30:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 0
+    },
+    {
+      "id": 540777,
+      "homeTeamId": 338,
+      "awayTeamId": 1076,
+      "utcDate": "2025-09-20T11:30:00Z",
+      "status": "FINISHED",
+      "homeGoals": 0,
+      "awayGoals": 0
+    },
+    {
+      "id": 540782,
+      "homeTeamId": 69,
+      "awayTeamId": 70,
+      "utcDate": "2025-09-20T11:30:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 0
+    },
+    {
+      "id": 540775,
+      "homeTeamId": 342,
+      "awayTeamId": 1081,
+      "utcDate": "2025-09-20T14:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 0,
+      "awayGoals": 1
+    },
+    {
+      "id": 540776,
+      "homeTeamId": 322,
+      "awayTeamId": 340,
+      "utcDate": "2025-09-20T14:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 3,
+      "awayGoals": 1
+    },
+    {
+      "id": 540780,
+      "homeTeamId": 68,
+      "awayTeamId": 404,
+      "utcDate": "2025-09-20T14:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 2,
+      "awayGoals": 3
+    },
+    {
+      "id": 540781,
+      "homeTeamId": 325,
+      "awayTeamId": 345,
+      "utcDate": "2025-09-20T14:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 0,
+      "awayGoals": 2
+    },
+    {
+      "id": 540783,
+      "homeTeamId": 356,
+      "awayTeamId": 348,
+      "utcDate": "2025-09-20T14:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 0,
+      "awayGoals": 1
+    },
+    {
+      "id": 540774,
+      "homeTeamId": 387,
+      "awayTeamId": 1082,
+      "utcDate": "2025-09-21T14:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 3
+    },
+    {
+      "id": 540779,
+      "homeTeamId": 384,
+      "awayTeamId": 346,
+      "utcDate": "2025-09-22T19:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 0
+    },
+    {
+      "id": 540794,
+      "homeTeamId": 74,
+      "awayTeamId": 338,
+      "utcDate": "2025-09-26T19:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 1
+    },
+    {
+      "id": 540785,
+      "homeTeamId": 1076,
+      "awayTeamId": 332,
+      "utcDate": "2025-09-27T11:30:00Z",
+      "status": "FINISHED",
+      "homeGoals": 3,
+      "awayGoals": 0
+    },
+    {
+      "id": 540792,
+      "homeTeamId": 72,
+      "awayTeamId": 384,
+      "utcDate": "2025-09-27T11:30:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 1
+    },
+    {
+      "id": 540795,
+      "homeTeamId": 404,
+      "awayTeamId": 342,
+      "utcDate": "2025-09-27T11:30:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 1
+    },
+    {
+      "id": 540784,
+      "homeTeamId": 348,
+      "awayTeamId": 59,
+      "utcDate": "2025-09-27T14:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 3,
+      "awayGoals": 0
+    },
+    {
+      "id": 540786,
+      "homeTeamId": 349,
+      "awayTeamId": 325,
+      "utcDate": "2025-09-27T14:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 2,
+      "awayGoals": 1
+    },
+    {
+      "id": 540787,
+      "homeTeamId": 1082,
+      "awayTeamId": 356,
+      "utcDate": "2025-09-27T14:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 0,
+      "awayGoals": 1
+    },
+    {
+      "id": 540788,
+      "homeTeamId": 1081,
+      "awayTeamId": 387,
+      "utcDate": "2025-09-27T14:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 0,
+      "awayGoals": 0
+    },
+    {
+      "id": 540789,
+      "homeTeamId": 345,
+      "awayTeamId": 69,
+      "utcDate": "2025-09-27T14:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 1
+    },
+    {
+      "id": 540790,
+      "homeTeamId": 340,
+      "awayTeamId": 343,
+      "utcDate": "2025-09-27T14:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 1
+    },
+    {
+      "id": 540791,
+      "homeTeamId": 70,
+      "awayTeamId": 68,
+      "utcDate": "2025-09-27T14:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 1
+    },
+    {
+      "id": 540793,
+      "homeTeamId": 346,
+      "awayTeamId": 322,
+      "utcDate": "2025-09-27T14:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 2,
+      "awayGoals": 1
+    },
+    {
+      "id": 540796,
+      "homeTeamId": 332,
+      "awayTeamId": 345,
+      "utcDate": "2025-09-30T18:45:00Z",
+      "status": "FINISHED",
+      "homeGoals": 2,
+      "awayGoals": 2
+    },
+    {
+      "id": 540797,
+      "homeTeamId": 59,
+      "awayTeamId": 72,
+      "utcDate": "2025-09-30T18:45:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 2
+    },
+    {
+      "id": 540798,
+      "homeTeamId": 387,
+      "awayTeamId": 349,
+      "utcDate": "2025-09-30T18:45:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 1
+    },
+    {
+      "id": 540800,
+      "homeTeamId": 322,
+      "awayTeamId": 1081,
+      "utcDate": "2025-09-30T18:45:00Z",
+      "status": "FINISHED",
+      "homeGoals": 2,
+      "awayGoals": 2
+    },
+    {
+      "id": 540801,
+      "homeTeamId": 338,
+      "awayTeamId": 404,
+      "utcDate": "2025-09-30T18:45:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 1
+    },
+    {
+      "id": 540802,
+      "homeTeamId": 343,
+      "awayTeamId": 70,
+      "utcDate": "2025-09-30T18:45:00Z",
+      "status": "FINISHED",
+      "homeGoals": 0,
+      "awayGoals": 0
+    },
+    {
+      "id": 540803,
+      "homeTeamId": 356,
+      "awayTeamId": 340,
+      "utcDate": "2025-09-30T18:45:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 2
+    },
+    {
+      "id": 540799,
+      "homeTeamId": 342,
+      "awayTeamId": 348,
+      "utcDate": "2025-09-30T19:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 1
+    },
+    {
+      "id": 540804,
+      "homeTeamId": 384,
+      "awayTeamId": 1076,
+      "utcDate": "2025-10-01T18:45:00Z",
+      "status": "FINISHED",
+      "homeGoals": 0,
+      "awayGoals": 4
+    },
+    {
+      "id": 540805,
+      "homeTeamId": 68,
+      "awayTeamId": 74,
+      "utcDate": "2025-10-01T18:45:00Z",
+      "status": "FINISHED",
+      "homeGoals": 0,
+      "awayGoals": 1
+    },
+    {
+      "id": 540806,
+      "homeTeamId": 325,
+      "awayTeamId": 346,
+      "utcDate": "2025-10-01T18:45:00Z",
+      "status": "FINISHED",
+      "homeGoals": 2,
+      "awayGoals": 2
+    },
+    {
+      "id": 540807,
+      "homeTeamId": 69,
+      "awayTeamId": 1082,
+      "utcDate": "2025-10-01T19:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 0,
+      "awayGoals": 0
+    },
+    {
+      "id": 540819,
+      "homeTeamId": 404,
+      "awayTeamId": 332,
+      "utcDate": "2025-10-03T19:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 1
+    },
+    {
+      "id": 540808,
+      "homeTeamId": 59,
+      "awayTeamId": 70,
+      "utcDate": "2025-10-04T11:30:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 1
+    },
+    {
+      "id": 540811,
+      "homeTeamId": 322,
+      "awayTeamId": 356,
+      "utcDate": "2025-10-04T11:30:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 0
+    },
+    {
+      "id": 540816,
+      "homeTeamId": 345,
+      "awayTeamId": 1076,
+      "utcDate": "2025-10-04T11:30:00Z",
+      "status": "FINISHED",
+      "homeGoals": 0,
+      "awayGoals": 5
+    },
+    {
+      "id": 540809,
+      "homeTeamId": 387,
+      "awayTeamId": 69,
+      "utcDate": "2025-10-04T14:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 2
+    },
+    {
+      "id": 540810,
+      "homeTeamId": 342,
+      "awayTeamId": 340,
+      "utcDate": "2025-10-04T14:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 1
+    },
+    {
+      "id": 540813,
+      "homeTeamId": 384,
+      "awayTeamId": 74,
+      "utcDate": "2025-10-04T14:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 3,
+      "awayGoals": 0
+    },
+    {
+      "id": 540814,
+      "homeTeamId": 325,
+      "awayTeamId": 343,
+      "utcDate": "2025-10-04T14:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 0
+    },
+    {
+      "id": 540815,
+      "homeTeamId": 1081,
+      "awayTeamId": 348,
+      "utcDate": "2025-10-04T14:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 2,
+      "awayGoals": 0
+    },
+    {
+      "id": 540817,
+      "homeTeamId": 72,
+      "awayTeamId": 338,
+      "utcDate": "2025-10-04T14:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 3
+    },
+    {
+      "id": 540818,
+      "homeTeamId": 346,
+      "awayTeamId": 1082,
+      "utcDate": "2025-10-04T14:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 2,
+      "awayGoals": 1
+    },
+    {
+      "id": 540812,
+      "homeTeamId": 349,
+      "awayTeamId": 68,
+      "utcDate": "2025-10-05T11:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 3,
+      "awayGoals": 1
+    },
+    {
+      "id": 540824,
+      "homeTeamId": 343,
+      "awayTeamId": 349,
+      "utcDate": "2025-10-17T19:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 2,
+      "awayGoals": 1
+    },
+    {
+      "id": 540826,
+      "homeTeamId": 1082,
+      "awayTeamId": 342,
+      "utcDate": "2025-10-18T11:30:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 0
+    },
+    {
+      "id": 540827,
+      "homeTeamId": 69,
+      "awayTeamId": 384,
+      "utcDate": "2025-10-18T11:30:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 2
+    },
+    {
+      "id": 540829,
+      "homeTeamId": 340,
+      "awayTeamId": 72,
+      "utcDate": "2025-10-18T11:30:00Z",
+      "status": "FINISHED",
+      "homeGoals": 0,
+      "awayGoals": 0
+    },
+    {
+      "id": 540820,
+      "homeTeamId": 332,
+      "awayTeamId": 322,
+      "utcDate": "2025-10-18T14:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 2,
+      "awayGoals": 3
+    },
+    {
+      "id": 540821,
+      "homeTeamId": 348,
+      "awayTeamId": 345,
+      "utcDate": "2025-10-18T14:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 2,
+      "awayGoals": 1
+    },
+    {
+      "id": 540822,
+      "homeTeamId": 1076,
+      "awayTeamId": 59,
+      "utcDate": "2025-10-18T14:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 2,
+      "awayGoals": 0
+    },
+    {
+      "id": 540825,
+      "homeTeamId": 68,
+      "awayTeamId": 387,
+      "utcDate": "2025-10-18T14:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 0,
+      "awayGoals": 1
+    },
+    {
+      "id": 540828,
+      "homeTeamId": 356,
+      "awayTeamId": 346,
+      "utcDate": "2025-10-18T14:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 0
+    },
+    {
+      "id": 540830,
+      "homeTeamId": 70,
+      "awayTeamId": 404,
+      "utcDate": "2025-10-18T14:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 0
+    },
+    {
+      "id": 540831,
+      "homeTeamId": 74,
+      "awayTeamId": 1081,
+      "utcDate": "2025-10-18T14:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 2,
+      "awayGoals": 1
+    },
+    {
+      "id": 540823,
+      "homeTeamId": 338,
+      "awayTeamId": 325,
+      "utcDate": "2025-10-18T18:45:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 1
+    },
+    {
+      "id": 540832,
+      "homeTeamId": 59,
+      "awayTeamId": 356,
+      "utcDate": "2025-10-21T18:45:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 3
+    },
+    {
+      "id": 540834,
+      "homeTeamId": 342,
+      "awayTeamId": 68,
+      "utcDate": "2025-10-21T18:45:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 0
+    },
+    {
+      "id": 540835,
+      "homeTeamId": 322,
+      "awayTeamId": 338,
+      "utcDate": "2025-10-21T18:45:00Z",
+      "status": "FINISHED",
+      "homeGoals": 2,
+      "awayGoals": 1
+    },
+    {
+      "id": 540836,
+      "homeTeamId": 349,
+      "awayTeamId": 348,
+      "utcDate": "2025-10-21T18:45:00Z",
+      "status": "FINISHED",
+      "homeGoals": 0,
+      "awayGoals": 3
+    },
+    {
+      "id": 540837,
+      "homeTeamId": 384,
+      "awayTeamId": 70,
+      "utcDate": "2025-10-21T18:45:00Z",
+      "status": "FINISHED",
+      "homeGoals": 2,
+      "awayGoals": 0
+    },
+    {
+      "id": 540838,
+      "homeTeamId": 325,
+      "awayTeamId": 1076,
+      "utcDate": "2025-10-21T18:45:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 2
+    },
+    {
+      "id": 540839,
+      "homeTeamId": 1081,
+      "awayTeamId": 332,
+      "utcDate": "2025-10-21T18:45:00Z",
+      "status": "FINISHED",
+      "homeGoals": 0,
+      "awayGoals": 1
+    },
+    {
+      "id": 540833,
+      "homeTeamId": 387,
+      "awayTeamId": 340,
+      "utcDate": "2025-10-21T19:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 3,
+      "awayGoals": 1
+    },
+    {
+      "id": 540841,
+      "homeTeamId": 72,
+      "awayTeamId": 69,
+      "utcDate": "2025-10-22T18:45:00Z",
+      "status": "FINISHED",
+      "homeGoals": 0,
+      "awayGoals": 1
+    },
+    {
+      "id": 540842,
+      "homeTeamId": 346,
+      "awayTeamId": 74,
+      "utcDate": "2025-10-22T18:45:00Z",
+      "status": "FINISHED",
+      "homeGoals": 2,
+      "awayGoals": 1
+    },
+    {
+      "id": 540843,
+      "homeTeamId": 404,
+      "awayTeamId": 1082,
+      "utcDate": "2025-10-22T18:45:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 0
+    },
+    {
+      "id": 540840,
+      "homeTeamId": 345,
+      "awayTeamId": 343,
+      "utcDate": "2025-10-22T19:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 0,
+      "awayGoals": 1
+    },
+    {
+      "id": 540853,
+      "homeTeamId": 1081,
+      "awayTeamId": 356,
+      "utcDate": "2025-10-24T19:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 3,
+      "awayGoals": 2
+    },
+    {
+      "id": 540846,
+      "homeTeamId": 1076,
+      "awayTeamId": 346,
+      "utcDate": "2025-10-25T11:30:00Z",
+      "status": "FINISHED",
+      "homeGoals": 3,
+      "awayGoals": 1
+    },
+    {
+      "id": 540849,
+      "homeTeamId": 349,
+      "awayTeamId": 74,
+      "utcDate": "2025-10-25T11:30:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 0
+    },
+    {
+      "id": 540852,
+      "homeTeamId": 325,
+      "awayTeamId": 70,
+      "utcDate": "2025-10-25T11:30:00Z",
+      "status": "FINISHED",
+      "homeGoals": 0,
+      "awayGoals": 1
+    },
+    {
+      "id": 540844,
+      "homeTeamId": 59,
+      "awayTeamId": 340,
+      "utcDate": "2025-10-25T14:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 2,
+      "awayGoals": 1
+    },
+    {
+      "id": 540845,
+      "homeTeamId": 387,
+      "awayTeamId": 332,
+      "utcDate": "2025-10-25T14:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 0
+    },
+    {
+      "id": 540847,
+      "homeTeamId": 342,
+      "awayTeamId": 69,
+      "utcDate": "2025-10-25T14:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 0
+    },
+    {
+      "id": 540848,
+      "homeTeamId": 322,
+      "awayTeamId": 348,
+      "utcDate": "2025-10-25T14:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 1
+    },
+    {
+      "id": 540850,
+      "homeTeamId": 343,
+      "awayTeamId": 404,
+      "utcDate": "2025-10-25T14:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 1
+    },
+    {
+      "id": 540851,
+      "homeTeamId": 384,
+      "awayTeamId": 338,
+      "utcDate": "2025-10-25T14:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 0
+    },
+    {
+      "id": 540854,
+      "homeTeamId": 345,
+      "awayTeamId": 1082,
+      "utcDate": "2025-10-25T14:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 2
+    },
+    {
+      "id": 540855,
+      "homeTeamId": 72,
+      "awayTeamId": 68,
+      "utcDate": "2025-10-25T14:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 2,
+      "awayGoals": 1
+    },
+    {
+      "id": 540867,
+      "homeTeamId": 404,
+      "awayTeamId": 1076,
+      "utcDate": "2025-10-31T20:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 3,
+      "awayGoals": 2
+    },
+    {
+      "id": 540858,
+      "homeTeamId": 338,
+      "awayTeamId": 59,
+      "utcDate": "2025-11-01T12:30:00Z",
+      "status": "FINISHED",
+      "homeGoals": 0,
+      "awayGoals": 2
+    },
+    {
+      "id": 540859,
+      "homeTeamId": 68,
+      "awayTeamId": 322,
+      "utcDate": "2025-11-01T12:30:00Z",
+      "status": "FINISHED",
+      "homeGoals": 0,
+      "awayGoals": 2
+    },
+    {
+      "id": 540866,
+      "homeTeamId": 74,
+      "awayTeamId": 345,
+      "utcDate": "2025-11-01T12:30:00Z",
+      "status": "FINISHED",
+      "homeGoals": 0,
+      "awayGoals": 0
+    },
+    {
+      "id": 540856,
+      "homeTeamId": 332,
+      "awayTeamId": 325,
+      "utcDate": "2025-11-01T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 4,
+      "awayGoals": 0
+    },
+    {
+      "id": 540857,
+      "homeTeamId": 348,
+      "awayTeamId": 72,
+      "utcDate": "2025-11-01T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 1
+    },
+    {
+      "id": 540860,
+      "homeTeamId": 1082,
+      "awayTeamId": 384,
+      "utcDate": "2025-11-01T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 2,
+      "awayGoals": 2
+    },
+    {
+      "id": 540861,
+      "homeTeamId": 69,
+      "awayTeamId": 349,
+      "utcDate": "2025-11-01T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 4
+    },
+    {
+      "id": 540862,
+      "homeTeamId": 356,
+      "awayTeamId": 342,
+      "utcDate": "2025-11-01T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 3
+    },
+    {
+      "id": 540863,
+      "homeTeamId": 340,
+      "awayTeamId": 1081,
+      "utcDate": "2025-11-01T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 0,
+      "awayGoals": 2
+    },
+    {
+      "id": 540864,
+      "homeTeamId": 70,
+      "awayTeamId": 387,
+      "utcDate": "2025-11-01T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 5,
+      "awayGoals": 1
+    },
+    {
+      "id": 540865,
+      "homeTeamId": 346,
+      "awayTeamId": 343,
+      "utcDate": "2025-11-01T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 3,
+      "awayGoals": 0
+    },
+    {
+      "id": 540868,
+      "homeTeamId": 332,
+      "awayTeamId": 384,
+      "utcDate": "2025-11-04T19:45:00Z",
+      "status": "FINISHED",
+      "homeGoals": 4,
+      "awayGoals": 0
+    },
+    {
+      "id": 540869,
+      "homeTeamId": 387,
+      "awayTeamId": 59,
+      "utcDate": "2025-11-04T19:45:00Z",
+      "status": "FINISHED",
+      "homeGoals": 0,
+      "awayGoals": 1
+    },
+    {
+      "id": 540870,
+      "homeTeamId": 348,
+      "awayTeamId": 74,
+      "utcDate": "2025-11-04T19:45:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 0
+    },
+    {
+      "id": 540872,
+      "homeTeamId": 342,
+      "awayTeamId": 322,
+      "utcDate": "2025-11-04T19:45:00Z",
+      "status": "FINISHED",
+      "homeGoals": 2,
+      "awayGoals": 1
+    },
+    {
+      "id": 540873,
+      "homeTeamId": 349,
+      "awayTeamId": 346,
+      "utcDate": "2025-11-04T19:45:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 1
+    },
+    {
+      "id": 540874,
+      "homeTeamId": 338,
+      "awayTeamId": 343,
+      "utcDate": "2025-11-04T19:45:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 1
+    },
+    {
+      "id": 540875,
+      "homeTeamId": 1082,
+      "awayTeamId": 70,
+      "utcDate": "2025-11-04T19:45:00Z",
+      "status": "FINISHED",
+      "homeGoals": 0,
+      "awayGoals": 3
+    },
+    {
+      "id": 540871,
+      "homeTeamId": 1076,
+      "awayTeamId": 356,
+      "utcDate": "2025-11-04T20:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 3,
+      "awayGoals": 1
+    },
+    {
+      "id": 540877,
+      "homeTeamId": 1081,
+      "awayTeamId": 72,
+      "utcDate": "2025-11-05T19:45:00Z",
+      "status": "FINISHED",
+      "homeGoals": 2,
+      "awayGoals": 1
+    },
+    {
+      "id": 540878,
+      "homeTeamId": 69,
+      "awayTeamId": 340,
+      "utcDate": "2025-11-05T19:45:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 2
+    },
+    {
+      "id": 540879,
+      "homeTeamId": 345,
+      "awayTeamId": 68,
+      "utcDate": "2025-11-05T19:45:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 1
+    },
+    {
+      "id": 540876,
+      "homeTeamId": 325,
+      "awayTeamId": 404,
+      "utcDate": "2025-11-05T20:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 0,
+      "awayGoals": 0
+    },
+    {
+      "id": 540889,
+      "homeTeamId": 346,
+      "awayTeamId": 387,
+      "utcDate": "2025-11-07T20:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 1
+    },
+    {
+      "id": 540880,
+      "homeTeamId": 59,
+      "awayTeamId": 342,
+      "utcDate": "2025-11-08T12:30:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 2
+    },
+    {
+      "id": 540881,
+      "homeTeamId": 322,
+      "awayTeamId": 325,
+      "utcDate": "2025-11-08T12:30:00Z",
+      "status": "FINISHED",
+      "homeGoals": 3,
+      "awayGoals": 2
+    },
+    {
+      "id": 540883,
+      "homeTeamId": 384,
+      "awayTeamId": 1081,
+      "utcDate": "2025-11-08T12:30:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 1
+    },
+    {
+      "id": 540882,
+      "homeTeamId": 343,
+      "awayTeamId": 332,
+      "utcDate": "2025-11-08T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 2,
+      "awayGoals": 1
+    },
+    {
+      "id": 540884,
+      "homeTeamId": 68,
+      "awayTeamId": 338,
+      "utcDate": "2025-11-08T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 2
+    },
+    {
+      "id": 540885,
+      "homeTeamId": 356,
+      "awayTeamId": 69,
+      "utcDate": "2025-11-08T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 0,
+      "awayGoals": 0
+    },
+    {
+      "id": 540886,
+      "homeTeamId": 340,
+      "awayTeamId": 345,
+      "utcDate": "2025-11-08T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 3,
+      "awayGoals": 1
+    },
+    {
+      "id": 540887,
+      "homeTeamId": 70,
+      "awayTeamId": 1076,
+      "utcDate": "2025-11-08T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 0,
+      "awayGoals": 1
+    },
+    {
+      "id": 540888,
+      "homeTeamId": 72,
+      "awayTeamId": 349,
+      "utcDate": "2025-11-08T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 4
+    },
+    {
+      "id": 540890,
+      "homeTeamId": 74,
+      "awayTeamId": 1082,
+      "utcDate": "2025-11-08T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 2,
+      "awayGoals": 1
+    },
+    {
+      "id": 540891,
+      "homeTeamId": 404,
+      "awayTeamId": 348,
+      "utcDate": "2025-11-08T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 0
+    },
+    {
+      "id": 540901,
+      "homeTeamId": 1081,
+      "awayTeamId": 59,
+      "utcDate": "2025-11-21T20:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 2
+    },
+    {
+      "id": 540893,
+      "homeTeamId": 387,
+      "awayTeamId": 72,
+      "utcDate": "2025-11-22T12:30:00Z",
+      "status": "FINISHED",
+      "homeGoals": 3,
+      "awayGoals": 0
+    },
+    {
+      "id": 540894,
+      "homeTeamId": 348,
+      "awayTeamId": 340,
+      "utcDate": "2025-11-22T12:30:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 5
+    },
+    {
+      "id": 540895,
+      "homeTeamId": 1076,
+      "awayTeamId": 74,
+      "utcDate": "2025-11-22T12:30:00Z",
+      "status": "FINISHED",
+      "homeGoals": 3,
+      "awayGoals": 2
+    },
+    {
+      "id": 540892,
+      "homeTeamId": 332,
+      "awayTeamId": 68,
+      "utcDate": "2025-11-22T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 4,
+      "awayGoals": 1
+    },
+    {
+      "id": 540896,
+      "homeTeamId": 342,
+      "awayTeamId": 346,
+      "utcDate": "2025-11-22T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 2,
+      "awayGoals": 3
+    },
+    {
+      "id": 540897,
+      "homeTeamId": 349,
+      "awayTeamId": 404,
+      "utcDate": "2025-11-22T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 0,
+      "awayGoals": 0
+    },
+    {
+      "id": 540898,
+      "homeTeamId": 338,
+      "awayTeamId": 70,
+      "utcDate": "2025-11-22T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 2,
+      "awayGoals": 1
+    },
+    {
+      "id": 540899,
+      "homeTeamId": 1082,
+      "awayTeamId": 343,
+      "utcDate": "2025-11-22T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 1
+    },
+    {
+      "id": 540900,
+      "homeTeamId": 325,
+      "awayTeamId": 384,
+      "utcDate": "2025-11-22T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 3,
+      "awayGoals": 1
+    },
+    {
+      "id": 540902,
+      "homeTeamId": 69,
+      "awayTeamId": 322,
+      "utcDate": "2025-11-22T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 3,
+      "awayGoals": 2
+    },
+    {
+      "id": 540903,
+      "homeTeamId": 345,
+      "awayTeamId": 356,
+      "utcDate": "2025-11-23T12:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 0,
+      "awayGoals": 3
+    },
+    {
+      "id": 540904,
+      "homeTeamId": 322,
+      "awayTeamId": 349,
+      "utcDate": "2025-11-25T19:45:00Z",
+      "status": "FINISHED",
+      "homeGoals": 0,
+      "awayGoals": 2
+    },
+    {
+      "id": 540905,
+      "homeTeamId": 343,
+      "awayTeamId": 1076,
+      "utcDate": "2025-11-25T19:45:00Z",
+      "status": "FINISHED",
+      "homeGoals": 2,
+      "awayGoals": 4
+    },
+    {
+      "id": 540909,
+      "homeTeamId": 70,
+      "awayTeamId": 348,
+      "utcDate": "2025-11-25T19:45:00Z",
+      "status": "FINISHED",
+      "homeGoals": 3,
+      "awayGoals": 0
+    },
+    {
+      "id": 540910,
+      "homeTeamId": 72,
+      "awayTeamId": 342,
+      "utcDate": "2025-11-25T19:45:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 2
+    },
+    {
+      "id": 540911,
+      "homeTeamId": 346,
+      "awayTeamId": 1081,
+      "utcDate": "2025-11-25T19:45:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 1
+    },
+    {
+      "id": 540913,
+      "homeTeamId": 68,
+      "awayTeamId": 1082,
+      "utcDate": "2025-11-25T19:45:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 1
+    },
+    {
+      "id": 540908,
+      "homeTeamId": 340,
+      "awayTeamId": 338,
+      "utcDate": "2025-11-25T20:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 3,
+      "awayGoals": 0
+    },
+    {
+      "id": 540906,
+      "homeTeamId": 384,
+      "awayTeamId": 345,
+      "utcDate": "2025-11-26T19:45:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 0
+    },
+    {
+      "id": 540907,
+      "homeTeamId": 356,
+      "awayTeamId": 325,
+      "utcDate": "2025-11-26T19:45:00Z",
+      "status": "FINISHED",
+      "homeGoals": 3,
+      "awayGoals": 0
+    },
+    {
+      "id": 540912,
+      "homeTeamId": 59,
+      "awayTeamId": 69,
+      "utcDate": "2025-11-26T19:45:00Z",
+      "status": "FINISHED",
+      "homeGoals": 0,
+      "awayGoals": 1
+    },
+    {
+      "id": 540915,
+      "homeTeamId": 404,
+      "awayTeamId": 387,
+      "utcDate": "2025-11-26T19:45:00Z",
+      "status": "FINISHED",
+      "homeGoals": 2,
+      "awayGoals": 0
+    },
+    {
+      "id": 540914,
+      "homeTeamId": 74,
+      "awayTeamId": 332,
+      "utcDate": "2025-11-26T20:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 1
+    },
+    {
+      "id": 540922,
+      "homeTeamId": 1082,
+      "awayTeamId": 349,
+      "utcDate": "2025-11-28T20:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 2,
+      "awayGoals": 1
+    },
+    {
+      "id": 540918,
+      "homeTeamId": 338,
+      "awayTeamId": 356,
+      "utcDate": "2025-11-29T12:30:00Z",
+      "status": "FINISHED",
+      "homeGoals": 2,
+      "awayGoals": 3
+    },
+    {
+      "id": 540923,
+      "homeTeamId": 325,
+      "awayTeamId": 387,
+      "utcDate": "2025-11-29T12:30:00Z",
+      "status": "FINISHED",
+      "homeGoals": 0,
+      "awayGoals": 1
+    },
+    {
+      "id": 540925,
+      "homeTeamId": 70,
+      "awayTeamId": 322,
+      "utcDate": "2025-11-29T12:30:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 2
+    },
+    {
+      "id": 540917,
+      "homeTeamId": 1076,
+      "awayTeamId": 348,
+      "utcDate": "2025-11-29T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 3,
+      "awayGoals": 1
+    },
+    {
+      "id": 540919,
+      "homeTeamId": 343,
+      "awayTeamId": 342,
+      "utcDate": "2025-11-29T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 2,
+      "awayGoals": 1
+    },
+    {
+      "id": 540920,
+      "homeTeamId": 384,
+      "awayTeamId": 340,
+      "utcDate": "2025-11-29T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 3,
+      "awayGoals": 2
+    },
+    {
+      "id": 540921,
+      "homeTeamId": 68,
+      "awayTeamId": 69,
+      "utcDate": "2025-11-29T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 3,
+      "awayGoals": 1
+    },
+    {
+      "id": 540924,
+      "homeTeamId": 345,
+      "awayTeamId": 1081,
+      "utcDate": "2025-11-29T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 2,
+      "awayGoals": 3
+    },
+    {
+      "id": 540926,
+      "homeTeamId": 74,
+      "awayTeamId": 72,
+      "utcDate": "2025-11-29T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 3,
+      "awayGoals": 2
+    },
+    {
+      "id": 540927,
+      "homeTeamId": 404,
+      "awayTeamId": 59,
+      "utcDate": "2025-11-29T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 1
+    },
+    {
+      "id": 540916,
+      "homeTeamId": 332,
+      "awayTeamId": 346,
+      "utcDate": "2025-12-01T20:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 2,
+      "awayGoals": 1
+    },
+    {
+      "id": 540773,
+      "homeTeamId": 59,
+      "awayTeamId": 349,
+      "utcDate": "2025-12-02T19:45:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 1
+    },
+    {
+      "id": 540932,
+      "homeTeamId": 322,
+      "awayTeamId": 343,
+      "utcDate": "2025-12-05T20:15:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 4
+    },
+    {
+      "id": 540930,
+      "homeTeamId": 348,
+      "awayTeamId": 325,
+      "utcDate": "2025-12-06T12:30:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": 0,
+      "awayGoals": 0
+    },
+    {
+      "id": 540931,
+      "homeTeamId": 342,
+      "awayTeamId": 338,
+      "utcDate": "2025-12-06T12:30:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 3
+    },
+    {
+      "id": 540939,
+      "homeTeamId": 346,
+      "awayTeamId": 68,
+      "utcDate": "2025-12-06T12:30:00Z",
+      "status": "FINISHED",
+      "homeGoals": 3,
+      "awayGoals": 2
+    },
+    {
+      "id": 540929,
+      "homeTeamId": 387,
+      "awayTeamId": 384,
+      "utcDate": "2025-12-06T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 0,
+      "awayGoals": 1
+    },
+    {
+      "id": 540933,
+      "homeTeamId": 349,
+      "awayTeamId": 1076,
+      "utcDate": "2025-12-06T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 3,
+      "awayGoals": 0
+    },
+    {
+      "id": 540934,
+      "homeTeamId": 1081,
+      "awayTeamId": 404,
+      "utcDate": "2025-12-06T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 1
+    },
+    {
+      "id": 540935,
+      "homeTeamId": 69,
+      "awayTeamId": 74,
+      "utcDate": "2025-12-06T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 3,
+      "awayGoals": 1
+    },
+    {
+      "id": 540936,
+      "homeTeamId": 356,
+      "awayTeamId": 70,
+      "utcDate": "2025-12-06T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 4,
+      "awayGoals": 0
+    },
+    {
+      "id": 540937,
+      "homeTeamId": 340,
+      "awayTeamId": 332,
+      "utcDate": "2025-12-06T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 3,
+      "awayGoals": 1
+    },
+    {
+      "id": 540938,
+      "homeTeamId": 72,
+      "awayTeamId": 1082,
+      "utcDate": "2025-12-06T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 2,
+      "awayGoals": 0
+    },
+    {
+      "id": 540940,
+      "homeTeamId": 59,
+      "awayTeamId": 1082,
+      "utcDate": "2025-12-09T19:45:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 1
+    },
+    {
+      "id": 540941,
+      "homeTeamId": 348,
+      "awayTeamId": 343,
+      "utcDate": "2025-12-09T19:45:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 2
+    },
+    {
+      "id": 540942,
+      "homeTeamId": 1081,
+      "awayTeamId": 1076,
+      "utcDate": "2025-12-09T19:45:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 1
+    },
+    {
+      "id": 540944,
+      "homeTeamId": 356,
+      "awayTeamId": 68,
+      "utcDate": "2025-12-09T19:45:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 1
+    },
+    {
+      "id": 540945,
+      "homeTeamId": 340,
+      "awayTeamId": 74,
+      "utcDate": "2025-12-09T19:45:00Z",
+      "status": "FINISHED",
+      "homeGoals": 3,
+      "awayGoals": 2
+    },
+    {
+      "id": 540946,
+      "homeTeamId": 72,
+      "awayTeamId": 325,
+      "utcDate": "2025-12-09T19:45:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 0
+    },
+    {
+      "id": 540947,
+      "homeTeamId": 346,
+      "awayTeamId": 345,
+      "utcDate": "2025-12-09T19:45:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 1
+    },
+    {
+      "id": 540943,
+      "homeTeamId": 69,
+      "awayTeamId": 332,
+      "utcDate": "2025-12-09T20:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 2,
+      "awayGoals": 1
+    },
+    {
+      "id": 540948,
+      "homeTeamId": 387,
+      "awayTeamId": 338,
+      "utcDate": "2025-12-10T19:45:00Z",
+      "status": "FINISHED",
+      "homeGoals": 2,
+      "awayGoals": 2
+    },
+    {
+      "id": 540949,
+      "homeTeamId": 342,
+      "awayTeamId": 384,
+      "utcDate": "2025-12-10T19:45:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 1
+    },
+    {
+      "id": 540951,
+      "homeTeamId": 349,
+      "awayTeamId": 70,
+      "utcDate": "2025-12-10T19:45:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 0
+    },
+    {
+      "id": 540950,
+      "homeTeamId": 322,
+      "awayTeamId": 404,
+      "utcDate": "2025-12-10T20:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 2,
+      "awayGoals": 0
+    },
+    {
+      "id": 540962,
+      "homeTeamId": 74,
+      "awayTeamId": 356,
+      "utcDate": "2025-12-12T20:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 2,
+      "awayGoals": 0
+    },
+    {
+      "id": 540957,
+      "homeTeamId": 68,
+      "awayTeamId": 340,
+      "utcDate": "2025-12-13T12:30:00Z",
+      "status": "FINISHED",
+      "homeGoals": 2,
+      "awayGoals": 1
+    },
+    {
+      "id": 540958,
+      "homeTeamId": 1082,
+      "awayTeamId": 1081,
+      "utcDate": "2025-12-13T12:30:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 2
+    },
+    {
+      "id": 540961,
+      "homeTeamId": 70,
+      "awayTeamId": 72,
+      "utcDate": "2025-12-13T12:30:00Z",
+      "status": "FINISHED",
+      "homeGoals": 2,
+      "awayGoals": 1
+    },
+    {
+      "id": 540952,
+      "homeTeamId": 332,
+      "awayTeamId": 348,
+      "utcDate": "2025-12-13T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 1
+    },
+    {
+      "id": 540953,
+      "homeTeamId": 1076,
+      "awayTeamId": 387,
+      "utcDate": "2025-12-13T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 0
+    },
+    {
+      "id": 540954,
+      "homeTeamId": 338,
+      "awayTeamId": 349,
+      "utcDate": "2025-12-13T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 3,
+      "awayGoals": 1
+    },
+    {
+      "id": 540955,
+      "homeTeamId": 343,
+      "awayTeamId": 69,
+      "utcDate": "2025-12-13T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 3,
+      "awayGoals": 1
+    },
+    {
+      "id": 540956,
+      "homeTeamId": 384,
+      "awayTeamId": 322,
+      "utcDate": "2025-12-13T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 3
+    },
+    {
+      "id": 540959,
+      "homeTeamId": 325,
+      "awayTeamId": 59,
+      "utcDate": "2025-12-13T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 2,
+      "awayGoals": 1
+    },
+    {
+      "id": 540963,
+      "homeTeamId": 404,
+      "awayTeamId": 346,
+      "utcDate": "2025-12-13T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 2,
+      "awayGoals": 2
+    },
+    {
+      "id": 540960,
+      "homeTeamId": 345,
+      "awayTeamId": 342,
+      "utcDate": "2025-12-15T20:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 0,
+      "awayGoals": 3
+    },
+    {
+      "id": 540974,
+      "homeTeamId": 72,
+      "awayTeamId": 404,
+      "utcDate": "2025-12-19T20:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 2,
+      "awayGoals": 1
+    },
+    {
+      "id": 540964,
+      "homeTeamId": 59,
+      "awayTeamId": 384,
+      "utcDate": "2025-12-20T12:30:00Z",
+      "status": "FINISHED",
+      "homeGoals": 2,
+      "awayGoals": 0
+    },
+    {
+      "id": 540970,
+      "homeTeamId": 1081,
+      "awayTeamId": 68,
+      "utcDate": "2025-12-20T12:30:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 1
+    },
+    {
+      "id": 540973,
+      "homeTeamId": 340,
+      "awayTeamId": 1076,
+      "utcDate": "2025-12-20T12:30:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 1
+    },
+    {
+      "id": 540965,
+      "homeTeamId": 387,
+      "awayTeamId": 343,
+      "utcDate": "2025-12-20T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 2,
+      "awayGoals": 0
+    },
+    {
+      "id": 540966,
+      "homeTeamId": 348,
+      "awayTeamId": 1082,
+      "utcDate": "2025-12-20T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 0
+    },
+    {
+      "id": 540967,
+      "homeTeamId": 342,
+      "awayTeamId": 325,
+      "utcDate": "2025-12-20T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 1
+    },
+    {
+      "id": 540968,
+      "homeTeamId": 322,
+      "awayTeamId": 74,
+      "utcDate": "2025-12-20T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 0
+    },
+    {
+      "id": 540969,
+      "homeTeamId": 349,
+      "awayTeamId": 345,
+      "utcDate": "2025-12-20T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 3,
+      "awayGoals": 1
+    },
+    {
+      "id": 540971,
+      "homeTeamId": 69,
+      "awayTeamId": 338,
+      "utcDate": "2025-12-20T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 4,
+      "awayGoals": 1
+    },
+    {
+      "id": 540972,
+      "homeTeamId": 356,
+      "awayTeamId": 332,
+      "utcDate": "2025-12-20T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 3,
+      "awayGoals": 0
+    },
+    {
+      "id": 540975,
+      "homeTeamId": 346,
+      "awayTeamId": 70,
+      "utcDate": "2025-12-20T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 0
+    },
+    {
+      "id": 540976,
+      "homeTeamId": 332,
+      "awayTeamId": 342,
+      "utcDate": "2025-12-26T12:30:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 1
+    },
+    {
+      "id": 540980,
+      "homeTeamId": 384,
+      "awayTeamId": 349,
+      "utcDate": "2025-12-26T13:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 0,
+      "awayGoals": 0
+    },
+    {
+      "id": 540977,
+      "homeTeamId": 1076,
+      "awayTeamId": 72,
+      "utcDate": "2025-12-26T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 0
+    },
+    {
+      "id": 540978,
+      "homeTeamId": 338,
+      "awayTeamId": 346,
+      "utcDate": "2025-12-26T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 2
+    },
+    {
+      "id": 540979,
+      "homeTeamId": 343,
+      "awayTeamId": 59,
+      "utcDate": "2025-12-26T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 0,
+      "awayGoals": 0
+    },
+    {
+      "id": 540981,
+      "homeTeamId": 68,
+      "awayTeamId": 348,
+      "utcDate": "2025-12-26T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 0
+    },
+    {
+      "id": 540982,
+      "homeTeamId": 1082,
+      "awayTeamId": 340,
+      "utcDate": "2025-12-26T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 2,
+      "awayGoals": 1
+    },
+    {
+      "id": 540983,
+      "homeTeamId": 325,
+      "awayTeamId": 69,
+      "utcDate": "2025-12-26T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 1
+    },
+    {
+      "id": 540984,
+      "homeTeamId": 345,
+      "awayTeamId": 322,
+      "utcDate": "2025-12-26T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 2,
+      "awayGoals": 2
+    },
+    {
+      "id": 540985,
+      "homeTeamId": 70,
+      "awayTeamId": 1081,
+      "utcDate": "2025-12-26T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 0,
+      "awayGoals": 0
+    },
+    {
+      "id": 540986,
+      "homeTeamId": 74,
+      "awayTeamId": 387,
+      "utcDate": "2025-12-26T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 2
+    },
+    {
+      "id": 540987,
+      "homeTeamId": 404,
+      "awayTeamId": 356,
+      "utcDate": "2025-12-26T17:30:00Z",
+      "status": "FINISHED",
+      "homeGoals": 5,
+      "awayGoals": 3
+    },
+    {
+      "id": 540989,
+      "homeTeamId": 1076,
+      "awayTeamId": 349,
+      "utcDate": "2025-12-29T18:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 0,
+      "awayGoals": 2
+    },
+    {
+      "id": 540990,
+      "homeTeamId": 338,
+      "awayTeamId": 342,
+      "utcDate": "2025-12-29T19:45:00Z",
+      "status": "FINISHED",
+      "homeGoals": 2,
+      "awayGoals": 1
+    },
+    {
+      "id": 540991,
+      "homeTeamId": 343,
+      "awayTeamId": 322,
+      "utcDate": "2025-12-29T19:45:00Z",
+      "status": "FINISHED",
+      "homeGoals": 0,
+      "awayGoals": 1
+    },
+    {
+      "id": 540992,
+      "homeTeamId": 384,
+      "awayTeamId": 387,
+      "utcDate": "2025-12-29T19:45:00Z",
+      "status": "FINISHED",
+      "homeGoals": 2,
+      "awayGoals": 1
+    },
+    {
+      "id": 540993,
+      "homeTeamId": 68,
+      "awayTeamId": 346,
+      "utcDate": "2025-12-29T19:45:00Z",
+      "status": "FINISHED",
+      "homeGoals": 0,
+      "awayGoals": 1
+    },
+    {
+      "id": 540994,
+      "homeTeamId": 1082,
+      "awayTeamId": 72,
+      "utcDate": "2025-12-29T19:45:00Z",
+      "status": "FINISHED",
+      "homeGoals": 0,
+      "awayGoals": 1
+    },
+    {
+      "id": 540995,
+      "homeTeamId": 325,
+      "awayTeamId": 348,
+      "utcDate": "2025-12-29T19:45:00Z",
+      "status": "FINISHED",
+      "homeGoals": 2,
+      "awayGoals": 1
+    },
+    {
+      "id": 540996,
+      "homeTeamId": 345,
+      "awayTeamId": 59,
+      "utcDate": "2025-12-29T19:45:00Z",
+      "status": "FINISHED",
+      "homeGoals": 0,
+      "awayGoals": 0
+    },
+    {
+      "id": 540997,
+      "homeTeamId": 70,
+      "awayTeamId": 356,
+      "utcDate": "2025-12-29T19:45:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 2
+    },
+    {
+      "id": 540998,
+      "homeTeamId": 74,
+      "awayTeamId": 69,
+      "utcDate": "2025-12-29T19:45:00Z",
+      "status": "FINISHED",
+      "homeGoals": 2,
+      "awayGoals": 1
+    },
+    {
+      "id": 540999,
+      "homeTeamId": 404,
+      "awayTeamId": 1081,
+      "utcDate": "2025-12-29T19:45:00Z",
+      "status": "FINISHED",
+      "homeGoals": 2,
+      "awayGoals": 1
+    },
+    {
+      "id": 540988,
+      "homeTeamId": 332,
+      "awayTeamId": 340,
+      "utcDate": "2025-12-29T20:15:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 1
+    },
+    {
+      "id": 541000,
+      "homeTeamId": 59,
+      "awayTeamId": 404,
+      "utcDate": "2026-01-01T12:30:00Z",
+      "status": "FINISHED",
+      "homeGoals": 0,
+      "awayGoals": 2
+    },
+    {
+      "id": 541001,
+      "homeTeamId": 387,
+      "awayTeamId": 325,
+      "utcDate": "2026-01-01T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 5,
+      "awayGoals": 0
+    },
+    {
+      "id": 541002,
+      "homeTeamId": 348,
+      "awayTeamId": 1076,
+      "utcDate": "2026-01-01T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 1
+    },
+    {
+      "id": 541003,
+      "homeTeamId": 342,
+      "awayTeamId": 343,
+      "utcDate": "2026-01-01T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 0
+    },
+    {
+      "id": 541004,
+      "homeTeamId": 322,
+      "awayTeamId": 70,
+      "utcDate": "2026-01-01T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 0,
+      "awayGoals": 1
+    },
+    {
+      "id": 541005,
+      "homeTeamId": 349,
+      "awayTeamId": 1082,
+      "utcDate": "2026-01-01T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 2,
+      "awayGoals": 1
+    },
+    {
+      "id": 541006,
+      "homeTeamId": 1081,
+      "awayTeamId": 345,
+      "utcDate": "2026-01-01T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 3,
+      "awayGoals": 0
+    },
+    {
+      "id": 541007,
+      "homeTeamId": 69,
+      "awayTeamId": 68,
+      "utcDate": "2026-01-01T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 2
+    },
+    {
+      "id": 541009,
+      "homeTeamId": 340,
+      "awayTeamId": 384,
+      "utcDate": "2026-01-01T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 0,
+      "awayGoals": 0
+    },
+    {
+      "id": 541010,
+      "homeTeamId": 72,
+      "awayTeamId": 74,
+      "utcDate": "2026-01-01T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 0
+    },
+    {
+      "id": 541011,
+      "homeTeamId": 346,
+      "awayTeamId": 332,
+      "utcDate": "2026-01-01T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 3,
+      "awayGoals": 0
+    },
+    {
+      "id": 541008,
+      "homeTeamId": 356,
+      "awayTeamId": 338,
+      "utcDate": "2026-01-01T17:30:00Z",
+      "status": "FINISHED",
+      "homeGoals": 3,
+      "awayGoals": 1
+    },
+    {
+      "id": 541012,
+      "homeTeamId": 332,
+      "awayTeamId": 1076,
+      "utcDate": "2026-01-04T12:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 3,
+      "awayGoals": 2
+    },
+    {
+      "id": 541022,
+      "homeTeamId": 69,
+      "awayTeamId": 345,
+      "utcDate": "2026-01-04T12:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 3,
+      "awayGoals": 0
+    },
+    {
+      "id": 541013,
+      "homeTeamId": 59,
+      "awayTeamId": 348,
+      "utcDate": "2026-01-04T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 2,
+      "awayGoals": 2
+    },
+    {
+      "id": 541014,
+      "homeTeamId": 387,
+      "awayTeamId": 1081,
+      "utcDate": "2026-01-04T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 0,
+      "awayGoals": 2
+    },
+    {
+      "id": 541015,
+      "homeTeamId": 342,
+      "awayTeamId": 404,
+      "utcDate": "2026-01-04T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 2
+    },
+    {
+      "id": 541018,
+      "homeTeamId": 343,
+      "awayTeamId": 340,
+      "utcDate": "2026-01-04T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 4,
+      "awayGoals": 0
+    },
+    {
+      "id": 541019,
+      "homeTeamId": 384,
+      "awayTeamId": 72,
+      "utcDate": "2026-01-04T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 2,
+      "awayGoals": 1
+    },
+    {
+      "id": 541020,
+      "homeTeamId": 68,
+      "awayTeamId": 70,
+      "utcDate": "2026-01-04T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 0,
+      "awayGoals": 2
+    },
+    {
+      "id": 541017,
+      "homeTeamId": 338,
+      "awayTeamId": 74,
+      "utcDate": "2026-01-05T20:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 2,
+      "awayGoals": 1
+    },
+    {
+      "id": 541034,
+      "homeTeamId": 74,
+      "awayTeamId": 343,
+      "utcDate": "2026-01-16T20:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 2,
+      "awayGoals": 3
+    },
+    {
+      "id": 541025,
+      "homeTeamId": 1076,
+      "awayTeamId": 338,
+      "utcDate": "2026-01-17T12:30:00Z",
+      "status": "FINISHED",
+      "homeGoals": 2,
+      "awayGoals": 1
+    },
+    {
+      "id": 541026,
+      "homeTeamId": 349,
+      "awayTeamId": 59,
+      "utcDate": "2026-01-17T12:30:00Z",
+      "status": "FINISHED",
+      "homeGoals": 3,
+      "awayGoals": 0
+    },
+    {
+      "id": 541033,
+      "homeTeamId": 346,
+      "awayTeamId": 384,
+      "utcDate": "2026-01-17T12:30:00Z",
+      "status": "FINISHED",
+      "homeGoals": 0,
+      "awayGoals": 2
+    },
+    {
+      "id": 541024,
+      "homeTeamId": 348,
+      "awayTeamId": 356,
+      "utcDate": "2026-01-17T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 0
+    },
+    {
+      "id": 541027,
+      "homeTeamId": 1082,
+      "awayTeamId": 387,
+      "utcDate": "2026-01-17T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 0,
+      "awayGoals": 0
+    },
+    {
+      "id": 541028,
+      "homeTeamId": 1081,
+      "awayTeamId": 342,
+      "utcDate": "2026-01-17T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 0,
+      "awayGoals": 1
+    },
+    {
+      "id": 541029,
+      "homeTeamId": 345,
+      "awayTeamId": 325,
+      "utcDate": "2026-01-17T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 0,
+      "awayGoals": 1
+    },
+    {
+      "id": 541030,
+      "homeTeamId": 340,
+      "awayTeamId": 322,
+      "utcDate": "2026-01-17T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 2
+    },
+    {
+      "id": 541031,
+      "homeTeamId": 70,
+      "awayTeamId": 69,
+      "utcDate": "2026-01-17T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 0,
+      "awayGoals": 0
+    },
+    {
+      "id": 541035,
+      "homeTeamId": 404,
+      "awayTeamId": 68,
+      "utcDate": "2026-01-17T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 2
+    },
+    {
+      "id": 541032,
+      "homeTeamId": 72,
+      "awayTeamId": 332,
+      "utcDate": "2026-01-17T17:30:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 1
+    },
+    {
+      "id": 541036,
+      "homeTeamId": 1076,
+      "awayTeamId": 384,
+      "utcDate": "2026-01-20T19:45:00Z",
+      "status": "FINISHED",
+      "homeGoals": 2,
+      "awayGoals": 1
+    },
+    {
+      "id": 541037,
+      "homeTeamId": 349,
+      "awayTeamId": 387,
+      "utcDate": "2026-01-20T19:45:00Z",
+      "status": "FINISHED",
+      "homeGoals": 2,
+      "awayGoals": 0
+    },
+    {
+      "id": 541038,
+      "homeTeamId": 1082,
+      "awayTeamId": 69,
+      "utcDate": "2026-01-20T19:45:00Z",
+      "status": "FINISHED",
+      "homeGoals": 0,
+      "awayGoals": 0
+    },
+    {
+      "id": 541039,
+      "homeTeamId": 1081,
+      "awayTeamId": 322,
+      "utcDate": "2026-01-20T19:45:00Z",
+      "status": "FINISHED",
+      "homeGoals": 0,
+      "awayGoals": 3
+    },
+    {
+      "id": 541040,
+      "homeTeamId": 345,
+      "awayTeamId": 332,
+      "utcDate": "2026-01-20T19:45:00Z",
+      "status": "FINISHED",
+      "homeGoals": 0,
+      "awayGoals": 2
+    },
+    {
+      "id": 541041,
+      "homeTeamId": 72,
+      "awayTeamId": 59,
+      "utcDate": "2026-01-20T19:45:00Z",
+      "status": "FINISHED",
+      "homeGoals": 3,
+      "awayGoals": 1
+    },
+    {
+      "id": 541042,
+      "homeTeamId": 74,
+      "awayTeamId": 68,
+      "utcDate": "2026-01-20T19:45:00Z",
+      "status": "FINISHED",
+      "homeGoals": 0,
+      "awayGoals": 5
+    },
+    {
+      "id": 541044,
+      "homeTeamId": 348,
+      "awayTeamId": 342,
+      "utcDate": "2026-01-20T19:45:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 2
+    },
+    {
+      "id": 541043,
+      "homeTeamId": 404,
+      "awayTeamId": 338,
+      "utcDate": "2026-01-20T20:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 1
+    },
+    {
+      "id": 541045,
+      "homeTeamId": 340,
+      "awayTeamId": 356,
+      "utcDate": "2026-01-21T19:45:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 0
+    },
+    {
+      "id": 541047,
+      "homeTeamId": 346,
+      "awayTeamId": 325,
+      "utcDate": "2026-01-21T19:45:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 1
+    },
+    {
+      "id": 541046,
+      "homeTeamId": 70,
+      "awayTeamId": 343,
+      "utcDate": "2026-01-21T20:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 2
+    },
+    {
+      "id": 541051,
+      "homeTeamId": 342,
+      "awayTeamId": 74,
+      "utcDate": "2026-01-23T20:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 1
+    },
+    {
+      "id": 541054,
+      "homeTeamId": 343,
+      "awayTeamId": 1081,
+      "utcDate": "2026-01-24T12:30:00Z",
+      "status": "FINISHED",
+      "homeGoals": 4,
+      "awayGoals": 0
+    },
+    {
+      "id": 541055,
+      "homeTeamId": 384,
+      "awayTeamId": 348,
+      "utcDate": "2026-01-24T12:30:00Z",
+      "status": "FINISHED",
+      "homeGoals": 4,
+      "awayGoals": 0
+    },
+    {
+      "id": 541048,
+      "homeTeamId": 332,
+      "awayTeamId": 70,
+      "utcDate": "2026-01-24T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 1
+    },
+    {
+      "id": 541049,
+      "homeTeamId": 59,
+      "awayTeamId": 346,
+      "utcDate": "2026-01-24T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 1
+    },
+    {
+      "id": 541050,
+      "homeTeamId": 387,
+      "awayTeamId": 345,
+      "utcDate": "2026-01-24T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 2,
+      "awayGoals": 0
+    },
+    {
+      "id": 541052,
+      "homeTeamId": 322,
+      "awayTeamId": 72,
+      "utcDate": "2026-01-24T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 2,
+      "awayGoals": 1
+    },
+    {
+      "id": 541053,
+      "homeTeamId": 338,
+      "awayTeamId": 1082,
+      "utcDate": "2026-01-24T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 2
+    },
+    {
+      "id": 541058,
+      "homeTeamId": 69,
+      "awayTeamId": 404,
+      "utcDate": "2026-01-24T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 2,
+      "awayGoals": 3
+    },
+    {
+      "id": 541059,
+      "homeTeamId": 356,
+      "awayTeamId": 349,
+      "utcDate": "2026-01-24T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 3,
+      "awayGoals": 1
+    },
+    {
+      "id": 541057,
+      "homeTeamId": 325,
+      "awayTeamId": 340,
+      "utcDate": "2026-01-25T12:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 1
+    },
+    {
+      "id": 541056,
+      "homeTeamId": 68,
+      "awayTeamId": 1076,
+      "utcDate": "2026-01-26T20:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 2,
+      "awayGoals": 1
+    },
+    {
+      "id": 541061,
+      "homeTeamId": 387,
+      "awayTeamId": 342,
+      "utcDate": "2026-01-30T20:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 0,
+      "awayGoals": 5
+    },
+    {
+      "id": 541063,
+      "homeTeamId": 338,
+      "awayTeamId": 348,
+      "utcDate": "2026-01-31T12:30:00Z",
+      "status": "FINISHED",
+      "homeGoals": 0,
+      "awayGoals": 2
+    },
+    {
+      "id": 541069,
+      "homeTeamId": 345,
+      "awayTeamId": 404,
+      "utcDate": "2026-01-31T12:30:00Z",
+      "status": "FINISHED",
+      "homeGoals": 0,
+      "awayGoals": 1
+    },
+    {
+      "id": 541070,
+      "homeTeamId": 70,
+      "awayTeamId": 340,
+      "utcDate": "2026-01-31T12:30:00Z",
+      "status": "FINISHED",
+      "homeGoals": 0,
+      "awayGoals": 2
+    },
+    {
+      "id": 541060,
+      "homeTeamId": 59,
+      "awayTeamId": 322,
+      "utcDate": "2026-01-31T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 0,
+      "awayGoals": 1
+    },
+    {
+      "id": 541062,
+      "homeTeamId": 349,
+      "awayTeamId": 1081,
+      "utcDate": "2026-01-31T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 1
+    },
+    {
+      "id": 541064,
+      "homeTeamId": 343,
+      "awayTeamId": 68,
+      "utcDate": "2026-01-31T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 0
+    },
+    {
+      "id": 541065,
+      "homeTeamId": 384,
+      "awayTeamId": 356,
+      "utcDate": "2026-01-31T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 1
+    },
+    {
+      "id": 541066,
+      "homeTeamId": 1082,
+      "awayTeamId": 332,
+      "utcDate": "2026-01-31T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 0,
+      "awayGoals": 2
+    },
+    {
+      "id": 541067,
+      "homeTeamId": 325,
+      "awayTeamId": 74,
+      "utcDate": "2026-01-31T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 3,
+      "awayGoals": 0
+    },
+    {
+      "id": 541068,
+      "homeTeamId": 69,
+      "awayTeamId": 1076,
+      "utcDate": "2026-01-31T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 2,
+      "awayGoals": 1
+    },
+    {
+      "id": 541071,
+      "homeTeamId": 346,
+      "awayTeamId": 72,
+      "utcDate": "2026-01-31T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 0,
+      "awayGoals": 2
+    },
+    {
+      "id": 541021,
+      "homeTeamId": 325,
+      "awayTeamId": 349,
+      "utcDate": "2026-02-03T00:00:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 540928,
+      "homeTeamId": 59,
+      "awayTeamId": 345,
+      "utcDate": "2026-02-03T19:45:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 0
+    },
+    {
+      "id": 541016,
+      "homeTeamId": 322,
+      "awayTeamId": 346,
+      "utcDate": "2026-02-03T19:45:00Z",
+      "status": "FINISHED",
+      "homeGoals": 0,
+      "awayGoals": 0
+    },
+    {
+      "id": 541023,
+      "homeTeamId": 356,
+      "awayTeamId": 1082,
+      "utcDate": "2026-02-03T19:45:00Z",
+      "status": "FINISHED",
+      "homeGoals": 3,
+      "awayGoals": 1
+    },
+    {
+      "id": 541073,
+      "homeTeamId": 348,
+      "awayTeamId": 69,
+      "utcDate": "2026-02-06T20:01:00Z",
+      "status": "FINISHED",
+      "homeGoals": 0,
+      "awayGoals": 0
+    },
+    {
+      "id": 541075,
+      "homeTeamId": 342,
+      "awayTeamId": 349,
+      "utcDate": "2026-02-07T12:31:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 2
+    },
+    {
+      "id": 541077,
+      "homeTeamId": 68,
+      "awayTeamId": 59,
+      "utcDate": "2026-02-07T12:31:00Z",
+      "status": "FINISHED",
+      "homeGoals": 2,
+      "awayGoals": 0
+    },
+    {
+      "id": 541080,
+      "homeTeamId": 340,
+      "awayTeamId": 346,
+      "utcDate": "2026-02-07T12:31:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 0
+    },
+    {
+      "id": 541072,
+      "homeTeamId": 332,
+      "awayTeamId": 338,
+      "utcDate": "2026-02-07T15:01:00Z",
+      "status": "FINISHED",
+      "homeGoals": 2,
+      "awayGoals": 1
+    },
+    {
+      "id": 541074,
+      "homeTeamId": 1076,
+      "awayTeamId": 1082,
+      "utcDate": "2026-02-07T15:01:00Z",
+      "status": "FINISHED",
+      "homeGoals": 0,
+      "awayGoals": 0
+    },
+    {
+      "id": 541076,
+      "homeTeamId": 322,
+      "awayTeamId": 387,
+      "utcDate": "2026-02-07T15:01:00Z",
+      "status": "FINISHED",
+      "homeGoals": 2,
+      "awayGoals": 3
+    },
+    {
+      "id": 541078,
+      "homeTeamId": 1081,
+      "awayTeamId": 325,
+      "utcDate": "2026-02-07T15:01:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 0
+    },
+    {
+      "id": 541082,
+      "homeTeamId": 74,
+      "awayTeamId": 70,
+      "utcDate": "2026-02-07T15:01:00Z",
+      "status": "FINISHED",
+      "homeGoals": 0,
+      "awayGoals": 0
+    },
+    {
+      "id": 541083,
+      "homeTeamId": 404,
+      "awayTeamId": 384,
+      "utcDate": "2026-02-07T15:01:00Z",
+      "status": "FINISHED",
+      "homeGoals": 0,
+      "awayGoals": 2
+    },
+    {
+      "id": 541081,
+      "homeTeamId": 72,
+      "awayTeamId": 345,
+      "utcDate": "2026-02-08T12:01:00Z",
+      "status": "FINISHED",
+      "homeGoals": 4,
+      "awayGoals": 0
+    },
+    {
+      "id": 541079,
+      "homeTeamId": 356,
+      "awayTeamId": 343,
+      "utcDate": "2026-02-09T20:01:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 2
+    },
+    {
+      "id": 541090,
+      "homeTeamId": 338,
+      "awayTeamId": 340,
+      "utcDate": "2026-02-10T19:45:00Z",
+      "status": "FINISHED",
+      "homeGoals": 3,
+      "awayGoals": 4
+    },
+    {
+      "id": 541091,
+      "homeTeamId": 1082,
+      "awayTeamId": 68,
+      "utcDate": "2026-02-10T19:45:00Z",
+      "status": "FINISHED",
+      "homeGoals": 0,
+      "awayGoals": 3
+    },
+    {
+      "id": 541084,
+      "homeTeamId": 332,
+      "awayTeamId": 74,
+      "utcDate": "2026-02-10T20:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 0,
+      "awayGoals": 0
+    },
+    {
+      "id": 541086,
+      "homeTeamId": 348,
+      "awayTeamId": 70,
+      "utcDate": "2026-02-11T19:45:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 0
+    },
+    {
+      "id": 541088,
+      "homeTeamId": 342,
+      "awayTeamId": 72,
+      "utcDate": "2026-02-14T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 2,
+      "awayGoals": 0
+    },
+    {
+      "id": 541092,
+      "homeTeamId": 325,
+      "awayTeamId": 356,
+      "utcDate": "2026-02-14T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 0,
+      "awayGoals": 1
+    },
+    {
+      "id": 541093,
+      "homeTeamId": 1081,
+      "awayTeamId": 346,
+      "utcDate": "2026-02-14T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 2,
+      "awayGoals": 2
+    },
+    {
+      "id": 541094,
+      "homeTeamId": 69,
+      "awayTeamId": 59,
+      "utcDate": "2026-02-14T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 3
+    },
+    {
+      "id": 541095,
+      "homeTeamId": 345,
+      "awayTeamId": 384,
+      "utcDate": "2026-02-14T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 2
+    },
+    {
+      "id": 541087,
+      "homeTeamId": 1076,
+      "awayTeamId": 343,
+      "utcDate": "2026-02-16T20:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 3,
+      "awayGoals": 1
+    },
+    {
+      "id": 541085,
+      "homeTeamId": 387,
+      "awayTeamId": 404,
+      "utcDate": "2026-02-17T19:45:00Z",
+      "status": "FINISHED",
+      "homeGoals": 2,
+      "awayGoals": 2
+    },
+    {
+      "id": 541096,
+      "homeTeamId": 59,
+      "awayTeamId": 1081,
+      "utcDate": "2026-02-20T20:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 0
+    },
+    {
+      "id": 541097,
+      "homeTeamId": 322,
+      "awayTeamId": 69,
+      "utcDate": "2026-02-21T12:30:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 3
+    },
+    {
+      "id": 541103,
+      "homeTeamId": 70,
+      "awayTeamId": 338,
+      "utcDate": "2026-02-21T12:30:00Z",
+      "status": "FINISHED",
+      "homeGoals": 2,
+      "awayGoals": 2
+    },
+    {
+      "id": 541104,
+      "homeTeamId": 72,
+      "awayTeamId": 387,
+      "utcDate": "2026-02-21T12:30:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 0
+    },
+    {
+      "id": 541106,
+      "homeTeamId": 74,
+      "awayTeamId": 1076,
+      "utcDate": "2026-02-21T12:30:00Z",
+      "status": "FINISHED",
+      "homeGoals": 0,
+      "awayGoals": 2
+    },
+    {
+      "id": 541098,
+      "homeTeamId": 343,
+      "awayTeamId": 1082,
+      "utcDate": "2026-02-21T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 0,
+      "awayGoals": 0
+    },
+    {
+      "id": 541099,
+      "homeTeamId": 384,
+      "awayTeamId": 325,
+      "utcDate": "2026-02-21T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 3
+    },
+    {
+      "id": 541100,
+      "homeTeamId": 68,
+      "awayTeamId": 332,
+      "utcDate": "2026-02-21T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 2
+    },
+    {
+      "id": 541102,
+      "homeTeamId": 340,
+      "awayTeamId": 348,
+      "utcDate": "2026-02-21T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 1
+    },
+    {
+      "id": 541105,
+      "homeTeamId": 346,
+      "awayTeamId": 342,
+      "utcDate": "2026-02-21T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 2,
+      "awayGoals": 0
+    },
+    {
+      "id": 541107,
+      "homeTeamId": 404,
+      "awayTeamId": 349,
+      "utcDate": "2026-02-21T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 5,
+      "awayGoals": 3
+    },
+    {
+      "id": 541101,
+      "homeTeamId": 356,
+      "awayTeamId": 345,
+      "utcDate": "2026-02-22T12:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 2,
+      "awayGoals": 1
+    },
+    {
+      "id": 541108,
+      "homeTeamId": 322,
+      "awayTeamId": 342,
+      "utcDate": "2026-02-24T19:45:00Z",
+      "status": "FINISHED",
+      "homeGoals": 4,
+      "awayGoals": 2
+    },
+    {
+      "id": 541109,
+      "homeTeamId": 343,
+      "awayTeamId": 338,
+      "utcDate": "2026-02-24T19:45:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 1
+    },
+    {
+      "id": 541112,
+      "homeTeamId": 72,
+      "awayTeamId": 1081,
+      "utcDate": "2026-02-24T19:45:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 1
+    },
+    {
+      "id": 541113,
+      "homeTeamId": 346,
+      "awayTeamId": 349,
+      "utcDate": "2026-02-24T19:45:00Z",
+      "status": "FINISHED",
+      "homeGoals": 0,
+      "awayGoals": 2
+    },
+    {
+      "id": 541114,
+      "homeTeamId": 74,
+      "awayTeamId": 348,
+      "utcDate": "2026-02-24T19:45:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 1
+    },
+    {
+      "id": 541115,
+      "homeTeamId": 404,
+      "awayTeamId": 325,
+      "utcDate": "2026-02-24T19:45:00Z",
+      "status": "FINISHED",
+      "homeGoals": 2,
+      "awayGoals": 1
+    },
+    {
+      "id": 541116,
+      "homeTeamId": 59,
+      "awayTeamId": 387,
+      "utcDate": "2026-02-24T19:45:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 2
+    },
+    {
+      "id": 541110,
+      "homeTeamId": 340,
+      "awayTeamId": 69,
+      "utcDate": "2026-02-24T20:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 5,
+      "awayGoals": 0
+    },
+    {
+      "id": 541117,
+      "homeTeamId": 384,
+      "awayTeamId": 332,
+      "utcDate": "2026-02-25T19:45:00Z",
+      "status": "FINISHED",
+      "homeGoals": 3,
+      "awayGoals": 0
+    },
+    {
+      "id": 541118,
+      "homeTeamId": 68,
+      "awayTeamId": 345,
+      "utcDate": "2026-02-25T19:45:00Z",
+      "status": "FINISHED",
+      "homeGoals": 2,
+      "awayGoals": 0
+    },
+    {
+      "id": 541119,
+      "homeTeamId": 356,
+      "awayTeamId": 1076,
+      "utcDate": "2026-02-25T19:45:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 2
+    },
+    {
+      "id": 541111,
+      "homeTeamId": 70,
+      "awayTeamId": 1082,
+      "utcDate": "2026-02-25T20:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 2,
+      "awayGoals": 1
+    },
+    {
+      "id": 541121,
+      "homeTeamId": 387,
+      "awayTeamId": 346,
+      "utcDate": "2026-02-27T20:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 2
+    },
+    {
+      "id": 541124,
+      "homeTeamId": 342,
+      "awayTeamId": 59,
+      "utcDate": "2026-02-28T12:30:00Z",
+      "status": "FINISHED",
+      "homeGoals": 3,
+      "awayGoals": 1
+    },
+    {
+      "id": 541126,
+      "homeTeamId": 338,
+      "awayTeamId": 68,
+      "utcDate": "2026-02-28T12:30:00Z",
+      "status": "FINISHED",
+      "homeGoals": 0,
+      "awayGoals": 2
+    },
+    {
+      "id": 541128,
+      "homeTeamId": 325,
+      "awayTeamId": 322,
+      "utcDate": "2026-02-28T12:30:00Z",
+      "status": "FINISHED",
+      "homeGoals": 0,
+      "awayGoals": 1
+    },
+    {
+      "id": 541122,
+      "homeTeamId": 348,
+      "awayTeamId": 404,
+      "utcDate": "2026-02-28T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 0,
+      "awayGoals": 1
+    },
+    {
+      "id": 541123,
+      "homeTeamId": 1076,
+      "awayTeamId": 70,
+      "utcDate": "2026-02-28T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 2,
+      "awayGoals": 1
+    },
+    {
+      "id": 541125,
+      "homeTeamId": 349,
+      "awayTeamId": 72,
+      "utcDate": "2026-02-28T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 3,
+      "awayGoals": 0
+    },
+    {
+      "id": 541127,
+      "homeTeamId": 1082,
+      "awayTeamId": 74,
+      "utcDate": "2026-02-28T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 2,
+      "awayGoals": 1
+    },
+    {
+      "id": 541129,
+      "homeTeamId": 1081,
+      "awayTeamId": 384,
+      "utcDate": "2026-02-28T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 0,
+      "awayGoals": 2
+    },
+    {
+      "id": 541130,
+      "homeTeamId": 69,
+      "awayTeamId": 356,
+      "utcDate": "2026-02-28T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 0,
+      "awayGoals": 2
+    },
+    {
+      "id": 541131,
+      "homeTeamId": 345,
+      "awayTeamId": 340,
+      "utcDate": "2026-02-28T15:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 1,
+      "awayGoals": 3
+    },
+    {
+      "id": 541120,
       "homeTeamId": 332,
       "awayTeamId": 343,
       "utcDate": "2026-03-02T20:00:00Z",
@@ -56,7 +3773,7 @@
       "awayGoals": null
     },
     {
-      "id": 500007,
+      "id": 541089,
       "homeTeamId": 349,
       "awayTeamId": 322,
       "utcDate": "2026-03-03T19:45:00Z",
@@ -65,17 +3782,71 @@
       "awayGoals": null
     },
     {
-      "id": 500008,
-      "homeTeamId": 338,
-      "awayTeamId": 356,
+      "id": 541138,
+      "homeTeamId": 1081,
+      "awayTeamId": 1082,
+      "utcDate": "2026-03-06T20:00:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541132,
+      "homeTeamId": 59,
+      "awayTeamId": 325,
+      "utcDate": "2026-03-07T12:30:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541136,
+      "homeTeamId": 322,
+      "awayTeamId": 384,
+      "utcDate": "2026-03-07T12:30:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541133,
+      "homeTeamId": 387,
+      "awayTeamId": 1076,
       "utcDate": "2026-03-07T15:00:00Z",
       "status": "SCHEDULED",
       "homeGoals": null,
       "awayGoals": null
     },
     {
-      "id": 500009,
-      "homeTeamId": 341,
+      "id": 541134,
+      "homeTeamId": 348,
+      "awayTeamId": 332,
+      "utcDate": "2026-03-07T15:00:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541135,
+      "homeTeamId": 342,
+      "awayTeamId": 345,
+      "utcDate": "2026-03-07T15:00:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541137,
+      "homeTeamId": 349,
+      "awayTeamId": 338,
+      "utcDate": "2026-03-07T15:00:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541140,
+      "homeTeamId": 356,
       "awayTeamId": 74,
       "utcDate": "2026-03-07T15:00:00Z",
       "status": "SCHEDULED",
@@ -83,10 +3854,1117 @@
       "awayGoals": null
     },
     {
-      "id": 500010,
+      "id": 541142,
+      "homeTeamId": 72,
+      "awayTeamId": 70,
+      "utcDate": "2026-03-07T15:00:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541139,
+      "homeTeamId": 69,
+      "awayTeamId": 343,
+      "utcDate": "2026-03-08T16:30:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541145,
+      "homeTeamId": 338,
+      "awayTeamId": 387,
+      "utcDate": "2026-03-10T19:45:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541146,
+      "homeTeamId": 384,
+      "awayTeamId": 342,
+      "utcDate": "2026-03-10T19:45:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541148,
+      "homeTeamId": 325,
+      "awayTeamId": 72,
+      "utcDate": "2026-03-10T19:45:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541149,
+      "homeTeamId": 345,
+      "awayTeamId": 346,
+      "utcDate": "2026-03-10T19:45:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541151,
+      "homeTeamId": 404,
+      "awayTeamId": 322,
+      "utcDate": "2026-03-10T19:45:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541150,
+      "homeTeamId": 70,
+      "awayTeamId": 349,
+      "utcDate": "2026-03-10T20:00:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541144,
+      "homeTeamId": 332,
+      "awayTeamId": 69,
+      "utcDate": "2026-03-11T19:45:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541147,
+      "homeTeamId": 68,
+      "awayTeamId": 356,
+      "utcDate": "2026-03-11T19:45:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541153,
+      "homeTeamId": 343,
+      "awayTeamId": 348,
+      "utcDate": "2026-03-11T19:45:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541154,
+      "homeTeamId": 1082,
+      "awayTeamId": 59,
+      "utcDate": "2026-03-11T19:45:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541155,
+      "homeTeamId": 74,
+      "awayTeamId": 340,
+      "utcDate": "2026-03-11T19:45:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541152,
+      "homeTeamId": 1076,
+      "awayTeamId": 1081,
+      "utcDate": "2026-03-11T20:00:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541167,
+      "homeTeamId": 404,
+      "awayTeamId": 72,
+      "utcDate": "2026-03-13T20:00:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541157,
+      "homeTeamId": 1076,
+      "awayTeamId": 340,
+      "utcDate": "2026-03-14T12:30:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541159,
+      "homeTeamId": 343,
+      "awayTeamId": 387,
+      "utcDate": "2026-03-14T12:30:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541162,
+      "homeTeamId": 1082,
+      "awayTeamId": 348,
+      "utcDate": "2026-03-14T12:30:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541156,
+      "homeTeamId": 332,
+      "awayTeamId": 356,
+      "utcDate": "2026-03-14T15:00:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541158,
+      "homeTeamId": 338,
+      "awayTeamId": 69,
+      "utcDate": "2026-03-14T15:00:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541160,
+      "homeTeamId": 384,
+      "awayTeamId": 59,
+      "utcDate": "2026-03-14T15:00:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541161,
+      "homeTeamId": 68,
+      "awayTeamId": 1081,
+      "utcDate": "2026-03-14T15:00:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541164,
+      "homeTeamId": 345,
+      "awayTeamId": 349,
+      "utcDate": "2026-03-14T15:00:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541165,
+      "homeTeamId": 70,
+      "awayTeamId": 346,
+      "utcDate": "2026-03-14T15:00:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541166,
+      "homeTeamId": 74,
+      "awayTeamId": 322,
+      "utcDate": "2026-03-14T15:00:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541163,
+      "homeTeamId": 325,
+      "awayTeamId": 342,
+      "utcDate": "2026-03-16T20:00:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541143,
+      "homeTeamId": 346,
+      "awayTeamId": 404,
+      "utcDate": "2026-03-17T19:45:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541141,
+      "homeTeamId": 340,
+      "awayTeamId": 68,
+      "utcDate": "2026-03-18T19:45:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541174,
+      "homeTeamId": 1081,
+      "awayTeamId": 70,
+      "utcDate": "2026-03-20T20:00:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541168,
+      "homeTeamId": 59,
+      "awayTeamId": 343,
+      "utcDate": "2026-03-21T12:30:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541171,
+      "homeTeamId": 342,
+      "awayTeamId": 332,
+      "utcDate": "2026-03-21T12:30:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541173,
+      "homeTeamId": 349,
+      "awayTeamId": 384,
+      "utcDate": "2026-03-21T12:30:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541169,
+      "homeTeamId": 387,
+      "awayTeamId": 74,
+      "utcDate": "2026-03-21T15:00:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541170,
+      "homeTeamId": 348,
+      "awayTeamId": 68,
+      "utcDate": "2026-03-21T15:00:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541172,
+      "homeTeamId": 322,
+      "awayTeamId": 345,
+      "utcDate": "2026-03-21T15:00:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541175,
+      "homeTeamId": 69,
+      "awayTeamId": 325,
+      "utcDate": "2026-03-21T15:00:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541176,
+      "homeTeamId": 356,
+      "awayTeamId": 404,
+      "utcDate": "2026-03-21T15:00:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541177,
+      "homeTeamId": 340,
+      "awayTeamId": 1082,
+      "utcDate": "2026-03-21T15:00:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541179,
+      "homeTeamId": 346,
+      "awayTeamId": 338,
+      "utcDate": "2026-03-21T15:00:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541178,
+      "homeTeamId": 72,
+      "awayTeamId": 1076,
+      "utcDate": "2026-03-21T17:15:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541184,
+      "homeTeamId": 343,
+      "awayTeamId": 384,
+      "utcDate": "2026-04-03T14:00:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541185,
+      "homeTeamId": 68,
+      "awayTeamId": 325,
+      "utcDate": "2026-04-03T14:00:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541186,
+      "homeTeamId": 1082,
+      "awayTeamId": 322,
+      "utcDate": "2026-04-03T14:00:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541187,
+      "homeTeamId": 69,
+      "awayTeamId": 346,
+      "utcDate": "2026-04-03T14:00:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541188,
+      "homeTeamId": 356,
+      "awayTeamId": 72,
+      "utcDate": "2026-04-03T14:00:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541189,
+      "homeTeamId": 340,
+      "awayTeamId": 349,
+      "utcDate": "2026-04-03T14:00:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541190,
+      "homeTeamId": 70,
+      "awayTeamId": 345,
+      "utcDate": "2026-04-03T14:00:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541191,
+      "homeTeamId": 74,
+      "awayTeamId": 404,
+      "utcDate": "2026-04-03T14:00:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541180,
+      "homeTeamId": 332,
+      "awayTeamId": 59,
+      "utcDate": "2026-04-03T14:00:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541181,
+      "homeTeamId": 348,
+      "awayTeamId": 387,
+      "utcDate": "2026-04-03T14:00:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541182,
+      "homeTeamId": 1076,
+      "awayTeamId": 342,
+      "utcDate": "2026-04-03T14:00:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541183,
+      "homeTeamId": 338,
+      "awayTeamId": 1081,
+      "utcDate": "2026-04-03T14:00:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541197,
+      "homeTeamId": 384,
+      "awayTeamId": 68,
+      "utcDate": "2026-04-06T12:00:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541192,
+      "homeTeamId": 59,
+      "awayTeamId": 74,
+      "utcDate": "2026-04-06T14:00:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541193,
+      "homeTeamId": 387,
+      "awayTeamId": 356,
+      "utcDate": "2026-04-06T14:00:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541194,
+      "homeTeamId": 342,
+      "awayTeamId": 70,
+      "utcDate": "2026-04-06T14:00:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541195,
+      "homeTeamId": 322,
+      "awayTeamId": 1076,
+      "utcDate": "2026-04-06T14:00:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541196,
+      "homeTeamId": 349,
+      "awayTeamId": 332,
+      "utcDate": "2026-04-06T14:00:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541198,
+      "homeTeamId": 325,
+      "awayTeamId": 1082,
+      "utcDate": "2026-04-06T14:00:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541199,
+      "homeTeamId": 1081,
+      "awayTeamId": 69,
+      "utcDate": "2026-04-06T14:00:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541200,
+      "homeTeamId": 345,
+      "awayTeamId": 338,
+      "utcDate": "2026-04-06T14:00:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541201,
+      "homeTeamId": 72,
+      "awayTeamId": 343,
+      "utcDate": "2026-04-06T14:00:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541202,
+      "homeTeamId": 346,
+      "awayTeamId": 348,
+      "utcDate": "2026-04-06T14:00:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541203,
+      "homeTeamId": 404,
+      "awayTeamId": 340,
+      "utcDate": "2026-04-06T14:00:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541209,
+      "homeTeamId": 68,
+      "awayTeamId": 349,
+      "utcDate": "2026-04-11T11:30:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541204,
+      "homeTeamId": 332,
+      "awayTeamId": 404,
+      "utcDate": "2026-04-11T14:00:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541205,
+      "homeTeamId": 348,
+      "awayTeamId": 1081,
+      "utcDate": "2026-04-11T14:00:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541206,
+      "homeTeamId": 1076,
+      "awayTeamId": 345,
+      "utcDate": "2026-04-11T14:00:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541207,
+      "homeTeamId": 338,
+      "awayTeamId": 72,
+      "utcDate": "2026-04-11T14:00:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541208,
+      "homeTeamId": 343,
+      "awayTeamId": 325,
+      "utcDate": "2026-04-11T14:00:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541210,
+      "homeTeamId": 1082,
+      "awayTeamId": 346,
+      "utcDate": "2026-04-11T14:00:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541211,
+      "homeTeamId": 69,
+      "awayTeamId": 387,
+      "utcDate": "2026-04-11T14:00:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541212,
+      "homeTeamId": 356,
+      "awayTeamId": 322,
+      "utcDate": "2026-04-11T14:00:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541213,
+      "homeTeamId": 340,
+      "awayTeamId": 342,
+      "utcDate": "2026-04-11T14:00:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541214,
+      "homeTeamId": 70,
+      "awayTeamId": 59,
+      "utcDate": "2026-04-11T14:00:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541215,
+      "homeTeamId": 74,
+      "awayTeamId": 384,
+      "utcDate": "2026-04-11T14:00:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541216,
+      "homeTeamId": 59,
+      "awayTeamId": 1076,
+      "utcDate": "2026-04-18T14:00:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541217,
+      "homeTeamId": 387,
+      "awayTeamId": 68,
+      "utcDate": "2026-04-18T14:00:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541218,
+      "homeTeamId": 342,
+      "awayTeamId": 1082,
+      "utcDate": "2026-04-18T14:00:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541219,
+      "homeTeamId": 322,
+      "awayTeamId": 332,
+      "utcDate": "2026-04-18T14:00:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541220,
+      "homeTeamId": 349,
+      "awayTeamId": 343,
+      "utcDate": "2026-04-18T14:00:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541221,
+      "homeTeamId": 384,
+      "awayTeamId": 69,
+      "utcDate": "2026-04-18T14:00:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541222,
+      "homeTeamId": 325,
+      "awayTeamId": 338,
+      "utcDate": "2026-04-18T14:00:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541223,
+      "homeTeamId": 1081,
+      "awayTeamId": 74,
+      "utcDate": "2026-04-18T14:00:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541224,
+      "homeTeamId": 345,
+      "awayTeamId": 348,
+      "utcDate": "2026-04-18T14:00:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541225,
+      "homeTeamId": 72,
+      "awayTeamId": 340,
+      "utcDate": "2026-04-18T14:00:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541226,
+      "homeTeamId": 346,
+      "awayTeamId": 356,
+      "utcDate": "2026-04-18T14:00:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541227,
+      "homeTeamId": 404,
+      "awayTeamId": 70,
+      "utcDate": "2026-04-18T14:00:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541228,
+      "homeTeamId": 1076,
+      "awayTeamId": 325,
+      "utcDate": "2026-04-21T18:45:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541229,
+      "homeTeamId": 343,
+      "awayTeamId": 345,
+      "utcDate": "2026-04-21T18:45:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541230,
+      "homeTeamId": 68,
+      "awayTeamId": 342,
+      "utcDate": "2026-04-21T18:45:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541231,
+      "homeTeamId": 1082,
+      "awayTeamId": 404,
+      "utcDate": "2026-04-21T18:45:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541232,
+      "homeTeamId": 69,
+      "awayTeamId": 72,
+      "utcDate": "2026-04-21T18:45:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541233,
+      "homeTeamId": 340,
+      "awayTeamId": 387,
+      "utcDate": "2026-04-21T18:45:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541234,
+      "homeTeamId": 70,
+      "awayTeamId": 384,
+      "utcDate": "2026-04-21T18:45:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541235,
+      "homeTeamId": 74,
+      "awayTeamId": 346,
+      "utcDate": "2026-04-21T18:45:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541236,
+      "homeTeamId": 332,
+      "awayTeamId": 1081,
+      "utcDate": "2026-04-22T18:45:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541237,
+      "homeTeamId": 348,
+      "awayTeamId": 349,
+      "utcDate": "2026-04-22T18:45:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541238,
+      "homeTeamId": 338,
+      "awayTeamId": 322,
+      "utcDate": "2026-04-22T18:45:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541239,
+      "homeTeamId": 356,
+      "awayTeamId": 59,
+      "utcDate": "2026-04-22T18:45:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541240,
+      "homeTeamId": 332,
+      "awayTeamId": 387,
+      "utcDate": "2026-04-25T14:00:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541241,
+      "homeTeamId": 348,
+      "awayTeamId": 322,
+      "utcDate": "2026-04-25T14:00:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541242,
+      "homeTeamId": 1076,
+      "awayTeamId": 404,
+      "utcDate": "2026-04-25T14:00:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541243,
+      "homeTeamId": 338,
+      "awayTeamId": 384,
+      "utcDate": "2026-04-25T14:00:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541244,
+      "homeTeamId": 343,
+      "awayTeamId": 346,
+      "utcDate": "2026-04-25T14:00:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541245,
       "homeTeamId": 68,
       "awayTeamId": 72,
-      "utcDate": "2026-03-07T15:00:00Z",
+      "utcDate": "2026-04-25T14:00:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541246,
+      "homeTeamId": 1082,
+      "awayTeamId": 345,
+      "utcDate": "2026-04-25T14:00:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541247,
+      "homeTeamId": 69,
+      "awayTeamId": 342,
+      "utcDate": "2026-04-25T14:00:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541248,
+      "homeTeamId": 356,
+      "awayTeamId": 1081,
+      "utcDate": "2026-04-25T14:00:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541249,
+      "homeTeamId": 340,
+      "awayTeamId": 59,
+      "utcDate": "2026-04-25T14:00:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541250,
+      "homeTeamId": 70,
+      "awayTeamId": 325,
+      "utcDate": "2026-04-25T14:00:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541251,
+      "homeTeamId": 74,
+      "awayTeamId": 349,
+      "utcDate": "2026-04-25T14:00:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541252,
+      "homeTeamId": 59,
+      "awayTeamId": 338,
+      "utcDate": "2026-05-02T11:30:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541253,
+      "homeTeamId": 387,
+      "awayTeamId": 70,
+      "utcDate": "2026-05-02T11:30:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541254,
+      "homeTeamId": 342,
+      "awayTeamId": 356,
+      "utcDate": "2026-05-02T11:30:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541255,
+      "homeTeamId": 322,
+      "awayTeamId": 68,
+      "utcDate": "2026-05-02T11:30:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541256,
+      "homeTeamId": 349,
+      "awayTeamId": 69,
+      "utcDate": "2026-05-02T11:30:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541257,
+      "homeTeamId": 384,
+      "awayTeamId": 1082,
+      "utcDate": "2026-05-02T11:30:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541258,
+      "homeTeamId": 325,
+      "awayTeamId": 332,
+      "utcDate": "2026-05-02T11:30:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541259,
+      "homeTeamId": 1081,
+      "awayTeamId": 340,
+      "utcDate": "2026-05-02T11:30:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541260,
+      "homeTeamId": 345,
+      "awayTeamId": 74,
+      "utcDate": "2026-05-02T11:30:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541261,
+      "homeTeamId": 72,
+      "awayTeamId": 348,
+      "utcDate": "2026-05-02T11:30:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541262,
+      "homeTeamId": 346,
+      "awayTeamId": 1076,
+      "utcDate": "2026-05-02T11:30:00Z",
+      "status": "SCHEDULED",
+      "homeGoals": null,
+      "awayGoals": null
+    },
+    {
+      "id": 541263,
+      "homeTeamId": 404,
+      "awayTeamId": 343,
+      "utcDate": "2026-05-02T11:30:00Z",
       "status": "SCHEDULED",
       "homeGoals": null,
       "awayGoals": null

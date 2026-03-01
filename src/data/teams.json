@@ -3,74 +3,172 @@
   "season": "2025-26",
   "teams": [
     {
-      "id": 332,
-      "name": "Birmingham City FC",
-      "shortName": "Birmingham",
-      "tla": "BIR",
-      "crest": "https://crests.football-data.org/332.png"
-    },
-    {
-      "id": 322,
-      "name": "Hull City FC",
-      "shortName": "Hull City",
-      "tla": "HUL",
-      "crest": "https://crests.football-data.org/322.png"
-    },
-    {
-      "id": 349,
-      "name": "Ipswich Town FC",
-      "shortName": "Ipswich",
-      "tla": "IPS",
-      "crest": "https://crests.football-data.org/349.png"
-    },
-    {
-      "id": 341,
-      "name": "Leeds United FC",
-      "shortName": "Leeds",
-      "tla": "LEE",
-      "crest": "https://crests.football-data.org/341.png"
-    },
-    {
-      "id": 338,
-      "name": "Leicester City FC",
-      "shortName": "Leicester",
-      "tla": "LEI",
-      "crest": "https://crests.football-data.org/338.png"
-    },
-    {
-      "id": 343,
-      "name": "Middlesbrough FC",
-      "shortName": "Middlesbrough",
-      "tla": "MID",
-      "crest": "https://crests.football-data.org/343.png"
+      "id": 59,
+      "name": "Blackburn Rovers FC",
+      "shortName": "Blackburn",
+      "tla": "BLA",
+      "crest": "blackburn-rovers"
     },
     {
       "id": 68,
       "name": "Norwich City FC",
       "shortName": "Norwich",
       "tla": "NOR",
-      "crest": "https://crests.football-data.org/68.png"
+      "crest": "norwich-city"
     },
     {
-      "id": 356,
-      "name": "Sheffield United FC",
-      "shortName": "Sheffield Utd",
-      "tla": "SHU",
-      "crest": "https://crests.football-data.org/356.png"
+      "id": 69,
+      "name": "Queens Park Rangers FC",
+      "shortName": "QPR",
+      "tla": "QPR",
+      "crest": "queens-park-rangers"
     },
     {
-      "id": 74,
-      "name": "Southampton FC",
-      "shortName": "Southampton",
-      "tla": "SOU",
-      "crest": "https://crests.football-data.org/74.png"
+      "id": 70,
+      "name": "Stoke City FC",
+      "shortName": "Stoke",
+      "tla": "STK",
+      "crest": "stoke-city"
     },
     {
       "id": 72,
       "name": "Swansea City AFC",
       "shortName": "Swansea",
       "tla": "SWA",
-      "crest": "https://crests.football-data.org/72.png"
+      "crest": "swansea-city"
+    },
+    {
+      "id": 74,
+      "name": "West Bromwich Albion FC",
+      "shortName": "West Brom",
+      "tla": "WBA",
+      "crest": "west-bromwich-albion"
+    },
+    {
+      "id": 322,
+      "name": "Hull City AFC",
+      "shortName": "Hull City",
+      "tla": "HUL",
+      "crest": "hull-city"
+    },
+    {
+      "id": 325,
+      "name": "Portsmouth FC",
+      "shortName": "Portsmouth",
+      "tla": "POR",
+      "crest": "portsmouth"
+    },
+    {
+      "id": 332,
+      "name": "Birmingham City FC",
+      "shortName": "Birmingham",
+      "tla": "BIR",
+      "crest": "birmingham-city"
+    },
+    {
+      "id": 338,
+      "name": "Leicester City FC",
+      "shortName": "Leicester City",
+      "tla": "LEI",
+      "crest": "leicester-city"
+    },
+    {
+      "id": 340,
+      "name": "Southampton FC",
+      "shortName": "Southampton",
+      "tla": "SOU",
+      "crest": "southampton"
+    },
+    {
+      "id": 342,
+      "name": "Derby County FC",
+      "shortName": "Derby County",
+      "tla": "DER",
+      "crest": "derby"
+    },
+    {
+      "id": 343,
+      "name": "Middlesbrough FC",
+      "shortName": "Middlesbrough",
+      "tla": "MID",
+      "crest": "middlesbrough"
+    },
+    {
+      "id": 345,
+      "name": "Sheffield Wednesday FC",
+      "shortName": "Sheffield Wed",
+      "tla": "SHE",
+      "crest": "sheffield-wednesday"
+    },
+    {
+      "id": 346,
+      "name": "Watford FC",
+      "shortName": "Watford",
+      "tla": "WAT",
+      "crest": "watford"
+    },
+    {
+      "id": 348,
+      "name": "Charlton Athletic FC",
+      "shortName": "Charlton",
+      "tla": "CHA",
+      "crest": "charlton-athletic"
+    },
+    {
+      "id": 349,
+      "name": "Ipswich Town FC",
+      "shortName": "Ipswich Town",
+      "tla": "IPS",
+      "crest": "ipswich-town"
+    },
+    {
+      "id": 356,
+      "name": "Sheffield United FC",
+      "shortName": "Sheffield Utd",
+      "tla": "SHE",
+      "crest": "sheffield-united"
+    },
+    {
+      "id": 384,
+      "name": "Millwall FC",
+      "shortName": "Millwall",
+      "tla": "MIL",
+      "crest": "millwall"
+    },
+    {
+      "id": 387,
+      "name": "Bristol City FC",
+      "shortName": "Bristol City",
+      "tla": "BRI",
+      "crest": "bristol-city"
+    },
+    {
+      "id": 404,
+      "name": "Wrexham AFC",
+      "shortName": "Wrexham",
+      "tla": "WRE",
+      "crest": "wrexham"
+    },
+    {
+      "id": 1076,
+      "name": "Coventry City FC",
+      "shortName": "Coventry City",
+      "tla": "COV",
+      "crest": "coventry-city"
+    },
+    {
+      "id": 1081,
+      "name": "Preston North End FC",
+      "shortName": "Preston NE",
+      "tla": "PNE",
+      "crest": "preston-north-end"
+    },
+    {
+      "id": 1082,
+      "name": "Oxford United FC",
+      "shortName": "Oxford United",
+      "tla": "OXF",
+      "crest": "oxford-united"
     }
   ]
 }

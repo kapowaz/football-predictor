@@ -1,4 +1,5 @@
 import type { TeamStanding } from '../../types'
+import { getCrest } from '../../assets/crests'
 import * as styles from './StandingsTable.css'
 
 interface StandingsTableProps {
@@ -35,7 +36,7 @@ export function StandingsTable({ standings }: StandingsTableProps) {
               <td className={styles.td}>
                 <div className={styles.teamCell}>
                   <img
-                    src={standing.team.crest}
+                    src={getCrest(standing.team.crest)}
                     alt={standing.team.name}
                     className={styles.crest}
                   />

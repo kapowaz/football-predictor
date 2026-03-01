@@ -1,5 +1,6 @@
 import { useCallback } from 'react'
 import type { Match, Team } from '../../types'
+import { getCrest } from '../../assets/crests'
 import { ScoreInput } from '../ScoreInput/ScoreInput'
 import * as styles from './MatchCard.css'
 
@@ -42,7 +43,7 @@ export function MatchCard({
         <div>
           <div className={styles.teamName}>{homeTeam.shortName}</div>
         </div>
-        <img src={homeTeam.crest} alt={homeTeam.name} className={styles.crest} />
+        <img src={getCrest(homeTeam.crest)} alt={homeTeam.name} className={styles.crest} />
       </div>
 
       <div className={styles.scoreSection}>
@@ -55,7 +56,7 @@ export function MatchCard({
       </div>
 
       <div className={styles.awayTeam}>
-        <img src={awayTeam.crest} alt={awayTeam.name} className={styles.crest} />
+        <img src={getCrest(awayTeam.crest)} alt={awayTeam.name} className={styles.crest} />
         <div>
           <div className={styles.teamName}>{awayTeam.shortName}</div>
         </div>
