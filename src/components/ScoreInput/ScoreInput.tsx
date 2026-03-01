@@ -35,7 +35,6 @@ export function ScoreInput({ homeGoals, awayGoals, onChange }: ScoreInputProps) 
         className={styles.input}
         value={homeGoals ?? ''}
         onChange={handleHomeChange}
-        placeholder="-"
         aria-label="Home team goals"
       />
       <span className={styles.separator}>-</span>
@@ -46,7 +45,6 @@ export function ScoreInput({ homeGoals, awayGoals, onChange }: ScoreInputProps) 
         className={styles.input}
         value={awayGoals ?? ''}
         onChange={handleAwayChange}
-        placeholder="-"
         aria-label="Away team goals"
       />
     </div>

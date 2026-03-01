@@ -7,8 +7,8 @@ export const container = style({
 });
 
 export const input = style({
-  width: '48px',
-  height: '40px',
+  width: '36px',
+  height: '32px',
   textAlign: 'center',
   fontSize: '18px',
   fontWeight: 600,

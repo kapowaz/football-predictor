@@ -2,7 +2,7 @@ import { style } from '@vanilla-extract/css';
 
 export const card = style({
   display: 'flex',
-  alignItems: 'center',
+  alignItems: 'flex-start',
   justifyContent: 'space-between',
   padding: '16px',
   backgroundColor: '#fff',
