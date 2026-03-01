@@ -6,7 +6,7 @@ export function useStandings(
   teams: Team[],
   matches: Match[],
   predictions: PredictionsStore,
-  deductions: PointDeduction[] = []
+  deductions: PointDeduction[] = [],
 ): TeamStanding[] {
   return useMemo(() => {
     return calculateStandings(teams, matches, predictions, deductions);

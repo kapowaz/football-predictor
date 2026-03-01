@@ -14,7 +14,7 @@ export function ScoreInput({ homeGoals, awayGoals, onChange }: ScoreInputProps) 
       const parsed = value === '' ? null : Math.max(0, parseInt(value, 10) || 0);
       onChange(parsed, awayGoals);
     },
-    [awayGoals, onChange]
+    [awayGoals, onChange],
   );
 
   const handleAwayChange = useCallback(
@@ -23,7 +23,7 @@ export function ScoreInput({ homeGoals, awayGoals, onChange }: ScoreInputProps) 
       const parsed = value === '' ? null : Math.max(0, parseInt(value, 10) || 0);
       onChange(homeGoals, parsed);
     },
-    [homeGoals, onChange]
+    [homeGoals, onChange],
   );
 
   return (

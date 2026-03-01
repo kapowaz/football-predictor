@@ -34,7 +34,7 @@ export function MatchCard({
         onPredictionRemove(match.id);
       }
     },
-    [match.id, onPredictionChange, onPredictionRemove]
+    [match.id, onPredictionChange, onPredictionRemove],
   );
 
   return (

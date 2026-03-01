@@ -1,4 +1,11 @@
-import type { Team, Match, TeamStanding, FormResult, PointDeduction, PredictionsStore } from '../types';
+import type {
+  Team,
+  Match,
+  TeamStanding,
+  FormResult,
+  PointDeduction,
+  PredictionsStore,
+} from '../types';
 
 const FORM_LENGTH = 6;
 
@@ -58,7 +65,7 @@ export function calculateStandings(
   teams: Team[],
   matches: Match[],
   predictions: PredictionsStore,
-  deductions: PointDeduction[] = []
+  deductions: PointDeduction[] = [],
 ): TeamStanding[] {
   const standingsMap = new Map<number, TeamStanding>();
 

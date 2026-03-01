@@ -42,7 +42,7 @@ export function usePredictions() {
     (matchId: number) => {
       return predictions.predictions[String(matchId)] ?? null;
     },
-    [predictions]
+    [predictions],
   );
 
   return {
