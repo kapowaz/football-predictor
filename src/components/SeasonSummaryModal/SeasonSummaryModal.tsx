@@ -107,7 +107,7 @@ export function SeasonSummaryModal({ standings, isOpen, onClose }: SeasonSummary
                     <span className={styles.championName}>{champion?.team.name}!</span>
                   </h2>
 
-                  <p className={styles.championSubheading}>EFLChampionship Champions 2025/26!</p>
+                  <p className={styles.championSubheading}>EFL Championship Champions 2025/26!</p>
 
                   <hr className={styles.divider} />
 
