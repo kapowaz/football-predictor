@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import * as styles from './ScoreInput.css';
 
 interface ScoreInputProps {
@@ -8,22 +8,35 @@ interface ScoreInputProps {
 }
 
 export function ScoreInput({ homeGoals, awayGoals, onChange }: ScoreInputProps) {
+  const [localHome, setLocalHome] = useState<number | null>(homeGoals);
+  const [localAway, setLocalAway] = useState<number | null>(awayGoals);
+
+  useEffect(() => {
+    setLocalHome(homeGoals);
+  }, [homeGoals]);
+
+  useEffect(() => {
+    setLocalAway(awayGoals);
+  }, [awayGoals]);
+
   const handleHomeChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
       const value = e.target.value;
       const parsed = value === '' ? null : Math.max(0, parseInt(value, 10) || 0);
-      onChange(parsed, awayGoals);
+      setLocalHome(parsed);
+      onChange(parsed, localAway);
     },
-    [awayGoals, onChange],
+    [localAway, onChange],
   );
 
   const handleAwayChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
       const value = e.target.value;
       const parsed = value === '' ? null : Math.max(0, parseInt(value, 10) || 0);
-      onChange(homeGoals, parsed);
+      setLocalAway(parsed);
+      onChange(localHome, parsed);
     },
-    [homeGoals, onChange],
+    [localHome, onChange],
   );
 
   return (
@@ -33,7 +46,7 @@ export function ScoreInput({ homeGoals, awayGoals, onChange }: ScoreInputProps) 
         min="0"
         max="99"
         className={styles.input}
-        value={homeGoals ?? ''}
+        value={localHome ?? ''}
         onChange={handleHomeChange}
         aria-label="Home team goals"
       />
@@ -43,7 +56,7 @@ export function ScoreInput({ homeGoals, awayGoals, onChange }: ScoreInputProps) 
         min="0"
         max="99"
         className={styles.input}
-        value={awayGoals ?? ''}
+        value={localAway ?? ''}
         onChange={handleAwayChange}
         aria-label="Away team goals"
       />

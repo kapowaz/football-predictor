@@ -72,12 +72,16 @@ export const panelTitle = style({
 
 export const resetButton = style({
   padding: '8px 16px',
-  fontSize: '13px',
-  fontWeight: 500,
+  fontFamily:
+    '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
+  fontSize: '12px',
+  fontWeight: 600,
+  textTransform: 'uppercase',
+  letterSpacing: '-0.02em',
   color: '#dc2626',
   backgroundColor: '#fef2f2',
   border: '1px solid #fecaca',
-  borderRadius: '6px',
+  borderRadius: '3px',
   cursor: 'pointer',
   transition: 'background-color 0.2s',
   ':hover': {

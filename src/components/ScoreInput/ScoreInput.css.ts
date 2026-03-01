@@ -10,7 +10,9 @@ export const input = style({
   width: '32px',
   height: '32px',
   textAlign: 'center',
-  fontSize: '18px',
+  fontFamily:
+    '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
+  fontSize: '14px',
   fontWeight: 600,
   border: '2px solid #e0e0e0',
   borderRadius: '6px',
