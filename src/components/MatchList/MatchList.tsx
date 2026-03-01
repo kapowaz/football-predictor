@@ -122,6 +122,9 @@ export function MatchList({
     <div className={styles.container} ref={containerRef}>
       {groupedMatches.map((group) => {
         const isExpanded = expandedDate === group.date;
+        const allPredicted = group.matches.every(
+          (match) => predictions.predictions[String(match.id)] != null,
+        );
         return (
           <div
             key={group.date}
@@ -135,7 +138,7 @@ export function MatchList({
             }}
           >
             <button
-              className={styles.dateHeader}
+              className={`${styles.dateHeader}${allPredicted ? ` ${styles.dateHeaderComplete}` : ''}`}
               onClick={() => toggleDate(group.date)}
               aria-expanded={isExpanded}
             >

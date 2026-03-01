@@ -1,6 +1,7 @@
 import { style } from '@vanilla-extract/css';
 import {
   colorTextSecondary,
+  colorSuccess,
   colorBorder,
   fontSizeSm,
   fontSizeBase,
@@ -44,6 +45,10 @@ export const dateHeader = style({
   padding: `0 0 ${space2} 0`,
   width: '100%',
   textAlign: 'left',
+});
+
+export const dateHeaderComplete = style({
+  color: colorSuccess,
 });
 
 export const chevron = style({
