@@ -10,6 +10,7 @@ import { calculateStandings } from './utils/standings';
 import { validateStandings } from './utils/validateStandings';
 import { StandingsTable } from './components/StandingsTable/StandingsTable';
 import { MatchList } from './components/MatchList/MatchList';
+import eflLogo from './assets/efl-championship-logo.svg';
 import * as styles from './App.css';
 
 const teams = (teamsData as TeamsData).teams;
@@ -39,6 +40,7 @@ function App() {
   return (
     <div className={styles.app}>
       <header className={styles.header}>
+        <img src={eflLogo} alt="EFL Championship" className={styles.logo} />
         <h1 className={styles.title}>EFL Championship Predictor</h1>
       </header>
 

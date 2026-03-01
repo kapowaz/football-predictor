@@ -19,7 +19,16 @@ export const app = style({
 });
 
 export const header = style({
-  marginBottom: '32px',
+  display: 'flex',
+  alignItems: 'center',
+  gap: '12px',
+  maxWidth: '1400px',
+  margin: '0 auto 32px',
+});
+
+export const logo = style({
+  height: '36px',
+  width: 'auto',
 });
 
 export const title = style({
