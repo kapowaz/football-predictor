@@ -25,7 +25,7 @@ export function StandingsTable({ standings }: StandingsTableProps) {
       <table className={styles.table}>
         <thead className={styles.thead}>
           <tr>
-            <th className={styles.th}>#</th>
+            <th className={styles.th}></th>
             <th className={styles.th}>Team</th>
             <th className={styles.thCenter}>P</th>
             <th className={styles.thCenter}>W</th>
@@ -34,8 +34,8 @@ export function StandingsTable({ standings }: StandingsTableProps) {
             <th className={styles.thCenter}>GF</th>
             <th className={styles.thCenter}>GA</th>
             <th className={styles.thCenter}>GD</th>
-            <th className={styles.thRight}>Pts</th>
-            <th className={styles.thRight}>Form</th>
+            <th className={styles.thCenter}>Pts</th>
+            <th className={styles.thCenter}>Form</th>
           </tr>
         </thead>
         <tbody>
@@ -72,7 +72,7 @@ export function StandingsTable({ standings }: StandingsTableProps) {
               >
                 {formatGD(standing.goalDifference)}
               </td>
-              <td className={`${styles.tdRight} ${styles.points}`}>{standing.points}</td>
+              <td className={`${styles.tdCenter} ${styles.points}`}>{standing.points}</td>
               <td className={styles.td}>
                 <div className={styles.formCell}>
                   {standing.form.map((result, i) => (

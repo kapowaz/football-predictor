@@ -36,13 +36,6 @@ export const thCenter = style([
   },
 ]);
 
-export const thRight = style([
-  th,
-  {
-    textAlign: 'right',
-  },
-]);
-
 export const tr = style({
   transition: 'background-color 0.2s',
   ':hover': {
