@@ -1,73 +1,68 @@
-# React + TypeScript + Vite
+# EFL Championship Predictor
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple application that lets you predict the outcome of every remaining EFL Championship fixture and see how the final league table could look. Enter score predictions for upcoming matches and watch the standings update in real time.
 
-Currently, two official plugins are available:
+Built with React, TypeScript, Vite and [Vanilla Extract](https://vanilla-extract.style/). Match and standings data is sourced from the [football-data.org](https://www.football-data.org/) API.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Setup
 
-## React Compiler
+### Prerequisites
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- [Node.js](https://nodejs.org/) (v18+)
+- [Yarn](https://classic.yarnpkg.com/) (v1)
 
-## Expanding the ESLint configuration
+### API Key
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+The data-fetching script requires a free API key from football-data.org:
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+1. Create an account and get an API key at <https://www.football-data.org/>
+2. Copy the example environment file and add your key:
+   ```bash
+   cp .env.example .env
+   ```
+3. Open `.env` and replace `your_api_key_here` with your actual API key.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Install & Run
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+# Install dependencies
+yarn install
+
+# Fetch the latest data from football-data.org
+yarn fetch-data
+
+# Start the dev server
+yarn dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+The app will be available at `http://localhost:5173`.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Other Commands
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+| Command        | Description                          |
+| -------------- | ------------------------------------ |
+| `yarn build`   | Type-check and build for production  |
+| `yarn preview` | Preview the production build locally |
+| `yarn lint`    | Run ESLint                           |
+| `yarn format`  | Format source files with Prettier    |
+
+## Data Files
+
+All data lives in `src/data/` as static JSON files. Three of these are fetched from the football-data.org API by running `yarn fetch-data`; the other two are maintained by hand.
+
+### Fetched automatically
+
+| File             | Description                                                                                                   |
+| ---------------- | ------------------------------------------------------------------------------------------------------------- |
+| `teams.json`     | The list of teams currently in the Championship, including abbreviated names and identifiers for club badges. |
+| `matches.json`   | Every fixture for the season with dates, status and scores for completed matches.                             |
+| `standings.json` | The official league table from the API; this is used to validate the standings calculation is correct!        |
+
+To pull in the latest results and standings, run `yarn fetch-data` periodically. The script fetches teams, matches, and standings sequentially from the API and writes the updated JSON files to `src/data/`.
+
+### Maintained manually
+
+| File              | Description                                                                                                                                                               |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `overrides.json`  | Match-level overrides that take precedence over `matches.json`. Useful for correcting data that the API reports incorrectly (e.g. a match result that was later amended). |
+| `deductions.json` | Points deductions applied to specific teams, including the amount and the reason for the deduction.                                                                       |
