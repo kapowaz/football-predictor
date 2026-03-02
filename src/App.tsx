@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect, useRef } from 'react';
+import { useState, useMemo } from 'react';
 import teamsData from './data/teams.json';
 import matchesData from './data/matches.json';
 import overridesData from './data/overrides.json';
@@ -38,19 +38,17 @@ function App() {
   const standings = useStandings(teams, matches, predictions, deductions);
 
   const allFixturesResolved = useMemo(() => {
-    return matches.every(
-      (m) => m.status === 'FINISHED' || String(m.id) in predictions.predictions,
-    );
+    return matches.every((m) => m.status === 'FINISHED' || String(m.id) in predictions.predictions);
   }, [predictions]);
 
   const [summaryDismissed, setSummaryDismissed] = useState(false);
-  const prevResolved = useRef(allFixturesResolved);
-  useEffect(() => {
-    if (prevResolved.current && !allFixturesResolved) {
+  const [prevAllResolved, setPrevAllResolved] = useState(allFixturesResolved);
+  if (prevAllResolved !== allFixturesResolved) {
+    setPrevAllResolved(allFixturesResolved);
+    if (prevAllResolved && !allFixturesResolved) {
       setSummaryDismissed(false);
     }
-    prevResolved.current = allFixturesResolved;
-  }, [allFixturesResolved]);
+  }
 
   const predictedCount = Object.keys(predictions.predictions).length;
 
