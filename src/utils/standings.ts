@@ -3,6 +3,7 @@ import type {
   Match,
   TeamStanding,
   FormResult,
+  FormEntry,
   PointDeduction,
   PredictionsStore,
 } from '../types';
@@ -12,6 +13,8 @@ const FORM_LENGTH = 6;
 interface MatchResult {
   homeTeamId: number;
   awayTeamId: number;
+  homeTeamName: string;
+  awayTeamName: string;
   homeGoals: number;
   awayGoals: number;
 }
@@ -38,14 +41,13 @@ function createEmptyStanding(team: Team): TeamStanding {
   };
 }
 
-function applyResult(standing: TeamStanding, goalsFor: number, goalsAgainst: number): void {
+function applyResult(standing: TeamStanding, goalsFor: number, goalsAgainst: number, entry: FormEntry): void {
   standing.played += 1;
   standing.goalsFor += goalsFor;
   standing.goalsAgainst += goalsAgainst;
   standing.goalDifference = standing.goalsFor - standing.goalsAgainst;
 
-  const result = getFormResult(goalsFor, goalsAgainst);
-  standing.form.push(result);
+  standing.form.push(entry);
   if (standing.form.length > FORM_LENGTH) {
     standing.form = standing.form.slice(-FORM_LENGTH);
   }
@@ -129,10 +131,17 @@ export function calculateStandings(
   const results: MatchResult[] = [];
 
   for (const match of matches) {
+    const homeTeam = standingsMap.get(match.homeTeamId);
+    const awayTeam = standingsMap.get(match.awayTeamId);
+    const homeTeamName = homeTeam?.team.shortName ?? '';
+    const awayTeamName = awayTeam?.team.shortName ?? '';
+
     if (match.status === 'FINISHED' && match.homeGoals !== null && match.awayGoals !== null) {
       results.push({
         homeTeamId: match.homeTeamId,
         awayTeamId: match.awayTeamId,
+        homeTeamName,
+        awayTeamName,
         homeGoals: match.homeGoals,
         awayGoals: match.awayGoals,
       });
@@ -142,6 +151,8 @@ export function calculateStandings(
         results.push({
           homeTeamId: match.homeTeamId,
           awayTeamId: match.awayTeamId,
+          homeTeamName,
+          awayTeamName,
           homeGoals: prediction.homeGoals,
           awayGoals: prediction.awayGoals,
         });
@@ -152,12 +163,23 @@ export function calculateStandings(
   for (const result of results) {
     const homeStanding = standingsMap.get(result.homeTeamId);
     const awayStanding = standingsMap.get(result.awayTeamId);
+    const entry: FormEntry = {
+      result: getFormResult(result.homeGoals, result.awayGoals),
+      homeTeamName: result.homeTeamName,
+      awayTeamName: result.awayTeamName,
+      homeGoals: result.homeGoals,
+      awayGoals: result.awayGoals,
+    };
 
     if (homeStanding) {
-      applyResult(homeStanding, result.homeGoals, result.awayGoals);
+      applyResult(homeStanding, result.homeGoals, result.awayGoals, entry);
     }
     if (awayStanding) {
-      applyResult(awayStanding, result.awayGoals, result.homeGoals);
+      const awayEntry: FormEntry = {
+        ...entry,
+        result: getFormResult(result.awayGoals, result.homeGoals),
+      };
+      applyResult(awayStanding, result.awayGoals, result.homeGoals, awayEntry);
     }
   }
 

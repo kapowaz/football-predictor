@@ -65,6 +65,14 @@ export interface ApiStandingsData {
 
 export type FormResult = 'W' | 'D' | 'L';
 
+export interface FormEntry {
+  result: FormResult;
+  homeTeamName: string;
+  awayTeamName: string;
+  homeGoals: number;
+  awayGoals: number;
+}
+
 export interface TeamStanding {
   team: Team;
   played: number;
@@ -76,5 +84,5 @@ export interface TeamStanding {
   goalDifference: number;
   points: number;
   deduction: number;
-  form: FormResult[];
+  form: FormEntry[];
 }

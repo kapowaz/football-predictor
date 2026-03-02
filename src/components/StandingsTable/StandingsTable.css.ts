@@ -151,6 +151,7 @@ export const formBadge = style({
   fontWeight: 700,
   color: colorTextWhite,
   lineHeight: 1,
+  cursor: 'help',
 });
 
 export const formWin = style({

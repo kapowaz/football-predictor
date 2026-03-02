@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import type { TeamStanding, FormResult } from '../../types';
+import type { TeamStanding, FormResult, FormEntry } from '../../types';
 import { getCrest } from '../../assets/crests';
 import * as styles from './StandingsTable.css';
 
@@ -10,6 +10,10 @@ interface StandingsTableProps {
 function formatGD(gd: number): string {
   if (gd > 0) return `+${gd}`;
   return String(gd);
+}
+
+function formatFormTitle(entry: FormEntry): string {
+  return `${entry.homeTeamName} ${entry.homeGoals}-${entry.awayGoals} ${entry.awayTeamName}`;
 }
 
 const formStyles: Record<FormResult, string> = {
@@ -73,9 +77,13 @@ export function StandingsTable({ standings }: StandingsTableProps) {
               <td className={clsx(styles.tdCenter, styles.points)}>{standing.points}</td>
               <td className={styles.td}>
                 <div className={styles.formCell}>
-                  {standing.form.map((result, i) => (
-                    <span key={i} className={clsx(styles.formBadge, formStyles[result])}>
-                      {result}
+                  {standing.form.map((entry, i) => (
+                    <span
+                      key={i}
+                      className={clsx(styles.formBadge, formStyles[entry.result])}
+                      title={formatFormTitle(entry)}
+                    >
+                      {entry.result}
                     </span>
                   ))}
                 </div>
