@@ -1,5 +1,5 @@
 import { useState, useCallback, useEffect, useRef } from 'react';
-import type { PredictionsStore } from '../types';
+import type { Match, PredictionsStore } from '../types';
 import { loadPredictions, savePredictions, clearPredictions } from '../utils/storage';
 import { encodePredictions, decodePredictions } from '../utils/serialization';
 
@@ -8,13 +8,14 @@ const buildUrl = (params: URLSearchParams): string => {
   return window.location.pathname + (search ? `?${search}` : '');
 };
 
-const loadInitialPredictions = (): PredictionsStore => {
+const loadInitialPredictions = (matches: Match[]): PredictionsStore => {
   const params = new URLSearchParams(window.location.search);
   const encoded = params.get('predictions');
 
   if (encoded) {
     try {
-      const decoded = decodePredictions(encoded);
+      const decoded = decodePredictions(encoded, matches);
+
       return {
         predictions: decoded,
         lastModified: new Date().toISOString(),
@@ -27,8 +28,10 @@ const loadInitialPredictions = (): PredictionsStore => {
   return loadPredictions();
 };
 
-export const usePredictions = () => {
-  const [predictions, setPredictions] = useState<PredictionsStore>(loadInitialPredictions);
+export const usePredictions = (matches: Match[]) => {
+  const [predictions, setPredictions] = useState<PredictionsStore>(() =>
+    loadInitialPredictions(matches),
+  );
   const isInitialRender = useRef(true);
 
   useEffect(() => {
@@ -38,8 +41,7 @@ export const usePredictions = () => {
     const entries = Object.keys(predictions.predictions);
 
     if (entries.length > 0) {
-      const encoded = encodePredictions(predictions.predictions);
-      console.log('Encoded predictions:', encoded);
+      const encoded = encodePredictions(predictions.predictions, matches);
       params.set('predictions', encoded);
     } else {
       params.delete('predictions');
@@ -52,7 +54,7 @@ export const usePredictions = () => {
     } else {
       window.history.pushState(null, '', url);
     }
-  }, [predictions]);
+  }, [predictions, matches]);
 
   const setPrediction = useCallback((matchId: number, homeGoals: number, awayGoals: number) => {
     setPredictions((prev) => ({

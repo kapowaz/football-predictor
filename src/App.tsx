@@ -44,7 +44,8 @@ validateStandings(calculatedFromResults, apiStandings);
 const teamsById = new Map(teams.map((t) => [t.id, t]));
 
 const App = () => {
-  const { predictions, setPrediction, removePrediction, resetAllPredictions } = usePredictions();
+  const { predictions, setPrediction, removePrediction, resetAllPredictions } =
+    usePredictions(matches);
   const {
     deductions,
     isCustomised: deductionsCustomised,
