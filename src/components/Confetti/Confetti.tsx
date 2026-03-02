@@ -131,11 +131,8 @@ export const Confetti = ({
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const canvasParent = canvas.parentNode as HTMLElement;
-    if (!canvasParent) return;
-
-    const canvasWidth = canvasParent.offsetWidth;
-    const canvasHeight = canvasParent.offsetHeight;
+    const canvasWidth = window.innerWidth;
+    const canvasHeight = window.innerHeight;
     const bounds = new Vector2(canvasWidth, canvasHeight);
 
     canvas.width = canvasWidth * window.devicePixelRatio;
@@ -147,11 +144,8 @@ export const Confetti = ({
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const canvasParent = canvas.parentNode as HTMLElement;
-    if (!canvasParent) return;
-
-    const canvasWidth = canvasParent.offsetWidth;
-    const canvasHeight = canvasParent.offsetHeight;
+    const canvasWidth = window.innerWidth;
+    const canvasHeight = window.innerHeight;
     const bounds = new Vector2(canvasWidth, canvasHeight);
 
     canvas.width = canvasWidth * window.devicePixelRatio;

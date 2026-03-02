@@ -40,7 +40,7 @@ export const SeasonSummaryModal = ({ standings, isOpen, onClose }: SeasonSummary
   const click = useClick(context);
   const dismiss = useDismiss(context, { outsidePressEvent: 'mousedown' });
   const role = useRole(context, { role: 'dialog' });
-  const [showConfetti, setShowConfetti] = useState(true);
+  const [showConfetti, setShowConfetti] = useState(isOpen);
 
   const { getFloatingProps } = useInteractions([click, dismiss, role]);
 
@@ -58,7 +58,7 @@ export const SeasonSummaryModal = ({ standings, isOpen, onClose }: SeasonSummary
 
   return (
     <div className={styles.container}>
-      {isOpen && showConfetti && (
+      {showConfetti && (
         <Confetti
           isLooping={false}
           particleDensity={20}
