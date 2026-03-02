@@ -4,21 +4,14 @@ import {
   colorTextPrimary,
   colorTextHeading,
   colorTextSecondary,
-  colorDanger,
-  colorDangerBg,
-  colorDangerBgHover,
-  colorDangerBorder,
   fontFamily,
   fontSizeXl,
   fontSizeLg,
   fontSizeSm,
-  space1,
-  space2,
   space3,
   space4,
   space6,
   space8,
-  radiusSm,
   maxWidthContent,
 } from './theme.css';
 
@@ -103,12 +96,14 @@ export const panelHeader = style({
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',
+  height: '32px',
 });
 
 export const panelHeaderWithNotes = style({
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',
+  height: '32px',
   gap: space3,
   '@media': {
     'screen and (max-width: 680px)': {
@@ -139,45 +134,6 @@ export const panelTitle = style({
   fontWeight: 600,
   color: colorTextHeading,
   margin: 0,
-});
-
-export const resetButton = style({
-  padding: `${space2} ${space4}`,
-  fontFamily: fontFamily,
-  fontSize: fontSizeSm,
-  fontWeight: 600,
-  textTransform: 'uppercase',
-  letterSpacing: '-0.02em',
-  color: colorDanger,
-  backgroundColor: colorDangerBg,
-  border: `1px solid ${colorDangerBorder}`,
-  borderRadius: radiusSm,
-  cursor: 'pointer',
-  transition: 'background-color 0.2s',
-  ':hover': {
-    backgroundColor: colorDangerBgHover,
-  },
-});
-
-export const deductionsButton = style({
-  display: 'inline-flex',
-  alignItems: 'center',
-  gap: space1,
-  padding: `${space2} ${space4}`,
-  fontFamily: fontFamily,
-  fontSize: fontSizeSm,
-  fontWeight: 600,
-  textTransform: 'uppercase',
-  letterSpacing: '-0.02em',
-  color: colorDanger,
-  backgroundColor: colorDangerBg,
-  border: `1px solid ${colorDangerBorder}`,
-  borderRadius: radiusSm,
-  cursor: 'pointer',
-  transition: 'background-color 0.2s',
-  ':hover': {
-    backgroundColor: colorDangerBgHover,
-  },
 });
 
 export const deductionsButtonIcon = style({

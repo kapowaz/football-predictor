@@ -10,6 +10,7 @@ import {
 import { AnimatePresence, motion } from 'framer-motion';
 import type { PointDeduction, Team } from '../../types';
 import { getCrest } from '../../assets/crests';
+import { Button } from '../Button';
 import * as styles from './DeductionsModal.css';
 
 interface DeductionsModalProps {
@@ -243,17 +244,17 @@ export function DeductionsModal({
                       className={styles.reasonInput}
                       aria-label="Reason for deduction"
                     />
-                    <button className={styles.addButton} onClick={handleAdd} disabled={!canAdd}>
+                    <Button variant="success" onClick={handleAdd} disabled={!canAdd}>
                       Add Deduction
-                    </button>
+                    </Button>
                   </div>
                 </div>
 
                 {isCustomised && (
                   <div className={styles.footer}>
-                    <button className={styles.resetButton} onClick={onReset}>
+                    <Button variant="danger" onClick={onReset}>
                       Reset to Defaults
-                    </button>
+                    </Button>
                   </div>
                 )}
               </motion.div>

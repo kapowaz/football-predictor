@@ -8,10 +8,6 @@ import {
   colorTextPrimary,
   colorTextSecondary,
   colorDanger,
-  colorDangerBg,
-  colorDangerBgHover,
-  colorDangerBorder,
-  colorSuccess,
   colorFocus,
   fontFamily,
   fontSizeXl,
@@ -20,7 +16,6 @@ import {
   fontSizeSm,
   space2,
   space3,
-  space4,
   space6,
   space8,
   radiusSm,
@@ -250,52 +245,6 @@ export const reasonInput = style({
   ':focus': {
     borderColor: colorFocus,
     boxShadow: `0 0 0 2px rgba(59, 130, 246, 0.2)`,
-  },
-});
-
-export const addButton = style({
-  padding: `${space2} ${space4}`,
-  fontFamily: fontFamily,
-  fontSize: fontSizeSm,
-  fontWeight: 600,
-  textTransform: 'uppercase',
-  letterSpacing: '-0.02em',
-  whiteSpace: 'nowrap',
-  color: colorSuccess,
-  backgroundColor: colorBgSurface,
-  border: `1px solid ${colorSuccess}`,
-  borderRadius: radiusSm,
-  cursor: 'pointer',
-  flexShrink: 0,
-  transition: 'background-color 0.2s, opacity 0.2s',
-  ':hover': {
-    backgroundColor: colorBgSurfaceHover,
-  },
-  ':disabled': {
-    opacity: 0.4,
-    cursor: 'not-allowed',
-  },
-});
-
-export const resetButton = style({
-  padding: `${space2} ${space4}`,
-  fontFamily: fontFamily,
-  fontSize: fontSizeSm,
-  fontWeight: 600,
-  textTransform: 'uppercase',
-  letterSpacing: '-0.02em',
-  color: colorDanger,
-  backgroundColor: colorDangerBg,
-  border: `1px solid ${colorDangerBorder}`,
-  borderRadius: radiusSm,
-  cursor: 'pointer',
-  transition: 'background-color 0.2s, opacity 0.2s',
-  ':hover': {
-    backgroundColor: colorDangerBgHover,
-  },
-  ':disabled': {
-    opacity: 0.4,
-    cursor: 'not-allowed',
   },
 });
 

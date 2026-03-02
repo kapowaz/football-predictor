@@ -13,6 +13,7 @@ import { validateStandings } from './utils/validateStandings';
 import { StandingsTable } from './components/StandingsTable/StandingsTable';
 import { SeasonSummaryModal } from './components/SeasonSummaryModal';
 import { DeductionsModal } from './components/DeductionsModal';
+import { Button } from './components/Button';
 import { MatchList } from './components/MatchList/MatchList';
 import eflLogo from './assets/efl-championship-logo.svg';
 import * as styles from './App.css';
@@ -105,8 +106,8 @@ function App() {
                   ))}
                 </div>
               )}
-              <button
-                className={styles.deductionsButton}
+              <Button
+                variant="danger"
                 onClick={() => setDeductionsModalOpen(true)}
               >
                 <svg
@@ -126,7 +127,7 @@ function App() {
                   <path d="M8 12h8" />
                 </svg>
                 Deductions
-              </button>
+              </Button>
             </div>
           </div>
           <StandingsTable standings={standings} deductionMarkers={deductionMarkers} />
@@ -136,9 +137,9 @@ function App() {
           <div className={styles.panelHeader}>
             <h2 className={styles.panelTitle}>Fixtures</h2>
             {predictedCount > 0 && (
-              <button className={styles.resetButton} onClick={resetAllPredictions}>
+              <Button variant="danger" onClick={resetAllPredictions}>
                 Reset Predictions
-              </button>
+              </Button>
             )}
           </div>
           <MatchList
