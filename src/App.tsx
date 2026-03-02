@@ -69,7 +69,7 @@ function App() {
 
         <div className={styles.panel}>
           <div className={styles.panelHeader}>
-            <h2 className={styles.panelTitle}>Remaining Fixtures</h2>
+            <h2 className={styles.panelTitle}>Fixtures</h2>
             {predictedCount > 0 && (
               <button className={styles.resetButton} onClick={resetAllPredictions}>
                 Reset Predictions

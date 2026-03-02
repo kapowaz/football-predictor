@@ -2,11 +2,11 @@ import { style } from '@vanilla-extract/css';
 import {
   colorTextSecondary,
   colorSuccess,
-  colorBorder,
   fontSizeSm,
   fontSizeBase,
+  space1,
   space2,
-  space3,
+  space4,
   space6,
   space12,
 } from '../../theme.css';
@@ -15,7 +15,7 @@ export const container = style({
   position: 'relative',
   display: 'flex',
   flexDirection: 'column',
-  gap: space6,
+  gap: space4,
   overflow: 'auto',
   maxHeight: 'calc(100vh - 140px)',
 });
@@ -23,6 +23,7 @@ export const container = style({
 export const dateGroup = style({
   display: 'flex',
   flexDirection: 'column',
+  gap: space2,
 });
 
 export const dateHeader = style({
@@ -39,10 +40,7 @@ export const dateHeader = style({
   userSelect: 'none',
   background: 'none',
   border: 'none',
-  borderBottomStyle: 'solid',
-  borderBottomWidth: '1px',
-  borderBottomColor: colorBorder,
-  padding: `0 0 ${space2} 0`,
+  padding: `${space1} 0`,
   width: '100%',
   textAlign: 'left',
 });
@@ -78,7 +76,6 @@ export const matchesList = style({
   display: 'flex',
   flexDirection: 'column',
   gap: space2,
-  paddingTop: space3,
   overflow: 'hidden',
   minHeight: 0,
 });
