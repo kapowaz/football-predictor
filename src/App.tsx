@@ -84,7 +84,7 @@ const App = () => {
         const marker = '*'.repeat(i + 1);
         return {
           label: `${marker}${team?.shortName ?? `Team ${d.teamId}`} -${d.amount} pts`,
-          reason: d.reason,
+          reason: d.reason ?? '',
         };
       }),
     [deductions],
@@ -124,7 +124,11 @@ const App = () => {
               {deductionNotes.length > 0 && (
                 <div className={styles.deductionNotes}>
                   {deductionNotes.map((note) => (
-                    <span key={note.label} className={styles.deductionNote} title={note.reason}>
+                    <span
+                      key={note.label}
+                      className={styles.deductionNote}
+                      title={note.reason || undefined}
+                    >
                       {note.label}
                     </span>
                   ))}

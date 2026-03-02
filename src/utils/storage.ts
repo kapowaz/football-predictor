@@ -38,11 +38,27 @@ export const clearPredictions = (): void => {
   }
 };
 
+const isValidDeduction = (d: unknown): d is PointDeduction =>
+  typeof d === 'object' &&
+  d !== null &&
+  'teamId' in d &&
+  'amount' in d &&
+  typeof (d as PointDeduction).teamId === 'number' &&
+  typeof (d as PointDeduction).amount === 'number' &&
+  Number.isFinite((d as PointDeduction).teamId) &&
+  Number.isFinite((d as PointDeduction).amount);
+
 export const loadDeductions = (): PointDeduction[] | null => {
   try {
     const stored = localStorage.getItem(DEDUCTIONS_STORAGE_KEY);
     if (stored !== null) {
-      return JSON.parse(stored) as PointDeduction[];
+      const parsed = JSON.parse(stored) as unknown[];
+      if (!Array.isArray(parsed) || !parsed.every(isValidDeduction)) {
+        console.error('Corrupted deductions in localStorage, discarding');
+        localStorage.removeItem(DEDUCTIONS_STORAGE_KEY);
+        return null;
+      }
+      return parsed;
     }
   } catch (error) {
     console.error('Failed to load deductions from localStorage:', error);

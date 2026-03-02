@@ -83,10 +83,25 @@ export const decodePredictions = (
 };
 
 export const encodeDeductions = (deductions: PointDeduction[]): string => {
-  return btoa(JSON.stringify(deductions));
+  return deductions.map((d) => `${d.teamId}.${d.amount}`).join('_');
 };
 
-export const decodeDeductions = (encoded: string): PointDeduction[] => {
+export const decodeDeductions = (
+  encoded: string,
+  defaults: PointDeduction[] = [],
+): PointDeduction[] => {
   if (!encoded) return [];
-  return JSON.parse(atob(encoded)) as PointDeduction[];
+  const reasonsByTeamId = new Map(
+    defaults.filter((d) => d.reason).map((d) => [d.teamId, d.reason]),
+  );
+  return encoded.split('_').map((pair) => {
+    const parts = pair.split('.');
+    if (parts.length !== 2) throw new Error(`Invalid deduction pair: ${pair}`);
+    const teamId = Number(parts[0]);
+    const amount = Number(parts[1]);
+    if (!Number.isInteger(teamId) || !Number.isInteger(amount) || teamId <= 0 || amount < 0) {
+      throw new Error(`Invalid deduction values: teamId=${parts[0]}, amount=${parts[1]}`);
+    }
+    return { teamId, amount, reason: reasonsByTeamId.get(teamId) ?? '' };
+  });
 };

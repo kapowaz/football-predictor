@@ -17,7 +17,7 @@ const loadInitialDeductions = (defaults: PointDeduction[]): {
 
   if (encoded !== null) {
     try {
-      return { deductions: decodeDeductions(encoded), isCustomised: true };
+      return { deductions: decodeDeductions(encoded, defaults), isCustomised: true };
     } catch (e) {
       console.error('Failed to decode deductions from URL:', e);
     }
@@ -59,16 +59,16 @@ export const useDeductions = (defaults: PointDeduction[]) => {
     }
   }, [deductions, isCustomised]);
 
-  const updateDeduction = useCallback((teamId: number, amount: number, reason: string) => {
+  const updateDeduction = useCallback((teamId: number, amount: number) => {
     setIsCustomised(true);
     setDeductions((prev) =>
-      prev.map((d) => (d.teamId === teamId ? { ...d, amount, reason } : d)),
+      prev.map((d) => (d.teamId === teamId ? { ...d, amount } : d)),
     );
   }, []);
 
-  const addDeduction = useCallback((teamId: number, amount: number, reason: string) => {
+  const addDeduction = useCallback((teamId: number, amount: number) => {
     setIsCustomised(true);
-    setDeductions((prev) => [...prev, { teamId, amount, reason }]);
+    setDeductions((prev) => [...prev, { teamId, amount }]);
   }, []);
 
   const removeDeduction = useCallback((teamId: number) => {

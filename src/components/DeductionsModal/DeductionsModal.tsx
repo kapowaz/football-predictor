@@ -19,8 +19,8 @@ interface DeductionsModalProps {
   deductions: PointDeduction[];
   teams: Team[];
   isCustomised: boolean;
-  onUpdate: (teamId: number, amount: number, reason: string) => void;
-  onAdd: (teamId: number, amount: number, reason: string) => void;
+  onUpdate: (teamId: number, amount: number) => void;
+  onAdd: (teamId: number, amount: number) => void;
   onRemove: (teamId: number) => void;
   onReset: () => void;
 }
@@ -33,7 +33,7 @@ const DeductionRow = ({
 }: {
   deduction: PointDeduction;
   team: Team | undefined;
-  onUpdate: (teamId: number, amount: number, reason: string) => void;
+  onUpdate: (teamId: number, amount: number) => void;
   onRemove: (teamId: number) => void;
 }) => {
   const handleAmountChange = useCallback(
@@ -42,17 +42,10 @@ const DeductionRow = ({
       const value = parseInt(stripped, 10);
       if (stripped === '') return;
       if (!isNaN(value) && value >= 0) {
-        onUpdate(deduction.teamId, value, deduction.reason);
+        onUpdate(deduction.teamId, value);
       }
     },
-    [deduction.teamId, deduction.reason, onUpdate],
-  );
-
-  const handleReasonChange = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => {
-      onUpdate(deduction.teamId, deduction.amount, e.target.value);
-    },
-    [deduction.teamId, deduction.amount, onUpdate],
+    [deduction.teamId, onUpdate],
   );
 
   const teamLabel = team?.name ?? `Team ${deduction.teamId}`;
@@ -98,13 +91,9 @@ const DeductionRow = ({
           </button>
         </div>
       </div>
-      <input
-        type="text"
-        value={deduction.reason}
-        onChange={handleReasonChange}
-        className={styles.deductionReasonInput}
-        aria-label={`Reason for ${teamLabel} deduction`}
-      />
+      {deduction.reason && (
+        <span className={styles.deductionReasonText}>{deduction.reason}</span>
+      )}
     </div>
   );
 };
@@ -147,18 +136,16 @@ export const DeductionsModal = ({
 
   const [newTeamId, setNewTeamId] = useState<number | ''>('');
   const [newAmount, setNewAmount] = useState('');
-  const [newReason, setNewReason] = useState('');
 
   const canAdd =
-    newTeamId !== '' && newAmount !== '' && parseInt(newAmount, 10) > 0 && newReason.trim() !== '';
+    newTeamId !== '' && newAmount !== '' && parseInt(newAmount, 10) > 0;
 
   const handleAdd = useCallback(() => {
     if (!canAdd || typeof newTeamId !== 'number') return;
-    onAdd(newTeamId, parseInt(newAmount, 10), newReason.trim());
+    onAdd(newTeamId, parseInt(newAmount, 10));
     setNewTeamId('');
     setNewAmount('');
-    setNewReason('');
-  }, [canAdd, newTeamId, newAmount, newReason, onAdd]);
+  }, [canAdd, newTeamId, newAmount, onAdd]);
 
   return (
     <div className={styles.container}>
@@ -208,47 +195,35 @@ export const DeductionsModal = ({
                 <hr className={styles.divider} />
 
                 <div className={styles.sectionLabel}>Add Deduction</div>
-                <div className={styles.addForm}>
-                  <div className={styles.addFormRow}>
-                    <select
-                      className={styles.teamSelect}
-                      value={newTeamId}
-                      onChange={(e) => setNewTeamId(e.target.value ? Number(e.target.value) : '')}
-                      aria-label="Select team"
-                    >
-                      <option value="">Select a team…</option>
-                      {availableTeams.map((t) => (
-                        <option key={t.id} value={t.id}>
-                          {t.name}
-                        </option>
-                      ))}
-                    </select>
-                    <input
-                      type="text"
-                      inputMode="numeric"
-                      pattern="[0-9]*"
-                      value={newAmount}
-                      onChange={(e) => {
-                        const stripped = e.target.value.replace(/\D/g, '');
-                        setNewAmount(stripped);
-                      }}
-                      className={styles.amountInput}
-                      aria-label="Points to deduct"
-                    />
-                  </div>
-                  <div className={styles.addFormRow}>
-                    <input
-                      type="text"
-                      placeholder="Reason for deduction…"
-                      value={newReason}
-                      onChange={(e) => setNewReason(e.target.value)}
-                      className={styles.reasonInput}
-                      aria-label="Reason for deduction"
-                    />
-                    <Button variant="success" onClick={handleAdd} disabled={!canAdd}>
-                      Add Deduction
-                    </Button>
-                  </div>
+                <div className={styles.addFormRow}>
+                  <select
+                    className={styles.teamSelect}
+                    value={newTeamId}
+                    onChange={(e) => setNewTeamId(e.target.value ? Number(e.target.value) : '')}
+                    aria-label="Select team"
+                  >
+                    <option value="">Select a team…</option>
+                    {availableTeams.map((t) => (
+                      <option key={t.id} value={t.id}>
+                        {t.name}
+                      </option>
+                    ))}
+                  </select>
+                  <input
+                    type="text"
+                    inputMode="numeric"
+                    pattern="[0-9]*"
+                    value={newAmount}
+                    onChange={(e) => {
+                      const stripped = e.target.value.replace(/\D/g, '');
+                      setNewAmount(stripped);
+                    }}
+                    className={styles.amountInput}
+                    aria-label="Points to deduct"
+                  />
+                  <Button variant="success" onClick={handleAdd} disabled={!canAdd}>
+                    Add
+                  </Button>
                 </div>
 
                 {isCustomised && (

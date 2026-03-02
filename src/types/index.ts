@@ -9,7 +9,7 @@ export interface Team {
 export interface PointDeduction {
   teamId: number;
   amount: number;
-  reason: string;
+  reason?: string;
 }
 
 export interface TeamsData {

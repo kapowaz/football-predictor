@@ -25,6 +25,7 @@ import {
   shadowSm,
 } from '../../theme.css';
 
+
 export const container = style({
   position: 'relative',
   zIndex: 1,
@@ -169,20 +170,10 @@ export const amountInput = style({
   },
 });
 
-export const deductionReasonInput = style({
-  width: '100%',
-  padding: `${space2} ${space3}`,
-  fontFamily: fontFamily,
+export const deductionReasonText = style({
   fontSize: fontSizeSm,
   color: colorTextSecondary,
-  backgroundColor: colorBgSurface,
-  border: `1px solid ${colorBorderInput}`,
-  borderRadius: radiusSm,
-  outline: 'none',
-  ':focus': {
-    borderColor: colorFocus,
-    boxShadow: `0 0 0 2px rgba(59, 130, 246, 0.2)`,
-  },
+  lineHeight: 1.4,
 });
 
 export const deleteButton = style({
@@ -209,12 +200,6 @@ export const divider = style({
   margin: `${space6} 0`,
 });
 
-export const addForm = style({
-  display: 'flex',
-  flexDirection: 'column',
-  gap: space3,
-});
-
 export const addFormRow = style({
   display: 'flex',
   gap: space3,
@@ -232,22 +217,6 @@ export const teamSelect = style({
   borderRadius: radiusSm,
   outline: 'none',
   cursor: 'pointer',
-  ':focus': {
-    borderColor: colorFocus,
-    boxShadow: `0 0 0 2px rgba(59, 130, 246, 0.2)`,
-  },
-});
-
-export const reasonInput = style({
-  flex: 1,
-  padding: `${space2} ${space3}`,
-  fontFamily: fontFamily,
-  fontSize: fontSizeBase,
-  color: colorTextPrimary,
-  backgroundColor: colorBgSurface,
-  border: `1px solid ${colorBorderInput}`,
-  borderRadius: radiusSm,
-  outline: 'none',
   ':focus': {
     borderColor: colorFocus,
     boxShadow: `0 0 0 2px rgba(59, 130, 246, 0.2)`,
