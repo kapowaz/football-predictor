@@ -10,7 +10,7 @@ import {
   colorDanger,
   colorFocus,
   fontFamily,
-  fontSizeXl,
+  fontSizeXxl,
   fontSizeLg,
   fontSizeBase,
   fontSizeSm,
@@ -65,7 +65,7 @@ export const modal = style({
 });
 
 export const title = style({
-  fontSize: fontSizeXl,
+  fontSize: fontSizeXxl,
   fontWeight: 700,
   color: colorTextHeading,
   margin: 0,

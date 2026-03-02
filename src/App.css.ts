@@ -1,12 +1,17 @@
 import { style, globalStyle } from '@vanilla-extract/css';
 import {
   colorBgPage,
+  colorBgSurface,
   colorTextPrimary,
   colorTextHeading,
   colorTextSecondary,
+  colorBorder,
+  colorFocus,
   fontFamily,
+  fontSizeXxl,
   fontSizeXl,
   fontSizeLg,
+  fontSizeMd,
   fontSizeSm,
   space3,
   space4,
@@ -56,10 +61,15 @@ export const logo = style({
 });
 
 export const title = style({
-  fontSize: fontSizeXl,
+  fontSize: fontSizeXxl,
   fontWeight: 700,
   color: colorTextHeading,
   margin: 0,
+  '@media': {
+    'screen and (max-width: 680px)': {
+      fontSize: fontSizeXl,
+    },
+  },
 });
 
 export const main = style({
@@ -116,6 +126,12 @@ export const panelHeaderRight = style({
   display: 'flex',
   alignItems: 'center',
   gap: space3,
+  '@media': {
+    'screen and (max-width: 680px)': {
+      flex: 1,
+      justifyContent: 'space-between',
+    },
+  },
 });
 
 export const deductionNotes = style({
@@ -134,9 +150,59 @@ export const panelTitle = style({
   fontWeight: 600,
   color: colorTextHeading,
   margin: 0,
+  '@media': {
+    'screen and (max-width: 680px)': {
+      display: 'none',
+    },
+  },
 });
 
 export const deductionsButtonIcon = style({
   width: '14px',
   height: '14px',
+});
+
+const mobileBreakpoint = 'screen and (max-width: 1024px)';
+
+export const tabBar = style({
+  display: 'none',
+  '@media': {
+    [mobileBreakpoint]: {
+      display: 'flex',
+      maxWidth: maxWidthContent,
+      margin: `0 auto ${space4}`,
+      borderBottom: `2px solid ${colorBorder}`,
+      position: 'sticky',
+      left: 0,
+    },
+  },
+});
+
+export const tab = style({
+  flex: 1,
+  padding: `${space3} ${space4}`,
+  fontFamily: fontFamily,
+  fontSize: fontSizeMd,
+  fontWeight: 600,
+  color: colorTextSecondary,
+  background: colorBgSurface,
+  border: 'none',
+  borderBottom: '2px solid transparent',
+  marginBottom: '-2px',
+  cursor: 'pointer',
+  textAlign: 'center',
+  transition: 'color 0.2s, border-color 0.2s',
+});
+
+export const tabActive = style({
+  color: colorTextHeading,
+  borderBottomColor: colorFocus,
+});
+
+export const hiddenOnMobile = style({
+  '@media': {
+    [mobileBreakpoint]: {
+      display: 'none',
+    },
+  },
 });

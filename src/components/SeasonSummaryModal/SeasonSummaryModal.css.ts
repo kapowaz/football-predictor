@@ -8,7 +8,7 @@ import {
   colorDanger,
   colorFocus,
   fontFamily,
-  fontSizeXl,
+  fontSizeXxl,
   fontSizeLg,
   fontSizeBase,
   fontSizeSm,
@@ -57,7 +57,7 @@ export const backgroundCrest = style({
 });
 
 export const championHeading = style({
-  fontSize: fontSizeXl,
+  fontSize: fontSizeXxl,
   fontWeight: 700,
   color: colorTextHeading,
   textAlign: 'center',

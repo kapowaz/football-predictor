@@ -64,6 +64,7 @@ const App = () => {
   }
 
   const [deductionsModalOpen, setDeductionsModalOpen] = useState(false);
+  const [activeTab, setActiveTab] = useState<'standings' | 'fixtures'>('standings');
 
   const deductionMarkers = useMemo(
     () => new Map(deductions.map((d, i) => [d.teamId, '*'.repeat(i + 1)])),
@@ -92,8 +93,23 @@ const App = () => {
         <h1 className={styles.title}>EFL Championship Predictor</h1>
       </header>
 
+      <nav className={styles.tabBar}>
+        <button
+          className={`${styles.tab} ${activeTab === 'standings' ? styles.tabActive : ''}`}
+          onClick={() => setActiveTab('standings')}
+        >
+          Standings
+        </button>
+        <button
+          className={`${styles.tab} ${activeTab === 'fixtures' ? styles.tabActive : ''}`}
+          onClick={() => setActiveTab('fixtures')}
+        >
+          Fixtures
+        </button>
+      </nav>
+
       <main className={styles.main}>
-        <div className={styles.panel}>
+        <div className={`${styles.panel} ${activeTab !== 'standings' ? styles.hiddenOnMobile : ''}`}>
           <div className={styles.panelHeaderWithNotes}>
             <h2 className={styles.panelTitle}>Standings</h2>
             <div className={styles.panelHeaderRight}>
@@ -133,7 +149,7 @@ const App = () => {
           <StandingsTable standings={standings} deductionMarkers={deductionMarkers} />
         </div>
 
-        <div className={styles.panelGuttered}>
+        <div className={`${styles.panelGuttered} ${activeTab !== 'fixtures' ? styles.hiddenOnMobile : ''}`}>
           <div className={styles.panelHeader}>
             <h2 className={styles.panelTitle}>Fixtures</h2>
             {predictedCount > 0 && (

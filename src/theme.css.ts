@@ -50,6 +50,7 @@ export const fontSizeBase = createVar();
 export const fontSizeMd = createVar();
 export const fontSizeLg = createVar();
 export const fontSizeXl = createVar();
+export const fontSizeXxl = createVar();
 
 export const space1 = createVar();
 export const space2 = createVar();
@@ -120,7 +121,8 @@ globalStyle(':root', {
     [fontSizeBase]: '14px',
     [fontSizeMd]: '15px',
     [fontSizeLg]: '18px',
-    [fontSizeXl]: '28px',
+    [fontSizeXl]: '22px',
+    [fontSizeXxl]: '28px',
 
     [space1]: '4px',
     [space2]: '8px',
