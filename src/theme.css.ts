@@ -59,6 +59,7 @@ export const radiusMd = createVar();
 export const radiusLg = createVar();
 
 export const shadowSm = createVar();
+export const shadowMd = createVar();
 
 export const maxWidthContent = createVar();
 
@@ -124,6 +125,7 @@ globalStyle(':root', {
     [radiusLg]: '6px',
 
     [shadowSm]: '0 1px 3px rgba(0, 0, 0, 0.1)',
+    [shadowMd]: '0 2px 6px rgba(0, 0, 0, 0.1)',
 
     [maxWidthContent]: '1400px',
   },

@@ -66,12 +66,14 @@ export const matchesWrapper = style({
   display: 'grid',
   gridTemplateRows: '0fr',
   opacity: 0,
+  pointerEvents: 'none',
   transition: 'grid-template-rows 0.25s ease-in-out, opacity 0.25s ease-in-out',
 });
 
 export const matchesWrapperExpanded = style({
   gridTemplateRows: '1fr',
   opacity: 1,
+  pointerEvents: 'auto',
 });
 
 export const matchesList = style({
@@ -80,6 +82,7 @@ export const matchesList = style({
   gap: space2,
   overflow: 'hidden',
   minHeight: 0,
+  padding: space1,
 });
 
 export const fixtureIndicators = style({
@@ -87,6 +90,7 @@ export const fixtureIndicators = style({
   alignItems: 'center',
   gap: space1,
   marginLeft: 'auto',
+  paddingRight: space1,
 });
 
 export const fixtureCircle = style({

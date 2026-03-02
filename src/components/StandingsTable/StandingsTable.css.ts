@@ -28,13 +28,13 @@ import {
   space3,
   radiusMd,
   radiusLg,
-  shadowSm,
+  shadowMd,
 } from '../../theme.css';
 
 export const container = style({
   backgroundColor: colorBgSurface,
   borderRadius: radiusLg,
-  boxShadow: shadowSm,
+  boxShadow: shadowMd,
   overflow: 'hidden',
 });
 
