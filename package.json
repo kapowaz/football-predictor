@@ -9,6 +9,7 @@
     "lint": "eslint .",
     "format": "prettier --write \"src/**/*.{ts,tsx}\"",
     "fetch-data": "tsx scripts/fetch-data.ts",
+    "fetch-teams": "tsx scripts/fetch-teams.ts",
     "preview": "vite preview"
   },
   "dependencies": {

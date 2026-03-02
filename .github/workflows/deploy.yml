@@ -26,6 +26,9 @@ jobs:
           cache: yarn
 
       - run: yarn install --frozen-lockfile
+      - run: yarn fetch-data
+        env:
+          FOOTBALL_DATA_API_KEY: ${{ secrets.FOOTBALL_DATA_API_KEY }}
       - run: yarn build
 
       - uses: actions/upload-pages-artifact@v3
