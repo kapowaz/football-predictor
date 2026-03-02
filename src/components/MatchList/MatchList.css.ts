@@ -2,6 +2,7 @@ import { style } from '@vanilla-extract/css';
 import {
   colorTextSecondary,
   colorSuccess,
+  colorDanger,
   colorNeutral,
   colorNeutralLight,
   fontSizeSm,
@@ -101,7 +102,15 @@ export const fixtureCircle = style({
   flexShrink: 0,
 });
 
-export const fixtureCirclePredicted = style({
+export const fixtureCircleHomeWin = style({
+  backgroundColor: colorSuccess,
+});
+
+export const fixtureCircleAwayWin = style({
+  backgroundColor: colorDanger,
+});
+
+export const fixtureCircleDraw = style({
   backgroundColor: colorNeutral,
 });
 

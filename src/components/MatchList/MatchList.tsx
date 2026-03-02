@@ -143,16 +143,19 @@ export const MatchList = ({
               <Chevron expanded={isExpanded} />
               {group.dateLabel}
               <span className={styles.fixtureIndicators}>
-                {group.matches.map((match) => (
-                  <span
-                    key={match.id}
-                    className={clsx(
-                      styles.fixtureCircle,
-                      predictions.predictions[String(match.id)] != null &&
-                        styles.fixtureCirclePredicted,
-                    )}
-                  />
-                ))}
+                {group.matches.map((match) => {
+                  const prediction = predictions.predictions[String(match.id)];
+                  return (
+                    <span
+                      key={match.id}
+                      className={clsx(styles.fixtureCircle, prediction != null && {
+                        [styles.fixtureCircleHomeWin]: prediction.homeGoals > prediction.awayGoals,
+                        [styles.fixtureCircleAwayWin]: prediction.homeGoals < prediction.awayGoals,
+                        [styles.fixtureCircleDraw]: prediction.homeGoals === prediction.awayGoals,
+                      })}
+                    />
+                  );
+                })}
               </span>
             </button>
             <div
