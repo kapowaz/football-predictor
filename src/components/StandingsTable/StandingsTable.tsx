@@ -5,6 +5,7 @@ import * as styles from './StandingsTable.css';
 
 interface StandingsTableProps {
   standings: TeamStanding[];
+  deductionMarkers?: Map<number, string>;
 }
 
 function formatGD(gd: number): string {
@@ -40,7 +41,7 @@ const zoneRowStyles: Record<Zone, [string, string]> = {
   default: [styles.rowEven, styles.rowOdd],
 };
 
-export function StandingsTable({ standings }: StandingsTableProps) {
+export function StandingsTable({ standings, deductionMarkers }: StandingsTableProps) {
   return (
     <div className={styles.container}>
       <table className={styles.table}>
@@ -76,7 +77,10 @@ export function StandingsTable({ standings }: StandingsTableProps) {
                     alt={standing.team.name}
                     className={styles.crest}
                   />
-                  <span className={styles.teamName}>{standing.team.shortName}</span>
+                  <span className={styles.teamName}>
+                    {standing.team.shortName}
+                    {deductionMarkers?.get(standing.team.id)}
+                  </span>
                 </div>
               </td>
               <td className={styles.tdCenter}>{standing.played}</td>

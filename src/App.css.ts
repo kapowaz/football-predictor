@@ -3,6 +3,7 @@ import {
   colorBgPage,
   colorTextPrimary,
   colorTextHeading,
+  colorTextSecondary,
   colorDanger,
   colorDangerBg,
   colorDangerBgHover,
@@ -80,6 +81,19 @@ export const panelHeader = style({
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',
+});
+
+export const panelHeaderWithNotes = style({
+  display: 'flex',
+  justifyContent: 'space-between',
+  alignItems: 'baseline',
+});
+
+export const deductionNotes = style({
+  display: 'flex',
+  gap: space3,
+  fontSize: fontSizeSm,
+  color: colorTextSecondary,
 });
 
 export const panelTitle = style({

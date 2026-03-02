@@ -33,6 +33,16 @@ const emptyPredictions = { predictions: {}, lastModified: '' };
 const calculatedFromResults = calculateStandings(teams, matches, emptyPredictions, deductions);
 validateStandings(calculatedFromResults, apiStandings);
 
+const teamsById = new Map(teams.map((t) => [t.id, t]));
+const deductionMarkers = new Map(
+  deductions.map((d, i) => [d.teamId, '*'.repeat(i + 1)]),
+);
+const deductionNotes = deductions.map((d, i) => {
+  const team = teamsById.get(d.teamId);
+  const marker = '*'.repeat(i + 1);
+  return `${marker}${team?.shortName ?? `Team ${d.teamId}`} -${d.amount} pts`;
+});
+
 function App() {
   const { predictions, setPrediction, removePrediction, resetAllPredictions } = usePredictions();
   const standings = useStandings(teams, matches, predictions, deductions);
@@ -61,10 +71,17 @@ function App() {
 
       <main className={styles.main}>
         <div className={styles.panel}>
-          <div className={styles.panelHeader}>
+          <div className={styles.panelHeaderWithNotes}>
             <h2 className={styles.panelTitle}>Standings</h2>
+            {deductionNotes.length > 0 && (
+              <div className={styles.deductionNotes}>
+                {deductionNotes.map((note) => (
+                  <span key={note}>{note}</span>
+                ))}
+              </div>
+            )}
           </div>
-          <StandingsTable standings={standings} />
+          <StandingsTable standings={standings} deductionMarkers={deductionMarkers} />
         </div>
 
         <div className={styles.panel}>
