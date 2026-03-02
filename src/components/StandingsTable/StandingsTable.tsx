@@ -41,6 +41,13 @@ const zoneRowStyles: Record<Zone, [string, string]> = {
   default: [styles.rowEven, styles.rowOdd],
 };
 
+const zonePositionStyles: Record<Zone, string | undefined> = {
+  promotion: styles.positionPromotion,
+  playoff: styles.positionPlayoff,
+  relegation: styles.positionRelegation,
+  default: undefined,
+};
+
 export function StandingsTable({ standings, deductionMarkers }: StandingsTableProps) {
   return (
     <div className={styles.container}>
@@ -69,7 +76,7 @@ export function StandingsTable({ standings, deductionMarkers }: StandingsTablePr
               key={standing.team.id}
               className={clsx(styles.tr, rowStyle)}
             >
-              <td className={clsx(styles.td, styles.position)}>{index + 1}</td>
+              <td className={clsx(styles.td, styles.position, zonePositionStyles[zone])}>{index + 1}</td>
               <td className={styles.td}>
                 <div className={styles.teamCell}>
                   <img

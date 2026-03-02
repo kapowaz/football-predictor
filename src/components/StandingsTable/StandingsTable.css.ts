@@ -12,6 +12,9 @@ import {
   colorTextPrimary,
   colorTextSecondary,
   colorTextWhite,
+  colorTextZonePromotion,
+  colorTextZonePlayoff,
+  colorTextZoneRelegation,
   colorNeutralLight,
   colorSuccess,
   colorDanger,
@@ -91,6 +94,18 @@ export const position = style({
   width: '32px',
   textAlign: 'center',
   fontVariantNumeric: 'tabular-nums',
+});
+
+export const positionPromotion = style({
+  color: colorTextZonePromotion,
+});
+
+export const positionPlayoff = style({
+  color: colorTextZonePlayoff,
+});
+
+export const positionRelegation = style({
+  color: colorTextZoneRelegation,
 });
 
 export const teamCell = style({

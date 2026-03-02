@@ -28,6 +28,9 @@ export const colorBgZonePlayoff = createVar();
 export const colorBgZonePlayoffAlt = createVar();
 export const colorBgZoneRelegation = createVar();
 export const colorBgZoneRelegationAlt = createVar();
+export const colorTextZonePromotion = createVar();
+export const colorTextZonePlayoff = createVar();
+export const colorTextZoneRelegation = createVar();
 export const colorBgRowAlt = createVar();
 export const colorBgTableHeader = createVar();
 
@@ -89,6 +92,9 @@ globalStyle(':root', {
     [colorBgZonePlayoffAlt]: '#cce1fc',
     [colorBgZoneRelegation]: '#fee1e1',
     [colorBgZoneRelegationAlt]: '#fcd0d0',
+    [colorTextZonePromotion]: '#166534',
+    [colorTextZonePlayoff]: '#1e40af',
+    [colorTextZoneRelegation]: '#991b1b',
     [colorBgRowAlt]: '#f3f4f6',
     [colorBgTableHeader]: '#6b7280',
 
