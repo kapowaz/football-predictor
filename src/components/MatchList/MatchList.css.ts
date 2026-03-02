@@ -62,11 +62,25 @@ export const chevronExpanded = style({
   transform: 'rotate(90deg)',
 });
 
+export const matchesWrapper = style({
+  display: 'grid',
+  gridTemplateRows: '0fr',
+  opacity: 0,
+  transition: 'grid-template-rows 0.25s ease-in-out, opacity 0.25s ease-in-out',
+});
+
+export const matchesWrapperExpanded = style({
+  gridTemplateRows: '1fr',
+  opacity: 1,
+});
+
 export const matchesList = style({
   display: 'flex',
   flexDirection: 'column',
   gap: space2,
   paddingTop: space3,
+  overflow: 'hidden',
+  minHeight: 0,
 });
 
 export const emptyState = style({

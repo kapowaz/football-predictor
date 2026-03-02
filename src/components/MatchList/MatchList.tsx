@@ -1,6 +1,5 @@
 import { useMemo, useCallback, useRef, useState } from 'react';
 import clsx from 'clsx';
-import { AnimatePresence, motion } from 'framer-motion';
 import type { Match, Team, PredictionsStore } from '../../types';
 import { MatchCard } from '../MatchCard/MatchCard';
 import * as styles from './MatchList.css';
@@ -85,35 +84,33 @@ export function MatchList({
   const [expandedDate, setExpandedDate] = useState<string | null>(null);
   const dateRefs = useRef<Map<string, HTMLDivElement>>(new Map());
   const containerRef = useRef<HTMLDivElement>(null);
-  const expandingDateRef = useRef<string | null>(null);
-  const pendingAnimationsRef = useRef(0);
+  const expandedDateRef = useRef<string | null>(null);
 
   const toggleDate = useCallback((date: string) => {
     setExpandedDate((prev) => {
-      const isExpanding = prev !== date;
-      expandingDateRef.current = isExpanding ? date : null;
-      pendingAnimationsRef.current = isExpanding ? (prev !== null ? 2 : 1) : 0;
-      return isExpanding ? date : null;
+      const next = prev !== date ? date : null;
+      expandedDateRef.current = next;
+      return next;
     });
   }, []);
 
-  const handleAnimationComplete = useCallback(() => {
-    pendingAnimationsRef.current = Math.max(0, pendingAnimationsRef.current - 1);
-    if (pendingAnimationsRef.current > 0 || !expandingDateRef.current) return;
+  const handleTransitionEnd = useCallback(
+    (date: string, e: React.TransitionEvent) => {
+      if (e.propertyName !== 'grid-template-rows') return;
+      if (expandedDateRef.current !== date) return;
 
-    const date = expandingDateRef.current;
-    expandingDateRef.current = null;
-
-    requestAnimationFrame(() => {
-      const el = dateRefs.current.get(date);
-      if (el && containerRef.current) {
-        containerRef.current.scrollTo({
-          top: el.offsetTop,
-          behavior: 'smooth',
-        });
-      }
-    });
-  }, []);
+      requestAnimationFrame(() => {
+        const el = dateRefs.current.get(date);
+        if (el && containerRef.current) {
+          containerRef.current.scrollTo({
+            top: el.offsetTop,
+            behavior: 'smooth',
+          });
+        }
+      });
+    },
+    [],
+  );
 
   if (scheduledMatches.length === 0) {
     return <div className={styles.emptyState}>No upcoming matches to predict.</div>;
@@ -146,38 +143,34 @@ export function MatchList({
               <Chevron expanded={isExpanded} />
               {group.dateLabel}
             </button>
-            <AnimatePresence initial={false}>
-              {isExpanded && (
-                <motion.div
-                  className={styles.matchesList}
-                  initial={{ height: 0, opacity: 0 }}
-                  animate={{ height: 'auto', opacity: 1 }}
-                  exit={{ height: 0, opacity: 0 }}
-                  transition={{ duration: 0.25, ease: 'easeInOut' }}
-                  style={{ overflow: 'hidden' }}
-                  onAnimationComplete={handleAnimationComplete}
-                >
-                  {group.matches.map((match) => {
-                    const homeTeam = teamMap.get(match.homeTeamId);
-                    const awayTeam = teamMap.get(match.awayTeamId);
-
-                    if (!homeTeam || !awayTeam) return null;
-
-                    return (
-                      <MatchCard
-                        key={match.id}
-                        match={match}
-                        homeTeam={homeTeam}
-                        awayTeam={awayTeam}
-                        prediction={predictions.predictions[String(match.id)] ?? null}
-                        onPredictionChange={onPredictionChange}
-                        onPredictionRemove={onPredictionRemove}
-                      />
-                    );
-                  })}
-                </motion.div>
+            <div
+              className={clsx(
+                styles.matchesWrapper,
+                isExpanded && styles.matchesWrapperExpanded,
               )}
-            </AnimatePresence>
+              onTransitionEnd={(e) => handleTransitionEnd(group.date, e)}
+            >
+              <div className={styles.matchesList}>
+                {group.matches.map((match) => {
+                  const homeTeam = teamMap.get(match.homeTeamId);
+                  const awayTeam = teamMap.get(match.awayTeamId);
+
+                  if (!homeTeam || !awayTeam) return null;
+
+                  return (
+                    <MatchCard
+                      key={match.id}
+                      match={match}
+                      homeTeam={homeTeam}
+                      awayTeam={awayTeam}
+                      prediction={predictions.predictions[String(match.id)] ?? null}
+                      onPredictionChange={onPredictionChange}
+                      onPredictionRemove={onPredictionRemove}
+                    />
+                  );
+                })}
+              </div>
+            </div>
           </div>
         );
       })}
