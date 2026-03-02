@@ -161,9 +161,10 @@ export const DeductionsModal = ({
   }, [canAdd, newTeamId, newAmount, newReason, onAdd]);
 
   return (
-    <AnimatePresence>
-      {isOpen && (
-        <FloatingOverlay lockScroll>
+    <div className={styles.container}>
+      <AnimatePresence>
+        {isOpen && (
+          <FloatingOverlay lockScroll>
           <motion.div
             className={styles.overlay}
             initial={{ opacity: 0 }}
@@ -262,6 +263,7 @@ export const DeductionsModal = ({
           </motion.div>
         </FloatingOverlay>
       )}
-    </AnimatePresence>
+      </AnimatePresence>
+    </div>
   );
 };

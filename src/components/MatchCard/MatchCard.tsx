@@ -42,6 +42,7 @@ export const MatchCard = ({
       <div className={styles.homeTeam}>
         <div>
           <div className={styles.teamName}>{homeTeam.shortName}</div>
+          <div className={styles.teamTla}>{homeTeam.tla}</div>
         </div>
         <img src={getCrest(homeTeam.crest)} alt={homeTeam.name} className={styles.crest} />
       </div>
@@ -59,6 +60,7 @@ export const MatchCard = ({
         <img src={getCrest(awayTeam.crest)} alt={awayTeam.name} className={styles.crest} />
         <div>
           <div className={styles.teamName}>{awayTeam.shortName}</div>
+          <div className={styles.teamTla}>{awayTeam.tla}</div>
         </div>
       </div>
     </div>

@@ -40,13 +40,15 @@ export const container = style({
     'screen and (max-width: 680px)': {
       borderRadius: 0,
       boxShadow: 'none',
+      overflowX: 'auto',
     },
   },
 });
 
 export const table = style({
   width: '100%',
-  borderCollapse: 'collapse',
+  borderCollapse: 'separate',
+  borderSpacing: 0,
   fontSize: fontSizeBase,
 });
 
@@ -55,7 +57,7 @@ export const thead = style({
 });
 
 export const th = style({
-  padding: `${space3} ${space2}`,
+  padding: `${space2} ${space1}`,
   textAlign: 'left',
   fontWeight: 600,
   color: colorBgTableHeader,
@@ -64,8 +66,11 @@ export const th = style({
   letterSpacing: '0.05em',
   fontVariantNumeric: 'tabular-nums',
   '@media': {
-    'screen and (max-width: 680px)': {
+    'screen and (min-width: 480px)': {
       padding: space2,
+    },
+    'screen and (min-width: 680px)': {
+      padding: `${space3} ${space2}`,
     },
   },
 });
@@ -84,6 +89,9 @@ export const td = style({
   color: colorTextPrimary,
   fontVariantNumeric: 'tabular-nums',
   '@media': {
+    'screen and (max-width: 480px)': {
+      padding: `${space2} ${space1}`,
+    },
     'screen and (max-width: 680px)': {
       padding: space2,
     },
@@ -104,12 +112,38 @@ export const tdRight = style([
   },
 ]);
 
+export const stickyCell = style({
+  position: 'sticky',
+  left: 0,
+  zIndex: 1,
+  backgroundColor: 'inherit',
+});
+
+export const stickyCellTh = style([
+  stickyCell,
+  {
+    position: 'sticky',
+    left: 0,
+    zIndex: 1,
+    backgroundColor: colorNeutralLight,
+    '@media': {
+      'screen and (max-width: 480px)': {
+        paddingLeft: '40px',
+      },
+    },
+  },
+]);
+
 export const position = style({
   fontWeight: 600,
   color: colorTextSecondary,
-  width: '32px',
   textAlign: 'center',
   fontVariantNumeric: 'tabular-nums',
+});
+
+export const positionNumber = style({
+  display: 'inline-block',
+  minWidth: '24px',
 });
 
 export const positionPromotion = style({
@@ -127,7 +161,7 @@ export const positionRelegation = style({
 export const teamCell = style({
   display: 'flex',
   alignItems: 'center',
-  gap: '10px',
+  gap: space2,
 });
 
 export const crest = style({

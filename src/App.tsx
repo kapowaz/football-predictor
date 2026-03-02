@@ -33,7 +33,12 @@ const defaultDeductions = deductionsData as PointDeduction[];
 const apiStandings = apiStandingsData as ApiStandingsData;
 
 const emptyPredictions = { predictions: {}, lastModified: '' };
-const calculatedFromResults = calculateStandings(teams, matches, emptyPredictions, defaultDeductions);
+const calculatedFromResults = calculateStandings(
+  teams,
+  matches,
+  emptyPredictions,
+  defaultDeductions,
+);
 validateStandings(calculatedFromResults, apiStandings);
 
 const teamsById = new Map(teams.map((t) => [t.id, t]));
@@ -109,10 +114,12 @@ const App = () => {
       </nav>
 
       <main className={styles.main}>
-        <div className={`${styles.panel} ${activeTab !== 'standings' ? styles.hiddenOnMobile : ''}`}>
+        <div
+          className={`${styles.panel} ${activeTab !== 'standings' ? styles.hiddenOnMobile : ''}`}
+        >
           <div className={styles.panelHeaderWithNotes}>
             <h2 className={styles.panelTitle}>Standings</h2>
-            <div className={styles.panelHeaderRight}>
+            <div className={styles.panelHeaderDeductions}>
               {deductionNotes.length > 0 && (
                 <div className={styles.deductionNotes}>
                   {deductionNotes.map((note) => (
@@ -122,10 +129,7 @@ const App = () => {
                   ))}
                 </div>
               )}
-              <Button
-                variant="danger"
-                onClick={() => setDeductionsModalOpen(true)}
-              >
+              <Button variant="danger" onClick={() => setDeductionsModalOpen(true)}>
                 <svg
                   className={styles.deductionsButtonIcon}
                   xmlns="http://www.w3.org/2000/svg"
@@ -149,7 +153,9 @@ const App = () => {
           <StandingsTable standings={standings} deductionMarkers={deductionMarkers} />
         </div>
 
-        <div className={`${styles.panelGuttered} ${activeTab !== 'fixtures' ? styles.hiddenOnMobile : ''}`}>
+        <div
+          className={`${styles.panelGuttered} ${activeTab !== 'fixtures' ? styles.hiddenOnMobile : ''}`}
+        >
           <div className={styles.panelHeader}>
             <h2 className={styles.panelTitle}>Fixtures</h2>
             {predictedCount > 0 && (

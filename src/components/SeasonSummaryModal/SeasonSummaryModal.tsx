@@ -57,7 +57,7 @@ export const SeasonSummaryModal = ({ standings, isOpen, onClose }: SeasonSummary
   const relegated = standings.slice(21, 24);
 
   return (
-    <>
+    <div className={styles.container}>
       {isOpen && showConfetti && (
         <Confetti
           isLooping={false}
@@ -143,6 +143,6 @@ export const SeasonSummaryModal = ({ standings, isOpen, onClose }: SeasonSummary
           </FloatingOverlay>
         )}
       </AnimatePresence>
-    </>
+    </div>
   );
 };

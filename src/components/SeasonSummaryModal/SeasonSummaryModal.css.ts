@@ -21,6 +21,11 @@ import {
   shadowSm,
 } from '../../theme.css';
 
+export const container = style({
+  position: 'relative',
+  zIndex: 1,
+});
+
 export const overlay = style({
   position: 'fixed',
   inset: 0,

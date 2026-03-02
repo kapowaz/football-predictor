@@ -15,11 +15,16 @@ export const card = style({
   display: 'flex',
   alignItems: 'flex-start',
   justifyContent: 'space-between',
-  padding: space4,
+  padding: space3,
   backgroundColor: colorBgSurface,
   borderRadius: radiusLg,
   boxShadow: shadowSm,
   gap: space4,
+  '@media': {
+    '(min-width: 680px)': {
+      padding: space4,
+    },
+  },
 });
 
 export const team = style({
@@ -46,16 +51,46 @@ export const awayTeam = style([
 ]);
 
 export const crest = style({
-  width: '32px',
-  height: '32px',
+  width: '24px',
+  height: '24px',
   objectFit: 'contain',
+  '@media': {
+    '(min-width: 680px)': {
+      width: '32px',
+      height: '32px',
+    },
+  },
 });
 
-export const teamName = style({
+const teamNameBase = style({
   fontSize: fontSizeBase,
   fontWeight: 500,
   color: colorTextPrimary,
 });
+
+export const teamName = style([
+  teamNameBase,
+  {
+    display: 'none',
+    '@media': {
+      '(min-width: 680px)': {
+        display: 'block',
+      },
+    },
+  },
+]);
+
+export const teamTla = style([
+  teamNameBase,
+  {
+    display: 'block',
+    '@media': {
+      '(min-width: 680px)': {
+        display: 'none',
+      },
+    },
+  },
+]);
 
 export const kickoff = style({
   fontSize: fontSizeSm,

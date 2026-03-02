@@ -89,6 +89,11 @@ export const panel = style({
   display: 'flex',
   flexDirection: 'column',
   gap: space4,
+  '@media': {
+    'screen and (max-width: 680px)': {
+      overflow: 'hidden',
+    },
+  },
 });
 
 export const panelGuttered = style([
@@ -107,22 +112,29 @@ export const panelHeader = style({
   justifyContent: 'space-between',
   alignItems: 'center',
   height: '32px',
+  '@media': {
+    'screen and (max-width: 680px)': {
+      display: 'none',
+    },
+  },
 });
 
 export const panelHeaderWithNotes = style({
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',
-  height: '32px',
   gap: space3,
   '@media': {
     'screen and (max-width: 680px)': {
       padding: `0 ${space4}`,
     },
+    'screen and (min-width: 680px)': {
+      height: '32px',
+    },
   },
 });
 
-export const panelHeaderRight = style({
+export const panelHeaderDeductions = style({
   display: 'flex',
   alignItems: 'center',
   gap: space3,
@@ -130,6 +142,7 @@ export const panelHeaderRight = style({
     'screen and (max-width: 680px)': {
       flex: 1,
       justifyContent: 'space-between',
+      flexDirection: 'column-reverse',
     },
   },
 });

@@ -16,6 +16,7 @@ import {
   fontSizeSm,
   space2,
   space3,
+  space4,
   space6,
   space8,
   radiusSm,
@@ -23,6 +24,11 @@ import {
   radiusLg,
   shadowSm,
 } from '../../theme.css';
+
+export const container = style({
+  position: 'relative',
+  zIndex: 1,
+});
 
 export const overlay = style({
   position: 'fixed',
@@ -59,7 +65,7 @@ export const modal = style({
       maxWidth: 'none',
     },
     'screen and (max-width: 550px)': {
-      padding: `${space8} ${space3}`,
+      padding: `${space4} ${space3}`,
     },
   },
 });
