@@ -40,7 +40,10 @@ const deductionMarkers = new Map(
 const deductionNotes = deductions.map((d, i) => {
   const team = teamsById.get(d.teamId);
   const marker = '*'.repeat(i + 1);
-  return `${marker}${team?.shortName ?? `Team ${d.teamId}`} -${d.amount} pts`;
+  return {
+    label: `${marker}${team?.shortName ?? `Team ${d.teamId}`} -${d.amount} pts`,
+    reason: d.reason,
+  };
 });
 
 function App() {
@@ -76,7 +79,9 @@ function App() {
             {deductionNotes.length > 0 && (
               <div className={styles.deductionNotes}>
                 {deductionNotes.map((note) => (
-                  <span key={note}>{note}</span>
+                  <span key={note.label} className={styles.deductionNote} title={note.reason}>
+                    {note.label}
+                  </span>
                 ))}
               </div>
             )}

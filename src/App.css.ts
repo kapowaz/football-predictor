@@ -96,6 +96,10 @@ export const deductionNotes = style({
   color: colorTextSecondary,
 });
 
+export const deductionNote = style({
+  cursor: 'help',
+});
+
 export const panelTitle = style({
   fontSize: fontSizeLg,
   fontWeight: 600,
