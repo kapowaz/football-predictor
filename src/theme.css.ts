@@ -20,6 +20,11 @@ export const colorDanger = createVar();
 export const colorDangerBg = createVar();
 export const colorDangerBgHover = createVar();
 export const colorDangerBorder = createVar();
+export const colorDangerBorderHover = createVar();
+export const colorSuccessBg = createVar();
+export const colorSuccessBgHover = createVar();
+export const colorSuccessBorder = createVar();
+export const colorSuccessBorderHover = createVar();
 export const colorNeutralLight = createVar();
 export const colorNeutral = createVar();
 export const colorBgZonePromotion = createVar();
@@ -85,6 +90,11 @@ globalStyle(':root', {
     [colorDangerBg]: '#fef2f2',
     [colorDangerBgHover]: '#fee2e2',
     [colorDangerBorder]: '#fecaca',
+    [colorDangerBorderHover]: '#f87171',
+    [colorSuccessBg]: '#f0fdf4',
+    [colorSuccessBgHover]: '#e8faed',
+    [colorSuccessBorder]: '#bbf7d0',
+    [colorSuccessBorderHover]: '#16a34a',
     [colorNeutralLight]: '#c0c5cc',
     [colorNeutral]: '#9ca3af',
     [colorBgZonePromotion]: '#defce5',

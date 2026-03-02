@@ -1,18 +1,21 @@
 import { style, styleVariants } from '@vanilla-extract/css';
 import {
-  colorBgSurface,
-  colorBgSurfaceHover,
   colorDanger,
   colorDangerBg,
   colorDangerBgHover,
   colorDangerBorder,
+  colorDangerBorderHover,
   colorSuccess,
+  colorSuccessBg,
+  colorSuccessBgHover,
+  colorSuccessBorder,
+  colorSuccessBorderHover,
   fontFamily,
   fontSizeSm,
   space1,
   space2,
   space4,
-  radiusSm,
+  radiusLg,
 } from '../../theme.css';
 
 const base = style({
@@ -26,9 +29,9 @@ const base = style({
   fontWeight: 600,
   textTransform: 'uppercase',
   letterSpacing: '-0.02em',
-  borderRadius: radiusSm,
+  borderRadius: radiusLg,
   cursor: 'pointer',
-  transition: 'background-color 0.2s, opacity 0.2s',
+  transition: 'background-color 0.2s, border-color 0.2s, opacity 0.2s',
   ':disabled': {
     opacity: 0.4,
     cursor: 'not-allowed',
@@ -41,9 +44,12 @@ export const variant = styleVariants({
     {
       color: colorDanger,
       backgroundColor: colorDangerBg,
-      border: `1px solid ${colorDangerBorder}`,
-      ':hover': {
-        backgroundColor: colorDangerBgHover,
+      border: `2px solid ${colorDangerBorder}`,
+      selectors: {
+        '&:hover:not(:disabled)': {
+          backgroundColor: colorDangerBgHover,
+          borderColor: colorDangerBorderHover,
+        },
       },
     },
   ],
@@ -51,10 +57,13 @@ export const variant = styleVariants({
     base,
     {
       color: colorSuccess,
-      backgroundColor: colorBgSurface,
-      border: `1px solid ${colorSuccess}`,
-      ':hover': {
-        backgroundColor: colorBgSurfaceHover,
+      backgroundColor: colorSuccessBg,
+      border: `2px solid ${colorSuccessBorder}`,
+      selectors: {
+        '&:hover:not(:disabled)': {
+          backgroundColor: colorSuccessBgHover,
+          borderColor: colorSuccessBorderHover,
+        },
       },
     },
   ],
