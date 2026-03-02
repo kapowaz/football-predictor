@@ -2,6 +2,8 @@ import { style } from '@vanilla-extract/css';
 import {
   colorTextSecondary,
   colorSuccess,
+  colorNeutral,
+  colorNeutralLight,
   fontSizeSm,
   fontSizeBase,
   space1,
@@ -78,6 +80,25 @@ export const matchesList = style({
   gap: space2,
   overflow: 'hidden',
   minHeight: 0,
+});
+
+export const fixtureIndicators = style({
+  display: 'flex',
+  alignItems: 'center',
+  gap: space1,
+  marginLeft: 'auto',
+});
+
+export const fixtureCircle = style({
+  width: '8px',
+  height: '8px',
+  borderRadius: '50%',
+  backgroundColor: colorNeutralLight,
+  flexShrink: 0,
+});
+
+export const fixtureCirclePredicted = style({
+  backgroundColor: colorNeutral,
 });
 
 export const emptyState = style({

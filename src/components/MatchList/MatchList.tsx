@@ -142,6 +142,18 @@ export function MatchList({
             >
               <Chevron expanded={isExpanded} />
               {group.dateLabel}
+              <span className={styles.fixtureIndicators}>
+                {group.matches.map((match) => (
+                  <span
+                    key={match.id}
+                    className={clsx(
+                      styles.fixtureCircle,
+                      predictions.predictions[String(match.id)] != null &&
+                        styles.fixtureCirclePredicted,
+                    )}
+                  />
+                ))}
+              </span>
             </button>
             <div
               className={clsx(

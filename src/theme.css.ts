@@ -20,6 +20,7 @@ export const colorDanger = createVar();
 export const colorDangerBg = createVar();
 export const colorDangerBgHover = createVar();
 export const colorDangerBorder = createVar();
+export const colorNeutralLight = createVar();
 export const colorNeutral = createVar();
 export const colorFocus = createVar();
 export const colorFocusRing = createVar();
@@ -71,6 +72,7 @@ globalStyle(':root', {
     [colorDangerBg]: '#fef2f2',
     [colorDangerBgHover]: '#fee2e2',
     [colorDangerBorder]: '#fecaca',
+    [colorNeutralLight]: '#c0c5cc',
     [colorNeutral]: '#9ca3af',
     [colorFocus]: '#3b82f6',
     [colorFocusRing]: 'rgba(59, 130, 246, 0.2)',
