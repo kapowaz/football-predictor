@@ -1,13 +1,18 @@
-import { style, globalStyle } from '@vanilla-extract/css';
+import { style } from '@vanilla-extract/css';
 import {
   colorBgSurface,
-  colorBgSurfaceHover,
+  colorBgRowAlt,
+  colorBgTableHeader,
+  colorBgZonePromotion,
+  colorBgZonePromotionAlt,
+  colorBgZonePlayoff,
+  colorBgZonePlayoffAlt,
+  colorBgZoneRelegation,
+  colorBgZoneRelegationAlt,
   colorTextPrimary,
   colorTextSecondary,
   colorTextWhite,
-  colorBorder,
-  colorBorderLight,
-  colorBorderMedium,
+  colorNeutralLight,
   colorSuccess,
   colorDanger,
   colorNeutral,
@@ -37,19 +42,18 @@ export const table = style({
 });
 
 export const thead = style({
-  backgroundColor: colorBgSurfaceHover,
+  backgroundColor: colorNeutralLight,
 });
 
 export const th = style({
   padding: `${space3} ${space2}`,
   textAlign: 'left',
   fontWeight: 600,
-  color: colorTextSecondary,
+  color: colorBgTableHeader,
   fontSize: fontSizeSm,
   textTransform: 'uppercase',
   letterSpacing: '0.05em',
   fontVariantNumeric: 'tabular-nums',
-  borderBottom: `1px solid ${colorBorder}`,
 });
 
 export const thCenter = style([
@@ -59,16 +63,10 @@ export const thCenter = style([
   },
 ]);
 
-export const tr = style({
-  transition: 'background-color 0.2s',
-  ':hover': {
-    backgroundColor: colorBgSurfaceHover,
-  },
-});
+export const tr = style({});
 
 export const td = style({
   padding: `${space3} ${space2}`,
-  borderBottom: `1px solid ${colorBorderLight}`,
   color: colorTextPrimary,
   fontVariantNumeric: 'tabular-nums',
 });
@@ -128,10 +126,36 @@ export const negative = style({
   color: colorDanger,
 });
 
-export const zoneBoundary = style({});
+export const rowEven = style({
+  backgroundColor: colorBgSurface,
+});
 
-globalStyle(`${zoneBoundary} td`, {
-  borderBottomColor: colorBorderMedium,
+export const rowOdd = style({
+  backgroundColor: colorBgRowAlt,
+});
+
+export const zonePromotionEven = style({
+  backgroundColor: colorBgZonePromotion,
+});
+
+export const zonePromotionOdd = style({
+  backgroundColor: colorBgZonePromotionAlt,
+});
+
+export const zonePlayoffEven = style({
+  backgroundColor: colorBgZonePlayoff,
+});
+
+export const zonePlayoffOdd = style({
+  backgroundColor: colorBgZonePlayoffAlt,
+});
+
+export const zoneRelegationEven = style({
+  backgroundColor: colorBgZoneRelegation,
+});
+
+export const zoneRelegationOdd = style({
+  backgroundColor: colorBgZoneRelegationAlt,
 });
 
 export const formCell = style({

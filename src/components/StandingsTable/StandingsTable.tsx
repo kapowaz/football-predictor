@@ -22,7 +22,23 @@ const formStyles: Record<FormResult, string> = {
   L: styles.formLoss,
 };
 
-const ZONE_BOUNDARY_POSITIONS = new Set([2, 6, 21]);
+type Zone = 'promotion' | 'playoff' | 'default' | 'relegation';
+
+const ZONE_BOUNDARY_POSITIONS = [2, 6, 21] as const;
+
+function getZone(position: number): Zone {
+  if (position <= ZONE_BOUNDARY_POSITIONS[0]) return 'promotion';
+  if (position <= ZONE_BOUNDARY_POSITIONS[1]) return 'playoff';
+  if (position > ZONE_BOUNDARY_POSITIONS[2]) return 'relegation';
+  return 'default';
+}
+
+const zoneRowStyles: Record<Zone, [string, string]> = {
+  promotion: [styles.zonePromotionEven, styles.zonePromotionOdd],
+  playoff: [styles.zonePlayoffEven, styles.zonePlayoffOdd],
+  relegation: [styles.zoneRelegationEven, styles.zoneRelegationOdd],
+  default: [styles.rowEven, styles.rowOdd],
+};
 
 export function StandingsTable({ standings }: StandingsTableProps) {
   return (
@@ -44,10 +60,13 @@ export function StandingsTable({ standings }: StandingsTableProps) {
           </tr>
         </thead>
         <tbody>
-          {standings.map((standing, index) => (
+          {standings.map((standing, index) => {
+            const zone = getZone(index + 1);
+            const rowStyle = zoneRowStyles[zone][index % 2];
+            return (
             <tr
               key={standing.team.id}
-              className={clsx(styles.tr, ZONE_BOUNDARY_POSITIONS.has(index + 1) && styles.zoneBoundary)}
+              className={clsx(styles.tr, rowStyle)}
             >
               <td className={clsx(styles.td, styles.position)}>{index + 1}</td>
               <td className={styles.td}>
@@ -89,7 +108,8 @@ export function StandingsTable({ standings }: StandingsTableProps) {
                 </div>
               </td>
             </tr>
-          ))}
+            );
+          })}
         </tbody>
       </table>
     </div>

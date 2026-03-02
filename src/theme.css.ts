@@ -22,6 +22,15 @@ export const colorDangerBgHover = createVar();
 export const colorDangerBorder = createVar();
 export const colorNeutralLight = createVar();
 export const colorNeutral = createVar();
+export const colorBgZonePromotion = createVar();
+export const colorBgZonePromotionAlt = createVar();
+export const colorBgZonePlayoff = createVar();
+export const colorBgZonePlayoffAlt = createVar();
+export const colorBgZoneRelegation = createVar();
+export const colorBgZoneRelegationAlt = createVar();
+export const colorBgRowAlt = createVar();
+export const colorBgTableHeader = createVar();
+
 export const colorFocus = createVar();
 export const colorFocusRing = createVar();
 
@@ -74,6 +83,15 @@ globalStyle(':root', {
     [colorDangerBorder]: '#fecaca',
     [colorNeutralLight]: '#c0c5cc',
     [colorNeutral]: '#9ca3af',
+    [colorBgZonePromotion]: '#defce5',
+    [colorBgZonePromotionAlt]: '#cbf6d4',
+    [colorBgZonePlayoff]: '#deecfe',
+    [colorBgZonePlayoffAlt]: '#cce1fc',
+    [colorBgZoneRelegation]: '#fee1e1',
+    [colorBgZoneRelegationAlt]: '#fcd0d0',
+    [colorBgRowAlt]: '#f3f4f6',
+    [colorBgTableHeader]: '#6b7280',
+
     [colorFocus]: '#3b82f6',
     [colorFocusRing]: 'rgba(59, 130, 246, 0.2)',
 
