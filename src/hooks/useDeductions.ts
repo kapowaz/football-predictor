@@ -3,15 +3,15 @@ import type { PointDeduction } from '../types';
 import { loadDeductions, saveDeductions, clearDeductions } from '../utils/storage';
 import { encodeDeductions, decodeDeductions } from '../utils/serialization';
 
-function buildUrl(params: URLSearchParams): string {
+const buildUrl = (params: URLSearchParams): string => {
   const search = params.toString();
   return window.location.pathname + (search ? `?${search}` : '');
-}
+};
 
-function loadInitialDeductions(defaults: PointDeduction[]): {
+const loadInitialDeductions = (defaults: PointDeduction[]): {
   deductions: PointDeduction[];
   isCustomised: boolean;
-} {
+} => {
   const params = new URLSearchParams(window.location.search);
   const encoded = params.get('deductions');
 
@@ -29,9 +29,9 @@ function loadInitialDeductions(defaults: PointDeduction[]): {
   }
 
   return { deductions: defaults, isCustomised: false };
-}
+};
 
-export function useDeductions(defaults: PointDeduction[]) {
+export const useDeductions = (defaults: PointDeduction[]) => {
   const [initial] = useState(() => loadInitialDeductions(defaults));
   const [deductions, setDeductions] = useState<PointDeduction[]>(initial.deductions);
   const [isCustomised, setIsCustomised] = useState(initial.isCustomised);
@@ -90,4 +90,4 @@ export function useDeductions(defaults: PointDeduction[]) {
     removeDeduction,
     resetDeductions,
   };
-}
+};

@@ -81,7 +81,7 @@ interface ApiStandingsResponse {
   standings: ApiStandingsGroup[]
 }
 
-async function fetchFromApi<T>(endpoint: string): Promise<T> {
+const fetchFromApi = async <T>(endpoint: string): Promise<T> => {
   const url = new URL(endpoint, API_BASE)
   const response = await fetch(url.toString(), {
     headers: {
@@ -96,13 +96,13 @@ async function fetchFromApi<T>(endpoint: string): Promise<T> {
   return response.json() as Promise<T>
 }
 
-function formatSeason(startDate: string, endDate: string): string {
+const formatSeason = (startDate: string, endDate: string): string => {
   const startYear = new Date(startDate).getFullYear()
   const endYear = new Date(endDate).getFullYear()
   return `${startYear}-${String(endYear).slice(2)}`
 }
 
-function teamNameToCrestKey(name: string): string {
+const teamNameToCrestKey = (name: string): string => {
   return name
     .replace(/\s*(FC|AFC)\s*$/i, '')
     .trim()
@@ -110,7 +110,7 @@ function teamNameToCrestKey(name: string): string {
     .replace(/\s+/g, '-')
 }
 
-async function fetchTeams(): Promise<void> {
+const fetchTeams = async (): Promise<void> => {
   console.log('Fetching teams...')
   const data = await fetchFromApi<ApiTeamsResponse>(`/v4/competitions/${COMPETITION_CODE}/teams`)
 
@@ -131,7 +131,7 @@ async function fetchTeams(): Promise<void> {
   console.log(`✓ Wrote ${teamsData.teams.length} teams to src/data/teams.json`)
 }
 
-async function fetchMatches(): Promise<void> {
+const fetchMatches = async (): Promise<void> => {
   console.log('Fetching matches...')
   const data = await fetchFromApi<ApiMatchesResponse>(
     `/v4/competitions/${COMPETITION_CODE}/matches`
@@ -155,7 +155,7 @@ async function fetchMatches(): Promise<void> {
   console.log(`✓ Wrote ${matchesData.matches.length} matches to src/data/matches.json`)
 }
 
-async function fetchStandings(): Promise<void> {
+const fetchStandings = async (): Promise<void> => {
   console.log('Fetching standings...')
   const data = await fetchFromApi<ApiStandingsResponse>(
     `/v4/competitions/${COMPETITION_CODE}/standings`
@@ -188,7 +188,7 @@ async function fetchStandings(): Promise<void> {
   console.log(`✓ Wrote ${standingsData.standings.length} standings to src/data/standings.json`)
 }
 
-async function main(): Promise<void> {
+const main = async (): Promise<void> => {
   console.log('Fetching data from football-data.org...\n')
 
   try {

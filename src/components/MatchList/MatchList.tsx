@@ -4,7 +4,7 @@ import type { Match, Team, PredictionsStore } from '../../types';
 import { MatchCard } from '../MatchCard/MatchCard';
 import * as styles from './MatchList.css';
 
-function Chevron({ expanded }: { expanded: boolean }) {
+const Chevron = ({ expanded }: { expanded: boolean }) => {
   return (
     <svg
       className={clsx(styles.chevron, expanded && styles.chevronExpanded)}
@@ -14,7 +14,7 @@ function Chevron({ expanded }: { expanded: boolean }) {
       <path d="M6 3l5 5-5 5V3z" />
     </svg>
   );
-}
+};
 
 interface MatchListProps {
   matches: Match[];
@@ -30,26 +30,26 @@ interface GroupedMatches {
   matches: Match[];
 }
 
-function formatDateLabel(dateStr: string): string {
+const formatDateLabel = (dateStr: string): string => {
   const date = new Date(dateStr);
   return date.toLocaleDateString('en-GB', {
     weekday: 'long',
     day: 'numeric',
     month: 'long',
   });
-}
+};
 
-function getDateKey(utcDate: string): string {
+const getDateKey = (utcDate: string): string => {
   return new Date(utcDate).toISOString().split('T')[0];
-}
+};
 
-export function MatchList({
+export const MatchList = ({
   matches,
   teams,
   predictions,
   onPredictionChange,
   onPredictionRemove,
-}: MatchListProps) {
+}: MatchListProps) => {
   const teamMap = useMemo(() => {
     return new Map(teams.map((team) => [team.id, team]));
   }, [teams]);
@@ -188,4 +188,4 @@ export function MatchList({
       })}
     </div>
   );
-}
+};

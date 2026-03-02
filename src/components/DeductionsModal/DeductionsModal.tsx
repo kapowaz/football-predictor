@@ -25,7 +25,7 @@ interface DeductionsModalProps {
   onReset: () => void;
 }
 
-function DeductionRow({
+const DeductionRow = ({
   deduction,
   team,
   onUpdate,
@@ -35,7 +35,7 @@ function DeductionRow({
   team: Team | undefined;
   onUpdate: (teamId: number, amount: number, reason: string) => void;
   onRemove: (teamId: number) => void;
-}) {
+}) => {
   const handleAmountChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
       const stripped = e.target.value.replace(/\D/g, '');
@@ -107,9 +107,9 @@ function DeductionRow({
       />
     </div>
   );
-}
+};
 
-export function DeductionsModal({
+export const DeductionsModal = ({
   isOpen,
   onClose,
   deductions,
@@ -119,7 +119,7 @@ export function DeductionsModal({
   onAdd,
   onRemove,
   onReset,
-}: DeductionsModalProps) {
+}: DeductionsModalProps) => {
   const { refs, context } = useFloating({
     open: isOpen,
     onOpenChange: (open) => {
@@ -264,4 +264,4 @@ export function DeductionsModal({
       )}
     </AnimatePresence>
   );
-}
+};

@@ -3,12 +3,12 @@ import type { PredictionsStore } from '../types';
 import { loadPredictions, savePredictions, clearPredictions } from '../utils/storage';
 import { encodePredictions, decodePredictions } from '../utils/serialization';
 
-function buildUrl(params: URLSearchParams): string {
+const buildUrl = (params: URLSearchParams): string => {
   const search = params.toString();
   return window.location.pathname + (search ? `?${search}` : '');
-}
+};
 
-function loadInitialPredictions(): PredictionsStore {
+const loadInitialPredictions = (): PredictionsStore => {
   const params = new URLSearchParams(window.location.search);
   const encoded = params.get('predictions');
 
@@ -25,9 +25,9 @@ function loadInitialPredictions(): PredictionsStore {
   }
 
   return loadPredictions();
-}
+};
 
-export function usePredictions() {
+export const usePredictions = () => {
   const [predictions, setPredictions] = useState<PredictionsStore>(loadInitialPredictions);
   const isInitialRender = useRef(true);
 
@@ -97,4 +97,4 @@ export function usePredictions() {
     resetAllPredictions,
     getPrediction,
   };
-}
+};

@@ -50,8 +50,8 @@ const crests: Record<string, string> = {
   wrexham: wrexham,
 };
 
-export function getCrest(crestKey: string): string {
+export const getCrest = (crestKey: string): string => {
   return crests[crestKey] ?? '';
-}
+};
 
 export default crests;

@@ -8,7 +8,7 @@ interface ButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'typ
   variant: ButtonVariant;
 }
 
-export function Button({ children, variant, className, ...rest }: ButtonProps) {
+export const Button = ({ children, variant, className, ...rest }: ButtonProps) => {
   return (
     <button
       className={`${styles.variant[variant]}${className ? ` ${className}` : ''}`}
@@ -17,4 +17,4 @@ export function Button({ children, variant, className, ...rest }: ButtonProps) {
       {children}
     </button>
   );
-}
+};

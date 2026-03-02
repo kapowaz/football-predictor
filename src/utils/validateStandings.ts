@@ -7,10 +7,10 @@ interface Discrepancy {
   api: number;
 }
 
-export function validateStandings(
+export const validateStandings = (
   calculated: TeamStanding[],
   apiStandings: ApiStandingsData,
-): void {
+): void => {
   if (apiStandings.standings.length === 0) {
     return;
   }
@@ -64,4 +64,4 @@ export function validateStandings(
       );
     }
   }
-}
+};

@@ -20,16 +20,16 @@ interface SeasonSummaryModalProps {
   onClose: () => void;
 }
 
-function TeamRow({ standing }: { standing: TeamStanding }) {
+const TeamRow = ({ standing }: { standing: TeamStanding }) => {
   return (
     <div className={styles.teamRow}>
       <img src={getCrest(standing.team.crest)} alt={standing.team.name} className={styles.crest} />
       <span className={styles.teamName}>{standing.team.name}</span>
     </div>
   );
-}
+};
 
-export function SeasonSummaryModal({ standings, isOpen, onClose }: SeasonSummaryModalProps) {
+export const SeasonSummaryModal = ({ standings, isOpen, onClose }: SeasonSummaryModalProps) => {
   const { refs, context } = useFloating({
     open: isOpen,
     onOpenChange: (open) => {
@@ -145,4 +145,4 @@ export function SeasonSummaryModal({ standings, isOpen, onClose }: SeasonSummary
       </AnimatePresence>
     </>
   );
-}
+};

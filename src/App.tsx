@@ -20,10 +20,10 @@ import * as styles from './App.css';
 
 const teams = (teamsData as TeamsData).teams;
 
-function applyOverrides(base: Match[], overrides: Match[]): Match[] {
+const applyOverrides = (base: Match[], overrides: Match[]): Match[] => {
   const overrideMap = new Map(overrides.map((m) => [m.id, m]));
   return base.map((match) => overrideMap.get(match.id) ?? match);
-}
+};
 
 const matches = applyOverrides(
   (matchesData as MatchesData).matches,
@@ -38,7 +38,7 @@ validateStandings(calculatedFromResults, apiStandings);
 
 const teamsById = new Map(teams.map((t) => [t.id, t]));
 
-function App() {
+const App = () => {
   const { predictions, setPrediction, removePrediction, resetAllPredictions } = usePredictions();
   const {
     deductions,
@@ -171,6 +171,6 @@ function App() {
       />
     </div>
   );
-}
+};
 
 export default App;

@@ -13,19 +13,19 @@ interface MatchCardProps {
   onPredictionRemove: (matchId: number) => void;
 }
 
-function formatKickoff(utcDate: string): string {
+const formatKickoff = (utcDate: string): string => {
   const date = new Date(utcDate);
   return date.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
-}
+};
 
-export function MatchCard({
+export const MatchCard = ({
   match,
   homeTeam,
   awayTeam,
   prediction,
   onPredictionChange,
   onPredictionRemove,
-}: MatchCardProps) {
+}: MatchCardProps) => {
   const handleScoreChange = useCallback(
     (homeGoals: number | null, awayGoals: number | null) => {
       if (homeGoals !== null && awayGoals !== null) {
@@ -63,4 +63,4 @@ export function MatchCard({
       </div>
     </div>
   );
-}
+};

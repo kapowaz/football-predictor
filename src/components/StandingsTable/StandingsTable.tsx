@@ -8,14 +8,14 @@ interface StandingsTableProps {
   deductionMarkers?: Map<number, string>;
 }
 
-function formatGD(gd: number): string {
+const formatGD = (gd: number): string => {
   if (gd > 0) return `+${gd}`;
   return String(gd);
-}
+};
 
-function formatFormTitle(entry: FormEntry): string {
+const formatFormTitle = (entry: FormEntry): string => {
   return `${entry.homeTeamName} ${entry.homeGoals}-${entry.awayGoals} ${entry.awayTeamName}`;
-}
+};
 
 const formStyles: Record<FormResult, string> = {
   W: styles.formWin,
@@ -27,12 +27,12 @@ type Zone = 'promotion' | 'playoff' | 'default' | 'relegation';
 
 const ZONE_BOUNDARY_POSITIONS = [2, 6, 21] as const;
 
-function getZone(position: number): Zone {
+const getZone = (position: number): Zone => {
   if (position <= ZONE_BOUNDARY_POSITIONS[0]) return 'promotion';
   if (position <= ZONE_BOUNDARY_POSITIONS[1]) return 'playoff';
   if (position > ZONE_BOUNDARY_POSITIONS[2]) return 'relegation';
   return 'default';
-}
+};
 
 const zoneRowStyles: Record<Zone, [string, string]> = {
   promotion: [styles.zonePromotionEven, styles.zonePromotionOdd],
@@ -48,7 +48,7 @@ const zonePositionStyles: Record<Zone, string | undefined> = {
   default: undefined,
 };
 
-export function StandingsTable({ standings, deductionMarkers }: StandingsTableProps) {
+export const StandingsTable = ({ standings, deductionMarkers }: StandingsTableProps) => {
   return (
     <div className={styles.container}>
       <table className={styles.table}>
@@ -125,4 +125,4 @@ export function StandingsTable({ standings, deductionMarkers }: StandingsTablePr
       </table>
     </div>
   );
-}
+};

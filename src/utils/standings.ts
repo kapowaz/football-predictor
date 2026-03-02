@@ -19,13 +19,13 @@ interface MatchResult {
   awayGoals: number;
 }
 
-function getFormResult(goalsFor: number, goalsAgainst: number): FormResult {
+const getFormResult = (goalsFor: number, goalsAgainst: number): FormResult => {
   if (goalsFor > goalsAgainst) return 'W';
   if (goalsFor === goalsAgainst) return 'D';
   return 'L';
-}
+};
 
-function createEmptyStanding(team: Team): TeamStanding {
+const createEmptyStanding = (team: Team): TeamStanding => {
   return {
     team,
     played: 0,
@@ -39,9 +39,9 @@ function createEmptyStanding(team: Team): TeamStanding {
     deduction: 0,
     form: [],
   };
-}
+};
 
-function applyResult(standing: TeamStanding, goalsFor: number, goalsAgainst: number, entry: FormEntry): void {
+const applyResult = (standing: TeamStanding, goalsFor: number, goalsAgainst: number, entry: FormEntry): void => {
   standing.played += 1;
   standing.goalsFor += goalsFor;
   standing.goalsAgainst += goalsAgainst;
@@ -61,14 +61,14 @@ function applyResult(standing: TeamStanding, goalsFor: number, goalsAgainst: num
   } else {
     standing.lost += 1;
   }
-}
+};
 
 /**
  * Head-to-head tiebreaker: compares two teams by their mutual matches.
  * Returns < 0 if team A ranks higher, > 0 if team B ranks higher, 0 if still tied.
  * Compares by: h2h points, then h2h goal difference, then away goals scored.
  */
-function getHeadToHead(teamAId: number, teamBId: number, results: MatchResult[]): number {
+const getHeadToHead = (teamAId: number, teamBId: number, results: MatchResult[]): number => {
   const h2hMatches = results.filter(
     (r) =>
       (r.homeTeamId === teamAId && r.awayTeamId === teamBId) ||
@@ -114,14 +114,14 @@ function getHeadToHead(teamAId: number, teamBId: number, results: MatchResult[])
   if (aAwayGoals !== bAwayGoals) return bAwayGoals - aAwayGoals;
 
   return 0;
-}
+};
 
-export function calculateStandings(
+export const calculateStandings = (
   teams: Team[],
   matches: Match[],
   predictions: PredictionsStore,
   deductions: PointDeduction[] = [],
-): TeamStanding[] {
+): TeamStanding[] => {
   const standingsMap = new Map<number, TeamStanding>();
 
   for (const team of teams) {
@@ -205,4 +205,4 @@ export function calculateStandings(
   });
 
   return standings;
-}
+};

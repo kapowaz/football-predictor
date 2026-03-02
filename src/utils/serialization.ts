@@ -2,13 +2,13 @@ import type { PointDeduction, PredictionsStore } from '../types';
 
 type PredictionsPayload = PredictionsStore['predictions'];
 
-function serializePredictions(predictions: PredictionsPayload): string {
+const serializePredictions = (predictions: PredictionsPayload): string => {
   return Object.entries(predictions)
     .map(([matchId, { homeGoals, awayGoals }]) => `${matchId}:${homeGoals}:${awayGoals}`)
     .join(';');
-}
+};
 
-function deserializePredictions(serialized: string): PredictionsPayload {
+const deserializePredictions = (serialized: string): PredictionsPayload => {
   if (!serialized) return {};
 
   return Object.fromEntries(
@@ -17,21 +17,21 @@ function deserializePredictions(serialized: string): PredictionsPayload {
       return [matchId, { homeGoals: Number(home), awayGoals: Number(away) }];
     }),
   );
-}
+};
 
-export function encodePredictions(predictions: PredictionsPayload): string {
+export const encodePredictions = (predictions: PredictionsPayload): string => {
   return btoa(serializePredictions(predictions));
-}
+};
 
-export function decodePredictions(encoded: string): PredictionsPayload {
+export const decodePredictions = (encoded: string): PredictionsPayload => {
   return deserializePredictions(atob(encoded));
-}
+};
 
-export function encodeDeductions(deductions: PointDeduction[]): string {
+export const encodeDeductions = (deductions: PointDeduction[]): string => {
   return btoa(JSON.stringify(deductions));
-}
+};
 
-export function decodeDeductions(encoded: string): PointDeduction[] {
+export const decodeDeductions = (encoded: string): PointDeduction[] => {
   if (!encoded) return [];
   return JSON.parse(atob(encoded)) as PointDeduction[];
-}
+};

@@ -7,7 +7,7 @@ interface ScoreInputProps {
   onChange: (homeGoals: number | null, awayGoals: number | null) => void;
 }
 
-export function ScoreInput({ homeGoals, awayGoals, onChange }: ScoreInputProps) {
+export const ScoreInput = ({ homeGoals, awayGoals, onChange }: ScoreInputProps) => {
   const [localHome, setLocalHome] = useState<number | null>(homeGoals);
   const [localAway, setLocalAway] = useState<number | null>(awayGoals);
 
@@ -62,4 +62,4 @@ export function ScoreInput({ homeGoals, awayGoals, onChange }: ScoreInputProps) 
       />
     </div>
   );
-}
+};
