@@ -13,6 +13,7 @@ import {
   fontSizeLg,
   fontSizeMd,
   fontSizeSm,
+  space2,
   space3,
   space4,
   space6,
@@ -99,9 +100,13 @@ export const panel = style({
 export const panelGuttered = style([
   panel,
   {
+    padding: `0 ${space2}`,
     '@media': {
-      'screen and (max-width: 680px)': {
+      'screen and (min-width: 480px)': {
         padding: `0 ${space4}`,
+      },
+      'screen and (min-width: 680px)': {
+        padding: 0,
       },
     },
   },
@@ -112,11 +117,6 @@ export const panelHeader = style({
   justifyContent: 'space-between',
   alignItems: 'center',
   height: '32px',
-  '@media': {
-    'screen and (max-width: 680px)': {
-      display: 'none',
-    },
-  },
 });
 
 export const panelHeaderWithNotes = style({
@@ -134,7 +134,7 @@ export const panelHeaderWithNotes = style({
   },
 });
 
-export const panelHeaderDeductions = style({
+export const panelHeaderActions = style({
   display: 'flex',
   alignItems: 'center',
   gap: space3,

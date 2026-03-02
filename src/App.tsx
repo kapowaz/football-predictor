@@ -119,7 +119,7 @@ const App = () => {
         >
           <div className={styles.panelHeaderWithNotes}>
             <h2 className={styles.panelTitle}>Standings</h2>
-            <div className={styles.panelHeaderDeductions}>
+            <div className={styles.panelHeaderActions}>
               {deductionNotes.length > 0 && (
                 <div className={styles.deductionNotes}>
                   {deductionNotes.map((note) => (
@@ -159,9 +159,11 @@ const App = () => {
           <div className={styles.panelHeader}>
             <h2 className={styles.panelTitle}>Fixtures</h2>
             {predictedCount > 0 && (
-              <Button variant="danger" onClick={resetAllPredictions}>
-                Reset Predictions
-              </Button>
+              <div className={styles.panelHeaderActions}>
+                <Button variant="danger" onClick={resetAllPredictions}>
+                  Reset Predictions
+                </Button>
+              </div>
             )}
           </div>
           <MatchList
