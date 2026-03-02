@@ -60,12 +60,12 @@ export const SeasonSummaryModal = ({ standings, isOpen, onClose }: SeasonSummary
 
   const handleShare = async () => {
     const lines = [
-      `⚽ EFL Championship 2025/26 Predictions`,
+      `⚽ **EFL Championship 2025/26 Predictions**`,
       ``,
       `🏆 Champions: ${champion?.team.name}`,
       `⬆️ Promoted: ${promoted?.team.name}`,
       `🔀 Playoffs: ${playoffs.map((s) => s.team.name).join(', ')}`,
-      `⬇️ Relegated: ${relegated.map((s) => s.team.name).join(', ')}`,
+      `⬇️ Relegated: ${relegated.map((s) => s.team.name).join(', ')}\n`,
     ];
 
     try {
@@ -130,7 +130,10 @@ export const SeasonSummaryModal = ({ standings, isOpen, onClose }: SeasonSummary
                     <span className={styles.championName}>{champion?.team.name}!</span>
                   </h2>
 
-                  <p className={styles.championSubheading}>EFL Championship Champions 2025/26!</p>
+                  <p className={styles.championSubheading}>
+                    EFL Championship Champions 2025/26!<span className={styles.asterisk}>*</span>
+                  </p>
+                  <p className={styles.predictionParagraph}>*This is only a prediction…</p>
 
                   <hr className={styles.divider} />
 

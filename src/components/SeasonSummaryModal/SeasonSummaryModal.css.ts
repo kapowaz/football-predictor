@@ -70,12 +70,26 @@ export const championHeading = style({
   lineHeight: 1.3,
 });
 
+export const asterisk = style({
+  fontSize: fontSizeSm,
+  verticalAlign: 'text-top',
+});
+
 export const championSubheading = style({
   fontSize: fontSizeLg,
   fontWeight: 700,
   color: colorTextHeading,
   textAlign: 'center',
-  margin: `0 0 ${space6}`,
+  margin: `0 0 ${space2}`,
+  lineHeight: 1.3,
+});
+
+export const predictionParagraph = style({
+  fontSize: fontSizeSm,
+  fontWeight: 500,
+  color: colorTextHeading,
+  textAlign: 'center',
+  margin: 0,
   lineHeight: 1.3,
 });
 
