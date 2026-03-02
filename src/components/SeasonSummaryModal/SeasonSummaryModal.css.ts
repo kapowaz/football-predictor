@@ -164,3 +164,9 @@ export const divider = style({
   borderTop: `1px solid #e5e7eb`,
   margin: `${space4} 0`,
 });
+
+export const shareButtonWrapper = style({
+  display: 'flex',
+  justifyContent: 'center',
+  marginTop: space6,
+});

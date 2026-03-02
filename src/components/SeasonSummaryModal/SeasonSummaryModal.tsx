@@ -11,6 +11,7 @@ import { useCallback, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import type { TeamStanding } from '../../types';
 import { Confetti } from '../Confetti';
+import { Button } from '../Button';
 import { getCrest } from '../../assets/crests';
 import * as styles from './SeasonSummaryModal.css';
 
@@ -41,6 +42,7 @@ export const SeasonSummaryModal = ({ standings, isOpen, onClose }: SeasonSummary
   const dismiss = useDismiss(context, { outsidePressEvent: 'mousedown' });
   const role = useRole(context, { role: 'dialog' });
   const [showConfetti, setShowConfetti] = useState(isOpen);
+  const hasShareApi = typeof navigator.share === 'function';
 
   const { getFloatingProps } = useInteractions([click, dismiss, role]);
 
@@ -55,6 +57,27 @@ export const SeasonSummaryModal = ({ standings, isOpen, onClose }: SeasonSummary
   const promoted = standings[1];
   const playoffs = standings.slice(2, 6);
   const relegated = standings.slice(21, 24);
+
+  const handleShare = async () => {
+    const lines = [
+      `⚽ EFL Championship 2025/26 Predictions`,
+      ``,
+      `🏆 Champions: ${champion?.team.name}`,
+      `⬆️ Promoted: ${promoted?.team.name}`,
+      `🔀 Playoffs: ${playoffs.map((s) => s.team.name).join(', ')}`,
+      `⬇️ Relegated: ${relegated.map((s) => s.team.name).join(', ')}`,
+    ];
+
+    try {
+      await navigator.share({
+        title: 'EFL Championship 2025/26 Predictions',
+        text: lines.join('\n'),
+        url: window.location.href,
+      });
+    } catch {
+      // User cancelled or share failed
+    }
+  };
 
   return (
     <div className={styles.container}>
@@ -137,6 +160,30 @@ export const SeasonSummaryModal = ({ standings, isOpen, onClose }: SeasonSummary
                       ))}
                     </div>
                   </div>
+
+                  {hasShareApi && (
+                    <div className={styles.shareButtonWrapper}>
+                      <Button variant="success" onClick={handleShare}>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="14"
+                          height="14"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          aria-hidden="true"
+                        >
+                          <path d="M12 2v13" />
+                          <path d="m16 6-4-4-4 4" />
+                          <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8" />
+                        </svg>
+                        Share your Predictions
+                      </Button>
+                    </div>
+                  )}
                 </motion.div>
               </FloatingFocusManager>
             </motion.div>
