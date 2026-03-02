@@ -36,6 +36,12 @@ export const container = style({
   borderRadius: radiusLg,
   boxShadow: shadowMd,
   overflow: 'hidden',
+  '@media': {
+    'screen and (max-width: 680px)': {
+      borderRadius: 0,
+      boxShadow: 'none',
+    },
+  },
 });
 
 export const table = style({
@@ -57,6 +63,11 @@ export const th = style({
   textTransform: 'uppercase',
   letterSpacing: '0.05em',
   fontVariantNumeric: 'tabular-nums',
+  '@media': {
+    'screen and (max-width: 680px)': {
+      padding: space2,
+    },
+  },
 });
 
 export const thCenter = style([
@@ -72,6 +83,11 @@ export const td = style({
   padding: `${space3} ${space2}`,
   color: colorTextPrimary,
   fontVariantNumeric: 'tabular-nums',
+  '@media': {
+    'screen and (max-width: 680px)': {
+      padding: space2,
+    },
+  },
 });
 
 export const tdCenter = style([
@@ -191,6 +207,14 @@ export const formBadge = style({
   color: colorTextWhite,
   lineHeight: 1,
   cursor: 'help',
+  '@media': {
+    'screen and (max-width: 680px)': {
+      width: '8px',
+      height: '8px',
+      borderRadius: '50%',
+      fontSize: 0,
+    },
+  },
 });
 
 export const formWin = style({

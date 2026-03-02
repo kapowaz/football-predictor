@@ -4,28 +4,28 @@
   "teams": [
     {
       "id": 59,
-      "name": "Blackburn Rovers FC",
+      "name": "Blackburn Rovers",
       "shortName": "Blackburn",
       "tla": "BLA",
       "crest": "blackburn-rovers"
     },
     {
       "id": 68,
-      "name": "Norwich City FC",
+      "name": "Norwich City",
       "shortName": "Norwich",
       "tla": "NOR",
       "crest": "norwich-city"
     },
     {
       "id": 69,
-      "name": "Queens Park Rangers FC",
+      "name": "Queens Park Rangers",
       "shortName": "QPR",
       "tla": "QPR",
       "crest": "queens-park-rangers"
     },
     {
       "id": 70,
-      "name": "Stoke City FC",
+      "name": "Stoke City",
       "shortName": "Stoke",
       "tla": "STK",
       "crest": "stoke-city"
@@ -39,7 +39,7 @@
     },
     {
       "id": 74,
-      "name": "West Bromwich Albion FC",
+      "name": "West Bromwich Albion",
       "shortName": "West Brom",
       "tla": "WBA",
       "crest": "west-bromwich-albion"
@@ -53,91 +53,91 @@
     },
     {
       "id": 325,
-      "name": "Portsmouth FC",
+      "name": "Portsmouth",
       "shortName": "Portsmouth",
       "tla": "POR",
       "crest": "portsmouth"
     },
     {
       "id": 332,
-      "name": "Birmingham City FC",
+      "name": "Birmingham City",
       "shortName": "Birmingham",
       "tla": "BIR",
       "crest": "birmingham-city"
     },
     {
       "id": 338,
-      "name": "Leicester City FC",
-      "shortName": "Leicester City",
+      "name": "Leicester City",
+      "shortName": "Leicester",
       "tla": "LEI",
       "crest": "leicester-city"
     },
     {
       "id": 340,
-      "name": "Southampton FC",
+      "name": "Southampton",
       "shortName": "Southampton",
       "tla": "SOU",
       "crest": "southampton"
     },
     {
       "id": 342,
-      "name": "Derby County FC",
-      "shortName": "Derby County",
+      "name": "Derby County",
+      "shortName": "Derby",
       "tla": "DER",
       "crest": "derby-county"
     },
     {
       "id": 343,
-      "name": "Middlesbrough FC",
-      "shortName": "Middlesbrough",
+      "name": "Middlesbrough",
+      "shortName": "Middlesboro",
       "tla": "MID",
       "crest": "middlesbrough"
     },
     {
       "id": 345,
-      "name": "Sheffield Wednesday FC",
-      "shortName": "Sheffield Wed",
-      "tla": "SHE",
+      "name": "Sheffield Wednesday",
+      "shortName": "Sheff Wed",
+      "tla": "SHW",
       "crest": "sheffield-wednesday"
     },
     {
       "id": 346,
-      "name": "Watford FC",
+      "name": "Watford",
       "shortName": "Watford",
       "tla": "WAT",
       "crest": "watford"
     },
     {
       "id": 348,
-      "name": "Charlton Athletic FC",
+      "name": "Charlton Athletic",
       "shortName": "Charlton",
       "tla": "CHA",
       "crest": "charlton-athletic"
     },
     {
       "id": 349,
-      "name": "Ipswich Town FC",
-      "shortName": "Ipswich Town",
+      "name": "Ipswich Town",
+      "shortName": "Ipswich",
       "tla": "IPS",
       "crest": "ipswich-town"
     },
     {
       "id": 356,
-      "name": "Sheffield United FC",
-      "shortName": "Sheffield Utd",
-      "tla": "SHE",
+      "name": "Sheffield United",
+      "shortName": "Sheff Utd",
+      "tla": "SHU",
       "crest": "sheffield-united"
     },
     {
       "id": 384,
-      "name": "Millwall FC",
+      "name": "Millwall",
       "shortName": "Millwall",
       "tla": "MIL",
       "crest": "millwall"
     },
     {
       "id": 387,
-      "name": "Bristol City FC",
+      "name": "Bristol City",
       "shortName": "Bristol City",
       "tla": "BRI",
       "crest": "bristol-city"
@@ -151,22 +151,22 @@
     },
     {
       "id": 1076,
-      "name": "Coventry City FC",
+      "name": "Coventry City",
       "shortName": "Coventry City",
       "tla": "COV",
       "crest": "coventry-city"
     },
     {
       "id": 1081,
-      "name": "Preston North End FC",
+      "name": "Preston North End",
       "shortName": "Preston NE",
       "tla": "PNE",
       "crest": "preston-north-end"
     },
     {
       "id": 1082,
-      "name": "Oxford United FC",
-      "shortName": "Oxford United",
+      "name": "Oxford United",
+      "shortName": "Oxford Utd",
       "tla": "OXF",
       "crest": "oxford-united"
     }

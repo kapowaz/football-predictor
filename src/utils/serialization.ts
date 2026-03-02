@@ -1,4 +1,4 @@
-import type { PredictionsStore } from '../types';
+import type { PointDeduction, PredictionsStore } from '../types';
 
 type PredictionsPayload = PredictionsStore['predictions'];
 
@@ -25,4 +25,13 @@ export function encodePredictions(predictions: PredictionsPayload): string {
 
 export function decodePredictions(encoded: string): PredictionsPayload {
   return deserializePredictions(atob(encoded));
+}
+
+export function encodeDeductions(deductions: PointDeduction[]): string {
+  return btoa(JSON.stringify(deductions));
+}
+
+export function decodeDeductions(encoded: string): PointDeduction[] {
+  if (!encoded) return [];
+  return JSON.parse(atob(encoded)) as PointDeduction[];
 }

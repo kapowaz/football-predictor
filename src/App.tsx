@@ -6,11 +6,13 @@ import deductionsData from './data/deductions.json';
 import apiStandingsData from './data/standings.json';
 import type { TeamsData, MatchesData, PointDeduction, Match, ApiStandingsData } from './types';
 import { usePredictions } from './hooks/usePredictions';
+import { useDeductions } from './hooks/useDeductions';
 import { useStandings } from './hooks/useStandings';
 import { calculateStandings } from './utils/standings';
 import { validateStandings } from './utils/validateStandings';
 import { StandingsTable } from './components/StandingsTable/StandingsTable';
 import { SeasonSummaryModal } from './components/SeasonSummaryModal';
+import { DeductionsModal } from './components/DeductionsModal';
 import { MatchList } from './components/MatchList/MatchList';
 import eflLogo from './assets/efl-championship-logo.svg';
 import * as styles from './App.css';
@@ -26,28 +28,25 @@ const matches = applyOverrides(
   (matchesData as MatchesData).matches,
   (overridesData as unknown as MatchesData).matches,
 );
-const deductions = deductionsData as PointDeduction[];
+const defaultDeductions = deductionsData as PointDeduction[];
 const apiStandings = apiStandingsData as ApiStandingsData;
 
 const emptyPredictions = { predictions: {}, lastModified: '' };
-const calculatedFromResults = calculateStandings(teams, matches, emptyPredictions, deductions);
+const calculatedFromResults = calculateStandings(teams, matches, emptyPredictions, defaultDeductions);
 validateStandings(calculatedFromResults, apiStandings);
 
 const teamsById = new Map(teams.map((t) => [t.id, t]));
-const deductionMarkers = new Map(
-  deductions.map((d, i) => [d.teamId, '*'.repeat(i + 1)]),
-);
-const deductionNotes = deductions.map((d, i) => {
-  const team = teamsById.get(d.teamId);
-  const marker = '*'.repeat(i + 1);
-  return {
-    label: `${marker}${team?.shortName ?? `Team ${d.teamId}`} -${d.amount} pts`,
-    reason: d.reason,
-  };
-});
 
 function App() {
   const { predictions, setPrediction, removePrediction, resetAllPredictions } = usePredictions();
+  const {
+    deductions,
+    isCustomised: deductionsCustomised,
+    updateDeduction,
+    addDeduction,
+    removeDeduction,
+    resetDeductions,
+  } = useDeductions(defaultDeductions);
   const standings = useStandings(teams, matches, predictions, deductions);
 
   const allFixturesResolved = useMemo(() => {
@@ -63,6 +62,26 @@ function App() {
     }
   }
 
+  const [deductionsModalOpen, setDeductionsModalOpen] = useState(false);
+
+  const deductionMarkers = useMemo(
+    () => new Map(deductions.map((d, i) => [d.teamId, '*'.repeat(i + 1)])),
+    [deductions],
+  );
+
+  const deductionNotes = useMemo(
+    () =>
+      deductions.map((d, i) => {
+        const team = teamsById.get(d.teamId);
+        const marker = '*'.repeat(i + 1);
+        return {
+          label: `${marker}${team?.shortName ?? `Team ${d.teamId}`} -${d.amount} pts`,
+          reason: d.reason,
+        };
+      }),
+    [deductions],
+  );
+
   const predictedCount = Object.keys(predictions.predictions).length;
 
   return (
@@ -76,20 +95,44 @@ function App() {
         <div className={styles.panel}>
           <div className={styles.panelHeaderWithNotes}>
             <h2 className={styles.panelTitle}>Standings</h2>
-            {deductionNotes.length > 0 && (
-              <div className={styles.deductionNotes}>
-                {deductionNotes.map((note) => (
-                  <span key={note.label} className={styles.deductionNote} title={note.reason}>
-                    {note.label}
-                  </span>
-                ))}
-              </div>
-            )}
+            <div className={styles.panelHeaderRight}>
+              {deductionNotes.length > 0 && (
+                <div className={styles.deductionNotes}>
+                  {deductionNotes.map((note) => (
+                    <span key={note.label} className={styles.deductionNote} title={note.reason}>
+                      {note.label}
+                    </span>
+                  ))}
+                </div>
+              )}
+              <button
+                className={styles.deductionsButton}
+                onClick={() => setDeductionsModalOpen(true)}
+              >
+                <svg
+                  className={styles.deductionsButtonIcon}
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M2.586 16.726A2 2 0 0 1 2 15.312V8.688a2 2 0 0 1 .586-1.414l4.688-4.688A2 2 0 0 1 8.688 2h6.624a2 2 0 0 1 1.414.586l4.688 4.688A2 2 0 0 1 22 8.688v6.624a2 2 0 0 1-.586 1.414l-4.688 4.688a2 2 0 0 1-1.414.586H8.688a2 2 0 0 1-1.414-.586z" />
+                  <path d="M8 12h8" />
+                </svg>
+                Deductions
+              </button>
+            </div>
           </div>
           <StandingsTable standings={standings} deductionMarkers={deductionMarkers} />
         </div>
 
-        <div className={styles.panel}>
+        <div className={styles.panelGuttered}>
           <div className={styles.panelHeader}>
             <h2 className={styles.panelTitle}>Fixtures</h2>
             {predictedCount > 0 && (
@@ -107,6 +150,18 @@ function App() {
           />
         </div>
       </main>
+
+      <DeductionsModal
+        isOpen={deductionsModalOpen}
+        onClose={() => setDeductionsModalOpen(false)}
+        deductions={deductions}
+        teams={teams}
+        isCustomised={deductionsCustomised}
+        onUpdate={updateDeduction}
+        onAdd={addDeduction}
+        onRemove={removeDeduction}
+        onReset={resetDeductions}
+      />
 
       <SeasonSummaryModal
         standings={standings}

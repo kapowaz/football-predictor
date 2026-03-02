@@ -1,0 +1,1 @@
+export { DeductionsModal } from './DeductionsModal';

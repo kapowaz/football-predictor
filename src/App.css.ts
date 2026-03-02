@@ -12,6 +12,7 @@ import {
   fontSizeXl,
   fontSizeLg,
   fontSizeSm,
+  space1,
   space2,
   space3,
   space4,
@@ -36,6 +37,11 @@ globalStyle('body', {
 export const app = style({
   minHeight: '100vh',
   padding: space6,
+  '@media': {
+    'screen and (max-width: 680px)': {
+      padding: 0,
+    },
+  },
 });
 
 export const header = style({
@@ -44,6 +50,11 @@ export const header = style({
   gap: space3,
   maxWidth: maxWidthContent,
   margin: `0 auto ${space8}`,
+  '@media': {
+    'screen and (max-width: 680px)': {
+      padding: `${space6} ${space4} 0`,
+    },
+  },
 });
 
 export const logo = style({
@@ -77,6 +88,17 @@ export const panel = style({
   gap: space4,
 });
 
+export const panelGuttered = style([
+  panel,
+  {
+    '@media': {
+      'screen and (max-width: 680px)': {
+        padding: `0 ${space4}`,
+      },
+    },
+  },
+]);
+
 export const panelHeader = style({
   display: 'flex',
   justifyContent: 'space-between',
@@ -86,7 +108,19 @@ export const panelHeader = style({
 export const panelHeaderWithNotes = style({
   display: 'flex',
   justifyContent: 'space-between',
-  alignItems: 'baseline',
+  alignItems: 'center',
+  gap: space3,
+  '@media': {
+    'screen and (max-width: 680px)': {
+      padding: `0 ${space4}`,
+    },
+  },
+});
+
+export const panelHeaderRight = style({
+  display: 'flex',
+  alignItems: 'center',
+  gap: space3,
 });
 
 export const deductionNotes = style({
@@ -123,4 +157,30 @@ export const resetButton = style({
   ':hover': {
     backgroundColor: colorDangerBgHover,
   },
+});
+
+export const deductionsButton = style({
+  display: 'inline-flex',
+  alignItems: 'center',
+  gap: space1,
+  padding: `${space2} ${space4}`,
+  fontFamily: fontFamily,
+  fontSize: fontSizeSm,
+  fontWeight: 600,
+  textTransform: 'uppercase',
+  letterSpacing: '-0.02em',
+  color: colorDanger,
+  backgroundColor: colorDangerBg,
+  border: `1px solid ${colorDangerBorder}`,
+  borderRadius: radiusSm,
+  cursor: 'pointer',
+  transition: 'background-color 0.2s',
+  ':hover': {
+    backgroundColor: colorDangerBgHover,
+  },
+});
+
+export const deductionsButtonIcon = style({
+  width: '14px',
+  height: '14px',
 });
