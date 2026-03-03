@@ -24,7 +24,7 @@ import { DeductionsModal } from './components/DeductionsModal';
 import { Button } from './components/Button';
 import { MatchList } from './components/MatchList/MatchList';
 import eflLogo from './assets/efl-championship-logo.svg';
-import { SparklesIcon, TrendingDownIcon } from './components/icons';
+import { BrainIcon, TrendingDownIcon } from './components/icons';
 import * as styles from './App.css';
 
 const teams = (teamsData as TeamsData).teams;
@@ -130,7 +130,7 @@ const App = () => {
         >
           <div className={styles.panelHeaderWithNotes}>
             <h2 className={styles.panelTitle}>Standings</h2>
-            <div className={styles.panelHeaderActions}>
+            <div className={styles.panelHeaderDeductions}>
               {deductionNotes.length > 0 && (
                 <div className={styles.deductionNotes}>
                   {deductionNotes.map((note) => (
@@ -160,7 +160,7 @@ const App = () => {
             <h2 className={styles.panelTitle}>Fixtures</h2>
             <div className={styles.panelHeaderActions}>
               <Button variant="success" onClick={() => fillFromModel(modelPredictions)}>
-                <SparklesIcon />
+                <BrainIcon />
                 AI Predictions
               </Button>
               {predictedCount > 0 && (

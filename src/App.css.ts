@@ -116,7 +116,7 @@ export const panelHeader = style({
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',
-  height: '32px',
+  height: '36px',
 });
 
 export const panelHeaderWithNotes = style({
@@ -134,7 +134,7 @@ export const panelHeaderWithNotes = style({
   },
 });
 
-export const panelHeaderActions = style({
+export const panelHeaderDeductions = style({
   display: 'flex',
   alignItems: 'center',
   gap: space3,
@@ -143,6 +143,19 @@ export const panelHeaderActions = style({
       flex: 1,
       justifyContent: 'space-between',
       flexDirection: 'column-reverse',
+    },
+  },
+});
+
+export const panelHeaderActions = style({
+  display: 'flex',
+  alignItems: 'center',
+  gap: space3,
+  '@media': {
+    'screen and (max-width: 680px)': {
+      flex: 1,
+      justifyContent: 'center',
+      display: 'flex',
     },
   },
 });
