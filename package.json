@@ -10,6 +10,7 @@
     "format": "prettier --write \"src/**/*.{ts,tsx}\"",
     "fetch-data": "tsx scripts/fetch-data.ts",
     "fetch-teams": "tsx scripts/fetch-teams.ts",
+    "fetch-fotmob-stats": "tsx scripts/fetch-fotmob-stats.ts",
     "preview": "vite preview"
   },
   "dependencies": {
