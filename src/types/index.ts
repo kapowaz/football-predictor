@@ -64,6 +64,11 @@ export interface ApiStandingsData {
   standings: ApiStandingEntry[];
 }
 
+export interface ModelPredictionsData {
+  lastUpdated: string;
+  predictions: Record<string, { homeGoals: number; awayGoals: number }>;
+}
+
 export type FormResult = 'W' | 'D' | 'L';
 
 export interface FormEntry {

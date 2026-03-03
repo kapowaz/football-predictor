@@ -85,6 +85,16 @@ export const usePredictions = (matches: Match[]) => {
     });
   }, []);
 
+  const fillFromModel = useCallback(
+    (modelPredictions: Record<string, { homeGoals: number; awayGoals: number }>) => {
+      setPredictions({
+        predictions: { ...modelPredictions },
+        lastModified: new Date().toISOString(),
+      });
+    },
+    [],
+  );
+
   const getPrediction = useCallback(
     (matchId: number) => {
       return predictions.predictions[String(matchId)] ?? null;
@@ -97,6 +107,7 @@ export const usePredictions = (matches: Match[]) => {
     setPrediction,
     removePrediction,
     resetAllPredictions,
+    fillFromModel,
     getPrediction,
   };
 };

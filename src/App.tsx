@@ -4,7 +4,15 @@ import matchesData from './data/matches.json';
 import overridesData from './data/overrides.json';
 import deductionsData from './data/deductions.json';
 import apiStandingsData from './data/standings.json';
-import type { TeamsData, MatchesData, PointDeduction, Match, ApiStandingsData } from './types';
+import modelPredictionsData from './data/model-predictions.json';
+import type {
+  TeamsData,
+  MatchesData,
+  PointDeduction,
+  Match,
+  ApiStandingsData,
+  ModelPredictionsData,
+} from './types';
 import { usePredictions } from './hooks/usePredictions';
 import { useDeductions } from './hooks/useDeductions';
 import { useStandings } from './hooks/useStandings';
@@ -32,6 +40,7 @@ const matches = applyOverrides(
 );
 const defaultDeductions = deductionsData as PointDeduction[];
 const apiStandings = apiStandingsData as ApiStandingsData;
+const modelPredictions = (modelPredictionsData as ModelPredictionsData).predictions;
 
 const emptyPredictions = { predictions: {}, lastModified: '' };
 const calculatedFromResults = calculateStandings(
@@ -45,7 +54,7 @@ validateStandings(calculatedFromResults, apiStandings);
 const teamsById = new Map(teams.map((t) => [t.id, t]));
 
 const App = () => {
-  const { predictions, setPrediction, removePrediction, resetAllPredictions } =
+  const { predictions, setPrediction, removePrediction, resetAllPredictions, fillFromModel } =
     usePredictions(matches);
   const {
     deductions,
@@ -149,13 +158,17 @@ const App = () => {
         >
           <div className={styles.panelHeader}>
             <h2 className={styles.panelTitle}>Fixtures</h2>
-            {predictedCount > 0 && (
-              <div className={styles.panelHeaderActions}>
+            <div className={styles.panelHeaderActions}>
+              <Button variant="success" onClick={() => fillFromModel(modelPredictions)}>
+                <SparklesIcon />
+                AI Predictions
+              </Button>
+              {predictedCount > 0 && (
                 <Button variant="danger" onClick={resetAllPredictions}>
                   Reset Predictions
                 </Button>
-              </div>
-            )}
+              )}
+            </div>
           </div>
           <MatchList
             matches={matches}
