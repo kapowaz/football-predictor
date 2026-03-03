@@ -48,11 +48,24 @@ const fetchTeams = async (): Promise<void> => {
   console.log('Fetching teams...');
   const data = await fetchFromApi<ApiTeamsResponse>(`/v4/competitions/${COMPETITION_CODE}/teams`);
 
+  const outputPath = path.join(import.meta.dirname, '../src/data/teams.json');
+
+  const existingFotmobIds = new Map<number, number>();
+  try {
+    const existing = JSON.parse(fs.readFileSync(outputPath, 'utf-8'));
+    for (const team of existing.teams) {
+      if (team.fotmobId) existingFotmobIds.set(team.id, team.fotmobId);
+    }
+  } catch {
+    // File doesn't exist yet on first run
+  }
+
   const teamsData = {
     competition: data.competition.name,
     season: formatSeason(data.season.startDate, data.season.endDate),
     teams: data.teams.map((team) => ({
       id: team.id,
+      ...(existingFotmobIds.has(team.id) && { fotmobId: existingFotmobIds.get(team.id) }),
       name: team.name,
       shortName: team.shortName,
       tla: team.tla,
@@ -60,9 +73,11 @@ const fetchTeams = async (): Promise<void> => {
     })),
   };
 
-  const outputPath = path.join(import.meta.dirname, '../src/data/teams.json');
   fs.writeFileSync(outputPath, JSON.stringify(teamsData, null, 2));
   console.log(`✓ Wrote ${teamsData.teams.length} teams to src/data/teams.json`);
+  if (existingFotmobIds.size > 0) {
+    console.log(`  (preserved ${existingFotmobIds.size} fotmobId mappings)`);
+  }
 };
 
 const main = async (): Promise<void> => {

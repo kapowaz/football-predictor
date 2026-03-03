@@ -1,5 +1,6 @@
 export interface Team {
   id: number;
+  fotmobId: number;
   name: string;
   shortName: string;
   tla: string;
