@@ -2,21 +2,24 @@
 EFL Championship Match Prediction Generator
 
 Poisson regression model that reads match results and FotMob xG stats to generate
-predicted scores for all remaining SCHEDULED fixtures. Output is a JSON file
-compatible with the frontend PredictionsStore format.
+predicted scores for all remaining SCHEDULED fixtures. Uses Monte Carlo season
+simulation to produce predictions and a projected final table.
 
 Usage:
     python scripts/generate-predictions.py
     python scripts/generate-predictions.py --xg-weight 0.6
     python scripts/generate-predictions.py --no-xg
+    python scripts/generate-predictions.py --simulations 50000
 """
 
 import json
 import math
 import os
+import random
 import sys
 import argparse
 from collections import defaultdict
+from datetime import datetime, timezone
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_DIR = os.path.join(SCRIPT_DIR, "..", "src", "data")
@@ -27,6 +30,19 @@ OUTPUT_PATH = os.path.join(DATA_DIR, "model-predictions.json")
 
 FORM_LENGTH = 6
 FORM_DECAY = 0.85  # exponential decay factor per match in form window
+MAX_GOALS = 7
+NUM_SIMULATIONS = 10000
+SIMULATION_SEED = 42
+
+# Per-team hard overrides applied after blending.
+# attack_mult / defense_mult scale ratings; max_goals caps predicted output.
+TEAM_OVERRIDES = {
+    "345": {  # Sheffield Wednesday
+        "attack_mult": 0.4,
+        "defense_mult": 1.5,
+        "max_goals": 1,
+    },
+}
 
 
 def load_json(filepath):
@@ -224,37 +240,143 @@ def blend_ratings(match_ratings, xg_ratings, xg_weight):
     return blended
 
 
-def expected_score(lam):
+def apply_overrides(ratings):
+    """Apply hard per-team multipliers to blended ratings."""
+    for tid, overrides in TEAM_OVERRIDES.items():
+        if tid not in ratings:
+            continue
+        r = ratings[tid]
+        att_mult = overrides.get("attack_mult", 1.0)
+        def_mult = overrides.get("defense_mult", 1.0)
+        ratings[tid] = {
+            "home_attack": r["home_attack"] * att_mult,
+            "home_defense": r["home_defense"] * def_mult,
+            "away_attack": r["away_attack"] * att_mult,
+            "away_defense": r["away_defense"] * def_mult,
+        }
+    return ratings
+
+
+def poisson_sample(lam, rng):
+    """Sample from a Poisson distribution capped at MAX_GOALS."""
+    threshold = math.exp(-lam)
+    k = 0
+    p = 1.0
+    while k < MAX_GOALS:
+        p *= rng.random()
+        if p < threshold:
+            break
+        k += 1
+    return k
+
+
+def compute_match_lambdas(scheduled, ratings, league_stats):
     """
-    Convert a Poisson lambda to a predicted goal count.
-    Uses standard rounding of the expected value.
+    Pre-compute Poisson lambda (expected goals) and goal cap for each team
+    in every scheduled match, so simulation loops stay fast.
     """
-    return max(0, round(lam))
+    match_params = []
+    for match in scheduled:
+        hid = str(match["homeTeamId"])
+        aid = str(match["awayTeamId"])
+        hr = ratings.get(hid)
+        ar = ratings.get(aid)
+
+        if not hr or not ar:
+            match_params.append((match["id"], hid, aid, 1.0, 1.0, MAX_GOALS, MAX_GOALS))
+            continue
+
+        lam_h = hr["home_attack"] * ar["away_defense"] * league_stats["avg_home_goals"]
+        lam_a = ar["away_attack"] * hr["home_defense"] * league_stats["avg_away_goals"]
+        lam_h = max(0.3, min(lam_h, 5.0))
+        lam_a = max(0.3, min(lam_a, 5.0))
+
+        cap_h = TEAM_OVERRIDES.get(hid, {}).get("max_goals", MAX_GOALS)
+        cap_a = TEAM_OVERRIDES.get(aid, {}).get("max_goals", MAX_GOALS)
+
+        match_params.append((match["id"], hid, aid, lam_h, lam_a, cap_h, cap_a))
+
+    return match_params
 
 
-def predict_match(home_id, away_id, ratings, league_stats):
+def compute_base_standings(finished_matches):
+    """Compute points, GF, GA from already-finished matches."""
+    standings = defaultdict(lambda: {"points": 0, "gf": 0, "ga": 0})
+    for m in finished_matches:
+        hid = str(m["homeTeamId"])
+        aid = str(m["awayTeamId"])
+        hg = m["homeGoals"]
+        ag = m["awayGoals"]
+        if hg is None or ag is None:
+            continue
+
+        standings[hid]["gf"] += hg
+        standings[hid]["ga"] += ag
+        standings[aid]["gf"] += ag
+        standings[aid]["ga"] += hg
+
+        if hg > ag:
+            standings[hid]["points"] += 3
+        elif hg == ag:
+            standings[hid]["points"] += 1
+            standings[aid]["points"] += 1
+        else:
+            standings[aid]["points"] += 3
+
+    return standings
+
+
+def simulate_season(match_params, num_sims):
     """
-    Predict a single match score using the Poisson model.
-    Returns (home_goals, away_goals) based on rounded expected goals.
+    Run Monte Carlo season simulation.
+
+    Returns:
+        match_tallies: {match_id: {(hg, ag): count}}
+        team_sim_points: {team_id: [total_sim_points_per_run]}
+        team_sim_gd: {team_id: [total_sim_gd_per_run]}
     """
-    hr = ratings.get(str(home_id))
-    ar = ratings.get(str(away_id))
+    rng = random.Random(SIMULATION_SEED)
 
-    if not hr or not ar:
-        return 1, 1
+    all_tids = set()
+    for _, hid, aid, *_ in match_params:
+        all_tids.add(hid)
+        all_tids.add(aid)
 
-    lambda_home = hr["home_attack"] * ar["away_defense"] * league_stats["avg_home_goals"]
-    lambda_away = ar["away_attack"] * hr["home_defense"] * league_stats["avg_away_goals"]
+    match_tallies = {mid: defaultdict(int) for mid, *_ in match_params}
+    team_sim_points = {tid: [] for tid in all_tids}
+    team_sim_gd = {tid: [] for tid in all_tids}
 
-    lambda_home = max(0.3, min(lambda_home, 5.0))
-    lambda_away = max(0.3, min(lambda_away, 5.0))
+    for _ in range(num_sims):
+        sim_pts = defaultdict(int)
+        sim_gd = defaultdict(int)
 
-    return expected_score(lambda_home), expected_score(lambda_away)
+        for mid, hid, aid, lam_h, lam_a, cap_h, cap_a in match_params:
+            hg = min(poisson_sample(lam_h, rng), cap_h)
+            ag = min(poisson_sample(lam_a, rng), cap_a)
+
+            match_tallies[mid][(hg, ag)] += 1
+
+            sim_gd[hid] += hg - ag
+            sim_gd[aid] += ag - hg
+
+            if hg > ag:
+                sim_pts[hid] += 3
+            elif hg == ag:
+                sim_pts[hid] += 1
+                sim_pts[aid] += 1
+            else:
+                sim_pts[aid] += 3
+
+        for tid in all_tids:
+            team_sim_points[tid].append(sim_pts[tid])
+            team_sim_gd[tid].append(sim_gd[tid])
+
+    return match_tallies, team_sim_points, team_sim_gd
 
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Generate match predictions from statistical model"
+        description="Generate match predictions via Monte Carlo season simulation"
     )
     parser.add_argument(
         "--xg-weight", type=float, default=0.5,
@@ -263,6 +385,10 @@ def main():
     parser.add_argument(
         "--no-xg", action="store_true",
         help="Disable xG integration, use match results only"
+    )
+    parser.add_argument(
+        "--simulations", type=int, default=NUM_SIMULATIONS,
+        help=f"Number of Monte Carlo simulations. Default: {NUM_SIMULATIONS}"
     )
     args = parser.parse_args()
 
@@ -299,19 +425,32 @@ def main():
         print(f"Warning: {FOTMOB_STATS_PATH} not found, using match-only ratings")
 
     ratings = blend_ratings(match_ratings, xg_ratings, xg_weight)
+    ratings = apply_overrides(ratings)
 
+    if TEAM_OVERRIDES:
+        print(f"Applied hard overrides for {len(TEAM_OVERRIDES)} team(s)")
+
+    # Pre-compute lambdas and run simulation
+    match_params = compute_match_lambdas(scheduled, ratings, league_stats)
+    num_sims = args.simulations
+    print(f"Running {num_sims:,} season simulations...")
+
+    match_tallies, team_sim_points, team_sim_gd = simulate_season(match_params, num_sims)
+
+    # Extract per-match predictions (most common scoreline)
     predictions = {}
     total_home = 0
     total_away = 0
 
-    for match in scheduled:
-        hg, ag = predict_match(match["homeTeamId"], match["awayTeamId"], ratings, league_stats)
-        predictions[str(match["id"])] = {"homeGoals": hg, "awayGoals": ag}
-        total_home += hg
-        total_away += ag
+    for mid, *_ in match_params:
+        tally = match_tallies[mid]
+        best_score = max(tally, key=tally.get)
+        predictions[str(mid)] = {"homeGoals": best_score[0], "awayGoals": best_score[1]}
+        total_home += best_score[0]
+        total_away += best_score[1]
 
     output = {
-        "lastUpdated": matches_data.get("lastUpdated", ""),
+        "lastUpdated": datetime.now(timezone.utc).isoformat(timespec="milliseconds").replace("+00:00", "Z"),
         "predictions": predictions,
     }
 
@@ -326,6 +465,28 @@ def main():
     print(f"  Average predicted score: {total_home / len(predictions):.1f} - {total_away / len(predictions):.1f}")
     print(f"  Outcomes: {home_wins} home wins, {draws} draws, {away_wins} away wins")
     print(f"  Written to {OUTPUT_PATH}")
+
+    # Predicted final table (base standings + average simulated remaining points)
+    teams_data = load_json(os.path.join(DATA_DIR, "teams.json"))
+    team_names = {str(t["id"]): t["shortName"] for t in teams_data["teams"]}
+    base = compute_base_standings(finished)
+
+    table = []
+    for tid in team_sim_points:
+        avg_sim_pts = sum(team_sim_points[tid]) / num_sims
+        avg_sim_gd = sum(team_sim_gd[tid]) / num_sims
+        total_pts = base[tid]["points"] + avg_sim_pts
+        total_gd = (base[tid]["gf"] - base[tid]["ga"]) + avg_sim_gd
+        name = team_names.get(tid, tid)
+        table.append((name, total_pts, total_gd))
+
+    table.sort(key=lambda r: (-r[1], -r[2]))
+
+    print(f"\n{'Predicted Final Table':>30}")
+    print(f"  {'#':>2}  {'Team':<18} {'Pts':>5}  {'GD':>5}")
+    print(f"  {'—' * 34}")
+    for i, (name, pts, gd) in enumerate(table, 1):
+        print(f"  {i:>2}. {name:<18} {pts:>5.1f}  {gd:>+5.1f}")
 
 
 if __name__ == "__main__":
