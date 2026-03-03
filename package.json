@@ -11,6 +11,7 @@
     "fetch-data": "tsx scripts/fetch-data.ts",
     "fetch-teams": "tsx scripts/fetch-teams.ts",
     "fetch-fotmob-stats": "tsx scripts/fetch-fotmob-stats.ts",
+    "generate-predictions": "python3 scripts/generate-predictions.py",
     "preview": "vite preview"
   },
   "dependencies": {
