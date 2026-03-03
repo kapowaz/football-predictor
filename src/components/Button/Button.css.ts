@@ -14,7 +14,6 @@ import {
   fontSizeSm,
   space1,
   space2,
-  space4,
   radiusLg,
 } from '../../theme.css';
 
@@ -22,7 +21,7 @@ const base = style({
   display: 'inline-flex',
   alignItems: 'center',
   gap: space1,
-  padding: `${space2} ${space4}`,
+  padding: space2,
   fontFamily: fontFamily,
   fontSize: fontSizeSm,
   lineHeight: 1,
