@@ -74,14 +74,14 @@ export const SeasonSummaryModal = ({ standings, isOpen, onClose }: SeasonSummary
       `🏆 Champions: ${champion?.team.name}`,
       `⬆️ Promoted: ${promoted.map((s) => s.team.name).join(', ')}`,
       `🔀 Playoffs: ${playoffs.map((s) => s.team.name).join(', ')}`,
-      `⬇️ Relegated: ${relegated.map((s) => s.team.name).join(', ')}\n\n`,
+      `⬇️ Relegated: ${relegated.map((s) => s.team.name).join(', ')}\n`,
+      `[Check it out](${window.location.href})`,
     ];
 
     try {
       await navigator.share({
         title: 'EFL Championship 2025/26 Predictions',
         text: lines.join('\n'),
-        url: window.location.href,
       });
     } catch {
       // User cancelled or share failed
