@@ -42,7 +42,15 @@ export const SeasonSummaryModal = ({ standings, isOpen, onClose }: SeasonSummary
   const dismiss = useDismiss(context, { outsidePressEvent: 'mousedown' });
   const role = useRole(context, { role: 'dialog' });
   const [showConfetti, setShowConfetti] = useState(isOpen);
+  const [prevIsOpen, setPrevIsOpen] = useState(isOpen);
   const hasShareApi = typeof navigator.share === 'function';
+
+  if (isOpen !== prevIsOpen) {
+    setPrevIsOpen(isOpen);
+    if (isOpen) {
+      setShowConfetti(true);
+    }
+  }
 
   const { getFloatingProps } = useInteractions([click, dismiss, role]);
 
@@ -54,7 +62,7 @@ export const SeasonSummaryModal = ({ standings, isOpen, onClose }: SeasonSummary
   );
 
   const champion = standings[0];
-  const promoted = standings[1];
+  const promoted = standings.slice(0, 2);
   const playoffs = standings.slice(2, 6);
   const relegated = standings.slice(21, 24);
 
@@ -63,9 +71,9 @@ export const SeasonSummaryModal = ({ standings, isOpen, onClose }: SeasonSummary
       `⚽ **EFL Championship 2025/26 Predictions**`,
       ``,
       `🏆 Champions: ${champion?.team.name}`,
-      `⬆️ Promoted: ${promoted?.team.name}`,
+      `⬆️ Promoted: ${promoted.map((s) => s.team.name).join(', ')}`,
       `🔀 Playoffs: ${playoffs.map((s) => s.team.name).join(', ')}`,
-      `⬇️ Relegated: ${relegated.map((s) => s.team.name).join(', ')}\n`,
+      `⬇️ Relegated: ${relegated.map((s) => s.team.name).join(', ')}\n\n`,
     ];
 
     try {
@@ -140,7 +148,9 @@ export const SeasonSummaryModal = ({ standings, isOpen, onClose }: SeasonSummary
                   <div className={styles.section}>
                     <div className={styles.promotedLabel}>Promoted</div>
                     <div className={styles.teamList}>
-                      {promoted && <TeamRow standing={promoted} />}
+                      {promoted.map((s) => (
+                        <TeamRow key={s.team.id} standing={s} />
+                      ))}
                     </div>
                   </div>
 
