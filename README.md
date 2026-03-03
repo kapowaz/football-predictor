@@ -31,6 +31,9 @@ yarn install
 # Fetch the latest data from football-data.org
 yarn fetch-data
 
+# Fetch the latest fotmob stats
+yarn fetch-fotmob-stats
+
 # Start the dev server
 yarn dev
 ```

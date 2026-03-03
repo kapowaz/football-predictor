@@ -25,10 +25,16 @@ jobs:
           node-version: 22
           cache: yarn
 
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
       - run: yarn install --frozen-lockfile
       - run: yarn fetch-data
         env:
           FOOTBALL_DATA_API_KEY: ${{ secrets.FOOTBALL_DATA_API_KEY }}
+      - run: yarn fetch-fotmob-stats
+      - run: python scripts/generate-predictions.py
       - run: yarn build
 
       - uses: actions/upload-pages-artifact@v3
