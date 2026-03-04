@@ -46,7 +46,7 @@ export const app = style({
 export const header = style({
   display: 'flex',
   alignItems: 'center',
-  gap: space3,
+  gap: space4,
   maxWidth: maxWidthContent,
   margin: `0 auto ${space8}`,
   '@media': {
@@ -59,6 +59,8 @@ export const header = style({
 export const logo = style({
   height: '36px',
   width: 'auto',
+  filter: 'drop-shadow(0 0 2px rgba(0, 0, 0, 0.4))',
+  transform: 'rotate(-10deg)',
 });
 
 export const title = style({
@@ -73,18 +75,9 @@ export const title = style({
   },
 });
 
-export const competitionSelect = style({
+export const competitionSelectWrapper = style({
   marginLeft: 'auto',
-  padding: `${space2} ${space3}`,
-  fontFamily: fontFamily,
-  fontSize: fontSizeMd,
-  fontWeight: 500,
-  color: colorTextPrimary,
-  backgroundColor: colorBgSurface,
-  border: `1px solid ${colorBorder}`,
-  borderRadius: '6px',
-  cursor: 'pointer',
-  appearance: 'auto',
+  minWidth: '220px',
 });
 
 export const main = style({

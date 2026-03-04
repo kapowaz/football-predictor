@@ -17,10 +17,12 @@ import { StandingsTable } from './components/StandingsTable/StandingsTable';
 import { SeasonSummaryModal } from './components/SeasonSummaryModal';
 import { DeductionsModal } from './components/DeductionsModal';
 import { Button } from './components/Button';
+import { CompetitionSelect } from './components/CompetitionSelect';
 import { MatchList } from './components/MatchList/MatchList';
 import { BrainIcon, TrendingDownIcon } from './components/icons';
 import { competitionData } from './data';
 import { getCompetition, allCompetitions, type CompetitionConfig } from './competitions';
+import footballPredictorLogo from './assets/football-predictor.svg';
 import * as styles from './App.css';
 
 const applyOverrides = (base: Match[], overrides: Match[]): Match[] => {
@@ -113,20 +115,16 @@ const CompetitionContent = ({ slug, config }: CompetitionContentProps) => {
   return (
     <>
       <header className={styles.header}>
-        <img src={config.logo} alt={config.name} className={styles.logo} />
+        <img src={footballPredictorLogo} alt="Football Predictor" className={styles.logo} />
         <h1 className={styles.title}>Football Predictor</h1>
         {competitions.length > 1 && (
-          <select
-            className={styles.competitionSelect}
-            value={slug}
-            onChange={(e) => navigate(`/${e.target.value}/`)}
-          >
-            {competitions.map((c) => (
-              <option key={c.slug} value={c.slug}>
-                {c.name}
-              </option>
-            ))}
-          </select>
+          <div className={styles.competitionSelectWrapper}>
+            <CompetitionSelect
+              competitions={competitions}
+              value={slug}
+              onChange={(s) => navigate(`/${s}/`)}
+            />
+          </div>
         )}
       </header>
 

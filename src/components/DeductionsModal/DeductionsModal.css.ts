@@ -206,21 +206,9 @@ export const addFormRow = style({
   alignItems: 'center',
 });
 
-export const teamSelect = style({
+export const teamSelectWrapper = style({
   flex: 1,
-  padding: `${space2} ${space3}`,
-  fontFamily: fontFamily,
-  fontSize: fontSizeBase,
-  color: colorTextPrimary,
-  backgroundColor: colorBgSurface,
-  border: `1px solid ${colorBorderInput}`,
-  borderRadius: radiusSm,
-  outline: 'none',
-  cursor: 'pointer',
-  ':focus': {
-    borderColor: colorFocus,
-    boxShadow: `0 0 0 2px rgba(59, 130, 246, 0.2)`,
-  },
+  minWidth: 0,
 });
 
 export const footer = style({

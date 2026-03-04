@@ -11,6 +11,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import type { PointDeduction, Team } from '../../types';
 import { getCrest } from '../../assets/crests';
 import { Button } from '../Button';
+import { TeamSelect } from '../TeamSelect';
 import { TrashIcon } from '../icons';
 import * as styles from './DeductionsModal.css';
 
@@ -180,19 +181,13 @@ export const DeductionsModal = ({
 
                 <div className={styles.sectionLabel}>Add Deduction</div>
                 <div className={styles.addFormRow}>
-                  <select
-                    className={styles.teamSelect}
-                    value={newTeamId}
-                    onChange={(e) => setNewTeamId(e.target.value ? Number(e.target.value) : '')}
-                    aria-label="Select team"
-                  >
-                    <option value="">Select a team…</option>
-                    {availableTeams.map((t) => (
-                      <option key={t.id} value={t.id}>
-                        {t.name}
-                      </option>
-                    ))}
-                  </select>
+                  <div className={styles.teamSelectWrapper}>
+                    <TeamSelect
+                      teams={availableTeams}
+                      value={newTeamId}
+                      onChange={setNewTeamId}
+                    />
+                  </div>
                   <input
                     type="text"
                     inputMode="numeric"
