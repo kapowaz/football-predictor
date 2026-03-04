@@ -9,12 +9,24 @@ import {
   colorBgZonePlayoffAlt,
   colorBgZoneRelegation,
   colorBgZoneRelegationAlt,
+  colorBgZoneChampions,
+  colorBgZoneChampionsAlt,
+  colorBgZoneChampionsLeague,
+  colorBgZoneChampionsLeagueAlt,
+  colorBgZoneEuropaLeague,
+  colorBgZoneEuropaLeagueAlt,
+  colorBgZoneConferenceLeague,
+  colorBgZoneConferenceLeagueAlt,
   colorTextPrimary,
   colorTextSecondary,
   colorTextWhite,
   colorTextZonePromotion,
   colorTextZonePlayoff,
   colorTextZoneRelegation,
+  colorTextZoneChampions,
+  colorTextZoneChampionsLeague,
+  colorTextZoneEuropaLeague,
+  colorTextZoneConferenceLeague,
   colorNeutralLight,
   colorSuccess,
   colorDanger,
@@ -158,6 +170,22 @@ export const positionRelegation = style({
   color: colorTextZoneRelegation,
 });
 
+export const positionChampions = style({
+  color: colorTextZoneChampions,
+});
+
+export const positionChampionsLeague = style({
+  color: colorTextZoneChampionsLeague,
+});
+
+export const positionEuropaLeague = style({
+  color: colorTextZoneEuropaLeague,
+});
+
+export const positionConferenceLeague = style({
+  color: colorTextZoneConferenceLeague,
+});
+
 export const teamCell = style({
   display: 'flex',
   alignItems: 'center',
@@ -221,6 +249,38 @@ export const zoneRelegationEven = style({
 
 export const zoneRelegationOdd = style({
   backgroundColor: colorBgZoneRelegationAlt,
+});
+
+export const zoneChampionsEven = style({
+  backgroundColor: colorBgZoneChampions,
+});
+
+export const zoneChampionsOdd = style({
+  backgroundColor: colorBgZoneChampionsAlt,
+});
+
+export const zoneChampionsLeagueEven = style({
+  backgroundColor: colorBgZoneChampionsLeague,
+});
+
+export const zoneChampionsLeagueOdd = style({
+  backgroundColor: colorBgZoneChampionsLeagueAlt,
+});
+
+export const zoneEuropaLeagueEven = style({
+  backgroundColor: colorBgZoneEuropaLeague,
+});
+
+export const zoneEuropaLeagueOdd = style({
+  backgroundColor: colorBgZoneEuropaLeagueAlt,
+});
+
+export const zoneConferenceLeagueEven = style({
+  backgroundColor: colorBgZoneConferenceLeague,
+});
+
+export const zoneConferenceLeagueOdd = style({
+  backgroundColor: colorBgZoneConferenceLeagueAlt,
 });
 
 export const formCell = style({

@@ -8,7 +8,7 @@ const buildUrl = (params: URLSearchParams): string => {
   return window.location.pathname + (search ? `?${search}` : '');
 };
 
-const loadInitialPredictions = (matches: Match[]): PredictionsStore => {
+const loadInitialPredictions = (slug: string, matches: Match[]): PredictionsStore => {
   const params = new URLSearchParams(window.location.search);
   const encoded = params.get('predictions');
 
@@ -25,17 +25,17 @@ const loadInitialPredictions = (matches: Match[]): PredictionsStore => {
     }
   }
 
-  return loadPredictions();
+  return loadPredictions(slug);
 };
 
-export const usePredictions = (matches: Match[]) => {
+export const usePredictions = (slug: string, matches: Match[]) => {
   const [predictions, setPredictions] = useState<PredictionsStore>(() =>
-    loadInitialPredictions(matches),
+    loadInitialPredictions(slug, matches),
   );
   const isInitialRender = useRef(true);
 
   useEffect(() => {
-    savePredictions(predictions);
+    savePredictions(slug, predictions);
 
     const params = new URLSearchParams(window.location.search);
     const entries = Object.keys(predictions.predictions);
@@ -54,7 +54,7 @@ export const usePredictions = (matches: Match[]) => {
     } else {
       window.history.pushState(null, '', url);
     }
-  }, [predictions, matches]);
+  }, [predictions, matches, slug]);
 
   const setPrediction = useCallback((matchId: number, homeGoals: number, awayGoals: number) => {
     setPredictions((prev) => ({
@@ -78,12 +78,12 @@ export const usePredictions = (matches: Match[]) => {
   }, []);
 
   const resetAllPredictions = useCallback(() => {
-    clearPredictions();
+    clearPredictions(slug);
     setPredictions({
       predictions: {},
       lastModified: new Date().toISOString(),
     });
-  }, []);
+  }, [slug]);
 
   const fillFromModel = useCallback(
     (modelPredictions: Record<string, { homeGoals: number; awayGoals: number }>) => {

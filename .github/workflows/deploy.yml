@@ -30,11 +30,11 @@ jobs:
           python-version: "3.12"
 
       - run: yarn install --frozen-lockfile
-      - run: yarn fetch-data
+      - run: yarn fetch-data --all
         env:
           FOOTBALL_DATA_API_KEY: ${{ secrets.FOOTBALL_DATA_API_KEY }}
-      - run: yarn fetch-fotmob-stats
-      - run: yarn generate-predictions
+      - run: yarn fetch-fotmob-stats --all
+      - run: yarn generate-predictions --all --simulations 50000
       - run: yarn build
 
       - uses: actions/upload-pages-artifact@v3

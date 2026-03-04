@@ -7,6 +7,10 @@ import {
   colorSuccess,
   colorDanger,
   colorFocus,
+  colorTextZoneChampions,
+  colorTextZoneChampionsLeague,
+  colorTextZoneEuropaLeague,
+  colorTextZoneConferenceLeague,
   fontFamily,
   fontSizeXxl,
   fontSizeLg,
@@ -128,6 +132,14 @@ export const promotedLabel = style([sectionLabel, { color: colorSuccess }]);
 export const playoffsLabel = style([sectionLabel, { color: colorFocus }]);
 
 export const relegatedLabel = style([sectionLabel, { color: colorDanger }]);
+
+export const championsLabel = style([sectionLabel, { color: colorTextZoneChampions }]);
+
+export const championsLeagueLabel = style([sectionLabel, { color: colorTextZoneChampionsLeague }]);
+
+export const europaLeagueLabel = style([sectionLabel, { color: colorTextZoneEuropaLeague }]);
+
+export const conferenceLeagueLabel = style([sectionLabel, { color: colorTextZoneConferenceLeague }]);
 
 export const teamList = style({
   display: 'flex',

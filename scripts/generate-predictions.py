@@ -1,5 +1,5 @@
 """
-EFL Championship Match Prediction Generator
+Match Prediction Generator
 
 Poisson regression model that reads match results and FotMob xG stats to generate
 predicted scores for all remaining SCHEDULED fixtures. Uses Monte Carlo season
@@ -7,6 +7,8 @@ simulation to produce predictions and a projected final table.
 
 Usage:
     python scripts/generate-predictions.py
+    python scripts/generate-predictions.py --competition efl-championship
+    python scripts/generate-predictions.py --all
     python scripts/generate-predictions.py --xg-weight 0.6
     python scripts/generate-predictions.py --no-xg
     python scripts/generate-predictions.py --simulations 50000
@@ -22,11 +24,9 @@ from collections import defaultdict
 from datetime import datetime, timezone
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-DATA_DIR = os.path.join(SCRIPT_DIR, "..", "src", "data")
+BASE_DATA_DIR = os.path.join(SCRIPT_DIR, "..", "src", "data")
 
-MATCHES_PATH = os.path.join(DATA_DIR, "matches.json")
-FOTMOB_STATS_PATH = os.path.join(DATA_DIR, "fotmob-stats.json")
-OUTPUT_PATH = os.path.join(DATA_DIR, "model-predictions.json")
+KNOWN_COMPETITIONS = ["efl-championship", "premier-league"]
 
 FORM_LENGTH = 6
 FORM_DECAY = 0.85  # exponential decay factor per match in form window
@@ -374,30 +374,26 @@ def simulate_season(match_params, num_sims):
     return match_tallies, team_sim_points, team_sim_gd
 
 
-def main():
-    parser = argparse.ArgumentParser(
-        description="Generate match predictions via Monte Carlo season simulation"
-    )
-    parser.add_argument(
-        "--xg-weight", type=float, default=0.5,
-        help="Weight for xG-derived ratings (0.0-1.0). Default: 0.5"
-    )
-    parser.add_argument(
-        "--no-xg", action="store_true",
-        help="Disable xG integration, use match results only"
-    )
-    parser.add_argument(
-        "--simulations", type=int, default=NUM_SIMULATIONS,
-        help=f"Number of Monte Carlo simulations. Default: {NUM_SIMULATIONS}"
-    )
-    args = parser.parse_args()
+def run_for_competition(competition_slug, args):
+    """Generate predictions for a single competition."""
+    data_dir = os.path.join(BASE_DATA_DIR, competition_slug)
+    matches_path = os.path.join(data_dir, "matches.json")
+    fotmob_stats_path = os.path.join(data_dir, "fotmob-stats.json")
+    output_path = os.path.join(data_dir, "model-predictions.json")
+    teams_path = os.path.join(data_dir, "teams.json")
 
-    if not os.path.exists(MATCHES_PATH):
-        print(f"Error: {MATCHES_PATH} not found. Run 'yarn fetch-data' first.", file=sys.stderr)
+    print(f"=== {competition_slug} ===")
+
+    if not os.path.exists(matches_path):
+        print(f"Error: {matches_path} not found. Run 'yarn fetch-data' first.", file=sys.stderr)
         sys.exit(1)
 
-    matches_data = load_json(MATCHES_PATH)
+    matches_data = load_json(matches_path)
     matches = matches_data["matches"]
+
+    if not matches:
+        print(f"No matches found for {competition_slug}, skipping.\n")
+        return
 
     finished = [m for m in matches if m["status"] == "FINISHED"]
     scheduled = [m for m in matches if m["status"] == "SCHEDULED"]
@@ -414,15 +410,15 @@ def main():
     xg_ratings = None
     xg_weight = 0.0 if args.no_xg else args.xg_weight
 
-    if xg_weight > 0 and os.path.exists(FOTMOB_STATS_PATH):
-        fotmob_stats = load_json(FOTMOB_STATS_PATH)
+    if xg_weight > 0 and os.path.exists(fotmob_stats_path):
+        fotmob_stats = load_json(fotmob_stats_path)
         xg_ratings = compute_xg_ratings(fotmob_stats, league_stats)
         if xg_ratings:
             print(f"Loaded xG data for {len(xg_ratings)} teams (weight: {xg_weight:.0%})")
         else:
             print("Warning: xG data loaded but no usable entries found, using match-only ratings")
     elif xg_weight > 0:
-        print(f"Warning: {FOTMOB_STATS_PATH} not found, using match-only ratings")
+        print(f"Warning: {fotmob_stats_path} not found, using match-only ratings")
 
     ratings = blend_ratings(match_ratings, xg_ratings, xg_weight)
     ratings = apply_overrides(ratings)
@@ -430,14 +426,12 @@ def main():
     if TEAM_OVERRIDES:
         print(f"Applied hard overrides for {len(TEAM_OVERRIDES)} team(s)")
 
-    # Pre-compute lambdas and run simulation
     match_params = compute_match_lambdas(scheduled, ratings, league_stats)
     num_sims = args.simulations
     print(f"Running {num_sims:,} season simulations...")
 
     match_tallies, team_sim_points, team_sim_gd = simulate_season(match_params, num_sims)
 
-    # Extract per-match predictions (most common scoreline)
     predictions = {}
     total_home = 0
     total_away = 0
@@ -454,7 +448,7 @@ def main():
         "predictions": predictions,
     }
 
-    with open(OUTPUT_PATH, "w") as f:
+    with open(output_path, "w") as f:
         json.dump(output, f, indent=2)
 
     home_wins = sum(1 for p in predictions.values() if p["homeGoals"] > p["awayGoals"])
@@ -462,31 +456,73 @@ def main():
     away_wins = sum(1 for p in predictions.values() if p["homeGoals"] < p["awayGoals"])
 
     print(f"\n✓ Generated predictions for {len(predictions)} matches")
-    print(f"  Average predicted score: {total_home / len(predictions):.1f} - {total_away / len(predictions):.1f}")
+    if predictions:
+        print(f"  Average predicted score: {total_home / len(predictions):.1f} - {total_away / len(predictions):.1f}")
     print(f"  Outcomes: {home_wins} home wins, {draws} draws, {away_wins} away wins")
-    print(f"  Written to {OUTPUT_PATH}")
+    print(f"  Written to {output_path}")
 
-    # Predicted final table (base standings + average simulated remaining points)
-    teams_data = load_json(os.path.join(DATA_DIR, "teams.json"))
-    team_names = {str(t["id"]): t["shortName"] for t in teams_data["teams"]}
-    base = compute_base_standings(finished)
+    if os.path.exists(teams_path):
+        teams_data = load_json(teams_path)
+        team_names = {str(t["id"]): t["shortName"] for t in teams_data["teams"]}
+        base = compute_base_standings(finished)
 
-    table = []
-    for tid in team_sim_points:
-        avg_sim_pts = sum(team_sim_points[tid]) / num_sims
-        avg_sim_gd = sum(team_sim_gd[tid]) / num_sims
-        total_pts = base[tid]["points"] + avg_sim_pts
-        total_gd = (base[tid]["gf"] - base[tid]["ga"]) + avg_sim_gd
-        name = team_names.get(tid, tid)
-        table.append((name, total_pts, total_gd))
+        table = []
+        for tid in team_sim_points:
+            avg_sim_pts = sum(team_sim_points[tid]) / num_sims
+            avg_sim_gd = sum(team_sim_gd[tid]) / num_sims
+            total_pts = base[tid]["points"] + avg_sim_pts
+            total_gd = (base[tid]["gf"] - base[tid]["ga"]) + avg_sim_gd
+            name = team_names.get(tid, tid)
+            table.append((name, total_pts, total_gd))
 
-    table.sort(key=lambda r: (-r[1], -r[2]))
+        table.sort(key=lambda r: (-r[1], -r[2]))
 
-    print(f"\n{'Predicted Final Table':>30}")
-    print(f"  {'#':>2}  {'Team':<18} {'Pts':>5}  {'GD':>5}")
-    print(f"  {'—' * 34}")
-    for i, (name, pts, gd) in enumerate(table, 1):
-        print(f"  {i:>2}. {name:<18} {pts:>5.1f}  {gd:>+5.1f}")
+        print(f"\n{'Predicted Final Table':>30}")
+        print(f"  {'#':>2}  {'Team':<18} {'Pts':>5}  {'GD':>5}")
+        print(f"  {'—' * 34}")
+        for i, (name, pts, gd) in enumerate(table, 1):
+            print(f"  {i:>2}. {name:<18} {pts:>5.1f}  {gd:>+5.1f}")
+
+    print()
+
+
+def main():
+    parser = argparse.ArgumentParser(
+        description="Generate match predictions via Monte Carlo season simulation"
+    )
+    parser.add_argument(
+        "--competition", type=str, default=None,
+        help="Competition slug (e.g. 'efl-championship', 'premier-league')"
+    )
+    parser.add_argument(
+        "--all", action="store_true",
+        help="Run for all known competitions"
+    )
+    parser.add_argument(
+        "--xg-weight", type=float, default=0.5,
+        help="Weight for xG-derived ratings (0.0-1.0). Default: 0.5"
+    )
+    parser.add_argument(
+        "--no-xg", action="store_true",
+        help="Disable xG integration, use match results only"
+    )
+    parser.add_argument(
+        "--simulations", type=int, default=NUM_SIMULATIONS,
+        help=f"Number of Monte Carlo simulations. Default: {NUM_SIMULATIONS}"
+    )
+    args = parser.parse_args()
+
+    if args.competition:
+        if args.competition not in KNOWN_COMPETITIONS:
+            print(f"Unknown competition: {args.competition}", file=sys.stderr)
+            print(f"Available: {', '.join(KNOWN_COMPETITIONS)}", file=sys.stderr)
+            sys.exit(1)
+        competitions = [args.competition]
+    else:
+        competitions = KNOWN_COMPETITIONS
+
+    for comp in competitions:
+        run_for_competition(comp, args)
 
 
 if __name__ == "__main__":

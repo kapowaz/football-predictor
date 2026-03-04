@@ -1,11 +1,43 @@
 import type { PointDeduction, PredictionsStore } from '../types';
 
-const STORAGE_KEY = 'football-predictor-predictions';
-const DEDUCTIONS_STORAGE_KEY = 'football-predictor-deductions';
+const LEGACY_PREDICTIONS_KEY = 'football-predictor-predictions';
+const LEGACY_DEDUCTIONS_KEY = 'football-predictor-deductions';
 
-export const loadPredictions = (): PredictionsStore => {
+const predictionsKey = (slug: string) => `football-predictor-predictions-${slug}`;
+const deductionsKey = (slug: string) => `football-predictor-deductions-${slug}`;
+
+let migrationDone = false;
+
+export const migrateStorage = (): void => {
+  if (migrationDone) return;
+  migrationDone = true;
+
   try {
-    const stored = localStorage.getItem(STORAGE_KEY);
+    const legacyPredictions = localStorage.getItem(LEGACY_PREDICTIONS_KEY);
+    if (legacyPredictions !== null) {
+      const targetKey = predictionsKey('efl-championship');
+      if (localStorage.getItem(targetKey) === null) {
+        localStorage.setItem(targetKey, legacyPredictions);
+      }
+      localStorage.removeItem(LEGACY_PREDICTIONS_KEY);
+    }
+
+    const legacyDeductions = localStorage.getItem(LEGACY_DEDUCTIONS_KEY);
+    if (legacyDeductions !== null) {
+      const targetKey = deductionsKey('efl-championship');
+      if (localStorage.getItem(targetKey) === null) {
+        localStorage.setItem(targetKey, legacyDeductions);
+      }
+      localStorage.removeItem(LEGACY_DEDUCTIONS_KEY);
+    }
+  } catch (error) {
+    console.error('Failed to migrate localStorage:', error);
+  }
+};
+
+export const loadPredictions = (slug: string): PredictionsStore => {
+  try {
+    const stored = localStorage.getItem(predictionsKey(slug));
     if (stored) {
       return JSON.parse(stored) as PredictionsStore;
     }
@@ -18,21 +50,21 @@ export const loadPredictions = (): PredictionsStore => {
   };
 };
 
-export const savePredictions = (store: PredictionsStore): void => {
+export const savePredictions = (slug: string, store: PredictionsStore): void => {
   try {
     const updated: PredictionsStore = {
       ...store,
       lastModified: new Date().toISOString(),
     };
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(updated));
+    localStorage.setItem(predictionsKey(slug), JSON.stringify(updated));
   } catch (error) {
     console.error('Failed to save predictions to localStorage:', error);
   }
 };
 
-export const clearPredictions = (): void => {
+export const clearPredictions = (slug: string): void => {
   try {
-    localStorage.removeItem(STORAGE_KEY);
+    localStorage.removeItem(predictionsKey(slug));
   } catch (error) {
     console.error('Failed to clear predictions from localStorage:', error);
   }
@@ -48,14 +80,14 @@ const isValidDeduction = (d: unknown): d is PointDeduction =>
   Number.isFinite((d as PointDeduction).teamId) &&
   Number.isFinite((d as PointDeduction).amount);
 
-export const loadDeductions = (): PointDeduction[] | null => {
+export const loadDeductions = (slug: string): PointDeduction[] | null => {
   try {
-    const stored = localStorage.getItem(DEDUCTIONS_STORAGE_KEY);
+    const stored = localStorage.getItem(deductionsKey(slug));
     if (stored !== null) {
       const parsed = JSON.parse(stored) as unknown[];
       if (!Array.isArray(parsed) || !parsed.every(isValidDeduction)) {
         console.error('Corrupted deductions in localStorage, discarding');
-        localStorage.removeItem(DEDUCTIONS_STORAGE_KEY);
+        localStorage.removeItem(deductionsKey(slug));
         return null;
       }
       return parsed;
@@ -66,17 +98,17 @@ export const loadDeductions = (): PointDeduction[] | null => {
   return null;
 };
 
-export const saveDeductions = (deductions: PointDeduction[]): void => {
+export const saveDeductions = (slug: string, deductions: PointDeduction[]): void => {
   try {
-    localStorage.setItem(DEDUCTIONS_STORAGE_KEY, JSON.stringify(deductions));
+    localStorage.setItem(deductionsKey(slug), JSON.stringify(deductions));
   } catch (error) {
     console.error('Failed to save deductions to localStorage:', error);
   }
 };
 
-export const clearDeductions = (): void => {
+export const clearDeductions = (slug: string): void => {
   try {
-    localStorage.removeItem(DEDUCTIONS_STORAGE_KEY);
+    localStorage.removeItem(deductionsKey(slug));
   } catch (error) {
     console.error('Failed to clear deductions from localStorage:', error);
   }

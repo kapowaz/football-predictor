@@ -73,6 +73,20 @@ export const title = style({
   },
 });
 
+export const competitionSelect = style({
+  marginLeft: 'auto',
+  padding: `${space2} ${space3}`,
+  fontFamily: fontFamily,
+  fontSize: fontSizeMd,
+  fontWeight: 500,
+  color: colorTextPrimary,
+  backgroundColor: colorBgSurface,
+  border: `1px solid ${colorBorder}`,
+  borderRadius: '6px',
+  cursor: 'pointer',
+  appearance: 'auto',
+});
+
 export const main = style({
   display: 'grid',
   gridTemplateColumns: '1fr 1fr',

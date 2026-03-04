@@ -8,10 +8,18 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "format": "prettier --write \"src/**/*.{ts,tsx}\"",
-    "fetch-data": "tsx scripts/fetch-data.ts",
-    "fetch-teams": "tsx scripts/fetch-teams.ts",
-    "fetch-fotmob-stats": "tsx scripts/fetch-fotmob-stats.ts",
-    "generate-predictions": "python3 scripts/generate-predictions.py --simulations 50000",
+    "fetch-data": "tsx scripts/fetch-data.ts --all",
+    "fetch-data:championship": "tsx scripts/fetch-data.ts --competition efl-championship",
+    "fetch-data:premier-league": "tsx scripts/fetch-data.ts --competition premier-league",
+    "fetch-teams": "tsx scripts/fetch-teams.ts --all",
+    "fetch-teams:championship": "tsx scripts/fetch-teams.ts --competition efl-championship",
+    "fetch-teams:premier-league": "tsx scripts/fetch-teams.ts --competition premier-league",
+    "fetch-fotmob-stats": "tsx scripts/fetch-fotmob-stats.ts --all",
+    "fetch-fotmob-stats:championship": "tsx scripts/fetch-fotmob-stats.ts --competition efl-championship",
+    "fetch-fotmob-stats:premier-league": "tsx scripts/fetch-fotmob-stats.ts --competition premier-league",
+    "generate-predictions": "python3 scripts/generate-predictions.py --all --simulations 50000",
+    "generate-predictions:championship": "python3 scripts/generate-predictions.py --competition efl-championship --simulations 50000",
+    "generate-predictions:premier-league": "python3 scripts/generate-predictions.py --competition premier-league --simulations 50000",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -19,7 +27,8 @@
     "clsx": "^2.1.1",
     "framer-motion": "^12.34.3",
     "react": "^19.2.0",
-    "react-dom": "^19.2.0"
+    "react-dom": "^19.2.0",
+    "react-router-dom": "^7.13.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",

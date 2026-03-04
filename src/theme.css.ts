@@ -36,6 +36,18 @@ export const colorBgZoneRelegationAlt = createVar();
 export const colorTextZonePromotion = createVar();
 export const colorTextZonePlayoff = createVar();
 export const colorTextZoneRelegation = createVar();
+export const colorBgZoneChampions = createVar();
+export const colorBgZoneChampionsAlt = createVar();
+export const colorTextZoneChampions = createVar();
+export const colorBgZoneChampionsLeague = createVar();
+export const colorBgZoneChampionsLeagueAlt = createVar();
+export const colorTextZoneChampionsLeague = createVar();
+export const colorBgZoneEuropaLeague = createVar();
+export const colorBgZoneEuropaLeagueAlt = createVar();
+export const colorTextZoneEuropaLeague = createVar();
+export const colorBgZoneConferenceLeague = createVar();
+export const colorBgZoneConferenceLeagueAlt = createVar();
+export const colorTextZoneConferenceLeague = createVar();
 export const colorBgRowAlt = createVar();
 export const colorBgTableHeader = createVar();
 
@@ -107,6 +119,18 @@ globalStyle(':root', {
     [colorTextZonePromotion]: '#166534',
     [colorTextZonePlayoff]: '#1e40af',
     [colorTextZoneRelegation]: '#991b1b',
+    [colorBgZoneChampions]: '#defce5',
+    [colorBgZoneChampionsAlt]: '#cbf6d4',
+    [colorTextZoneChampions]: '#166534',
+    [colorBgZoneChampionsLeague]: '#dbeafe',
+    [colorBgZoneChampionsLeagueAlt]: '#c9dbfc',
+    [colorTextZoneChampionsLeague]: '#1e3a8a',
+    [colorBgZoneEuropaLeague]: '#ede9fe',
+    [colorBgZoneEuropaLeagueAlt]: '#ddd6fe',
+    [colorTextZoneEuropaLeague]: '#4c1d95',
+    [colorBgZoneConferenceLeague]: '#fdddfd',
+    [colorBgZoneConferenceLeagueAlt]: '#fcc9fc',
+    [colorTextZoneConferenceLeague]: '#8a1e8a',
     [colorBgRowAlt]: '#f3f4f6',
     [colorBgTableHeader]: '#6b7280',
 

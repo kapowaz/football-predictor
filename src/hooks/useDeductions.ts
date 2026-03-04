@@ -8,7 +8,10 @@ const buildUrl = (params: URLSearchParams): string => {
   return window.location.pathname + (search ? `?${search}` : '');
 };
 
-const loadInitialDeductions = (defaults: PointDeduction[]): {
+const loadInitialDeductions = (
+  slug: string,
+  defaults: PointDeduction[],
+): {
   deductions: PointDeduction[];
   isCustomised: boolean;
 } => {
@@ -23,7 +26,7 @@ const loadInitialDeductions = (defaults: PointDeduction[]): {
     }
   }
 
-  const stored = loadDeductions();
+  const stored = loadDeductions(slug);
   if (stored !== null) {
     return { deductions: stored, isCustomised: true };
   }
@@ -31,15 +34,15 @@ const loadInitialDeductions = (defaults: PointDeduction[]): {
   return { deductions: defaults, isCustomised: false };
 };
 
-export const useDeductions = (defaults: PointDeduction[]) => {
-  const [initial] = useState(() => loadInitialDeductions(defaults));
+export const useDeductions = (slug: string, defaults: PointDeduction[]) => {
+  const [initial] = useState(() => loadInitialDeductions(slug, defaults));
   const [deductions, setDeductions] = useState<PointDeduction[]>(initial.deductions);
   const [isCustomised, setIsCustomised] = useState(initial.isCustomised);
   const isInitialRender = useRef(true);
 
   useEffect(() => {
     if (isCustomised) {
-      saveDeductions(deductions);
+      saveDeductions(slug, deductions);
     }
 
     const params = new URLSearchParams(window.location.search);
@@ -57,7 +60,7 @@ export const useDeductions = (defaults: PointDeduction[]) => {
     } else {
       window.history.pushState(null, '', url);
     }
-  }, [deductions, isCustomised]);
+  }, [deductions, isCustomised, slug]);
 
   const updateDeduction = useCallback((teamId: number, amount: number) => {
     setIsCustomised(true);
@@ -77,10 +80,10 @@ export const useDeductions = (defaults: PointDeduction[]) => {
   }, []);
 
   const resetDeductions = useCallback(() => {
-    clearDeductions();
+    clearDeductions(slug);
     setIsCustomised(false);
     setDeductions(defaults);
-  }, [defaults]);
+  }, [defaults, slug]);
 
   return {
     deductions,

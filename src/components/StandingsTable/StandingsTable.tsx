@@ -1,11 +1,13 @@
 import clsx from 'clsx';
 import type { TeamStanding, FormResult, FormEntry } from '../../types';
+import type { ZoneDefinition, ZoneType } from '../../competitions';
 import { getCrest } from '../../assets/crests';
 import * as styles from './StandingsTable.css';
 
 interface StandingsTableProps {
   standings: TeamStanding[];
   deductionMarkers?: Map<number, string>;
+  zones: ZoneDefinition[];
 }
 
 const formatGD = (gd: number): string => {
@@ -23,32 +25,38 @@ const formStyles: Record<FormResult, string> = {
   L: styles.formLoss,
 };
 
-type Zone = 'promotion' | 'playoff' | 'default' | 'relegation';
-
-const ZONE_BOUNDARY_POSITIONS = [2, 6, 21] as const;
-
-const getZone = (position: number): Zone => {
-  if (position <= ZONE_BOUNDARY_POSITIONS[0]) return 'promotion';
-  if (position <= ZONE_BOUNDARY_POSITIONS[1]) return 'playoff';
-  if (position > ZONE_BOUNDARY_POSITIONS[2]) return 'relegation';
+const getZoneForPosition = (position: number, zones: ZoneDefinition[]): ZoneType | 'default' => {
+  for (const zone of zones) {
+    if (position >= zone.startPosition && position <= zone.endPosition) {
+      return zone.type;
+    }
+  }
   return 'default';
 };
 
-const zoneRowStyles: Record<Zone, [string, string]> = {
+const zoneRowStyles: Record<ZoneType | 'default', [string, string]> = {
+  champions: [styles.zoneChampionsEven, styles.zoneChampionsOdd],
   promotion: [styles.zonePromotionEven, styles.zonePromotionOdd],
   playoff: [styles.zonePlayoffEven, styles.zonePlayoffOdd],
+  championsLeague: [styles.zoneChampionsLeagueEven, styles.zoneChampionsLeagueOdd],
+  europaLeague: [styles.zoneEuropaLeagueEven, styles.zoneEuropaLeagueOdd],
+  conferenceLeague: [styles.zoneConferenceLeagueEven, styles.zoneConferenceLeagueOdd],
   relegation: [styles.zoneRelegationEven, styles.zoneRelegationOdd],
   default: [styles.rowEven, styles.rowOdd],
 };
 
-const zonePositionStyles: Record<Zone, string | undefined> = {
+const zonePositionStyles: Record<ZoneType | 'default', string | undefined> = {
+  champions: styles.positionChampions,
   promotion: styles.positionPromotion,
   playoff: styles.positionPlayoff,
+  championsLeague: styles.positionChampionsLeague,
+  europaLeague: styles.positionEuropaLeague,
+  conferenceLeague: styles.positionConferenceLeague,
   relegation: styles.positionRelegation,
   default: undefined,
 };
 
-export const StandingsTable = ({ standings, deductionMarkers }: StandingsTableProps) => {
+export const StandingsTable = ({ standings, deductionMarkers, zones }: StandingsTableProps) => {
   return (
     <div className={styles.container}>
       <table className={styles.table}>
@@ -68,7 +76,7 @@ export const StandingsTable = ({ standings, deductionMarkers }: StandingsTablePr
         </thead>
         <tbody>
           {standings.map((standing, index) => {
-            const zone = getZone(index + 1);
+            const zone = getZoneForPosition(index + 1, zones);
             const rowStyle = zoneRowStyles[zone][index % 2];
             return (
               <tr key={standing.team.id} className={clsx(styles.tr, rowStyle)}>

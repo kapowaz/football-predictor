@@ -1,0 +1,166 @@
+{
+  "competition": "Premier League",
+  "season": "2025-26",
+  "teams": [
+    {
+      "id": 57,
+      "fotmobId": 9825,
+      "name": "Arsenal",
+      "shortName": "Arsenal",
+      "tla": "ARS",
+      "crest": "arsenal"
+    },
+    {
+      "id": 58,
+      "fotmobId": 10252,
+      "name": "Aston Villa",
+      "shortName": "Aston Villa",
+      "tla": "AVL",
+      "crest": "aston-villa"
+    },
+    {
+      "id": 61,
+      "fotmobId": 8455,
+      "name": "Chelsea",
+      "shortName": "Chelsea",
+      "tla": "CHE",
+      "crest": "chelsea"
+    },
+    {
+      "id": 62,
+      "fotmobId": 8668,
+      "name": "Everton",
+      "shortName": "Everton",
+      "tla": "EVE",
+      "crest": "everton"
+    },
+    {
+      "id": 63,
+      "fotmobId": 9879,
+      "name": "Fulham",
+      "shortName": "Fulham",
+      "tla": "FUL",
+      "crest": "fulham"
+    },
+    {
+      "id": 64,
+      "fotmobId": 8650,
+      "name": "Liverpool",
+      "shortName": "Liverpool",
+      "tla": "LIV",
+      "crest": "liverpool"
+    },
+    {
+      "id": 65,
+      "fotmobId": 8456,
+      "name": "Manchester City",
+      "shortName": "Man City",
+      "tla": "MCI",
+      "crest": "manchester-city"
+    },
+    {
+      "id": 66,
+      "fotmobId": 10260,
+      "name": "Manchester United",
+      "shortName": "Man United",
+      "tla": "MUN",
+      "crest": "manchester-united"
+    },
+    {
+      "id": 67,
+      "fotmobId": 10261,
+      "name": "Newcastle United",
+      "shortName": "Newcastle",
+      "tla": "NEW",
+      "crest": "newcastle-united"
+    },
+    {
+      "id": 71,
+      "fotmobId": 8472,
+      "name": "Sunderland AFC",
+      "shortName": "Sunderland",
+      "tla": "SUN",
+      "crest": "sunderland"
+    },
+    {
+      "id": 73,
+      "fotmobId": 8586,
+      "name": "Tottenham Hotspur",
+      "shortName": "Tottenham",
+      "tla": "TOT",
+      "crest": "tottenham-hotspur"
+    },
+    {
+      "id": 76,
+      "fotmobId": 8602,
+      "name": "Wolverhampton Wanderers",
+      "shortName": "Wolves",
+      "tla": "WOL",
+      "crest": "wolverhampton-wanderers"
+    },
+    {
+      "id": 328,
+      "fotmobId": 8191,
+      "name": "Burnley",
+      "shortName": "Burnley",
+      "tla": "BUR",
+      "crest": "burnley"
+    },
+    {
+      "id": 341,
+      "fotmobId": 8463,
+      "name": "Leeds United",
+      "shortName": "Leeds United",
+      "tla": "LEE",
+      "crest": "leeds-united"
+    },
+    {
+      "id": 351,
+      "fotmobId": 10203,
+      "name": "Nottingham Forest",
+      "shortName": "Forest",
+      "tla": "NTF",
+      "crest": "nottingham-forest"
+    },
+    {
+      "id": 354,
+      "fotmobId": 9826,
+      "name": "Crystal Palace",
+      "shortName": "Crystal Palace",
+      "tla": "CRY",
+      "crest": "crystal-palace"
+    },
+    {
+      "id": 397,
+      "fotmobId": 10204,
+      "name": "Brighton & Hove Albion",
+      "shortName": "Brighton",
+      "tla": "BHA",
+      "crest": "brighton-and-hove-albion"
+    },
+    {
+      "id": 402,
+      "fotmobId": 9937,
+      "name": "Brentford",
+      "shortName": "Brentford",
+      "tla": "BRE",
+      "crest": "brentford"
+    },
+    {
+      "id": 563,
+      "fotmobId": 8654,
+      "name": "West Ham United",
+      "shortName": "West Ham",
+      "tla": "WHU",
+      "crest": "west-ham-united"
+    },
+    {
+      "id": 1044,
+      "fotmobId": 8678,
+      "name": "AFC Bournemouth",
+      "shortName": "Bournemouth",
+      "tla": "BOU",
+      "crest": "afc-bournemouth"
+    }
+  ]
+}

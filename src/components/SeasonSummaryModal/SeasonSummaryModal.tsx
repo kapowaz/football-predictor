@@ -10,6 +10,7 @@ import {
 import { useCallback, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import type { TeamStanding } from '../../types';
+import type { CompetitionConfig, ZoneType } from '../../competitions';
 import { Confetti } from '../Confetti';
 import { Button } from '../Button';
 import { ShareIcon } from '../icons';
@@ -20,6 +21,7 @@ interface SeasonSummaryModalProps {
   standings: TeamStanding[];
   isOpen: boolean;
   onClose: () => void;
+  competition: CompetitionConfig;
 }
 
 const TeamRow = ({ standing }: { standing: TeamStanding }) => {
@@ -31,7 +33,22 @@ const TeamRow = ({ standing }: { standing: TeamStanding }) => {
   );
 };
 
-export const SeasonSummaryModal = ({ standings, isOpen, onClose }: SeasonSummaryModalProps) => {
+const zoneLabelStyles: Record<ZoneType, string> = {
+  champions: styles.championsLabel,
+  promotion: styles.promotedLabel,
+  playoff: styles.playoffsLabel,
+  championsLeague: styles.championsLeagueLabel,
+  europaLeague: styles.europaLeagueLabel,
+  conferenceLeague: styles.conferenceLeagueLabel,
+  relegation: styles.relegatedLabel,
+};
+
+export const SeasonSummaryModal = ({
+  standings,
+  isOpen,
+  onClose,
+  competition,
+}: SeasonSummaryModalProps) => {
   const { refs, context } = useFloating({
     open: isOpen,
     onOpenChange: (open) => {
@@ -63,24 +80,32 @@ export const SeasonSummaryModal = ({ standings, isOpen, onClose }: SeasonSummary
   );
 
   const champion = standings[0];
-  const promoted = standings.slice(0, 2);
-  const playoffs = standings.slice(2, 6);
-  const relegated = standings.slice(21, 24);
+
+  const zoneGroups = competition.zones.map((zone) => ({
+    zone,
+    teams: standings.slice(zone.startPosition - 1, zone.endPosition),
+  }));
+
+  const relegationZone = zoneGroups.find((g) => g.zone.type === 'relegation');
+  const nonRelegationZones = zoneGroups.filter((g) => g.zone.type !== 'relegation');
 
   const handleShare = async () => {
     const lines = [
-      `⚽ **EFL Championship 2025/26 Predictions**`,
+      `⚽ **${competition.fullTitle}**`,
       ``,
       `🏆 Champions: ${champion?.team.name}`,
-      `⬆️ Promoted: ${promoted.map((s) => s.team.name).join(', ')}`,
-      `🔀 Playoffs: ${playoffs.map((s) => s.team.name).join(', ')}`,
-      `⬇️ Relegated: ${relegated.map((s) => s.team.name).join(', ')}\n`,
-      `[Check it out](${window.location.href})`,
     ];
+
+    for (const { zone, teams } of zoneGroups) {
+      lines.push(`${zone.emoji} ${zone.label}: ${teams.map((s) => s.team.name).join(', ')}`);
+    }
+
+    lines.push('');
+    lines.push(`[Check it out](${window.location.href})`);
 
     try {
       await navigator.share({
-        title: 'EFL Championship 2025/26 Predictions',
+        title: competition.fullTitle,
         text: lines.join('\n'),
       });
     } catch {
@@ -140,40 +165,39 @@ export const SeasonSummaryModal = ({ standings, isOpen, onClose }: SeasonSummary
                   </h2>
 
                   <p className={styles.championSubheading}>
-                    EFL Championship Champions 2025/26!<span className={styles.asterisk}>*</span>
+                    {competition.name} Champions {competition.season}!
+                    <span className={styles.asterisk}>*</span>
                   </p>
                   <p className={styles.predictionParagraph}>*This is only a prediction…</p>
 
                   <hr className={styles.divider} />
 
-                  <div className={styles.section}>
-                    <div className={styles.promotedLabel}>Promoted</div>
-                    <div className={styles.teamList}>
-                      {promoted.map((s) => (
-                        <TeamRow key={s.team.id} standing={s} />
-                      ))}
+                  {nonRelegationZones.map(({ zone, teams }) => (
+                    <div key={zone.name} className={styles.section}>
+                      <div className={zoneLabelStyles[zone.type] ?? styles.sectionLabel}>
+                        {zone.label}
+                      </div>
+                      <div className={styles.teamList}>
+                        {teams.map((s) => (
+                          <TeamRow key={s.team.id} standing={s} />
+                        ))}
+                      </div>
                     </div>
-                  </div>
+                  ))}
 
-                  <div className={styles.section}>
-                    <div className={styles.playoffsLabel}>Playoffs</div>
-                    <div className={styles.teamList}>
-                      {playoffs.map((s) => (
-                        <TeamRow key={s.team.id} standing={s} />
-                      ))}
-                    </div>
-                  </div>
-
-                  <hr className={styles.divider} />
-
-                  <div className={styles.section}>
-                    <div className={styles.relegatedLabel}>Relegated</div>
-                    <div className={styles.teamList}>
-                      {relegated.map((s) => (
-                        <TeamRow key={s.team.id} standing={s} />
-                      ))}
-                    </div>
-                  </div>
+                  {relegationZone && (
+                    <>
+                      <hr className={styles.divider} />
+                      <div className={styles.section}>
+                        <div className={styles.relegatedLabel}>{relegationZone.zone.label}</div>
+                        <div className={styles.teamList}>
+                          {relegationZone.teams.map((s) => (
+                            <TeamRow key={s.team.id} standing={s} />
+                          ))}
+                        </div>
+                      </div>
+                    </>
+                  )}
 
                   {hasShareApi && (
                     <div className={styles.shareButtonWrapper}>

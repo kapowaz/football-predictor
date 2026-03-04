@@ -1,8 +1,8 @@
 import * as fs from 'node:fs';
 import * as path from 'node:path';
+import { parseCompetitionArg } from './common';
+import type { ScriptCompetition } from './common';
 
-const FOTMOB_LEAGUE_ID = 48; // EFL Championship
-const LEAGUE_STATS_URL = `https://www.fotmob.com/api/leagues?id=${FOTMOB_LEAGUE_ID}&tab=stats&type=league`;
 const USER_AGENT =
   'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36';
 
@@ -74,14 +74,16 @@ const fotmobFetch = async <T>(url: string): Promise<T> => {
   return response.json() as Promise<T>;
 };
 
-const main = async (): Promise<void> => {
-  console.log('Fetching FotMob stats for EFL Championship...\n');
+const fetchStatsForCompetition = async (comp: ScriptCompetition): Promise<void> => {
+  const leagueStatsUrl = `https://www.fotmob.com/api/leagues?id=${comp.fotmobLeagueId}&tab=stats&type=league`;
+  console.log(`Fetching FotMob stats for ${comp.name}...\n`);
 
-  const teamsPath = path.join(import.meta.dirname, '../src/data/teams.json');
+  const dataDir = path.join(import.meta.dirname, '../src/data', comp.slug);
+  const teamsPath = path.join(dataDir, 'teams.json');
   const teamsData: TeamsJson = JSON.parse(fs.readFileSync(teamsPath, 'utf-8'));
 
   console.log('Discovering available stats from FotMob league endpoint...');
-  const leagueData = await fotmobFetch<FotMobLeagueResponse>(LEAGUE_STATS_URL);
+  const leagueData = await fotmobFetch<FotMobLeagueResponse>(leagueStatsUrl);
 
   const statEntries = leagueData.stats.teams;
   if (!statEntries || statEntries.length === 0) {
@@ -182,7 +184,10 @@ const main = async (): Promise<void> => {
           };
         }
 
-        if (entry.MatchesPlayed && entry.MatchesPlayed > (stats[String(teamId)].matchesPlayed as number)) {
+        if (
+          entry.MatchesPlayed &&
+          entry.MatchesPlayed > (stats[String(teamId)].matchesPlayed as number)
+        ) {
           stats[String(teamId)].matchesPlayed = entry.MatchesPlayed;
         }
 
@@ -201,12 +206,16 @@ const main = async (): Promise<void> => {
     stats,
   };
 
-  const outputPath = path.join(import.meta.dirname, '../src/data/fotmob-stats.json');
+  const outputPath = path.join(dataDir, 'fotmob-stats.json');
   fs.writeFileSync(outputPath, JSON.stringify(outputData, null, 2));
 
   const teamCount = Object.keys(stats).length;
-  const statCount = statResults.filter(Boolean).reduce((acc, r) => acc + (r?.TopLists.length ?? 0), 0);
-  console.log(`\n✓ Wrote stats for ${teamCount} teams (${statCount} stat categories) to src/data/fotmob-stats.json`);
+  const statCount = statResults
+    .filter(Boolean)
+    .reduce((acc, r) => acc + (r?.TopLists.length ?? 0), 0);
+  console.log(
+    `\n✓ Wrote stats for ${teamCount} teams (${statCount} stat categories) to src/data/${comp.slug}/fotmob-stats.json`,
+  );
 
   const unmatchedTeams = teamsData.teams.filter((t) => !fotmobIdByTeamId.has(t.id));
   if (unmatchedTeams.length > 0) {
@@ -217,7 +226,18 @@ const main = async (): Promise<void> => {
   }
 };
 
-main().catch((error) => {
-  console.error('Error fetching FotMob stats:', error);
-  process.exit(1);
-});
+const main = async (): Promise<void> => {
+  const competitions = parseCompetitionArg();
+
+  try {
+    for (const comp of competitions) {
+      await fetchStatsForCompetition(comp);
+      console.log();
+    }
+  } catch (error) {
+    console.error('Error fetching FotMob stats:', error);
+    process.exit(1);
+  }
+};
+
+main();
