@@ -170,34 +170,36 @@ export const SeasonSummaryModal = ({
                   </p>
                   <p className={styles.predictionParagraph}>*This is only a prediction…</p>
 
-                  <hr className={styles.divider} />
+                  <div className={styles.scrollableContent}>
+                    <hr className={styles.divider} />
 
-                  {nonRelegationZones.map(({ zone, teams }) => (
-                    <div key={zone.name} className={styles.section}>
-                      <div className={zoneLabelStyles[zone.type] ?? styles.sectionLabel}>
-                        {zone.label}
-                      </div>
-                      <div className={styles.teamList}>
-                        {teams.map((s) => (
-                          <TeamRow key={s.team.id} standing={s} />
-                        ))}
-                      </div>
-                    </div>
-                  ))}
-
-                  {relegationZone && (
-                    <>
-                      <hr className={styles.divider} />
-                      <div className={styles.section}>
-                        <div className={styles.relegatedLabel}>{relegationZone.zone.label}</div>
+                    {nonRelegationZones.map(({ zone, teams }) => (
+                      <div key={zone.name} className={styles.section}>
+                        <div className={zoneLabelStyles[zone.type] ?? styles.sectionLabel}>
+                          {zone.label}
+                        </div>
                         <div className={styles.teamList}>
-                          {relegationZone.teams.map((s) => (
+                          {teams.map((s) => (
                             <TeamRow key={s.team.id} standing={s} />
                           ))}
                         </div>
                       </div>
-                    </>
-                  )}
+                    ))}
+
+                    {relegationZone && (
+                      <>
+                        <hr className={styles.divider} />
+                        <div className={styles.section}>
+                          <div className={styles.relegatedLabel}>{relegationZone.zone.label}</div>
+                          <div className={styles.teamList}>
+                            {relegationZone.teams.map((s) => (
+                              <TeamRow key={s.team.id} standing={s} />
+                            ))}
+                          </div>
+                        </div>
+                      </>
+                    )}
+                  </div>
 
                   {hasShareApi && (
                     <div className={styles.shareButtonWrapper}>

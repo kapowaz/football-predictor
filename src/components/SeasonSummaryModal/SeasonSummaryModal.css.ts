@@ -47,6 +47,9 @@ export const modal = style({
   padding: space8,
   maxWidth: '520px',
   width: '90vw',
+  maxHeight: '90vh',
+  display: 'flex',
+  flexDirection: 'column',
   position: 'relative',
   outline: 'none',
   overflow: 'hidden',
@@ -183,6 +186,13 @@ export const closeButton = style({
   ':hover': {
     color: colorTextHeading,
   },
+});
+
+export const scrollableContent = style({
+  overflowY: 'auto',
+  flex: 1,
+  minHeight: 0,
+  position: 'relative',
 });
 
 export const divider = style({
