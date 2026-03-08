@@ -20,7 +20,8 @@
     "generate-predictions": "python3 scripts/generate-predictions.py --all --simulations 50000",
     "generate-predictions:championship": "python3 scripts/generate-predictions.py --competition efl-championship --simulations 50000",
     "generate-predictions:premier-league": "python3 scripts/generate-predictions.py --competition premier-league --simulations 50000",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "check-for-updates": "tsx scripts/check-for-updates.ts"
   },
   "dependencies": {
     "@floating-ui/react": "^0.27.18",

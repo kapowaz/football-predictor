@@ -1,0 +1,50 @@
+name: Check for match updates
+
+on:
+  schedule:
+    # Every 5 minutes during typical match-finishing windows (13:00–22:59 UTC).
+    # Covers both GMT and BST kickoff times for English football:
+    #   - Early Saturday (12:30 BST → finishes ~13:15 UTC)
+    #   - Standard 15:00 → finishes ~16:45
+    #   - Evening midweek (19:45–20:00 → finishes ~21:30–21:45)
+    - cron: "*/5 13-22 * * *"
+  workflow_dispatch: # Allow manual testing
+
+permissions:
+  actions: write # Required to trigger the deploy workflow
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: yarn
+
+      - run: yarn install --frozen-lockfile
+
+      - uses: actions/cache/restore@v4
+        with:
+          path: .match-state.json
+          key: match-state-
+          restore-keys: match-state-
+
+      - id: check
+        run: yarn check-for-updates
+        env:
+          FOOTBALL_DATA_API_KEY: ${{ secrets.FOOTBALL_DATA_API_KEY }}
+
+      - if: steps.check.outputs.changed == 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: .match-state.json
+          key: match-state-${{ github.run_id }}
+
+      - if: steps.check.outputs.changed == 'true'
+        run: gh workflow run deploy.yml
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
