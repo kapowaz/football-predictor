@@ -20,6 +20,7 @@ export const card = style({
   borderRadius: radiusLg,
   boxShadow: shadowSm,
   gap: space4,
+  containerType: 'inline-size',
   '@media': {
     '(min-width: 680px)': {
       padding: space4,
@@ -72,8 +73,8 @@ export const teamName = style([
   teamNameBase,
   {
     display: 'none',
-    '@media': {
-      '(min-width: 680px)': {
+    '@container': {
+      '(min-width: 400px)': {
         display: 'block',
       },
     },
@@ -84,8 +85,8 @@ export const teamTla = style([
   teamNameBase,
   {
     display: 'block',
-    '@media': {
-      '(min-width: 680px)': {
+    '@container': {
+      '(min-width: 400px)': {
         display: 'none',
       },
     },

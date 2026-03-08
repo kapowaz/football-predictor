@@ -37,6 +37,12 @@ export const app = style({
   minHeight: '100vh',
   padding: space6,
   '@media': {
+    'screen and (max-width: 1024px)': {
+      display: 'flex',
+      flexDirection: 'column',
+      height: '100dvh',
+      minHeight: 0,
+    },
     'screen and (max-width: 680px)': {
       padding: 0,
     },
@@ -89,6 +95,9 @@ export const main = style({
   '@media': {
     'screen and (max-width: 1024px)': {
       gridTemplateColumns: '1fr',
+      width: '100%',
+      flex: 1,
+      minHeight: 0,
     },
   },
 });
@@ -98,6 +107,9 @@ export const panel = style({
   flexDirection: 'column',
   gap: space4,
   '@media': {
+    'screen and (max-width: 1024px)': {
+      minHeight: 0,
+    },
     'screen and (max-width: 680px)': {
       overflow: 'hidden',
     },
@@ -202,6 +214,7 @@ export const tabBar = style({
   '@media': {
     [mobileBreakpoint]: {
       display: 'flex',
+      width: '100%',
       maxWidth: maxWidthContent,
       margin: `0 auto ${space4}`,
       borderBottom: `2px solid ${colorBorder}`,

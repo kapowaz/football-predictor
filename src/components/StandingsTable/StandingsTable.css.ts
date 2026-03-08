@@ -47,12 +47,19 @@ export const container = style({
   backgroundColor: colorBgSurface,
   borderRadius: radiusLg,
   boxShadow: shadowMd,
-  overflow: 'hidden',
+  overflowX: 'hidden',
+  overflowY: 'auto',
+  maxHeight: 'calc(100vh - 140px)',
   '@media': {
+    'screen and (max-width: 1024px)': {
+      flex: 1,
+      minHeight: 0,
+      maxHeight: 'none',
+    },
     'screen and (max-width: 680px)': {
       borderRadius: 0,
       boxShadow: 'none',
-      overflowX: 'auto',
+      overflow: 'auto',
     },
   },
 });
@@ -77,6 +84,10 @@ export const th = style({
   textTransform: 'uppercase',
   letterSpacing: '0.05em',
   fontVariantNumeric: 'tabular-nums',
+  position: 'sticky',
+  top: 0,
+  zIndex: 2,
+  backgroundColor: colorNeutralLight,
   '@media': {
     'screen and (min-width: 480px)': {
       padding: space2,
@@ -136,7 +147,8 @@ export const stickyCellTh = style([
   {
     position: 'sticky',
     left: 0,
-    zIndex: 1,
+    top: 0,
+    zIndex: 3,
     backgroundColor: colorNeutralLight,
     '@media': {
       'screen and (max-width: 480px)': {

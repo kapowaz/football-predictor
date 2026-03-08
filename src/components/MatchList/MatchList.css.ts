@@ -21,6 +21,13 @@ export const container = style({
   gap: space4,
   overflow: 'auto',
   maxHeight: 'calc(100vh - 140px)',
+  '@media': {
+    'screen and (max-width: 1024px)': {
+      flex: 1,
+      minHeight: 0,
+      maxHeight: 'none',
+    },
+  },
 });
 
 export const dateGroup = style({

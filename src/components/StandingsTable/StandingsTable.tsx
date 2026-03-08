@@ -64,13 +64,13 @@ export const StandingsTable = ({ standings, deductionMarkers, zones }: Standings
           <tr>
             <th className={clsx(styles.th, styles.stickyCellTh)}>Team</th>
             <th className={styles.thCenter}>P</th>
+            <th className={styles.thCenter}>GD</th>
+            <th className={styles.thCenter}>Pts</th>
             <th className={styles.thCenter}>W</th>
             <th className={styles.thCenter}>D</th>
             <th className={styles.thCenter}>L</th>
             <th className={styles.thCenter}>GF</th>
             <th className={styles.thCenter}>GA</th>
-            <th className={styles.thCenter}>GD</th>
-            <th className={styles.thCenter}>Pts</th>
             <th className={styles.thCenter}>Form</th>
           </tr>
         </thead>
@@ -103,11 +103,6 @@ export const StandingsTable = ({ standings, deductionMarkers, zones }: Standings
                   </div>
                 </td>
                 <td className={styles.tdCenter}>{standing.played}</td>
-                <td className={styles.tdCenter}>{standing.won}</td>
-                <td className={styles.tdCenter}>{standing.drawn}</td>
-                <td className={styles.tdCenter}>{standing.lost}</td>
-                <td className={styles.tdCenter}>{standing.goalsFor}</td>
-                <td className={styles.tdCenter}>{standing.goalsAgainst}</td>
                 <td
                   className={clsx(styles.tdCenter, styles.goalDiff, {
                     [styles.positive]: standing.goalDifference > 0,
@@ -117,6 +112,11 @@ export const StandingsTable = ({ standings, deductionMarkers, zones }: Standings
                   {formatGD(standing.goalDifference)}
                 </td>
                 <td className={clsx(styles.tdCenter, styles.points)}>{standing.points}</td>
+                <td className={styles.tdCenter}>{standing.won}</td>
+                <td className={styles.tdCenter}>{standing.drawn}</td>
+                <td className={styles.tdCenter}>{standing.lost}</td>
+                <td className={styles.tdCenter}>{standing.goalsFor}</td>
+                <td className={styles.tdCenter}>{standing.goalsAgainst}</td>
                 <td className={styles.td}>
                   <div className={styles.formCell}>
                     {standing.form.map((entry, i) => (
