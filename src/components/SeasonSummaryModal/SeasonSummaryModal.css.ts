@@ -25,21 +25,6 @@ import {
   shadowSm,
 } from '../../theme.css';
 
-export const container = style({
-  position: 'relative',
-  zIndex: 1,
-});
-
-export const overlay = style({
-  position: 'fixed',
-  inset: 0,
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  backgroundColor: 'rgba(0, 0, 0, 0.5)',
-  zIndex: 1000,
-});
-
 export const modal = style({
   backgroundColor: colorBgSurface,
   borderRadius: radiusLg,

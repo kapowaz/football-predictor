@@ -21,6 +21,7 @@ const base = style({
   display: 'inline-flex',
   alignItems: 'center',
   gap: space1,
+  minHeight: '36px',
   padding: space2,
   fontFamily: fontFamily,
   fontSize: fontSizeSm,

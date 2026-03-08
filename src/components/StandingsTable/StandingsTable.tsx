@@ -2,6 +2,7 @@ import clsx from 'clsx';
 import type { TeamStanding, FormResult, FormEntry } from '../../types';
 import type { ZoneDefinition, ZoneType } from '../../competitions';
 import { getCrest } from '../../assets/crests';
+import { getZoneForPosition } from '../../utils/zones';
 import { useScrollDirectionLock } from '../../hooks/useScrollDirectionLock';
 import * as styles from './StandingsTable.css';
 
@@ -24,15 +25,6 @@ const formStyles: Record<FormResult, string> = {
   W: styles.formWin,
   D: styles.formDraw,
   L: styles.formLoss,
-};
-
-const getZoneForPosition = (position: number, zones: ZoneDefinition[]): ZoneType | 'default' => {
-  for (const zone of zones) {
-    if (position >= zone.startPosition && position <= zone.endPosition) {
-      return zone.type;
-    }
-  }
-  return 'default';
 };
 
 const zoneRowStyles: Record<ZoneType | 'default', [string, string]> = {

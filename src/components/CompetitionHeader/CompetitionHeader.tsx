@@ -1,0 +1,35 @@
+import type { CompetitionConfig } from '../../competitions';
+import { CompetitionSelect } from '../CompetitionSelect';
+import footballPredictorLogo from '../../assets/football-predictor.svg';
+import * as styles from './CompetitionHeader.css';
+
+interface CompetitionHeaderProps {
+  /** All available competitions to show in the select dropdown */
+  competitions: CompetitionConfig[];
+  /** Currently active competition slug */
+  activeSlug: string;
+  /** Called when the user selects a different competition */
+  onCompetitionChange: (slug: string) => void;
+}
+
+export const CompetitionHeader = ({
+  competitions,
+  activeSlug,
+  onCompetitionChange,
+}: CompetitionHeaderProps) => {
+  return (
+    <header className={styles.header}>
+      <img src={footballPredictorLogo} alt="Football Predictor" className={styles.logo} />
+      <h1 className={styles.title}>Football Predictor</h1>
+      {competitions.length > 1 && (
+        <div className={styles.competitionSelectWrapper}>
+          <CompetitionSelect
+            competitions={competitions}
+            value={activeSlug}
+            onChange={onCompetitionChange}
+          />
+        </div>
+      )}
+    </header>
+  );
+};

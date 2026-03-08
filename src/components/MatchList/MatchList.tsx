@@ -1,85 +1,28 @@
-import { useMemo, useCallback, useRef, useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
 import clsx from 'clsx';
 import type { Match, Team, PredictionsStore } from '../../types';
+import { useGroupedMatches } from '../../hooks/useGroupedMatches';
 import { MatchCard } from '../MatchCard/MatchCard';
+import { ChevronRightIcon } from '../icons';
 import * as styles from './MatchList.css';
-
-const Chevron = ({ expanded }: { expanded: boolean }) => {
-  return (
-    <svg
-      className={clsx(styles.chevron, expanded && styles.chevronExpanded)}
-      viewBox="0 0 16 16"
-      fill="currentColor"
-    >
-      <path d="M6 3l5 5-5 5V3z" />
-    </svg>
-  );
-};
 
 interface MatchListProps {
   matches: Match[];
-  teams: Team[];
+  teamsById: Map<number, Team>;
   predictions: PredictionsStore;
   onPredictionChange: (matchId: number, homeGoals: number, awayGoals: number) => void;
   onPredictionRemove: (matchId: number) => void;
 }
 
-interface GroupedMatches {
-  date: string;
-  dateLabel: string;
-  matches: Match[];
-}
-
-const formatDateLabel = (dateStr: string): string => {
-  const date = new Date(dateStr);
-  return date.toLocaleDateString('en-GB', {
-    weekday: 'long',
-    day: 'numeric',
-    month: 'long',
-  });
-};
-
-const getDateKey = (utcDate: string): string => {
-  return new Date(utcDate).toISOString().split('T')[0];
-};
-
 export const MatchList = ({
   matches,
-  teams,
+  teamsById,
   predictions,
   onPredictionChange,
   onPredictionRemove,
 }: MatchListProps) => {
-  const teamMap = useMemo(() => {
-    return new Map(teams.map((team) => [team.id, team]));
-  }, [teams]);
 
-  const scheduledMatches = useMemo(() => {
-    return matches
-      .filter((match) => match.status === 'SCHEDULED')
-      .sort((a, b) => new Date(a.utcDate).getTime() - new Date(b.utcDate).getTime());
-  }, [matches]);
-
-  const groupedMatches = useMemo(() => {
-    const groups = new Map<string, Match[]>();
-
-    for (const match of scheduledMatches) {
-      const dateKey = getDateKey(match.utcDate);
-      const existing = groups.get(dateKey) || [];
-      groups.set(dateKey, [...existing, match]);
-    }
-
-    const result: GroupedMatches[] = [];
-    for (const [date, dateMatches] of groups.entries()) {
-      result.push({
-        date,
-        dateLabel: formatDateLabel(date),
-        matches: dateMatches,
-      });
-    }
-
-    return result.sort((a, b) => a.date.localeCompare(b.date));
-  }, [scheduledMatches]);
+  const groupedMatches = useGroupedMatches(matches, predictions);
 
   const [expandedDate, setExpandedDate] = useState<string | null>(null);
   const dateRefs = useRef<Map<string, HTMLDivElement>>(new Map());
@@ -112,7 +55,7 @@ export const MatchList = ({
     [],
   );
 
-  if (scheduledMatches.length === 0) {
+  if (groupedMatches.length === 0) {
     return <div className={styles.emptyState}>No upcoming matches to predict.</div>;
   }
 
@@ -120,9 +63,6 @@ export const MatchList = ({
     <div className={styles.container} ref={containerRef}>
       {groupedMatches.map((group) => {
         const isExpanded = expandedDate === group.date;
-        const allPredicted = group.matches.every(
-          (match) => predictions.predictions[String(match.id)] != null,
-        );
         return (
           <div
             key={group.date}
@@ -136,11 +76,11 @@ export const MatchList = ({
             }}
           >
             <button
-              className={clsx(styles.dateHeader, allPredicted && styles.dateHeaderComplete)}
+              className={clsx(styles.dateHeader, group.allPredicted && styles.dateHeaderComplete)}
               onClick={() => toggleDate(group.date)}
               aria-expanded={isExpanded}
             >
-              <Chevron expanded={isExpanded} />
+              <ChevronRightIcon className={clsx(styles.chevron, isExpanded && styles.chevronExpanded)} />
               {group.dateLabel}
               <span className={styles.fixtureIndicators}>
                 {group.matches.map((match) => {
@@ -167,8 +107,8 @@ export const MatchList = ({
             >
               <div className={styles.matchesList}>
                 {group.matches.map((match) => {
-                  const homeTeam = teamMap.get(match.homeTeamId);
-                  const awayTeam = teamMap.get(match.awayTeamId);
+                  const homeTeam = teamsById.get(match.homeTeamId);
+                  const awayTeam = teamsById.get(match.awayTeamId);
 
                   if (!homeTeam || !awayTeam) return null;
 

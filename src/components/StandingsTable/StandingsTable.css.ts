@@ -1,4 +1,4 @@
-import { style } from '@vanilla-extract/css';
+import { style, createContainer } from '@vanilla-extract/css';
 import {
   colorBgSurface,
   colorBgRowAlt,
@@ -38,12 +38,17 @@ import {
   space1,
   space2,
   space3,
+  space4,
   radiusMd,
   radiusLg,
   shadowMd,
 } from '../../theme.css';
 
+export const tableContainer = createContainer();
+
 export const container = style({
+  containerName: tableContainer,
+  containerType: 'inline-size',
   backgroundColor: colorBgSurface,
   borderRadius: radiusLg,
   boxShadow: shadowMd,
@@ -102,6 +107,16 @@ export const thCenter = style([
   th,
   {
     textAlign: 'center',
+    width: '1%',
+    whiteSpace: 'nowrap',
+    '@container': {
+      [`${tableContainer} (min-width: 768px)`]: {
+        padding: space3,
+      },
+      [`${tableContainer} (min-width: 850px)`]: {
+        padding: `${space3} ${space4}`,
+      },
+    },
   },
 ]);
 
@@ -125,6 +140,15 @@ export const tdCenter = style([
   td,
   {
     textAlign: 'center',
+    whiteSpace: 'nowrap',
+    '@container': {
+      [`${tableContainer} (min-width: 768px)`]: {
+        padding: space3,
+      },
+      [`${tableContainer} (min-width: 850px)`]: {
+        padding: `${space3} ${space4}`,
+      },
+    },
   },
 ]);
 
@@ -299,6 +323,7 @@ export const formCell = style({
   display: 'flex',
   gap: space1,
   justifyContent: 'flex-end',
+  whiteSpace: 'nowrap',
 });
 
 export const formBadge = style({

@@ -1,17 +1,11 @@
 import { style, globalStyle } from '@vanilla-extract/css';
 import {
   colorBgPage,
-  colorBgSurface,
   colorTextPrimary,
   colorTextHeading,
   colorTextSecondary,
-  colorBorder,
-  colorFocus,
   fontFamily,
-  fontSizeXxl,
-  fontSizeXl,
   fontSizeLg,
-  fontSizeMd,
   fontSizeSm,
   space2,
   space3,
@@ -49,46 +43,9 @@ export const app = style({
   },
 });
 
-export const header = style({
-  display: 'flex',
-  alignItems: 'center',
-  gap: space4,
-  maxWidth: maxWidthContent,
-  margin: `0 auto ${space8}`,
-  '@media': {
-    'screen and (max-width: 680px)': {
-      padding: `${space6} ${space4} 0`,
-    },
-  },
-});
-
-export const logo = style({
-  height: '36px',
-  width: 'auto',
-  filter: 'drop-shadow(0 0 2px rgba(0, 0, 0, 0.4))',
-  transform: 'rotate(-10deg)',
-});
-
-export const title = style({
-  fontSize: fontSizeXxl,
-  fontWeight: 700,
-  color: colorTextHeading,
-  margin: 0,
-  '@media': {
-    'screen and (max-width: 680px)': {
-      fontSize: fontSizeXl,
-    },
-  },
-});
-
-export const competitionSelectWrapper = style({
-  marginLeft: 'auto',
-  minWidth: '220px',
-});
-
 export const main = style({
   display: 'grid',
-  gridTemplateColumns: '1fr 1fr',
+  gridTemplateColumns: 'minmax(640px, 1fr) 1fr',
   gap: space8,
   maxWidth: maxWidthContent,
   margin: '0 auto',
@@ -148,7 +105,7 @@ export const panelHeaderWithNotes = style({
       padding: `0 ${space4}`,
     },
     'screen and (min-width: 680px)': {
-      height: '32px',
+      height: '36px',
     },
   },
 });
@@ -208,42 +165,6 @@ export const deductionsButtonIcon = style({
 });
 
 const mobileBreakpoint = 'screen and (max-width: 1024px)';
-
-export const tabBar = style({
-  display: 'none',
-  '@media': {
-    [mobileBreakpoint]: {
-      display: 'flex',
-      width: '100%',
-      maxWidth: maxWidthContent,
-      margin: `0 auto ${space4}`,
-      borderBottom: `2px solid ${colorBorder}`,
-      position: 'sticky',
-      left: 0,
-    },
-  },
-});
-
-export const tab = style({
-  flex: 1,
-  padding: `${space3} ${space4}`,
-  fontFamily: fontFamily,
-  fontSize: fontSizeMd,
-  fontWeight: 600,
-  color: colorTextSecondary,
-  background: colorBgSurface,
-  border: 'none',
-  borderBottom: '2px solid transparent',
-  marginBottom: '-2px',
-  cursor: 'pointer',
-  textAlign: 'center',
-  transition: 'color 0.2s, border-color 0.2s',
-});
-
-export const tabActive = style({
-  color: colorTextHeading,
-  borderBottomColor: colorFocus,
-});
 
 export const hiddenOnMobile = style({
   '@media': {
