@@ -31,6 +31,7 @@ import {
   colorSuccess,
   colorDanger,
   colorNeutral,
+  fontFamilyMono,
   fontSizeXs,
   fontSizeSm,
   fontSizeBase,
@@ -141,6 +142,7 @@ export const tdCenter = style([
   {
     textAlign: 'center',
     whiteSpace: 'nowrap',
+    fontFamily: fontFamilyMono,
     '@container': {
       [`${tableContainer} (min-width: 768px)`]: {
         padding: space3,
@@ -183,6 +185,7 @@ export const stickyCellTh = style([
 ]);
 
 export const position = style({
+  fontFamily: fontFamilyMono,
   fontWeight: 600,
   color: colorTextSecondary,
   textAlign: 'center',

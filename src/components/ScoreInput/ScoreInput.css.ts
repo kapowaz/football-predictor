@@ -1,4 +1,5 @@
 import { style } from '@vanilla-extract/css';
+import { fontFamilyMono } from '../../theme.css';
 
 export const container = style({
   display: 'flex',
@@ -10,8 +11,7 @@ export const input = style({
   width: '32px',
   height: '32px',
   textAlign: 'center',
-  fontFamily:
-    'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
+  fontFamily: fontFamilyMono,
   fontSize: '14px',
   fontWeight: 600,
   border: '2px solid #e0e0e0',

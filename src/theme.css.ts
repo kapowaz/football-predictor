@@ -55,6 +55,7 @@ export const colorFocus = createVar();
 export const colorFocusRing = createVar();
 
 export const fontFamily = createVar();
+export const fontFamilyMono = createVar();
 
 export const fontSizeXs = createVar();
 export const fontSizeSm = createVar();
@@ -138,7 +139,9 @@ globalStyle(':root', {
     [colorFocusRing]: 'rgba(59, 130, 246, 0.2)',
 
     [fontFamily]:
-      'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
+      'Geist, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
+    [fontFamilyMono]:
+      '"Geist Mono", ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace',
 
     [fontSizeXs]: '11px',
     [fontSizeSm]: '12px',

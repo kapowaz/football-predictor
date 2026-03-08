@@ -1,6 +1,7 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter, Routes, Route, Navigate, useSearchParams } from 'react-router-dom';
+import './fonts.css';
 import App from './App';
 import { CompetitionPage } from './CompetitionPage';
 import { DEFAULT_COMPETITION, LEGACY_COMPETITION } from './competitions';
