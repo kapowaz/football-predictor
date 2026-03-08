@@ -2,6 +2,7 @@ import clsx from 'clsx';
 import type { TeamStanding, FormResult, FormEntry } from '../../types';
 import type { ZoneDefinition, ZoneType } from '../../competitions';
 import { getCrest } from '../../assets/crests';
+import { useScrollDirectionLock } from '../../hooks/useScrollDirectionLock';
 import * as styles from './StandingsTable.css';
 
 interface StandingsTableProps {
@@ -57,8 +58,10 @@ const zonePositionStyles: Record<ZoneType | 'default', string | undefined> = {
 };
 
 export const StandingsTable = ({ standings, deductionMarkers, zones }: StandingsTableProps) => {
+  const containerRef = useScrollDirectionLock<HTMLDivElement>();
+
   return (
-    <div className={styles.container}>
+    <div ref={containerRef} className={styles.container}>
       <table className={styles.table}>
         <thead className={styles.thead}>
           <tr>
