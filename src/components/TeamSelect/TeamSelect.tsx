@@ -96,6 +96,8 @@ interface TeamSelectProps {
   value: number | '';
   onChange: (teamId: number | '') => void;
   placeholder?: string;
+  /** Where the dropdown menu should appear relative to the control. */
+  menuPlacement?: 'auto' | 'bottom' | 'top';
 }
 
 export const TeamSelect = ({
@@ -103,6 +105,7 @@ export const TeamSelect = ({
   value,
   onChange,
   placeholder = 'Select a team…',
+  menuPlacement = 'auto',
 }: TeamSelectProps) => {
   const options = teams.map(toOption);
   const selected = value !== '' ? (options.find((o) => o.value === value) ?? null) : null;
@@ -121,6 +124,7 @@ export const TeamSelect = ({
       placeholder={placeholder}
       isClearable
       menuPortalTarget={document.body}
+      menuPlacement={menuPlacement}
       aria-label="Select team"
     />
   );

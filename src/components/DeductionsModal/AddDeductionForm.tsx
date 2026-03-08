@@ -38,6 +38,7 @@ export const AddDeductionForm = ({ teams, deductions, onAdd }: AddDeductionFormP
             teams={availableTeams}
             value={newTeamId}
             onChange={setNewTeamId}
+            menuPlacement="top"
           />
         </div>
         <input

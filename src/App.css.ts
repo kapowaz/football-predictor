@@ -11,7 +11,6 @@ import {
   space3,
   space4,
   space6,
-  space8,
   maxWidthContent,
 } from './theme.css';
 
@@ -46,7 +45,7 @@ export const app = style({
 export const main = style({
   display: 'grid',
   gridTemplateColumns: 'minmax(640px, 1fr) 1fr',
-  gap: space8,
+  gap: space6,
   maxWidth: maxWidthContent,
   margin: '0 auto',
   '@media': {
