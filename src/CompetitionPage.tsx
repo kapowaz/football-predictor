@@ -5,6 +5,7 @@ import { usePredictions } from './hooks/usePredictions';
 import { useDeductions } from './hooks/useDeductions';
 import { useStandings } from './hooks/useStandings';
 import { useSeasonSummary } from './hooks/useSeasonSummary';
+import { useTheme } from './hooks/useTheme';
 import { CompetitionHeader } from './components/CompetitionHeader';
 import { TabBar } from './components/TabBar';
 import { StandingsTable } from './components/StandingsTable/StandingsTable';
@@ -29,6 +30,7 @@ interface CompetitionContentProps {
 
 const CompetitionContent = ({ slug, config }: CompetitionContentProps) => {
   const navigate = useNavigate();
+  const { theme, toggleTheme } = useTheme();
   const { teams, matches, defaultDeductions, modelPredictions } = useCompetitionData(slug);
 
   const teamsById = useMemo(() => new Map(teams.map((t) => [t.id, t])), [teams]);
@@ -76,6 +78,8 @@ const CompetitionContent = ({ slug, config }: CompetitionContentProps) => {
         competitions={competitions}
         activeSlug={slug}
         onCompetitionChange={(s) => navigate(`/${s}/`)}
+        theme={theme}
+        onThemeToggle={toggleTheme}
       />
 
       <TabBar tabs={[...TABS]} activeTab={activeTab} onTabChange={setActiveTab} />

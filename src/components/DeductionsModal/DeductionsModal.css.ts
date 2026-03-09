@@ -1,5 +1,6 @@
 import { style } from '@vanilla-extract/css';
 import {
+  colorBgModal,
   colorBgSurface,
   colorBgSurfaceHover,
   colorBorder,
@@ -26,7 +27,7 @@ import {
 } from '../../theme.css';
 
 export const modal = style({
-  backgroundColor: colorBgSurface,
+  backgroundColor: colorBgModal,
   borderRadius: radiusLg,
   boxShadow: `${shadowSm}, 0 20px 60px rgba(0, 0, 0, 0.3)`,
   padding: space8,

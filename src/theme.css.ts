@@ -48,8 +48,22 @@ export const colorTextZoneEuropaLeague = createVar();
 export const colorBgZoneConferenceLeague = createVar();
 export const colorBgZoneConferenceLeagueAlt = createVar();
 export const colorTextZoneConferenceLeague = createVar();
+export const colorBgModal = createVar();
+export const colorBgMatchCard = createVar();
+export const colorBgRowEven = createVar();
 export const colorBgRowAlt = createVar();
-export const colorBgTableHeader = createVar();
+export const colorBgTableHead = createVar();
+export const colorTextTableHead = createVar();
+
+export const colorTextPosition = createVar();
+export const colorTextGdPositive = createVar();
+export const colorTextGdNegative = createVar();
+export const colorResultWin = createVar();
+export const colorResultDraw = createVar();
+export const colorResultLoss = createVar();
+export const colorResultWinText = createVar();
+export const colorResultDrawText = createVar();
+export const colorResultLossText = createVar();
 
 export const colorFocus = createVar();
 export const colorFocusRing = createVar();
@@ -449,8 +463,22 @@ globalStyle(':root', {
     [colorBgZoneConferenceLeague]: fuchsia100,
     [colorBgZoneConferenceLeagueAlt]: fuchsia200,
     [colorTextZoneConferenceLeague]: fuchsia800,
+    [colorBgModal]: white,
+    [colorBgMatchCard]: white,
+    [colorBgRowEven]: white,
     [colorBgRowAlt]: gray100,
-    [colorBgTableHeader]: gray500,
+    [colorBgTableHead]: slate300,
+    [colorTextTableHead]: gray500,
+
+    [colorTextPosition]: gray500,
+    [colorTextGdPositive]: green600,
+    [colorTextGdNegative]: red600,
+    [colorResultWin]: green600,
+    [colorResultDraw]: gray400,
+    [colorResultLoss]: red600,
+    [colorResultWinText]: white,
+    [colorResultDrawText]: white,
+    [colorResultLossText]: white,
 
     [colorFocus]: blue500,
     [colorFocusRing]: 'oklch(62.3% 0.214 259.815 / 20%)',
@@ -802,4 +830,86 @@ globalStyle(':root', {
     [taupe900]: 'oklch(21.4% 0.009 43.1)',
     [taupe950]: 'oklch(14.7% 0.004 49.3)',
   },
+});
+
+const darkVars = {
+  [colorBgPage]: slate950,
+  [colorBgSurface]: black,
+  [colorBgSurfaceHover]: slate950,
+
+  [colorTextPrimary]: slate200,
+  [colorTextHeading]: slate300,
+  [colorTextSecondary]: slate500,
+  [colorTextMuted]: slate600,
+
+  [colorBorder]: slate800,
+  [colorBorderLight]: slate900,
+  [colorBorderMedium]: slate600,
+  [colorBorderInput]: slate800,
+
+  [colorSuccess]: green400,
+  [colorDanger]: red400,
+  [colorDangerBg]: red950,
+  [colorDangerBgHover]: red900,
+  [colorDangerBorder]: red800,
+  [colorDangerBorderHover]: red400,
+  [colorSuccessBg]: green950,
+  [colorSuccessBgHover]: green900,
+  [colorSuccessBorder]: green800,
+  [colorSuccessBorderHover]: green400,
+  [colorNeutralLight]: slate700,
+  [colorNeutral]: slate600,
+  [colorBgZonePromotion]: green950,
+  [colorBgZonePromotionAlt]: green900,
+  [colorBgZonePlayoff]: blue950,
+  [colorBgZonePlayoffAlt]: blue900,
+  [colorBgZoneRelegation]: red950,
+  [colorBgZoneRelegationAlt]: red900,
+  [colorTextZonePromotion]: green300,
+  [colorTextZonePlayoff]: blue300,
+  [colorTextZoneRelegation]: red300,
+  [colorBgZoneChampions]: green950,
+  [colorBgZoneChampionsAlt]: green900,
+  [colorTextZoneChampions]: green300,
+  [colorBgZoneChampionsLeague]: blue950,
+  [colorBgZoneChampionsLeagueAlt]: blue900,
+  [colorTextZoneChampionsLeague]: blue300,
+  [colorBgZoneEuropaLeague]: violet950,
+  [colorBgZoneEuropaLeagueAlt]: violet900,
+  [colorTextZoneEuropaLeague]: violet300,
+  [colorBgZoneConferenceLeague]: fuchsia950,
+  [colorBgZoneConferenceLeagueAlt]: fuchsia900,
+  [colorTextZoneConferenceLeague]: fuchsia300,
+  [colorBgModal]: slate950,
+  [colorBgMatchCard]: slate900,
+  [colorBgRowEven]: slate900,
+  [colorBgRowAlt]: slate800,
+  [colorBgTableHead]: slate700,
+  [colorTextTableHead]: slate500,
+
+  [colorTextGdPositive]: green300,
+  [colorTextGdNegative]: red300,
+  [colorResultWin]: green400,
+  [colorResultDraw]: slate400,
+  [colorResultLoss]: red400,
+  [colorResultWinText]: green700,
+  [colorResultDrawText]: slate700,
+  [colorResultLossText]: red700,
+
+  [colorFocusRing]: 'oklch(62.3% 0.214 259.815 / 30%)',
+
+  [shadowSm]: '0 1px 3px oklch(0% 0 0 / 30%)',
+  [shadowMd]: '0 2px 6px oklch(0% 0 0 / 30%)',
+};
+
+globalStyle(':root:not([data-theme="light"])', {
+  '@media': {
+    '(prefers-color-scheme: dark)': {
+      vars: darkVars,
+    },
+  },
+});
+
+globalStyle(':root[data-theme="dark"]', {
+  vars: darkVars,
 });

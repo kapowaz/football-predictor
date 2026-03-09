@@ -1,6 +1,19 @@
 import Select, { type StylesConfig, type SingleValue } from 'react-select';
 import type { Team } from '../../types';
 import { getCrest } from '../../assets/crests';
+import {
+  colorBgSurface,
+  colorBgSurfaceHover,
+  colorBgRowAlt,
+  colorBorder,
+  colorBorderInput,
+  colorBorderMedium,
+  colorFocus,
+  colorFocusRing,
+  colorTextPrimary,
+  colorTextSecondary,
+  shadowMd,
+} from '../../theme.css';
 import * as styles from './TeamSelect.css';
 
 interface TeamOption {
@@ -27,23 +40,23 @@ const selectStyles: StylesConfig<TeamOption, false> = {
     ...base,
     fontSize: 14,
     fontWeight: 500,
-    backgroundColor: '#ffffff',
-    borderColor: state.isFocused ? '#3b82f6' : '#e0e0e0',
+    backgroundColor: colorBgSurface,
+    borderColor: state.isFocused ? colorFocus : colorBorderInput,
     borderRadius: 3,
-    boxShadow: state.isFocused ? '0 0 0 2px rgba(59, 130, 246, 0.2)' : 'none',
+    boxShadow: state.isFocused ? `0 0 0 2px ${colorFocusRing}` : 'none',
     cursor: 'pointer',
     minHeight: 36,
     '&:hover': {
-      borderColor: '#9ca3af',
+      borderColor: colorBorderMedium,
     },
   }),
   singleValue: (base) => ({
     ...base,
-    color: '#1f2937',
+    color: colorTextPrimary,
   }),
   placeholder: (base) => ({
     ...base,
-    color: '#6b7280',
+    color: colorTextSecondary,
   }),
   option: (base, state) => ({
     ...base,
@@ -51,23 +64,24 @@ const selectStyles: StylesConfig<TeamOption, false> = {
     alignItems: 'center',
     fontSize: 14,
     fontWeight: 500,
-    color: '#1f2937',
+    color: colorTextPrimary,
     backgroundColor: state.isSelected
-      ? '#e5e7eb'
+      ? colorBgRowAlt
       : state.isFocused
-        ? '#f9fafb'
-        : '#ffffff',
+        ? colorBgSurfaceHover
+        : colorBgSurface,
     cursor: 'pointer',
     '&:active': {
-      backgroundColor: '#e5e7eb',
+      backgroundColor: colorBgRowAlt,
     },
   }),
   menu: (base) => ({
     ...base,
     borderRadius: 6,
-    border: '1px solid #e5e7eb',
-    boxShadow: '0 2px 6px rgba(0, 0, 0, 0.1)',
+    border: `1px solid ${colorBorder}`,
+    boxShadow: shadowMd,
     overflow: 'hidden',
+    backgroundColor: colorBgSurface,
   }),
   menuPortal: (base) => ({
     ...base,
@@ -84,9 +98,9 @@ const selectStyles: StylesConfig<TeamOption, false> = {
   dropdownIndicator: (base) => ({
     ...base,
     padding: '6px',
-    color: '#6b7280',
+    color: colorTextSecondary,
     '&:hover': {
-      color: '#1f2937',
+      color: colorTextPrimary,
     },
   }),
 };

@@ -3,6 +3,7 @@ import {
   colorTextHeading,
   fontSizeXxl,
   fontSizeXl,
+  space2,
   space4,
   space6,
   maxWidthContent,
@@ -11,7 +12,7 @@ import {
 export const header = style({
   display: 'flex',
   alignItems: 'center',
-  gap: space4,
+  gap: space2,
   width: '100%',
   maxWidth: maxWidthContent,
   margin: `0 auto ${space6}`,

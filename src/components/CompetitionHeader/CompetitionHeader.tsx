@@ -1,5 +1,6 @@
 import type { CompetitionConfig } from '../../competitions';
 import { CompetitionSelect } from '../CompetitionSelect';
+import { ThemeToggle } from '../ThemeToggle';
 import footballPredictorLogo from '../../assets/football-predictor.svg';
 import * as styles from './CompetitionHeader.css';
 
@@ -10,12 +11,18 @@ interface CompetitionHeaderProps {
   activeSlug: string;
   /** Called when the user selects a different competition */
   onCompetitionChange: (slug: string) => void;
+  /** The current active theme */
+  theme: 'light' | 'dark';
+  /** Called when the user toggles the theme */
+  onThemeToggle: () => void;
 }
 
 export const CompetitionHeader = ({
   competitions,
   activeSlug,
   onCompetitionChange,
+  theme,
+  onThemeToggle,
 }: CompetitionHeaderProps) => {
   return (
     <header className={styles.header}>
@@ -30,6 +37,7 @@ export const CompetitionHeader = ({
           />
         </div>
       )}
+      <ThemeToggle theme={theme} onToggle={onThemeToggle} />
     </header>
   );
 };

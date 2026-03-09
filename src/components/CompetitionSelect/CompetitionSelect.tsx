@@ -1,5 +1,18 @@
 import Select, { type StylesConfig, type SingleValue } from 'react-select';
 import type { CompetitionConfig } from '../../competitions';
+import {
+  colorBgSurface,
+  colorBgSurfaceHover,
+  colorBgRowAlt,
+  colorBorder,
+  colorBorderMedium,
+  colorFocus,
+  colorFocusRing,
+  colorTextPrimary,
+  colorTextSecondary,
+  fontFamily,
+  shadowMd,
+} from '../../theme.css';
 import * as styles from './CompetitionSelect.css';
 
 interface CompetitionOption {
@@ -21,27 +34,25 @@ const toOption = (c: CompetitionConfig): CompetitionOption => ({
   logo: c.logo,
 });
 
-const themeVar = (v: string) => v;
-
 const selectStyles: StylesConfig<CompetitionOption, false> = {
   control: (base, state) => ({
     ...base,
-    fontFamily: themeVar('var(--fontFamily)'),
+    fontFamily,
     fontSize: 15,
     fontWeight: 500,
-    backgroundColor: '#ffffff',
-    borderColor: state.isFocused ? '#3b82f6' : '#e5e7eb',
+    backgroundColor: colorBgSurface,
+    borderColor: state.isFocused ? colorFocus : colorBorder,
     borderRadius: 6,
-    boxShadow: state.isFocused ? '0 0 0 2px rgba(59, 130, 246, 0.2)' : 'none',
+    boxShadow: state.isFocused ? `0 0 0 2px ${colorFocusRing}` : 'none',
     cursor: 'pointer',
     minHeight: 38,
     '&:hover': {
-      borderColor: '#9ca3af',
+      borderColor: colorBorderMedium,
     },
   }),
   singleValue: (base) => ({
     ...base,
-    color: '#1f2937',
+    color: colorTextPrimary,
   }),
   option: (base, state) => ({
     ...base,
@@ -49,24 +60,25 @@ const selectStyles: StylesConfig<CompetitionOption, false> = {
     alignItems: 'center',
     fontSize: 15,
     fontWeight: 500,
-    color: '#1f2937',
+    color: colorTextPrimary,
     backgroundColor: state.isSelected
-      ? '#e5e7eb'
+      ? colorBgRowAlt
       : state.isFocused
-        ? '#f9fafb'
-        : '#ffffff',
+        ? colorBgSurfaceHover
+        : colorBgSurface,
     cursor: 'pointer',
     '&:active': {
-      backgroundColor: '#e5e7eb',
+      backgroundColor: colorBgRowAlt,
     },
   }),
   menu: (base) => ({
     ...base,
     borderRadius: 6,
-    border: '1px solid #e5e7eb',
-    boxShadow: '0 2px 6px rgba(0, 0, 0, 0.1)',
+    border: `1px solid ${colorBorder}`,
+    boxShadow: shadowMd,
     overflow: 'hidden',
     zIndex: 10,
+    backgroundColor: colorBgSurface,
   }),
   menuList: (base) => ({
     ...base,
@@ -77,9 +89,9 @@ const selectStyles: StylesConfig<CompetitionOption, false> = {
   }),
   dropdownIndicator: (base) => ({
     ...base,
-    color: '#6b7280',
+    color: colorTextSecondary,
     '&:hover': {
-      color: '#1f2937',
+      color: colorTextPrimary,
     },
   }),
 };

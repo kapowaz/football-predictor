@@ -1,8 +1,9 @@
 import { style, createContainer } from '@vanilla-extract/css';
 import {
   colorBgSurface,
+  colorBgRowEven,
   colorBgRowAlt,
-  colorBgTableHeader,
+  colorTextTableHead,
   colorBgZonePromotion,
   colorBgZonePromotionAlt,
   colorBgZonePlayoff,
@@ -18,8 +19,15 @@ import {
   colorBgZoneConferenceLeague,
   colorBgZoneConferenceLeagueAlt,
   colorTextPrimary,
-  colorTextSecondary,
-  colorTextWhite,
+  colorTextPosition,
+  colorTextGdPositive,
+  colorTextGdNegative,
+  colorResultWin,
+  colorResultDraw,
+  colorResultLoss,
+  colorResultWinText,
+  colorResultDrawText,
+  colorResultLossText,
   colorTextZonePromotion,
   colorTextZonePlayoff,
   colorTextZoneRelegation,
@@ -27,10 +35,7 @@ import {
   colorTextZoneChampionsLeague,
   colorTextZoneEuropaLeague,
   colorTextZoneConferenceLeague,
-  colorNeutralLight,
-  colorSuccess,
-  colorDanger,
-  colorNeutral,
+  colorBgTableHead,
   fontFamilyMono,
   fontSizeXs,
   fontSizeSm,
@@ -55,13 +60,9 @@ export const container = style({
   boxShadow: shadowMd,
   overflowX: 'hidden',
   overflowY: 'auto',
-  maxHeight: 'calc(100vh - 140px)',
+  flex: 1,
+  minHeight: 0,
   '@media': {
-    'screen and (max-width: 1024px)': {
-      flex: 1,
-      minHeight: 0,
-      maxHeight: 'none',
-    },
     'screen and (max-width: 680px)': {
       borderRadius: 0,
       boxShadow: 'none',
@@ -78,14 +79,14 @@ export const table = style({
 });
 
 export const thead = style({
-  backgroundColor: colorNeutralLight,
+  backgroundColor: colorBgTableHead,
 });
 
 export const th = style({
   padding: `${space2} ${space1}`,
   textAlign: 'left',
   fontWeight: 600,
-  color: colorBgTableHeader,
+  color: colorTextTableHead,
   fontSize: fontSizeSm,
   textTransform: 'uppercase',
   letterSpacing: '0.05em',
@@ -93,7 +94,7 @@ export const th = style({
   position: 'sticky',
   top: 0,
   zIndex: 2,
-  backgroundColor: colorNeutralLight,
+  backgroundColor: colorBgTableHead,
   '@media': {
     'screen and (min-width: 480px)': {
       padding: space2,
@@ -175,7 +176,7 @@ export const stickyCellTh = style([
     left: 0,
     top: 0,
     zIndex: 3,
-    backgroundColor: colorNeutralLight,
+    backgroundColor: colorBgTableHead,
     '@media': {
       'screen and (max-width: 480px)': {
         paddingLeft: '40px',
@@ -187,7 +188,7 @@ export const stickyCellTh = style([
 export const position = style({
   fontFamily: fontFamilyMono,
   fontWeight: 600,
-  color: colorTextSecondary,
+  color: colorTextPosition,
   textAlign: 'center',
   fontVariantNumeric: 'tabular-nums',
 });
@@ -251,15 +252,15 @@ export const goalDiff = style({
 });
 
 export const positive = style({
-  color: colorSuccess,
+  color: colorTextGdPositive,
 });
 
 export const negative = style({
-  color: colorDanger,
+  color: colorTextGdNegative,
 });
 
 export const rowEven = style({
-  backgroundColor: colorBgSurface,
+  backgroundColor: colorBgRowEven,
 });
 
 export const rowOdd = style({
@@ -338,7 +339,6 @@ export const formBadge = style({
   borderRadius: radiusMd,
   fontSize: fontSizeXs,
   fontWeight: 700,
-  color: colorTextWhite,
   lineHeight: 1,
   cursor: 'help',
   '@media': {
@@ -352,13 +352,16 @@ export const formBadge = style({
 });
 
 export const formWin = style({
-  backgroundColor: colorSuccess,
+  backgroundColor: colorResultWin,
+  color: colorResultWinText,
 });
 
 export const formDraw = style({
-  backgroundColor: colorNeutral,
+  backgroundColor: colorResultDraw,
+  color: colorResultDrawText,
 });
 
 export const formLoss = style({
-  backgroundColor: colorDanger,
+  backgroundColor: colorResultLoss,
+  color: colorResultLossText,
 });

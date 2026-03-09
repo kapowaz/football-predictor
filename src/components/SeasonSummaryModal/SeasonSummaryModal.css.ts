@@ -1,6 +1,6 @@
 import { style, keyframes } from '@vanilla-extract/css';
 import {
-  colorBgSurface,
+  colorBgModal,
   colorTextHeading,
   colorTextPrimary,
   colorTextSecondary,
@@ -26,7 +26,7 @@ import {
 } from '../../theme.css';
 
 export const modal = style({
-  backgroundColor: colorBgSurface,
+  backgroundColor: colorBgModal,
   borderRadius: radiusLg,
   boxShadow: `${shadowSm}, 0 20px 60px rgba(0, 0, 0, 0.3)`,
   padding: space8,
@@ -127,7 +127,10 @@ export const championsLeagueLabel = style([sectionLabel, { color: colorTextZoneC
 
 export const europaLeagueLabel = style([sectionLabel, { color: colorTextZoneEuropaLeague }]);
 
-export const conferenceLeagueLabel = style([sectionLabel, { color: colorTextZoneConferenceLeague }]);
+export const conferenceLeagueLabel = style([
+  sectionLabel,
+  { color: colorTextZoneConferenceLeague },
+]);
 
 export const teamList = style({
   display: 'flex',

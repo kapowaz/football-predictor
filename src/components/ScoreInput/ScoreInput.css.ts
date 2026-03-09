@@ -1,5 +1,13 @@
 import { style } from '@vanilla-extract/css';
-import { fontFamilyMono } from '../../theme.css';
+import {
+  colorBgSurface,
+  colorBorderInput,
+  colorFocus,
+  colorFocusRing,
+  colorTextMuted,
+  colorTextPrimary,
+  fontFamilyMono,
+} from '../../theme.css';
 
 export const container = style({
   display: 'flex',
@@ -14,14 +22,15 @@ export const input = style({
   fontFamily: fontFamilyMono,
   fontSize: '14px',
   fontWeight: 600,
-  border: '2px solid #e0e0e0',
+  color: colorTextPrimary,
+  border: `2px solid ${colorBorderInput}`,
   borderRadius: '6px',
-  backgroundColor: '#fff',
+  backgroundColor: colorBgSurface,
   transition: 'border-color 0.2s, box-shadow 0.2s',
   ':focus': {
     outline: 'none',
-    borderColor: '#3b82f6',
-    boxShadow: '0 0 0 3px rgba(59, 130, 246, 0.2)',
+    borderColor: colorFocus,
+    boxShadow: `0 0 0 3px ${colorFocusRing}`,
   },
   '::-webkit-inner-spin-button': {
     appearance: 'none',
@@ -34,5 +43,5 @@ export const input = style({
 export const separator = style({
   fontSize: '12px',
   fontWeight: 600,
-  color: '#666',
+  color: colorTextMuted,
 });
