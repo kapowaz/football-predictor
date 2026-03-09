@@ -70,6 +70,9 @@ const CompetitionContent = ({ slug, config }: CompetitionContentProps) => {
   );
 
   const predictedCount = Object.keys(predictions.predictions).length;
+  const allScheduledPredicted = matches
+    .filter((m) => m.status === 'SCHEDULED')
+    .every((m) => String(m.id) in predictions.predictions);
   const competitions = allCompetitions();
 
   return (
@@ -123,12 +126,13 @@ const CompetitionContent = ({ slug, config }: CompetitionContentProps) => {
           <div className={styles.panelHeader}>
             <h2 className={styles.panelTitle}>Fixtures</h2>
             <div className={styles.panelHeaderActions}>
-              {Object.keys(modelPredictions).length > 0 && (
-                <Button variant="success" onClick={() => fillFromModel(modelPredictions)}>
-                  <BrainIcon />
-                  AI Predictions
-                </Button>
-              )}
+              {Object.keys(modelPredictions).length > 0 &&
+                !allScheduledPredicted && (
+                  <Button variant="success" onClick={() => fillFromModel(modelPredictions)}>
+                    <BrainIcon />
+                    AI Predictions
+                  </Button>
+                )}
               {predictedCount > 0 && (
                 <Button variant="danger" onClick={resetAllPredictions}>
                   Reset Predictions
