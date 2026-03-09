@@ -55,6 +55,7 @@ export const tableContainer = createContainer();
 export const container = style({
   containerName: tableContainer,
   containerType: 'inline-size',
+  isolation: 'isolate',
   backgroundColor: colorBgSurface,
   borderRadius: radiusLg,
   boxShadow: shadowMd,

@@ -1,4 +1,4 @@
-import { useRef, useEffect, useCallback } from 'react';
+import { useRef, useEffect, useCallback, useState } from 'react';
 import { FloatingPortal } from '@floating-ui/react';
 import { ConfettiParticle } from './ConfettiParticle';
 import { Vector2 } from './utils';
@@ -74,6 +74,11 @@ export const Confetti = ({
   size = 5,
 }: ConfettiProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const [canvasMounted, setCanvasMounted] = useState(false);
+  const canvasCallbackRef = useCallback((node: HTMLCanvasElement | null) => {
+    canvasRef.current = node;
+    setCanvasMounted(node !== null);
+  }, []);
   const particlesRef = useRef<ConfettiParticle[]>([]);
   const animationRequestRef = useRef<number>(0);
   const lastTimeRef = useRef<number>(0);
@@ -175,7 +180,7 @@ export const Confetti = ({
   }, [particleDensity, yStartOffset, gravity, fadeThreshold, size, stop, resize]);
 
   useEffect(() => {
-    if (canAnimate) {
+    if (canAnimate && canvasMounted) {
       initialize();
     }
 
@@ -183,7 +188,7 @@ export const Confetti = ({
       stop();
       window.removeEventListener('resize', resize);
     };
-  }, [initialize, stop, resize]);
+  }, [canvasMounted, initialize, stop, resize]);
 
   if (!canAnimate) {
     return null;
@@ -191,7 +196,7 @@ export const Confetti = ({
 
   return (
     <FloatingPortal>
-      <canvas className={styles.confetti} ref={canvasRef} />
+      <canvas className={styles.confetti} ref={canvasCallbackRef} />
     </FloatingPortal>
   );
 };
