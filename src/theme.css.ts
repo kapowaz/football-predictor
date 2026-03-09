@@ -51,6 +51,7 @@ export const colorBgZoneConferenceLeague = createVar();
 export const colorBgZoneConferenceLeagueAlt = createVar();
 export const colorTextZoneConferenceLeague = createVar();
 export const colorBgModal = createVar();
+export const colorBgBackdrop = createVar();
 export const colorBgFixtureCard = createVar();
 export const colorBgRowEven = createVar();
 export const colorBgRowAlt = createVar();
@@ -95,6 +96,7 @@ export const radiusLg = createVar();
 
 export const shadowSm = createVar();
 export const shadowMd = createVar();
+export const shadowLg = createVar();
 
 export const maxWidthContent = createVar();
 
@@ -113,6 +115,7 @@ export const red600 = createVar();
 export const red700 = createVar();
 export const red800 = createVar();
 export const red900 = createVar();
+export const red925 = createVar();
 export const red950 = createVar();
 
 export const orange50 = createVar();
@@ -125,6 +128,7 @@ export const orange600 = createVar();
 export const orange700 = createVar();
 export const orange800 = createVar();
 export const orange900 = createVar();
+export const orange925 = createVar();
 export const orange950 = createVar();
 
 export const amber50 = createVar();
@@ -137,6 +141,7 @@ export const amber600 = createVar();
 export const amber700 = createVar();
 export const amber800 = createVar();
 export const amber900 = createVar();
+export const amber925 = createVar();
 export const amber950 = createVar();
 
 export const yellow50 = createVar();
@@ -149,6 +154,7 @@ export const yellow600 = createVar();
 export const yellow700 = createVar();
 export const yellow800 = createVar();
 export const yellow900 = createVar();
+export const yellow925 = createVar();
 export const yellow950 = createVar();
 
 export const lime50 = createVar();
@@ -161,6 +167,7 @@ export const lime600 = createVar();
 export const lime700 = createVar();
 export const lime800 = createVar();
 export const lime900 = createVar();
+export const lime925 = createVar();
 export const lime950 = createVar();
 
 export const green50 = createVar();
@@ -173,6 +180,7 @@ export const green600 = createVar();
 export const green700 = createVar();
 export const green800 = createVar();
 export const green900 = createVar();
+export const green925 = createVar();
 export const green950 = createVar();
 
 export const emerald50 = createVar();
@@ -185,6 +193,7 @@ export const emerald600 = createVar();
 export const emerald700 = createVar();
 export const emerald800 = createVar();
 export const emerald900 = createVar();
+export const emerald925 = createVar();
 export const emerald950 = createVar();
 
 export const teal50 = createVar();
@@ -197,6 +206,7 @@ export const teal600 = createVar();
 export const teal700 = createVar();
 export const teal800 = createVar();
 export const teal900 = createVar();
+export const teal925 = createVar();
 export const teal950 = createVar();
 
 export const cyan50 = createVar();
@@ -209,6 +219,7 @@ export const cyan600 = createVar();
 export const cyan700 = createVar();
 export const cyan800 = createVar();
 export const cyan900 = createVar();
+export const cyan925 = createVar();
 export const cyan950 = createVar();
 
 export const sky50 = createVar();
@@ -221,6 +232,7 @@ export const sky600 = createVar();
 export const sky700 = createVar();
 export const sky800 = createVar();
 export const sky900 = createVar();
+export const sky925 = createVar();
 export const sky950 = createVar();
 
 export const blue50 = createVar();
@@ -233,6 +245,7 @@ export const blue600 = createVar();
 export const blue700 = createVar();
 export const blue800 = createVar();
 export const blue900 = createVar();
+export const blue925 = createVar();
 export const blue950 = createVar();
 
 export const indigo50 = createVar();
@@ -245,6 +258,7 @@ export const indigo600 = createVar();
 export const indigo700 = createVar();
 export const indigo800 = createVar();
 export const indigo900 = createVar();
+export const indigo925 = createVar();
 export const indigo950 = createVar();
 
 export const violet50 = createVar();
@@ -257,6 +271,7 @@ export const violet600 = createVar();
 export const violet700 = createVar();
 export const violet800 = createVar();
 export const violet900 = createVar();
+export const violet925 = createVar();
 export const violet950 = createVar();
 
 export const purple50 = createVar();
@@ -269,6 +284,7 @@ export const purple600 = createVar();
 export const purple700 = createVar();
 export const purple800 = createVar();
 export const purple900 = createVar();
+export const purple925 = createVar();
 export const purple950 = createVar();
 
 export const fuchsia50 = createVar();
@@ -281,6 +297,7 @@ export const fuchsia600 = createVar();
 export const fuchsia700 = createVar();
 export const fuchsia800 = createVar();
 export const fuchsia900 = createVar();
+export const fuchsia925 = createVar();
 export const fuchsia950 = createVar();
 
 export const pink50 = createVar();
@@ -293,6 +310,7 @@ export const pink600 = createVar();
 export const pink700 = createVar();
 export const pink800 = createVar();
 export const pink900 = createVar();
+export const pink925 = createVar();
 export const pink950 = createVar();
 
 export const rose50 = createVar();
@@ -305,6 +323,7 @@ export const rose600 = createVar();
 export const rose700 = createVar();
 export const rose800 = createVar();
 export const rose900 = createVar();
+export const rose925 = createVar();
 export const rose950 = createVar();
 
 export const slate50 = createVar();
@@ -317,6 +336,7 @@ export const slate600 = createVar();
 export const slate700 = createVar();
 export const slate800 = createVar();
 export const slate900 = createVar();
+export const slate925 = createVar();
 export const slate950 = createVar();
 
 export const gray50 = createVar();
@@ -329,6 +349,7 @@ export const gray600 = createVar();
 export const gray700 = createVar();
 export const gray800 = createVar();
 export const gray900 = createVar();
+export const gray925 = createVar();
 export const gray950 = createVar();
 
 export const zinc50 = createVar();
@@ -341,6 +362,7 @@ export const zinc600 = createVar();
 export const zinc700 = createVar();
 export const zinc800 = createVar();
 export const zinc900 = createVar();
+export const zinc925 = createVar();
 export const zinc950 = createVar();
 
 export const neutral50 = createVar();
@@ -353,6 +375,7 @@ export const neutral600 = createVar();
 export const neutral700 = createVar();
 export const neutral800 = createVar();
 export const neutral900 = createVar();
+export const neutral925 = createVar();
 export const neutral950 = createVar();
 
 export const stone50 = createVar();
@@ -365,6 +388,7 @@ export const stone600 = createVar();
 export const stone700 = createVar();
 export const stone800 = createVar();
 export const stone900 = createVar();
+export const stone925 = createVar();
 export const stone950 = createVar();
 
 export const mauve50 = createVar();
@@ -377,6 +401,7 @@ export const mauve600 = createVar();
 export const mauve700 = createVar();
 export const mauve800 = createVar();
 export const mauve900 = createVar();
+export const mauve925 = createVar();
 export const mauve950 = createVar();
 
 export const olive50 = createVar();
@@ -389,6 +414,7 @@ export const olive600 = createVar();
 export const olive700 = createVar();
 export const olive800 = createVar();
 export const olive900 = createVar();
+export const olive925 = createVar();
 export const olive950 = createVar();
 
 export const mist50 = createVar();
@@ -401,6 +427,7 @@ export const mist600 = createVar();
 export const mist700 = createVar();
 export const mist800 = createVar();
 export const mist900 = createVar();
+export const mist925 = createVar();
 export const mist950 = createVar();
 
 export const taupe50 = createVar();
@@ -413,6 +440,7 @@ export const taupe600 = createVar();
 export const taupe700 = createVar();
 export const taupe800 = createVar();
 export const taupe900 = createVar();
+export const taupe925 = createVar();
 export const taupe950 = createVar();
 
 globalStyle(':root', {
@@ -468,6 +496,7 @@ globalStyle(':root', {
     [colorBgZoneConferenceLeagueAlt]: fuchsia200,
     [colorTextZoneConferenceLeague]: fuchsia800,
     [colorBgModal]: white,
+    [colorBgBackdrop]: 'oklch(0% 0 0 / 50%)',
     [colorBgFixtureCard]: white,
     [colorBgRowEven]: white,
     [colorBgRowAlt]: gray100,
@@ -514,6 +543,7 @@ globalStyle(':root', {
 
     [shadowSm]: '0 1px 3px oklch(0% 0 0 / 10%)',
     [shadowMd]: '0 2px 6px oklch(0% 0 0 / 10%)',
+    [shadowLg]: '0 1px 3px oklch(0% 0 0 / 10%), 0 20px 60px oklch(0% 0 0 / 15%)',
 
     [maxWidthContent]: '1400px',
 
@@ -532,6 +562,7 @@ globalStyle(':root', {
     [red700]: 'oklch(50.5% 0.213 27.518)',
     [red800]: 'oklch(44.4% 0.177 26.899)',
     [red900]: 'oklch(39.6% 0.141 25.723)',
+    [red925]: 'oklch(32.7% 0.116 25.883)',
     [red950]: 'oklch(25.8% 0.092 26.042)',
 
     [orange50]: 'oklch(98% 0.016 73.684)',
@@ -544,6 +575,7 @@ globalStyle(':root', {
     [orange700]: 'oklch(55.3% 0.195 38.402)',
     [orange800]: 'oklch(47% 0.157 37.304)',
     [orange900]: 'oklch(40.8% 0.123 38.172)',
+    [orange925]: 'oklch(33.7% 0.101 37.216)',
     [orange950]: 'oklch(26.6% 0.079 36.259)',
 
     [amber50]: 'oklch(98.7% 0.022 95.277)',
@@ -556,6 +588,7 @@ globalStyle(':root', {
     [amber700]: 'oklch(55.5% 0.163 48.998)',
     [amber800]: 'oklch(47.3% 0.137 46.201)',
     [amber900]: 'oklch(41.4% 0.112 45.904)',
+    [amber925]: 'oklch(34.7% 0.095 45.77)',
     [amber950]: 'oklch(27.9% 0.077 45.635)',
 
     [yellow50]: 'oklch(98.7% 0.026 102.212)',
@@ -568,6 +601,7 @@ globalStyle(':root', {
     [yellow700]: 'oklch(55.4% 0.135 66.442)',
     [yellow800]: 'oklch(47.6% 0.114 61.907)',
     [yellow900]: 'oklch(42.1% 0.095 57.708)',
+    [yellow925]: 'oklch(35.4% 0.081 55.761)',
     [yellow950]: 'oklch(28.6% 0.066 53.813)',
 
     [lime50]: 'oklch(98.6% 0.031 120.757)',
@@ -580,6 +614,7 @@ globalStyle(':root', {
     [lime700]: 'oklch(53.2% 0.157 131.589)',
     [lime800]: 'oklch(45.3% 0.124 130.933)',
     [lime900]: 'oklch(40.5% 0.101 131.063)',
+    [lime925]: 'oklch(34% 0.087 131.586)',
     [lime950]: 'oklch(27.4% 0.072 132.109)',
 
     [green50]: 'oklch(98.2% 0.018 155.826)',
@@ -592,6 +627,7 @@ globalStyle(':root', {
     [green700]: 'oklch(52.7% 0.154 150.069)',
     [green800]: 'oklch(44.8% 0.119 151.328)',
     [green900]: 'oklch(39.3% 0.095 152.535)',
+    [green925]: 'oklch(33% 0.08 152.735)',
     [green950]: 'oklch(26.6% 0.065 152.934)',
 
     [emerald50]: 'oklch(97.9% 0.021 166.113)',
@@ -604,6 +640,7 @@ globalStyle(':root', {
     [emerald700]: 'oklch(50.8% 0.118 165.612)',
     [emerald800]: 'oklch(43.2% 0.095 166.913)',
     [emerald900]: 'oklch(37.8% 0.077 168.94)',
+    [emerald925]: 'oklch(32% 0.064 170.746)',
     [emerald950]: 'oklch(26.2% 0.051 172.552)',
 
     [teal50]: 'oklch(98.4% 0.014 180.72)',
@@ -616,6 +653,7 @@ globalStyle(':root', {
     [teal700]: 'oklch(51.1% 0.096 186.391)',
     [teal800]: 'oklch(43.7% 0.078 188.216)',
     [teal900]: 'oklch(38.6% 0.063 188.416)',
+    [teal925]: 'oklch(33.2% 0.055 190.47)',
     [teal950]: 'oklch(27.7% 0.046 192.524)',
 
     [cyan50]: 'oklch(98.4% 0.019 200.873)',
@@ -628,6 +666,7 @@ globalStyle(':root', {
     [cyan700]: 'oklch(52% 0.105 223.128)',
     [cyan800]: 'oklch(45% 0.085 224.283)',
     [cyan900]: 'oklch(39.8% 0.07 227.392)',
+    [cyan925]: 'oklch(35% 0.063 228.544)',
     [cyan950]: 'oklch(30.2% 0.056 229.695)',
 
     [sky50]: 'oklch(97.7% 0.013 236.62)',
@@ -640,6 +679,7 @@ globalStyle(':root', {
     [sky700]: 'oklch(50% 0.134 242.749)',
     [sky800]: 'oklch(44.3% 0.11 240.79)',
     [sky900]: 'oklch(39.1% 0.09 240.876)',
+    [sky925]: 'oklch(34.2% 0.078 242.017)',
     [sky950]: 'oklch(29.3% 0.066 243.157)',
 
     [blue50]: 'oklch(97% 0.014 254.604)',
@@ -652,6 +692,7 @@ globalStyle(':root', {
     [blue700]: 'oklch(48.8% 0.243 264.376)',
     [blue800]: 'oklch(42.4% 0.199 265.638)',
     [blue900]: 'oklch(37.9% 0.146 265.522)',
+    [blue925]: 'oklch(33.1% 0.119 266.729)',
     [blue950]: 'oklch(28.2% 0.091 267.935)',
 
     [indigo50]: 'oklch(96.2% 0.018 272.314)',
@@ -664,6 +705,7 @@ globalStyle(':root', {
     [indigo700]: 'oklch(45.7% 0.24 277.023)',
     [indigo800]: 'oklch(39.8% 0.195 277.366)',
     [indigo900]: 'oklch(35.9% 0.144 278.697)',
+    [indigo925]: 'oklch(30.8% 0.117 279.993)',
     [indigo950]: 'oklch(25.7% 0.09 281.288)',
 
     [violet50]: 'oklch(96.9% 0.016 293.756)',
@@ -676,6 +718,7 @@ globalStyle(':root', {
     [violet700]: 'oklch(49.1% 0.27 292.581)',
     [violet800]: 'oklch(43.2% 0.232 292.759)',
     [violet900]: 'oklch(38% 0.189 293.745)',
+    [violet925]: 'oklch(33.2% 0.165 292.417)',
     [violet950]: 'oklch(28.3% 0.141 291.089)',
 
     [purple50]: 'oklch(97.7% 0.014 308.299)',
@@ -688,6 +731,7 @@ globalStyle(':root', {
     [purple700]: 'oklch(49.6% 0.265 301.924)',
     [purple800]: 'oklch(43.8% 0.218 303.724)',
     [purple900]: 'oklch(38.1% 0.176 304.987)',
+    [purple925]: 'oklch(33.6% 0.162 303.852)',
     [purple950]: 'oklch(29.1% 0.149 302.717)',
 
     [fuchsia50]: 'oklch(97.7% 0.017 320.058)',
@@ -700,6 +744,7 @@ globalStyle(':root', {
     [fuchsia700]: 'oklch(51.8% 0.253 323.949)',
     [fuchsia800]: 'oklch(45.2% 0.211 324.591)',
     [fuchsia900]: 'oklch(40.1% 0.17 325.612)',
+    [fuchsia925]: 'oklch(34.7% 0.153 325.637)',
     [fuchsia950]: 'oklch(29.3% 0.136 325.661)',
 
     [pink50]: 'oklch(97.1% 0.014 343.198)',
@@ -712,6 +757,7 @@ globalStyle(':root', {
     [pink700]: 'oklch(52.5% 0.223 3.958)',
     [pink800]: 'oklch(45.9% 0.187 3.815)',
     [pink900]: 'oklch(40.8% 0.153 2.432)',
+    [pink925]: 'oklch(34.6% 0.131 3.17)',
     [pink950]: 'oklch(28.4% 0.109 3.907)',
 
     [rose50]: 'oklch(96.9% 0.015 12.422)',
@@ -724,6 +770,7 @@ globalStyle(':root', {
     [rose700]: 'oklch(51.4% 0.222 16.935)',
     [rose800]: 'oklch(45.5% 0.188 13.697)',
     [rose900]: 'oklch(41% 0.159 10.272)',
+    [rose925]: 'oklch(34.1% 0.132 11.183)',
     [rose950]: 'oklch(27.1% 0.105 12.094)',
 
     [slate50]: 'oklch(98.4% 0.003 247.858)',
@@ -736,6 +783,7 @@ globalStyle(':root', {
     [slate700]: 'oklch(37.2% 0.044 257.287)',
     [slate800]: 'oklch(27.9% 0.041 260.031)',
     [slate900]: 'oklch(20.8% 0.042 265.755)',
+    [slate925]: 'oklch(16.9% 0.042 265.225)',
     [slate950]: 'oklch(12.9% 0.042 264.695)',
 
     [gray50]: 'oklch(98.5% 0.002 247.839)',
@@ -748,6 +796,7 @@ globalStyle(':root', {
     [gray700]: 'oklch(37.3% 0.034 259.733)',
     [gray800]: 'oklch(27.8% 0.033 256.848)',
     [gray900]: 'oklch(21% 0.034 264.665)',
+    [gray925]: 'oklch(17% 0.031 263.179)',
     [gray950]: 'oklch(13% 0.028 261.692)',
 
     [zinc50]: 'oklch(98.5% 0 0)',
@@ -760,6 +809,7 @@ globalStyle(':root', {
     [zinc700]: 'oklch(37% 0.013 285.805)',
     [zinc800]: 'oklch(27.4% 0.006 286.033)',
     [zinc900]: 'oklch(21% 0.006 285.885)',
+    [zinc925]: 'oklch(17.6% 0.006 285.854)',
     [zinc950]: 'oklch(14.1% 0.005 285.823)',
 
     [neutral50]: 'oklch(98.5% 0 0)',
@@ -772,6 +822,7 @@ globalStyle(':root', {
     [neutral700]: 'oklch(37.1% 0 0)',
     [neutral800]: 'oklch(26.9% 0 0)',
     [neutral900]: 'oklch(20.5% 0 0)',
+    [neutral925]: 'oklch(17.5% 0 0)',
     [neutral950]: 'oklch(14.5% 0 0)',
 
     [stone50]: 'oklch(98.5% 0.001 106.423)',
@@ -784,6 +835,7 @@ globalStyle(':root', {
     [stone700]: 'oklch(37.4% 0.01 67.558)',
     [stone800]: 'oklch(26.8% 0.007 34.298)',
     [stone900]: 'oklch(21.6% 0.006 56.043)',
+    [stone925]: 'oklch(18.2% 0.005 52.647)',
     [stone950]: 'oklch(14.7% 0.004 49.25)',
 
     [mauve50]: 'oklch(98.5% 0 0)',
@@ -796,6 +848,7 @@ globalStyle(':root', {
     [mauve700]: 'oklch(36.4% 0.029 323.89)',
     [mauve800]: 'oklch(26.3% 0.024 320.12)',
     [mauve900]: 'oklch(21.2% 0.019 322.12)',
+    [mauve925]: 'oklch(17.9% 0.014 324.06)',
     [mauve950]: 'oklch(14.5% 0.008 326)',
 
     [olive50]: 'oklch(98.8% 0.003 106.5)',
@@ -808,6 +861,7 @@ globalStyle(':root', {
     [olive700]: 'oklch(39.4% 0.023 107.4)',
     [olive800]: 'oklch(28.6% 0.016 107.4)',
     [olive900]: 'oklch(22.8% 0.013 107.4)',
+    [olive925]: 'oklch(19.1% 0.01 107.25)',
     [olive950]: 'oklch(15.3% 0.006 107.1)',
 
     [mist50]: 'oklch(98.7% 0.002 197.1)',
@@ -820,6 +874,7 @@ globalStyle(':root', {
     [mist700]: 'oklch(37.8% 0.015 216)',
     [mist800]: 'oklch(27.5% 0.011 216.9)',
     [mist900]: 'oklch(21.8% 0.008 223.9)',
+    [mist925]: 'oklch(18.3% 0.006 226.35)',
     [mist950]: 'oklch(14.8% 0.004 228.8)',
 
     [taupe50]: 'oklch(98.6% 0.002 67.8)',
@@ -832,6 +887,7 @@ globalStyle(':root', {
     [taupe700]: 'oklch(36.7% 0.016 35.7)',
     [taupe800]: 'oklch(26.8% 0.011 36.5)',
     [taupe900]: 'oklch(21.4% 0.009 43.1)',
+    [taupe925]: 'oklch(18.1% 0.007 46.2)',
     [taupe950]: 'oklch(14.7% 0.004 49.3)',
   },
 });
@@ -886,7 +942,7 @@ const darkVars = {
   [colorBgZoneConferenceLeague]: fuchsia950,
   [colorBgZoneConferenceLeagueAlt]: fuchsia900,
   [colorTextZoneConferenceLeague]: fuchsia300,
-  [colorBgModal]: slate950,
+  [colorBgModal]: slate925,
   [colorBgBackdrop]: 'oklch(0% 0 0 / 70%)',
   [colorBgFixtureCard]: slate900,
   [colorBgRowEven]: slate900,
