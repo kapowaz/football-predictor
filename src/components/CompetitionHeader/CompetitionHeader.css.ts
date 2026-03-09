@@ -3,6 +3,7 @@ import {
   colorTextHeading,
   fontSizeXxl,
   fontSizeXl,
+  fontSizeLg,
   space2,
   space4,
   space6,
@@ -35,14 +36,31 @@ export const title = style({
   fontWeight: 700,
   color: colorTextHeading,
   margin: 0,
+  whiteSpace: 'nowrap',
   '@media': {
     'screen and (max-width: 680px)': {
       fontSize: fontSizeXl,
     },
+    'screen and (max-width: 480px)': {
+      fontSize: fontSizeLg,
+    },
   },
 });
 
-export const competitionSelectWrapper = style({
+export const titlePrefix = style({
+  '@media': {
+    'screen and (max-width: 580px)': {
+      display: 'none',
+    },
+  },
+});
+
+export const controls = style({
+  display: 'flex',
+  alignItems: 'center',
   marginLeft: 'auto',
+});
+
+export const competitionSelectWrapper = style({
   minWidth: '220px',
 });

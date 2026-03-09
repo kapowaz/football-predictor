@@ -27,17 +27,21 @@ export const CompetitionHeader = ({
   return (
     <header className={styles.header}>
       <img src={footballPredictorLogo} alt="Football Predictor" className={styles.logo} />
-      <h1 className={styles.title}>Football Predictor</h1>
-      {competitions.length > 1 && (
-        <div className={styles.competitionSelectWrapper}>
-          <CompetitionSelect
-            competitions={competitions}
-            value={activeSlug}
-            onChange={onCompetitionChange}
-          />
-        </div>
-      )}
-      <ThemeToggle theme={theme} onToggle={onThemeToggle} />
+      <h1 className={styles.title}>
+        <span className={styles.titlePrefix}>Football </span>Predictor
+      </h1>
+      <div className={styles.controls}>
+        {competitions.length > 1 && (
+          <div className={styles.competitionSelectWrapper}>
+            <CompetitionSelect
+              competitions={competitions}
+              value={activeSlug}
+              onChange={onCompetitionChange}
+            />
+          </div>
+        )}
+        <ThemeToggle theme={theme} onToggle={onThemeToggle} />
+      </div>
     </header>
   );
 };
