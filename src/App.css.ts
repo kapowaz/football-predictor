@@ -167,3 +167,10 @@ export const hiddenOnMobile = style({
     },
   },
 });
+
+export const pageContent = style({
+  display: 'flex',
+  flexDirection: 'column',
+  flex: 1,
+  minHeight: 0,
+});

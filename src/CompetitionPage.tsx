@@ -1,5 +1,6 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect, useRef } from 'react';
 import { useParams, Navigate, useNavigate } from 'react-router-dom';
+import { animate } from 'framer-motion';
 import { useCompetitionData } from './hooks/useCompetitionData';
 import { usePredictions } from './hooks/usePredictions';
 import { useDeductions } from './hooks/useDeductions';
@@ -48,6 +49,22 @@ const CompetitionContent = ({ slug, config }: CompetitionContentProps) => {
   const standings = useStandings(teams, matches, predictions, deductions);
   const { isSummaryOpen, dismissSummary } = useSeasonSummary(matches, predictions);
 
+  const pageContentRef = useRef<HTMLDivElement>(null);
+  const prevSummaryOpen = useRef(false);
+  useEffect(() => {
+    if (isSummaryOpen && !prevSummaryOpen.current && pageContentRef.current) {
+      animate(
+        pageContentRef.current,
+        {
+          x: [0, -9, 8, -7, 9, -8, 6, -9, 7, -5, 6, -4, 3, -2, 1, 0],
+          y: [0, 5, -8, 9, -4, 8, -9, 4, 7, -5, 3, -4, 2, -1, 1, 0],
+        },
+        { duration: 0.7, ease: 'easeOut' },
+      );
+    }
+    prevSummaryOpen.current = isSummaryOpen;
+  }, [isSummaryOpen]);
+
   const [deductionsModalOpen, setDeductionsModalOpen] = useState(false);
   const [activeTab, setActiveTab] = useState('standings');
 
@@ -77,78 +94,80 @@ const CompetitionContent = ({ slug, config }: CompetitionContentProps) => {
 
   return (
     <>
-      <CompetitionHeader
-        competitions={competitions}
-        activeSlug={slug}
-        onCompetitionChange={(s) => navigate(`/${s}/`)}
-        theme={theme}
-        onThemeToggle={toggleTheme}
-      />
+      <div ref={pageContentRef} className={styles.pageContent}>
+        <CompetitionHeader
+          competitions={competitions}
+          activeSlug={slug}
+          onCompetitionChange={(s) => navigate(`/${s}/`)}
+          theme={theme}
+          onThemeToggle={toggleTheme}
+        />
 
-      <TabBar tabs={[...TABS]} activeTab={activeTab} onTabChange={setActiveTab} />
+        <TabBar tabs={[...TABS]} activeTab={activeTab} onTabChange={setActiveTab} />
 
-      <main className={styles.main}>
-        <div
-          className={`${styles.panel} ${activeTab !== 'standings' ? styles.hiddenOnMobile : ''}`}
-        >
-          <div className={styles.panelHeaderWithNotes}>
-            <h2 className={styles.panelTitle}>Standings</h2>
-            <div className={styles.panelHeaderDeductions}>
-              {deductionNotes.length > 0 && (
-                <div className={styles.deductionNotes}>
-                  {deductionNotes.map((note) => (
-                    <span
-                      key={note.label}
-                      className={styles.deductionNote}
-                      title={note.reason || undefined}
-                    >
-                      {note.label}
-                    </span>
-                  ))}
-                </div>
-              )}
-              <Button variant="danger" onClick={() => setDeductionsModalOpen(true)}>
-                <TrendingDownIcon size={14} className={styles.deductionsButtonIcon} />
-                Deductions
-              </Button>
+        <main className={styles.main}>
+          <div
+            className={`${styles.panel} ${activeTab !== 'standings' ? styles.hiddenOnMobile : ''}`}
+          >
+            <div className={styles.panelHeaderWithNotes}>
+              <h2 className={styles.panelTitle}>Standings</h2>
+              <div className={styles.panelHeaderDeductions}>
+                {deductionNotes.length > 0 && (
+                  <div className={styles.deductionNotes}>
+                    {deductionNotes.map((note) => (
+                      <span
+                        key={note.label}
+                        className={styles.deductionNote}
+                        title={note.reason || undefined}
+                      >
+                        {note.label}
+                      </span>
+                    ))}
+                  </div>
+                )}
+                <Button variant="danger" onClick={() => setDeductionsModalOpen(true)}>
+                  <TrendingDownIcon size={14} className={styles.deductionsButtonIcon} />
+                  Deductions
+                </Button>
+              </div>
             </div>
+            <StandingsTable
+              standings={standings}
+              deductionMarkers={deductionMarkers}
+              zones={config.zones}
+            />
           </div>
-          <StandingsTable
-            standings={standings}
-            deductionMarkers={deductionMarkers}
-            zones={config.zones}
-          />
-        </div>
 
-        <div
-          className={`${styles.panelGuttered} ${activeTab !== 'fixtures' ? styles.hiddenOnMobile : ''}`}
-        >
-          <div className={styles.panelHeader}>
-            <h2 className={styles.panelTitle}>Fixtures</h2>
-            <div className={styles.panelHeaderActions}>
-              {Object.keys(modelPredictions).length > 0 &&
-                !allScheduledPredicted && (
-                  <Button variant="success" onClick={() => fillFromModel(modelPredictions)}>
-                    <BrainIcon />
-                    AI Predictions
+          <div
+            className={`${styles.panelGuttered} ${activeTab !== 'fixtures' ? styles.hiddenOnMobile : ''}`}
+          >
+            <div className={styles.panelHeader}>
+              <h2 className={styles.panelTitle}>Fixtures</h2>
+              <div className={styles.panelHeaderActions}>
+                {Object.keys(modelPredictions).length > 0 &&
+                  !allScheduledPredicted && (
+                    <Button variant="success" onClick={() => fillFromModel(modelPredictions)}>
+                      <BrainIcon />
+                      AI Predictions
+                    </Button>
+                  )}
+                {predictedCount > 0 && (
+                  <Button variant="danger" onClick={resetAllPredictions}>
+                    Reset Predictions
                   </Button>
                 )}
-              {predictedCount > 0 && (
-                <Button variant="danger" onClick={resetAllPredictions}>
-                  Reset Predictions
-                </Button>
-              )}
+              </div>
             </div>
+            <FixtureList
+              matches={matches}
+              teamsById={teamsById}
+              predictions={predictions}
+              onPredictionChange={setPrediction}
+              onPredictionRemove={removePrediction}
+            />
           </div>
-          <FixtureList
-            matches={matches}
-            teamsById={teamsById}
-            predictions={predictions}
-            onPredictionChange={setPrediction}
-            onPredictionRemove={removePrediction}
-          />
-        </div>
-      </main>
+        </main>
+      </div>
 
       <DeductionsModal
         isOpen={deductionsModalOpen}

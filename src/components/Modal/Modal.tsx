@@ -26,9 +26,20 @@ interface ModalProps {
    * or a ref to a specific element. Defaults to the first tabbable element.
    */
   initialFocus?: number | React.MutableRefObject<HTMLElement | null>;
+  /** When true, the panel shakes on open */
+  shakeOnOpen?: boolean;
 }
 
-export const Modal = ({ isOpen, onClose, children, className, initialFocus }: ModalProps) => {
+const SHAKE_X = [0, -9, 8, -7, 9, -8, 6, -9, 7, -5, 6, -4, 3, -2, 1, 0];
+
+export const Modal = ({
+  isOpen,
+  onClose,
+  children,
+  className,
+  initialFocus,
+  shakeOnOpen,
+}: ModalProps) => {
   const { refs, context } = useFloating({
     open: isOpen,
     onOpenChange: (open) => {
@@ -64,9 +75,22 @@ export const Modal = ({ isOpen, onClose, children, className, initialFocus }: Mo
                   ref={floatingRef}
                   className={clsx(styles.panel, className)}
                   initial={{ opacity: 0, scale: 0.9, y: 20 }}
-                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  animate={
+                    shakeOnOpen
+                      ? { opacity: 1, scale: 1, y: 0, x: SHAKE_X }
+                      : { opacity: 1, scale: 1, y: 0 }
+                  }
                   exit={{ opacity: 0, scale: 0.9, y: 20 }}
-                  transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+                  transition={
+                    shakeOnOpen
+                      ? {
+                          type: 'spring',
+                          damping: 25,
+                          stiffness: 300,
+                          x: { duration: 0.7, ease: 'easeOut' },
+                        }
+                      : { type: 'spring', damping: 25, stiffness: 300 }
+                  }
                   {...getFloatingProps()}
                 >
                   {children}
