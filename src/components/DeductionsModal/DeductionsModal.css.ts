@@ -1,6 +1,5 @@
 import { style } from '@vanilla-extract/css';
 import {
-  colorBgModal,
   colorBgSurface,
   colorBgSurfaceHover,
   colorBorder,
@@ -17,33 +16,20 @@ import {
   fontSizeSm,
   space2,
   space3,
-  space4,
   space6,
-  space8,
   radiusSm,
   radiusMd,
   radiusLg,
-  shadowSm,
 } from '../../theme.css';
 
 export const modal = style({
-  backgroundColor: colorBgModal,
-  borderRadius: radiusLg,
-  boxShadow: `${shadowSm}, 0 20px 60px rgba(0, 0, 0, 0.3)`,
-  padding: space8,
   maxWidth: '560px',
-  width: '90vw',
   maxHeight: '85vh',
   overflowY: 'auto',
-  position: 'relative',
-  outline: 'none',
   '@media': {
     'screen and (max-width: 680px)': {
       width: '100%',
       maxWidth: 'none',
-    },
-    'screen and (max-width: 550px)': {
-      padding: `${space4} ${space3}`,
     },
   },
 });

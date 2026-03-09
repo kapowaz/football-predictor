@@ -887,6 +887,7 @@ const darkVars = {
   [colorBgZoneConferenceLeagueAlt]: fuchsia900,
   [colorTextZoneConferenceLeague]: fuchsia300,
   [colorBgModal]: slate950,
+  [colorBgBackdrop]: 'oklch(0% 0 0 / 70%)',
   [colorBgFixtureCard]: slate900,
   [colorBgRowEven]: slate900,
   [colorBgRowAlt]: slate800,
@@ -906,6 +907,7 @@ const darkVars = {
 
   [shadowSm]: '0 1px 3px oklch(0% 0 0 / 30%)',
   [shadowMd]: '0 2px 6px oklch(0% 0 0 / 30%)',
+  [shadowLg]: '0 1px 3px oklch(0% 0 0 / 30%), 0 20px 60px oklch(0% 0 0 / 70%)',
 };
 
 globalStyle(':root:not([data-theme="light"])', {
