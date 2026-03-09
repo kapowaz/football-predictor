@@ -12,7 +12,7 @@ import { StandingsTable } from './components/StandingsTable/StandingsTable';
 import { SeasonSummaryModal } from './components/SeasonSummaryModal';
 import { DeductionsModal } from './components/DeductionsModal';
 import { Button } from './components/Button';
-import { MatchList } from './components/MatchList/MatchList';
+import { FixtureList } from './components/FixtureList/FixtureList';
 import { BrainIcon, TrendingDownIcon } from './components/icons';
 import { competitionData } from './data';
 import { getCompetition, allCompetitions, type CompetitionConfig } from './competitions';
@@ -136,7 +136,7 @@ const CompetitionContent = ({ slug, config }: CompetitionContentProps) => {
               )}
             </div>
           </div>
-          <MatchList
+          <FixtureList
             matches={matches}
             teamsById={teamsById}
             predictions={predictions}

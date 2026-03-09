@@ -8,6 +8,8 @@ export const colorTextPrimary = createVar();
 export const colorTextHeading = createVar();
 export const colorTextSecondary = createVar();
 export const colorTextMuted = createVar();
+export const colorTextHover = createVar();
+export const colorTextActive = createVar();
 export const colorTextWhite = createVar();
 
 export const colorBorder = createVar();
@@ -49,7 +51,7 @@ export const colorBgZoneConferenceLeague = createVar();
 export const colorBgZoneConferenceLeagueAlt = createVar();
 export const colorTextZoneConferenceLeague = createVar();
 export const colorBgModal = createVar();
-export const colorBgMatchCard = createVar();
+export const colorBgFixtureCard = createVar();
 export const colorBgRowEven = createVar();
 export const colorBgRowAlt = createVar();
 export const colorBgTableHead = createVar();
@@ -423,6 +425,8 @@ globalStyle(':root', {
     [colorTextHeading]: gray900,
     [colorTextSecondary]: gray500,
     [colorTextMuted]: neutral500,
+    [colorTextHover]: gray700,
+    [colorTextActive]: gray600,
     [colorTextWhite]: white,
 
     [colorBorder]: gray200,
@@ -464,7 +468,7 @@ globalStyle(':root', {
     [colorBgZoneConferenceLeagueAlt]: fuchsia200,
     [colorTextZoneConferenceLeague]: fuchsia800,
     [colorBgModal]: white,
-    [colorBgMatchCard]: white,
+    [colorBgFixtureCard]: white,
     [colorBgRowEven]: white,
     [colorBgRowAlt]: gray100,
     [colorBgTableHead]: slate300,
@@ -841,6 +845,8 @@ const darkVars = {
   [colorTextHeading]: slate300,
   [colorTextSecondary]: slate500,
   [colorTextMuted]: slate600,
+  [colorTextHover]: slate300,
+  [colorTextActive]: slate400,
 
   [colorBorder]: slate800,
   [colorBorderLight]: slate900,
@@ -881,7 +887,7 @@ const darkVars = {
   [colorBgZoneConferenceLeagueAlt]: fuchsia900,
   [colorTextZoneConferenceLeague]: fuchsia300,
   [colorBgModal]: slate950,
-  [colorBgMatchCard]: slate900,
+  [colorBgFixtureCard]: slate900,
   [colorBgRowEven]: slate900,
   [colorBgRowAlt]: slate800,
   [colorBgTableHead]: slate700,

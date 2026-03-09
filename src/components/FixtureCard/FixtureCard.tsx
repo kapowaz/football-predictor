@@ -2,9 +2,9 @@ import { useCallback } from 'react';
 import type { Match, Team } from '../../types';
 import { getCrest } from '../../assets/crests';
 import { ScoreInput } from '../ScoreInput/ScoreInput';
-import * as styles from './MatchCard.css';
+import * as styles from './FixtureCard.css';
 
-interface MatchCardProps {
+interface FixtureCardProps {
   match: Match;
   homeTeam: Team;
   awayTeam: Team;
@@ -18,14 +18,14 @@ const formatKickoff = (utcDate: string): string => {
   return date.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
 };
 
-export const MatchCard = ({
+export const FixtureCard = ({
   match,
   homeTeam,
   awayTeam,
   prediction,
   onPredictionChange,
   onPredictionRemove,
-}: MatchCardProps) => {
+}: FixtureCardProps) => {
   const handleScoreChange = useCallback(
     (homeGoals: number | null, awayGoals: number | null) => {
       if (homeGoals !== null && awayGoals !== null) {

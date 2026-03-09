@@ -1,6 +1,6 @@
 import { style } from '@vanilla-extract/css';
 import {
-  colorBgMatchCard,
+  colorBgFixtureCard,
   colorTextPrimary,
   colorTextSecondary,
   fontSizeBase,
@@ -16,7 +16,7 @@ export const card = style({
   alignItems: 'flex-start',
   justifyContent: 'space-between',
   padding: space3,
-  backgroundColor: colorBgMatchCard,
+  backgroundColor: colorBgFixtureCard,
   borderRadius: radiusLg,
   boxShadow: shadowSm,
   gap: space4,

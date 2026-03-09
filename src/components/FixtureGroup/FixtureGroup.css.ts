@@ -1,34 +1,16 @@
 import { style } from '@vanilla-extract/css';
 import {
   colorTextSecondary,
+  colorTextHover,
+  colorTextActive,
   colorSuccess,
   colorDanger,
   colorNeutral,
   colorNeutralLight,
   fontSizeSm,
-  fontSizeBase,
   space1,
   space2,
-  space4,
-  space6,
-  space12,
 } from '../../theme.css';
-
-export const container = style({
-  position: 'relative',
-  display: 'flex',
-  flexDirection: 'column',
-  gap: space4,
-  overflow: 'auto',
-  flex: 1,
-  minHeight: 0,
-});
-
-export const dateGroup = style({
-  display: 'flex',
-  flexDirection: 'column',
-  gap: space2,
-});
 
 export const dateHeader = style({
   display: 'flex',
@@ -47,6 +29,21 @@ export const dateHeader = style({
   padding: `${space1} 0`,
   width: '100%',
   textAlign: 'left',
+  transition: 'color 0.2s ease-in-out',
+  selectors: {
+    '&:hover': {
+      color: colorTextHover,
+    },
+  },
+});
+
+export const dateHeaderExpanded = style({
+  color: colorTextActive,
+  selectors: {
+    '&:hover': {
+      color: colorTextHover,
+    },
+  },
 });
 
 export const dateHeaderComplete = style({
@@ -57,34 +54,11 @@ export const chevron = style({
   width: '16px',
   height: '16px',
   flexShrink: 0,
-  transition: 'transform 0.2s ease',
+  transition: 'transform 0.2s ease, color 0.2s ease-in-out',
 });
 
 export const chevronExpanded = style({
   transform: 'rotate(90deg)',
-});
-
-export const matchesWrapper = style({
-  display: 'grid',
-  gridTemplateRows: '0fr',
-  opacity: 0,
-  pointerEvents: 'none',
-  transition: 'grid-template-rows 0.25s ease-in-out, opacity 0.25s ease-in-out',
-});
-
-export const matchesWrapperExpanded = style({
-  gridTemplateRows: '1fr',
-  opacity: 1,
-  pointerEvents: 'auto',
-});
-
-export const matchesList = style({
-  display: 'flex',
-  flexDirection: 'column',
-  gap: space2,
-  overflow: 'hidden',
-  minHeight: 0,
-  padding: space1,
 });
 
 export const fixtureIndicators = style({
@@ -113,11 +87,4 @@ export const fixtureCircleAwayWin = style({
 
 export const fixtureCircleDraw = style({
   backgroundColor: colorNeutral,
-});
-
-export const emptyState = style({
-  textAlign: 'center',
-  padding: `${space12} ${space6}`,
-  color: colorTextSecondary,
-  fontSize: fontSizeBase,
 });

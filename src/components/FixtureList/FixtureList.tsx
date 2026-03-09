@@ -2,11 +2,11 @@ import { useCallback, useRef, useState } from 'react';
 import clsx from 'clsx';
 import type { Match, Team, PredictionsStore } from '../../types';
 import { useGroupedMatches } from '../../hooks/useGroupedMatches';
-import { MatchCard } from '../MatchCard/MatchCard';
-import { ChevronRightIcon } from '../icons';
-import * as styles from './MatchList.css';
+import { FixtureCard } from '../FixtureCard/FixtureCard';
+import { FixtureGroup } from '../FixtureGroup';
+import * as styles from './FixtureList.css';
 
-interface MatchListProps {
+interface FixtureListProps {
   matches: Match[];
   teamsById: Map<number, Team>;
   predictions: PredictionsStore;
@@ -14,13 +14,13 @@ interface MatchListProps {
   onPredictionRemove: (matchId: number) => void;
 }
 
-export const MatchList = ({
+export const FixtureList = ({
   matches,
   teamsById,
   predictions,
   onPredictionChange,
   onPredictionRemove,
-}: MatchListProps) => {
+}: FixtureListProps) => {
 
   const groupedMatches = useGroupedMatches(matches, predictions);
 
@@ -75,37 +75,22 @@ export const MatchList = ({
               }
             }}
           >
-            <button
-              className={clsx(styles.dateHeader, group.allPredicted && styles.dateHeaderComplete)}
+            <FixtureGroup
+              dateLabel={group.dateLabel}
+              isExpanded={isExpanded}
+              allPredicted={group.allPredicted}
+              matches={group.matches}
+              predictions={predictions}
               onClick={() => toggleDate(group.date)}
-              aria-expanded={isExpanded}
-            >
-              <ChevronRightIcon className={clsx(styles.chevron, isExpanded && styles.chevronExpanded)} />
-              {group.dateLabel}
-              <span className={styles.fixtureIndicators}>
-                {group.matches.map((match) => {
-                  const prediction = predictions.predictions[String(match.id)];
-                  return (
-                    <span
-                      key={match.id}
-                      className={clsx(styles.fixtureCircle, prediction != null && {
-                        [styles.fixtureCircleHomeWin]: prediction.homeGoals > prediction.awayGoals,
-                        [styles.fixtureCircleAwayWin]: prediction.homeGoals < prediction.awayGoals,
-                        [styles.fixtureCircleDraw]: prediction.homeGoals === prediction.awayGoals,
-                      })}
-                    />
-                  );
-                })}
-              </span>
-            </button>
+            />
             <div
               className={clsx(
-                styles.matchesWrapper,
-                isExpanded && styles.matchesWrapperExpanded,
+                styles.fixturesWrapper,
+                isExpanded && styles.fixturesWrapperExpanded,
               )}
               onTransitionEnd={(e) => handleTransitionEnd(group.date, e)}
             >
-              <div className={styles.matchesList}>
+              <div className={styles.fixturesList}>
                 {group.matches.map((match) => {
                   const homeTeam = teamsById.get(match.homeTeamId);
                   const awayTeam = teamsById.get(match.awayTeamId);
@@ -113,7 +98,7 @@ export const MatchList = ({
                   if (!homeTeam || !awayTeam) return null;
 
                   return (
-                    <MatchCard
+                    <FixtureCard
                       key={match.id}
                       match={match}
                       homeTeam={homeTeam}
