@@ -85,7 +85,7 @@ const selectStyles: StylesConfig<TeamOption, false> = {
   }),
   menuPortal: (base) => ({
     ...base,
-    zIndex: 1100,
+    zIndex: 1,
   }),
   menuList: (base) => ({
     ...base,

@@ -1,4 +1,5 @@
 import { useRef, useEffect, useCallback } from 'react';
+import { FloatingPortal } from '@floating-ui/react';
 import { ConfettiParticle } from './ConfettiParticle';
 import { Vector2 } from './utils';
 import * as styles from './Confetti.css';
@@ -188,5 +189,9 @@ export const Confetti = ({
     return null;
   }
 
-  return <canvas className={styles.confetti} ref={canvasRef} />;
+  return (
+    <FloatingPortal>
+      <canvas className={styles.confetti} ref={canvasRef} />
+    </FloatingPortal>
+  );
 };

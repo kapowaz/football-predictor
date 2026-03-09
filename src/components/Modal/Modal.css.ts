@@ -2,7 +2,7 @@ import { style } from '@vanilla-extract/css';
 import { space3, space6 } from '../../theme.css';
 
 export const overlay = style({
-  zIndex: 1000,
+  zIndex: 1,
 });
 
 export const backdrop = style({

@@ -63,16 +63,6 @@ export const SeasonSummaryModal = ({
 
   return (
     <>
-      {showConfetti && (
-        <Confetti
-          isLooping={false}
-          particleDensity={20}
-          size={5}
-          gravity={3}
-          yStartOffset={0.8}
-          onAnimationComplete={() => setShowConfetti(false)}
-        />
-      )}
       <Modal isOpen={isOpen} onClose={onClose} className={styles.modal}>
         {champion && (
           <img
@@ -139,6 +129,16 @@ export const SeasonSummaryModal = ({
           </div>
         )}
       </Modal>
+      {showConfetti && (
+        <Confetti
+          isLooping={false}
+          particleDensity={20}
+          size={5}
+          gravity={3}
+          yStartOffset={0.8}
+          onAnimationComplete={() => setShowConfetti(false)}
+        />
+      )}
     </>
   );
 };
