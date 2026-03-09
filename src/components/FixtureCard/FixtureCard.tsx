@@ -37,32 +37,38 @@ export const FixtureCard = ({
     [match.id, onPredictionChange, onPredictionRemove],
   );
 
+  const homeInputId = `match-${match.id}-home`;
+  const awayInputId = `match-${match.id}-away`;
+
   return (
     <div className={styles.card} data-match-id={match.id}>
-      <div className={styles.homeTeam}>
-        <div>
-          <div className={styles.teamName}>{homeTeam.shortName}</div>
-          <div className={styles.teamTla}>{homeTeam.tla}</div>
-        </div>
-        <img src={getCrest(homeTeam.crest)} alt={homeTeam.name} className={styles.crest} />
-      </div>
+      <div className={styles.fixtureRow}>
+        <label htmlFor={homeInputId} className={styles.homeTeam}>
+          <span>
+            <span className={styles.teamName}>{homeTeam.shortName}</span>
+            <span className={styles.teamTla}>{homeTeam.tla}</span>
+          </span>
+          <img src={getCrest(homeTeam.crest)} alt={homeTeam.name} className={styles.crest} />
+        </label>
 
-      <div className={styles.scoreSection}>
         <ScoreInput
+          homeInputId={homeInputId}
+          awayInputId={awayInputId}
           homeGoals={prediction?.homeGoals ?? null}
           awayGoals={prediction?.awayGoals ?? null}
           onChange={handleScoreChange}
         />
-        <div className={styles.kickoff}>{formatKickoff(match.utcDate)}</div>
+
+        <label htmlFor={awayInputId} className={styles.awayTeam}>
+          <img src={getCrest(awayTeam.crest)} alt={awayTeam.name} className={styles.crest} />
+          <span>
+            <span className={styles.teamName}>{awayTeam.shortName}</span>
+            <span className={styles.teamTla}>{awayTeam.tla}</span>
+          </span>
+        </label>
       </div>
 
-      <div className={styles.awayTeam}>
-        <img src={getCrest(awayTeam.crest)} alt={awayTeam.name} className={styles.crest} />
-        <div>
-          <div className={styles.teamName}>{awayTeam.shortName}</div>
-          <div className={styles.teamTla}>{awayTeam.tla}</div>
-        </div>
-      </div>
+      <div className={styles.kickoff}>{formatKickoff(match.utcDate)}</div>
     </div>
   );
 };

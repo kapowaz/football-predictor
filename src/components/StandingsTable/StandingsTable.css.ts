@@ -60,7 +60,6 @@ export const container = style({
   boxShadow: shadowMd,
   overflowX: 'hidden',
   overflowY: 'auto',
-  flex: 1,
   minHeight: 0,
   '@media': {
     'screen and (max-width: 680px)': {

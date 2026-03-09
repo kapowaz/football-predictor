@@ -13,13 +13,13 @@ import {
 
 export const card = style({
   display: 'flex',
-  alignItems: 'flex-start',
-  justifyContent: 'space-between',
+  flexDirection: 'column',
+  alignItems: 'center',
   padding: space3,
   backgroundColor: colorBgFixtureCard,
   borderRadius: radiusLg,
   boxShadow: shadowSm,
-  gap: space4,
+  gap: '4px',
   containerType: 'inline-size',
   '@media': {
     '(min-width: 680px)': {
@@ -28,11 +28,20 @@ export const card = style({
   },
 });
 
+export const fixtureRow = style({
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'space-between',
+  width: '100%',
+  gap: space4,
+});
+
 export const team = style({
   display: 'flex',
   alignItems: 'center',
   gap: space3,
   flex: 1,
+  cursor: 'pointer',
 });
 
 export const homeTeam = style([
@@ -96,11 +105,4 @@ export const teamTla = style([
 export const kickoff = style({
   fontSize: fontSizeSm,
   color: colorTextSecondary,
-  marginTop: '2px',
-});
-
-export const scoreSection = style({
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
 });

@@ -2,6 +2,10 @@ import { useState } from 'react';
 import * as styles from './ScoreInput.css';
 
 interface ScoreInputProps {
+  /** ID attribute for the home goals input, used to associate with an external label */
+  homeInputId?: string;
+  /** ID attribute for the away goals input, used to associate with an external label */
+  awayInputId?: string;
   homeGoals: number | null;
   awayGoals: number | null;
   onChange: (homeGoals: number | null, awayGoals: number | null) => void;
@@ -10,7 +14,13 @@ interface ScoreInputProps {
 const parseGoals = (value: string): number | null =>
   value === '' ? null : Math.max(0, parseInt(value, 10) || 0);
 
-export const ScoreInput = ({ homeGoals, awayGoals, onChange }: ScoreInputProps) => {
+export const ScoreInput = ({
+  homeInputId,
+  awayInputId,
+  homeGoals,
+  awayGoals,
+  onChange,
+}: ScoreInputProps) => {
   const [localHome, setLocalHome] = useState(homeGoals);
   const [localAway, setLocalAway] = useState(awayGoals);
   const [prevHome, setPrevHome] = useState(homeGoals);
@@ -28,6 +38,7 @@ export const ScoreInput = ({ homeGoals, awayGoals, onChange }: ScoreInputProps) 
   return (
     <div className={styles.container}>
       <input
+        id={homeInputId}
         type="number"
         min="0"
         max="99"
@@ -42,6 +53,7 @@ export const ScoreInput = ({ homeGoals, awayGoals, onChange }: ScoreInputProps) 
       />
       <span className={styles.separator}>vs</span>
       <input
+        id={awayInputId}
         type="number"
         min="0"
         max="99"
