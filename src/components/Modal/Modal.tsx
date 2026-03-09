@@ -20,9 +20,15 @@ interface ModalProps {
   children: ReactNode;
   /** CSS class applied to the modal panel (controls sizing, padding, etc.) */
   className?: string;
+  /**
+   * Where to place initial focus when the modal opens.
+   * Pass `-1` to focus the floating container itself (no visible focus ring),
+   * or a ref to a specific element. Defaults to the first tabbable element.
+   */
+  initialFocus?: number | React.MutableRefObject<HTMLElement | null>;
 }
 
-export const Modal = ({ isOpen, onClose, children, className }: ModalProps) => {
+export const Modal = ({ isOpen, onClose, children, className, initialFocus }: ModalProps) => {
   const { refs, context } = useFloating({
     open: isOpen,
     onOpenChange: (open) => {
@@ -53,7 +59,7 @@ export const Modal = ({ isOpen, onClose, children, className }: ModalProps) => {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
             >
-              <FloatingFocusManager context={context}>
+              <FloatingFocusManager context={context} initialFocus={initialFocus}>
                 <motion.div
                   ref={floatingRef}
                   className={clsx(styles.panel, className)}

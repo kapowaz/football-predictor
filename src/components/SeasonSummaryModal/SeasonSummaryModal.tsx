@@ -63,7 +63,7 @@ export const SeasonSummaryModal = ({
 
   return (
     <>
-      <Modal isOpen={isOpen} onClose={onClose} className={styles.modal}>
+        <Modal isOpen={isOpen} onClose={onClose} className={styles.modal} initialFocus={-1}>
         {champion && (
           <img
             src={getCrest(champion.team.crest)}
