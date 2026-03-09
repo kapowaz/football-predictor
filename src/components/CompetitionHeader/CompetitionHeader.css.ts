@@ -12,12 +12,10 @@ export const header = style({
   display: 'flex',
   alignItems: 'center',
   gap: space4,
+  width: '100%',
   maxWidth: maxWidthContent,
   margin: `0 auto ${space6}`,
   '@media': {
-    'screen and (max-width: 1024px)': {
-      width: '100%',
-    },
     'screen and (max-width: 680px)': {
       padding: `${space6} ${space4} 0`,
     },

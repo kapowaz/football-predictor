@@ -27,15 +27,12 @@ globalStyle('body', {
 });
 
 export const app = style({
-  minHeight: '100vh',
+  display: 'flex',
+  flexDirection: 'column',
+  height: '100dvh',
   padding: space6,
+  overflow: 'hidden',
   '@media': {
-    'screen and (max-width: 1024px)': {
-      display: 'flex',
-      flexDirection: 'column',
-      height: '100dvh',
-      minHeight: 0,
-    },
     'screen and (max-width: 680px)': {
       padding: 0,
     },
@@ -47,13 +44,13 @@ export const main = style({
   gridTemplateColumns: 'minmax(640px, 1fr) 1fr',
   gap: space6,
   maxWidth: maxWidthContent,
+  width: '100%',
   margin: '0 auto',
+  flex: 1,
+  minHeight: 0,
   '@media': {
     'screen and (max-width: 1024px)': {
       gridTemplateColumns: '1fr',
-      width: '100%',
-      flex: 1,
-      minHeight: 0,
     },
   },
 });
@@ -62,10 +59,8 @@ export const panel = style({
   display: 'flex',
   flexDirection: 'column',
   gap: space4,
+  minHeight: 0,
   '@media': {
-    'screen and (max-width: 1024px)': {
-      minHeight: 0,
-    },
     'screen and (max-width: 680px)': {
       overflow: 'hidden',
     },

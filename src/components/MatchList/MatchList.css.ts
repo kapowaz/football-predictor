@@ -20,14 +20,8 @@ export const container = style({
   flexDirection: 'column',
   gap: space4,
   overflow: 'auto',
-  maxHeight: 'calc(100vh - 140px)',
-  '@media': {
-    'screen and (max-width: 1024px)': {
-      flex: 1,
-      minHeight: 0,
-      maxHeight: 'none',
-    },
-  },
+  flex: 1,
+  minHeight: 0,
 });
 
 export const dateGroup = style({
