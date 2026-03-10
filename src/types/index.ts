@@ -73,6 +73,8 @@ export type FormResult = 'W' | 'D' | 'L';
 
 export interface FormEntry {
   result: FormResult;
+  matchId: number;
+  isPrediction: boolean;
   homeTeamName: string;
   awayTeamName: string;
   homeGoals: number;

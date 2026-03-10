@@ -10,6 +10,8 @@ interface StandingsTableProps {
   standings: TeamStanding[];
   deductionMarkers?: Map<number, string>;
   zones: ZoneDefinition[];
+  /** Called when a prediction form badge is clicked, with the match ID */
+  onPredictionClick?: (matchId: number) => void;
 }
 
 const formatGD = (gd: number): string => {
@@ -25,6 +27,12 @@ const formStyles: Record<FormResult, string> = {
   W: styles.formWin,
   D: styles.formDraw,
   L: styles.formLoss,
+};
+
+const formButtonStyles: Record<FormResult, string> = {
+  W: styles.formWinButton,
+  D: styles.formDrawButton,
+  L: styles.formLossButton,
 };
 
 const zoneRowStyles: Record<ZoneType | 'default', [string, string]> = {
@@ -49,7 +57,7 @@ const zonePositionStyles: Record<ZoneType | 'default', string | undefined> = {
   default: undefined,
 };
 
-export const StandingsTable = ({ standings, deductionMarkers, zones }: StandingsTableProps) => {
+export const StandingsTable = ({ standings, deductionMarkers, zones, onPredictionClick }: StandingsTableProps) => {
   const containerRef = useScrollDirectionLock<HTMLDivElement>();
 
   return (
@@ -114,15 +122,27 @@ export const StandingsTable = ({ standings, deductionMarkers, zones }: Standings
                 <td className={styles.tdCenter}>{standing.goalsAgainst}</td>
                 <td className={styles.td}>
                   <div className={styles.formCell}>
-                    {standing.form.map((entry, i) => (
-                      <span
-                        key={i}
-                        className={clsx(styles.formBadge, formStyles[entry.result])}
-                        title={formatFormTitle(entry)}
-                      >
-                        {entry.result}
-                      </span>
-                    ))}
+                    {standing.form.map((entry, i) =>
+                      entry.isPrediction && onPredictionClick ? (
+                        <button
+                          key={i}
+                          type="button"
+                          className={clsx(styles.formBadgeButton, formButtonStyles[entry.result])}
+                          title={formatFormTitle(entry)}
+                          onClick={() => onPredictionClick(entry.matchId)}
+                        >
+                          {entry.result}
+                        </button>
+                      ) : (
+                        <span
+                          key={i}
+                          className={clsx(styles.formBadge, formStyles[entry.result])}
+                          title={formatFormTitle(entry)}
+                        >
+                          {entry.result}
+                        </span>
+                      ),
+                    )}
                   </div>
                 </td>
               </tr>

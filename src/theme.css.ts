@@ -53,6 +53,7 @@ export const colorTextZoneConferenceLeague = createVar();
 export const colorBgModal = createVar();
 export const colorBgBackdrop = createVar();
 export const colorBgFixtureCard = createVar();
+export const colorBgFixtureCardHighlight = createVar();
 export const colorBgRowEven = createVar();
 export const colorBgRowAlt = createVar();
 export const colorBgTableHead = createVar();
@@ -67,6 +68,12 @@ export const colorResultLoss = createVar();
 export const colorResultWinText = createVar();
 export const colorResultDrawText = createVar();
 export const colorResultLossText = createVar();
+export const colorResultWinHover = createVar();
+export const colorResultDrawHover = createVar();
+export const colorResultLossHover = createVar();
+export const colorResultWinTextHover = createVar();
+export const colorResultDrawTextHover = createVar();
+export const colorResultLossTextHover = createVar();
 
 export const colorFocus = createVar();
 export const colorFocusRing = createVar();
@@ -498,6 +505,7 @@ globalStyle(':root', {
     [colorBgModal]: white,
     [colorBgBackdrop]: 'oklch(0% 0 0 / 50%)',
     [colorBgFixtureCard]: white,
+    [colorBgFixtureCardHighlight]: gray100,
     [colorBgRowEven]: white,
     [colorBgRowAlt]: gray100,
     [colorBgTableHead]: slate300,
@@ -512,6 +520,12 @@ globalStyle(':root', {
     [colorResultWinText]: green200,
     [colorResultDrawText]: gray200,
     [colorResultLossText]: red200,
+    [colorResultWinHover]: green700,
+    [colorResultDrawHover]: gray500,
+    [colorResultLossHover]: red700,
+    [colorResultWinTextHover]: green100,
+    [colorResultDrawTextHover]: gray100,
+    [colorResultLossTextHover]: red100,
 
     [colorFocus]: blue500,
     [colorFocusRing]: 'oklch(62.3% 0.214 259.815 / 20%)',
@@ -945,6 +959,7 @@ const darkVars = {
   [colorBgModal]: slate925,
   [colorBgBackdrop]: 'oklch(0% 0 0 / 60%)',
   [colorBgFixtureCard]: slate900,
+  [colorBgFixtureCardHighlight]: slate800,
   [colorBgRowEven]: slate900,
   [colorBgRowAlt]: slate800,
   [colorBgTableHead]: slate700,
@@ -959,6 +974,12 @@ const darkVars = {
   [colorResultWinText]: green700,
   [colorResultDrawText]: slate700,
   [colorResultLossText]: red700,
+  [colorResultWinHover]: green300,
+  [colorResultDrawHover]: slate300,
+  [colorResultLossHover]: red300,
+  [colorResultWinTextHover]: green800,
+  [colorResultDrawTextHover]: slate800,
+  [colorResultLossTextHover]: red800,
 
   [colorFocusRing]: 'oklch(62.3% 0.214 259.815 / 30%)',
 

@@ -1,6 +1,7 @@
-import { style } from '@vanilla-extract/css';
+import { keyframes, style } from '@vanilla-extract/css';
 import {
   colorBgFixtureCard,
+  colorBgFixtureCardHighlight,
   colorTextPrimary,
   colorTextSecondary,
   fontSizeBase,
@@ -105,4 +106,18 @@ export const teamTla = style([
 export const kickoff = style({
   fontSize: fontSizeSm,
   color: colorTextSecondary,
+});
+
+const flashHighlight = keyframes({
+  '0%': { backgroundColor: colorBgFixtureCard },
+  '16.67%': { backgroundColor: colorBgFixtureCardHighlight },
+  '33.33%': { backgroundColor: colorBgFixtureCard },
+  '50%': { backgroundColor: colorBgFixtureCardHighlight },
+  '66.67%': { backgroundColor: colorBgFixtureCard },
+  '83.33%': { backgroundColor: colorBgFixtureCardHighlight },
+  '100%': { backgroundColor: colorBgFixtureCard },
+});
+
+export const cardHighlighted = style({
+  animation: `${flashHighlight} 1.4s ease-in-out`,
 });

@@ -1,8 +1,9 @@
-import { useCallback, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import clsx from 'clsx';
 import type { Match, Team, PredictionsStore } from '../../types';
 import { useGroupedMatches } from '../../hooks/useGroupedMatches';
 import { FixtureCard } from '../FixtureCard/FixtureCard';
+import { cardHighlighted } from '../FixtureCard/FixtureCard.css';
 import { FixtureGroup } from '../FixtureGroup';
 import * as styles from './FixtureList.css';
 
@@ -12,6 +13,10 @@ interface FixtureListProps {
   predictions: PredictionsStore;
   onPredictionChange: (matchId: number, homeGoals: number, awayGoals: number) => void;
   onPredictionRemove: (matchId: number) => void;
+  /** When set, expands the date group containing this match and scrolls to its card */
+  navigateToMatchId?: number | null;
+  /** Called after navigation scroll completes so the parent can clear the target */
+  onNavigationComplete?: () => void;
 }
 
 export const FixtureList = ({
@@ -20,6 +25,8 @@ export const FixtureList = ({
   predictions,
   onPredictionChange,
   onPredictionRemove,
+  navigateToMatchId,
+  onNavigationComplete,
 }: FixtureListProps) => {
 
   const groupedMatches = useGroupedMatches(matches, predictions);
@@ -28,6 +35,91 @@ export const FixtureList = ({
   const dateRefs = useRef<Map<string, HTMLDivElement>>(new Map());
   const containerRef = useRef<HTMLDivElement>(null);
   const expandedDateRef = useRef<string | null>(null);
+  const pendingScrollMatchId = useRef<number | null>(null);
+
+  useEffect(() => {
+    if (navigateToMatchId == null) return;
+
+    const group = groupedMatches.find((g) =>
+      g.matches.some((m) => m.id === navigateToMatchId),
+    );
+    if (!group) return;
+
+    pendingScrollMatchId.current = navigateToMatchId;
+
+    if (expandedDate === group.date) {
+      // Already expanded — scroll immediately
+      requestAnimationFrame(() => {
+        scrollToMatch(navigateToMatchId);
+      });
+    } else {
+      setExpandedDate(() => {
+        expandedDateRef.current = group.date;
+        return group.date;
+      });
+    }
+  }, [navigateToMatchId]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  const highlightCard = useCallback((card: Element) => {
+    card.classList.add(cardHighlighted);
+    card.addEventListener(
+      'animationend',
+      () => card.classList.remove(cardHighlighted),
+      { once: true },
+    );
+    const firstInput = card.querySelector<HTMLInputElement>('input');
+    firstInput?.focus();
+  }, []);
+
+  const scrollToMatch = useCallback(
+    (matchId: number) => {
+      if (!containerRef.current) return;
+
+      const card = containerRef.current.querySelector(
+        `[data-match-id="${matchId}"]`,
+      );
+      if (card) {
+        card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+        const initialTop = card.getBoundingClientRect().top;
+
+        // Wait two frames for the smooth scroll to potentially begin,
+        // then either highlight immediately (no scroll needed) or poll
+        // until the card's position stabilises (scroll finished).
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            if (Math.abs(card.getBoundingClientRect().top - initialTop) < 0.5) {
+              highlightCard(card);
+              return;
+            }
+
+            let lastTop = card.getBoundingClientRect().top;
+            let stableFrames = 0;
+
+            const waitForScrollEnd = () => {
+              const top = card.getBoundingClientRect().top;
+              if (Math.abs(top - lastTop) < 0.5) {
+                stableFrames++;
+                if (stableFrames >= 3) {
+                  highlightCard(card);
+                  return;
+                }
+              } else {
+                stableFrames = 0;
+              }
+              lastTop = top;
+              requestAnimationFrame(waitForScrollEnd);
+            };
+
+            requestAnimationFrame(waitForScrollEnd);
+          });
+        });
+      }
+      pendingScrollMatchId.current = null;
+      onNavigationComplete?.();
+    },
+    [onNavigationComplete, highlightCard],
+  );
 
   const toggleDate = useCallback((date: string) => {
     setExpandedDate((prev) => {
@@ -43,6 +135,12 @@ export const FixtureList = ({
       if (expandedDateRef.current !== date) return;
 
       requestAnimationFrame(() => {
+        const pendingMatch = pendingScrollMatchId.current;
+        if (pendingMatch != null) {
+          scrollToMatch(pendingMatch);
+          return;
+        }
+
         const el = dateRefs.current.get(date);
         if (el && containerRef.current) {
           containerRef.current.scrollTo({
@@ -52,7 +150,7 @@ export const FixtureList = ({
         }
       });
     },
-    [],
+    [scrollToMatch],
   );
 
   if (groupedMatches.length === 0) {

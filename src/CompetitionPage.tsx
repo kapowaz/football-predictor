@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect, useRef } from 'react';
+import { useState, useMemo, useEffect, useRef, useCallback } from 'react';
 import { useParams, Navigate, useNavigate } from 'react-router-dom';
 import { animate } from 'framer-motion';
 import { useCompetitionData } from './hooks/useCompetitionData';
@@ -67,6 +67,16 @@ const CompetitionContent = ({ slug, config }: CompetitionContentProps) => {
 
   const [deductionsModalOpen, setDeductionsModalOpen] = useState(false);
   const [activeTab, setActiveTab] = useState('standings');
+  const [navigateToMatchId, setNavigateToMatchId] = useState<number | null>(null);
+
+  const handlePredictionClick = useCallback((matchId: number) => {
+    setActiveTab('fixtures');
+    setNavigateToMatchId(matchId);
+  }, []);
+
+  const handleNavigationComplete = useCallback(() => {
+    setNavigateToMatchId(null);
+  }, []);
 
   const deductionMarkers = useMemo(
     () => new Map(deductions.map((d, i) => [d.teamId, '*'.repeat(i + 1)])),
@@ -135,6 +145,7 @@ const CompetitionContent = ({ slug, config }: CompetitionContentProps) => {
               standings={standings}
               deductionMarkers={deductionMarkers}
               zones={config.zones}
+              onPredictionClick={handlePredictionClick}
             />
           </div>
 
@@ -164,6 +175,8 @@ const CompetitionContent = ({ slug, config }: CompetitionContentProps) => {
               predictions={predictions}
               onPredictionChange={setPrediction}
               onPredictionRemove={removePrediction}
+              navigateToMatchId={navigateToMatchId}
+              onNavigationComplete={handleNavigationComplete}
             />
           </div>
         </main>

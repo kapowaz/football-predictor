@@ -28,6 +28,12 @@ import {
   colorResultWinText,
   colorResultDrawText,
   colorResultLossText,
+  colorResultWinHover,
+  colorResultDrawHover,
+  colorResultLossHover,
+  colorResultWinTextHover,
+  colorResultDrawTextHover,
+  colorResultLossTextHover,
   colorTextZonePromotion,
   colorTextZonePlayoff,
   colorTextZoneRelegation,
@@ -330,7 +336,7 @@ export const formCell = style({
   whiteSpace: 'nowrap',
 });
 
-export const formBadge = style({
+const formBadgeBase = {
   display: 'inline-flex',
   alignItems: 'center',
   justifyContent: 'center',
@@ -340,7 +346,6 @@ export const formBadge = style({
   fontSize: fontSizeXs,
   fontWeight: 700,
   lineHeight: 1,
-  cursor: 'help',
   '@media': {
     'screen and (max-width: 680px)': {
       width: '8px',
@@ -349,6 +354,19 @@ export const formBadge = style({
       fontSize: 0,
     },
   },
+} as const;
+
+export const formBadge = style({
+  ...formBadgeBase,
+  cursor: 'help',
+});
+
+export const formBadgeButton = style({
+  ...formBadgeBase,
+  border: 'none',
+  padding: 0,
+  cursor: 'pointer',
+  transition: 'background-color 0.15s ease, color 0.15s ease',
 });
 
 export const formWin = style({
@@ -364,4 +382,37 @@ export const formDraw = style({
 export const formLoss = style({
   backgroundColor: colorResultLoss,
   color: colorResultLossText,
+});
+
+export const formWinButton = style({
+  backgroundColor: colorResultWin,
+  color: colorResultWinText,
+  selectors: {
+    '&:hover': {
+      backgroundColor: colorResultWinHover,
+      color: colorResultWinTextHover,
+    },
+  },
+});
+
+export const formDrawButton = style({
+  backgroundColor: colorResultDraw,
+  color: colorResultDrawText,
+  selectors: {
+    '&:hover': {
+      backgroundColor: colorResultDrawHover,
+      color: colorResultDrawTextHover,
+    },
+  },
+});
+
+export const formLossButton = style({
+  backgroundColor: colorResultLoss,
+  color: colorResultLossText,
+  selectors: {
+    '&:hover': {
+      backgroundColor: colorResultLossHover,
+      color: colorResultLossTextHover,
+    },
+  },
 });

@@ -11,6 +11,8 @@ import type {
 const FORM_LENGTH = 6;
 
 interface MatchResult {
+  matchId: number;
+  isPrediction: boolean;
   homeTeamId: number;
   awayTeamId: number;
   homeTeamName: string;
@@ -138,6 +140,8 @@ export const calculateStandings = (
 
     if (match.status === 'FINISHED' && match.homeGoals !== null && match.awayGoals !== null) {
       results.push({
+        matchId: match.id,
+        isPrediction: false,
         homeTeamId: match.homeTeamId,
         awayTeamId: match.awayTeamId,
         homeTeamName,
@@ -149,6 +153,8 @@ export const calculateStandings = (
       const prediction = predictions.predictions[String(match.id)];
       if (prediction) {
         results.push({
+          matchId: match.id,
+          isPrediction: true,
           homeTeamId: match.homeTeamId,
           awayTeamId: match.awayTeamId,
           homeTeamName,
@@ -165,6 +171,8 @@ export const calculateStandings = (
     const awayStanding = standingsMap.get(result.awayTeamId);
     const entry: FormEntry = {
       result: getFormResult(result.homeGoals, result.awayGoals),
+      matchId: result.matchId,
+      isPrediction: result.isPrediction,
       homeTeamName: result.homeTeamName,
       awayTeamName: result.awayTeamName,
       homeGoals: result.homeGoals,
