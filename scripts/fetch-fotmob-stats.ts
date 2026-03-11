@@ -37,7 +37,7 @@ interface FotMobLeagueResponse {
 }
 
 interface TeamJson {
-  id: number;
+  id: number | null;
   fotmobId?: number;
   name: string;
   shortName: string;
@@ -107,8 +107,8 @@ const fetchStatsForCompetition = async (comp: ScriptCompetition): Promise<void> 
     }),
   );
 
-  const fotmobIdByTeamId = new Map<number, number>();
-  const teamIdByFotmobId = new Map<number, number>();
+  const fotmobIdByTeamId = new Map<number | null, number>();
+  const teamIdByFotmobId = new Map<number, number | null>();
 
   for (const team of teamsData.teams) {
     if (team.fotmobId) {
@@ -135,7 +135,8 @@ const fetchStatsForCompetition = async (comp: ScriptCompetition): Promise<void> 
 
     const normalizedFotmob = normalizeName(fotmobName);
     const matched = teamsData.teams.find(
-      (t) => !fotmobIdByTeamId.has(t.id) && normalizeName(t.name) === normalizedFotmob,
+      (t) =>
+        !t.fotmobId && !fotmobIdByTeamId.has(t.id) && normalizeName(t.name) === normalizedFotmob,
     );
 
     if (matched) {
@@ -174,10 +175,10 @@ const fetchStatsForCompetition = async (comp: ScriptCompetition): Promise<void> 
       const statName = topList.StatName;
       for (const entry of topList.StatList) {
         const teamId = teamIdByFotmobId.get(entry.TeamId);
-        if (!teamId) continue;
+        const key = teamId != null ? String(teamId) : `fotmob:${entry.TeamId}`;
 
-        if (!stats[String(teamId)]) {
-          stats[String(teamId)] = {
+        if (!stats[key]) {
+          stats[key] = {
             teamName: entry.ParticipantName,
             fotmobId: entry.TeamId,
             matchesPlayed: entry.MatchesPlayed ?? 0,
@@ -186,12 +187,12 @@ const fetchStatsForCompetition = async (comp: ScriptCompetition): Promise<void> 
 
         if (
           entry.MatchesPlayed &&
-          entry.MatchesPlayed > (stats[String(teamId)].matchesPlayed as number)
+          entry.MatchesPlayed > (stats[key].matchesPlayed as number)
         ) {
-          stats[String(teamId)].matchesPlayed = entry.MatchesPlayed;
+          stats[key].matchesPlayed = entry.MatchesPlayed;
         }
 
-        stats[String(teamId)][statName] = {
+        stats[key][statName] = {
           value: entry.StatValue,
           subValue: entry.SubStatValue,
         };
@@ -217,11 +218,11 @@ const fetchStatsForCompetition = async (comp: ScriptCompetition): Promise<void> 
     `\n✓ Wrote stats for ${teamCount} teams (${statCount} stat categories) to src/data/${comp.slug}/fotmob-stats.json`,
   );
 
-  const unmatchedTeams = teamsData.teams.filter((t) => !fotmobIdByTeamId.has(t.id));
+  const unmatchedTeams = teamsData.teams.filter((t) => !t.fotmobId && !fotmobIdByTeamId.has(t.id));
   if (unmatchedTeams.length > 0) {
     console.warn(`\nWarning: ${unmatchedTeams.length} teams have no FotMob mapping:`);
     for (const t of unmatchedTeams) {
-      console.warn(`  - ${t.name} (ID ${t.id})`);
+      console.warn(`  - ${t.name} (ID ${t.id ?? 'null'})`);
     }
   }
 };
