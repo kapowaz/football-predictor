@@ -27,6 +27,7 @@ export const modal = style({
   maxHeight: '90vh',
   display: 'flex',
   flexDirection: 'column',
+  position: 'relative',
   overflow: 'hidden',
 });
 
@@ -41,6 +42,16 @@ export const backgroundCrest = style({
   pointerEvents: 'none',
   userSelect: 'none',
   objectFit: 'contain',
+  zIndex: 0,
+});
+
+export const contentLayer = style({
+  position: 'relative',
+  zIndex: 1,
+  display: 'flex',
+  flexDirection: 'column',
+  flex: 1,
+  minHeight: 0,
 });
 
 export const championHeading = style({
@@ -58,12 +69,22 @@ export const asterisk = style({
 });
 
 export const championSubheading = style({
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  gap: space3,
   fontSize: fontSizeLg,
   fontWeight: 700,
   color: colorTextHeading,
-  textAlign: 'center',
   margin: `0 0 ${space2}`,
   lineHeight: 1.3,
+});
+
+export const competitionLogo = style({
+  width: '36px',
+  height: '36px',
+  objectFit: 'contain',
+  flexShrink: 0,
 });
 
 export const predictionParagraph = style({

@@ -73,61 +73,73 @@ export const SeasonSummaryModal = ({
           />
         )}
 
-        <button className={styles.closeButton} onClick={onClose} aria-label="Close">
-          ✕
-        </button>
+        <div className={styles.contentLayer}>
+          <button className={styles.closeButton} onClick={onClose} aria-label="Close">
+            ✕
+          </button>
 
-        <h2 className={styles.championHeading}>
-          Congratulations
-          <br />
-          <span className={styles.championName}>{champion?.team.name}!</span>
-        </h2>
+          <h2 className={styles.championHeading}>
+            Congratulations
+            <br />
+            <span className={styles.championName}>{champion?.team.name}!</span>
+          </h2>
 
-        <p className={styles.championSubheading}>
-          {competition.name} Champions {competition.season}!
-          <span className={styles.asterisk}>*</span>
-        </p>
-        <p className={styles.predictionParagraph}>*This is only a prediction…</p>
+          <p className={styles.championSubheading}>
+            <img
+              src={competition.logo}
+              alt=""
+              aria-hidden="true"
+              className={styles.competitionLogo}
+            />
+            <span>
+              {competition.name}
+              <br />
+              Champions {competition.season}!
+              <span className={styles.asterisk}>*</span>
+            </span>
+          </p>
+          <p className={styles.predictionParagraph}>*This is only a prediction…</p>
 
-        <div className={styles.scrollableContent}>
-          <hr className={styles.divider} />
+          <div className={styles.scrollableContent}>
+            <hr className={styles.divider} />
 
-          {nonRelegationZones.map(({ zone, teams }) => (
-            <div key={zone.name} className={styles.section}>
-              <div className={zoneLabelStyles[zone.type] ?? styles.sectionLabel}>
-                {zone.label}
-              </div>
-              <div className={styles.teamList}>
-                {teams.map((s) => (
-                  <TeamRow key={s.team.id} standing={s} />
-                ))}
-              </div>
-            </div>
-          ))}
-
-          {relegationZone && (
-            <>
-              <hr className={styles.divider} />
-              <div className={styles.section}>
-                <div className={styles.relegatedLabel}>{relegationZone.zone.label}</div>
+            {nonRelegationZones.map(({ zone, teams }) => (
+              <div key={zone.name} className={styles.section}>
+                <div className={zoneLabelStyles[zone.type] ?? styles.sectionLabel}>
+                  {zone.label}
+                </div>
                 <div className={styles.teamList}>
-                  {relegationZone.teams.map((s) => (
+                  {teams.map((s) => (
                     <TeamRow key={s.team.id} standing={s} />
                   ))}
                 </div>
               </div>
-            </>
+            ))}
+
+            {relegationZone && (
+              <>
+                <hr className={styles.divider} />
+                <div className={styles.section}>
+                  <div className={styles.relegatedLabel}>{relegationZone.zone.label}</div>
+                  <div className={styles.teamList}>
+                    {relegationZone.teams.map((s) => (
+                      <TeamRow key={s.team.id} standing={s} />
+                    ))}
+                  </div>
+                </div>
+              </>
+            )}
+          </div>
+
+          {hasShareApi && (
+            <div className={styles.shareButtonWrapper}>
+              <Button variant="success" onClick={handleShare}>
+                <ShareIcon size={14} />
+                Share your Predictions
+              </Button>
+            </div>
           )}
         </div>
-
-        {hasShareApi && (
-          <div className={styles.shareButtonWrapper}>
-            <Button variant="success" onClick={handleShare}>
-              <ShareIcon size={14} />
-              Share your Predictions
-            </Button>
-          </div>
-        )}
       </Modal>
       {showConfetti && (
         <Confetti
