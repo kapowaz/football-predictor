@@ -12,7 +12,8 @@ import {
 export const container = style({
   display: 'flex',
   alignItems: 'center',
-  gap: '8px',
+  justifyContent: 'space-between',
+  width: '112px',
 });
 
 export const input = style({

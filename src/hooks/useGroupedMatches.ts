@@ -25,16 +25,16 @@ export const useGroupedMatches = (
   matches: Match[],
   predictions: PredictionsStore,
 ): GroupedMatches[] => {
-  const scheduledMatches = useMemo(() => {
+  const visibleMatches = useMemo(() => {
     return matches
-      .filter((match) => match.status === 'SCHEDULED')
+      .filter((match) => match.status === 'SCHEDULED' || match.status === 'FINISHED')
       .sort((a, b) => new Date(a.utcDate).getTime() - new Date(b.utcDate).getTime());
   }, [matches]);
 
   return useMemo(() => {
     const groups = new Map<string, Match[]>();
 
-    for (const match of scheduledMatches) {
+    for (const match of visibleMatches) {
       const dateKey = getDateKey(match.utcDate);
       const existing = groups.get(dateKey) || [];
       groups.set(dateKey, [...existing, match]);
@@ -47,11 +47,12 @@ export const useGroupedMatches = (
         dateLabel: formatDateLabel(date),
         matches: dateMatches,
         allPredicted: dateMatches.every(
-          (match) => predictions.predictions[String(match.id)] != null,
+          (match) =>
+            match.status === 'FINISHED' || predictions.predictions[String(match.id)] != null,
         ),
       });
     }
 
     return result.sort((a, b) => a.date.localeCompare(b.date));
-  }, [scheduledMatches, predictions]);
+  }, [visibleMatches, predictions]);
 };

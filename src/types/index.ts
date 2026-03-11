@@ -19,15 +19,26 @@ export interface TeamsData {
   teams: Team[];
 }
 
-export interface Match {
+interface MatchBase {
   id: number;
   homeTeamId: number;
   awayTeamId: number;
   utcDate: string;
-  status: 'SCHEDULED' | 'FINISHED';
-  homeGoals: number | null;
-  awayGoals: number | null;
 }
+
+export interface ScheduledMatch extends MatchBase {
+  status: 'SCHEDULED';
+  homeGoals: null;
+  awayGoals: null;
+}
+
+export interface FinishedMatch extends MatchBase {
+  status: 'FINISHED';
+  homeGoals: number;
+  awayGoals: number;
+}
+
+export type Match = ScheduledMatch | FinishedMatch;
 
 export interface MatchesData {
   lastUpdated: string;

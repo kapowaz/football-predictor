@@ -27,6 +27,16 @@ interface ApiMatchesResponse {
   matches: ApiMatch[];
 }
 
+interface SanitizedMatch {
+  id: number;
+  homeTeamId: number;
+  awayTeamId: number;
+  utcDate: string;
+  status: 'SCHEDULED' | 'FINISHED';
+  homeGoals: number | null;
+  awayGoals: number | null;
+}
+
 interface ApiStandingEntry {
   position: number;
   team: {
@@ -60,6 +70,31 @@ interface ApiStandingsResponse {
 const dataDir = (comp: ScriptCompetition) =>
   path.join(import.meta.dirname, '../src/data', comp.slug);
 
+const sanitizeMatch = (match: ApiMatch): SanitizedMatch => {
+  const status = match.status === 'FINISHED' ? 'FINISHED' : 'SCHEDULED';
+  if (status === 'FINISHED') {
+    return {
+      id: match.id,
+      homeTeamId: match.homeTeam.id,
+      awayTeamId: match.awayTeam.id,
+      utcDate: match.utcDate,
+      status,
+      homeGoals: match.score.fullTime.home ?? 0,
+      awayGoals: match.score.fullTime.away ?? 0,
+    };
+  }
+
+  return {
+    id: match.id,
+    homeTeamId: match.homeTeam.id,
+    awayTeamId: match.awayTeam.id,
+    utcDate: match.utcDate,
+    status,
+    homeGoals: null,
+    awayGoals: null,
+  };
+};
+
 const fetchMatches = async (comp: ScriptCompetition): Promise<void> => {
   console.log(`Fetching matches for ${comp.name}...`);
   const data = await fetchFromApi<ApiMatchesResponse>(
@@ -68,15 +103,7 @@ const fetchMatches = async (comp: ScriptCompetition): Promise<void> => {
 
   const matchesData = {
     lastUpdated: new Date().toISOString(),
-    matches: data.matches.map((match) => ({
-      id: match.id,
-      homeTeamId: match.homeTeam.id,
-      awayTeamId: match.awayTeam.id,
-      utcDate: match.utcDate,
-      status: match.status === 'FINISHED' ? 'FINISHED' : 'SCHEDULED',
-      homeGoals: match.score.fullTime.home,
-      awayGoals: match.score.fullTime.away,
-    })),
+    matches: data.matches.map(sanitizeMatch),
   };
 
   const dir = dataDir(comp);

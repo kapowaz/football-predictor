@@ -3,9 +3,8 @@ import {
   colorBgFixtureCard,
   colorBgFixtureCardHighlight,
   colorTextPrimary,
-  colorTextSecondary,
+  fontFamilyMono,
   fontSizeBase,
-  fontSizeSm,
   space3,
   space4,
   radiusLg,
@@ -34,7 +33,7 @@ export const fixtureRow = style({
   alignItems: 'center',
   justifyContent: 'space-between',
   width: '100%',
-  gap: space4,
+  gap: space3,
 });
 
 export const team = style({
@@ -42,6 +41,9 @@ export const team = style({
   alignItems: 'center',
   gap: space3,
   flex: 1,
+});
+
+export const teamInteractive = style({
   cursor: 'pointer',
 });
 
@@ -103,9 +105,15 @@ export const teamTla = style([
   },
 ]);
 
-export const kickoff = style({
-  fontSize: fontSizeSm,
-  color: colorTextSecondary,
+export const finalScore = style({
+  width: '112px',
+  display: 'flex',
+  justifyContent: 'center',
+  textAlign: 'center',
+  fontFamily: fontFamilyMono,
+  fontSize: fontSizeBase,
+  fontWeight: 700,
+  color: colorTextPrimary,
 });
 
 const flashHighlight = keyframes({

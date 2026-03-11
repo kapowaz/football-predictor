@@ -10,7 +10,7 @@ interface StandingsTableProps {
   standings: TeamStanding[];
   deductionMarkers?: Map<number, string>;
   zones: ZoneDefinition[];
-  /** Called when a prediction form badge is clicked, with the match ID */
+  /** Called when a form badge is clicked, with the match ID */
   onPredictionClick?: (matchId: number) => void;
 }
 
@@ -123,7 +123,7 @@ export const StandingsTable = ({ standings, deductionMarkers, zones, onPredictio
                 <td className={styles.td}>
                   <div className={styles.formCell}>
                     {standing.form.map((entry, i) =>
-                      entry.isPrediction && onPredictionClick ? (
+                      onPredictionClick ? (
                         <button
                           key={i}
                           type="button"

@@ -8,6 +8,8 @@ interface ScoreInputProps {
   awayInputId?: string;
   homeGoals: number | null;
   awayGoals: number | null;
+  /** Text shown between the two score inputs */
+  separatorText?: string;
   onChange: (homeGoals: number | null, awayGoals: number | null) => void;
 }
 
@@ -19,6 +21,7 @@ export const ScoreInput = ({
   awayInputId,
   homeGoals,
   awayGoals,
+  separatorText = 'vs',
   onChange,
 }: ScoreInputProps) => {
   const [localHome, setLocalHome] = useState(homeGoals);
@@ -51,7 +54,7 @@ export const ScoreInput = ({
         }}
         aria-label="Home team goals"
       />
-      <span className={styles.separator}>vs</span>
+      <span className={styles.separator}>{separatorText}</span>
       <input
         id={awayInputId}
         type="number"

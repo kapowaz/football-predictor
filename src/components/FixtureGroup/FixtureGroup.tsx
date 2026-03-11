@@ -35,14 +35,18 @@ export const FixtureGroup = ({
     {dateLabel}
     <span className={styles.fixtureIndicators}>
       {matches.map((match) => {
-        const prediction = predictions.predictions[String(match.id)];
+        const indicatorResult =
+          match.status === 'FINISHED'
+            ? { homeGoals: match.homeGoals, awayGoals: match.awayGoals }
+            : predictions.predictions[String(match.id)];
+
         return (
           <span
             key={match.id}
-            className={clsx(styles.fixtureCircle, prediction != null && {
-              [styles.fixtureCircleHomeWin]: prediction.homeGoals > prediction.awayGoals,
-              [styles.fixtureCircleAwayWin]: prediction.homeGoals < prediction.awayGoals,
-              [styles.fixtureCircleDraw]: prediction.homeGoals === prediction.awayGoals,
+            className={clsx(styles.fixtureCircle, indicatorResult != null && {
+              [styles.fixtureCircleHomeWin]: indicatorResult.homeGoals > indicatorResult.awayGoals,
+              [styles.fixtureCircleAwayWin]: indicatorResult.homeGoals < indicatorResult.awayGoals,
+              [styles.fixtureCircleDraw]: indicatorResult.homeGoals === indicatorResult.awayGoals,
             })}
           />
         );

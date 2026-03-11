@@ -36,6 +36,25 @@ export const FixtureList = ({
   const containerRef = useRef<HTMLDivElement>(null);
   const expandedDateRef = useRef<string | null>(null);
   const pendingScrollMatchId = useRef<number | null>(null);
+  const didAutoExpandInitialGroup = useRef(false);
+
+  useEffect(() => {
+    if (didAutoExpandInitialGroup.current) return;
+    if (navigateToMatchId != null) return;
+    if (groupedMatches.length === 0) return;
+
+    didAutoExpandInitialGroup.current = true;
+
+    const firstUpcomingGroup = groupedMatches.find((group) =>
+      group.matches.every((match) => match.status !== 'FINISHED'),
+    );
+    if (!firstUpcomingGroup) return;
+
+    setExpandedDate(() => {
+      expandedDateRef.current = firstUpcomingGroup.date;
+      return firstUpcomingGroup.date;
+    });
+  }, [groupedMatches, navigateToMatchId]);
 
   useEffect(() => {
     if (navigateToMatchId == null) return;
@@ -195,13 +214,29 @@ export const FixtureList = ({
 
                   if (!homeTeam || !awayTeam) return null;
 
+                  const prediction = predictions.predictions[String(match.id)] ?? null;
+
+                  if (match.status === 'FINISHED') {
+                    return (
+                      <FixtureCard
+                        key={match.id}
+                        match={match}
+                        status={match.status}
+                        homeTeam={homeTeam}
+                        awayTeam={awayTeam}
+                        result={{ homeGoals: match.homeGoals, awayGoals: match.awayGoals }}
+                      />
+                    );
+                  }
+
                   return (
                     <FixtureCard
                       key={match.id}
                       match={match}
+                      status={match.status}
                       homeTeam={homeTeam}
                       awayTeam={awayTeam}
-                      prediction={predictions.predictions[String(match.id)] ?? null}
+                      result={prediction}
                       onPredictionChange={onPredictionChange}
                       onPredictionRemove={onPredictionRemove}
                     />
