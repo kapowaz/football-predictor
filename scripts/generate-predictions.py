@@ -26,7 +26,10 @@ from datetime import datetime, timezone
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 BASE_DATA_DIR = os.path.join(SCRIPT_DIR, "..", "src", "data")
 
-KNOWN_COMPETITIONS = ["efl-championship", "premier-league"]
+ALL_COMPETITIONS = ["premier-league", "efl-championship", "efl-league-one", "efl-league-two"]
+
+with open(os.path.join(SCRIPT_DIR, "..", "src", "enabled-competitions.json")) as _f:
+    ENABLED_COMPETITIONS = json.load(_f)
 
 FORM_LENGTH = 6
 FORM_DECAY = 0.85  # exponential decay factor per match in form window
@@ -513,13 +516,13 @@ def main():
     args = parser.parse_args()
 
     if args.competition:
-        if args.competition not in KNOWN_COMPETITIONS:
+        if args.competition not in ALL_COMPETITIONS:
             print(f"Unknown competition: {args.competition}", file=sys.stderr)
-            print(f"Available: {', '.join(KNOWN_COMPETITIONS)}", file=sys.stderr)
+            print(f"Available: {', '.join(ALL_COMPETITIONS)}", file=sys.stderr)
             sys.exit(1)
         competitions = [args.competition]
     else:
-        competitions = KNOWN_COMPETITIONS
+        competitions = ENABLED_COMPETITIONS
 
     for comp in competitions:
         run_for_competition(comp, args)

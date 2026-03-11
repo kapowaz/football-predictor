@@ -30,6 +30,7 @@ jobs:
           python-version: "3.12"
 
       - run: yarn install --frozen-lockfile
+      - run: yarn ensure-data-stubs
       - run: yarn fetch-data --all
         env:
           FOOTBALL_DATA_API_KEY: ${{ secrets.FOOTBALL_DATA_API_KEY }}

@@ -5,8 +5,11 @@ import type {
   ApiStandingsData,
   ModelPredictionsData,
 } from '../types';
+import { ENABLED_COMPETITION_SLUGS } from '../competitions';
 
 import * as eflChampionship from './efl-championship';
+import * as eflLeagueOne from './efl-league-one';
+import * as eflLeagueTwo from './efl-league-two';
 import * as premierLeague from './premier-league';
 
 export interface CompetitionData {
@@ -18,7 +21,15 @@ export interface CompetitionData {
   modelPredictionsData: ModelPredictionsData;
 }
 
-export const competitionData: Record<string, CompetitionData> = {
-  'efl-championship': eflChampionship as unknown as CompetitionData,
+const allCompetitionData: Record<string, CompetitionData> = {
   'premier-league': premierLeague as unknown as CompetitionData,
+  'efl-championship': eflChampionship as unknown as CompetitionData,
+  'efl-league-one': eflLeagueOne as unknown as CompetitionData,
+  'efl-league-two': eflLeagueTwo as unknown as CompetitionData,
 };
+
+export const competitionData: Record<string, CompetitionData> = Object.fromEntries(
+  Object.entries(allCompetitionData).filter(([slug]) =>
+    ENABLED_COMPETITION_SLUGS.includes(slug),
+  ),
+);

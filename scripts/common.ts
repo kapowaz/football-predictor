@@ -12,12 +12,30 @@ export interface ScriptCompetition {
   name: string;
 }
 
+/**
+ * Slugs of competitions that have API data available.
+ * Scripts using --all will only process these competitions.
+ */
+import ENABLED_COMPETITION_SLUGS from '../src/enabled-competitions.json';
+
 export const COMPETITIONS: Record<string, ScriptCompetition> = {
   'efl-championship': {
     slug: 'efl-championship',
     footballDataCode: 'ELC',
     fotmobLeagueId: 48,
     name: 'EFL Championship',
+  },
+  'efl-league-one': {
+    slug: 'efl-league-one',
+    footballDataCode: 'EL1',
+    fotmobLeagueId: 108,
+    name: 'EFL League One',
+  },
+  'efl-league-two': {
+    slug: 'efl-league-two',
+    footballDataCode: 'EL2',
+    fotmobLeagueId: 109,
+    name: 'EFL League Two',
   },
   'premier-league': {
     slug: 'premier-league',
@@ -48,7 +66,7 @@ export const parseCompetitionArg = (): ScriptCompetition[] => {
   const compIdx = args.indexOf('--competition');
 
   if (allIdx !== -1) {
-    return Object.values(COMPETITIONS);
+    return ENABLED_COMPETITION_SLUGS.map((slug) => COMPETITIONS[slug]);
   }
 
   if (compIdx !== -1 && args[compIdx + 1]) {
@@ -62,5 +80,5 @@ export const parseCompetitionArg = (): ScriptCompetition[] => {
     return [comp];
   }
 
-  return Object.values(COMPETITIONS);
+  return ENABLED_COMPETITION_SLUGS.map((slug) => COMPETITIONS[slug]);
 };
