@@ -346,14 +346,6 @@ const formBadgeBase = {
   fontSize: fontSizeXs,
   fontWeight: 700,
   lineHeight: 1,
-  '@media': {
-    'screen and (max-width: 680px)': {
-      width: '8px',
-      height: '8px',
-      borderRadius: '50%',
-      fontSize: 0,
-    },
-  },
 } as const;
 
 export const formBadge = style({
