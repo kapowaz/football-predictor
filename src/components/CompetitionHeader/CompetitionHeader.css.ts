@@ -27,8 +27,6 @@ export const header = style({
 export const logo = style({
   height: '36px',
   width: 'auto',
-  filter: 'drop-shadow(0 0 2px rgba(0, 0, 0, 0.4))',
-  transform: 'rotate(-10deg)',
 });
 
 export const title = style({

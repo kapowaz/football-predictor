@@ -1,7 +1,7 @@
 import type { CompetitionConfig } from '../../competitions';
 import { CompetitionSelect } from '../CompetitionSelect';
 import { ThemeToggle } from '../ThemeToggle';
-import footballPredictorLogo from '../../assets/football-predictor.svg';
+import footballPredictorLogo from '../../assets/football-predictor-logo.svg';
 import * as styles from './CompetitionHeader.css';
 
 interface CompetitionHeaderProps {
