@@ -1,12 +1,8 @@
 import { useState, useCallback, useEffect, useRef } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import type { Match, PredictionsStore } from '../types';
 import { loadPredictions, savePredictions, clearPredictions } from '../utils/storage';
 import { encodePredictions, decodePredictions } from '../utils/serialization';
-
-const buildUrl = (params: URLSearchParams): string => {
-  const search = params.toString();
-  return window.location.pathname + (search ? `?${search}` : '');
-};
 
 const loadInitialPredictions = (slug: string, matches: Match[]): PredictionsStore => {
   const params = new URLSearchParams(window.location.search);
@@ -29,6 +25,7 @@ const loadInitialPredictions = (slug: string, matches: Match[]): PredictionsStor
 };
 
 export const usePredictions = (slug: string, matches: Match[]) => {
+  const [searchParams, setSearchParams] = useSearchParams();
   const [predictions, setPredictions] = useState<PredictionsStore>(() =>
     loadInitialPredictions(slug, matches),
   );
@@ -37,24 +34,32 @@ export const usePredictions = (slug: string, matches: Match[]) => {
   useEffect(() => {
     savePredictions(slug, predictions);
 
-    const params = new URLSearchParams(window.location.search);
     const entries = Object.keys(predictions.predictions);
+    const encodedPredictions =
+      entries.length > 0 ? encodePredictions(predictions.predictions, matches) : null;
+    const currentEncodedPredictions = searchParams.get('predictions');
+    const shouldUpdateUrl = currentEncodedPredictions !== encodedPredictions;
 
-    if (entries.length > 0) {
-      const encoded = encodePredictions(predictions.predictions, matches);
-      params.set('predictions', encoded);
-    } else {
-      params.delete('predictions');
+    if (shouldUpdateUrl) {
+      const shouldReplace = isInitialRender.current;
+      setSearchParams(
+        (previous) => {
+          const params = new URLSearchParams(previous);
+          if (encodedPredictions) {
+            params.set('predictions', encodedPredictions);
+          } else {
+            params.delete('predictions');
+          }
+          return params;
+        },
+        { replace: shouldReplace },
+      );
     }
 
-    const url = buildUrl(params);
     if (isInitialRender.current) {
-      window.history.replaceState(null, '', url);
       isInitialRender.current = false;
-    } else {
-      window.history.pushState(null, '', url);
     }
-  }, [predictions, matches, slug]);
+  }, [predictions, matches, searchParams, setSearchParams, slug]);
 
   const setPrediction = useCallback((matchId: number, homeGoals: number, awayGoals: number) => {
     setPredictions((prev) => ({

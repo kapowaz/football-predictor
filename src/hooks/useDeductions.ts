@@ -1,12 +1,8 @@
 import { useState, useCallback, useEffect, useRef } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import type { PointDeduction } from '../types';
 import { loadDeductions, saveDeductions, clearDeductions } from '../utils/storage';
 import { encodeDeductions, decodeDeductions } from '../utils/serialization';
-
-const buildUrl = (params: URLSearchParams): string => {
-  const search = params.toString();
-  return window.location.pathname + (search ? `?${search}` : '');
-};
 
 const loadInitialDeductions = (
   slug: string,
@@ -35,6 +31,7 @@ const loadInitialDeductions = (
 };
 
 export const useDeductions = (slug: string, defaults: PointDeduction[]) => {
+  const [searchParams, setSearchParams] = useSearchParams();
   const [initial] = useState(() => loadInitialDeductions(slug, defaults));
   const [deductions, setDeductions] = useState<PointDeduction[]>(initial.deductions);
   const [isCustomised, setIsCustomised] = useState(initial.isCustomised);
@@ -45,22 +42,30 @@ export const useDeductions = (slug: string, defaults: PointDeduction[]) => {
       saveDeductions(slug, deductions);
     }
 
-    const params = new URLSearchParams(window.location.search);
+    const encodedDeductions = isCustomised ? encodeDeductions(deductions) : null;
+    const currentEncodedDeductions = searchParams.get('deductions');
+    const shouldUpdateUrl = currentEncodedDeductions !== encodedDeductions;
 
-    if (isCustomised) {
-      params.set('deductions', encodeDeductions(deductions));
-    } else {
-      params.delete('deductions');
+    if (shouldUpdateUrl) {
+      const shouldReplace = isInitialRender.current;
+      setSearchParams(
+        (previous) => {
+          const params = new URLSearchParams(previous);
+          if (encodedDeductions) {
+            params.set('deductions', encodedDeductions);
+          } else {
+            params.delete('deductions');
+          }
+          return params;
+        },
+        { replace: shouldReplace },
+      );
     }
 
-    const url = buildUrl(params);
     if (isInitialRender.current) {
-      window.history.replaceState(null, '', url);
       isInitialRender.current = false;
-    } else {
-      window.history.pushState(null, '', url);
     }
-  }, [deductions, isCustomised, slug]);
+  }, [deductions, isCustomised, searchParams, setSearchParams, slug]);
 
   const updateDeduction = useCallback((teamId: number, amount: number) => {
     setIsCustomised(true);
