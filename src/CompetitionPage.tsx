@@ -1,17 +1,17 @@
 import { useState, useMemo, useEffect, useRef, useCallback } from 'react';
 import { useParams, Navigate, useNavigate } from 'react-router-dom';
 import { animate } from 'framer-motion';
-import { domToPng as modernScreenshotToPng } from 'modern-screenshot';
 import { useCompetitionData } from './hooks/useCompetitionData';
 import { usePredictions } from './hooks/usePredictions';
 import { useDeductions } from './hooks/useDeductions';
 import { useStandings } from './hooks/useStandings';
 import { useSeasonSummary } from './hooks/useSeasonSummary';
+import { useImageCapture } from './hooks/useImageCapture';
 import { useTheme } from './hooks/useTheme';
-import { embedPngTextMetadata } from './utils/pngMetadata';
 import { CompetitionHeader } from './components/CompetitionHeader';
 import { TabBar } from './components/TabBar';
 import { StandingsTable } from './components/StandingsTable/StandingsTable';
+import { StandingsImageView } from './components/StandingsImageView';
 import { SeasonSummaryModal } from './components/SeasonSummaryModal';
 import { DeductionsModal } from './components/DeductionsModal';
 import { Button } from './components/Button';
@@ -32,30 +32,6 @@ interface CompetitionContentProps {
   slug: string;
   config: CompetitionConfig;
 }
-
-const waitForImages = async (container: HTMLElement): Promise<void> => {
-  const images = Array.from(container.querySelectorAll('img'));
-  await Promise.all(
-    images.map(async (image) => {
-      if (image.complete && image.naturalWidth > 0) {
-        return;
-      }
-      if (typeof image.decode === 'function') {
-        try {
-          await image.decode();
-          return;
-        } catch {
-          // Fall through to load/error listeners.
-        }
-      }
-      await new Promise<void>((resolve) => {
-        const done = () => resolve();
-        image.addEventListener('load', done, { once: true });
-        image.addEventListener('error', done, { once: true });
-      });
-    }),
-  );
-};
 
 const CompetitionContent = ({ slug, config }: CompetitionContentProps) => {
   const navigate = useNavigate();
@@ -79,10 +55,6 @@ const CompetitionContent = ({ slug, config }: CompetitionContentProps) => {
 
   const pageContentRef = useRef<HTMLDivElement>(null);
   const standingsCaptureRef = useRef<HTMLDivElement>(null);
-
-  const [captureWidth, setCaptureWidth] = useState(688);
-  const [standingsImageFile, setStandingsImageFile] = useState<File | null>(null);
-  const [isRenderingStandingsImage, setIsRenderingStandingsImage] = useState(false);
 
   const prevSummaryOpen = useRef(false);
   useEffect(() => {
@@ -136,37 +108,23 @@ const CompetitionContent = ({ slug, config }: CompetitionContentProps) => {
     .every((m) => String(m.id) in predictions.predictions);
   const competitions = allCompetitions();
 
-  const renderStandingsImage = useCallback(async () => {
-    const node = standingsCaptureRef.current;
-    if (!node) {
-      return;
-    }
-
-    setIsRenderingStandingsImage(true);
-
-    try {
-      if ('fonts' in document) {
-        await document.fonts.ready;
-      }
-      await waitForImages(node);
-
-      const dataUrl = await modernScreenshotToPng(node, {
-        scale: STANDINGS_CAPTURE_SCALE,
-      });
-      const sourceBlob = await fetch(dataUrl).then((response) => response.blob());
-      const metadataBlob = await embedPngTextMetadata(sourceBlob, {
-        Title: `Football Predictor ${config.name} ${config.season}`,
-        Source: window.location.href,
-      });
-      const file = new File([metadataBlob], `${slug}-standings.png`, { type: 'image/png' });
-      setStandingsImageFile(file);
-    } catch (error) {
-      console.error('Failed to render standings image:', error);
-      setStandingsImageFile(null);
-    } finally {
-      setIsRenderingStandingsImage(false);
-    }
-  }, [config.name, config.season, slug]);
+  const standingsImageMetadata = useMemo(
+    () => ({
+      Title: `Football Predictor ${config.name} ${config.season}`,
+      Source: window.location.href,
+    }),
+    [config.name, config.season],
+  );
+  const {
+    imageFile: standingsImageFile,
+    isRendering: isRenderingStandingsImage,
+    renderImage: renderStandingsImage,
+  } = useImageCapture({
+    captureRef: standingsCaptureRef,
+    fileName: `${slug}-standings.png`,
+    metadata: standingsImageMetadata,
+    scale: STANDINGS_CAPTURE_SCALE,
+  });
 
   useEffect(() => {
     const timeoutId = window.setTimeout(() => {
@@ -176,7 +134,7 @@ const CompetitionContent = ({ slug, config }: CompetitionContentProps) => {
     return () => {
       window.clearTimeout(timeoutId);
     };
-  }, [renderStandingsImage, standings, deductionMarkers, theme, captureWidth]);
+  }, [renderStandingsImage, standings, deductionMarkers, theme]);
 
   const handleDownloadStandingsImage = useCallback(() => {
     if (!standingsImageFile) {
@@ -194,17 +152,11 @@ const CompetitionContent = ({ slug, config }: CompetitionContentProps) => {
 
   return (
     <>
-      <div className={styles.hiddenCaptureRoot} style={{ width: `${captureWidth}px` }} aria-hidden="true">
-        <div ref={standingsCaptureRef} className={styles.captureSurface}>
-          <StandingsTable
-            standings={standings}
-            deductionMarkers={deductionMarkers}
-            zones={config.zones}
-            disableVerticalScroll
-            disableTableBorderRadius
-          />
-        </div>
-      </div>
+      <StandingsImageView
+        slug={slug}
+        zones={config.zones}
+        captureRef={standingsCaptureRef}
+      />
 
       <div ref={pageContentRef} className={styles.pageContent}>
         <CompetitionHeader
@@ -241,7 +193,7 @@ const CompetitionContent = ({ slug, config }: CompetitionContentProps) => {
                   <Button
                     variant="success"
                     onClick={handleDownloadStandingsImage}
-                  disabled={!standingsImageFile || isRenderingStandingsImage}
+                    disabled={!standingsImageFile || isRenderingStandingsImage}
                   >
                     <ImageDownIcon />
                     Download
