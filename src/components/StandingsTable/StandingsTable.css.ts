@@ -84,6 +84,7 @@ export const table = style({
   borderCollapse: 'separate',
   borderSpacing: 0,
   fontSize: fontSizeBase,
+  lineHeight: '24px',
   borderRadius: radiusLg,
 });
 
