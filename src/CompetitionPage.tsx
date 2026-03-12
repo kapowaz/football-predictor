@@ -1,22 +1,17 @@
-import { useMemo, useEffect, useRef, useCallback } from 'react';
+import { useRef } from 'react';
 import { useParams, Navigate, useNavigate } from 'react-router-dom';
 import { useCompetitionData } from './hooks/useCompetitionData';
-import { useImageCapture } from './hooks/useImageCapture';
+import { useImageDownload } from './hooks/useImageDownload';
 import { useScreenShake } from './hooks/useScreenShake';
 import { useTheme } from './hooks/useTheme';
 import { useCompetitionSession } from './state/useCompetitionSession';
-import {
-  selectCaptureSignature,
-  selectStandingsViewModel,
-} from './state/selectors';
+import { selectCaptureSignature, selectStandingsViewModel } from './state/selectors';
 import { CompetitionPanels } from './components/CompetitionPanels';
 import { StandingsImageView } from './components/StandingsImageView';
 import { SeasonSummaryModal } from './components/SeasonSummaryModal';
 import { DeductionsModal } from './components/DeductionsModal';
 import { competitionData } from './data';
 import { getCompetition, allCompetitions, type CompetitionConfig } from './data/competitions';
-
-const STANDINGS_CAPTURE_SCALE = 2;
 
 interface CompetitionContentProps {
   slug: string;
@@ -64,48 +59,15 @@ const CompetitionContent = ({ slug, config }: CompetitionContentProps) => {
 
   const competitions = allCompetitions();
 
-  const standingsImageMetadata = useMemo(
-    () => ({
-      Title: `Football Predictor ${config.name} ${config.season}`,
-      Source: window.location.href,
-    }),
-    [config.name, config.season],
-  );
-  const {
-    imageFile: standingsImageFile,
-    isRendering: isRenderingStandingsImage,
-    renderImage: renderStandingsImage,
-  } = useImageCapture({
-    captureRef: standingsCaptureRef,
-    fileName: `${slug}-standings.png`,
-    metadata: standingsImageMetadata,
-    scale: STANDINGS_CAPTURE_SCALE,
-  });
   const captureSignature = selectCaptureSignature(standings, deductionMarkers, theme);
 
-  useEffect(() => {
-    const timeoutId = window.setTimeout(() => {
-      void renderStandingsImage();
-    }, 0);
-
-    return () => {
-      window.clearTimeout(timeoutId);
-    };
-  }, [captureSignature, renderStandingsImage]);
-
-  const handleDownloadStandingsImage = useCallback(() => {
-    if (!standingsImageFile) {
-      return;
-    }
-
-    const link = document.createElement('a');
-    const objectUrl = URL.createObjectURL(standingsImageFile);
-    link.download = standingsImageFile.name;
-    link.href = objectUrl;
-    link.click();
-    // Revoke URL shortly after triggering download.
-    window.setTimeout(() => URL.revokeObjectURL(objectUrl), 0);
-  }, [standingsImageFile]);
+  const { imageFile, isRenderingImage, onDownloadImage } = useImageDownload({
+    captureRef: standingsCaptureRef,
+    slug,
+    competitionName: config.name,
+    competitionSeason: config.season,
+    captureSignature,
+  });
 
   return (
     <>
@@ -127,9 +89,9 @@ const CompetitionContent = ({ slug, config }: CompetitionContentProps) => {
           theme,
           onThemeToggle: toggleTheme,
         }}
-        onDownloadStandingsImage={handleDownloadStandingsImage}
-        isRenderingStandingsImage={isRenderingStandingsImage}
-        hasStandingsImage={Boolean(standingsImageFile)}
+        onDownloadImage={onDownloadImage}
+        isRenderingImage={isRenderingImage}
+        hasStandingsImage={Boolean(imageFile)}
       />
 
       <DeductionsModal
@@ -149,7 +111,7 @@ const CompetitionContent = ({ slug, config }: CompetitionContentProps) => {
         isOpen={isSummaryOpen}
         onClose={dismissSummary}
         competition={config}
-        standingsImageFile={standingsImageFile}
+        standingsImageFile={imageFile}
       />
     </>
   );

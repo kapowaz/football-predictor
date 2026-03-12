@@ -36,9 +36,9 @@ interface CompetitionPanelsProps {
   /** Props passed through to the page header. */
   headerProps: CompetitionHeaderProps;
   /** Downloads the generated standings image. */
-  onDownloadStandingsImage: () => void;
+  onDownloadImage: () => void;
   /** True while standings image generation is in progress. */
-  isRenderingStandingsImage: boolean;
+  isRenderingImage: boolean;
   /** Whether a standings image file currently exists. */
   hasStandingsImage: boolean;
 }
@@ -48,8 +48,8 @@ export const CompetitionPanels = ({
   config,
   pageContentRef,
   headerProps,
-  onDownloadStandingsImage,
-  isRenderingStandingsImage,
+  onDownloadImage,
+  isRenderingImage,
   hasStandingsImage,
 }: CompetitionPanelsProps) => {
   const { teams, matches, modelPredictions } = useCompetitionData(slug);
@@ -132,8 +132,8 @@ export const CompetitionPanels = ({
               <div className={styles.panelHeaderDeductionsButtons}>
                 <Button
                   variant="success"
-                  onClick={onDownloadStandingsImage}
-                  disabled={!hasStandingsImage || isRenderingStandingsImage}
+                  onClick={onDownloadImage}
+                  disabled={!hasStandingsImage || isRenderingImage}
                 >
                   <ImageDownIcon />
                   Save Image

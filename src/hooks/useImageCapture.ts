@@ -12,7 +12,7 @@ interface UseImageCaptureOptions {
 
 interface UseImageCaptureResult {
   imageFile: File | null;
-  isRendering: boolean;
+  isRenderingImage: boolean;
   renderImage: () => Promise<void>;
 }
 
@@ -47,7 +47,7 @@ export const useImageCapture = ({
   scale = 2,
 }: UseImageCaptureOptions): UseImageCaptureResult => {
   const [imageFile, setImageFile] = useState<File | null>(null);
-  const [isRendering, setIsRendering] = useState(false);
+  const [isRenderingImage, setIsRendering] = useState(false);
 
   const renderImage = useCallback(async () => {
     const node = captureRef.current;
@@ -76,5 +76,5 @@ export const useImageCapture = ({
     }
   }, [captureRef, fileName, metadata, scale]);
 
-  return { imageFile, isRendering, renderImage };
+  return { imageFile, isRenderingImage, renderImage };
 };
