@@ -1,8 +1,8 @@
 import { useMemo, useEffect, useRef, useCallback } from 'react';
 import { useParams, Navigate, useNavigate } from 'react-router-dom';
-import { animate } from 'framer-motion';
 import { useCompetitionData } from './hooks/useCompetitionData';
 import { useImageCapture } from './hooks/useImageCapture';
+import { useScreenShake } from './hooks/useScreenShake';
 import { useTheme } from './hooks/useTheme';
 import { useCompetitionSession } from './state/useCompetitionSession';
 import {
@@ -56,20 +56,11 @@ const CompetitionContent = ({ slug, config }: CompetitionContentProps) => {
   const pageContentRef = useRef<HTMLDivElement>(null);
   const standingsCaptureRef = useRef<HTMLDivElement>(null);
 
-  const prevSummaryOpen = useRef(false);
-  useEffect(() => {
-    if (isSummaryOpen && !prevSummaryOpen.current && pageContentRef.current) {
-      animate(
-        pageContentRef.current,
-        {
-          x: [0, -9, 8, -7, 9, -8, 6, -9, 7, -5, 6, -4, 3, -2, 1, 0],
-          y: [0, 5, -8, 9, -4, 8, -9, 4, 7, -5, 3, -4, 2, -1, 1, 0],
-        },
-        { duration: 0.7, ease: 'easeOut' },
-      );
-    }
-    prevSummaryOpen.current = isSummaryOpen;
-  }, [isSummaryOpen]);
+  useScreenShake({
+    shouldShake: isSummaryOpen,
+    targetRef: pageContentRef,
+    duration: 0.7,
+  });
 
   const competitions = allCompetitions();
 
