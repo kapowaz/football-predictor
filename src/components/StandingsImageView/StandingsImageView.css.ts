@@ -20,7 +20,7 @@ export const hiddenCaptureRoot = style({
 });
 
 export const outerWrapper = style({
-  width: '720px',
+  width: '820px',
 });
 
 export const captureSurface = style({

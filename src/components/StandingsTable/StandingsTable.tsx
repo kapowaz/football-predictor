@@ -16,6 +16,8 @@ interface StandingsTableProps {
   disableVerticalScroll?: boolean;
   /** Disable rounded corners on the <table> element. */
   disableTableBorderRadius?: boolean;
+  /** Increase table text size when rendered for image/export views. */
+  isRenderView?: boolean;
 }
 
 const formatGD = (gd: number): string => {
@@ -68,6 +70,7 @@ export const StandingsTable = ({
   onPredictionClick,
   disableVerticalScroll = false,
   disableTableBorderRadius = false,
+  isRenderView = false,
 }: StandingsTableProps) => {
   const containerRef = useScrollDirectionLock<HTMLDivElement>();
 
@@ -80,19 +83,43 @@ export const StandingsTable = ({
         disableTableBorderRadius && styles.containerNoBorderRadius,
       )}
     >
-      <table className={clsx(styles.table)}>
+      <table className={clsx(styles.table, isRenderView && styles.tableLarge)}>
         <thead className={styles.thead}>
           <tr>
-            <th className={clsx(styles.th, styles.stickyCellTh)}>Team</th>
-            <th className={styles.thCenter}>P</th>
-            <th className={styles.thCenter}>GD</th>
-            <th className={styles.thCenter}>Pts</th>
-            <th className={styles.thCenter}>W</th>
-            <th className={styles.thCenter}>D</th>
-            <th className={styles.thCenter}>L</th>
-            <th className={styles.thCenter}>GF</th>
-            <th className={styles.thCenter}>GA</th>
-            <th className={styles.thCenter}>Form</th>
+            <th
+              className={clsx(
+                styles.th,
+                styles.stickyCellTh,
+                isRenderView && styles.thLarge,
+              )}
+            >
+              Team
+            </th>
+            <th className={clsx(styles.thCenter, styles.thStats, isRenderView && styles.thLarge)}>
+              P
+            </th>
+            <th className={clsx(styles.thCenter, styles.thStats, isRenderView && styles.thLarge)}>
+              GD
+            </th>
+            <th className={clsx(styles.thCenter, styles.thStats, isRenderView && styles.thLarge)}>
+              Pts
+            </th>
+            <th className={clsx(styles.thCenter, styles.thStats, isRenderView && styles.thLarge)}>
+              W
+            </th>
+            <th className={clsx(styles.thCenter, styles.thStats, isRenderView && styles.thLarge)}>
+              D
+            </th>
+            <th className={clsx(styles.thCenter, styles.thStats, isRenderView && styles.thLarge)}>
+              L
+            </th>
+            <th className={clsx(styles.thCenter, styles.thStats, isRenderView && styles.thLarge)}>
+              GF
+            </th>
+            <th className={clsx(styles.thCenter, styles.thStats, isRenderView && styles.thLarge)}>
+              GA
+            </th>
+            <th className={clsx(styles.thCenter, isRenderView && styles.thLarge)}>Form</th>
           </tr>
         </thead>
         <tbody>
@@ -133,7 +160,15 @@ export const StandingsTable = ({
                 >
                   {formatGD(standing.goalDifference)}
                 </td>
-                <td className={clsx(styles.tdCenter, styles.points)}>{standing.points}</td>
+                <td
+                  className={clsx(
+                    styles.tdCenter,
+                    styles.points,
+                    isRenderView && styles.pointsLarge,
+                  )}
+                >
+                  {standing.points}
+                </td>
                 <td className={styles.tdCenter}>{standing.won}</td>
                 <td className={styles.tdCenter}>{standing.drawn}</td>
                 <td className={styles.tdCenter}>{standing.lost}</td>

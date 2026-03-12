@@ -47,6 +47,7 @@ import {
   fontSizeSm,
   fontSizeBase,
   fontSizeMd,
+  fontSizeLg,
   space1,
   space2,
   space3,
@@ -86,6 +87,10 @@ export const table = style({
   borderRadius: radiusLg,
 });
 
+export const tableLarge = style({
+  fontSize: fontSizeLg,
+});
+
 export const thead = style({
   backgroundColor: colorBgTableHead,
 });
@@ -113,6 +118,10 @@ export const th = style({
   },
 });
 
+export const thLarge = style({
+  fontSize: fontSizeMd,
+});
+
 export const thCenter = style([
   th,
   {
@@ -129,6 +138,10 @@ export const thCenter = style([
     },
   },
 ]);
+
+export const thStats = style({
+  width: '6.5%',
+});
 
 export const tr = style({});
 
@@ -270,6 +283,10 @@ export const teamTla = style({
 export const points = style({
   fontWeight: 700,
   fontSize: fontSizeMd,
+});
+
+export const pointsLarge = style({
+  fontSize: fontSizeLg,
 });
 
 export const goalDiff = style({

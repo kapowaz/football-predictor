@@ -8,8 +8,6 @@ import { AppHeading } from '../AppHeading';
 import { KBoltIcon } from '../icons';
 import * as styles from './StandingsImageView.css';
 
-export const DEFAULT_STANDINGS_IMAGE_WIDTH = 688;
-
 interface StandingsImageViewProps {
   /** Pre-computed standings rows for image rendering. */
   standings: TeamStanding[];
@@ -73,12 +71,13 @@ export const StandingsImageView = ({
             deductionMarkers={deductionMarkers}
             zones={zones}
             disableVerticalScroll
+            isRenderView
           />
           <footer className={styles.footer}>
             <KBoltIcon size={16} className={styles.footerIcon} />
             <span>
-              <span className={styles.footerBold}>Made by kapowaz.</span> Make your prediction at{' '}
-              <span className={styles.footerBold}>{SITE_URL}</span>
+              Football Predictor by <span className={styles.footerBold}>kapowaz</span>. Make your
+              own prediction at <span className={styles.footerBold}>{SITE_URL}</span>
             </span>
           </footer>
         </div>

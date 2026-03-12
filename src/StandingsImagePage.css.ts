@@ -12,7 +12,7 @@ export const page = style({
 });
 
 export const toolbar = style({
-  width: '688px',
+  width: 'calc(820px - 2 * 16px)',
   display: 'flex',
   justifyContent: 'flex-end',
 });
