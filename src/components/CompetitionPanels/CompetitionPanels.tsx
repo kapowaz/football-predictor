@@ -1,4 +1,15 @@
+import { useMemo } from 'react';
 import type { ComponentProps, RefObject } from 'react';
+import { useCompetitionData } from '../../hooks/useCompetitionData';
+import {
+  selectAllScheduledPredicted,
+  selectDeductionNotes,
+  selectPredictedCount,
+  selectStandingsViewModel,
+  selectTeamsById,
+} from '../../state/selectors';
+import { useCompetitionSessionSlice } from '../../state/useCompetitionSessionSlice';
+import type { CompetitionConfig } from '../../data/competitions';
 import { CompetitionHeader } from '../CompetitionHeader';
 import { TabBar } from '../TabBar';
 import { StandingsTable } from '../StandingsTable/StandingsTable';
@@ -9,90 +20,105 @@ import * as styles from './CompetitionPanels.css.ts';
 
 type CompetitionHeaderProps = ComponentProps<typeof CompetitionHeader>;
 type TabBarProps = ComponentProps<typeof TabBar>;
-type StandingsTableProps = ComponentProps<typeof StandingsTable>;
-type FixtureListProps = ComponentProps<typeof FixtureList>;
+
+const TABS = [
+  { id: 'standings', label: 'Standings' },
+  { id: 'fixtures', label: 'Fixtures' },
+] as const;
 
 interface CompetitionPanelsProps {
+  /** Competition slug used to source state for panels. */
+  slug: string;
+  /** Competition config for table zone rendering. */
+  config: CompetitionConfig;
   /** Page wrapper ref used for page-level animations. */
   pageContentRef: RefObject<HTMLDivElement | null>;
   /** Props passed through to the page header. */
   headerProps: CompetitionHeaderProps;
-  /** Props passed through to the tab bar. */
-  tabs: TabBarProps['tabs'];
-  /** Currently active tab id. */
-  activeTab: TabBarProps['activeTab'];
-  /** Called when the selected tab changes. */
-  onTabChange: TabBarProps['onTabChange'];
-  /** Standings rows for the table. */
-  standings: StandingsTableProps['standings'];
-  /** Deduction markers keyed by team for table badges. */
-  deductionMarkers: StandingsTableProps['deductionMarkers'];
-  /** Competition promotion/relegation zones. */
-  zones: StandingsTableProps['zones'];
-  /** Deduction note labels and reasons shown in header. */
-  deductionNotes: Array<{ label: string; reason: string }>;
-  /** Called when clicking a standings prediction cell. */
-  onPredictionClick: StandingsTableProps['onPredictionClick'];
   /** Downloads the generated standings image. */
   onDownloadStandingsImage: () => void;
   /** True while standings image generation is in progress. */
   isRenderingStandingsImage: boolean;
   /** Whether a standings image file currently exists. */
   hasStandingsImage: boolean;
-  /** Opens the deductions modal. */
-  onOpenDeductionsModal: () => void;
-  /** Fixture list data and handlers. */
-  fixtureListProps: FixtureListProps;
-  /** Number of predicted fixtures currently set. */
-  predictedCount: number;
-  /** Whether all scheduled fixtures are predicted. */
-  allScheduledPredicted: boolean;
-  /** True when AI model predictions are available for this competition. */
-  hasModelPredictions: boolean;
-  /** Fills predictions from model output. */
-  onFillFromModel: () => void;
-  /** Clears all user predictions. */
-  onResetPredictions: () => void;
 }
 
 export const CompetitionPanels = ({
+  slug,
+  config,
   pageContentRef,
   headerProps,
-  tabs,
-  activeTab,
-  onTabChange,
-  standings,
-  deductionMarkers,
-  zones,
-  deductionNotes,
-  onPredictionClick,
   onDownloadStandingsImage,
   isRenderingStandingsImage,
   hasStandingsImage,
-  onOpenDeductionsModal,
-  fixtureListProps,
-  predictedCount,
-  allScheduledPredicted,
-  hasModelPredictions,
-  onFillFromModel,
-  onResetPredictions,
 }: CompetitionPanelsProps) => {
+  const { teams, matches, modelPredictions } = useCompetitionData(slug);
+  const {
+    session,
+    setActiveTab,
+    setNavigateToMatchId,
+    setDeductionsModalOpen,
+    fillFromModel,
+    resetAllPredictions,
+  } = useCompetitionSessionSlice(slug);
+
+  const teamsById = selectTeamsById(teams);
+
+  const panelModel = useMemo(() => {
+    if (!session) {
+      return null;
+    }
+
+    const { standings, deductionMarkers } = selectStandingsViewModel(
+      teams,
+      matches,
+      session.predictions,
+      session.deductions,
+    );
+    const deductionNotes = selectDeductionNotes(session.deductions, teamsById);
+    const predictedCount = selectPredictedCount(session.predictions);
+    const allScheduledPredicted = selectAllScheduledPredicted(matches, session.predictions);
+
+    return {
+      standings,
+      deductionMarkers,
+      deductionNotes,
+      predictedCount,
+      allScheduledPredicted,
+    };
+  }, [matches, session, teams, teamsById]);
+
+  const hasModelPredictions = Object.keys(modelPredictions).length > 0;
+
+  if (!session || !panelModel) {
+    return null;
+  }
+
+  const handlePredictionClick = (matchId: number) => {
+    setActiveTab('fixtures');
+    setNavigateToMatchId(matchId);
+  };
+
+  const handleTabChange: TabBarProps['onTabChange'] = (tabId) => {
+    setActiveTab(tabId === 'fixtures' ? 'fixtures' : 'standings');
+  };
+
   return (
     <div ref={pageContentRef} className={styles.pageContent}>
       <CompetitionHeader {...headerProps} />
 
-      <TabBar tabs={tabs} activeTab={activeTab} onTabChange={onTabChange} />
+      <TabBar tabs={[...TABS]} activeTab={session.activeTab} onTabChange={handleTabChange} />
 
       <main className={styles.main}>
         <div
-          className={`${styles.panel} ${activeTab !== 'standings' ? styles.hiddenOnMobile : ''}`}
+          className={`${styles.panel} ${session.activeTab !== 'standings' ? styles.hiddenOnMobile : ''}`}
         >
           <div className={styles.panelHeaderWithNotes}>
             <h2 className={styles.panelTitle}>Standings</h2>
             <div className={styles.panelHeaderDeductions}>
-              {deductionNotes.length > 0 && (
+              {panelModel.deductionNotes.length > 0 && (
                 <div className={styles.deductionNotes}>
-                  {deductionNotes.map((note) => (
+                  {panelModel.deductionNotes.map((note) => (
                     <span
                       key={note.label}
                       className={styles.deductionNote}
@@ -110,9 +136,9 @@ export const CompetitionPanels = ({
                   disabled={!hasStandingsImage || isRenderingStandingsImage}
                 >
                   <ImageDownIcon />
-                  Download
+                  Save Image
                 </Button>
-                <Button variant="danger" onClick={onOpenDeductionsModal}>
+                <Button variant="danger" onClick={() => setDeductionsModalOpen(true)}>
                   <TrendingDownIcon size={14} className={styles.deductionsButtonIcon} />
                   Deductions
                 </Button>
@@ -120,33 +146,33 @@ export const CompetitionPanels = ({
             </div>
           </div>
           <StandingsTable
-            standings={standings}
-            deductionMarkers={deductionMarkers}
-            zones={zones}
-            onPredictionClick={onPredictionClick}
+            standings={panelModel.standings}
+            deductionMarkers={panelModel.deductionMarkers}
+            zones={config.zones}
+            onPredictionClick={handlePredictionClick}
           />
         </div>
 
         <div
-          className={`${styles.panelGuttered} ${activeTab !== 'fixtures' ? styles.hiddenOnMobile : ''}`}
+          className={`${styles.panelGuttered} ${session.activeTab !== 'fixtures' ? styles.hiddenOnMobile : ''}`}
         >
           <div className={styles.panelHeader}>
             <h2 className={styles.panelTitle}>Fixtures</h2>
             <div className={styles.panelHeaderActions}>
-              {hasModelPredictions && !allScheduledPredicted && (
-                <Button variant="success" onClick={onFillFromModel}>
+              {hasModelPredictions && !panelModel.allScheduledPredicted && (
+                <Button variant="success" onClick={() => fillFromModel(modelPredictions)}>
                   <BrainIcon />
                   AI Predictions
                 </Button>
               )}
-              {predictedCount > 0 && (
-                <Button variant="danger" onClick={onResetPredictions}>
+              {panelModel.predictedCount > 0 && (
+                <Button variant="danger" onClick={resetAllPredictions}>
                   Reset Predictions
                 </Button>
               )}
             </div>
           </div>
-          <FixtureList {...fixtureListProps} />
+          <FixtureList slug={slug} isVisible={session.activeTab === 'fixtures'} />
         </div>
       </main>
     </div>

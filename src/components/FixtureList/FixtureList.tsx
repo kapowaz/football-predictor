@@ -1,36 +1,30 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import clsx from 'clsx';
-import type { Match, Team, PredictionsStore } from '../../types';
+import { useCompetitionData } from '../../hooks/useCompetitionData';
 import { useGroupedMatches } from '../../hooks/useGroupedMatches';
+import { selectTeamsById } from '../../state/selectors';
+import { useCompetitionSessionSlice } from '../../state/useCompetitionSessionSlice';
 import { FixtureCard } from '../FixtureCard/FixtureCard';
 import { cardHighlighted } from '../FixtureCard/FixtureCard.css';
 import { FixtureGroup } from '../FixtureGroup';
 import * as styles from './FixtureList.css';
 
 interface FixtureListProps {
-  matches: Match[];
-  teamsById: Map<number, Team>;
-  predictions: PredictionsStore;
-  onPredictionChange: (matchId: number, homeGoals: number, awayGoals: number) => void;
-  onPredictionRemove: (matchId: number) => void;
+  /** Competition slug used to read fixture/session state. */
+  slug: string;
   /** Whether the fixtures panel is currently visible to the user */
   isVisible?: boolean;
-  /** When set, expands the date group containing this match and scrolls to its card */
-  navigateToMatchId?: number | null;
-  /** Called after navigation scroll completes so the parent can clear the target */
-  onNavigationComplete?: () => void;
 }
 
 export const FixtureList = ({
-  matches,
-  teamsById,
-  predictions,
-  onPredictionChange,
-  onPredictionRemove,
+  slug,
   isVisible = true,
-  navigateToMatchId,
-  onNavigationComplete,
 }: FixtureListProps) => {
+  const { teams, matches } = useCompetitionData(slug);
+  const { session, setPrediction, removePrediction, setNavigateToMatchId } = useCompetitionSessionSlice(slug);
+  const predictions = session?.predictions ?? { predictions: {}, lastModified: '' };
+  const navigateToMatchId = session?.navigateToMatchId ?? null;
+  const teamsById = selectTeamsById(teams);
   const groupedMatches = useGroupedMatches(matches, predictions);
 
   const [expandedDate, setExpandedDate] = useState<string | null>(null);
@@ -157,9 +151,9 @@ export const FixtureList = ({
         });
       }
       pendingScrollMatchId.current = null;
-      onNavigationComplete?.();
+      setNavigateToMatchId(null);
     },
-    [onNavigationComplete, highlightCard],
+    [highlightCard, setNavigateToMatchId],
   );
 
   const toggleDate = useCallback((date: string) => {
@@ -193,6 +187,10 @@ export const FixtureList = ({
     },
     [scrollToMatch],
   );
+
+  if (!session) {
+    return null;
+  }
 
   if (groupedMatches.length === 0) {
     return <div className={styles.emptyState}>No upcoming matches to predict.</div>;
@@ -256,8 +254,8 @@ export const FixtureList = ({
                       homeTeam={homeTeam}
                       awayTeam={awayTeam}
                       result={prediction}
-                      onPredictionChange={onPredictionChange}
-                      onPredictionRemove={onPredictionRemove}
+                      onPredictionChange={setPrediction}
+                      onPredictionRemove={removePrediction}
                     />
                   );
                 })}

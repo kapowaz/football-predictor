@@ -6,12 +6,8 @@ import { useImageCapture } from './hooks/useImageCapture';
 import { useTheme } from './hooks/useTheme';
 import { useCompetitionSession } from './state/useCompetitionSession';
 import {
-  selectAllScheduledPredicted,
   selectCaptureSignature,
-  selectDeductionNotes,
-  selectPredictedCount,
   selectStandingsViewModel,
-  selectTeamsById,
 } from './state/selectors';
 import { CompetitionPanels } from './components/CompetitionPanels';
 import { StandingsImageView } from './components/StandingsImageView';
@@ -19,11 +15,6 @@ import { SeasonSummaryModal } from './components/SeasonSummaryModal';
 import { DeductionsModal } from './components/DeductionsModal';
 import { competitionData } from './data';
 import { getCompetition, allCompetitions, type CompetitionConfig } from './data/competitions';
-
-const TABS = [
-  { id: 'standings', label: 'Standings' },
-  { id: 'fixtures', label: 'Fixtures' },
-] as const;
 
 const STANDINGS_CAPTURE_SCALE = 2;
 
@@ -35,25 +26,17 @@ interface CompetitionContentProps {
 const CompetitionContent = ({ slug, config }: CompetitionContentProps) => {
   const navigate = useNavigate();
   const { theme, toggleTheme } = useTheme();
-  const { teams, matches, defaultDeductions, modelPredictions } = useCompetitionData(slug);
+  const { teams, matches, defaultDeductions } = useCompetitionData(slug);
   const {
     predictions,
     deductions,
     deductionsCustomised,
-    activeTab,
-    navigateToMatchId,
     deductionsModalOpen,
     isSummaryOpen,
-    setPrediction,
-    removePrediction,
-    resetAllPredictions,
-    fillFromModel,
     updateDeduction,
     addDeduction,
     removeDeduction,
     resetDeductions,
-    setActiveTab,
-    setNavigateToMatchId,
     setDeductionsModalOpen,
     dismissSummary,
   } = useCompetitionSession({
@@ -63,16 +46,12 @@ const CompetitionContent = ({ slug, config }: CompetitionContentProps) => {
     persistenceMode: 'full',
   });
 
-  const teamsById = selectTeamsById(teams);
   const { standings, deductionMarkers } = selectStandingsViewModel(
     teams,
     matches,
     predictions,
     deductions,
   );
-  const deductionNotes = selectDeductionNotes(deductions, teamsById);
-  const predictedCount = selectPredictedCount(predictions);
-  const allScheduledPredicted = selectAllScheduledPredicted(matches, predictions);
 
   const pageContentRef = useRef<HTMLDivElement>(null);
   const standingsCaptureRef = useRef<HTMLDivElement>(null);
@@ -92,20 +71,6 @@ const CompetitionContent = ({ slug, config }: CompetitionContentProps) => {
     prevSummaryOpen.current = isSummaryOpen;
   }, [isSummaryOpen]);
 
-  const handlePredictionClick = useCallback((matchId: number) => {
-    setActiveTab('fixtures');
-    setNavigateToMatchId(matchId);
-  }, [setActiveTab, setNavigateToMatchId]);
-
-  const handleNavigationComplete = useCallback(() => {
-    setNavigateToMatchId(null);
-  }, [setNavigateToMatchId]);
-  const handleTabChange = useCallback(
-    (tabId: string) => {
-      setActiveTab(tabId === 'fixtures' ? 'fixtures' : 'standings');
-    },
-    [setActiveTab],
-  );
   const competitions = allCompetitions();
 
   const standingsImageMetadata = useMemo(
@@ -161,6 +126,8 @@ const CompetitionContent = ({ slug, config }: CompetitionContentProps) => {
       />
 
       <CompetitionPanels
+        slug={slug}
+        config={config}
         pageContentRef={pageContentRef}
         headerProps={{
           competitions,
@@ -169,33 +136,9 @@ const CompetitionContent = ({ slug, config }: CompetitionContentProps) => {
           theme,
           onThemeToggle: toggleTheme,
         }}
-        tabs={[...TABS]}
-        activeTab={activeTab}
-        onTabChange={handleTabChange}
-        standings={standings}
-        deductionMarkers={deductionMarkers}
-        zones={config.zones}
-        deductionNotes={deductionNotes}
-        onPredictionClick={handlePredictionClick}
         onDownloadStandingsImage={handleDownloadStandingsImage}
         isRenderingStandingsImage={isRenderingStandingsImage}
         hasStandingsImage={Boolean(standingsImageFile)}
-        onOpenDeductionsModal={() => setDeductionsModalOpen(true)}
-        fixtureListProps={{
-          matches,
-          teamsById,
-          predictions,
-          onPredictionChange: setPrediction,
-          onPredictionRemove: removePrediction,
-          isVisible: activeTab === 'fixtures',
-          navigateToMatchId,
-          onNavigationComplete: handleNavigationComplete,
-        }}
-        predictedCount={predictedCount}
-        allScheduledPredicted={allScheduledPredicted}
-        hasModelPredictions={Object.keys(modelPredictions).length > 0}
-        onFillFromModel={() => fillFromModel(modelPredictions)}
-        onResetPredictions={resetAllPredictions}
       />
 
       <DeductionsModal
