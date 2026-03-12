@@ -3,6 +3,7 @@ import {
   colorBgPage,
   colorTextHeading,
   colorTextSecondary,
+  colorTextFaint,
   fontSizeLg,
   fontSizeMd,
   fontSizeSm,
@@ -86,14 +87,21 @@ export const footerContainer = style({
 
 export const footer = style({
   display: 'flex',
+  flexDirection: 'column',
   alignItems: 'center',
-  gap: space2,
+  textAlign: 'center',
+  width: '100%',
+  gap: space4,
   color: colorTextSecondary,
   fontSize: fontSizeMd,
 });
 
 export const footerIcon = style({
   flexShrink: 0,
+});
+
+export const footerIconContainer = style({
+  color: colorTextFaint,
 });
 
 export const footerBold = style({

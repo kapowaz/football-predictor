@@ -9,6 +9,7 @@ export const colorTextPrimary = createVar();
 export const colorTextHeading = createVar();
 export const colorTextSecondary = createVar();
 export const colorTextMuted = createVar();
+export const colorTextFaint = createVar();
 export const colorTextHover = createVar();
 export const colorTextActive = createVar();
 export const colorTextWhite = createVar();
@@ -119,6 +120,7 @@ globalStyle(':root', {
     [colorTextHeading]: tailwind.gray[900],
     [colorTextSecondary]: tailwind.gray[500],
     [colorTextMuted]: tailwind.neutral[500],
+    [colorTextFaint]: tailwind.neutral[100],
     [colorTextHover]: tailwind.gray[700],
     [colorTextActive]: tailwind.gray[600],
     [colorTextWhite]: tailwind.white,
@@ -231,6 +233,7 @@ const darkVars = {
   [colorTextHeading]: tailwind.slate[300],
   [colorTextSecondary]: tailwind.slate[500],
   [colorTextMuted]: tailwind.slate[600],
+  [colorTextFaint]: tailwind.slate[900],
   [colorTextHover]: tailwind.slate[300],
   [colorTextActive]: tailwind.slate[400],
 

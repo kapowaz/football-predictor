@@ -98,10 +98,12 @@ export const StandingsImageView = ({
           {showFooter && (
             <footer className={styles.footerContainer}>
               <div className={styles.footer}>
-                <KBoltIcon size={16} className={styles.footerIcon} />
-                <span>
-                  Football Predictor by <span className={styles.footerBold}>kapowaz</span>. Make your
-                  own prediction at <span className={styles.footerBold}>{SITE_URL}</span>
+                <div>
+                  Football Predictor by <span className={styles.footerBold}>kapowaz</span>. Make
+                  your own prediction at <span className={styles.footerBold}>{SITE_URL}</span>
+                </div>
+                <span className={styles.footerIconContainer}>
+                  <KBoltIcon size={32} className={styles.footerIcon} />
                 </span>
               </div>
             </footer>
