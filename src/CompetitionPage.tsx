@@ -13,18 +13,12 @@ import {
   selectStandingsViewModel,
   selectTeamsById,
 } from './state/selectors';
-import { CompetitionHeader } from './components/CompetitionHeader';
-import { TabBar } from './components/TabBar';
-import { StandingsTable } from './components/StandingsTable/StandingsTable';
+import { CompetitionPanels } from './components/CompetitionPanels';
 import { StandingsImageView } from './components/StandingsImageView';
 import { SeasonSummaryModal } from './components/SeasonSummaryModal';
 import { DeductionsModal } from './components/DeductionsModal';
-import { Button } from './components/Button';
-import { FixtureList } from './components/FixtureList/FixtureList';
-import { BrainIcon, ImageDownIcon, TrendingDownIcon } from './components/icons';
 import { competitionData } from './data';
 import { getCompetition, allCompetitions, type CompetitionConfig } from './data/competitions';
-import * as styles from './App.css';
 
 const TABS = [
   { id: 'standings', label: 'Standings' },
@@ -166,94 +160,43 @@ const CompetitionContent = ({ slug, config }: CompetitionContentProps) => {
         captureRef={standingsCaptureRef}
       />
 
-      <div ref={pageContentRef} className={styles.pageContent}>
-        <CompetitionHeader
-          competitions={competitions}
-          activeSlug={slug}
-          onCompetitionChange={(s) => navigate(`/${s}/`)}
-          theme={theme}
-          onThemeToggle={toggleTheme}
-        />
-
-        <TabBar tabs={[...TABS]} activeTab={activeTab} onTabChange={handleTabChange} />
-
-        <main className={styles.main}>
-          <div
-            className={`${styles.panel} ${activeTab !== 'standings' ? styles.hiddenOnMobile : ''}`}
-          >
-            <div className={styles.panelHeaderWithNotes}>
-              <h2 className={styles.panelTitle}>Standings</h2>
-              <div className={styles.panelHeaderDeductions}>
-                {deductionNotes.length > 0 && (
-                  <div className={styles.deductionNotes}>
-                    {deductionNotes.map((note) => (
-                      <span
-                        key={note.label}
-                        className={styles.deductionNote}
-                        title={note.reason || undefined}
-                      >
-                        {note.label}
-                      </span>
-                    ))}
-                  </div>
-                )}
-                <div className={styles.panelHeaderDeductionsButtons}>
-                  <Button
-                    variant="success"
-                    onClick={handleDownloadStandingsImage}
-                    disabled={!standingsImageFile || isRenderingStandingsImage}
-                  >
-                    <ImageDownIcon />
-                    Download
-                  </Button>
-                  <Button variant="danger" onClick={() => setDeductionsModalOpen(true)}>
-                    <TrendingDownIcon size={14} className={styles.deductionsButtonIcon} />
-                    Deductions
-                  </Button>
-                </div>
-              </div>
-            </div>
-            <StandingsTable
-              standings={standings}
-              deductionMarkers={deductionMarkers}
-              zones={config.zones}
-              onPredictionClick={handlePredictionClick}
-            />
-          </div>
-
-          <div
-            className={`${styles.panelGuttered} ${activeTab !== 'fixtures' ? styles.hiddenOnMobile : ''}`}
-          >
-            <div className={styles.panelHeader}>
-              <h2 className={styles.panelTitle}>Fixtures</h2>
-              <div className={styles.panelHeaderActions}>
-                {Object.keys(modelPredictions).length > 0 &&
-                  !allScheduledPredicted && (
-                    <Button variant="success" onClick={() => fillFromModel(modelPredictions)}>
-                      <BrainIcon />
-                      AI Predictions
-                    </Button>
-                  )}
-                {predictedCount > 0 && (
-                  <Button variant="danger" onClick={resetAllPredictions}>
-                    Reset Predictions
-                  </Button>
-                )}
-              </div>
-            </div>
-            <FixtureList
-              matches={matches}
-              teamsById={teamsById}
-              predictions={predictions}
-              onPredictionChange={setPrediction}
-              onPredictionRemove={removePrediction}
-              isVisible={activeTab === 'fixtures'}
-              navigateToMatchId={navigateToMatchId}
-              onNavigationComplete={handleNavigationComplete}
-            />
-          </div>
-        </main>
-      </div>
+      <CompetitionPanels
+        pageContentRef={pageContentRef}
+        headerProps={{
+          competitions,
+          activeSlug: slug,
+          onCompetitionChange: (s) => navigate(`/${s}/`),
+          theme,
+          onThemeToggle: toggleTheme,
+        }}
+        tabs={[...TABS]}
+        activeTab={activeTab}
+        onTabChange={handleTabChange}
+        standings={standings}
+        deductionMarkers={deductionMarkers}
+        zones={config.zones}
+        deductionNotes={deductionNotes}
+        onPredictionClick={handlePredictionClick}
+        onDownloadStandingsImage={handleDownloadStandingsImage}
+        isRenderingStandingsImage={isRenderingStandingsImage}
+        hasStandingsImage={Boolean(standingsImageFile)}
+        onOpenDeductionsModal={() => setDeductionsModalOpen(true)}
+        fixtureListProps={{
+          matches,
+          teamsById,
+          predictions,
+          onPredictionChange: setPrediction,
+          onPredictionRemove: removePrediction,
+          isVisible: activeTab === 'fixtures',
+          navigateToMatchId,
+          onNavigationComplete: handleNavigationComplete,
+        }}
+        predictedCount={predictedCount}
+        allScheduledPredicted={allScheduledPredicted}
+        hasModelPredictions={Object.keys(modelPredictions).length > 0}
+        onFillFromModel={() => fillFromModel(modelPredictions)}
+        onResetPredictions={resetAllPredictions}
+      />
 
       <DeductionsModal
         isOpen={deductionsModalOpen}

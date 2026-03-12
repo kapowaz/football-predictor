@@ -31,7 +31,6 @@ export const FixtureList = ({
   navigateToMatchId,
   onNavigationComplete,
 }: FixtureListProps) => {
-
   const groupedMatches = useGroupedMatches(matches, predictions);
 
   const [expandedDate, setExpandedDate] = useState<string | null>(null);
@@ -63,9 +62,7 @@ export const FixtureList = ({
   useEffect(() => {
     if (navigateToMatchId == null) return;
 
-    const group = groupedMatches.find((g) =>
-      g.matches.some((m) => m.id === navigateToMatchId),
-    );
+    const group = groupedMatches.find((g) => g.matches.some((m) => m.id === navigateToMatchId));
     if (!group) return;
 
     pendingScrollMatchId.current = navigateToMatchId;
@@ -110,11 +107,9 @@ export const FixtureList = ({
 
   const highlightCard = useCallback((card: Element) => {
     card.classList.add(cardHighlighted);
-    card.addEventListener(
-      'animationend',
-      () => card.classList.remove(cardHighlighted),
-      { once: true },
-    );
+    card.addEventListener('animationend', () => card.classList.remove(cardHighlighted), {
+      once: true,
+    });
     const firstInput = card.querySelector<HTMLInputElement>('input');
     firstInput?.focus();
   }, []);
@@ -123,9 +118,7 @@ export const FixtureList = ({
     (matchId: number) => {
       if (!containerRef.current) return;
 
-      const card = containerRef.current.querySelector(
-        `[data-match-id="${matchId}"]`,
-      );
+      const card = containerRef.current.querySelector(`[data-match-id="${matchId}"]`);
       if (card) {
         card.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
@@ -230,10 +223,7 @@ export const FixtureList = ({
               onClick={() => toggleDate(group.date)}
             />
             <div
-              className={clsx(
-                styles.fixturesWrapper,
-                isExpanded && styles.fixturesWrapperExpanded,
-              )}
+              className={clsx(styles.fixturesWrapper, isExpanded && styles.fixturesWrapperExpanded)}
               onTransitionEnd={(e) => handleTransitionEnd(group.date, e)}
             >
               <div className={styles.fixturesList}>
