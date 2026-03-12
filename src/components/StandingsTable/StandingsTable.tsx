@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import type { TeamStanding, FormResult, FormEntry } from '../../types';
-import type { ZoneDefinition, ZoneType } from '../../competitions';
+import type { ZoneDefinition, ZoneType } from '../../data/competitions';
 import { getCrest } from '../../assets/crests';
 import { getZoneForPosition } from '../../utils/zones';
 import { useScrollDirectionLock } from '../../hooks/useScrollDirectionLock';

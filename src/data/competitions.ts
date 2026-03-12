@@ -1,7 +1,7 @@
-import eflChampionshipLogo from './assets/efl-championship-logo.svg';
-import eflLeagueOneLogo from './assets/efl-league-one-logo.svg';
-import eflLeagueTwoLogo from './assets/efl-league-two-logo.svg';
-import plLogo from './assets/premier-league-logo.svg';
+import eflChampionshipLogo from '../assets/efl-championship-logo.svg';
+import eflLeagueOneLogo from '../assets/efl-league-one-logo.svg';
+import eflLeagueTwoLogo from '../assets/efl-league-two-logo.svg';
+import plLogo from '../assets/premier-league-logo.svg';
 
 export type ZoneType =
   | 'champions'
@@ -37,7 +37,7 @@ export interface CompetitionConfig {
  * Slugs of competitions that have data available and should be shown in the UI.
  * Edit src/data/enabled-competitions.json to control which competitions are active.
  */
-import ENABLED_COMPETITION_SLUGS from './data/enabled-competitions.json';
+import ENABLED_COMPETITION_SLUGS from './enabled-competitions.json';
 
 export const COMPETITIONS: Record<string, CompetitionConfig> = {
   'premier-league': {

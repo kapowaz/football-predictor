@@ -1,5 +1,5 @@
 import type { TeamStanding } from '../types';
-import type { ZoneDefinition, ZoneType } from '../competitions';
+import type { ZoneDefinition, ZoneType } from '../data/competitions';
 
 export const getZoneForPosition = (
   position: number,

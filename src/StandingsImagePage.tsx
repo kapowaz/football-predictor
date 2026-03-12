@@ -1,12 +1,46 @@
 import { Navigate, useParams } from 'react-router-dom';
 import { useRef } from 'react';
 import { StandingsImageView } from './components/StandingsImageView';
-import { getCompetition } from './competitions';
+import { getCompetition, type CompetitionConfig } from './data/competitions';
 import { competitionData } from './data';
+import { useCompetitionData } from './hooks/useCompetitionData';
+import { useCompetitionSession } from './state/useCompetitionSession';
+import { selectStandingsViewModel } from './state/selectors';
+
+interface StandingsImageContentProps {
+  slug: string;
+  config: CompetitionConfig;
+}
+
+const StandingsImageContent = ({ slug, config }: StandingsImageContentProps) => {
+  const captureRef = useRef<HTMLDivElement>(null);
+  const { teams, matches, defaultDeductions } = useCompetitionData(slug);
+  const { predictions, deductions } = useCompetitionSession({
+    slug,
+    matches,
+    defaultDeductions,
+    persistenceMode: 'storageOnly',
+  });
+  const { standings, deductionMarkers } = selectStandingsViewModel(
+    teams,
+    matches,
+    predictions,
+    deductions,
+  );
+
+  return (
+    <StandingsImageView
+      standings={standings}
+      deductionMarkers={deductionMarkers}
+      zones={config.zones}
+      captureRef={captureRef}
+      isHidden={false}
+    />
+  );
+};
 
 export const StandingsImagePage = () => {
   const { slug } = useParams<{ slug: string }>();
-  const captureRef = useRef<HTMLDivElement>(null);
 
   if (!slug) {
     return <Navigate to="/" replace />;
@@ -22,7 +56,5 @@ export const StandingsImagePage = () => {
     return <Navigate to="/" replace />;
   }
 
-  return (
-    <StandingsImageView slug={slug} zones={config.zones} captureRef={captureRef} isHidden={false} />
-  );
+  return <StandingsImageContent slug={slug} config={config} />;
 };

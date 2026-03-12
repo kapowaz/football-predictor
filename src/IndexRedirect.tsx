@@ -1,5 +1,5 @@
 import { Navigate, useSearchParams } from 'react-router-dom';
-import { DEFAULT_COMPETITION, LEGACY_COMPETITION } from './competitions';
+import { DEFAULT_COMPETITION, LEGACY_COMPETITION } from './data/competitions';
 
 export const IndexRedirect = () => {
   const [searchParams] = useSearchParams();

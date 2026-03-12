@@ -1,18 +1,16 @@
-import { useMemo } from 'react';
 import type { RefObject } from 'react';
-import type { ZoneDefinition } from '../../competitions';
-import { useCompetitionData } from '../../hooks/useCompetitionData';
-import { useDeductions } from '../../hooks/useDeductions';
-import { usePredictions } from '../../hooks/usePredictions';
-import { useStandings } from '../../hooks/useStandings';
+import type { ZoneDefinition } from '../../data/competitions';
+import type { TeamStanding } from '../../types';
 import { StandingsTable } from '../StandingsTable/StandingsTable';
 import * as styles from './StandingsImageView.css';
 
 export const DEFAULT_STANDINGS_IMAGE_WIDTH = 688;
 
 interface StandingsImageViewProps {
-  /** Competition slug used to source standings-related data. */
-  slug: string;
+  /** Pre-computed standings rows for image rendering. */
+  standings: TeamStanding[];
+  /** Pre-computed deduction markers keyed by team id. */
+  deductionMarkers: Map<number, string>;
   /** Competition zones from config (promotion/relegation bands). */
   zones: ZoneDefinition[];
   /** Ref attached to the rendered capture node for image export. */
@@ -24,21 +22,13 @@ interface StandingsImageViewProps {
 }
 
 export const StandingsImageView = ({
-  slug,
+  standings,
+  deductionMarkers,
   zones,
   captureRef,
   captureWidth = DEFAULT_STANDINGS_IMAGE_WIDTH,
   isHidden = true,
 }: StandingsImageViewProps) => {
-  const { teams, matches, defaultDeductions } = useCompetitionData(slug);
-  const { predictions } = usePredictions(slug, matches);
-  const { deductions } = useDeductions(slug, defaultDeductions);
-  const standings = useStandings(teams, matches, predictions, deductions);
-  const deductionMarkers = useMemo(
-    () => new Map(deductions.map((deduction, index) => [deduction.teamId, '*'.repeat(index + 1)])),
-    [deductions],
-  );
-
   return (
     <div
       className={isHidden ? styles.hiddenCaptureRoot : undefined}

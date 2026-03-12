@@ -6,7 +6,7 @@ import { ThemeToggle } from './components/ThemeToggle';
 import { useCompetitionData } from './hooks/useCompetitionData';
 import { useStandings } from './hooks/useStandings';
 import { useTheme } from './hooks/useTheme';
-import { COMPETITIONS } from './competitions';
+import { COMPETITIONS } from './data/competitions';
 import { loadPredictions } from './utils/storage';
 import type { PredictionsStore } from './types';
 import * as styles from './StandingsRenderComparisonPage.css';

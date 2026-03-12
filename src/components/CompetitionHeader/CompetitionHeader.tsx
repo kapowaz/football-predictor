@@ -1,4 +1,4 @@
-import type { CompetitionConfig } from '../../competitions';
+import type { CompetitionConfig } from '../../data/competitions';
 import { CompetitionSelect } from '../CompetitionSelect';
 import { ThemeToggle } from '../ThemeToggle';
 import footballPredictorLogo from '../../assets/football-predictor-logo.svg';

@@ -1,5 +1,5 @@
 import Select, { type StylesConfig, type SingleValue } from 'react-select';
-import type { CompetitionConfig } from '../../competitions';
+import type { CompetitionConfig } from '../../data/competitions';
 import {
   colorBgSurface,
   colorBgSurfaceHover,

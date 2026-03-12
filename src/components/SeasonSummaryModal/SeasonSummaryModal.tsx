@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import type { TeamStanding } from '../../types';
-import type { CompetitionConfig, ZoneType } from '../../competitions';
+import type { CompetitionConfig, ZoneType } from '../../data/competitions';
 import { groupStandingsByZone } from '../../utils/zones';
 import { generateShareText } from '../../utils/share';
 import { Modal } from '../Modal';

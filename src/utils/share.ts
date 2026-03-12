@@ -1,5 +1,5 @@
 import type { TeamStanding } from '../types';
-import type { CompetitionConfig } from '../competitions';
+import type { CompetitionConfig } from '../data/competitions';
 import { groupStandingsByZone } from './zones';
 
 export const generateShareText = (

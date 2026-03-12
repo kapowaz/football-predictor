@@ -1,13 +1,18 @@
-import { useState, useMemo, useEffect, useRef, useCallback } from 'react';
+import { useMemo, useEffect, useRef, useCallback } from 'react';
 import { useParams, Navigate, useNavigate } from 'react-router-dom';
 import { animate } from 'framer-motion';
 import { useCompetitionData } from './hooks/useCompetitionData';
-import { usePredictions } from './hooks/usePredictions';
-import { useDeductions } from './hooks/useDeductions';
-import { useStandings } from './hooks/useStandings';
-import { useSeasonSummary } from './hooks/useSeasonSummary';
 import { useImageCapture } from './hooks/useImageCapture';
 import { useTheme } from './hooks/useTheme';
+import { useCompetitionSession } from './state/useCompetitionSession';
+import {
+  selectAllScheduledPredicted,
+  selectCaptureSignature,
+  selectDeductionNotes,
+  selectPredictedCount,
+  selectStandingsViewModel,
+  selectTeamsById,
+} from './state/selectors';
 import { CompetitionHeader } from './components/CompetitionHeader';
 import { TabBar } from './components/TabBar';
 import { StandingsTable } from './components/StandingsTable/StandingsTable';
@@ -18,7 +23,7 @@ import { Button } from './components/Button';
 import { FixtureList } from './components/FixtureList/FixtureList';
 import { BrainIcon, ImageDownIcon, TrendingDownIcon } from './components/icons';
 import { competitionData } from './data';
-import { getCompetition, allCompetitions, type CompetitionConfig } from './competitions';
+import { getCompetition, allCompetitions, type CompetitionConfig } from './data/competitions';
 import * as styles from './App.css';
 
 const TABS = [
@@ -37,21 +42,43 @@ const CompetitionContent = ({ slug, config }: CompetitionContentProps) => {
   const navigate = useNavigate();
   const { theme, toggleTheme } = useTheme();
   const { teams, matches, defaultDeductions, modelPredictions } = useCompetitionData(slug);
-
-  const teamsById = useMemo(() => new Map(teams.map((t) => [t.id, t])), [teams]);
-
-  const { predictions, setPrediction, removePrediction, resetAllPredictions, fillFromModel } =
-    usePredictions(slug, matches);
   const {
+    predictions,
     deductions,
-    isCustomised: deductionsCustomised,
+    deductionsCustomised,
+    activeTab,
+    navigateToMatchId,
+    deductionsModalOpen,
+    isSummaryOpen,
+    setPrediction,
+    removePrediction,
+    resetAllPredictions,
+    fillFromModel,
     updateDeduction,
     addDeduction,
     removeDeduction,
     resetDeductions,
-  } = useDeductions(slug, defaultDeductions);
-  const standings = useStandings(teams, matches, predictions, deductions);
-  const { isSummaryOpen, dismissSummary } = useSeasonSummary(matches, predictions);
+    setActiveTab,
+    setNavigateToMatchId,
+    setDeductionsModalOpen,
+    dismissSummary,
+  } = useCompetitionSession({
+    slug,
+    matches,
+    defaultDeductions,
+    persistenceMode: 'full',
+  });
+
+  const teamsById = selectTeamsById(teams);
+  const { standings, deductionMarkers } = selectStandingsViewModel(
+    teams,
+    matches,
+    predictions,
+    deductions,
+  );
+  const deductionNotes = selectDeductionNotes(deductions, teamsById);
+  const predictedCount = selectPredictedCount(predictions);
+  const allScheduledPredicted = selectAllScheduledPredicted(matches, predictions);
 
   const pageContentRef = useRef<HTMLDivElement>(null);
   const standingsCaptureRef = useRef<HTMLDivElement>(null);
@@ -71,41 +98,20 @@ const CompetitionContent = ({ slug, config }: CompetitionContentProps) => {
     prevSummaryOpen.current = isSummaryOpen;
   }, [isSummaryOpen]);
 
-  const [deductionsModalOpen, setDeductionsModalOpen] = useState(false);
-  const [activeTab, setActiveTab] = useState('standings');
-  const [navigateToMatchId, setNavigateToMatchId] = useState<number | null>(null);
-
   const handlePredictionClick = useCallback((matchId: number) => {
     setActiveTab('fixtures');
     setNavigateToMatchId(matchId);
-  }, []);
+  }, [setActiveTab, setNavigateToMatchId]);
 
   const handleNavigationComplete = useCallback(() => {
     setNavigateToMatchId(null);
-  }, []);
-
-  const deductionMarkers = useMemo(
-    () => new Map(deductions.map((d, i) => [d.teamId, '*'.repeat(i + 1)])),
-    [deductions],
+  }, [setNavigateToMatchId]);
+  const handleTabChange = useCallback(
+    (tabId: string) => {
+      setActiveTab(tabId === 'fixtures' ? 'fixtures' : 'standings');
+    },
+    [setActiveTab],
   );
-
-  const deductionNotes = useMemo(
-    () =>
-      deductions.map((d, i) => {
-        const team = teamsById.get(d.teamId);
-        const marker = '*'.repeat(i + 1);
-        return {
-          label: `${marker}${team?.shortName ?? `Team ${d.teamId}`} -${d.amount} pts`,
-          reason: d.reason ?? '',
-        };
-      }),
-    [deductions, teamsById],
-  );
-
-  const predictedCount = Object.keys(predictions.predictions).length;
-  const allScheduledPredicted = matches
-    .filter((m) => m.status === 'SCHEDULED')
-    .every((m) => String(m.id) in predictions.predictions);
   const competitions = allCompetitions();
 
   const standingsImageMetadata = useMemo(
@@ -125,6 +131,7 @@ const CompetitionContent = ({ slug, config }: CompetitionContentProps) => {
     metadata: standingsImageMetadata,
     scale: STANDINGS_CAPTURE_SCALE,
   });
+  const captureSignature = selectCaptureSignature(standings, deductionMarkers, theme);
 
   useEffect(() => {
     const timeoutId = window.setTimeout(() => {
@@ -134,7 +141,7 @@ const CompetitionContent = ({ slug, config }: CompetitionContentProps) => {
     return () => {
       window.clearTimeout(timeoutId);
     };
-  }, [renderStandingsImage, standings, deductionMarkers, theme]);
+  }, [captureSignature, renderStandingsImage]);
 
   const handleDownloadStandingsImage = useCallback(() => {
     if (!standingsImageFile) {
@@ -153,7 +160,8 @@ const CompetitionContent = ({ slug, config }: CompetitionContentProps) => {
   return (
     <>
       <StandingsImageView
-        slug={slug}
+        standings={standings}
+        deductionMarkers={deductionMarkers}
         zones={config.zones}
         captureRef={standingsCaptureRef}
       />
@@ -167,7 +175,7 @@ const CompetitionContent = ({ slug, config }: CompetitionContentProps) => {
           onThemeToggle={toggleTheme}
         />
 
-        <TabBar tabs={[...TABS]} activeTab={activeTab} onTabChange={setActiveTab} />
+        <TabBar tabs={[...TABS]} activeTab={activeTab} onTabChange={handleTabChange} />
 
         <main className={styles.main}>
           <div
