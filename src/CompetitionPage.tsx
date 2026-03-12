@@ -5,7 +5,12 @@ import { useImageDownload } from './hooks/useImageDownload';
 import { useScreenShake } from './hooks/useScreenShake';
 import { useTheme } from './hooks/useTheme';
 import { useCompetitionSession } from './state/useCompetitionSession';
-import { selectCaptureSignature, selectStandingsViewModel } from './state/selectors';
+import {
+  selectCaptureSignature,
+  selectDeductionNotes,
+  selectStandingsViewModel,
+  selectTeamsById,
+} from './state/selectors';
 import { CompetitionPanels } from './components/CompetitionPanels';
 import { StandingsImageView } from './components/StandingsImageView';
 import { SeasonSummaryModal } from './components/SeasonSummaryModal';
@@ -47,6 +52,8 @@ const CompetitionContent = ({ slug, config }: CompetitionContentProps) => {
     predictions,
     deductions,
   );
+  const teamsById = selectTeamsById(teams);
+  const deductionNotes = selectDeductionNotes(deductions, teamsById);
 
   const pageContentRef = useRef<HTMLDivElement>(null);
   const standingsCaptureRef = useRef<HTMLDivElement>(null);
@@ -73,6 +80,9 @@ const CompetitionContent = ({ slug, config }: CompetitionContentProps) => {
     <>
       <StandingsImageView
         standings={standings}
+        competitionName={config.name}
+        competitionSeason={config.season}
+        deductionNotes={deductionNotes}
         deductionMarkers={deductionMarkers}
         zones={config.zones}
         captureRef={standingsCaptureRef}

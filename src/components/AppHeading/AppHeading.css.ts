@@ -1,5 +1,11 @@
 import { style } from '@vanilla-extract/css';
-import { colorTextHeading, fontSizeXxl, fontSizeXl, fontSizeLg } from '../../theme.css';
+import { colorTextHeading, fontSizeXxl, fontSizeXl, fontSizeLg, space2 } from '../../theme.css';
+
+export const container = style({
+  display: 'flex',
+  alignItems: 'center',
+  gap: space2,
+});
 
 export const logo = style({
   height: '36px',
@@ -36,4 +42,8 @@ export const titlePrefix = style({
       display: 'none',
     },
   },
+});
+
+export const extraContent = style({
+  flex: 1,
 });

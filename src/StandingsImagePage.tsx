@@ -1,11 +1,14 @@
 import { Navigate, useParams } from 'react-router-dom';
-import { useRef } from 'react';
+import { useCallback, useRef } from 'react';
 import { StandingsImageView } from './components/StandingsImageView';
+import { ColorModeToggle } from './components/ColorModeToggle';
 import { getCompetition, type CompetitionConfig } from './data/competitions';
 import { competitionData } from './data';
 import { useCompetitionData } from './hooks/useCompetitionData';
+import { useTheme } from './hooks/useTheme';
 import { useCompetitionSession } from './state/useCompetitionSession';
-import { selectStandingsViewModel } from './state/selectors';
+import { selectDeductionNotes, selectStandingsViewModel, selectTeamsById } from './state/selectors';
+import * as styles from './StandingsImagePage.css.ts';
 
 interface StandingsImageContentProps {
   slug: string;
@@ -14,6 +17,7 @@ interface StandingsImageContentProps {
 
 const StandingsImageContent = ({ slug, config }: StandingsImageContentProps) => {
   const captureRef = useRef<HTMLDivElement>(null);
+  const { theme, toggleTheme } = useTheme();
   const { teams, matches, defaultDeductions } = useCompetitionData(slug);
   const { predictions, deductions } = useCompetitionSession({
     slug,
@@ -27,15 +31,32 @@ const StandingsImageContent = ({ slug, config }: StandingsImageContentProps) => 
     predictions,
     deductions,
   );
+  const teamsById = selectTeamsById(teams);
+  const deductionNotes = selectDeductionNotes(deductions, teamsById);
+
+  const handleColorModeToggle = useCallback(
+    (colorMode: 'light' | 'dark') => {
+      toggleTheme(colorMode);
+    },
+    [toggleTheme],
+  );
 
   return (
-    <StandingsImageView
-      standings={standings}
-      deductionMarkers={deductionMarkers}
-      zones={config.zones}
-      captureRef={captureRef}
-      isHidden={false}
-    />
+    <div className={styles.page}>
+      <header className={styles.toolbar}>
+        <ColorModeToggle colorMode={theme} onColorModeToggle={handleColorModeToggle} />
+      </header>
+      <StandingsImageView
+        standings={standings}
+        competitionName={config.name}
+        competitionSeason={config.season}
+        deductionNotes={deductionNotes}
+        deductionMarkers={deductionMarkers}
+        zones={config.zones}
+        captureRef={captureRef}
+        isHidden={false}
+      />
+    </div>
   );
 };
 
