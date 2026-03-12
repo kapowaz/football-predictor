@@ -117,6 +117,17 @@ export const panelHeaderDeductions = style({
   },
 });
 
+export const panelHeaderDeductionsButtons = style({
+  display: 'flex',
+  alignItems: 'center',
+  gap: space3,
+  '@media': {
+    'screen and (max-width: 680px)': {
+      justifyContent: 'center',
+    },
+  },
+});
+
 export const panelHeaderActions = style({
   display: 'flex',
   alignItems: 'center',
@@ -173,4 +184,17 @@ export const pageContent = style({
   flexDirection: 'column',
   flex: 1,
   minHeight: 0,
+});
+
+export const hiddenCaptureRoot = style({
+  position: 'fixed',
+  left: '-10000px',
+  top: 0,
+  pointerEvents: 'none',
+  zIndex: -1,
+});
+
+export const captureSurface = style({
+  width: '100%',
+  minWidth: 0,
 });

@@ -1,12 +1,14 @@
 import { useState, useMemo, useEffect, useRef, useCallback } from 'react';
 import { useParams, Navigate, useNavigate } from 'react-router-dom';
 import { animate } from 'framer-motion';
+import { domToPng as modernScreenshotToPng } from 'modern-screenshot';
 import { useCompetitionData } from './hooks/useCompetitionData';
 import { usePredictions } from './hooks/usePredictions';
 import { useDeductions } from './hooks/useDeductions';
 import { useStandings } from './hooks/useStandings';
 import { useSeasonSummary } from './hooks/useSeasonSummary';
 import { useTheme } from './hooks/useTheme';
+import { embedPngTextMetadata } from './utils/pngMetadata';
 import { CompetitionHeader } from './components/CompetitionHeader';
 import { TabBar } from './components/TabBar';
 import { StandingsTable } from './components/StandingsTable/StandingsTable';
@@ -14,7 +16,7 @@ import { SeasonSummaryModal } from './components/SeasonSummaryModal';
 import { DeductionsModal } from './components/DeductionsModal';
 import { Button } from './components/Button';
 import { FixtureList } from './components/FixtureList/FixtureList';
-import { BrainIcon, TrendingDownIcon } from './components/icons';
+import { BrainIcon, ImageDownIcon, TrendingDownIcon } from './components/icons';
 import { competitionData } from './data';
 import { getCompetition, allCompetitions, type CompetitionConfig } from './competitions';
 import * as styles from './App.css';
@@ -24,10 +26,36 @@ const TABS = [
   { id: 'fixtures', label: 'Fixtures' },
 ] as const;
 
+const STANDINGS_CAPTURE_SCALE = 2;
+
 interface CompetitionContentProps {
   slug: string;
   config: CompetitionConfig;
 }
+
+const waitForImages = async (container: HTMLElement): Promise<void> => {
+  const images = Array.from(container.querySelectorAll('img'));
+  await Promise.all(
+    images.map(async (image) => {
+      if (image.complete && image.naturalWidth > 0) {
+        return;
+      }
+      if (typeof image.decode === 'function') {
+        try {
+          await image.decode();
+          return;
+        } catch {
+          // Fall through to load/error listeners.
+        }
+      }
+      await new Promise<void>((resolve) => {
+        const done = () => resolve();
+        image.addEventListener('load', done, { once: true });
+        image.addEventListener('error', done, { once: true });
+      });
+    }),
+  );
+};
 
 const CompetitionContent = ({ slug, config }: CompetitionContentProps) => {
   const navigate = useNavigate();
@@ -50,6 +78,13 @@ const CompetitionContent = ({ slug, config }: CompetitionContentProps) => {
   const { isSummaryOpen, dismissSummary } = useSeasonSummary(matches, predictions);
 
   const pageContentRef = useRef<HTMLDivElement>(null);
+  const standingsPanelRef = useRef<HTMLDivElement>(null);
+  const standingsCaptureRef = useRef<HTMLDivElement>(null);
+
+  const [captureWidth, setCaptureWidth] = useState(688);
+  const [standingsImageFile, setStandingsImageFile] = useState<File | null>(null);
+  const [isRenderingStandingsImage, setIsRenderingStandingsImage] = useState(false);
+
   const prevSummaryOpen = useRef(false);
   useEffect(() => {
     if (isSummaryOpen && !prevSummaryOpen.current && pageContentRef.current) {
@@ -102,8 +137,94 @@ const CompetitionContent = ({ slug, config }: CompetitionContentProps) => {
     .every((m) => String(m.id) in predictions.predictions);
   const competitions = allCompetitions();
 
+  const renderStandingsImage = useCallback(async () => {
+    const node = standingsCaptureRef.current;
+    if (!node) {
+      return;
+    }
+
+    setIsRenderingStandingsImage(true);
+
+    try {
+      if ('fonts' in document) {
+        await document.fonts.ready;
+      }
+      await waitForImages(node);
+
+      const dataUrl = await modernScreenshotToPng(node, {
+        scale: STANDINGS_CAPTURE_SCALE,
+      });
+      const sourceBlob = await fetch(dataUrl).then((response) => response.blob());
+      const metadataBlob = await embedPngTextMetadata(sourceBlob, {
+        Title: `Football Predictor ${config.name} ${config.season}`,
+        Source: window.location.href,
+      });
+      const file = new File([metadataBlob], `${slug}-standings.png`, { type: 'image/png' });
+      setStandingsImageFile(file);
+    } catch (error) {
+      console.error('Failed to render standings image:', error);
+      setStandingsImageFile(null);
+    } finally {
+      setIsRenderingStandingsImage(false);
+    }
+  }, [config.name, config.season, slug]);
+
+  useEffect(() => {
+    const panel = standingsPanelRef.current;
+    if (!panel) return;
+
+    const updateWidth = () => {
+      const nextWidth = Math.round(panel.getBoundingClientRect().width);
+      if (nextWidth > 0) {
+        setCaptureWidth(nextWidth);
+      }
+    };
+
+    updateWidth();
+
+    const observer = new ResizeObserver(() => updateWidth());
+    observer.observe(panel);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const timeoutId = window.setTimeout(() => {
+      void renderStandingsImage();
+    }, 0);
+
+    return () => {
+      window.clearTimeout(timeoutId);
+    };
+  }, [renderStandingsImage, standings, deductionMarkers, theme, captureWidth]);
+
+  const handleDownloadStandingsImage = useCallback(() => {
+    if (!standingsImageFile) {
+      return;
+    }
+
+    const link = document.createElement('a');
+    const objectUrl = URL.createObjectURL(standingsImageFile);
+    link.download = standingsImageFile.name;
+    link.href = objectUrl;
+    link.click();
+    // Revoke URL shortly after triggering download.
+    window.setTimeout(() => URL.revokeObjectURL(objectUrl), 0);
+  }, [standingsImageFile]);
+
   return (
     <>
+      <div className={styles.hiddenCaptureRoot} style={{ width: `${captureWidth}px` }} aria-hidden="true">
+        <div ref={standingsCaptureRef} className={styles.captureSurface}>
+          <StandingsTable
+            standings={standings}
+            deductionMarkers={deductionMarkers}
+            zones={config.zones}
+            disableVerticalScroll
+            disableTableBorderRadius
+          />
+        </div>
+      </div>
+
       <div ref={pageContentRef} className={styles.pageContent}>
         <CompetitionHeader
           competitions={competitions}
@@ -117,6 +238,7 @@ const CompetitionContent = ({ slug, config }: CompetitionContentProps) => {
 
         <main className={styles.main}>
           <div
+            ref={standingsPanelRef}
             className={`${styles.panel} ${activeTab !== 'standings' ? styles.hiddenOnMobile : ''}`}
           >
             <div className={styles.panelHeaderWithNotes}>
@@ -135,10 +257,20 @@ const CompetitionContent = ({ slug, config }: CompetitionContentProps) => {
                     ))}
                   </div>
                 )}
-                <Button variant="danger" onClick={() => setDeductionsModalOpen(true)}>
-                  <TrendingDownIcon size={14} className={styles.deductionsButtonIcon} />
-                  Deductions
-                </Button>
+                <div className={styles.panelHeaderDeductionsButtons}>
+                  <Button
+                    variant="success"
+                    onClick={handleDownloadStandingsImage}
+                  disabled={!standingsImageFile || isRenderingStandingsImage}
+                  >
+                    <ImageDownIcon />
+                    Download
+                  </Button>
+                  <Button variant="danger" onClick={() => setDeductionsModalOpen(true)}>
+                    <TrendingDownIcon size={14} className={styles.deductionsButtonIcon} />
+                    Deductions
+                  </Button>
+                </div>
               </div>
             </div>
             <StandingsTable
@@ -200,6 +332,7 @@ const CompetitionContent = ({ slug, config }: CompetitionContentProps) => {
         isOpen={isSummaryOpen}
         onClose={dismissSummary}
         competition={config}
+        standingsImageFile={standingsImageFile}
       />
     </>
   );

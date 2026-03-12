@@ -27,14 +27,24 @@ interface CompetitionDataResult {
 export const useCompetitionData = (slug: string): CompetitionDataResult => {
   const data = competitionData[slug];
 
-  const teams = (data.teamsData as TeamsData).teams;
-  const matches = applyOverrides(
-    (data.matchesData as MatchesData).matches,
-    (data.overridesData as unknown as MatchesData).matches,
+  const teams = useMemo(() => (data.teamsData as TeamsData).teams, [data.teamsData]);
+  const matches = useMemo(
+    () =>
+      applyOverrides(
+        (data.matchesData as MatchesData).matches,
+        (data.overridesData as unknown as MatchesData).matches,
+      ),
+    [data.matchesData, data.overridesData],
   );
-  const defaultDeductions = data.deductionsData as PointDeduction[];
-  const apiStandings = data.standingsData as ApiStandingsData;
-  const modelPredictions = (data.modelPredictionsData as ModelPredictionsData).predictions;
+  const defaultDeductions = useMemo(
+    () => data.deductionsData as PointDeduction[],
+    [data.deductionsData],
+  );
+  const apiStandings = useMemo(() => data.standingsData as ApiStandingsData, [data.standingsData]);
+  const modelPredictions = useMemo(
+    () => (data.modelPredictionsData as ModelPredictionsData).predictions,
+    [data.modelPredictionsData],
+  );
 
   const calculatedFromResults = useMemo(() => {
     const emptyPredictions = { predictions: {}, lastModified: '' };

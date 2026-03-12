@@ -16,6 +16,7 @@ interface SeasonSummaryModalProps {
   isOpen: boolean;
   onClose: () => void;
   competition: CompetitionConfig;
+  standingsImageFile?: File | null;
 }
 
 const zoneLabelStyles: Record<ZoneType, string> = {
@@ -33,6 +34,7 @@ export const SeasonSummaryModal = ({
   isOpen,
   onClose,
   competition,
+  standingsImageFile,
 }: SeasonSummaryModalProps) => {
   const [showConfetti, setShowConfetti] = useState(isOpen);
   const [prevIsOpen, setPrevIsOpen] = useState(isOpen);
@@ -52,10 +54,22 @@ export const SeasonSummaryModal = ({
 
   const handleShare = async () => {
     try {
-      await navigator.share({
+      const shareData: ShareData = {
         title: competition.fullTitle,
         text: generateShareText(standings, competition),
-      });
+      };
+
+      if (standingsImageFile) {
+        try {
+          if (navigator.canShare?.({ files: [standingsImageFile] })) {
+            shareData.files = [standingsImageFile];
+          }
+        } catch {
+          // Ignore image processing errors and fall back to text-only sharing.
+        }
+      }
+
+      await navigator.share(shareData);
     } catch {
       // User cancelled or share failed
     }
