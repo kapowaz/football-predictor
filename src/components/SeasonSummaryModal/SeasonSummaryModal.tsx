@@ -17,6 +17,7 @@ interface SeasonSummaryModalProps {
   onClose: () => void;
   competition: CompetitionConfig;
   standingsImageFile?: File | null;
+  isRenderingStandingsImage?: boolean;
 }
 
 const zoneLabelStyles: Record<ZoneType, string> = {
@@ -35,10 +36,12 @@ export const SeasonSummaryModal = ({
   onClose,
   competition,
   standingsImageFile,
+  isRenderingStandingsImage = false,
 }: SeasonSummaryModalProps) => {
   const [showConfetti, setShowConfetti] = useState(isOpen);
   const [prevIsOpen, setPrevIsOpen] = useState(isOpen);
   const hasShareApi = typeof navigator.share === 'function';
+  const isShareImageReady = Boolean(standingsImageFile) && !isRenderingStandingsImage;
 
   if (isOpen !== prevIsOpen) {
     setPrevIsOpen(isOpen);
@@ -147,7 +150,7 @@ export const SeasonSummaryModal = ({
 
           {hasShareApi && (
             <div className={styles.shareButtonWrapper}>
-              <Button variant="success" onClick={handleShare}>
+              <Button variant="success" onClick={handleShare} disabled={!isShareImageReady}>
                 <ShareIcon size={14} />
                 Share your Predictions
               </Button>

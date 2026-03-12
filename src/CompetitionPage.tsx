@@ -122,6 +122,7 @@ const CompetitionContent = ({ slug, config }: CompetitionContentProps) => {
         onClose={dismissSummary}
         competition={config}
         standingsImageFile={imageFile}
+        isRenderingStandingsImage={isRenderingImage}
       />
     </>
   );
