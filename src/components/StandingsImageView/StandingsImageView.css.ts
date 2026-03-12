@@ -68,6 +68,12 @@ export const deductionNote = style({
   cursor: 'help',
 });
 
+export const footerContainer = style({
+  display: 'flex',
+  alignItems: 'flex-start',
+  height: '45px',
+});
+
 export const footer = style({
   display: 'flex',
   alignItems: 'center',

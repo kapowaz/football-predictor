@@ -86,12 +86,14 @@ export const StandingsImageView = ({
             isRenderView
           />
           {showFooter && (
-            <footer className={styles.footer}>
-              <KBoltIcon size={16} className={styles.footerIcon} />
-              <span>
-                Football Predictor by <span className={styles.footerBold}>kapowaz</span>. Make your
-                own prediction at <span className={styles.footerBold}>{SITE_URL}</span>
-              </span>
+            <footer className={styles.footerContainer}>
+              <div className={styles.footer}>
+                <KBoltIcon size={16} className={styles.footerIcon} />
+                <span>
+                  Football Predictor by <span className={styles.footerBold}>kapowaz</span>. Make your
+                  own prediction at <span className={styles.footerBold}>{SITE_URL}</span>
+                </span>
+              </div>
             </footer>
           )}
         </div>
