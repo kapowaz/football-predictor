@@ -76,8 +76,9 @@ const CompetitionContent = ({ slug, config }: CompetitionContentProps) => {
     competitionSeason: config.season,
     captureSignature,
   });
-  const standingsImageFiles = imageFiles.filter((file): file is File => file !== null);
-  const hasStandingsImage = imageFiles.length > 0 && standingsImageFiles.length === imageFiles.length;
+  const standingsImageFiles =
+    imageFiles.top && imageFiles.bottom ? { top: imageFiles.top, bottom: imageFiles.bottom } : null;
+  const hasStandingsImage = standingsImageFiles !== null;
 
   return (
     <>
@@ -135,7 +136,7 @@ const CompetitionContent = ({ slug, config }: CompetitionContentProps) => {
         isOpen={isSummaryOpen}
         onClose={dismissSummary}
         competition={config}
-        standingsImageFiles={hasStandingsImage ? standingsImageFiles : null}
+        standingsImageFiles={standingsImageFiles}
         isRenderingStandingsImage={isRenderingImage}
       />
     </>

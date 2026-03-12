@@ -12,7 +12,7 @@ interface UseImageDownloadOptions {
 }
 
 interface UseImageDownloadResult {
-  imageFiles: Array<File | null>;
+  imageFiles: { top: File | null; bottom: File | null };
   isRenderingImage: boolean;
   onDownloadImage: () => void;
 }
@@ -57,7 +57,7 @@ export const useImageDownload = ({
   });
 
   const imageFiles = useMemo(
-    () => [topImageFile, bottomImageFile],
+    () => ({ top: topImageFile, bottom: bottomImageFile }),
     [topImageFile, bottomImageFile],
   );
   const isRenderingImage = isRenderingTopImage || isRenderingBottomImage;
@@ -73,7 +73,7 @@ export const useImageDownload = ({
   }, [captureSignature, renderTopImage, renderBottomImage]);
 
   const onDownloadImage = useCallback(() => {
-    imageFiles.forEach((imageFile) => {
+    [imageFiles.top, imageFiles.bottom].forEach((imageFile) => {
       if (!imageFile) {
         return;
       }
