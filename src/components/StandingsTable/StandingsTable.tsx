@@ -12,6 +12,10 @@ interface StandingsTableProps {
   zones: ZoneDefinition[];
   /** Called when a form badge is clicked, with the match ID */
   onPredictionClick?: (matchId: number) => void;
+  /** Disable internal vertical scrolling on the table container. */
+  disableVerticalScroll?: boolean;
+  /** Disable rounded corners on the <table> element. */
+  disableTableBorderRadius?: boolean;
 }
 
 const formatGD = (gd: number): string => {
@@ -57,12 +61,26 @@ const zonePositionStyles: Record<ZoneType | 'default', string | undefined> = {
   default: undefined,
 };
 
-export const StandingsTable = ({ standings, deductionMarkers, zones, onPredictionClick }: StandingsTableProps) => {
+export const StandingsTable = ({
+  standings,
+  deductionMarkers,
+  zones,
+  onPredictionClick,
+  disableVerticalScroll = false,
+  disableTableBorderRadius = false,
+}: StandingsTableProps) => {
   const containerRef = useScrollDirectionLock<HTMLDivElement>();
 
   return (
-    <div ref={containerRef} className={styles.container}>
-      <table className={styles.table}>
+    <div
+      ref={containerRef}
+      className={clsx(
+        styles.container,
+        disableVerticalScroll && styles.containerNoVerticalScroll,
+        disableTableBorderRadius && styles.containerNoBorderRadius,
+      )}
+    >
+      <table className={clsx(styles.table)}>
         <thead className={styles.thead}>
           <tr>
             <th className={clsx(styles.th, styles.stickyCellTh)}>Team</th>

@@ -77,11 +77,20 @@ export const container = style({
   },
 });
 
+export const containerNoBorderRadius = style({
+  borderRadius: 0,
+});
+
+export const containerNoVerticalScroll = style({
+  overflowY: 'visible',
+});
+
 export const table = style({
   width: '100%',
   borderCollapse: 'separate',
   borderSpacing: 0,
   fontSize: fontSizeBase,
+  borderRadius: radiusLg,
 });
 
 export const thead = style({
