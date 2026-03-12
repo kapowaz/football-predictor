@@ -20,6 +20,18 @@ interface SeasonSummaryModalProps {
   isRenderingStandingsImage?: boolean;
 }
 
+const toOrderedShareFiles = (files: { top: File; bottom: File }): [File, File] => {
+  const candidates = [files.top, files.bottom];
+  const topFile = candidates.find((file) => file.name.includes('-top'));
+  const bottomFile = candidates.find((file) => file.name.includes('-bottom'));
+
+  if (topFile && bottomFile) {
+    return [topFile, bottomFile];
+  }
+
+  return [files.top, files.bottom];
+};
+
 const zoneLabelStyles: Record<ZoneType, string> = {
   champions: styles.championsLabel,
   promotion: styles.promotedLabel,
@@ -64,7 +76,7 @@ export const SeasonSummaryModal = ({
 
       if (standingsImageFiles) {
         // Explicitly lock share order: top half first, bottom half second.
-        const orderedImageFiles = [standingsImageFiles.top, standingsImageFiles.bottom];
+        const orderedImageFiles = toOrderedShareFiles(standingsImageFiles);
         try {
           if (navigator.canShare?.({ files: orderedImageFiles })) {
             shareData.files = orderedImageFiles;
