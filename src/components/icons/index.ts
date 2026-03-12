@@ -1,5 +1,6 @@
 export { BrainIcon } from './BrainIcon';
 export { ChevronRightIcon } from './ChevronRightIcon';
+export { ImageDownIcon } from './ImageDownIcon';
 export { MoonIcon } from './MoonIcon';
 export { ShareIcon } from './ShareIcon';
 export { SparklesIcon } from './SparklesIcon';
