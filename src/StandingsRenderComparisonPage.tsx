@@ -1,5 +1,4 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { toPng as htmlToImageToPng } from 'html-to-image';
 import { domToPng as modernScreenshotToPng } from 'modern-screenshot';
 import { TabBar } from './components/TabBar';
 import { StandingsTable } from './components/StandingsTable/StandingsTable';
@@ -16,9 +15,10 @@ const CHAMPIONSHIP_SLUG = 'efl-championship';
 
 const TABS = [
   { id: 'dom', label: 'Actual DOM' },
-  { id: 'html-to-image', label: 'html-to-image' },
   { id: 'modern-screenshot', label: 'modern-screenshot' },
 ] as const;
+
+const CAPTURE_SCALE = 2;
 
 type TabId = (typeof TABS)[number]['id'];
 
@@ -28,7 +28,7 @@ interface CaptureResult {
   error: string | null;
 }
 
-type CaptureMap = Record<'html-to-image' | 'modern-screenshot', CaptureResult>;
+type CaptureMap = Record<'modern-screenshot', CaptureResult>;
 
 const waitForImages = async (container: HTMLElement): Promise<void> => {
   const images = Array.from(container.querySelectorAll('img'));
@@ -55,7 +55,6 @@ const waitForImages = async (container: HTMLElement): Promise<void> => {
 };
 
 const initialCaptureMap: CaptureMap = {
-  'html-to-image': { dataUrl: null, durationMs: null, error: null },
   'modern-screenshot': { dataUrl: null, durationMs: null, error: null },
 };
 
@@ -94,27 +93,8 @@ export const StandingsRenderComparisonPage = () => {
 
     try {
       const started = performance.now();
-      const dataUrl = await htmlToImageToPng(node, {
-        cacheBust: true,
-        pixelRatio: window.devicePixelRatio || 1,
-      });
-      next['html-to-image'] = {
-        dataUrl,
-        durationMs: Math.round(performance.now() - started),
-        error: null,
-      };
-    } catch (error) {
-      next['html-to-image'] = {
-        dataUrl: null,
-        durationMs: null,
-        error: error instanceof Error ? error.message : 'Unknown html-to-image error',
-      };
-    }
-
-    try {
-      const started = performance.now();
       const dataUrl = await modernScreenshotToPng(node, {
-        scale: window.devicePixelRatio || 1,
+        scale: CAPTURE_SCALE,
       });
       next['modern-screenshot'] = {
         dataUrl,
@@ -216,11 +196,6 @@ export const StandingsRenderComparisonPage = () => {
             localStorage predictions: {Object.keys(predictions.predictions).length}
           </span>
           <span className={styles.statusOk}>{isRendering ? 'rendering...' : 'render complete'}</span>
-          {captures['html-to-image'].durationMs !== null && (
-            <span className={styles.statusOk}>
-              html-to-image: {captures['html-to-image'].durationMs}ms
-            </span>
-          )}
           {captures['modern-screenshot'].durationMs !== null && (
             <span className={styles.statusOk}>
               modern-screenshot: {captures['modern-screenshot'].durationMs}ms
