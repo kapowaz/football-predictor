@@ -29,6 +29,14 @@ export const tabBar = style({
   },
 });
 
+export const tabBarAlwaysVisible = style({
+  display: 'flex',
+  width: '100%',
+  maxWidth: maxWidthContent,
+  margin: '0 auto',
+  borderBottom: `2px solid ${colorBorder}`,
+});
+
 export const tab = style({
   flex: 1,
   padding: `${space3} ${space4}`,

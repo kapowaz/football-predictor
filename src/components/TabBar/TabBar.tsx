@@ -12,11 +12,17 @@ interface TabBarProps {
   activeTab: string;
   /** Called when a tab is selected */
   onTabChange: (tabId: string) => void;
+  /** Force tab bar to be visible at all breakpoints. */
+  alwaysVisible?: boolean;
 }
 
-export const TabBar = ({ tabs, activeTab, onTabChange }: TabBarProps) => {
+export const TabBar = ({ tabs, activeTab, onTabChange, alwaysVisible = false }: TabBarProps) => {
+  const tabBarClassName = alwaysVisible
+    ? `${styles.tabBar} ${styles.tabBarAlwaysVisible}`
+    : styles.tabBar;
+
   return (
-    <nav className={styles.tabBar}>
+    <nav className={tabBarClassName}>
       {tabs.map((tab) => (
         <button
           key={tab.id}
