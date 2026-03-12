@@ -56,7 +56,8 @@ const CompetitionContent = ({ slug, config }: CompetitionContentProps) => {
   const deductionNotes = selectDeductionNotes(deductions, teamsById);
 
   const pageContentRef = useRef<HTMLDivElement>(null);
-  const standingsCaptureRef = useRef<HTMLDivElement>(null);
+  const topStandingsCaptureRef = useRef<HTMLDivElement>(null);
+  const bottomStandingsCaptureRef = useRef<HTMLDivElement>(null);
 
   useScreenShake({
     shouldShake: isSummaryOpen,
@@ -68,13 +69,15 @@ const CompetitionContent = ({ slug, config }: CompetitionContentProps) => {
 
   const captureSignature = selectCaptureSignature(standings, deductionMarkers, theme);
 
-  const { imageFile, isRenderingImage, onDownloadImage } = useImageDownload({
-    captureRef: standingsCaptureRef,
+  const { imageFiles, isRenderingImage, onDownloadImage } = useImageDownload({
+    captureRefs: [topStandingsCaptureRef, bottomStandingsCaptureRef],
     slug,
     competitionName: config.name,
     competitionSeason: config.season,
     captureSignature,
   });
+  const standingsImageFiles = imageFiles.filter((file): file is File => file !== null);
+  const hasStandingsImage = imageFiles.length > 0 && standingsImageFiles.length === imageFiles.length;
 
   return (
     <>
@@ -85,7 +88,18 @@ const CompetitionContent = ({ slug, config }: CompetitionContentProps) => {
         deductionNotes={deductionNotes}
         deductionMarkers={deductionMarkers}
         zones={config.zones}
-        captureRef={standingsCaptureRef}
+        partial="top"
+        captureRef={topStandingsCaptureRef}
+      />
+      <StandingsImageView
+        standings={standings}
+        competitionName={config.name}
+        competitionSeason={config.season}
+        deductionNotes={deductionNotes}
+        deductionMarkers={deductionMarkers}
+        zones={config.zones}
+        partial="bottom"
+        captureRef={bottomStandingsCaptureRef}
       />
 
       <CompetitionPanels
@@ -101,7 +115,7 @@ const CompetitionContent = ({ slug, config }: CompetitionContentProps) => {
         }}
         onDownloadImage={onDownloadImage}
         isRenderingImage={isRenderingImage}
-        hasStandingsImage={Boolean(imageFile)}
+        hasStandingsImage={hasStandingsImage}
       />
 
       <DeductionsModal
@@ -121,7 +135,7 @@ const CompetitionContent = ({ slug, config }: CompetitionContentProps) => {
         isOpen={isSummaryOpen}
         onClose={dismissSummary}
         competition={config}
-        standingsImageFile={imageFile}
+        standingsImageFiles={hasStandingsImage ? standingsImageFiles : null}
         isRenderingStandingsImage={isRenderingImage}
       />
     </>

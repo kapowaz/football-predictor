@@ -36,6 +36,14 @@ export const innerWrapper = style({
   backgroundColor: colorBgPage,
 });
 
+export const innerWrapperTop = style({
+  paddingBottom: 0,
+});
+
+export const innerWrapperBottom = style({
+  paddingTop: 0,
+});
+
 export const headingExtraContent = style({
   display: 'flex',
   flexDirection: 'column',

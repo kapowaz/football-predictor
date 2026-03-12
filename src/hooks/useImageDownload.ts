@@ -3,7 +3,7 @@ import type { RefObject } from 'react';
 import { useImageCapture } from './useImageCapture';
 
 interface UseImageDownloadOptions {
-  captureRef: RefObject<HTMLElement | null>;
+  captureRefs: [RefObject<HTMLElement | null>, RefObject<HTMLElement | null>];
   slug: string;
   competitionName: string;
   competitionSeason: string;
@@ -12,19 +12,20 @@ interface UseImageDownloadOptions {
 }
 
 interface UseImageDownloadResult {
-  imageFile: File | null;
+  imageFiles: Array<File | null>;
   isRenderingImage: boolean;
   onDownloadImage: () => void;
 }
 
 export const useImageDownload = ({
-  captureRef,
+  captureRefs,
   slug,
   competitionName,
   competitionSeason,
   captureSignature,
   scale = 2,
 }: UseImageDownloadOptions): UseImageDownloadResult => {
+  const [topCaptureRef, bottomCaptureRef] = captureRefs;
   const metadata = useMemo(
     () => ({
       Title: `Football Predictor ${competitionName} ${competitionSeason}`,
@@ -33,36 +34,59 @@ export const useImageDownload = ({
     [competitionName, competitionSeason],
   );
 
-  const { imageFile, isRenderingImage, renderImage } = useImageCapture({
-    captureRef,
-    fileName: `${slug}-standings.png`,
+  const {
+    imageFile: topImageFile,
+    isRenderingImage: isRenderingTopImage,
+    renderImage: renderTopImage,
+  } = useImageCapture({
+    captureRef: topCaptureRef,
+    fileName: `${slug}-standings-top.png`,
     metadata,
     scale,
   });
 
+  const {
+    imageFile: bottomImageFile,
+    isRenderingImage: isRenderingBottomImage,
+    renderImage: renderBottomImage,
+  } = useImageCapture({
+    captureRef: bottomCaptureRef,
+    fileName: `${slug}-standings-bottom.png`,
+    metadata,
+    scale,
+  });
+
+  const imageFiles = useMemo(
+    () => [topImageFile, bottomImageFile],
+    [topImageFile, bottomImageFile],
+  );
+  const isRenderingImage = isRenderingTopImage || isRenderingBottomImage;
+
   useEffect(() => {
     const timeoutId = window.setTimeout(() => {
-      void renderImage();
+      void Promise.all([renderTopImage(), renderBottomImage()]);
     }, 0);
 
     return () => {
       window.clearTimeout(timeoutId);
     };
-  }, [captureSignature, renderImage]);
+  }, [captureSignature, renderTopImage, renderBottomImage]);
 
   const onDownloadImage = useCallback(() => {
-    if (!imageFile) {
-      return;
-    }
+    imageFiles.forEach((imageFile) => {
+      if (!imageFile) {
+        return;
+      }
 
-    const link = document.createElement('a');
-    const objectUrl = URL.createObjectURL(imageFile);
-    link.download = imageFile.name;
-    link.href = objectUrl;
-    link.click();
-    // Revoke URL shortly after triggering download.
-    window.setTimeout(() => URL.revokeObjectURL(objectUrl), 0);
-  }, [imageFile]);
+      const link = document.createElement('a');
+      const objectUrl = URL.createObjectURL(imageFile);
+      link.download = imageFile.name;
+      link.href = objectUrl;
+      link.click();
+      // Revoke URL shortly after triggering download.
+      window.setTimeout(() => URL.revokeObjectURL(objectUrl), 0);
+    });
+  }, [imageFiles]);
 
-  return { imageFile, isRenderingImage, onDownloadImage };
+  return { imageFiles, isRenderingImage, onDownloadImage };
 };

@@ -16,7 +16,7 @@ interface SeasonSummaryModalProps {
   isOpen: boolean;
   onClose: () => void;
   competition: CompetitionConfig;
-  standingsImageFile?: File | null;
+  standingsImageFiles?: File[] | null;
   isRenderingStandingsImage?: boolean;
 }
 
@@ -35,13 +35,13 @@ export const SeasonSummaryModal = ({
   isOpen,
   onClose,
   competition,
-  standingsImageFile,
+  standingsImageFiles,
   isRenderingStandingsImage = false,
 }: SeasonSummaryModalProps) => {
   const [showConfetti, setShowConfetti] = useState(isOpen);
   const [prevIsOpen, setPrevIsOpen] = useState(isOpen);
   const hasShareApi = typeof navigator.share === 'function';
-  const isShareImageReady = Boolean(standingsImageFile) && !isRenderingStandingsImage;
+  const isShareImageReady = (standingsImageFiles?.length ?? 0) === 2 && !isRenderingStandingsImage;
 
   if (isOpen !== prevIsOpen) {
     setPrevIsOpen(isOpen);
@@ -62,10 +62,10 @@ export const SeasonSummaryModal = ({
         text: generateShareText(standings, competition),
       };
 
-      if (standingsImageFile) {
+      if (standingsImageFiles && standingsImageFiles.length === 2) {
         try {
-          if (navigator.canShare?.({ files: [standingsImageFile] })) {
-            shareData.files = [standingsImageFile];
+          if (navigator.canShare?.({ files: standingsImageFiles })) {
+            shareData.files = standingsImageFiles;
           }
         } catch {
           // Ignore image processing errors and fall back to text-only sharing.

@@ -75,6 +75,14 @@ export const containerNoBorderRadius = style({
   borderRadius: 0,
 });
 
+export const containerTopPartial = style({
+  borderRadius: `${radiusLg} ${radiusLg} 0 0`,
+});
+
+export const containerBottomPartial = style({
+  borderRadius: `0 0 ${radiusLg} ${radiusLg}`,
+});
+
 export const containerNoVerticalScroll = style({
   overflowY: 'visible',
 });
@@ -90,6 +98,22 @@ export const table = style({
 
 export const tableLarge = style({
   fontSize: fontSizeLg,
+});
+
+export const tableRenderLayoutFixed = style({
+  tableLayout: 'fixed',
+});
+
+export const tableNoBorderRadius = style({
+  borderRadius: 0,
+});
+
+export const tableTopPartial = style({
+  borderRadius: `${radiusLg} ${radiusLg} 0 0`,
+});
+
+export const tableBottomPartial = style({
+  borderRadius: `0 0 ${radiusLg} ${radiusLg}`,
 });
 
 export const thead = style({
@@ -160,6 +184,39 @@ export const td = style({
   },
 });
 
+export const cellRenderNoHorizontalPadding = style({
+  paddingLeft: 0,
+  paddingRight: 0,
+  '@media': {
+    'screen and (min-width: 480px)': {
+      paddingLeft: 0,
+      paddingRight: 0,
+    },
+    'screen and (min-width: 680px)': {
+      paddingLeft: 0,
+      paddingRight: 0,
+    },
+  },
+  '@container': {
+    [`${tableContainer} (max-width: 480px)`]: {
+      paddingLeft: 0,
+      paddingRight: 0,
+    },
+    [`${tableContainer} (max-width: 680px)`]: {
+      paddingLeft: 0,
+      paddingRight: 0,
+    },
+    [`${tableContainer} (min-width: 768px)`]: {
+      paddingLeft: 0,
+      paddingRight: 0,
+    },
+    [`${tableContainer} (min-width: 850px)`]: {
+      paddingLeft: 0,
+      paddingRight: 0,
+    },
+  },
+});
+
 export const tdCenter = style([
   td,
   {
@@ -206,6 +263,65 @@ export const stickyCellTh = style([
     },
   },
 ]);
+
+export const cellRenderNoHorizontalPaddingStrong = style({
+  paddingLeft: 0,
+  paddingRight: 0,
+  '@media': {
+    'screen and (min-width: 480px)': {
+      paddingLeft: 0,
+      paddingRight: 0,
+    },
+    'screen and (min-width: 680px)': {
+      paddingLeft: 0,
+      paddingRight: 0,
+    },
+  },
+  '@container': {
+    [`${tableContainer} (max-width: 480px)`]: {
+      paddingLeft: 0,
+      paddingRight: 0,
+    },
+    [`${tableContainer} (max-width: 680px)`]: {
+      paddingLeft: 0,
+      paddingRight: 0,
+    },
+    [`${tableContainer} (min-width: 768px)`]: {
+      paddingLeft: 0,
+      paddingRight: 0,
+    },
+    [`${tableContainer} (min-width: 850px)`]: {
+      paddingLeft: 0,
+      paddingRight: 0,
+    },
+  },
+});
+
+export const cellRenderNoRightPaddingStrong = style({
+  paddingRight: 0,
+  '@media': {
+    'screen and (min-width: 480px)': {
+      paddingRight: 0,
+    },
+    'screen and (min-width: 680px)': {
+      paddingRight: 0,
+    },
+  },
+  '@container': {
+    [`${tableContainer} (max-width: 480px)`]: {
+      paddingRight: 0,
+    },
+    [`${tableContainer} (max-width: 680px)`]: {
+      paddingRight: 0,
+    },
+    [`${tableContainer} (min-width: 768px)`]: {
+      paddingRight: 0,
+    },
+    [`${tableContainer} (min-width: 850px)`]: {
+      paddingRight: 0,
+    },
+  },
+});
 
 export const position = style({
   fontFamily: fontFamilyMono,
@@ -264,6 +380,14 @@ export const teamName = style({
   fontWeight: 500,
 });
 
+export const teamNameRender = style({
+  display: 'inline-block',
+  maxWidth: '100%',
+  overflow: 'hidden',
+  textOverflow: 'ellipsis',
+  whiteSpace: 'nowrap',
+});
+
 export const teamShortName = style({
   '@container': {
     [`${tableContainer} (max-width: 479px)`]: {
@@ -279,6 +403,14 @@ export const teamTla = style({
       display: 'inline',
     },
   },
+});
+
+export const colStat = style({
+  width: '48px',
+});
+
+export const colForm = style({
+  width: '168px',
 });
 
 export const points = style({

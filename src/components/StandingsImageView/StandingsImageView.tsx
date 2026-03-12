@@ -21,6 +21,8 @@ interface StandingsImageViewProps {
   deductionMarkers: Map<number, string>;
   /** Competition zones from config (promotion/relegation bands). */
   zones: ZoneDefinition[];
+  /** Optionally render only the top or bottom half of standings content. */
+  partial?: 'top' | 'bottom';
   /** Ref attached to the rendered capture node for image export. */
   captureRef: RefObject<HTMLDivElement | null>;
   /** Whether the capture root should be visually hidden off-screen. */
@@ -36,9 +38,12 @@ export const StandingsImageView = ({
   deductionNotes,
   deductionMarkers,
   zones,
+  partial,
   captureRef,
   isHidden = true,
 }: StandingsImageViewProps) => {
+  const showHeading = partial !== 'bottom';
+  const showFooter = partial !== 'top';
   const headingExtraContent = (
     <div className={styles.headingExtraContent}>
       <span className={styles.competitionLabel}>{`${competitionName} ${competitionSeason}`}</span>
@@ -64,22 +69,31 @@ export const StandingsImageView = ({
       aria-hidden="true"
     >
       <div ref={captureRef} className={styles.captureSurface}>
-        <div className={styles.innerWrapper}>
-          <AppHeading shouldFullRender extraContent={headingExtraContent} />
+        <div
+          className={clsx(
+            styles.innerWrapper,
+            partial === 'top' && styles.innerWrapperTop,
+            partial === 'bottom' && styles.innerWrapperBottom,
+          )}
+        >
+          {showHeading && <AppHeading shouldFullRender extraContent={headingExtraContent} />}
           <StandingsTable
             standings={standings}
             deductionMarkers={deductionMarkers}
             zones={zones}
+            partial={partial}
             disableVerticalScroll
             isRenderView
           />
-          <footer className={styles.footer}>
-            <KBoltIcon size={16} className={styles.footerIcon} />
-            <span>
-              Football Predictor by <span className={styles.footerBold}>kapowaz</span>. Make your
-              own prediction at <span className={styles.footerBold}>{SITE_URL}</span>
-            </span>
-          </footer>
+          {showFooter && (
+            <footer className={styles.footer}>
+              <KBoltIcon size={16} className={styles.footerIcon} />
+              <span>
+                Football Predictor by <span className={styles.footerBold}>kapowaz</span>. Make your
+                own prediction at <span className={styles.footerBold}>{SITE_URL}</span>
+              </span>
+            </footer>
+          )}
         </div>
       </div>
     </div>

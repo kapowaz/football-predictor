@@ -10,6 +10,8 @@ interface StandingsTableProps {
   standings: TeamStanding[];
   deductionMarkers?: Map<number, string>;
   zones: ZoneDefinition[];
+  /** Optionally render only the top or bottom half of standings. */
+  partial?: 'top' | 'bottom';
   /** Called when a form badge is clicked, with the match ID */
   onPredictionClick?: (matchId: number) => void;
   /** Disable internal vertical scrolling on the table container. */
@@ -67,12 +69,42 @@ export const StandingsTable = ({
   standings,
   deductionMarkers,
   zones,
+  partial,
   onPredictionClick,
   disableVerticalScroll = false,
   disableTableBorderRadius = false,
   isRenderView = false,
 }: StandingsTableProps) => {
   const containerRef = useScrollDirectionLock<HTMLDivElement>();
+  const renderCellPaddingClass = isRenderView ? styles.cellRenderNoHorizontalPaddingStrong : undefined;
+  const renderCellRightPaddingClass = isRenderView ? styles.cellRenderNoRightPaddingStrong : undefined;
+  const headerBaseClassName = clsx(renderCellPaddingClass, isRenderView && styles.thLarge);
+  const teamHeaderClassName = clsx(
+    styles.th,
+    styles.stickyCellTh,
+    renderCellRightPaddingClass,
+    isRenderView && styles.thLarge,
+  );
+  const statsHeaderClassName = clsx(styles.thCenter, styles.thStats, headerBaseClassName);
+  const formHeaderClassName = clsx(styles.thCenter, headerBaseClassName);
+  const centeredBodyCellClassName = clsx(styles.tdCenter, renderCellPaddingClass);
+  const midpoint = Math.floor(standings.length / 2);
+  const sliceStart = partial === 'bottom' ? midpoint : 0;
+  const sliceEnd = partial === 'top' ? midpoint : standings.length;
+  const displayedStandings = standings.slice(sliceStart, sliceEnd);
+  const shouldRenderHeader = partial !== 'bottom';
+  const containerPartialClass =
+    partial === 'top'
+      ? styles.containerTopPartial
+      : partial === 'bottom'
+        ? styles.containerBottomPartial
+        : undefined;
+  const tablePartialClass =
+    partial === 'top'
+      ? styles.tableTopPartial
+      : partial === 'bottom'
+        ? styles.tableBottomPartial
+        : undefined;
 
   return (
     <div
@@ -80,80 +112,60 @@ export const StandingsTable = ({
       className={clsx(
         styles.container,
         disableVerticalScroll && styles.containerNoVerticalScroll,
+        !disableTableBorderRadius && containerPartialClass,
         disableTableBorderRadius && styles.containerNoBorderRadius,
       )}
     >
-      <table className={clsx(styles.table, isRenderView && styles.tableLarge)}>
-        <thead className={styles.thead}>
-          <tr>
-            <th
-              className={clsx(
-                styles.th,
-                styles.stickyCellTh,
-                isRenderView && styles.thLarge,
-              )}
-            >
-              Team
-            </th>
-            <th className={clsx(styles.thCenter, styles.thStats, isRenderView && styles.thLarge)}>
-              P
-            </th>
-            <th className={clsx(styles.thCenter, styles.thStats, isRenderView && styles.thLarge)}>
-              GD
-            </th>
-            <th className={clsx(styles.thCenter, styles.thStats, isRenderView && styles.thLarge)}>
-              Pts
-            </th>
-            <th className={clsx(styles.thCenter, styles.thStats, isRenderView && styles.thLarge)}>
-              W
-            </th>
-            <th className={clsx(styles.thCenter, styles.thStats, isRenderView && styles.thLarge)}>
-              D
-            </th>
-            <th className={clsx(styles.thCenter, styles.thStats, isRenderView && styles.thLarge)}>
-              L
-            </th>
-            <th className={clsx(styles.thCenter, styles.thStats, isRenderView && styles.thLarge)}>
-              GF
-            </th>
-            <th className={clsx(styles.thCenter, styles.thStats, isRenderView && styles.thLarge)}>
-              GA
-            </th>
-            <th className={clsx(styles.thCenter, isRenderView && styles.thLarge)}>Form</th>
-          </tr>
-        </thead>
+      <table
+        className={clsx(
+          styles.table,
+          isRenderView && styles.tableLarge,
+          isRenderView && styles.tableRenderLayoutFixed,
+          !disableTableBorderRadius && tablePartialClass,
+          disableTableBorderRadius && styles.tableNoBorderRadius,
+        )}
+      >
+        {isRenderView && (
+          <colgroup>
+            <col />
+            <col className={styles.colStat} />
+            <col className={styles.colStat} />
+            <col className={styles.colStat} />
+            <col className={styles.colStat} />
+            <col className={styles.colStat} />
+            <col className={styles.colStat} />
+            <col className={styles.colStat} />
+            <col className={styles.colStat} />
+            <col className={styles.colForm} />
+          </colgroup>
+        )}
+        {shouldRenderHeader && (
+          <thead className={styles.thead}>
+            <tr>
+              <th className={teamHeaderClassName}>Team</th>
+              <th className={statsHeaderClassName}>P</th>
+              {!isRenderView && <th className={statsHeaderClassName}>GD</th>}
+              {!isRenderView && <th className={statsHeaderClassName}>Pts</th>}
+              <th className={statsHeaderClassName}>W</th>
+              <th className={statsHeaderClassName}>D</th>
+              <th className={statsHeaderClassName}>L</th>
+              <th className={statsHeaderClassName}>GF</th>
+              <th className={statsHeaderClassName}>GA</th>
+              {isRenderView && <th className={statsHeaderClassName}>GD</th>}
+              {isRenderView && <th className={statsHeaderClassName}>Pts</th>}
+              <th className={formHeaderClassName}>Form</th>
+            </tr>
+          </thead>
+        )}
         <tbody>
-          {standings.map((standing, index) => {
-            const zone = getZoneForPosition(index + 1, zones);
-            const rowStyle = zoneRowStyles[zone][index % 2];
-            return (
-              <tr key={standing.team.id} className={clsx(styles.tr, rowStyle)}>
-                <td className={clsx(styles.td, styles.stickyCell)}>
-                  <div className={styles.teamCell}>
-                    <span
-                      className={clsx(
-                        styles.position,
-                        styles.positionNumber,
-                        zonePositionStyles[zone],
-                      )}
-                    >
-                      {index + 1}
-                    </span>
-                    <img
-                      src={getCrest(standing.team.crest)}
-                      alt={standing.team.name}
-                      className={styles.crest}
-                    />
-                    <span className={styles.teamName}>
-                      <span className={styles.teamShortName}>{standing.team.shortName}</span>
-                      <span className={styles.teamTla}>{standing.team.tla}</span>
-                      {deductionMarkers?.get(standing.team.id)}
-                    </span>
-                  </div>
-                </td>
-                <td className={styles.tdCenter}>{standing.played}</td>
+          {displayedStandings.map((standing, sliceIndex) => {
+            const tableIndex = sliceStart + sliceIndex;
+            const zone = getZoneForPosition(tableIndex + 1, zones);
+            const rowStyle = zoneRowStyles[zone][tableIndex % 2];
+            const gdAndPtsCells = (
+              <>
                 <td
-                  className={clsx(styles.tdCenter, styles.goalDiff, {
+                  className={clsx(centeredBodyCellClassName, styles.goalDiff, {
                     [styles.positive]: standing.goalDifference > 0,
                     [styles.negative]: standing.goalDifference < 0,
                   })}
@@ -162,18 +174,54 @@ export const StandingsTable = ({
                 </td>
                 <td
                   className={clsx(
-                    styles.tdCenter,
+                    centeredBodyCellClassName,
                     styles.points,
                     isRenderView && styles.pointsLarge,
                   )}
                 >
                   {standing.points}
                 </td>
-                <td className={styles.tdCenter}>{standing.won}</td>
-                <td className={styles.tdCenter}>{standing.drawn}</td>
-                <td className={styles.tdCenter}>{standing.lost}</td>
-                <td className={styles.tdCenter}>{standing.goalsFor}</td>
-                <td className={styles.tdCenter}>{standing.goalsAgainst}</td>
+              </>
+            );
+            return (
+              <tr key={standing.team.id} className={clsx(styles.tr, rowStyle)}>
+                <td
+                  className={clsx(
+                    styles.td,
+                    styles.stickyCell,
+                    isRenderView && styles.cellRenderNoRightPaddingStrong,
+                  )}
+                >
+                  <div className={styles.teamCell}>
+                    <span
+                      className={clsx(
+                        styles.position,
+                        styles.positionNumber,
+                        zonePositionStyles[zone],
+                      )}
+                    >
+                      {tableIndex + 1}
+                    </span>
+                    <img
+                      src={getCrest(standing.team.crest)}
+                      alt={standing.team.name}
+                      className={styles.crest}
+                    />
+                    <span className={clsx(styles.teamName, isRenderView && styles.teamNameRender)}>
+                      <span className={styles.teamShortName}>{standing.team.shortName}</span>
+                      <span className={styles.teamTla}>{standing.team.tla}</span>
+                      {deductionMarkers?.get(standing.team.id)}
+                    </span>
+                  </div>
+                </td>
+                <td className={centeredBodyCellClassName}>{standing.played}</td>
+                {!isRenderView && gdAndPtsCells}
+                <td className={centeredBodyCellClassName}>{standing.won}</td>
+                <td className={centeredBodyCellClassName}>{standing.drawn}</td>
+                <td className={centeredBodyCellClassName}>{standing.lost}</td>
+                <td className={centeredBodyCellClassName}>{standing.goalsFor}</td>
+                <td className={centeredBodyCellClassName}>{standing.goalsAgainst}</td>
+                {isRenderView && gdAndPtsCells}
                 <td className={styles.td}>
                   <div className={styles.formCell}>
                     {standing.form.map((entry, i) =>

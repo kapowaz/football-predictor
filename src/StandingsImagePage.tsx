@@ -16,7 +16,8 @@ interface StandingsImageContentProps {
 }
 
 const StandingsImageContent = ({ slug, config }: StandingsImageContentProps) => {
-  const captureRef = useRef<HTMLDivElement>(null);
+  const topCaptureRef = useRef<HTMLDivElement>(null);
+  const bottomCaptureRef = useRef<HTMLDivElement>(null);
   const { theme, toggleTheme } = useTheme();
   const { teams, matches, defaultDeductions } = useCompetitionData(slug);
   const { predictions, deductions } = useCompetitionSession({
@@ -53,7 +54,19 @@ const StandingsImageContent = ({ slug, config }: StandingsImageContentProps) => 
         deductionNotes={deductionNotes}
         deductionMarkers={deductionMarkers}
         zones={config.zones}
-        captureRef={captureRef}
+        partial="top"
+        captureRef={topCaptureRef}
+        isHidden={false}
+      />
+      <StandingsImageView
+        standings={standings}
+        competitionName={config.name}
+        competitionSeason={config.season}
+        deductionNotes={deductionNotes}
+        deductionMarkers={deductionMarkers}
+        zones={config.zones}
+        partial="bottom"
+        captureRef={bottomCaptureRef}
         isHidden={false}
       />
     </div>
