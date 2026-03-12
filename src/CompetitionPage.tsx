@@ -78,7 +78,6 @@ const CompetitionContent = ({ slug, config }: CompetitionContentProps) => {
   const { isSummaryOpen, dismissSummary } = useSeasonSummary(matches, predictions);
 
   const pageContentRef = useRef<HTMLDivElement>(null);
-  const standingsPanelRef = useRef<HTMLDivElement>(null);
   const standingsCaptureRef = useRef<HTMLDivElement>(null);
 
   const [captureWidth, setCaptureWidth] = useState(688);
@@ -170,24 +169,6 @@ const CompetitionContent = ({ slug, config }: CompetitionContentProps) => {
   }, [config.name, config.season, slug]);
 
   useEffect(() => {
-    const panel = standingsPanelRef.current;
-    if (!panel) return;
-
-    const updateWidth = () => {
-      const nextWidth = Math.round(panel.getBoundingClientRect().width);
-      if (nextWidth > 0) {
-        setCaptureWidth(nextWidth);
-      }
-    };
-
-    updateWidth();
-
-    const observer = new ResizeObserver(() => updateWidth());
-    observer.observe(panel);
-    return () => observer.disconnect();
-  }, []);
-
-  useEffect(() => {
     const timeoutId = window.setTimeout(() => {
       void renderStandingsImage();
     }, 0);
@@ -238,7 +219,6 @@ const CompetitionContent = ({ slug, config }: CompetitionContentProps) => {
 
         <main className={styles.main}>
           <div
-            ref={standingsPanelRef}
             className={`${styles.panel} ${activeTab !== 'standings' ? styles.hiddenOnMobile : ''}`}
           >
             <div className={styles.panelHeaderWithNotes}>

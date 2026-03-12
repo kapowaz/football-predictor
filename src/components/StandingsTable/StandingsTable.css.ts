@@ -65,16 +65,9 @@ export const container = style({
   backgroundColor: colorBgSurface,
   borderRadius: radiusLg,
   boxShadow: shadowMd,
-  overflowX: 'hidden',
+  overflowX: 'auto',
   overflowY: 'auto',
   minHeight: 0,
-  '@media': {
-    'screen and (max-width: 680px)': {
-      borderRadius: 0,
-      boxShadow: 'none',
-      overflow: 'auto',
-    },
-  },
 });
 
 export const containerNoBorderRadius = style({
@@ -143,11 +136,11 @@ export const td = style({
   padding: `${space3} ${space2}`,
   color: colorTextPrimary,
   fontVariantNumeric: 'tabular-nums',
-  '@media': {
-    'screen and (max-width: 480px)': {
+  '@container': {
+    [`${tableContainer} (max-width: 480px)`]: {
       padding: `${space2} ${space1}`,
     },
-    'screen and (max-width: 680px)': {
+    [`${tableContainer} (max-width: 680px)`]: {
       padding: space2,
     },
   },
@@ -192,8 +185,8 @@ export const stickyCellTh = style([
     top: 0,
     zIndex: 3,
     backgroundColor: colorBgTableHead,
-    '@media': {
-      'screen and (max-width: 480px)': {
+    '@container': {
+      [`${tableContainer} (max-width: 480px)`]: {
         paddingLeft: '40px',
       },
     },
