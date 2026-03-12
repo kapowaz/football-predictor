@@ -13,8 +13,8 @@ interface CompetitionHeaderProps {
   onCompetitionChange: (slug: string) => void;
   /** The current active theme */
   theme: 'light' | 'dark';
-  /** Called when the user toggles the theme */
-  onThemeToggle: () => void;
+  /** Called with the next theme when the user toggles color mode */
+  onThemeToggle: (colorMode: 'light' | 'dark') => void;
 }
 
 export const CompetitionHeader = ({

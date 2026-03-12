@@ -35,7 +35,13 @@ export const useTheme = () => {
     return () => mq.removeEventListener('change', handleChange);
   }, []);
 
-  const toggleTheme = useCallback(() => {
+  const toggleTheme = useCallback((nextTheme?: Theme) => {
+    if (nextTheme) {
+      localStorage.setItem(STORAGE_KEY, nextTheme);
+      setTheme(nextTheme);
+      return;
+    }
+
     setTheme((prev) => {
       const next = prev === 'light' ? 'dark' : 'light';
       localStorage.setItem(STORAGE_KEY, next);

@@ -4,18 +4,23 @@ import * as styles from './ThemeToggle.css';
 interface ThemeToggleProps {
   /** The current active theme */
   theme: 'light' | 'dark';
-  /** Called when the user toggles the theme */
-  onToggle: () => void;
+  /** Called with the next color mode whenever the toggle is activated */
+  onToggle: (colorMode: 'light' | 'dark') => void;
 }
 
 export const ThemeToggle = ({ theme, onToggle }: ThemeToggleProps) => {
   const isLight = theme === 'light';
   const label = isLight ? 'Switch to dark mode' : 'Switch to light mode';
+  const nextColorMode = isLight ? 'dark' : 'light';
+
+  const handleClick = () => {
+    onToggle(nextColorMode);
+  };
 
   return (
     <button
       className={styles.toggleButton}
-      onClick={onToggle}
+      onClick={handleClick}
       aria-label={label}
       title={label}
     >
