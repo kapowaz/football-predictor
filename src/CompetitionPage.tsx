@@ -175,6 +175,7 @@ const CompetitionContent = ({ slug, config }: CompetitionContentProps) => {
               predictions={predictions}
               onPredictionChange={setPrediction}
               onPredictionRemove={removePrediction}
+              isVisible={activeTab === 'fixtures'}
               navigateToMatchId={navigateToMatchId}
               onNavigationComplete={handleNavigationComplete}
             />

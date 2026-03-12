@@ -13,6 +13,8 @@ interface FixtureListProps {
   predictions: PredictionsStore;
   onPredictionChange: (matchId: number, homeGoals: number, awayGoals: number) => void;
   onPredictionRemove: (matchId: number) => void;
+  /** Whether the fixtures panel is currently visible to the user */
+  isVisible?: boolean;
   /** When set, expands the date group containing this match and scrolls to its card */
   navigateToMatchId?: number | null;
   /** Called after navigation scroll completes so the parent can clear the target */
@@ -25,6 +27,7 @@ export const FixtureList = ({
   predictions,
   onPredictionChange,
   onPredictionRemove,
+  isVisible = true,
   navigateToMatchId,
   onNavigationComplete,
 }: FixtureListProps) => {
@@ -37,6 +40,7 @@ export const FixtureList = ({
   const expandedDateRef = useRef<string | null>(null);
   const pendingScrollMatchId = useRef<number | null>(null);
   const didAutoExpandInitialGroup = useRef(false);
+  const wasVisibleRef = useRef(isVisible);
 
   useEffect(() => {
     if (didAutoExpandInitialGroup.current) return;
@@ -78,6 +82,31 @@ export const FixtureList = ({
       });
     }
   }, [navigateToMatchId]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  useEffect(() => {
+    const becameVisible = isVisible && !wasVisibleRef.current;
+    wasVisibleRef.current = isVisible;
+
+    if (!becameVisible) return;
+    if (navigateToMatchId != null) return;
+    if (!containerRef.current) return;
+
+    const date = expandedDateRef.current;
+    if (!date) return;
+
+    const scrollToExpandedGroup = () => {
+      const el = dateRefs.current.get(date);
+      if (!el || !containerRef.current) return;
+      containerRef.current.scrollTo({
+        top: el.offsetTop,
+        behavior: 'smooth',
+      });
+    };
+
+    requestAnimationFrame(() => {
+      requestAnimationFrame(scrollToExpandedGroup);
+    });
+  }, [isVisible, navigateToMatchId]);
 
   const highlightCard = useCallback((card: Element) => {
     card.classList.add(cardHighlighted);
