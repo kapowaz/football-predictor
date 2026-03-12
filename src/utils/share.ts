@@ -10,7 +10,7 @@ export const generateShareText = (
   const zoneGroups = groupStandingsByZone(standings, competition.zones);
 
   const lines = [
-    `⚽ **${competition.fullTitle}**`,
+    `⚽ **[${competition.fullTitle}](${window.location.href})**`,
     ``,
     `🏆 Champions: ${champion?.team.name}`,
   ];
@@ -18,9 +18,6 @@ export const generateShareText = (
   for (const { zone, teams } of zoneGroups) {
     lines.push(`${zone.emoji} ${zone.label}: ${teams.map((s) => s.team.name).join(', ')}`);
   }
-
-  lines.push('');
-  lines.push(`[Check it out](${window.location.href})`);
 
   return lines.join('\n');
 };
