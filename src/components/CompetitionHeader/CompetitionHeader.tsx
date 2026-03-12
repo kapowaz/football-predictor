@@ -1,7 +1,7 @@
 import type { CompetitionConfig } from '../../data/competitions';
 import { CompetitionSelect } from '../CompetitionSelect';
 import { ThemeToggle } from '../ThemeToggle';
-import footballPredictorLogo from '../../assets/football-predictor-logo.svg';
+import { AppHeading } from '../AppHeading';
 import * as styles from './CompetitionHeader.css';
 
 interface CompetitionHeaderProps {
@@ -26,10 +26,7 @@ export const CompetitionHeader = ({
 }: CompetitionHeaderProps) => {
   return (
     <header className={styles.header}>
-      <img src={footballPredictorLogo} alt="Football Predictor" className={styles.logo} />
-      <h1 className={styles.title}>
-        <span className={styles.titlePrefix}>Football </span>Predictor
-      </h1>
+      <AppHeading />
       <div className={styles.controls}>
         {competitions.length > 1 && (
           <div className={styles.competitionSelectWrapper}>
