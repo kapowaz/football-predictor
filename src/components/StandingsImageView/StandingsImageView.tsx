@@ -1,4 +1,5 @@
 import type { RefObject } from 'react';
+import clsx from 'clsx';
 import type { ZoneDefinition } from '../../data/competitions';
 import type { TeamStanding } from '../../types';
 import { StandingsTable } from '../StandingsTable/StandingsTable';
@@ -15,8 +16,6 @@ interface StandingsImageViewProps {
   zones: ZoneDefinition[];
   /** Ref attached to the rendered capture node for image export. */
   captureRef: RefObject<HTMLDivElement | null>;
-  /** Fixed CSS width (px) used for deterministic image layout. */
-  captureWidth?: number;
   /** Whether the capture root should be visually hidden off-screen. */
   isHidden?: boolean;
 }
@@ -26,13 +25,11 @@ export const StandingsImageView = ({
   deductionMarkers,
   zones,
   captureRef,
-  captureWidth = DEFAULT_STANDINGS_IMAGE_WIDTH,
   isHidden = true,
 }: StandingsImageViewProps) => {
   return (
     <div
-      className={isHidden ? styles.hiddenCaptureRoot : undefined}
-      style={{ width: `${captureWidth}px` }}
+      className={clsx(styles.outerWrapper, isHidden ? styles.hiddenCaptureRoot : undefined)}
       aria-hidden="true"
     >
       <div ref={captureRef} className={styles.captureSurface}>

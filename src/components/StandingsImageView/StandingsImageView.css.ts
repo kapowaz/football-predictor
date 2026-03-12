@@ -8,6 +8,10 @@ export const hiddenCaptureRoot = style({
   zIndex: -1,
 });
 
+export const outerWrapper = style({
+  width: '688px',
+});
+
 export const captureSurface = style({
   width: '100%',
   minWidth: 0,
