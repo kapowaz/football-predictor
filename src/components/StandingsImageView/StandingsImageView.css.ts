@@ -52,9 +52,19 @@ export const headingExtraContent = style({
 });
 
 export const competitionLabel = style({
+  display: 'inline-flex',
+  alignItems: 'center',
+  gap: space2,
   fontSize: fontSizeLg,
   fontWeight: 600,
   color: colorTextHeading,
+});
+
+export const competitionLogo = style({
+  width: '24px',
+  height: '24px',
+  objectFit: 'contain',
+  flexShrink: 0,
 });
 
 export const deductionNotes = style({
@@ -71,7 +81,7 @@ export const deductionNote = style({
 export const footerContainer = style({
   display: 'flex',
   alignItems: 'flex-start',
-  height: '45px',
+  height: 'calc(45px + 48px)',
 });
 
 export const footer = style({

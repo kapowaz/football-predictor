@@ -11,6 +11,8 @@ import * as styles from './StandingsImageView.css';
 interface StandingsImageViewProps {
   /** Pre-computed standings rows for image rendering. */
   standings: TeamStanding[];
+  /** Competition logo shown in image heading. */
+  competitionLogo: string;
   /** Competition name shown in image heading. */
   competitionName: string;
   /** Competition season shown in image heading. */
@@ -33,6 +35,7 @@ const SITE_URL = 'kapowaz.github.io/football-predictor/';
 
 export const StandingsImageView = ({
   standings,
+  competitionLogo,
   competitionName,
   competitionSeason,
   deductionNotes,
@@ -46,7 +49,14 @@ export const StandingsImageView = ({
   const showFooter = partial !== 'top';
   const headingExtraContent = (
     <div className={styles.headingExtraContent}>
-      <span className={styles.competitionLabel}>{`${competitionName} ${competitionSeason}`}</span>
+      <span className={styles.competitionLabel}>
+        <img
+          src={competitionLogo}
+          alt={`${competitionName} logo`}
+          className={styles.competitionLogo}
+        />
+        <span>{`${competitionName} ${competitionSeason}`}</span>
+      </span>
       {deductionNotes.length > 0 && (
         <div className={styles.deductionNotes}>
           {deductionNotes.map((note) => (

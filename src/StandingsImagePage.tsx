@@ -49,6 +49,7 @@ const StandingsImageContent = ({ slug, config }: StandingsImageContentProps) => 
       </header>
       <StandingsImageView
         standings={standings}
+        competitionLogo={config.logo}
         competitionName={config.name}
         competitionSeason={config.season}
         deductionNotes={deductionNotes}
@@ -60,6 +61,7 @@ const StandingsImageContent = ({ slug, config }: StandingsImageContentProps) => 
       />
       <StandingsImageView
         standings={standings}
+        competitionLogo={config.logo}
         competitionName={config.name}
         competitionSeason={config.season}
         deductionNotes={deductionNotes}
