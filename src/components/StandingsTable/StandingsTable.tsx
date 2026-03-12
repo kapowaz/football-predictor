@@ -100,7 +100,8 @@ export const StandingsTable = ({ standings, deductionMarkers, zones, onPredictio
                       className={styles.crest}
                     />
                     <span className={styles.teamName}>
-                      {standing.team.shortName}
+                      <span className={styles.teamShortName}>{standing.team.shortName}</span>
+                      <span className={styles.teamTla}>{standing.team.tla}</span>
                       {deductionMarkers?.get(standing.team.id)}
                     </span>
                   </div>

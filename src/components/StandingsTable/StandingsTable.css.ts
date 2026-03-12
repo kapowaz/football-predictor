@@ -248,6 +248,23 @@ export const teamName = style({
   fontWeight: 500,
 });
 
+export const teamShortName = style({
+  '@container': {
+    [`${tableContainer} (max-width: 479px)`]: {
+      display: 'none',
+    },
+  },
+});
+
+export const teamTla = style({
+  display: 'none',
+  '@container': {
+    [`${tableContainer} (max-width: 479px)`]: {
+      display: 'inline',
+    },
+  },
+});
+
 export const points = style({
   fontWeight: 700,
   fontSize: fontSizeMd,
