@@ -28,7 +28,7 @@ BASE_DATA_DIR = os.path.join(SCRIPT_DIR, "..", "src", "data")
 
 ALL_COMPETITIONS = ["premier-league", "efl-championship", "efl-league-one", "efl-league-two"]
 
-with open(os.path.join(SCRIPT_DIR, "..", "src", "enabled-competitions.json")) as _f:
+with open(os.path.join(SCRIPT_DIR, "..", "src", "data", "enabled-competitions.json")) as _f:
     ENABLED_COMPETITIONS = json.load(_f)
 
 FORM_LENGTH = 6

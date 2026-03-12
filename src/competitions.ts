@@ -35,10 +35,9 @@ export interface CompetitionConfig {
 
 /**
  * Slugs of competitions that have data available and should be shown in the UI.
- * Edit src/enabled-competitions.json to control which competitions are active.
+ * Edit src/data/enabled-competitions.json to control which competitions are active.
  */
-import ENABLED_COMPETITION_SLUGS from './enabled-competitions.json';
-export { ENABLED_COMPETITION_SLUGS };
+import ENABLED_COMPETITION_SLUGS from './data/enabled-competitions.json';
 
 export const COMPETITIONS: Record<string, CompetitionConfig> = {
   'premier-league': {

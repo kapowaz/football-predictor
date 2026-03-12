@@ -16,7 +16,7 @@ export interface ScriptCompetition {
  * Slugs of competitions that have API data available.
  * Scripts using --all will only process these competitions.
  */
-import ENABLED_COMPETITION_SLUGS from '../src/enabled-competitions.json';
+import ENABLED_COMPETITION_SLUGS from '../src/data/enabled-competitions.json';
 
 export const COMPETITIONS: Record<string, ScriptCompetition> = {
   'efl-championship': {

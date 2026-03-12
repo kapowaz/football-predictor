@@ -5,7 +5,7 @@ import type {
   ApiStandingsData,
   ModelPredictionsData,
 } from '../types';
-import { ENABLED_COMPETITION_SLUGS } from '../competitions';
+import ENABLED_COMPETITION_SLUGS from './enabled-competitions.json';
 
 import * as eflChampionship from './efl-championship';
 import * as eflLeagueOne from './efl-league-one';
