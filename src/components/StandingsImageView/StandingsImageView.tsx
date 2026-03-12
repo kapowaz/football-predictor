@@ -19,6 +19,8 @@ interface StandingsImageViewProps {
   captureRef: RefObject<HTMLDivElement | null>;
   /** Fixed CSS width (px) used for deterministic image layout. */
   captureWidth?: number;
+  /** Whether the capture root should be visually hidden off-screen. */
+  isHidden?: boolean;
 }
 
 export const StandingsImageView = ({
@@ -26,6 +28,7 @@ export const StandingsImageView = ({
   zones,
   captureRef,
   captureWidth = DEFAULT_STANDINGS_IMAGE_WIDTH,
+  isHidden = true,
 }: StandingsImageViewProps) => {
   const { teams, matches, defaultDeductions } = useCompetitionData(slug);
   const { predictions } = usePredictions(slug, matches);
@@ -37,7 +40,11 @@ export const StandingsImageView = ({
   );
 
   return (
-    <div className={styles.hiddenCaptureRoot} style={{ width: `${captureWidth}px` }} aria-hidden="true">
+    <div
+      className={isHidden ? styles.hiddenCaptureRoot : undefined}
+      style={{ width: `${captureWidth}px` }}
+      aria-hidden="true"
+    >
       <div ref={captureRef} className={styles.captureSurface}>
         <StandingsTable
           standings={standings}
