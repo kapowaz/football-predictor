@@ -86,8 +86,8 @@ const CompetitionContent = ({ slug, config }: CompetitionContentProps) => {
           competitions,
           activeSlug: slug,
           onCompetitionChange: (s) => navigate(`/${s}/`),
-          theme,
-          onThemeToggle: toggleTheme,
+          colorMode: theme,
+          onColorModeToggle: toggleTheme,
         }}
         onDownloadImage={onDownloadImage}
         isRenderingImage={isRenderingImage}

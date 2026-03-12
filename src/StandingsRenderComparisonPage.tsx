@@ -2,7 +2,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { domToPng as modernScreenshotToPng } from 'modern-screenshot';
 import { TabBar } from './components/TabBar';
 import { StandingsTable } from './components/StandingsTable/StandingsTable';
-import { ThemeToggle } from './components/ThemeToggle';
+import { ColorModeToggle } from './components/ColorModeToggle';
 import { useCompetitionData } from './hooks/useCompetitionData';
 import { useStandings } from './hooks/useStandings';
 import { useTheme } from './hooks/useTheme';
@@ -123,7 +123,7 @@ export const StandingsRenderComparisonPage = () => {
     };
   }, [renderAll]);
 
-  const handleThemeToggle = useCallback(
+  const handleColorModeToggle = useCallback(
     (colorMode: 'light' | 'dark') => {
       toggleTheme(colorMode);
 
@@ -185,7 +185,7 @@ export const StandingsRenderComparisonPage = () => {
       <header className={styles.header}>
         <div className={styles.headerTopRow}>
           <h1 className={styles.title}>Standings Render Comparison</h1>
-          <ThemeToggle theme={theme} onToggle={handleThemeToggle} />
+          <ColorModeToggle colorMode={theme} onColorModeToggle={handleColorModeToggle} />
         </div>
         <p className={styles.subtitle}>
           EFL Championship table rendered from localStorage predictions (if present), with full table

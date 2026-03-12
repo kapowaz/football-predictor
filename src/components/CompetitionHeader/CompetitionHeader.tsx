@@ -1,6 +1,6 @@
 import type { CompetitionConfig } from '../../data/competitions';
 import { CompetitionSelect } from '../CompetitionSelect';
-import { ThemeToggle } from '../ThemeToggle';
+import { ColorModeToggle } from '../ColorModeToggle';
 import { AppHeading } from '../AppHeading';
 import * as styles from './CompetitionHeader.css';
 
@@ -11,18 +11,18 @@ interface CompetitionHeaderProps {
   activeSlug: string;
   /** Called when the user selects a different competition */
   onCompetitionChange: (slug: string) => void;
-  /** The current active theme */
-  theme: 'light' | 'dark';
-  /** Called with the next theme when the user toggles color mode */
-  onThemeToggle: (colorMode: 'light' | 'dark') => void;
+  /** The current active color mode */
+  colorMode: 'light' | 'dark';
+  /** Called with the next color mode when the user toggles it */
+  onColorModeToggle: (colorMode: 'light' | 'dark') => void;
 }
 
 export const CompetitionHeader = ({
   competitions,
   activeSlug,
   onCompetitionChange,
-  theme,
-  onThemeToggle,
+  colorMode,
+  onColorModeToggle,
 }: CompetitionHeaderProps) => {
   return (
     <header className={styles.header}>
@@ -37,7 +37,7 @@ export const CompetitionHeader = ({
             />
           </div>
         )}
-        <ThemeToggle theme={theme} onToggle={onThemeToggle} />
+        <ColorModeToggle colorMode={colorMode} onColorModeToggle={onColorModeToggle} />
       </div>
     </header>
   );
