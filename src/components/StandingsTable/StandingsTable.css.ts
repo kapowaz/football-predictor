@@ -133,11 +133,11 @@ export const th = style({
   top: 0,
   zIndex: 2,
   backgroundColor: colorBgTableHead,
-  '@media': {
-    'screen and (min-width: 480px)': {
+  '@container': {
+    [`${tableContainer} (min-width: 480px)`]: {
       padding: space2,
     },
-    'screen and (min-width: 680px)': {
+    [`${tableContainer} (min-width: 680px)`]: {
       padding: `${space3} ${space2}`,
     },
   },
@@ -187,16 +187,6 @@ export const td = style({
 export const cellRenderNoHorizontalPadding = style({
   paddingLeft: 0,
   paddingRight: 0,
-  '@media': {
-    'screen and (min-width: 480px)': {
-      paddingLeft: 0,
-      paddingRight: 0,
-    },
-    'screen and (min-width: 680px)': {
-      paddingLeft: 0,
-      paddingRight: 0,
-    },
-  },
   '@container': {
     [`${tableContainer} (max-width: 480px)`]: {
       paddingLeft: 0,
@@ -256,9 +246,13 @@ export const stickyCellTh = style([
     top: 0,
     zIndex: 3,
     backgroundColor: colorBgTableHead,
+    paddingLeft: space3,
     '@container': {
-      [`${tableContainer} (max-width: 480px)`]: {
-        paddingLeft: '40px',
+      [`${tableContainer} (min-width: 480px)`]: {
+        paddingLeft: space3,
+      },
+      [`${tableContainer} (min-width: 680px)`]: {
+        paddingLeft: space3,
       },
     },
   },
@@ -267,16 +261,6 @@ export const stickyCellTh = style([
 export const cellRenderNoHorizontalPaddingStrong = style({
   paddingLeft: 0,
   paddingRight: 0,
-  '@media': {
-    'screen and (min-width: 480px)': {
-      paddingLeft: 0,
-      paddingRight: 0,
-    },
-    'screen and (min-width: 680px)': {
-      paddingLeft: 0,
-      paddingRight: 0,
-    },
-  },
   '@container': {
     [`${tableContainer} (max-width: 480px)`]: {
       paddingLeft: 0,
@@ -299,14 +283,6 @@ export const cellRenderNoHorizontalPaddingStrong = style({
 
 export const cellRenderNoRightPaddingStrong = style({
   paddingRight: 0,
-  '@media': {
-    'screen and (min-width: 480px)': {
-      paddingRight: 0,
-    },
-    'screen and (min-width: 680px)': {
-      paddingRight: 0,
-    },
-  },
   '@container': {
     [`${tableContainer} (max-width: 480px)`]: {
       paddingRight: 0,

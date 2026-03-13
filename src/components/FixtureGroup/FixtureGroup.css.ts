@@ -4,8 +4,9 @@ import {
   colorTextHover,
   colorTextActive,
   colorSuccess,
-  colorDanger,
-  colorNeutral,
+  colorResultWin,
+  colorResultLoss,
+  colorResultDraw,
   colorNeutralLight,
   fontSizeSm,
   space1,
@@ -78,13 +79,13 @@ export const fixtureCircle = style({
 });
 
 export const fixtureCircleHomeWin = style({
-  backgroundColor: colorSuccess,
+  backgroundColor: colorResultWin,
 });
 
 export const fixtureCircleAwayWin = style({
-  backgroundColor: colorDanger,
+  backgroundColor: colorResultLoss,
 });
 
 export const fixtureCircleDraw = style({
-  backgroundColor: colorNeutral,
+  backgroundColor: colorResultDraw,
 });
