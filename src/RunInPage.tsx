@@ -95,6 +95,7 @@ const RunInContent = ({ slug, config }: RunInContentProps) => {
             zoneGuaranteedByTeamId={zoneGuaranteedByTeamId}
             zones={config.zones}
             partial="top"
+            hasGradient
             onPredictionClick={(matchId) => {
               setActiveTab('fixtures');
               setNavigateToMatchId(matchId);

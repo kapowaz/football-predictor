@@ -116,6 +116,16 @@ export const tableBottomPartial = style({
   borderRadius: `0 0 ${radiusLg} ${radiusLg}`,
 });
 
+export const tableGradientBottom = style({
+  WebkitMaskImage: 'linear-gradient(to bottom, black 75%, transparent 100%)',
+  maskImage: 'linear-gradient(to bottom, black 75%, transparent 100%)',
+});
+
+export const tableGradientTop = style({
+  WebkitMaskImage: 'linear-gradient(to top, black 75%, transparent 100%)',
+  maskImage: 'linear-gradient(to top, black 75%, transparent 100%)',
+});
+
 export const thead = style({
   backgroundColor: colorBgTableHead,
 });

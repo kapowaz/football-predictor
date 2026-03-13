@@ -23,6 +23,8 @@ interface StandingsTableProps {
   disableTableBorderRadius?: boolean;
   /** Increase table text size when rendered for image/export views. */
   isRenderView?: boolean;
+  /** Apply a gradient fade mask to the edge opposite the visible partial. Only valid when `partial` is set. */
+  hasGradient?: boolean;
 }
 
 const formatGD = (gd: number): string => {
@@ -78,6 +80,7 @@ export const StandingsTable = ({
   disableVerticalScroll = false,
   disableTableBorderRadius = false,
   isRenderView = false,
+  hasGradient = false,
 }: StandingsTableProps) => {
   const containerRef = useScrollDirectionLock<HTMLDivElement>();
   const renderCellPaddingClass = isRenderView ? styles.cellRenderNoHorizontalPaddingStrong : undefined;
@@ -109,6 +112,12 @@ export const StandingsTable = ({
       : partial === 'bottom'
         ? styles.tableBottomPartial
         : undefined;
+  const tableGradientClass =
+    hasGradient && partial === 'top'
+      ? styles.tableGradientBottom
+      : hasGradient && partial === 'bottom'
+        ? styles.tableGradientTop
+        : undefined;
 
   return (
     <div
@@ -127,6 +136,7 @@ export const StandingsTable = ({
           isRenderView && styles.tableRenderLayoutFixed,
           !disableTableBorderRadius && tablePartialClass,
           disableTableBorderRadius && styles.tableNoBorderRadius,
+          tableGradientClass,
         )}
       >
         {isRenderView && (
