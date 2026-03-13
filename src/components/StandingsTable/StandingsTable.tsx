@@ -46,6 +46,17 @@ const formButtonStyles: Record<FormResult, string> = {
   L: styles.formLossButton,
 };
 
+const zonePositionStyles: Record<ZoneType | 'default', string | undefined> = {
+  champions: styles.positionChampions,
+  promotion: styles.positionPromotion,
+  playoff: styles.positionPlayoff,
+  championsLeague: styles.positionChampionsLeague,
+  europaLeague: styles.positionEuropaLeague,
+  conferenceLeague: styles.positionConferenceLeague,
+  relegation: styles.positionRelegation,
+  default: undefined,
+};
+
 const zoneRowStyles: Record<ZoneType | 'default', [string, string]> = {
   champions: [styles.zoneChampionsEven, styles.zoneChampionsOdd],
   promotion: [styles.zonePromotionEven, styles.zonePromotionOdd],
@@ -189,7 +200,13 @@ export const StandingsTable = ({
                     {shouldRenderGuaranteedPositionBadge(standing.team.id, zoneGuaranteedByTeamId) ? (
                       <StandingPosition position={tableIndex + 1} zones={zones} />
                     ) : (
-                      <span className={clsx(styles.position, styles.positionNumber)}>
+                      <span
+                        className={clsx(
+                          styles.position,
+                          styles.positionNumber,
+                          zonePositionStyles[zone],
+                        )}
+                      >
                         {tableIndex + 1}
                       </span>
                     )}

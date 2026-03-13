@@ -309,7 +309,7 @@ export const position = style({
 
 export const positionNumber = style({
   display: 'inline-block',
-  minWidth: '24px',
+  minWidth: '22px',
 });
 
 export const positionPromotion = style({
