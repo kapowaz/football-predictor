@@ -8,6 +8,13 @@ export interface GroupedMatches {
   allPredicted: boolean;
 }
 
+interface UseGroupedMatchesOptions {
+  /** Include completed fixtures in grouped results. */
+  showFinished?: boolean;
+  /** Optional team filter; matches must involve one of these team IDs. */
+  filterTeams?: number[];
+}
+
 const formatDateLabel = (dateStr: string): string => {
   const date = new Date(dateStr);
   return date.toLocaleDateString('en-GB', {
@@ -24,12 +31,26 @@ const getDateKey = (utcDate: string): string => {
 export const useGroupedMatches = (
   matches: Match[],
   predictions: PredictionsStore,
+  { showFinished = true, filterTeams = [] }: UseGroupedMatchesOptions = {},
 ): GroupedMatches[] => {
+  const filterTeamSet = useMemo(() => new Set(filterTeams), [filterTeams]);
+  const hasTeamFilter = filterTeams.length > 0;
+
   const visibleMatches = useMemo(() => {
     return matches
-      .filter((match) => match.status === 'SCHEDULED' || match.status === 'FINISHED')
+      .filter((match) => {
+        if (match.status !== 'SCHEDULED' && !(showFinished && match.status === 'FINISHED')) {
+          return false;
+        }
+
+        if (!hasTeamFilter) {
+          return true;
+        }
+
+        return filterTeamSet.has(match.homeTeamId) || filterTeamSet.has(match.awayTeamId);
+      })
       .sort((a, b) => new Date(a.utcDate).getTime() - new Date(b.utcDate).getTime());
-  }, [matches]);
+  }, [filterTeamSet, hasTeamFilter, matches, showFinished]);
 
   return useMemo(() => {
     const groups = new Map<string, Match[]>();

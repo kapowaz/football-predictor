@@ -10,21 +10,15 @@ import {
 } from '../../state/selectors';
 import { useCompetitionSessionSlice } from '../../state/useCompetitionSessionSlice';
 import type { CompetitionConfig } from '../../data/competitions';
-import { CompetitionHeader } from '../CompetitionHeader';
-import { TabBar } from '../TabBar';
+import { AppHeader } from '../AppHeader';
+import { AppPanels } from '../AppPanels';
 import { StandingsTable } from '../StandingsTable/StandingsTable';
 import { Button } from '../Button';
 import { FixtureList } from '../FixtureList/FixtureList';
 import { BrainIcon, ImageDownIcon, TrendingDownIcon } from '../icons';
 import * as styles from './CompetitionPanels.css.ts';
 
-type CompetitionHeaderProps = ComponentProps<typeof CompetitionHeader>;
-type TabBarProps = ComponentProps<typeof TabBar>;
-
-const TABS = [
-  { id: 'standings', label: 'Standings' },
-  { id: 'fixtures', label: 'Fixtures' },
-] as const;
+type AppHeaderProps = ComponentProps<typeof AppHeader>;
 
 interface CompetitionPanelsProps {
   /** Competition slug used to source state for panels. */
@@ -34,7 +28,7 @@ interface CompetitionPanelsProps {
   /** Page wrapper ref used for page-level animations. */
   pageContentRef: RefObject<HTMLDivElement | null>;
   /** Props passed through to the page header. */
-  headerProps: CompetitionHeaderProps;
+  headerProps: AppHeaderProps;
   /** Downloads the generated standings image. */
   onDownloadImage: () => void;
   /** True while standings image generation is in progress. */
@@ -99,20 +93,16 @@ export const CompetitionPanels = ({
     setNavigateToMatchId(matchId);
   };
 
-  const handleTabChange: TabBarProps['onTabChange'] = (tabId) => {
-    setActiveTab(tabId === 'fixtures' ? 'fixtures' : 'standings');
-  };
-
   return (
-    <div ref={pageContentRef} className={styles.pageContent}>
-      <CompetitionHeader {...headerProps} />
-
-      <TabBar tabs={[...TABS]} activeTab={session.activeTab} onTabChange={handleTabChange} />
-
-      <main className={styles.main}>
-        <div
-          className={`${styles.panel} ${session.activeTab !== 'standings' ? styles.hiddenOnMobile : ''}`}
-        >
+    <AppPanels
+      pageContentRef={pageContentRef}
+      activeTab={session.activeTab}
+      onTabChange={setActiveTab}
+      standingsTabLabel="Standings"
+      fixturesTabLabel="Fixtures"
+      header={<AppHeader {...headerProps} />}
+      standingsPanel={
+        <>
           <div className={styles.panelHeaderWithNotes}>
             <h2 className={styles.panelTitle}>Standings</h2>
             <div className={styles.panelHeaderDeductions}>
@@ -151,11 +141,10 @@ export const CompetitionPanels = ({
             zones={config.zones}
             onPredictionClick={handlePredictionClick}
           />
-        </div>
-
-        <div
-          className={`${styles.panelGuttered} ${session.activeTab !== 'fixtures' ? styles.hiddenOnMobile : ''}`}
-        >
+        </>
+      }
+      fixturesPanel={
+        <>
           <div className={styles.panelHeader}>
             <h2 className={styles.panelTitle}>Fixtures</h2>
             <div className={styles.panelHeaderActions}>
@@ -173,8 +162,8 @@ export const CompetitionPanels = ({
             </div>
           </div>
           <FixtureList slug={slug} isVisible={session.activeTab === 'fixtures'} />
-        </div>
-      </main>
-    </div>
+        </>
+      }
+    />
   );
 };

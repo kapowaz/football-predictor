@@ -2,28 +2,28 @@ import type { CompetitionConfig } from '../../data/competitions';
 import { CompetitionSelect } from '../CompetitionSelect';
 import { ColorModeToggle } from '../ColorModeToggle';
 import { AppHeading } from '../AppHeading';
-import * as styles from './CompetitionHeader.css';
+import * as styles from './AppHeader.css';
 
-interface CompetitionHeaderProps {
-  /** All available competitions to show in the select dropdown */
+interface AppHeaderProps {
+  /** All available competitions to show in the select dropdown. */
   competitions: CompetitionConfig[];
-  /** Currently active competition slug */
+  /** Currently active competition slug. */
   activeSlug: string;
-  /** Called when the user selects a different competition */
+  /** Called when the user selects a different competition. */
   onCompetitionChange: (slug: string) => void;
-  /** The current active color mode */
+  /** The current active color mode. */
   colorMode: 'light' | 'dark';
-  /** Called with the next color mode when the user toggles it */
+  /** Called with the next color mode when the user toggles it. */
   onColorModeToggle: (colorMode: 'light' | 'dark') => void;
 }
 
-export const CompetitionHeader = ({
+export const AppHeader = ({
   competitions,
   activeSlug,
   onCompetitionChange,
   colorMode,
   onColorModeToggle,
-}: CompetitionHeaderProps) => {
+}: AppHeaderProps) => {
   return (
     <header className={styles.header}>
       <AppHeading />

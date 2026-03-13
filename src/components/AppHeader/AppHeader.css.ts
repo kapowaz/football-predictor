@@ -1,10 +1,5 @@
 import { style } from '@vanilla-extract/css';
-import {
-  space2,
-  space4,
-  space6,
-  maxWidthContent,
-} from '../../theme.css';
+import { space2, space4, space6, maxWidthContent } from '../../theme.css';
 
 export const header = style({
   display: 'flex',

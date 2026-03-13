@@ -14,18 +14,26 @@ interface FixtureListProps {
   slug: string;
   /** Whether the fixtures panel is currently visible to the user */
   isVisible?: boolean;
+  /** Whether completed fixtures should be included. */
+  showFinished?: boolean;
+  /** Optional list of team IDs to keep in the fixture list. */
+  filterTeams?: number[];
 }
+
+const EMPTY_FILTER_TEAMS: number[] = [];
 
 export const FixtureList = ({
   slug,
   isVisible = true,
+  showFinished = true,
+  filterTeams = EMPTY_FILTER_TEAMS,
 }: FixtureListProps) => {
   const { teams, matches } = useCompetitionData(slug);
   const { session, setPrediction, removePrediction, setNavigateToMatchId } = useCompetitionSessionSlice(slug);
   const predictions = session?.predictions ?? { predictions: {}, lastModified: '' };
   const navigateToMatchId = session?.navigateToMatchId ?? null;
   const teamsById = selectTeamsById(teams);
-  const groupedMatches = useGroupedMatches(matches, predictions);
+  const groupedMatches = useGroupedMatches(matches, predictions, { showFinished, filterTeams });
 
   const [expandedDate, setExpandedDate] = useState<string | null>(null);
   const dateRefs = useRef<Map<string, HTMLDivElement>>(new Map());
@@ -57,7 +65,11 @@ export const FixtureList = ({
     if (navigateToMatchId == null) return;
 
     const group = groupedMatches.find((g) => g.matches.some((m) => m.id === navigateToMatchId));
-    if (!group) return;
+    if (!group) {
+      setNavigateToMatchId(null);
+      pendingScrollMatchId.current = null;
+      return;
+    }
 
     pendingScrollMatchId.current = navigateToMatchId;
 
@@ -72,7 +84,7 @@ export const FixtureList = ({
         return group.date;
       });
     }
-  }, [navigateToMatchId]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [groupedMatches, navigateToMatchId, setNavigateToMatchId]); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     const becameVisible = isVisible && !wasVisibleRef.current;
