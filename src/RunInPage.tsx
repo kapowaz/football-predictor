@@ -43,11 +43,12 @@ const RunInContent = ({ slug, config }: RunInContentProps) => {
     defaultDeductions,
     persistenceMode: 'full',
   });
-  const { standings, deductionMarkers } = selectStandingsViewModel(
+  const { standings, deductionMarkers, zoneGuaranteedByTeamId } = selectStandingsViewModel(
     teams,
     matches,
     predictions,
     deductions,
+    config.zones,
   );
   const midpoint = Math.floor(standings.length / 2);
   const topHalfTeamIds = useMemo(
@@ -91,6 +92,7 @@ const RunInContent = ({ slug, config }: RunInContentProps) => {
           <StandingsTable
             standings={standings}
             deductionMarkers={deductionMarkers}
+            zoneGuaranteedByTeamId={zoneGuaranteedByTeamId}
             zones={config.zones}
             partial="top"
             onPredictionClick={(matchId) => {

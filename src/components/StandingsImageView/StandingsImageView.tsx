@@ -21,6 +21,8 @@ interface StandingsImageViewProps {
   deductionNotes: DeductionNote[];
   /** Pre-computed deduction markers keyed by team id. */
   deductionMarkers: Map<number, string>;
+  /** Teams guaranteed to hit their current zone outcome. */
+  zoneGuaranteedByTeamId?: Map<number, boolean>;
   /** Competition zones from config (promotion/relegation bands). */
   zones: ZoneDefinition[];
   /** Optionally render only the top or bottom half of standings content. */
@@ -40,6 +42,7 @@ export const StandingsImageView = ({
   competitionSeason,
   deductionNotes,
   deductionMarkers,
+  zoneGuaranteedByTeamId,
   zones,
   partial,
   captureRef,
@@ -90,6 +93,7 @@ export const StandingsImageView = ({
           <StandingsTable
             standings={standings}
             deductionMarkers={deductionMarkers}
+            zoneGuaranteedByTeamId={zoneGuaranteedByTeamId}
             zones={zones}
             partial={partial}
             disableVerticalScroll

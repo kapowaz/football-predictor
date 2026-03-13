@@ -46,11 +46,12 @@ const CompetitionContent = ({ slug, config }: CompetitionContentProps) => {
     persistenceMode: 'full',
   });
 
-  const { standings, deductionMarkers } = selectStandingsViewModel(
+  const { standings, deductionMarkers, zoneGuaranteedByTeamId } = selectStandingsViewModel(
     teams,
     matches,
     predictions,
     deductions,
+    config.zones,
   );
   const teamsById = selectTeamsById(teams);
   const deductionNotes = selectDeductionNotes(deductions, teamsById);
@@ -89,6 +90,7 @@ const CompetitionContent = ({ slug, config }: CompetitionContentProps) => {
         competitionSeason={config.season}
         deductionNotes={deductionNotes}
         deductionMarkers={deductionMarkers}
+        zoneGuaranteedByTeamId={zoneGuaranteedByTeamId}
         zones={config.zones}
         partial="top"
         captureRef={topStandingsCaptureRef}
@@ -100,6 +102,7 @@ const CompetitionContent = ({ slug, config }: CompetitionContentProps) => {
         competitionSeason={config.season}
         deductionNotes={deductionNotes}
         deductionMarkers={deductionMarkers}
+        zoneGuaranteedByTeamId={zoneGuaranteedByTeamId}
         zones={config.zones}
         partial="bottom"
         captureRef={bottomStandingsCaptureRef}

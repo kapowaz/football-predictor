@@ -63,11 +63,12 @@ export const CompetitionPanels = ({
       return null;
     }
 
-    const { standings, deductionMarkers } = selectStandingsViewModel(
+    const { standings, deductionMarkers, zoneGuaranteedByTeamId } = selectStandingsViewModel(
       teams,
       matches,
       session.predictions,
       session.deductions,
+      config.zones,
     );
     const deductionNotes = selectDeductionNotes(session.deductions, teamsById);
     const predictedCount = selectPredictedCount(session.predictions);
@@ -76,11 +77,12 @@ export const CompetitionPanels = ({
     return {
       standings,
       deductionMarkers,
+      zoneGuaranteedByTeamId,
       deductionNotes,
       predictedCount,
       allScheduledPredicted,
     };
-  }, [matches, session, teams, teamsById]);
+  }, [config.zones, matches, session, teams, teamsById]);
 
   const hasModelPredictions = Object.keys(modelPredictions).length > 0;
 
@@ -138,6 +140,7 @@ export const CompetitionPanels = ({
           <StandingsTable
             standings={panelModel.standings}
             deductionMarkers={panelModel.deductionMarkers}
+            zoneGuaranteedByTeamId={panelModel.zoneGuaranteedByTeamId}
             zones={config.zones}
             onPredictionClick={handlePredictionClick}
           />

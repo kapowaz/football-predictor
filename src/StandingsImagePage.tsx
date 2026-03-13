@@ -26,11 +26,12 @@ const StandingsImageContent = ({ slug, config }: StandingsImageContentProps) => 
     defaultDeductions,
     persistenceMode: 'storageOnly',
   });
-  const { standings, deductionMarkers } = selectStandingsViewModel(
+  const { standings, deductionMarkers, zoneGuaranteedByTeamId } = selectStandingsViewModel(
     teams,
     matches,
     predictions,
     deductions,
+    config.zones,
   );
   const teamsById = selectTeamsById(teams);
   const deductionNotes = selectDeductionNotes(deductions, teamsById);
@@ -54,6 +55,7 @@ const StandingsImageContent = ({ slug, config }: StandingsImageContentProps) => 
         competitionSeason={config.season}
         deductionNotes={deductionNotes}
         deductionMarkers={deductionMarkers}
+        zoneGuaranteedByTeamId={zoneGuaranteedByTeamId}
         zones={config.zones}
         partial="top"
         captureRef={topCaptureRef}
@@ -66,6 +68,7 @@ const StandingsImageContent = ({ slug, config }: StandingsImageContentProps) => 
         competitionSeason={config.season}
         deductionNotes={deductionNotes}
         deductionMarkers={deductionMarkers}
+        zoneGuaranteedByTeamId={zoneGuaranteedByTeamId}
         zones={config.zones}
         partial="bottom"
         captureRef={bottomCaptureRef}

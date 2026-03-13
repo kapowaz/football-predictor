@@ -4,11 +4,14 @@ import type { ZoneDefinition, ZoneType } from '../../data/competitions';
 import { getCrest } from '../../assets/crests';
 import { getZoneForPosition } from '../../utils/zones';
 import { useScrollDirectionLock } from '../../hooks/useScrollDirectionLock';
+import { StandingPosition } from '../StandingPosition';
+import { shouldRenderGuaranteedPositionBadge } from './positionBadge';
 import * as styles from './StandingsTable.css';
 
 interface StandingsTableProps {
   standings: TeamStanding[];
   deductionMarkers?: Map<number, string>;
+  zoneGuaranteedByTeamId?: Map<number, boolean>;
   zones: ZoneDefinition[];
   /** Optionally render only the top or bottom half of standings. */
   partial?: 'top' | 'bottom';
@@ -54,20 +57,10 @@ const zoneRowStyles: Record<ZoneType | 'default', [string, string]> = {
   default: [styles.rowEven, styles.rowOdd],
 };
 
-const zonePositionStyles: Record<ZoneType | 'default', string | undefined> = {
-  champions: styles.positionChampions,
-  promotion: styles.positionPromotion,
-  playoff: styles.positionPlayoff,
-  championsLeague: styles.positionChampionsLeague,
-  europaLeague: styles.positionEuropaLeague,
-  conferenceLeague: styles.positionConferenceLeague,
-  relegation: styles.positionRelegation,
-  default: undefined,
-};
-
 export const StandingsTable = ({
   standings,
   deductionMarkers,
+  zoneGuaranteedByTeamId,
   zones,
   partial,
   onPredictionClick,
@@ -193,15 +186,13 @@ export const StandingsTable = ({
                   )}
                 >
                   <div className={styles.teamCell}>
-                    <span
-                      className={clsx(
-                        styles.position,
-                        styles.positionNumber,
-                        zonePositionStyles[zone],
-                      )}
-                    >
-                      {tableIndex + 1}
-                    </span>
+                    {shouldRenderGuaranteedPositionBadge(standing.team.id, zoneGuaranteedByTeamId) ? (
+                      <StandingPosition position={tableIndex + 1} zones={zones} />
+                    ) : (
+                      <span className={clsx(styles.position, styles.positionNumber)}>
+                        {tableIndex + 1}
+                      </span>
+                    )}
                     <img
                       src={getCrest(standing.team.crest)}
                       alt={standing.team.name}
@@ -225,7 +216,7 @@ export const StandingsTable = ({
                 <td className={styles.td}>
                   <div className={styles.formCell}>
                     {standing.form.map((entry, i) =>
-                      onPredictionClick ? (
+                      onPredictionClick && entry.isPrediction ? (
                         <button
                           key={i}
                           type="button"

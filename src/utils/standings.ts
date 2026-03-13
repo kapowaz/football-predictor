@@ -10,7 +10,7 @@ import type {
 
 const FORM_LENGTH = 6;
 
-interface MatchResult {
+export interface MatchResult {
   matchId: number;
   isPrediction: boolean;
   homeTeamId: number;
@@ -70,7 +70,7 @@ const applyResult = (standing: TeamStanding, goalsFor: number, goalsAgainst: num
  * Returns < 0 if team A ranks higher, > 0 if team B ranks higher, 0 if still tied.
  * Compares by: h2h points, then h2h goal difference, then away goals scored.
  */
-const getHeadToHead = (teamAId: number, teamBId: number, results: MatchResult[]): number => {
+export const getHeadToHead = (teamAId: number, teamBId: number, results: MatchResult[]): number => {
   const h2hMatches = results.filter(
     (r) =>
       (r.homeTeamId === teamAId && r.awayTeamId === teamBId) ||
@@ -118,25 +118,27 @@ const getHeadToHead = (teamAId: number, teamBId: number, results: MatchResult[])
   return 0;
 };
 
-export const calculateStandings = (
-  teams: Team[],
+export const compareTeamStandings = (a: TeamStanding, b: TeamStanding, results: MatchResult[]): number => {
+  if (b.points !== a.points) return b.points - a.points;
+  if (b.goalDifference !== a.goalDifference) return b.goalDifference - a.goalDifference;
+  if (b.goalsFor !== a.goalsFor) return b.goalsFor - a.goalsFor;
+
+  const h2h = getHeadToHead(a.team.id, b.team.id, results);
+  if (h2h !== 0) return h2h;
+
+  return a.team.name.localeCompare(b.team.name);
+};
+
+export const resolveMatchResults = (
   matches: Match[],
   predictions: PredictionsStore,
-  deductions: PointDeduction[] = [],
-): TeamStanding[] => {
-  const standingsMap = new Map<number, TeamStanding>();
-
-  for (const team of teams) {
-    standingsMap.set(team.id, createEmptyStanding(team));
-  }
-
+  teamsById: Map<number, Team>,
+): MatchResult[] => {
   const results: MatchResult[] = [];
 
   for (const match of matches) {
-    const homeTeam = standingsMap.get(match.homeTeamId);
-    const awayTeam = standingsMap.get(match.awayTeamId);
-    const homeTeamName = homeTeam?.team.shortName ?? '';
-    const awayTeamName = awayTeam?.team.shortName ?? '';
+    const homeTeamName = teamsById.get(match.homeTeamId)?.shortName ?? '';
+    const awayTeamName = teamsById.get(match.awayTeamId)?.shortName ?? '';
 
     if (match.status === 'FINISHED' && match.homeGoals !== null && match.awayGoals !== null) {
       results.push({
@@ -149,7 +151,10 @@ export const calculateStandings = (
         homeGoals: match.homeGoals,
         awayGoals: match.awayGoals,
       });
-    } else if (match.status === 'SCHEDULED') {
+      continue;
+    }
+
+    if (match.status === 'SCHEDULED') {
       const prediction = predictions.predictions[String(match.id)];
       if (prediction) {
         results.push({
@@ -165,6 +170,24 @@ export const calculateStandings = (
       }
     }
   }
+
+  return results;
+};
+
+export const calculateStandings = (
+  teams: Team[],
+  matches: Match[],
+  predictions: PredictionsStore,
+  deductions: PointDeduction[] = [],
+): TeamStanding[] => {
+  const standingsMap = new Map<number, TeamStanding>();
+
+  for (const team of teams) {
+    standingsMap.set(team.id, createEmptyStanding(team));
+  }
+
+  const teamsById = new Map(teams.map((team) => [team.id, team] as const));
+  const results = resolveMatchResults(matches, predictions, teamsById);
 
   for (const result of results) {
     const homeStanding = standingsMap.get(result.homeTeamId);
@@ -200,17 +223,7 @@ export const calculateStandings = (
   }
 
   const standings = Array.from(standingsMap.values());
-
-  standings.sort((a, b) => {
-    if (b.points !== a.points) return b.points - a.points;
-    if (b.goalDifference !== a.goalDifference) return b.goalDifference - a.goalDifference;
-    if (b.goalsFor !== a.goalsFor) return b.goalsFor - a.goalsFor;
-
-    const h2h = getHeadToHead(a.team.id, b.team.id, results);
-    if (h2h !== 0) return h2h;
-
-    return a.team.name.localeCompare(b.team.name);
-  });
+  standings.sort((a, b) => compareTeamStandings(a, b, results));
 
   return standings;
 };
