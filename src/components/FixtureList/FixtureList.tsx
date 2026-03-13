@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import clsx from 'clsx';
+import type { ZoneDefinition } from '../../data/competitions';
 import { useCompetitionData } from '../../hooks/useCompetitionData';
 import { useGroupedMatches } from '../../hooks/useGroupedMatches';
 import { selectTeamsById } from '../../state/selectors';
@@ -18,6 +19,10 @@ interface FixtureListProps {
   showFinished?: boolean;
   /** Optional list of team IDs to keep in the fixture list. */
   filterTeams?: number[];
+  /** Optional lookup for current standings positions keyed by team id. */
+  standingPositionsByTeamId?: ReadonlyMap<number, number>;
+  /** Optional zones used to style position badges in fixture cards. */
+  standingPositionZones?: ZoneDefinition[];
 }
 
 const EMPTY_FILTER_TEAMS: number[] = [];
@@ -27,6 +32,8 @@ export const FixtureList = ({
   isVisible = true,
   showFinished = true,
   filterTeams = EMPTY_FILTER_TEAMS,
+  standingPositionsByTeamId,
+  standingPositionZones,
 }: FixtureListProps) => {
   const { teams, matches } = useCompetitionData(slug);
   const { session, setPrediction, removePrediction, setNavigateToMatchId } = useCompetitionSessionSlice(slug);
@@ -253,6 +260,9 @@ export const FixtureList = ({
                         status={match.status}
                         homeTeam={homeTeam}
                         awayTeam={awayTeam}
+                        homePosition={standingPositionsByTeamId?.get(match.homeTeamId)}
+                        awayPosition={standingPositionsByTeamId?.get(match.awayTeamId)}
+                        zones={standingPositionZones}
                         result={{ homeGoals: match.homeGoals, awayGoals: match.awayGoals }}
                       />
                     );
@@ -265,6 +275,9 @@ export const FixtureList = ({
                       status={match.status}
                       homeTeam={homeTeam}
                       awayTeam={awayTeam}
+                      homePosition={standingPositionsByTeamId?.get(match.homeTeamId)}
+                      awayPosition={standingPositionsByTeamId?.get(match.awayTeamId)}
+                      zones={standingPositionZones}
                       result={prediction}
                       onPredictionChange={setPrediction}
                       onPredictionRemove={removePrediction}

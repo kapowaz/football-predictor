@@ -1,6 +1,8 @@
 import clsx from 'clsx';
 import type { Match, Team } from '../../types';
+import type { ZoneDefinition } from '../../data/competitions';
 import { getCrest } from '../../assets/crests';
+import { StandingPosition } from '../StandingPosition';
 import { ScoreInput } from '../ScoreInput/ScoreInput';
 import * as styles from './FixtureCard.css';
 
@@ -9,6 +11,12 @@ interface FixtureCardBaseProps {
   status: Match['status'];
   homeTeam: Team;
   awayTeam: Team;
+  /** Optional home-team standing position to render next to team name. */
+  homePosition?: number;
+  /** Optional away-team standing position to render next to team name. */
+  awayPosition?: number;
+  /** Competition zones used for optional standing position badge colours. */
+  zones?: ZoneDefinition[];
 }
 
 interface ScheduledFixtureCardProps extends FixtureCardBaseProps {
@@ -31,7 +39,9 @@ const formatKickoff = (utcDate: string): string => {
 };
 
 export const FixtureCard = (props: FixtureCardProps) => {
-  const { match, status, homeTeam, awayTeam, result } = props;
+  const { match, status, homeTeam, awayTeam, result, homePosition, awayPosition, zones } = props;
+  const hasHomePosition = zones != null && homePosition != null;
+  const hasAwayPosition = zones != null && awayPosition != null;
 
   const handleScoreChange = (homeGoals: number | null, awayGoals: number | null) => {
     if (status !== 'SCHEDULED') return;
@@ -51,21 +61,35 @@ export const FixtureCard = (props: FixtureCardProps) => {
         {status === 'SCHEDULED' ? (
           <label
             htmlFor={homeInputId}
-            className={clsx(styles.homeTeam, styles.teamInteractive)}
+            className={clsx(
+              styles.homeTeam,
+              hasHomePosition && styles.teamWithPosition,
+              styles.teamInteractive,
+            )}
           >
-            <span>
-              <span className={styles.teamName}>{homeTeam.shortName}</span>
-              <span className={styles.teamTla}>{homeTeam.tla}</span>
+            {hasHomePosition && <StandingPosition position={homePosition} zones={zones} />}
+            <span className={styles.homeTeamMain}>
+              <span className={styles.teamIdentity}>
+                <span>
+                  <span className={styles.teamName}>{homeTeam.shortName}</span>
+                  <span className={styles.teamTla}>{homeTeam.tla}</span>
+                </span>
+              </span>
+              <img src={getCrest(homeTeam.crest)} alt={homeTeam.name} className={styles.crest} />
             </span>
-            <img src={getCrest(homeTeam.crest)} alt={homeTeam.name} className={styles.crest} />
           </label>
         ) : (
-          <div className={styles.homeTeam}>
-            <span>
-              <span className={styles.teamName}>{homeTeam.shortName}</span>
-              <span className={styles.teamTla}>{homeTeam.tla}</span>
+          <div className={clsx(styles.homeTeam, hasHomePosition && styles.teamWithPosition)}>
+            {hasHomePosition && <StandingPosition position={homePosition} zones={zones} />}
+            <span className={styles.homeTeamMain}>
+              <span className={styles.teamIdentity}>
+                <span>
+                  <span className={styles.teamName}>{homeTeam.shortName}</span>
+                  <span className={styles.teamTla}>{homeTeam.tla}</span>
+                </span>
+              </span>
+              <img src={getCrest(homeTeam.crest)} alt={homeTeam.name} className={styles.crest} />
             </span>
-            <img src={getCrest(homeTeam.crest)} alt={homeTeam.name} className={styles.crest} />
           </div>
         )}
 
@@ -87,21 +111,35 @@ export const FixtureCard = (props: FixtureCardProps) => {
         {status === 'SCHEDULED' ? (
           <label
             htmlFor={awayInputId}
-            className={clsx(styles.awayTeam, styles.teamInteractive)}
+            className={clsx(
+              styles.awayTeam,
+              hasAwayPosition && styles.teamWithPosition,
+              styles.teamInteractive,
+            )}
           >
-            <img src={getCrest(awayTeam.crest)} alt={awayTeam.name} className={styles.crest} />
-            <span>
-              <span className={styles.teamName}>{awayTeam.shortName}</span>
-              <span className={styles.teamTla}>{awayTeam.tla}</span>
+            <span className={styles.awayTeamMain}>
+              <img src={getCrest(awayTeam.crest)} alt={awayTeam.name} className={styles.crest} />
+              <span className={styles.teamIdentity}>
+                <span>
+                  <span className={styles.teamName}>{awayTeam.shortName}</span>
+                  <span className={styles.teamTla}>{awayTeam.tla}</span>
+                </span>
+              </span>
             </span>
+            {hasAwayPosition && <StandingPosition position={awayPosition} zones={zones} />}
           </label>
         ) : (
-          <div className={styles.awayTeam}>
-            <img src={getCrest(awayTeam.crest)} alt={awayTeam.name} className={styles.crest} />
-            <span>
-              <span className={styles.teamName}>{awayTeam.shortName}</span>
-              <span className={styles.teamTla}>{awayTeam.tla}</span>
+          <div className={clsx(styles.awayTeam, hasAwayPosition && styles.teamWithPosition)}>
+            <span className={styles.awayTeamMain}>
+              <img src={getCrest(awayTeam.crest)} alt={awayTeam.name} className={styles.crest} />
+              <span className={styles.teamIdentity}>
+                <span>
+                  <span className={styles.teamName}>{awayTeam.shortName}</span>
+                  <span className={styles.teamTla}>{awayTeam.tla}</span>
+                </span>
+              </span>
             </span>
+            {hasAwayPosition && <StandingPosition position={awayPosition} zones={zones} />}
           </div>
         )}
       </div>

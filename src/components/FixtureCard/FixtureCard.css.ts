@@ -5,6 +5,7 @@ import {
   colorTextPrimary,
   fontFamilyMono,
   fontSizeBase,
+  space2,
   space3,
   space4,
   radiusLg,
@@ -43,6 +44,12 @@ export const team = style({
   flex: 1,
 });
 
+export const teamIdentity = style({
+  display: 'inline-flex',
+  alignItems: 'center',
+  gap: space2,
+});
+
 export const teamInteractive = style({
   cursor: 'pointer',
 });
@@ -62,6 +69,24 @@ export const awayTeam = style([
     textAlign: 'left',
   },
 ]);
+
+export const teamWithPosition = style({
+  justifyContent: 'space-between',
+});
+
+export const homeTeamMain = style({
+  display: 'inline-flex',
+  alignItems: 'center',
+  justifyContent: 'flex-end',
+  gap: space3,
+});
+
+export const awayTeamMain = style({
+  display: 'inline-flex',
+  alignItems: 'center',
+  justifyContent: 'flex-start',
+  gap: space3,
+});
 
 export const crest = style({
   width: '24px',
@@ -85,6 +110,7 @@ export const teamName = style([
   teamNameBase,
   {
     display: 'none',
+    whiteSpace: 'nowrap',
     '@container': {
       '(min-width: 400px)': {
         display: 'block',
@@ -97,6 +123,7 @@ export const teamTla = style([
   teamNameBase,
   {
     display: 'block',
+    whiteSpace: 'nowrap',
     '@container': {
       '(min-width: 400px)': {
         display: 'none',
