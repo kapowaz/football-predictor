@@ -54,6 +54,15 @@ const RunInContent = ({ slug, config }: RunInContentProps) => {
     () => standings.slice(0, midpoint).map((entry) => entry.team.id),
     [midpoint, standings],
   );
+  const standingPositionsByTeamId = useMemo(
+    () =>
+      new Map(
+        standings.map((entry, index) => {
+          return [entry.team.id, index + 1] as const;
+        }),
+      ),
+    [standings],
+  );
   const hasModelPredictions = Object.keys(modelPredictions).length > 0;
   const predictedCount = selectPredictedCount(predictions);
   const allScheduledPredicted = selectAllScheduledPredicted(matches, predictions);
@@ -114,6 +123,8 @@ const RunInContent = ({ slug, config }: RunInContentProps) => {
             isVisible={activeTab === 'fixtures'}
             showFinished={false}
             filterTeams={topHalfTeamIds}
+            standingPositionsByTeamId={standingPositionsByTeamId}
+            standingPositionZones={config.zones}
           />
         </>
       }
