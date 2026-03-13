@@ -52,6 +52,22 @@ export const colorTextZoneEuropaLeague = createVar();
 export const colorBgZoneConferenceLeague = createVar();
 export const colorBgZoneConferenceLeagueAlt = createVar();
 export const colorTextZoneConferenceLeague = createVar();
+export const colorBgStandingPositionDefault = createVar();
+export const colorTextStandingPositionDefault = createVar();
+export const colorBgStandingPositionPromotion = createVar();
+export const colorTextStandingPositionPromotion = createVar();
+export const colorBgStandingPositionPlayoff = createVar();
+export const colorTextStandingPositionPlayoff = createVar();
+export const colorBgStandingPositionRelegation = createVar();
+export const colorTextStandingPositionRelegation = createVar();
+export const colorBgStandingPositionChampions = createVar();
+export const colorTextStandingPositionChampions = createVar();
+export const colorBgStandingPositionChampionsLeague = createVar();
+export const colorTextStandingPositionChampionsLeague = createVar();
+export const colorBgStandingPositionEuropaLeague = createVar();
+export const colorTextStandingPositionEuropaLeague = createVar();
+export const colorBgStandingPositionConferenceLeague = createVar();
+export const colorTextStandingPositionConferenceLeague = createVar();
 export const colorBgModal = createVar();
 export const colorBgBackdrop = createVar();
 export const colorBgFixtureCard = createVar();
@@ -178,6 +194,24 @@ globalStyle(':root', {
     [colorBgZoneConferenceLeagueAlt]: tailwind.sky[200],
     [colorTextZoneConferenceLeague]: tailwind.sky[800],
 
+    // Intentionally inverted relative to the matching zone row text/background colors.
+    [colorBgStandingPositionDefault]: tailwind.slate[500],
+    [colorTextStandingPositionDefault]: tailwind.slate[200],
+    [colorBgStandingPositionPromotion]: tailwind.green[700],
+    [colorTextStandingPositionPromotion]: tailwind.green[200],
+    [colorBgStandingPositionPlayoff]: tailwind.teal[700],
+    [colorTextStandingPositionPlayoff]: tailwind.teal[200],
+    [colorBgStandingPositionRelegation]: tailwind.rose[700],
+    [colorTextStandingPositionRelegation]: tailwind.rose[200],
+    [colorBgStandingPositionChampions]: tailwind.green[700],
+    [colorTextStandingPositionChampions]: tailwind.green[200],
+    [colorBgStandingPositionChampionsLeague]: tailwind.teal[700],
+    [colorTextStandingPositionChampionsLeague]: tailwind.teal[200],
+    [colorBgStandingPositionEuropaLeague]: tailwind.cyan[700],
+    [colorTextStandingPositionEuropaLeague]: tailwind.cyan[200],
+    [colorBgStandingPositionConferenceLeague]: tailwind.sky[700],
+    [colorTextStandingPositionConferenceLeague]: tailwind.sky[200],
+
     [colorBgModal]: tailwind.white,
     [colorBgBackdrop]: `color-mix(in oklch, ${tailwind.black}, transparent 50%)`,
     [colorBgFixtureCard]: tailwind.white,
@@ -302,6 +336,24 @@ const darkVars = {
   [colorBgZoneConferenceLeague]: tailwind.sky[925],
   [colorBgZoneConferenceLeagueAlt]: tailwind.sky[950],
   [colorTextZoneConferenceLeague]: tailwind.sky[300],
+
+  // Intentionally inverted relative to the matching zone row text/background colors.
+  [colorBgStandingPositionDefault]: tailwind.slate[500],
+  [colorTextStandingPositionDefault]: tailwind.slate[800],
+  [colorBgStandingPositionPromotion]: tailwind.green[500],
+  [colorTextStandingPositionPromotion]: tailwind.green[900],
+  [colorBgStandingPositionPlayoff]: tailwind.teal[500],
+  [colorTextStandingPositionPlayoff]: tailwind.teal[900],
+  [colorBgStandingPositionRelegation]: tailwind.rose[400],
+  [colorTextStandingPositionRelegation]: tailwind.rose[900],
+  [colorBgStandingPositionChampions]: tailwind.green[500],
+  [colorTextStandingPositionChampions]: tailwind.green[800],
+  [colorBgStandingPositionChampionsLeague]: tailwind.teal[500],
+  [colorTextStandingPositionChampionsLeague]: tailwind.teal[800],
+  [colorBgStandingPositionEuropaLeague]: tailwind.cyan[500],
+  [colorTextStandingPositionEuropaLeague]: tailwind.cyan[800],
+  [colorBgStandingPositionConferenceLeague]: tailwind.sky[500],
+  [colorTextStandingPositionConferenceLeague]: tailwind.sky[800],
 
   [colorBgModal]: tailwind.slate[925],
   [colorBgBackdrop]: `color-mix(in oklch, ${tailwind.black}, transparent 40%)`,
