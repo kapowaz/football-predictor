@@ -317,8 +317,8 @@ const darkVars = {
   [colorBgZonePlayoffAlt]: tailwind.teal[950],
   [colorTextZonePlayoff]: tailwind.teal[200],
 
-  [colorBgZoneRelegation]: tailwind.rose[925],
-  [colorBgZoneRelegationAlt]: tailwind.rose[950],
+  [colorBgZoneRelegation]: tailwind.rose[950],
+  [colorBgZoneRelegationAlt]: tailwind.rose[975],
   [colorTextZoneRelegation]: tailwind.rose[200],
 
   [colorBgZoneChampions]: tailwind.green[925],

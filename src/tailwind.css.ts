@@ -4,7 +4,7 @@ import { createGlobalVar } from '@vanilla-extract/css';
 export const black = createGlobalVar('color-black');
 export const white = createGlobalVar('color-white');
 
-export const COLOR_STEPS = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 925, 950] as const;
+export const COLOR_STEPS = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 925, 950, 975] as const;
 export const COLOR_HUES = [
   'red',
   'orange',
@@ -102,6 +102,7 @@ export const palette = {
   [red[900]]: 'oklch(39.6% 0.141 25.723)',
   [red[925]]: 'oklch(32.7% 0.116 25.883)',
   [red[950]]: 'oklch(25.8% 0.092 26.042)',
+  [red[975]]: 'oklch(18.9% 0.068 26.201)',
 
   [orange[50]]: 'oklch(98% 0.016 73.684)',
   [orange[100]]: 'oklch(95.4% 0.038 75.164)',
@@ -115,6 +116,7 @@ export const palette = {
   [orange[900]]: 'oklch(40.8% 0.123 38.172)',
   [orange[925]]: 'oklch(33.7% 0.101 37.216)',
   [orange[950]]: 'oklch(26.6% 0.079 36.259)',
+  [orange[975]]: 'oklch(19.5% 0.057 35.302)',
 
   [amber[50]]: 'oklch(98.7% 0.022 95.277)',
   [amber[100]]: 'oklch(96.2% 0.059 95.617)',
@@ -128,6 +130,7 @@ export const palette = {
   [amber[900]]: 'oklch(41.4% 0.112 45.904)',
   [amber[925]]: 'oklch(34.7% 0.095 45.77)',
   [amber[950]]: 'oklch(27.9% 0.077 45.635)',
+  [amber[975]]: 'oklch(21.1% 0.059 45.5)',
 
   [yellow[50]]: 'oklch(98.7% 0.026 102.212)',
   [yellow[100]]: 'oklch(97.3% 0.071 103.193)',
@@ -141,6 +144,7 @@ export const palette = {
   [yellow[900]]: 'oklch(42.1% 0.095 57.708)',
   [yellow[925]]: 'oklch(35.4% 0.081 55.761)',
   [yellow[950]]: 'oklch(28.6% 0.066 53.813)',
+  [yellow[975]]: 'oklch(21.8% 0.051 51.865)',
 
   [lime[50]]: 'oklch(98.6% 0.031 120.757)',
   [lime[100]]: 'oklch(96.7% 0.067 122.328)',
@@ -154,6 +158,7 @@ export const palette = {
   [lime[900]]: 'oklch(40.5% 0.101 131.063)',
   [lime[925]]: 'oklch(34% 0.087 131.586)',
   [lime[950]]: 'oklch(27.4% 0.072 132.109)',
+  [lime[975]]: 'oklch(20.8% 0.057 132.632)',
 
   [green[50]]: 'oklch(98.2% 0.018 155.826)',
   [green[100]]: 'oklch(96.2% 0.044 156.743)',
@@ -167,6 +172,7 @@ export const palette = {
   [green[900]]: 'oklch(39.3% 0.095 152.535)',
   [green[925]]: 'oklch(33% 0.08 152.735)',
   [green[950]]: 'oklch(26.6% 0.065 152.934)',
+  [green[975]]: 'oklch(20.2% 0.05 153.133)',
 
   [emerald[50]]: 'oklch(97.9% 0.021 166.113)',
   [emerald[100]]: 'oklch(95% 0.052 163.051)',
@@ -180,6 +186,7 @@ export const palette = {
   [emerald[900]]: 'oklch(37.8% 0.077 168.94)',
   [emerald[925]]: 'oklch(32% 0.064 170.746)',
   [emerald[950]]: 'oklch(26.2% 0.051 172.552)',
+  [emerald[975]]: 'oklch(20.4% 0.038 174.358)',
 
   [teal[50]]: 'oklch(98.4% 0.014 180.72)',
   [teal[100]]: 'oklch(95.3% 0.051 180.801)',
@@ -193,6 +200,7 @@ export const palette = {
   [teal[900]]: 'oklch(38.6% 0.063 188.416)',
   [teal[925]]: 'oklch(33.2% 0.055 190.47)',
   [teal[950]]: 'oklch(27.7% 0.046 192.524)',
+  [teal[975]]: 'oklch(22.2% 0.037 194.578)',
 
   [cyan[50]]: 'oklch(98.4% 0.019 200.873)',
   [cyan[100]]: 'oklch(95.6% 0.045 203.388)',
@@ -206,6 +214,7 @@ export const palette = {
   [cyan[900]]: 'oklch(39.8% 0.07 227.392)',
   [cyan[925]]: 'oklch(35% 0.063 228.544)',
   [cyan[950]]: 'oklch(30.2% 0.056 229.695)',
+  [cyan[975]]: 'oklch(25.4% 0.049 230.846)',
 
   [sky[50]]: 'oklch(97.7% 0.013 236.62)',
   [sky[100]]: 'oklch(95.1% 0.026 236.824)',
@@ -219,6 +228,7 @@ export const palette = {
   [sky[900]]: 'oklch(39.1% 0.09 240.876)',
   [sky[925]]: 'oklch(34.2% 0.078 242.017)',
   [sky[950]]: 'oklch(29.3% 0.066 243.157)',
+  [sky[975]]: 'oklch(24.4% 0.054 244.297)',
 
   [blue[50]]: 'oklch(97% 0.014 254.604)',
   [blue[100]]: 'oklch(93.2% 0.032 255.585)',
@@ -232,6 +242,7 @@ export const palette = {
   [blue[900]]: 'oklch(37.9% 0.146 265.522)',
   [blue[925]]: 'oklch(33.1% 0.119 266.729)',
   [blue[950]]: 'oklch(28.2% 0.091 267.935)',
+  [blue[975]]: 'oklch(23.3% 0.063 269.141)',
 
   [indigo[50]]: 'oklch(96.2% 0.018 272.314)',
   [indigo[100]]: 'oklch(93% 0.034 272.788)',
@@ -245,6 +256,7 @@ export const palette = {
   [indigo[900]]: 'oklch(35.9% 0.144 278.697)',
   [indigo[925]]: 'oklch(30.8% 0.117 279.993)',
   [indigo[950]]: 'oklch(25.7% 0.09 281.288)',
+  [indigo[975]]: 'oklch(20.6% 0.063 282.583)',
 
   [violet[50]]: 'oklch(96.9% 0.016 293.756)',
   [violet[100]]: 'oklch(94.3% 0.029 294.588)',
@@ -258,6 +270,7 @@ export const palette = {
   [violet[900]]: 'oklch(38% 0.189 293.745)',
   [violet[925]]: 'oklch(33.2% 0.165 292.417)',
   [violet[950]]: 'oklch(28.3% 0.141 291.089)',
+  [violet[975]]: 'oklch(23.4% 0.117 289.761)',
 
   [purple[50]]: 'oklch(97.7% 0.014 308.299)',
   [purple[100]]: 'oklch(94.6% 0.033 307.174)',
@@ -271,6 +284,7 @@ export const palette = {
   [purple[900]]: 'oklch(38.1% 0.176 304.987)',
   [purple[925]]: 'oklch(33.6% 0.162 303.852)',
   [purple[950]]: 'oklch(29.1% 0.149 302.717)',
+  [purple[975]]: 'oklch(24.6% 0.136 301.582)',
 
   [fuchsia[50]]: 'oklch(97.7% 0.017 320.058)',
   [fuchsia[100]]: 'oklch(95.2% 0.037 318.852)',
@@ -284,6 +298,7 @@ export const palette = {
   [fuchsia[900]]: 'oklch(40.1% 0.17 325.612)',
   [fuchsia[925]]: 'oklch(34.7% 0.153 325.637)',
   [fuchsia[950]]: 'oklch(29.3% 0.136 325.661)',
+  [fuchsia[975]]: 'oklch(23.9% 0.119 325.685)',
 
   [pink[50]]: 'oklch(97.1% 0.014 343.198)',
   [pink[100]]: 'oklch(94.8% 0.028 342.258)',
@@ -297,6 +312,7 @@ export const palette = {
   [pink[900]]: 'oklch(40.8% 0.153 2.432)',
   [pink[925]]: 'oklch(34.6% 0.131 3.17)',
   [pink[950]]: 'oklch(28.4% 0.109 3.907)',
+  [pink[975]]: 'oklch(22.2% 0.087 4.644)',
 
   [rose[50]]: 'oklch(96.9% 0.015 12.422)',
   [rose[100]]: 'oklch(94.1% 0.03 12.58)',
@@ -310,6 +326,7 @@ export const palette = {
   [rose[900]]: 'oklch(41% 0.159 10.272)',
   [rose[925]]: 'oklch(34.1% 0.132 11.183)',
   [rose[950]]: 'oklch(27.1% 0.105 12.094)',
+  [rose[975]]: 'oklch(20.1% 0.078 13.005)',
 
   [slate[50]]: 'oklch(98.4% 0.003 247.858)',
   [slate[100]]: 'oklch(96.8% 0.007 247.896)',
@@ -323,6 +340,7 @@ export const palette = {
   [slate[900]]: 'oklch(20.8% 0.042 265.755)',
   [slate[925]]: 'oklch(16.9% 0.042 265.225)',
   [slate[950]]: 'oklch(12.9% 0.042 264.695)',
+  [slate[975]]: 'oklch(8.9% 0.042 264.165)',
 
   [gray[50]]: 'oklch(98.5% 0.002 247.839)',
   [gray[100]]: 'oklch(96.7% 0.003 264.542)',
@@ -336,6 +354,7 @@ export const palette = {
   [gray[900]]: 'oklch(21% 0.034 264.665)',
   [gray[925]]: 'oklch(17% 0.031 263.179)',
   [gray[950]]: 'oklch(13% 0.028 261.692)',
+  [gray[975]]: 'oklch(9% 0.025 260.205)',
 
   [zinc[50]]: 'oklch(98.5% 0 0)',
   [zinc[100]]: 'oklch(96.7% 0.001 286.375)',
@@ -349,6 +368,7 @@ export const palette = {
   [zinc[900]]: 'oklch(21% 0.006 285.885)',
   [zinc[925]]: 'oklch(17.6% 0.006 285.854)',
   [zinc[950]]: 'oklch(14.1% 0.005 285.823)',
+  [zinc[975]]: 'oklch(10.6% 0.004 285.792)',
 
   [neutral[50]]: 'oklch(98.5% 0 0)',
   [neutral[100]]: 'oklch(97% 0 0)',
@@ -362,6 +382,7 @@ export const palette = {
   [neutral[900]]: 'oklch(20.5% 0 0)',
   [neutral[925]]: 'oklch(17.5% 0 0)',
   [neutral[950]]: 'oklch(14.5% 0 0)',
+  [neutral[975]]: 'oklch(11.5% 0 0)',
 
   [stone[50]]: 'oklch(98.5% 0.001 106.423)',
   [stone[100]]: 'oklch(97% 0.001 106.424)',
@@ -375,6 +396,7 @@ export const palette = {
   [stone[900]]: 'oklch(21.6% 0.006 56.043)',
   [stone[925]]: 'oklch(18.2% 0.005 52.647)',
   [stone[950]]: 'oklch(14.7% 0.004 49.25)',
+  [stone[975]]: 'oklch(11.2% 0.003 45.853)',
 
   [mauve[50]]: 'oklch(98.5% 0 0)',
   [mauve[100]]: 'oklch(96% 0.003 325.6)',
@@ -388,6 +410,7 @@ export const palette = {
   [mauve[900]]: 'oklch(21.2% 0.019 322.12)',
   [mauve[925]]: 'oklch(17.9% 0.014 324.06)',
   [mauve[950]]: 'oklch(14.5% 0.008 326)',
+  [mauve[975]]: 'oklch(11.1% 0.002 327.94)',
 
   [olive[50]]: 'oklch(98.8% 0.003 106.5)',
   [olive[100]]: 'oklch(96.6% 0.005 106.5)',
@@ -401,6 +424,7 @@ export const palette = {
   [olive[900]]: 'oklch(22.8% 0.013 107.4)',
   [olive[925]]: 'oklch(19.1% 0.01 107.25)',
   [olive[950]]: 'oklch(15.3% 0.006 107.1)',
+  [olive[975]]: 'oklch(11.5% 0.002 106.95)',
 
   [mist[50]]: 'oklch(98.7% 0.002 197.1)',
   [mist[100]]: 'oklch(96.3% 0.002 197.1)',
@@ -414,6 +438,7 @@ export const palette = {
   [mist[900]]: 'oklch(21.8% 0.008 223.9)',
   [mist[925]]: 'oklch(18.3% 0.006 226.35)',
   [mist[950]]: 'oklch(14.8% 0.004 228.8)',
+  [mist[975]]: 'oklch(11.3% 0.002 231.25)',
 
   [taupe[50]]: 'oklch(98.6% 0.002 67.8)',
   [taupe[100]]: 'oklch(96% 0.002 17.2)',
@@ -427,4 +452,5 @@ export const palette = {
   [taupe[900]]: 'oklch(21.4% 0.009 43.1)',
   [taupe[925]]: 'oklch(18.1% 0.007 46.2)',
   [taupe[950]]: 'oklch(14.7% 0.004 49.3)',
+  [taupe[975]]: 'oklch(11.3% 0.001 52.4)',
 };
