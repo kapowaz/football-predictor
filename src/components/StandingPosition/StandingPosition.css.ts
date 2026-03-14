@@ -1,7 +1,9 @@
-import { style } from '@vanilla-extract/css';
+import { createVar, style } from '@vanilla-extract/css';
 import {
-  colorBgStandingPositionDefault,
-  colorTextStandingPositionDefault,
+  colorBgStandingPositionDefaultUpper,
+  colorTextStandingPositionDefaultUpper,
+  colorBgStandingPositionDefaultLower,
+  colorTextStandingPositionDefaultLower,
   colorBgStandingPositionPromotion,
   colorTextStandingPositionPromotion,
   colorBgStandingPositionPlayoff,
@@ -21,6 +23,8 @@ import {
   radiusMd,
 } from '../../theme.css';
 
+export const defaultPositionWeight = createVar();
+
 export const positionBadge = style({
   display: 'inline-flex',
   alignItems: 'center',
@@ -37,8 +41,11 @@ export const positionBadge = style({
 });
 
 export const zoneDefault = style({
-  backgroundColor: colorBgStandingPositionDefault,
-  color: colorTextStandingPositionDefault,
+  vars: {
+    [defaultPositionWeight]: '0%',
+  },
+  backgroundColor: `color-mix(in oklch, ${colorBgStandingPositionDefaultUpper}, ${colorBgStandingPositionDefaultLower} ${defaultPositionWeight})`,
+  color: `color-mix(in oklch, ${colorTextStandingPositionDefaultUpper}, ${colorTextStandingPositionDefaultLower} ${defaultPositionWeight})`,
 });
 
 export const zonePromotion = style({
