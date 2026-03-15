@@ -42,6 +42,8 @@ export const input = style({
 });
 
 export const separator = style({
+  flex: 1,
+  textAlign: 'center',
   fontSize: '12px',
   fontWeight: 600,
   color: colorTextMuted,
