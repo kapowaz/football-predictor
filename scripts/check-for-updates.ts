@@ -8,6 +8,7 @@
 
 import * as fs from 'node:fs';
 import { API_KEY, COMPETITIONS, fetchFromApi } from './common';
+import ENABLED_COMPETITION_SLUGS from '../src/data/enabled-competitions.json';
 
 const STATE_FILE = '.match-state.json';
 
@@ -31,7 +32,9 @@ const fetchFinishedCount = async (competitionCode: string): Promise<number> => {
 const main = async (): Promise<void> => {
   const current: Record<string, number> = {};
 
-  for (const comp of Object.values(COMPETITIONS)) {
+  const enabledCompetitions = ENABLED_COMPETITION_SLUGS.map((slug) => COMPETITIONS[slug]);
+
+  for (const comp of enabledCompetitions) {
     current[comp.footballDataCode] = await fetchFinishedCount(comp.footballDataCode);
     console.log(`${comp.name}: ${current[comp.footballDataCode]} finished matches`);
   }
