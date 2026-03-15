@@ -1,33 +1,19 @@
 import { useMemo } from 'react';
-import type { Match, PredictionsStore } from '../types';
+import type { Match, PredictionsStore, Team } from '../types';
 import type { FixtureGroupData } from '../components/FixtureList/types';
 
-export type { FixtureGroupData };
-
-interface UseGroupedMatchesOptions {
+interface UseTeamGroupedMatchesOptions {
   /** Include completed fixtures in grouped results. */
   showFinished?: boolean;
-  /** Optional team filter; matches must involve one of these team IDs. */
+  /** Team IDs to create groups for; matches must involve one of these teams. */
   filterTeams?: number[];
 }
 
-const formatDateLabel = (dateStr: string): string => {
-  const date = new Date(dateStr);
-  return date.toLocaleDateString('en-GB', {
-    weekday: 'long',
-    day: 'numeric',
-    month: 'long',
-  });
-};
-
-const getDateKey = (utcDate: string): string => {
-  return new Date(utcDate).toISOString().split('T')[0];
-};
-
-export const useGroupedMatches = (
+export const useTeamGroupedMatches = (
   matches: Match[],
   predictions: PredictionsStore,
-  { showFinished = true, filterTeams = [] }: UseGroupedMatchesOptions = {},
+  teamsById: ReadonlyMap<number, Team>,
+  { showFinished = true, filterTeams = [] }: UseTeamGroupedMatchesOptions = {},
 ): FixtureGroupData[] => {
   const filterTeamSet = useMemo(() => new Set(filterTeams), [filterTeams]);
   const hasTeamFilter = filterTeams.length > 0;
@@ -49,27 +35,36 @@ export const useGroupedMatches = (
   }, [filterTeamSet, hasTeamFilter, matches, showFinished]);
 
   return useMemo(() => {
-    const groups = new Map<string, Match[]>();
+    const teamMatchMap = new Map<number, Match[]>();
 
     for (const match of visibleMatches) {
-      const dateKey = getDateKey(match.utcDate);
-      const existing = groups.get(dateKey) || [];
-      groups.set(dateKey, [...existing, match]);
+      const relevantTeamIds = hasTeamFilter
+        ? [match.homeTeamId, match.awayTeamId].filter((id) => filterTeamSet.has(id))
+        : [match.homeTeamId, match.awayTeamId];
+
+      for (const teamId of relevantTeamIds) {
+        const existing = teamMatchMap.get(teamId) || [];
+        teamMatchMap.set(teamId, [...existing, match]);
+      }
     }
 
     const result: FixtureGroupData[] = [];
-    for (const [date, dateMatches] of groups.entries()) {
+    for (const [teamId, teamMatches] of teamMatchMap.entries()) {
+      const team = teamsById.get(teamId);
+      if (!team) continue;
+
       result.push({
-        key: date,
-        label: formatDateLabel(date),
-        matches: dateMatches,
-        allPredicted: dateMatches.every(
+        key: String(teamId),
+        label: team.name,
+        matches: teamMatches,
+        allPredicted: teamMatches.every(
           (match) =>
             match.status === 'FINISHED' || predictions.predictions[String(match.id)] != null,
         ),
+        team,
       });
     }
 
-    return result.sort((a, b) => a.key.localeCompare(b.key));
-  }, [visibleMatches, predictions]);
+    return result.sort((a, b) => a.label.localeCompare(b.label));
+  }, [visibleMatches, predictions, teamsById, hasTeamFilter, filterTeamSet]);
 };

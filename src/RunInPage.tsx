@@ -3,7 +3,7 @@ import { Navigate, useNavigate, useParams } from 'react-router-dom';
 import { AppHeader } from './components/AppHeader';
 import { AppPanels } from './components/AppPanels';
 import { Button } from './components/Button';
-import { FixtureList } from './components/FixtureList/FixtureList';
+import { FixturePanel } from './components/FixturePanel';
 import { StandingsTable } from './components/StandingsTable/StandingsTable';
 import { BrainIcon } from './components/icons';
 import { competitionData } from './data';
@@ -16,6 +16,7 @@ import {
   selectPredictedCount,
   selectStandingsViewModel,
 } from './state/selectors';
+import { getRunInPointsMargin, getTopZoneBoundary } from './utils/zones';
 import * as styles from './RunInPage.css';
 
 interface RunInContentProps {
@@ -50,20 +51,22 @@ const RunInContent = ({ slug, config }: RunInContentProps) => {
     deductions,
     config.zones,
   );
-  const midpoint = Math.floor(standings.length / 2);
-  const topHalfTeamIds = useMemo(
-    () => standings.slice(0, midpoint).map((entry) => entry.team.id),
-    [midpoint, standings],
+  const boundaryPosition = getTopZoneBoundary(config.zones);
+  const allTeamIds = useMemo(() => teams.map((t) => t.id), [teams]);
+  const pointsMargin = useMemo(
+    () => getRunInPointsMargin(matches, predictions, allTeamIds),
+    [matches, predictions, allTeamIds],
   );
-  const standingPositionsByTeamId = useMemo(
-    () =>
-      new Map(
-        standings.map((entry, index) => {
-          return [entry.team.id, index + 1] as const;
-        }),
-      ),
-    [standings],
-  );
+  const runInTeamIds = useMemo(() => {
+    if (boundaryPosition === 0 || boundaryPosition > standings.length) {
+      return standings.map((entry) => entry.team.id);
+    }
+    const boundaryPoints = standings[boundaryPosition - 1].points;
+    const threshold = boundaryPoints - pointsMargin;
+    return standings
+      .filter((entry) => entry.points >= threshold)
+      .map((entry) => entry.team.id);
+  }, [standings, boundaryPosition, pointsMargin]);
   const hasModelPredictions = Object.keys(modelPredictions).length > 0;
   const predictedCount = selectPredictedCount(predictions);
   const allScheduledPredicted = selectAllScheduledPredicted(matches, predictions);
@@ -121,13 +124,14 @@ const RunInContent = ({ slug, config }: RunInContentProps) => {
               )}
             </div>
           </div>
-          <FixtureList
+          <FixturePanel
             slug={slug}
             isVisible={activeTab === 'fixtures'}
             showFinished={false}
-            filterTeams={topHalfTeamIds}
-            standingPositionsByTeamId={standingPositionsByTeamId}
-            standingPositionZones={config.zones}
+            filterTeams={runInTeamIds}
+            groupBy="team"
+            showDate
+            zones={config.zones}
           />
         </>
       }

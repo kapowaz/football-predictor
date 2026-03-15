@@ -14,7 +14,7 @@ import { AppHeader } from '../AppHeader';
 import { AppPanels } from '../AppPanels';
 import { StandingsTable } from '../StandingsTable/StandingsTable';
 import { Button } from '../Button';
-import { FixtureList } from '../FixtureList/FixtureList';
+import { FixturePanel } from '../FixturePanel';
 import { BrainIcon, ImageDownIcon, TrendingDownIcon } from '../icons';
 import * as styles from './CompetitionPanels.css.ts';
 
@@ -164,7 +164,12 @@ export const CompetitionPanels = ({
               )}
             </div>
           </div>
-          <FixtureList slug={slug} isVisible={session.activeTab === 'fixtures'} />
+          <FixturePanel
+            slug={slug}
+            isVisible={session.activeTab === 'fixtures'}
+            groupBy="date"
+            zones={config.zones}
+          />
         </>
       }
     />

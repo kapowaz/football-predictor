@@ -11,6 +11,7 @@ import {
   fontSizeSm,
   space1,
   space2,
+  space3,
 } from '../../theme.css';
 
 export const dateHeader = style({
@@ -62,6 +63,18 @@ export const chevronExpanded = style({
   transform: 'rotate(90deg)',
 });
 
+export const teamLabel = style({
+  display: 'inline-flex',
+  alignItems: 'center',
+  gap: space3,
+});
+
+export const teamCrest = style({
+  width: '20px',
+  height: '20px',
+  objectFit: 'contain',
+});
+
 export const fixtureIndicators = style({
   display: 'flex',
   alignItems: 'center',
@@ -78,11 +91,11 @@ export const fixtureCircle = style({
   flexShrink: 0,
 });
 
-export const fixtureCircleHomeWin = style({
+export const fixtureCircleWin = style({
   backgroundColor: colorResultWin,
 });
 
-export const fixtureCircleAwayWin = style({
+export const fixtureCircleLoss = style({
   backgroundColor: colorResultLoss,
 });
 

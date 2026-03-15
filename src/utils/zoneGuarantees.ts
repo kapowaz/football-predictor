@@ -412,6 +412,24 @@ export const calculateStandingPositionOutcomeByTeamId = (
   const unresolvedMatches = getUnresolvedMatches(matches, predictions);
   const teamStateById = buildTeamState(standings, unresolvedMatches);
   const outcomeByTeamId = new Map<number, StandingPositionOutcome>();
+  const allResolved = unresolvedMatches.length === 0;
+
+  if (allResolved) {
+    const midpoint = Math.floor(standings.length / 2);
+    for (let index = 0; index < standings.length; index += 1) {
+      const standing = standings[index];
+      const position = index + 1;
+      const zoneType = getZoneForPosition(position, zones);
+      if (zoneType !== 'default') {
+        outcomeByTeamId.set(standing.team.id, 'zoneGuaranteed');
+      } else if (position <= midpoint) {
+        outcomeByTeamId.set(standing.team.id, 'cannotReachZoneAbove');
+      } else {
+        outcomeByTeamId.set(standing.team.id, 'safeFromRelegation');
+      }
+    }
+    return outcomeByTeamId;
+  }
 
   for (let index = 0; index < standings.length; index += 1) {
     const standing = standings[index];

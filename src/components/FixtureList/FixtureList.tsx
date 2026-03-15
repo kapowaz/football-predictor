@@ -1,51 +1,55 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import clsx from 'clsx';
+import type { Team, PredictionsStore } from '../../types';
 import type { ZoneDefinition } from '../../data/competitions';
-import { useCompetitionData } from '../../hooks/useCompetitionData';
-import { useGroupedMatches } from '../../hooks/useGroupedMatches';
-import { selectTeamsById } from '../../state/selectors';
-import { useCompetitionSessionSlice } from '../../state/useCompetitionSessionSlice';
 import { FixtureCard } from '../FixtureCard/FixtureCard';
 import { cardHighlighted } from '../FixtureCard/FixtureCard.css';
 import { FixtureGroup } from '../FixtureGroup';
+import type { FixtureGroupData } from './types';
 import * as styles from './FixtureList.css';
 
 interface FixtureListProps {
-  /** Competition slug used to read fixture/session state. */
-  slug: string;
-  /** Whether the fixtures panel is currently visible to the user */
+  /** Pre-grouped fixture data to render. */
+  groups: FixtureGroupData[];
+  /** Lookup from team ID to Team object. */
+  teamsById: ReadonlyMap<number, Team>;
+  /** Current predictions store. */
+  predictions: PredictionsStore;
+  /** Match ID to scroll to, if any. */
+  navigateToMatchId: number | null;
+  /** Callback to set a prediction for a match. */
+  setPrediction: (matchId: number, homeGoals: number, awayGoals: number) => void;
+  /** Callback to remove a prediction for a match. */
+  removePrediction: (matchId: number) => void;
+  /** Callback to clear the navigate-to-match request. */
+  setNavigateToMatchId: (matchId: number | null) => void;
+  /** Lookup for current standings positions keyed by team id. */
+  standingPositionsByTeamId: ReadonlyMap<number, number>;
+  /** Zones used to style position badges in fixture cards. */
+  zones: ZoneDefinition[];
+  /** Whether to display the fixture date inside each FixtureCard. */
+  showDate?: boolean;
+  /** Whether the fixtures panel is currently visible to the user. */
   isVisible?: boolean;
-  /** Whether completed fixtures should be included. */
-  showFinished?: boolean;
-  /** Optional list of team IDs to keep in the fixture list. */
-  filterTeams?: number[];
-  /** Optional lookup for current standings positions keyed by team id. */
-  standingPositionsByTeamId?: ReadonlyMap<number, number>;
-  /** Optional zones used to style position badges in fixture cards. */
-  standingPositionZones?: ZoneDefinition[];
 }
 
-const EMPTY_FILTER_TEAMS: number[] = [];
-
 export const FixtureList = ({
-  slug,
-  isVisible = true,
-  showFinished = true,
-  filterTeams = EMPTY_FILTER_TEAMS,
+  groups,
+  teamsById,
+  predictions,
+  navigateToMatchId,
+  setPrediction,
+  removePrediction,
+  setNavigateToMatchId,
   standingPositionsByTeamId,
-  standingPositionZones,
+  zones,
+  showDate = false,
+  isVisible = true,
 }: FixtureListProps) => {
-  const { teams, matches } = useCompetitionData(slug);
-  const { session, setPrediction, removePrediction, setNavigateToMatchId } = useCompetitionSessionSlice(slug);
-  const predictions = session?.predictions ?? { predictions: {}, lastModified: '' };
-  const navigateToMatchId = session?.navigateToMatchId ?? null;
-  const teamsById = selectTeamsById(teams);
-  const groupedMatches = useGroupedMatches(matches, predictions, { showFinished, filterTeams });
-
-  const [expandedDate, setExpandedDate] = useState<string | null>(null);
-  const dateRefs = useRef<Map<string, HTMLDivElement>>(new Map());
+  const [expandedKey, setExpandedKey] = useState<string | null>(null);
+  const groupRefs = useRef<Map<string, HTMLDivElement>>(new Map());
   const containerRef = useRef<HTMLDivElement>(null);
-  const expandedDateRef = useRef<string | null>(null);
+  const expandedKeyRef = useRef<string | null>(null);
   const pendingScrollMatchId = useRef<number | null>(null);
   const didAutoExpandInitialGroup = useRef(false);
   const wasVisibleRef = useRef(isVisible);
@@ -53,25 +57,25 @@ export const FixtureList = ({
   useEffect(() => {
     if (didAutoExpandInitialGroup.current) return;
     if (navigateToMatchId != null) return;
-    if (groupedMatches.length === 0) return;
+    if (groups.length === 0) return;
 
     didAutoExpandInitialGroup.current = true;
 
-    const firstUpcomingGroup = groupedMatches.find((group) =>
+    const firstUpcomingGroup = groups.find((group) =>
       group.matches.every((match) => match.status !== 'FINISHED'),
     );
     if (!firstUpcomingGroup) return;
 
-    setExpandedDate(() => {
-      expandedDateRef.current = firstUpcomingGroup.date;
-      return firstUpcomingGroup.date;
+    setExpandedKey(() => {
+      expandedKeyRef.current = firstUpcomingGroup.key;
+      return firstUpcomingGroup.key;
     });
-  }, [groupedMatches, navigateToMatchId]);
+  }, [groups, navigateToMatchId]);
 
   useEffect(() => {
     if (navigateToMatchId == null) return;
 
-    const group = groupedMatches.find((g) => g.matches.some((m) => m.id === navigateToMatchId));
+    const group = groups.find((g) => g.matches.some((m) => m.id === navigateToMatchId));
     if (!group) {
       setNavigateToMatchId(null);
       pendingScrollMatchId.current = null;
@@ -80,18 +84,17 @@ export const FixtureList = ({
 
     pendingScrollMatchId.current = navigateToMatchId;
 
-    if (expandedDate === group.date) {
-      // Already expanded — scroll immediately
+    if (expandedKey === group.key) {
       requestAnimationFrame(() => {
         scrollToMatch(navigateToMatchId);
       });
     } else {
-      setExpandedDate(() => {
-        expandedDateRef.current = group.date;
-        return group.date;
+      setExpandedKey(() => {
+        expandedKeyRef.current = group.key;
+        return group.key;
       });
     }
-  }, [groupedMatches, navigateToMatchId, setNavigateToMatchId]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [groups, navigateToMatchId, setNavigateToMatchId]); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     const becameVisible = isVisible && !wasVisibleRef.current;
@@ -101,11 +104,11 @@ export const FixtureList = ({
     if (navigateToMatchId != null) return;
     if (!containerRef.current) return;
 
-    const date = expandedDateRef.current;
-    if (!date) return;
+    const key = expandedKeyRef.current;
+    if (!key) return;
 
     const scrollToExpandedGroup = () => {
-      const el = dateRefs.current.get(date);
+      const el = groupRefs.current.get(key);
       if (!el || !containerRef.current) return;
       containerRef.current.scrollTo({
         top: el.offsetTop,
@@ -137,9 +140,6 @@ export const FixtureList = ({
 
         const initialTop = card.getBoundingClientRect().top;
 
-        // Wait two frames for the smooth scroll to potentially begin,
-        // then either highlight immediately (no scroll needed) or poll
-        // until the card's position stabilises (scroll finished).
         requestAnimationFrame(() => {
           requestAnimationFrame(() => {
             if (Math.abs(card.getBoundingClientRect().top - initialTop) < 0.5) {
@@ -175,18 +175,18 @@ export const FixtureList = ({
     [highlightCard, setNavigateToMatchId],
   );
 
-  const toggleDate = useCallback((date: string) => {
-    setExpandedDate((prev) => {
-      const next = prev !== date ? date : null;
-      expandedDateRef.current = next;
+  const toggleGroup = useCallback((key: string) => {
+    setExpandedKey((prev) => {
+      const next = prev !== key ? key : null;
+      expandedKeyRef.current = next;
       return next;
     });
   }, []);
 
   const handleTransitionEnd = useCallback(
-    (date: string, e: React.TransitionEvent) => {
+    (key: string, e: React.TransitionEvent) => {
       if (e.propertyName !== 'grid-template-rows') return;
-      if (expandedDateRef.current !== date) return;
+      if (expandedKeyRef.current !== key) return;
 
       requestAnimationFrame(() => {
         const pendingMatch = pendingScrollMatchId.current;
@@ -195,7 +195,7 @@ export const FixtureList = ({
           return;
         }
 
-        const el = dateRefs.current.get(date);
+        const el = groupRefs.current.get(key);
         if (el && containerRef.current) {
           containerRef.current.scrollTo({
             top: el.offsetTop,
@@ -207,41 +207,38 @@ export const FixtureList = ({
     [scrollToMatch],
   );
 
-  if (!session) {
-    return null;
-  }
-
-  if (groupedMatches.length === 0) {
+  if (groups.length === 0) {
     return <div className={styles.emptyState}>No upcoming matches to predict.</div>;
   }
 
   return (
     <div className={styles.container} ref={containerRef}>
-      {groupedMatches.map((group) => {
-        const isExpanded = expandedDate === group.date;
+      {groups.map((group) => {
+        const isExpanded = expandedKey === group.key;
         return (
           <div
-            key={group.date}
+            key={group.key}
             className={styles.dateGroup}
             ref={(el) => {
               if (el) {
-                dateRefs.current.set(group.date, el);
+                groupRefs.current.set(group.key, el);
               } else {
-                dateRefs.current.delete(group.date);
+                groupRefs.current.delete(group.key);
               }
             }}
           >
             <FixtureGroup
-              dateLabel={group.dateLabel}
+              label={group.label}
+              team={group.team}
               isExpanded={isExpanded}
               allPredicted={group.allPredicted}
               matches={group.matches}
               predictions={predictions}
-              onClick={() => toggleDate(group.date)}
+              onClick={() => toggleGroup(group.key)}
             />
             <div
               className={clsx(styles.fixturesWrapper, isExpanded && styles.fixturesWrapperExpanded)}
-              onTransitionEnd={(e) => handleTransitionEnd(group.date, e)}
+              onTransitionEnd={(e) => handleTransitionEnd(group.key, e)}
             >
               <div className={styles.fixturesList}>
                 {group.matches.map((match) => {
@@ -260,10 +257,11 @@ export const FixtureList = ({
                         status={match.status}
                         homeTeam={homeTeam}
                         awayTeam={awayTeam}
-                        homePosition={standingPositionsByTeamId?.get(match.homeTeamId)}
-                        awayPosition={standingPositionsByTeamId?.get(match.awayTeamId)}
-                        zones={standingPositionZones}
+                        homePosition={standingPositionsByTeamId.get(match.homeTeamId)!}
+                        awayPosition={standingPositionsByTeamId.get(match.awayTeamId)!}
+                        zones={zones}
                         result={{ homeGoals: match.homeGoals, awayGoals: match.awayGoals }}
+                        showDate={showDate}
                       />
                     );
                   }
@@ -275,12 +273,13 @@ export const FixtureList = ({
                       status={match.status}
                       homeTeam={homeTeam}
                       awayTeam={awayTeam}
-                      homePosition={standingPositionsByTeamId?.get(match.homeTeamId)}
-                      awayPosition={standingPositionsByTeamId?.get(match.awayTeamId)}
-                      zones={standingPositionZones}
+                      homePosition={standingPositionsByTeamId.get(match.homeTeamId)!}
+                      awayPosition={standingPositionsByTeamId.get(match.awayTeamId)!}
+                      zones={zones}
                       result={prediction}
                       onPredictionChange={setPrediction}
                       onPredictionRemove={removePrediction}
+                      showDate={showDate}
                     />
                   );
                 })}

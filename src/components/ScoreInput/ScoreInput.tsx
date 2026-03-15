@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import type { ReactNode } from 'react';
 import * as styles from './ScoreInput.css';
 
 interface ScoreInputProps {
@@ -8,8 +9,8 @@ interface ScoreInputProps {
   awayInputId?: string;
   homeGoals: number | null;
   awayGoals: number | null;
-  /** Text shown between the two score inputs */
-  separatorText?: string;
+  /** Content shown between the two score inputs. */
+  separatorText?: ReactNode;
   onChange: (homeGoals: number | null, awayGoals: number | null) => void;
 }
 
