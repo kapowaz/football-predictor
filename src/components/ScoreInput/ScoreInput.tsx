@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import type { ReactNode } from 'react';
+import { useRef, useState } from 'react';
+import type { FocusEvent, ReactNode } from 'react';
 import * as styles from './ScoreInput.css';
 
 interface ScoreInputProps {
@@ -17,6 +17,10 @@ interface ScoreInputProps {
 const parseGoals = (value: string): number | null =>
   value === '' ? null : Math.max(0, parseInt(value, 10) || 0);
 
+const selectOnFocus = (e: FocusEvent<HTMLInputElement>) => {
+  e.target.select();
+};
+
 export const ScoreInput = ({
   homeInputId,
   awayInputId,
@@ -25,6 +29,7 @@ export const ScoreInput = ({
   separatorText = 'vs',
   onChange,
 }: ScoreInputProps) => {
+  const awayRef = useRef<HTMLInputElement>(null);
   const [localHome, setLocalHome] = useState(homeGoals);
   const [localAway, setLocalAway] = useState(awayGoals);
   const [prevHome, setPrevHome] = useState(homeGoals);
@@ -48,21 +53,27 @@ export const ScoreInput = ({
         max="99"
         className={styles.input}
         value={localHome ?? ''}
+        onFocus={selectOnFocus}
         onChange={(e) => {
           const parsed = parseGoals(e.target.value);
           setLocalHome(parsed);
           onChange(parsed, localAway);
+          if (parsed !== null) {
+            awayRef.current?.focus();
+          }
         }}
         aria-label="Home team goals"
       />
       <span className={styles.separator}>{separatorText}</span>
       <input
+        ref={awayRef}
         id={awayInputId}
         type="number"
         min="0"
         max="99"
         className={styles.input}
         value={localAway ?? ''}
+        onFocus={selectOnFocus}
         onChange={(e) => {
           const parsed = parseGoals(e.target.value);
           setLocalAway(parsed);
