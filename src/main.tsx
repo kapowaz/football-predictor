@@ -5,6 +5,7 @@ import './fonts.css';
 import App from './App';
 import { CompetitionPage } from './CompetitionPage';
 import { IndexRedirect } from './IndexRedirect';
+import { RelegationPage } from './RelegationPage';
 import { RunInPage } from './RunInPage';
 import { StandingsImagePage } from './StandingsImagePage';
 
@@ -14,6 +15,7 @@ createRoot(document.getElementById('root')!).render(
       <Routes>
         <Route element={<App />}>
           <Route index element={<IndexRedirect />} />
+          <Route path="relegation/:slug/" element={<RelegationPage />} />
           <Route path="run-in/:slug/" element={<RunInPage />} />
           <Route path="standings-image/:slug/" element={<StandingsImagePage />} />
           <Route path=":slug/*" element={<CompetitionPage />} />
