@@ -199,8 +199,8 @@ globalStyle(':root', {
     // Intentionally inverted relative to the matching zone row text/background colors.
     [colorBgStandingPositionDefaultUpper]: tailwind.slate[600],
     [colorTextStandingPositionDefaultUpper]: tailwind.slate[300],
-    [colorBgStandingPositionDefaultLower]: tailwind.slate[200],
-    [colorTextStandingPositionDefaultLower]: tailwind.slate[50],
+    [colorBgStandingPositionDefaultLower]: tailwind.rose[600],
+    [colorTextStandingPositionDefaultLower]: tailwind.rose[300],
     [colorBgStandingPositionPromotion]: tailwind.green[700],
     [colorTextStandingPositionPromotion]: tailwind.green[200],
     [colorBgStandingPositionPlayoff]: tailwind.teal[700],
@@ -344,8 +344,8 @@ const darkVars = {
   // Intentionally inverted relative to the matching zone row text/background colors.
   [colorBgStandingPositionDefaultUpper]: tailwind.slate[400],
   [colorTextStandingPositionDefaultUpper]: tailwind.slate[700],
-  [colorBgStandingPositionDefaultLower]: tailwind.slate[800],
-  [colorTextStandingPositionDefaultLower]: tailwind.slate[950],
+  [colorBgStandingPositionDefaultLower]: tailwind.rose[400],
+  [colorTextStandingPositionDefaultLower]: tailwind.rose[700],
   [colorBgStandingPositionPromotion]: tailwind.green[500],
   [colorTextStandingPositionPromotion]: tailwind.green[900],
   [colorBgStandingPositionPlayoff]: tailwind.teal[500],
