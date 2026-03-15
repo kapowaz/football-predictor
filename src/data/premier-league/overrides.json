@@ -1,4 +1,14 @@
 {
   "lastUpdated": "",
-  "matches": []
+  "matches": [
+    {
+      "id": 538083,
+      "homeTeamId": 351,
+      "awayTeamId": 63,
+      "utcDate": "2026-03-15T14:00:00Z",
+      "status": "FINISHED",
+      "homeGoals": 0,
+      "awayGoals": 0
+    }
+  ]
 }
