@@ -16,7 +16,7 @@ import { AppPanels } from '../AppPanels';
 import { StandingsTable } from '../StandingsTable/StandingsTable';
 import { Button } from '../Button';
 import { FixturePanel } from '../FixturePanel';
-import { BrainIcon, ImageDownIcon, TrendingDownIcon } from '../icons';
+import { ArrowDownFromDotIcon, BrainIcon, ImageDownIcon } from '../icons';
 import * as styles from './CompetitionPanels.css.ts';
 
 type AppHeaderProps = ComponentProps<typeof AppHeader>;
@@ -138,7 +138,7 @@ export const CompetitionPanels = ({
                   </Button>
                 )}
                 <Button variant="danger" onClick={() => setDeductionsModalOpen(true)}>
-                  <TrendingDownIcon size={14} className={styles.deductionsButtonIcon} />
+                  <ArrowDownFromDotIcon size={14} className={styles.deductionsButtonIcon} />
                   Deductions
                 </Button>
               </div>
