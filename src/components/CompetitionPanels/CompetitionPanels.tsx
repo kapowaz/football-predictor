@@ -10,6 +10,7 @@ import {
 } from '../../state/selectors';
 import { useCompetitionSessionSlice } from '../../state/useCompetitionSessionSlice';
 import type { CompetitionConfig } from '../../data/competitions';
+import type { VariantRulesMode } from '../../types';
 import { AppHeader } from '../AppHeader';
 import { AppPanels } from '../AppPanels';
 import { StandingsTable } from '../StandingsTable/StandingsTable';
@@ -36,7 +37,7 @@ interface CompetitionPanelsProps {
   /** Whether a standings image file currently exists. */
   hasStandingsImage?: boolean;
   /** Enable variant rules mode for standings and fixture indicators. */
-  variantRules?: boolean;
+  variantRules?: VariantRulesMode;
 }
 
 export const CompetitionPanels = ({
@@ -47,7 +48,7 @@ export const CompetitionPanels = ({
   onDownloadImage,
   isRenderingImage,
   hasStandingsImage,
-  variantRules = false,
+  variantRules = false as VariantRulesMode,
 }: CompetitionPanelsProps) => {
   const { teams, matches, modelPredictions } = useCompetitionData(slug);
   const {

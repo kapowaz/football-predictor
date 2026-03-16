@@ -1,7 +1,8 @@
 import clsx from 'clsx';
-import type { TeamStanding, FormResult, FormEntry } from '../../types';
+import type { TeamStanding, FormResult, FormEntry, VariantRulesMode } from '../../types';
 import type { ZoneDefinition, ZoneType } from '../../data/competitions';
 import { getCrest } from '../../assets/crests';
+import { getBonusPointsForResult } from '../../utils/standings';
 import { getZoneForPosition } from '../../utils/zones';
 import { useScrollDirectionLock } from '../../hooks/useScrollDirectionLock';
 import { StandingPosition } from '../StandingPosition';
@@ -26,7 +27,7 @@ interface StandingsTableProps {
   /** Apply a gradient fade mask to the edge opposite the visible partial. Only valid when `partial` is set. */
   hasGradient?: boolean;
   /** Enable variant rules mode: adds Bonus column and shows point values in form badges. */
-  variantRules?: boolean;
+  variantRules?: VariantRulesMode;
 }
 
 const formatGD = (gd: number): string => {
@@ -52,11 +53,29 @@ const formButtonStyles: Record<FormResult, string> = {
   L: styles.formLossButton,
 };
 
-const variantFormLabel: Record<FormResult, string> = {
+const newRulesFormLabel: Record<FormResult, string> = {
   B: '3',
   W: '2',
   D: 'D',
   L: 'L',
+};
+
+const getBonusPointsFormLabel = (entry: FormEntry): string => {
+  return String(getBonusPointsForResult(entry.goalsScored, entry.goalsConceded));
+};
+
+const getBonusPointsFormStyle = (entry: FormEntry): string => {
+  const pts = getBonusPointsForResult(entry.goalsScored, entry.goalsConceded);
+  if (pts >= 4) return styles.formWin;
+  if (pts >= 2) return styles.formDraw;
+  return styles.formLoss;
+};
+
+const getBonusPointsFormButtonStyle = (entry: FormEntry): string => {
+  const pts = getBonusPointsForResult(entry.goalsScored, entry.goalsConceded);
+  if (pts >= 4) return styles.formWinButton;
+  if (pts >= 2) return styles.formDrawButton;
+  return styles.formLossButton;
 };
 
 const zonePositionStyles: Record<ZoneType | 'default', string | undefined> = {
@@ -92,8 +111,9 @@ export const StandingsTable = ({
   disableTableBorderRadius = false,
   isRenderView = false,
   hasGradient = false,
-  variantRules = false,
+  variantRules = false as VariantRulesMode,
 }: StandingsTableProps) => {
+  const showBonusColumn = variantRules === 'new-rules';
   const containerRef = useScrollDirectionLock<HTMLDivElement>();
   const renderCellPaddingClass = isRenderView ? styles.cellRenderNoHorizontalPaddingStrong : undefined;
   const renderCellRightPaddingClass = isRenderView ? styles.cellRenderNoRightPaddingStrong : undefined;
@@ -155,7 +175,7 @@ export const StandingsTable = ({
           <colgroup>
             <col />
             <col className={styles.colStat} />
-            {variantRules && <col className={styles.colStat} />}
+            {showBonusColumn && <col className={styles.colStat} />}
             <col className={styles.colStat} />
             <col className={styles.colStat} />
             <col className={styles.colStat} />
@@ -173,7 +193,7 @@ export const StandingsTable = ({
               <th className={statsHeaderClassName}>P</th>
               {!isRenderView && <th className={statsHeaderClassName}>GD</th>}
               {!isRenderView && <th className={statsHeaderClassName}>Pts</th>}
-              {variantRules && <th className={statsHeaderClassName}>B</th>}
+              {showBonusColumn && <th className={statsHeaderClassName}>B</th>}
               <th className={statsHeaderClassName}>W</th>
               <th className={statsHeaderClassName}>D</th>
               <th className={statsHeaderClassName}>L</th>
@@ -248,11 +268,11 @@ export const StandingsTable = ({
                 </td>
                 <td className={centeredBodyCellClassName}>{standing.played}</td>
                 {!isRenderView && gdAndPtsCells}
-                {variantRules && (
+                {showBonusColumn && (
                   <td className={centeredBodyCellClassName}>{standing.bonus}</td>
                 )}
                 <td className={centeredBodyCellClassName}>
-                  {variantRules ? standing.won - standing.bonus : standing.won}
+                  {showBonusColumn ? standing.won - standing.bonus : standing.won}
                 </td>
                 <td className={centeredBodyCellClassName}>{standing.drawn}</td>
                 <td className={centeredBodyCellClassName}>{standing.lost}</td>
@@ -262,14 +282,23 @@ export const StandingsTable = ({
                 <td className={styles.td}>
                   <div className={styles.formCell}>
                     {standing.form.map((entry, i) => {
-                      const label = variantRules
-                        ? variantFormLabel[entry.result]
-                        : entry.result;
+                      const isBonusPoints = variantRules === 'bonus-points';
+                      const label = isBonusPoints
+                        ? getBonusPointsFormLabel(entry)
+                        : variantRules === 'new-rules'
+                          ? newRulesFormLabel[entry.result]
+                          : entry.result;
+                      const badgeStyle = isBonusPoints
+                        ? getBonusPointsFormStyle(entry)
+                        : formStyles[entry.result];
+                      const buttonStyle = isBonusPoints
+                        ? getBonusPointsFormButtonStyle(entry)
+                        : formButtonStyles[entry.result];
                       return onPredictionClick && entry.isPrediction ? (
                         <button
                           key={i}
                           type="button"
-                          className={clsx(styles.formBadgeButton, formButtonStyles[entry.result])}
+                          className={clsx(styles.formBadgeButton, buttonStyle)}
                           title={formatFormTitle(entry)}
                           onClick={() => onPredictionClick(entry.matchId)}
                         >
@@ -278,7 +307,7 @@ export const StandingsTable = ({
                       ) : (
                         <span
                           key={i}
-                          className={clsx(styles.formBadge, formStyles[entry.result])}
+                          className={clsx(styles.formBadge, badgeStyle)}
                           title={formatFormTitle(entry)}
                         >
                           {label}

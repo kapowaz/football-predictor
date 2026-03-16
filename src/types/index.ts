@@ -82,6 +82,9 @@ export interface ModelPredictionsData {
 
 export type FormResult = 'W' | 'D' | 'L' | 'B';
 
+/** Identifies which variant scoring system is active, or `false` for standard rules. */
+export type VariantRulesMode = 'new-rules' | 'bonus-points' | false;
+
 export interface FormEntry {
   result: FormResult;
   matchId: number;
@@ -90,6 +93,10 @@ export interface FormEntry {
   awayTeamName: string;
   homeGoals: number;
   awayGoals: number;
+  /** Goals scored by the team this entry belongs to. */
+  goalsScored: number;
+  /** Goals conceded by the team this entry belongs to. */
+  goalsConceded: number;
 }
 
 export interface TeamStanding {

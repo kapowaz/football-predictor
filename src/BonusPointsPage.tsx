@@ -16,12 +16,12 @@ import { DeductionsModal } from './components/DeductionsModal';
 import { competitionData } from './data';
 import { getCompetition, allCompetitions, type CompetitionConfig } from './data/competitions';
 
-interface NewRulesContentProps {
+interface BonusPointsContentProps {
   slug: string;
   config: CompetitionConfig;
 }
 
-const NewRulesContent = ({ slug, config }: NewRulesContentProps) => {
+const BonusPointsContent = ({ slug, config }: BonusPointsContentProps) => {
   const navigate = useNavigate();
   const { theme, toggleTheme } = useTheme();
   const { teams, matches, defaultDeductions } = useCompetitionData(slug);
@@ -48,7 +48,7 @@ const NewRulesContent = ({ slug, config }: NewRulesContentProps) => {
     predictions,
     deductions,
     config.zones,
-    'new-rules',
+    'bonus-points',
   );
   const teamsById = selectTeamsById(teams);
   const deductionNotes = selectDeductionNotes(deductions, teamsById);
@@ -85,7 +85,7 @@ const NewRulesContent = ({ slug, config }: NewRulesContentProps) => {
         zones={config.zones}
         partial="top"
         captureRef={topStandingsCaptureRef}
-        variantRules="new-rules"
+        variantRules="bonus-points"
       />
       <StandingsImageView
         standings={standings}
@@ -98,7 +98,7 @@ const NewRulesContent = ({ slug, config }: NewRulesContentProps) => {
         zones={config.zones}
         partial="bottom"
         captureRef={bottomStandingsCaptureRef}
-        variantRules="new-rules"
+        variantRules="bonus-points"
       />
 
       <CompetitionPanels
@@ -108,14 +108,14 @@ const NewRulesContent = ({ slug, config }: NewRulesContentProps) => {
         headerProps={{
           competitions,
           activeSlug: slug,
-          onCompetitionChange: (s) => navigate(`/new-rules/${s}/`),
+          onCompetitionChange: (s) => navigate(`/bonus-points/${s}/`),
           colorMode: theme,
           onColorModeToggle: toggleTheme,
         }}
         onDownloadImage={onDownloadImage}
         isRenderingImage={isRenderingImage}
         hasStandingsImage={hasStandingsImage}
-        variantRules="new-rules"
+        variantRules="bonus-points"
       />
 
       <DeductionsModal
@@ -133,7 +133,7 @@ const NewRulesContent = ({ slug, config }: NewRulesContentProps) => {
   );
 };
 
-export const NewRulesPage = () => {
+export const BonusPointsPage = () => {
   const { slug } = useParams<{ slug: string }>();
 
   if (!slug) {
@@ -150,5 +150,5 @@ export const NewRulesPage = () => {
     return <Navigate to="/" replace />;
   }
 
-  return <NewRulesContent key={slug} slug={slug} config={config} />;
+  return <BonusPointsContent key={slug} slug={slug} config={config} />;
 };

@@ -1,4 +1,5 @@
 import { useMemo } from 'react';
+import type { VariantRulesMode } from '../../types';
 import type { ZoneDefinition } from '../../data/competitions';
 import { useCompetitionData } from '../../hooks/useCompetitionData';
 import { useGroupedMatches } from '../../hooks/useGroupedMatches';
@@ -24,7 +25,7 @@ interface FixturePanelProps {
   /** Competition zones used for standing position badge colours. */
   zones: ZoneDefinition[];
   /** Enable variant rules mode for indicator dots. */
-  variantRules?: boolean;
+  variantRules?: VariantRulesMode;
 }
 
 const EMPTY_FILTER_TEAMS: number[] = [];
@@ -37,7 +38,7 @@ export const FixturePanel = ({
   groupBy,
   showDate = false,
   zones,
-  variantRules = false,
+  variantRules = false as VariantRulesMode,
 }: FixturePanelProps) => {
   const { teams, matches } = useCompetitionData(slug);
   const { session, setPrediction, removePrediction, setNavigateToMatchId } =

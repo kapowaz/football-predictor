@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import type { Match, PredictionsStore, Team } from '../../types';
+import type { Match, PredictionsStore, Team, VariantRulesMode } from '../../types';
 import { getCrest } from '../../assets/crests';
 import { ChevronRightIcon } from '../icons';
 import * as styles from './FixtureGroup.css';
@@ -20,26 +20,27 @@ interface FixtureGroupProps {
   /** Called when the header is clicked to toggle expansion. */
   onClick: () => void;
   /** Enable variant rules mode: distinguishes bonus wins (2+ goal margin) in indicators. */
-  variantRules?: boolean;
+  variantRules?: VariantRulesMode;
 }
 
 const getIndicatorClass = (
   match: Match,
   result: { homeGoals: number; awayGoals: number },
   team?: Team,
-  variantRules = false,
+  variantRules: VariantRulesMode = false,
 ): string => {
+  const useNewRulesIndicators = variantRules === 'new-rules';
   if (team) {
     const isHome = match.homeTeamId === team.id;
     const teamGoals = isHome ? result.homeGoals : result.awayGoals;
     const opponentGoals = isHome ? result.awayGoals : result.homeGoals;
 
     if (teamGoals > opponentGoals) {
-      if (variantRules && teamGoals - opponentGoals >= 2) return styles.fixtureCircleBonus;
+      if (useNewRulesIndicators && teamGoals - opponentGoals >= 2) return styles.fixtureCircleBonus;
       return styles.fixtureCircleWin;
     }
     if (teamGoals < opponentGoals) {
-      if (variantRules && opponentGoals - teamGoals >= 2) return styles.fixtureCircleBonusAway;
+      if (useNewRulesIndicators && opponentGoals - teamGoals >= 2) return styles.fixtureCircleBonusAway;
       return styles.fixtureCircleLoss;
     }
     return styles.fixtureCircleDraw;
@@ -47,11 +48,11 @@ const getIndicatorClass = (
 
   const margin = Math.abs(result.homeGoals - result.awayGoals);
   if (result.homeGoals > result.awayGoals) {
-    if (variantRules && margin >= 2) return styles.fixtureCircleBonus;
+    if (useNewRulesIndicators && margin >= 2) return styles.fixtureCircleBonus;
     return styles.fixtureCircleWin;
   }
   if (result.homeGoals < result.awayGoals) {
-    if (variantRules && margin >= 2) return styles.fixtureCircleBonusAway;
+    if (useNewRulesIndicators && margin >= 2) return styles.fixtureCircleBonusAway;
     return styles.fixtureCircleLoss;
   }
   return styles.fixtureCircleDraw;
@@ -65,7 +66,7 @@ export const FixtureGroup = ({
   matches,
   predictions,
   onClick,
-  variantRules = false,
+  variantRules = false as VariantRulesMode,
 }: FixtureGroupProps) => (
   <button
     className={clsx(styles.dateHeader, isExpanded && styles.dateHeaderExpanded, allPredicted && styles.dateHeaderComplete)}

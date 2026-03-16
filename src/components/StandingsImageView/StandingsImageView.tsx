@@ -2,7 +2,7 @@ import type { RefObject } from 'react';
 import clsx from 'clsx';
 import type { ZoneDefinition } from '../../data/competitions';
 import type { DeductionNote } from '../../state/selectors';
-import type { TeamStanding } from '../../types';
+import type { TeamStanding, VariantRulesMode } from '../../types';
 import { StandingsTable } from '../StandingsTable/StandingsTable';
 import { AppHeading } from '../AppHeading';
 import { KBoltIcon } from '../icons';
@@ -32,7 +32,7 @@ interface StandingsImageViewProps {
   /** Whether the capture root should be visually hidden off-screen. */
   isHidden?: boolean;
   /** Enable variant rules mode: adds Bonus column and shows point values in form badges. */
-  variantRules?: boolean;
+  variantRules?: VariantRulesMode;
 }
 
 const SITE_URL = 'kapowaz.github.io/football-predictor/';

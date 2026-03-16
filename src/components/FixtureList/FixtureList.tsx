@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import clsx from 'clsx';
-import type { Team, PredictionsStore } from '../../types';
+import type { Team, PredictionsStore, VariantRulesMode } from '../../types';
 import type { ZoneDefinition } from '../../data/competitions';
 import { FixtureCard } from '../FixtureCard/FixtureCard';
 import { cardHighlighted } from '../FixtureCard/FixtureCard.css';
@@ -32,7 +32,7 @@ interface FixtureListProps {
   /** Whether the fixtures panel is currently visible to the user. */
   isVisible?: boolean;
   /** Enable variant rules mode for indicator dots. */
-  variantRules?: boolean;
+  variantRules?: VariantRulesMode;
 }
 
 export const FixtureList = ({
@@ -47,7 +47,7 @@ export const FixtureList = ({
   zones,
   showDate = false,
   isVisible = true,
-  variantRules = false,
+  variantRules = false as VariantRulesMode,
 }: FixtureListProps) => {
   const [expandedKey, setExpandedKey] = useState<string | null>(null);
   const groupRefs = useRef<Map<string, HTMLDivElement>>(new Map());

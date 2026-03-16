@@ -6,6 +6,7 @@ import type {
   FormEntry,
   PointDeduction,
   PredictionsStore,
+  VariantRulesMode,
 } from '../types';
 
 const FORM_LENGTH = 6;
@@ -21,9 +22,13 @@ export interface MatchResult {
   awayGoals: number;
 }
 
-const getFormResult = (goalsFor: number, goalsAgainst: number, variantRules = false): FormResult => {
+const getFormResult = (
+  goalsFor: number,
+  goalsAgainst: number,
+  variantRules: VariantRulesMode = false,
+): FormResult => {
   if (goalsFor > goalsAgainst) {
-    if (variantRules && goalsFor - goalsAgainst >= 2) return 'B';
+    if (variantRules === 'new-rules' && goalsFor - goalsAgainst >= 2) return 'B';
     return 'W';
   }
   if (goalsFor === goalsAgainst) return 'D';
@@ -47,12 +52,30 @@ const createEmptyStanding = (team: Team): TeamStanding => {
   };
 };
 
+/**
+ * Calculate per-match points under bonus-points rules:
+ * 4 for a win, 2 for a draw, 0 for a loss,
+ * +1 if you lose by only 1 goal, +1 if you score 3+ goals.
+ */
+export const getBonusPointsForResult = (goalsScored: number, goalsConceded: number): number => {
+  let points = 0;
+  if (goalsScored > goalsConceded) {
+    points += 4;
+  } else if (goalsScored === goalsConceded) {
+    points += 2;
+  } else if (goalsConceded - goalsScored === 1) {
+    points += 1;
+  }
+  if (goalsScored >= 3) points += 1;
+  return points;
+};
+
 const applyResult = (
   standing: TeamStanding,
   goalsFor: number,
   goalsAgainst: number,
   entry: FormEntry,
-  variantRules = false,
+  variantRules: VariantRulesMode = false,
 ): void => {
   standing.played += 1;
   standing.goalsFor += goalsFor;
@@ -66,19 +89,28 @@ const applyResult = (
 
   if (goalsFor > goalsAgainst) {
     standing.won += 1;
-    if (variantRules && goalsFor - goalsAgainst >= 2) {
+    if (variantRules === 'new-rules' && goalsFor - goalsAgainst >= 2) {
       standing.bonus += 1;
       standing.points += 3;
-    } else if (variantRules) {
+    } else if (variantRules === 'new-rules') {
       standing.points += 2;
+    } else if (variantRules === 'bonus-points') {
+      standing.points += getBonusPointsForResult(goalsFor, goalsAgainst);
     } else {
       standing.points += 3;
     }
   } else if (goalsFor === goalsAgainst) {
     standing.drawn += 1;
-    standing.points += 1;
+    if (variantRules === 'bonus-points') {
+      standing.points += getBonusPointsForResult(goalsFor, goalsAgainst);
+    } else {
+      standing.points += 1;
+    }
   } else {
     standing.lost += 1;
+    if (variantRules === 'bonus-points') {
+      standing.points += getBonusPointsForResult(goalsFor, goalsAgainst);
+    }
   }
 };
 
@@ -196,7 +228,7 @@ export const calculateStandings = (
   matches: Match[],
   predictions: PredictionsStore,
   deductions: PointDeduction[] = [],
-  variantRules = false,
+  variantRules: VariantRulesMode = false,
 ): TeamStanding[] => {
   const standingsMap = new Map<number, TeamStanding>();
 
@@ -218,6 +250,8 @@ export const calculateStandings = (
       awayTeamName: result.awayTeamName,
       homeGoals: result.homeGoals,
       awayGoals: result.awayGoals,
+      goalsScored: result.homeGoals,
+      goalsConceded: result.awayGoals,
     };
 
     if (homeStanding) {
@@ -227,6 +261,8 @@ export const calculateStandings = (
       const awayEntry: FormEntry = {
         ...entry,
         result: getFormResult(result.awayGoals, result.homeGoals, variantRules),
+        goalsScored: result.awayGoals,
+        goalsConceded: result.homeGoals,
       };
       applyResult(awayStanding, result.awayGoals, result.homeGoals, awayEntry, variantRules);
     }

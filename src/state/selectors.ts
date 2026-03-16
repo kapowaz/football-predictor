@@ -1,4 +1,4 @@
-import type { Match, PointDeduction, PredictionsStore, Team, TeamStanding } from '../types';
+import type { Match, PointDeduction, PredictionsStore, Team, TeamStanding, VariantRulesMode } from '../types';
 import { calculateStandings } from '../utils/standings';
 import { calculateZoneGuaranteedByTeamId } from '../utils/zoneGuarantees';
 import type { ZoneDefinition } from '../data/competitions';
@@ -50,7 +50,7 @@ export const selectStandings = memoizeByReference(
     matches: Match[],
     predictions: PredictionsStore,
     deductions: PointDeduction[],
-    variantRules: boolean = false,
+    variantRules: VariantRulesMode = false,
   ): TeamStanding[] => {
     return calculateStandings(teams, matches, predictions, deductions, variantRules);
   },
@@ -122,7 +122,7 @@ export const selectStandingsViewModel = memoizeByReference(
     predictions: PredictionsStore,
     deductions: PointDeduction[],
     zones: ZoneDefinition[],
-    variantRules: boolean = false,
+    variantRules: VariantRulesMode = false,
   ): StandingsViewModel => {
     const standings = selectStandings(teams, matches, predictions, deductions, variantRules);
     const deductionMarkers = selectDeductionMarkers(deductions);

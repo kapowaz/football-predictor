@@ -1,5 +1,6 @@
 import { Navigate, useParams, useSearchParams } from 'react-router-dom';
 import { useCallback, useRef } from 'react';
+import type { VariantRulesMode } from './types';
 import { StandingsImageView } from './components/StandingsImageView';
 import { ColorModeToggle } from './components/ColorModeToggle';
 import { getCompetition, type CompetitionConfig } from './data/competitions';
@@ -10,6 +11,13 @@ import { useCompetitionSession } from './state/useCompetitionSession';
 import { selectDeductionNotes, selectStandingsViewModel, selectTeamsById } from './state/selectors';
 import * as styles from './StandingsImagePage.css.ts';
 
+const VALID_VARIANT_RULES = new Set<string>(['new-rules', 'bonus-points']);
+
+const parseVariantRules = (value: string | null): VariantRulesMode => {
+  if (value && VALID_VARIANT_RULES.has(value)) return value as VariantRulesMode;
+  return false;
+};
+
 interface StandingsImageContentProps {
   slug: string;
   config: CompetitionConfig;
@@ -17,7 +25,7 @@ interface StandingsImageContentProps {
 
 const StandingsImageContent = ({ slug, config }: StandingsImageContentProps) => {
   const [searchParams] = useSearchParams();
-  const variantRules = searchParams.get('variantRules') === 'true';
+  const variantRules = parseVariantRules(searchParams.get('variantRules'));
   const topCaptureRef = useRef<HTMLDivElement>(null);
   const bottomCaptureRef = useRef<HTMLDivElement>(null);
   const { theme, toggleTheme } = useTheme();
