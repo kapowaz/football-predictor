@@ -1,4 +1,4 @@
-import { style } from '@vanilla-extract/css';
+import { style, keyframes } from '@vanilla-extract/css';
 import {
   colorBgSurface,
   colorTextPrimary,
@@ -17,6 +17,11 @@ export const container = style({
   height: '100%',
 });
 
+const fadeIn = keyframes({
+  from: { opacity: 0 },
+  to: { opacity: 1 },
+});
+
 export const tooltip = style({
   backgroundColor: colorBgSurface,
   color: colorTextPrimary,
@@ -27,4 +32,5 @@ export const tooltip = style({
   boxShadow: shadowMd,
   whiteSpace: 'nowrap',
   lineHeight: 1,
+  animation: `${fadeIn} 150ms ease-in`,
 });
