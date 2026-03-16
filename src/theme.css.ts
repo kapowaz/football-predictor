@@ -106,6 +106,7 @@ export const colorFocus = createVar();
 export const colorFocusRing = createVar();
 
 export const fontFamily = createVar();
+export const fontFamilyDisplay = createVar();
 export const fontFamilyMono = createVar();
 
 export const fontSizeXs = createVar();
@@ -115,6 +116,7 @@ export const fontSizeMd = createVar();
 export const fontSizeLg = createVar();
 export const fontSizeXl = createVar();
 export const fontSizeXxl = createVar();
+export const fontSize3xl = createVar();
 
 export const space1 = createVar();
 export const space2 = createVar();
@@ -259,6 +261,8 @@ globalStyle(':root', {
 
     [fontFamily]:
       'Geist, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
+    [fontFamilyDisplay]:
+      '"Barlow Condensed", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
     [fontFamilyMono]:
       '"Geist Mono", ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace',
 
@@ -269,6 +273,7 @@ globalStyle(':root', {
     [fontSizeLg]: '18px',
     [fontSizeXl]: '22px',
     [fontSizeXxl]: '28px',
+    [fontSize3xl]: '32px',
 
     [space1]: '4px',
     [space2]: '8px',

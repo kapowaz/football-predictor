@@ -47,6 +47,7 @@ import {
   colorTextZoneConferenceLeague,
   colorBgTableHead,
   colorBgTableHeadHover,
+  fontFamilyDisplay,
   fontFamilyMono,
   fontSizeXs,
   fontSizeSm,
@@ -368,7 +369,10 @@ export const crest = style({
 });
 
 export const teamName = style({
-  fontWeight: 500,
+  fontFamily: fontFamilyDisplay,
+  fontSize: fontSizeMd,
+  fontWeight: 600,
+  textTransform: 'uppercase',
 });
 
 export const teamNameRender = style({

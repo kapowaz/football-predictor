@@ -1,5 +1,5 @@
 import { style } from '@vanilla-extract/css';
-import { colorTextHeading, fontSizeXxl, fontSizeXl, fontSizeLg, space2 } from '../../theme.css';
+import { colorTextHeading, fontFamilyDisplay, fontSize3xl, fontSizeXxl, fontSizeXl, space2 } from '../../theme.css';
 
 export const container = style({
   display: 'flex',
@@ -8,29 +8,33 @@ export const container = style({
 });
 
 export const logo = style({
-  height: '36px',
-  width: 'auto',
+  height: '32px',
+  width: '32px',
 });
 
 export const title = style({
-  fontSize: fontSizeXxl,
+  fontFamily: fontFamilyDisplay,
+  fontSize: fontSize3xl,
   fontWeight: 700,
+  textTransform: 'uppercase',
   color: colorTextHeading,
   margin: 0,
   whiteSpace: 'nowrap',
   '@media': {
     'screen and (max-width: 680px)': {
-      fontSize: fontSizeXl,
+      fontSize: fontSizeXxl,
     },
     'screen and (max-width: 480px)': {
-      fontSize: fontSizeLg,
+      fontSize: fontSizeXl,
     },
   },
 });
 
 export const titleFullRender = style({
-  fontSize: fontSizeXxl,
+  fontFamily: fontFamilyDisplay,
+  fontSize: fontSize3xl,
   fontWeight: 700,
+  textTransform: 'uppercase',
   color: colorTextHeading,
   margin: 0,
   whiteSpace: 'nowrap',

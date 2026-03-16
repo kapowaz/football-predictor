@@ -2,8 +2,9 @@ import { style } from '@vanilla-extract/css';
 import {
   colorTextHeading,
   colorTextSecondary,
-  fontSizeLg,
+  fontFamilyDisplay,
   fontSizeSm,
+  fontSizeXl,
   maxWidthContent,
   space2,
   space3,
@@ -125,8 +126,10 @@ export const deductionNote = style({
 });
 
 export const panelTitle = style({
-  fontSize: fontSizeLg,
+  fontFamily: fontFamilyDisplay,
+  fontSize: fontSizeXl,
   fontWeight: 600,
+  textTransform: 'uppercase',
   color: colorTextHeading,
   margin: 0,
   '@media': {
