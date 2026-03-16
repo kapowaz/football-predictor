@@ -252,6 +252,8 @@ export const stickyCell = style({
   left: 0,
   zIndex: 1,
   backgroundColor: 'inherit',
+  WebkitMaskImage: 'linear-gradient(to right, black 80%, transparent 100%)',
+  maskImage: 'linear-gradient(to right, black 80%, transparent 100%)',
 });
 
 export const stickyCellTh = style([
@@ -363,8 +365,8 @@ export const teamCell = style({
 });
 
 export const crest = style({
-  width: '24px',
-  height: '24px',
+  width: '18px',
+  height: '18px',
   objectFit: 'contain',
 });
 
