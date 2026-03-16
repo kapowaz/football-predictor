@@ -31,6 +31,8 @@ interface FixtureListProps {
   showDate?: boolean;
   /** Whether the fixtures panel is currently visible to the user. */
   isVisible?: boolean;
+  /** Enable variant rules mode for indicator dots. */
+  variantRules?: boolean;
 }
 
 export const FixtureList = ({
@@ -45,6 +47,7 @@ export const FixtureList = ({
   zones,
   showDate = false,
   isVisible = true,
+  variantRules = false,
 }: FixtureListProps) => {
   const [expandedKey, setExpandedKey] = useState<string | null>(null);
   const groupRefs = useRef<Map<string, HTMLDivElement>>(new Map());
@@ -235,6 +238,7 @@ export const FixtureList = ({
               matches={group.matches}
               predictions={predictions}
               onClick={() => toggleGroup(group.key)}
+              variantRules={variantRules}
             />
             <div
               className={clsx(styles.fixturesWrapper, isExpanded && styles.fixturesWrapperExpanded)}

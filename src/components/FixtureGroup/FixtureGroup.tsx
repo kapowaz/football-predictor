@@ -19,25 +19,41 @@ interface FixtureGroupProps {
   predictions: PredictionsStore;
   /** Called when the header is clicked to toggle expansion. */
   onClick: () => void;
+  /** Enable variant rules mode: distinguishes bonus wins (2+ goal margin) in indicators. */
+  variantRules?: boolean;
 }
 
 const getIndicatorClass = (
   match: Match,
   result: { homeGoals: number; awayGoals: number },
   team?: Team,
+  variantRules = false,
 ): string => {
   if (team) {
     const isHome = match.homeTeamId === team.id;
     const teamGoals = isHome ? result.homeGoals : result.awayGoals;
     const opponentGoals = isHome ? result.awayGoals : result.homeGoals;
 
-    if (teamGoals > opponentGoals) return styles.fixtureCircleWin;
-    if (teamGoals < opponentGoals) return styles.fixtureCircleLoss;
+    if (teamGoals > opponentGoals) {
+      if (variantRules && teamGoals - opponentGoals >= 2) return styles.fixtureCircleBonus;
+      return styles.fixtureCircleWin;
+    }
+    if (teamGoals < opponentGoals) {
+      if (variantRules && opponentGoals - teamGoals >= 2) return styles.fixtureCircleBonusAway;
+      return styles.fixtureCircleLoss;
+    }
     return styles.fixtureCircleDraw;
   }
 
-  if (result.homeGoals > result.awayGoals) return styles.fixtureCircleWin;
-  if (result.homeGoals < result.awayGoals) return styles.fixtureCircleLoss;
+  const margin = Math.abs(result.homeGoals - result.awayGoals);
+  if (result.homeGoals > result.awayGoals) {
+    if (variantRules && margin >= 2) return styles.fixtureCircleBonus;
+    return styles.fixtureCircleWin;
+  }
+  if (result.homeGoals < result.awayGoals) {
+    if (variantRules && margin >= 2) return styles.fixtureCircleBonusAway;
+    return styles.fixtureCircleLoss;
+  }
   return styles.fixtureCircleDraw;
 };
 
@@ -49,6 +65,7 @@ export const FixtureGroup = ({
   matches,
   predictions,
   onClick,
+  variantRules = false,
 }: FixtureGroupProps) => (
   <button
     className={clsx(styles.dateHeader, isExpanded && styles.dateHeaderExpanded, allPredicted && styles.dateHeaderComplete)}
@@ -76,7 +93,7 @@ export const FixtureGroup = ({
             key={match.id}
             className={clsx(
               styles.fixtureCircle,
-              indicatorResult != null && getIndicatorClass(match, indicatorResult, team),
+              indicatorResult != null && getIndicatorClass(match, indicatorResult, team, variantRules),
             )}
           />
         );

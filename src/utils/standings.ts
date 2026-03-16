@@ -21,8 +21,11 @@ export interface MatchResult {
   awayGoals: number;
 }
 
-const getFormResult = (goalsFor: number, goalsAgainst: number): FormResult => {
-  if (goalsFor > goalsAgainst) return 'W';
+const getFormResult = (goalsFor: number, goalsAgainst: number, variantRules = false): FormResult => {
+  if (goalsFor > goalsAgainst) {
+    if (variantRules && goalsFor - goalsAgainst >= 2) return 'B';
+    return 'W';
+  }
   if (goalsFor === goalsAgainst) return 'D';
   return 'L';
 };
@@ -32,6 +35,7 @@ const createEmptyStanding = (team: Team): TeamStanding => {
     team,
     played: 0,
     won: 0,
+    bonus: 0,
     drawn: 0,
     lost: 0,
     goalsFor: 0,
@@ -43,7 +47,13 @@ const createEmptyStanding = (team: Team): TeamStanding => {
   };
 };
 
-const applyResult = (standing: TeamStanding, goalsFor: number, goalsAgainst: number, entry: FormEntry): void => {
+const applyResult = (
+  standing: TeamStanding,
+  goalsFor: number,
+  goalsAgainst: number,
+  entry: FormEntry,
+  variantRules = false,
+): void => {
   standing.played += 1;
   standing.goalsFor += goalsFor;
   standing.goalsAgainst += goalsAgainst;
@@ -56,7 +66,14 @@ const applyResult = (standing: TeamStanding, goalsFor: number, goalsAgainst: num
 
   if (goalsFor > goalsAgainst) {
     standing.won += 1;
-    standing.points += 3;
+    if (variantRules && goalsFor - goalsAgainst >= 2) {
+      standing.bonus += 1;
+      standing.points += 3;
+    } else if (variantRules) {
+      standing.points += 2;
+    } else {
+      standing.points += 3;
+    }
   } else if (goalsFor === goalsAgainst) {
     standing.drawn += 1;
     standing.points += 1;
@@ -179,6 +196,7 @@ export const calculateStandings = (
   matches: Match[],
   predictions: PredictionsStore,
   deductions: PointDeduction[] = [],
+  variantRules = false,
 ): TeamStanding[] => {
   const standingsMap = new Map<number, TeamStanding>();
 
@@ -193,7 +211,7 @@ export const calculateStandings = (
     const homeStanding = standingsMap.get(result.homeTeamId);
     const awayStanding = standingsMap.get(result.awayTeamId);
     const entry: FormEntry = {
-      result: getFormResult(result.homeGoals, result.awayGoals),
+      result: getFormResult(result.homeGoals, result.awayGoals, variantRules),
       matchId: result.matchId,
       isPrediction: result.isPrediction,
       homeTeamName: result.homeTeamName,
@@ -203,14 +221,14 @@ export const calculateStandings = (
     };
 
     if (homeStanding) {
-      applyResult(homeStanding, result.homeGoals, result.awayGoals, entry);
+      applyResult(homeStanding, result.homeGoals, result.awayGoals, entry, variantRules);
     }
     if (awayStanding) {
       const awayEntry: FormEntry = {
         ...entry,
-        result: getFormResult(result.awayGoals, result.homeGoals),
+        result: getFormResult(result.awayGoals, result.homeGoals, variantRules),
       };
-      applyResult(awayStanding, result.awayGoals, result.homeGoals, awayEntry);
+      applyResult(awayStanding, result.awayGoals, result.homeGoals, awayEntry, variantRules);
     }
   }
 

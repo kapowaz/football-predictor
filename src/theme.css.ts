@@ -94,6 +94,11 @@ export const colorResultLossHover = createVar();
 export const colorResultWinTextHover = createVar();
 export const colorResultDrawTextHover = createVar();
 export const colorResultLossTextHover = createVar();
+export const colorResultBonus = createVar();
+export const colorResultBonusHover = createVar();
+export const colorResultBonusText = createVar();
+export const colorResultBonusTextHover = createVar();
+export const colorResultBonusAway = createVar();
 
 export const colorFocus = createVar();
 export const colorFocusRing = createVar();
@@ -239,6 +244,12 @@ globalStyle(':root', {
     [colorResultLossText]: tailwind.red[100],
     [colorResultLossTextHover]: tailwind.red[200],
 
+    [colorResultBonus]: tailwind.green[700],
+    [colorResultBonusHover]: tailwind.green[800],
+    [colorResultBonusText]: tailwind.green[200],
+    [colorResultBonusTextHover]: tailwind.green[300],
+    [colorResultBonusAway]: tailwind.red[700],
+
     [colorFocus]: tailwind.blue[500],
     [colorFocusRing]: `color-mix(in oklch, ${tailwind.blue[500]}, transparent 80%)`,
 
@@ -383,6 +394,12 @@ const darkVars = {
   [colorResultLossHover]: tailwind.rose[500],
   [colorResultLossText]: tailwind.rose[800],
   [colorResultLossTextHover]: tailwind.rose[900],
+
+  [colorResultBonus]: tailwind.green[400],
+  [colorResultBonusHover]: tailwind.green[500],
+  [colorResultBonusText]: tailwind.green[700],
+  [colorResultBonusTextHover]: tailwind.green[800],
+  [colorResultBonusAway]: tailwind.rose[300],
 
   [colorFocusRing]: `color-mix(in oklch, ${tailwind.blue[500]}, transparent 70%)`,
 

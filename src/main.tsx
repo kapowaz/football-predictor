@@ -7,6 +7,7 @@ import { CompetitionPage } from './CompetitionPage';
 import { IndexRedirect } from './IndexRedirect';
 import { RelegationPage } from './RelegationPage';
 import { RunInPage } from './RunInPage';
+import { NewRulesPage } from './NewRulesPage';
 import { StandingsImagePage } from './StandingsImagePage';
 
 createRoot(document.getElementById('root')!).render(
@@ -17,6 +18,7 @@ createRoot(document.getElementById('root')!).render(
           <Route index element={<IndexRedirect />} />
           <Route path="relegation/:slug/" element={<RelegationPage />} />
           <Route path="run-in/:slug/" element={<RunInPage />} />
+          <Route path="new-rules/:slug/" element={<NewRulesPage />} />
           <Route path="standings-image/:slug/" element={<StandingsImagePage />} />
           <Route path=":slug/*" element={<CompetitionPage />} />
         </Route>

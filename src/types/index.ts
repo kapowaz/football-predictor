@@ -80,7 +80,7 @@ export interface ModelPredictionsData {
   predictions: Record<string, { homeGoals: number; awayGoals: number }>;
 }
 
-export type FormResult = 'W' | 'D' | 'L';
+export type FormResult = 'W' | 'D' | 'L' | 'B';
 
 export interface FormEntry {
   result: FormResult;
@@ -96,6 +96,7 @@ export interface TeamStanding {
   team: Team;
   played: number;
   won: number;
+  bonus: number;
   drawn: number;
   lost: number;
   goalsFor: number;

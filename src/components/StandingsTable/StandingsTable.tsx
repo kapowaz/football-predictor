@@ -25,6 +25,8 @@ interface StandingsTableProps {
   isRenderView?: boolean;
   /** Apply a gradient fade mask to the edge opposite the visible partial. Only valid when `partial` is set. */
   hasGradient?: boolean;
+  /** Enable variant rules mode: adds Bonus column and shows point values in form badges. */
+  variantRules?: boolean;
 }
 
 const formatGD = (gd: number): string => {
@@ -37,15 +39,24 @@ const formatFormTitle = (entry: FormEntry): string => {
 };
 
 const formStyles: Record<FormResult, string> = {
+  B: styles.formBonus,
   W: styles.formWin,
   D: styles.formDraw,
   L: styles.formLoss,
 };
 
 const formButtonStyles: Record<FormResult, string> = {
+  B: styles.formBonusButton,
   W: styles.formWinButton,
   D: styles.formDrawButton,
   L: styles.formLossButton,
+};
+
+const variantFormLabel: Record<FormResult, string> = {
+  B: '3',
+  W: '2',
+  D: 'D',
+  L: 'L',
 };
 
 const zonePositionStyles: Record<ZoneType | 'default', string | undefined> = {
@@ -81,6 +92,7 @@ export const StandingsTable = ({
   disableTableBorderRadius = false,
   isRenderView = false,
   hasGradient = false,
+  variantRules = false,
 }: StandingsTableProps) => {
   const containerRef = useScrollDirectionLock<HTMLDivElement>();
   const renderCellPaddingClass = isRenderView ? styles.cellRenderNoHorizontalPaddingStrong : undefined;
@@ -160,6 +172,7 @@ export const StandingsTable = ({
               <th className={statsHeaderClassName}>P</th>
               {!isRenderView && <th className={statsHeaderClassName}>GD</th>}
               {!isRenderView && <th className={statsHeaderClassName}>Pts</th>}
+              {variantRules && <th className={statsHeaderClassName}>B</th>}
               <th className={statsHeaderClassName}>W</th>
               <th className={statsHeaderClassName}>D</th>
               <th className={statsHeaderClassName}>L</th>
@@ -234,7 +247,12 @@ export const StandingsTable = ({
                 </td>
                 <td className={centeredBodyCellClassName}>{standing.played}</td>
                 {!isRenderView && gdAndPtsCells}
-                <td className={centeredBodyCellClassName}>{standing.won}</td>
+                {variantRules && (
+                  <td className={centeredBodyCellClassName}>{standing.bonus}</td>
+                )}
+                <td className={centeredBodyCellClassName}>
+                  {variantRules ? standing.won - standing.bonus : standing.won}
+                </td>
                 <td className={centeredBodyCellClassName}>{standing.drawn}</td>
                 <td className={centeredBodyCellClassName}>{standing.lost}</td>
                 <td className={centeredBodyCellClassName}>{standing.goalsFor}</td>
@@ -242,8 +260,11 @@ export const StandingsTable = ({
                 {isRenderView && gdAndPtsCells}
                 <td className={styles.td}>
                   <div className={styles.formCell}>
-                    {standing.form.map((entry, i) =>
-                      onPredictionClick && entry.isPrediction ? (
+                    {standing.form.map((entry, i) => {
+                      const label = variantRules
+                        ? variantFormLabel[entry.result]
+                        : entry.result;
+                      return onPredictionClick && entry.isPrediction ? (
                         <button
                           key={i}
                           type="button"
@@ -251,7 +272,7 @@ export const StandingsTable = ({
                           title={formatFormTitle(entry)}
                           onClick={() => onPredictionClick(entry.matchId)}
                         >
-                          {entry.result}
+                          {label}
                         </button>
                       ) : (
                         <span
@@ -259,10 +280,10 @@ export const StandingsTable = ({
                           className={clsx(styles.formBadge, formStyles[entry.result])}
                           title={formatFormTitle(entry)}
                         >
-                          {entry.result}
+                          {label}
                         </span>
-                      ),
-                    )}
+                      );
+                    })}
                   </div>
                 </td>
               </tr>

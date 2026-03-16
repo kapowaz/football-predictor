@@ -23,6 +23,8 @@ interface FixturePanelProps {
   showDate?: boolean;
   /** Competition zones used for standing position badge colours. */
   zones: ZoneDefinition[];
+  /** Enable variant rules mode for indicator dots. */
+  variantRules?: boolean;
 }
 
 const EMPTY_FILTER_TEAMS: number[] = [];
@@ -35,6 +37,7 @@ export const FixturePanel = ({
   groupBy,
   showDate = false,
   zones,
+  variantRules = false,
 }: FixturePanelProps) => {
   const { teams, matches } = useCompetitionData(slug);
   const { session, setPrediction, removePrediction, setNavigateToMatchId } =
@@ -45,7 +48,7 @@ export const FixturePanel = ({
   const navigateToMatchId = session?.navigateToMatchId ?? null;
   const teamsById = selectTeamsById(teams);
 
-  const { standings } = selectStandingsViewModel(teams, matches, predictions, deductions, zones);
+  const { standings } = selectStandingsViewModel(teams, matches, predictions, deductions, zones, variantRules);
 
   const standingPositionsByTeamId = useMemo(
     () =>
@@ -94,6 +97,7 @@ export const FixturePanel = ({
       zones={zones}
       showDate={showDate}
       isVisible={isVisible}
+      variantRules={variantRules}
     />
   );
 };

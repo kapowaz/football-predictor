@@ -29,12 +29,14 @@ interface CompetitionPanelsProps {
   pageContentRef: RefObject<HTMLDivElement | null>;
   /** Props passed through to the page header. */
   headerProps: AppHeaderProps;
-  /** Downloads the generated standings image. */
-  onDownloadImage: () => void;
+  /** Downloads the generated standings image. Omit along with `isRenderingImage` and `hasStandingsImage` to hide the button entirely. */
+  onDownloadImage?: () => void;
   /** True while standings image generation is in progress. */
-  isRenderingImage: boolean;
+  isRenderingImage?: boolean;
   /** Whether a standings image file currently exists. */
-  hasStandingsImage: boolean;
+  hasStandingsImage?: boolean;
+  /** Enable variant rules mode for standings and fixture indicators. */
+  variantRules?: boolean;
 }
 
 export const CompetitionPanels = ({
@@ -45,6 +47,7 @@ export const CompetitionPanels = ({
   onDownloadImage,
   isRenderingImage,
   hasStandingsImage,
+  variantRules = false,
 }: CompetitionPanelsProps) => {
   const { teams, matches, modelPredictions } = useCompetitionData(slug);
   const {
@@ -69,6 +72,7 @@ export const CompetitionPanels = ({
       session.predictions,
       session.deductions,
       config.zones,
+      variantRules,
     );
     const deductionNotes = selectDeductionNotes(session.deductions, teamsById);
     const predictedCount = selectPredictedCount(session.predictions);
@@ -82,7 +86,7 @@ export const CompetitionPanels = ({
       predictedCount,
       allScheduledPredicted,
     };
-  }, [config.zones, matches, session, teams, teamsById]);
+  }, [config.zones, matches, session, teams, teamsById, variantRules]);
 
   const hasModelPredictions = Object.keys(modelPredictions).length > 0;
 
@@ -122,14 +126,16 @@ export const CompetitionPanels = ({
                 </div>
               )}
               <div className={styles.panelHeaderDeductionsButtons}>
-                <Button
-                  variant="success"
-                  onClick={onDownloadImage}
-                  disabled={!hasStandingsImage || isRenderingImage}
-                >
-                  <ImageDownIcon />
-                  Save Image
-                </Button>
+                {onDownloadImage != null && (
+                  <Button
+                    variant="success"
+                    onClick={onDownloadImage}
+                    disabled={!hasStandingsImage || isRenderingImage}
+                  >
+                    <ImageDownIcon />
+                    Save Image
+                  </Button>
+                )}
                 <Button variant="danger" onClick={() => setDeductionsModalOpen(true)}>
                   <TrendingDownIcon size={14} className={styles.deductionsButtonIcon} />
                   Deductions
@@ -143,6 +149,7 @@ export const CompetitionPanels = ({
             zoneGuaranteedByTeamId={panelModel.zoneGuaranteedByTeamId}
             zones={config.zones}
             onPredictionClick={handlePredictionClick}
+            variantRules={variantRules}
           />
         </>
       }
@@ -169,6 +176,7 @@ export const CompetitionPanels = ({
             isVisible={session.activeTab === 'fixtures'}
             groupBy="date"
             zones={config.zones}
+            variantRules={variantRules}
           />
         </>
       }

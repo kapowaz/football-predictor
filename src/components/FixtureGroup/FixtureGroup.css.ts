@@ -7,6 +7,8 @@ import {
   colorResultWin,
   colorResultLoss,
   colorResultDraw,
+  colorResultBonus,
+  colorResultBonusAway,
   colorNeutralLight,
   fontSizeSm,
   space1,
@@ -101,4 +103,12 @@ export const fixtureCircleLoss = style({
 
 export const fixtureCircleDraw = style({
   backgroundColor: colorResultDraw,
+});
+
+export const fixtureCircleBonus = style({
+  backgroundColor: colorResultBonus,
+});
+
+export const fixtureCircleBonusAway = style({
+  backgroundColor: colorResultBonusAway,
 });

@@ -50,8 +50,9 @@ export const selectStandings = memoizeByReference(
     matches: Match[],
     predictions: PredictionsStore,
     deductions: PointDeduction[],
+    variantRules = false,
   ): TeamStanding[] => {
-    return calculateStandings(teams, matches, predictions, deductions);
+    return calculateStandings(teams, matches, predictions, deductions, variantRules);
   },
 );
 
@@ -121,8 +122,9 @@ export const selectStandingsViewModel = memoizeByReference(
     predictions: PredictionsStore,
     deductions: PointDeduction[],
     zones: ZoneDefinition[],
+    variantRules = false,
   ): StandingsViewModel => {
-    const standings = selectStandings(teams, matches, predictions, deductions);
+    const standings = selectStandings(teams, matches, predictions, deductions, variantRules);
     const deductionMarkers = selectDeductionMarkers(deductions);
     const zoneGuaranteedByTeamId = calculateZoneGuaranteedByTeamId(
       standings,

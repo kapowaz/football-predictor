@@ -34,6 +34,10 @@ import {
   colorResultWinTextHover,
   colorResultDrawTextHover,
   colorResultLossTextHover,
+  colorResultBonus,
+  colorResultBonusText,
+  colorResultBonusHover,
+  colorResultBonusTextHover,
   colorTextZonePromotion,
   colorTextZonePlayoff,
   colorTextZoneRelegation,
@@ -560,6 +564,22 @@ export const formLossButton = style({
     '&:hover': {
       backgroundColor: colorResultLossHover,
       color: colorResultLossTextHover,
+    },
+  },
+});
+
+export const formBonus = style({
+  backgroundColor: colorResultBonus,
+  color: colorResultBonusText,
+});
+
+export const formBonusButton = style({
+  backgroundColor: colorResultBonus,
+  color: colorResultBonusText,
+  selectors: {
+    '&:hover': {
+      backgroundColor: colorResultBonusHover,
+      color: colorResultBonusTextHover,
     },
   },
 });
