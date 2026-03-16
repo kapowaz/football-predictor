@@ -16,8 +16,10 @@ interface StandingsTableProps {
   zones: ZoneDefinition[];
   /** Optionally render only the top or bottom half of standings. */
   partial?: 'top' | 'bottom';
-  /** Called when a form badge is clicked, with the match ID */
-  onPredictionClick?: (matchId: number) => void;
+  /** Called when a form badge is clicked, with the match ID. */
+  onResultClick?: (matchId: number) => void;
+  /** When provided, only form badges whose match ID is in this set render as buttons. When omitted, all form badges are clickable if `onResultClick` is set. */
+  clickableMatchIds?: ReadonlySet<number>;
   /** Disable internal vertical scrolling on the table container. */
   disableVerticalScroll?: boolean;
   /** Disable rounded corners on the <table> element. */
@@ -106,7 +108,8 @@ export const StandingsTable = ({
   zoneGuaranteedByTeamId,
   zones,
   partial,
-  onPredictionClick,
+  onResultClick,
+  clickableMatchIds,
   disableVerticalScroll = false,
   disableTableBorderRadius = false,
   isRenderView = false,
@@ -294,13 +297,16 @@ export const StandingsTable = ({
                       const buttonStyle = isBonusPoints
                         ? getBonusPointsFormButtonStyle(entry)
                         : formButtonStyles[entry.result];
-                      return onPredictionClick && entry.isPrediction ? (
+                      const isClickable =
+                        onResultClick &&
+                        (!clickableMatchIds || clickableMatchIds.has(entry.matchId));
+                      return isClickable ? (
                         <button
                           key={i}
                           type="button"
                           className={clsx(styles.formBadgeButton, buttonStyle)}
                           title={formatFormTitle(entry)}
-                          onClick={() => onPredictionClick(entry.matchId)}
+                          onClick={() => onResultClick(entry.matchId)}
                         >
                           {label}
                         </button>

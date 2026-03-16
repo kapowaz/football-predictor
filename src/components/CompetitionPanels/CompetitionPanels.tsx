@@ -95,7 +95,7 @@ export const CompetitionPanels = ({
     return null;
   }
 
-  const handlePredictionClick = (matchId: number) => {
+  const handleResultClick = (matchId: number) => {
     setActiveTab('fixtures');
     setNavigateToMatchId(matchId);
   };
@@ -149,7 +149,7 @@ export const CompetitionPanels = ({
             deductionMarkers={panelModel.deductionMarkers}
             zoneGuaranteedByTeamId={panelModel.zoneGuaranteedByTeamId}
             zones={config.zones}
-            onPredictionClick={handlePredictionClick}
+            onResultClick={handleResultClick}
             variantRules={variantRules}
           />
         </>

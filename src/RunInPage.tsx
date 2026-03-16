@@ -67,6 +67,17 @@ const RunInContent = ({ slug, config }: RunInContentProps) => {
       .filter((entry) => entry.points >= threshold)
       .map((entry) => entry.team.id);
   }, [standings, boundaryPosition, pointsMargin]);
+  const fixtureMatchIds = useMemo(() => {
+    const runInTeamSet = new Set(runInTeamIds);
+    const ids = new Set<number>();
+    for (const match of matches) {
+      if (match.status !== 'SCHEDULED') continue;
+      if (runInTeamSet.has(match.homeTeamId) || runInTeamSet.has(match.awayTeamId)) {
+        ids.add(match.id);
+      }
+    }
+    return ids;
+  }, [matches, runInTeamIds]);
   const hasModelPredictions = Object.keys(modelPredictions).length > 0;
   const predictedCount = selectPredictedCount(predictions);
   const allScheduledPredicted = selectAllScheduledPredicted(matches, predictions);
@@ -99,10 +110,11 @@ const RunInContent = ({ slug, config }: RunInContentProps) => {
             zones={config.zones}
             partial="top"
             hasGradient
-            onPredictionClick={(matchId) => {
+            onResultClick={(matchId) => {
               setActiveTab('fixtures');
               setNavigateToMatchId(matchId);
             }}
+            clickableMatchIds={fixtureMatchIds}
           />
         </>
       }

@@ -62,10 +62,19 @@ const RelegationContent = ({ slug, config }: RelegationContentProps) => {
     }
     const boundaryPoints = standings[relegationZone.startPosition - 1].points;
     const threshold = boundaryPoints + RELEGATION_POINTS_MARGIN;
-    return standings
-      .filter((entry) => entry.points <= threshold)
-      .map((entry) => entry.team.id);
+    return standings.filter((entry) => entry.points <= threshold).map((entry) => entry.team.id);
   }, [standings, relegationZone]);
+  const fixtureMatchIds = useMemo(() => {
+    const relegationTeamSet = new Set(relegationTeamIds);
+    const ids = new Set<number>();
+    for (const match of matches) {
+      if (match.status !== 'SCHEDULED') continue;
+      if (relegationTeamSet.has(match.homeTeamId) || relegationTeamSet.has(match.awayTeamId)) {
+        ids.add(match.id);
+      }
+    }
+    return ids;
+  }, [matches, relegationTeamIds]);
   const hasModelPredictions = Object.keys(modelPredictions).length > 0;
   const predictedCount = selectPredictedCount(predictions);
   const allScheduledPredicted = selectAllScheduledPredicted(matches, predictions);
@@ -98,10 +107,11 @@ const RelegationContent = ({ slug, config }: RelegationContentProps) => {
             zones={config.zones}
             partial="bottom"
             hasGradient
-            onPredictionClick={(matchId) => {
+            onResultClick={(matchId) => {
               setActiveTab('fixtures');
               setNavigateToMatchId(matchId);
             }}
+            clickableMatchIds={fixtureMatchIds}
           />
         </>
       }
