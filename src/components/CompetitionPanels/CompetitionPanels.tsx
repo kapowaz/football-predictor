@@ -1,10 +1,11 @@
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import type { ComponentProps, RefObject } from 'react';
 import { useCompetitionData } from '../../hooks/useCompetitionData';
 import {
   selectAllScheduledPredicted,
   selectDeductionNotes,
   selectPredictedCount,
+  selectPositionHistory,
   selectStandingsViewModel,
   selectTeamsById,
 } from '../../state/selectors';
@@ -13,7 +14,7 @@ import type { CompetitionConfig } from '../../data/competitions';
 import type { VariantRulesMode } from '../../types';
 import { AppHeader } from '../AppHeader';
 import { AppPanels } from '../AppPanels';
-import { StandingsTable } from '../StandingsTable/StandingsTable';
+import { StandingsTable, type FormDisplayMode } from '../StandingsTable/StandingsTable';
 import { Button } from '../Button';
 import { FixturePanel } from '../FixturePanel';
 import { ArrowDownFromDotIcon, BrainIcon, ImageDownIcon } from '../icons';
@@ -61,6 +62,7 @@ export const CompetitionPanels = ({
   } = useCompetitionSessionSlice(slug);
 
   const teamsById = selectTeamsById(teams);
+  const [formDisplay, setFormDisplay] = useState<FormDisplayMode>('badges');
 
   const panelModel = useMemo(() => {
     if (!session) {
@@ -75,6 +77,13 @@ export const CompetitionPanels = ({
       config.zones,
       variantRules,
     );
+    const positionHistory = selectPositionHistory(
+      teams,
+      matches,
+      session.predictions,
+      session.deductions,
+      variantRules,
+    );
     const deductionNotes = selectDeductionNotes(session.deductions, teamsById);
     const predictedCount = selectPredictedCount(session.predictions);
     const allScheduledPredicted = selectAllScheduledPredicted(matches, session.predictions);
@@ -83,6 +92,7 @@ export const CompetitionPanels = ({
       standings,
       deductionMarkers,
       zoneGuaranteedByTeamId,
+      positionHistory,
       deductionNotes,
       predictedCount,
       allScheduledPredicted,
@@ -151,6 +161,12 @@ export const CompetitionPanels = ({
             zones={config.zones}
             onResultClick={handleResultClick}
             variantRules={variantRules}
+            formDisplay={formDisplay}
+            positionHistory={panelModel.positionHistory}
+            teamCount={teams.length}
+            onFormDisplayToggle={() =>
+              setFormDisplay((prev) => (prev === 'badges' ? 'sparkline' : 'badges'))
+            }
           />
         </>
       }

@@ -165,8 +165,8 @@ globalStyle(':root', {
     [colorSuccessBgHover]: tailwind.green[100],
     [colorSuccessBorder]: tailwind.green[200],
     [colorSuccessBorderHover]: tailwind.green[600],
-    [colorNeutralLight]: tailwind.slate[300],
-    [colorNeutral]: tailwind.gray[400],
+    [colorNeutralLight]: tailwind.amber[400],
+    [colorNeutral]: tailwind.amber[600],
 
     [colorBgTableHead]: tailwind.slate[200],
     [colorTextTableHead]: tailwind.slate[500],
@@ -317,8 +317,8 @@ const darkVars = {
   [colorSuccessBgHover]: tailwind.green[900],
   [colorSuccessBorder]: tailwind.green[800],
   [colorSuccessBorderHover]: tailwind.green[400],
-  [colorNeutralLight]: tailwind.slate[700],
-  [colorNeutral]: tailwind.slate[600],
+  [colorNeutralLight]: tailwind.amber[600],
+  [colorNeutral]: tailwind.amber[400],
 
   [colorBgTableHead]: tailwind.slate[800],
   [colorTextTableHead]: tailwind.slate[500],

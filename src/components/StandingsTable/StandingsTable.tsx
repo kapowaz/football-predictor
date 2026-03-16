@@ -3,11 +3,18 @@ import type { TeamStanding, FormResult, FormEntry, VariantRulesMode } from '../.
 import type { ZoneDefinition, ZoneType } from '../../data/competitions';
 import { getCrest } from '../../assets/crests';
 import { getBonusPointsForResult } from '../../utils/standings';
+import { getPositionTrend } from '../../utils/positionHistory';
 import { getZoneForPosition } from '../../utils/zones';
 import { useScrollDirectionLock } from '../../hooks/useScrollDirectionLock';
 import { StandingPosition } from '../StandingPosition';
+import { Sparkline } from '../Sparkline';
+import { SparklineIcon, RoundedSquareBadgesIcon } from '../icons';
 import { shouldRenderGuaranteedPositionBadge } from './positionBadge';
 import * as styles from './StandingsTable.css';
+
+export type FormDisplayMode = 'badges' | 'sparkline';
+
+const SPARKLINE_HISTORY_LENGTH = 12;
 
 interface StandingsTableProps {
   standings: TeamStanding[];
@@ -30,6 +37,14 @@ interface StandingsTableProps {
   hasGradient?: boolean;
   /** Enable variant rules mode: adds Bonus column and shows point values in form badges. */
   variantRules?: VariantRulesMode;
+  /** Which form column view to display. Defaults to `'badges'`. */
+  formDisplay?: FormDisplayMode;
+  /** Position history per team (team ID -> array of positions). Required when formDisplay is `'sparkline'`. */
+  positionHistory?: Map<number, number[]>;
+  /** Total number of teams in the competition (used for sparkline Y-axis domain). */
+  teamCount?: number;
+  /** Called when the form display toggle button is clicked. */
+  onFormDisplayToggle?: () => void;
 }
 
 const formatGD = (gd: number): string => {
@@ -115,6 +130,10 @@ export const StandingsTable = ({
   isRenderView = false,
   hasGradient = false,
   variantRules = false as VariantRulesMode,
+  formDisplay = 'badges' as FormDisplayMode,
+  positionHistory,
+  teamCount,
+  onFormDisplayToggle,
 }: StandingsTableProps) => {
   const showBonusColumn = variantRules === 'new-rules';
   const containerRef = useScrollDirectionLock<HTMLDivElement>();
@@ -204,7 +223,29 @@ export const StandingsTable = ({
               <th className={statsHeaderClassName}>GA</th>
               {isRenderView && <th className={statsHeaderClassName}>GD</th>}
               {isRenderView && <th className={statsHeaderClassName}>Pts</th>}
-              <th className={formHeaderClassName}>Form</th>
+              <th className={formHeaderClassName}>
+                <div className={styles.formHeaderContent}>
+                  Form
+                  {onFormDisplayToggle && (
+                    <button
+                      type="button"
+                      className={styles.formToggleButton}
+                      onClick={onFormDisplayToggle}
+                      aria-label={
+                        formDisplay === 'badges'
+                          ? 'Switch to sparkline view'
+                          : 'Switch to form badges view'
+                      }
+                    >
+                      {formDisplay === 'badges' ? (
+                        <SparklineIcon size={14} />
+                      ) : (
+                        <RoundedSquareBadgesIcon size={14} />
+                      )}
+                    </button>
+                  )}
+                </div>
+              </th>
             </tr>
           </thead>
         )}
@@ -282,8 +323,18 @@ export const StandingsTable = ({
                 <td className={centeredBodyCellClassName}>{standing.goalsFor}</td>
                 <td className={centeredBodyCellClassName}>{standing.goalsAgainst}</td>
                 {isRenderView && gdAndPtsCells}
-                <td className={styles.td}>
-                  <div className={styles.formCell}>
+                <td
+                  className={clsx(
+                    styles.td,
+                    formDisplay === 'sparkline' && styles.formTdSparkline,
+                  )}
+                >
+                  <div
+                    className={clsx(
+                      styles.formCell,
+                      formDisplay !== 'badges' && styles.formDisplayHidden,
+                    )}
+                  >
                     {standing.form.map((entry, i) => {
                       const isBonusPoints = variantRules === 'bonus-points';
                       const label = isBonusPoints
@@ -320,6 +371,25 @@ export const StandingsTable = ({
                         </span>
                       );
                     })}
+                  </div>
+                  <div
+                    className={clsx(
+                      styles.sparklineWrapper,
+                      formDisplay !== 'sparkline' && styles.formDisplayHidden,
+                    )}
+                  >
+                    {positionHistory && teamCount && (() => {
+                      const fullHistory = positionHistory.get(standing.team.id) ?? [];
+                      const positions = fullHistory.slice(-SPARKLINE_HISTORY_LENGTH);
+                      const trend = getPositionTrend(positions);
+                      return (
+                        <Sparkline
+                          data={positions}
+                          teamCount={teamCount}
+                          trend={trend}
+                        />
+                      );
+                    })()}
                   </div>
                 </td>
               </tr>

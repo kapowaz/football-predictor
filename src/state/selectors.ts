@@ -1,5 +1,6 @@
 import type { Match, PointDeduction, PredictionsStore, Team, TeamStanding, VariantRulesMode } from '../types';
 import { calculateStandings } from '../utils/standings';
+import { calculatePositionHistory } from '../utils/positionHistory';
 import { calculateZoneGuaranteedByTeamId } from '../utils/zoneGuarantees';
 import type { ZoneDefinition } from '../data/competitions';
 import type { CompetitionSessionState } from './competitionSessionStore';
@@ -134,6 +135,18 @@ export const selectStandingsViewModel = memoizeByReference(
     );
 
     return { standings, deductionMarkers, zoneGuaranteedByTeamId };
+  },
+);
+
+export const selectPositionHistory = memoizeByReference(
+  (
+    teams: Team[],
+    matches: Match[],
+    predictions: PredictionsStore,
+    deductions: PointDeduction[],
+    variantRules: VariantRulesMode = false,
+  ): Map<number, number[]> => {
+    return calculatePositionHistory(teams, matches, predictions, deductions, variantRules);
   },
 );
 

@@ -22,7 +22,7 @@ export interface MatchResult {
   awayGoals: number;
 }
 
-const getFormResult = (
+export const getFormResult = (
   goalsFor: number,
   goalsAgainst: number,
   variantRules: VariantRulesMode = false,
@@ -35,7 +35,7 @@ const getFormResult = (
   return 'L';
 };
 
-const createEmptyStanding = (team: Team): TeamStanding => {
+export const createEmptyStanding = (team: Team): TeamStanding => {
   return {
     team,
     played: 0,
@@ -70,7 +70,7 @@ export const getBonusPointsForResult = (goalsScored: number, goalsConceded: numb
   return points;
 };
 
-const applyResult = (
+export const applyResult = (
   standing: TeamStanding,
   goalsFor: number,
   goalsAgainst: number,

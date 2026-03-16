@@ -1,10 +1,10 @@
-import { useMemo, useRef } from 'react';
+import { useMemo, useRef, useState } from 'react';
 import { Navigate, useNavigate, useParams } from 'react-router-dom';
 import { AppHeader } from './components/AppHeader';
 import { AppPanels } from './components/AppPanels';
 import { Button } from './components/Button';
 import { FixturePanel } from './components/FixturePanel';
-import { StandingsTable } from './components/StandingsTable/StandingsTable';
+import { StandingsTable, type FormDisplayMode } from './components/StandingsTable/StandingsTable';
 import { BrainIcon } from './components/icons';
 import { competitionData } from './data';
 import { allCompetitions, getCompetition, type CompetitionConfig } from './data/competitions';
@@ -14,6 +14,7 @@ import { useCompetitionSession } from './state/useCompetitionSession';
 import {
   selectAllScheduledPredicted,
   selectPredictedCount,
+  selectPositionHistory,
   selectStandingsViewModel,
 } from './state/selectors';
 import * as styles from './RelegationPage.css';
@@ -52,6 +53,8 @@ const RelegationContent = ({ slug, config }: RelegationContentProps) => {
     deductions,
     config.zones,
   );
+  const positionHistory = selectPositionHistory(teams, matches, predictions, deductions);
+  const [formDisplay, setFormDisplay] = useState<FormDisplayMode>('badges');
   const relegationZone = useMemo(
     () => config.zones.find((z) => z.type === 'relegation'),
     [config.zones],
@@ -112,6 +115,12 @@ const RelegationContent = ({ slug, config }: RelegationContentProps) => {
               setNavigateToMatchId(matchId);
             }}
             clickableMatchIds={fixtureMatchIds}
+            formDisplay={formDisplay}
+            positionHistory={positionHistory}
+            teamCount={teams.length}
+            onFormDisplayToggle={() =>
+              setFormDisplay((prev) => (prev === 'badges' ? 'sparkline' : 'badges'))
+            }
           />
         </>
       }

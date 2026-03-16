@@ -568,6 +568,56 @@ export const formLossButton = style({
   },
 });
 
+export const formDisplayHidden = style({
+  display: 'none',
+});
+
+export const formTdSparkline = style({
+  paddingTop: space1,
+  paddingBottom: space1,
+  height: '1px',
+  '@container': {
+    [`${tableContainer} (max-width: 480px)`]: {
+      paddingTop: space1,
+      paddingBottom: space1,
+    },
+    [`${tableContainer} (max-width: 680px)`]: {
+      paddingTop: space1,
+      paddingBottom: space1,
+    },
+  },
+});
+
+export const sparklineWrapper = style({
+  height: '100%',
+});
+
+export const formHeaderContent = style({
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  gap: space1,
+});
+
+export const formToggleButton = style({
+  display: 'inline-flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  padding: 0,
+  border: 'none',
+  background: 'none',
+  color: colorTextTableHead,
+  cursor: 'pointer',
+  lineHeight: 0,
+  opacity: 0.7,
+  transition: 'opacity 0.15s ease',
+  selectors: {
+    '&:hover': {
+      opacity: 1,
+    },
+  },
+});
+
 export const formBonus = style({
   backgroundColor: colorResultBonus,
   color: colorResultBonusText,

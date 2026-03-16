@@ -1,0 +1,22 @@
+interface SparklineIconProps {
+  size?: number;
+  className?: string;
+}
+
+export const SparklineIcon = ({ size = 16, className }: SparklineIconProps) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+    className={className}
+  >
+    <path d="M22 6L13.354 14.646C13.3076 14.6926 13.2524 14.7295 13.1916 14.7547C13.1309 14.7799 13.0658 14.7929 13 14.7929C12.9342 14.7929 12.8691 14.7799 12.8084 14.7547C12.7476 14.7295 12.6924 14.6926 12.646 14.646L9.354 11.354C9.26024 11.2603 9.13308 11.2076 9.0005 11.2076C8.86792 11.2076 8.74076 11.2603 8.647 11.354L2 18" />
+  </svg>
+);
