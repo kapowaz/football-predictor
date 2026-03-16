@@ -1,3 +1,4 @@
+export { ArrowDownFromDotIcon } from './ArrowDownFromDotIcon';
 export { BrainIcon } from './BrainIcon';
 export { ChevronRightIcon } from './ChevronRightIcon';
 export { ImageDownIcon } from './ImageDownIcon';
