@@ -155,6 +155,7 @@ export const StandingsTable = ({
           <colgroup>
             <col />
             <col className={styles.colStat} />
+            {variantRules && <col className={styles.colStat} />}
             <col className={styles.colStat} />
             <col className={styles.colStat} />
             <col className={styles.colStat} />

@@ -3,7 +3,7 @@ import {
   colorBgPage,
   colorTextHeading,
   colorTextSecondary,
-  colorTextFaint,
+  colorIconFaded,
   fontSizeLg,
   fontSizeMd,
   fontSizeSm,
@@ -101,7 +101,7 @@ export const footerIcon = style({
 });
 
 export const footerIconContainer = style({
-  color: colorTextFaint,
+  color: colorIconFaded,
 });
 
 export const footerBold = style({

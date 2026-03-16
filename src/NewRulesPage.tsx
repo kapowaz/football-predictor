@@ -85,6 +85,7 @@ const NewRulesContent = ({ slug, config }: NewRulesContentProps) => {
         zones={config.zones}
         partial="top"
         captureRef={topStandingsCaptureRef}
+        variantRules
       />
       <StandingsImageView
         standings={standings}
@@ -97,6 +98,7 @@ const NewRulesContent = ({ slug, config }: NewRulesContentProps) => {
         zones={config.zones}
         partial="bottom"
         captureRef={bottomStandingsCaptureRef}
+        variantRules
       />
 
       <CompetitionPanels

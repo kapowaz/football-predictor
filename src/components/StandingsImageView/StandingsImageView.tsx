@@ -31,6 +31,8 @@ interface StandingsImageViewProps {
   captureRef: RefObject<HTMLDivElement | null>;
   /** Whether the capture root should be visually hidden off-screen. */
   isHidden?: boolean;
+  /** Enable variant rules mode: adds Bonus column and shows point values in form badges. */
+  variantRules?: boolean;
 }
 
 const SITE_URL = 'kapowaz.github.io/football-predictor/';
@@ -47,6 +49,7 @@ export const StandingsImageView = ({
   partial,
   captureRef,
   isHidden = true,
+  variantRules = false,
 }: StandingsImageViewProps) => {
   const showHeading = partial !== 'bottom';
   const showFooter = partial !== 'top';
@@ -98,6 +101,7 @@ export const StandingsImageView = ({
             partial={partial}
             disableVerticalScroll
             isRenderView
+            variantRules={variantRules}
           />
           {showFooter && (
             <footer className={styles.footerContainer}>

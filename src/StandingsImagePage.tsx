@@ -1,4 +1,4 @@
-import { Navigate, useParams } from 'react-router-dom';
+import { Navigate, useParams, useSearchParams } from 'react-router-dom';
 import { useCallback, useRef } from 'react';
 import { StandingsImageView } from './components/StandingsImageView';
 import { ColorModeToggle } from './components/ColorModeToggle';
@@ -16,6 +16,8 @@ interface StandingsImageContentProps {
 }
 
 const StandingsImageContent = ({ slug, config }: StandingsImageContentProps) => {
+  const [searchParams] = useSearchParams();
+  const variantRules = searchParams.get('variantRules') === 'true';
   const topCaptureRef = useRef<HTMLDivElement>(null);
   const bottomCaptureRef = useRef<HTMLDivElement>(null);
   const { theme, toggleTheme } = useTheme();
@@ -32,6 +34,7 @@ const StandingsImageContent = ({ slug, config }: StandingsImageContentProps) => 
     predictions,
     deductions,
     config.zones,
+    variantRules,
   );
   const teamsById = selectTeamsById(teams);
   const deductionNotes = selectDeductionNotes(deductions, teamsById);
@@ -60,6 +63,7 @@ const StandingsImageContent = ({ slug, config }: StandingsImageContentProps) => 
         partial="top"
         captureRef={topCaptureRef}
         isHidden={false}
+        variantRules={variantRules}
       />
       <StandingsImageView
         standings={standings}
@@ -73,6 +77,7 @@ const StandingsImageContent = ({ slug, config }: StandingsImageContentProps) => 
         partial="bottom"
         captureRef={bottomCaptureRef}
         isHidden={false}
+        variantRules={variantRules}
       />
     </div>
   );

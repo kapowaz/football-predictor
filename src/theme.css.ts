@@ -13,6 +13,7 @@ export const colorTextFaint = createVar();
 export const colorTextHover = createVar();
 export const colorTextActive = createVar();
 export const colorTextWhite = createVar();
+export const colorIconFaded = createVar();
 
 export const colorBorder = createVar();
 export const colorBorderLight = createVar();
@@ -144,6 +145,7 @@ globalStyle(':root', {
     [colorTextSecondary]: tailwind.gray[500],
     [colorTextMuted]: tailwind.neutral[500],
     [colorTextFaint]: tailwind.neutral[100],
+    [colorIconFaded]: tailwind.neutral[300],
     [colorTextHover]: tailwind.gray[700],
     [colorTextActive]: tailwind.gray[600],
     [colorTextWhite]: tailwind.white,
@@ -296,6 +298,7 @@ const darkVars = {
   [colorTextSecondary]: tailwind.slate[500],
   [colorTextMuted]: tailwind.slate[600],
   [colorTextFaint]: tailwind.slate[900],
+  [colorIconFaded]: tailwind.slate[800],
   [colorTextHover]: tailwind.slate[300],
   [colorTextActive]: tailwind.slate[400],
 
