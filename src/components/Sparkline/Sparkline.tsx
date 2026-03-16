@@ -1,5 +1,5 @@
 import { ResponsiveContainer, LineChart, Line, Tooltip, YAxis } from 'recharts';
-import type { TooltipProps } from 'recharts';
+import type { TooltipPayload } from 'recharts';
 import { colorSuccess, colorDanger, colorNeutral } from '../../theme.css';
 import type { PositionTrend } from '../../utils/positionHistory';
 import * as styles from './Sparkline.css';
@@ -23,11 +23,17 @@ const getOrdinal = (n: number): string => {
   }
 };
 
-const PositionTooltip = ({ active, payload }: TooltipProps<number, string>) => {
-  if (!active || !payload?.[0]?.value) return null;
+interface PositionTooltipProps {
+  active?: boolean;
+  payload?: TooltipPayload;
+}
+
+const PositionTooltip = ({ active, payload }: PositionTooltipProps) => {
+  const value = payload?.[0]?.value;
+  if (!active || typeof value !== 'number') return null;
   return (
     <div className={styles.tooltip}>
-      {getOrdinal(payload[0].value)}
+      {getOrdinal(value)}
     </div>
   );
 };
