@@ -265,6 +265,8 @@ export const stickyCellTh = style([
     zIndex: 3,
     backgroundColor: colorBgTableHead,
     paddingLeft: space3,
+    WebkitMaskImage: 'unset',
+    maskImage: 'unset',
     '@container': {
       [`${tableContainer} (min-width: 480px)`]: {
         paddingLeft: space3,
