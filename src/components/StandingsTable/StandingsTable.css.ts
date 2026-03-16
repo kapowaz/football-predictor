@@ -46,6 +46,7 @@ import {
   colorTextZoneEuropaLeague,
   colorTextZoneConferenceLeague,
   colorBgTableHead,
+  colorBgTableHeadHover,
   fontFamilyMono,
   fontSizeXs,
   fontSizeSm,
@@ -573,17 +574,17 @@ export const formDisplayHidden = style({
 });
 
 export const formTdSparkline = style({
-  paddingTop: space1,
-  paddingBottom: space1,
+  paddingTop: space2,
+  paddingBottom: space2,
   height: '1px',
   '@container': {
     [`${tableContainer} (max-width: 480px)`]: {
-      paddingTop: space1,
-      paddingBottom: space1,
+      paddingTop: space2,
+      paddingBottom: space2,
     },
     [`${tableContainer} (max-width: 680px)`]: {
-      paddingTop: space1,
-      paddingBottom: space1,
+      paddingTop: space2,
+      paddingBottom: space2,
     },
   },
 });
@@ -596,24 +597,30 @@ export const formHeaderContent = style({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  gap: space1,
+  position: 'relative',
 });
 
 export const formToggleButton = style({
+  position: 'absolute',
+  right: 0,
   display: 'inline-flex',
   alignItems: 'center',
   justifyContent: 'center',
+  width: '24px',
+  height: '24px',
   padding: 0,
   border: 'none',
-  background: 'none',
+  borderRadius: radiusMd,
+  background: 'transparent',
   color: colorTextTableHead,
   cursor: 'pointer',
   lineHeight: 0,
   opacity: 0.7,
-  transition: 'opacity 0.15s ease',
+  transition: 'opacity 0.15s ease, background-color 0.15s ease',
   selectors: {
     '&:hover': {
       opacity: 1,
+      backgroundColor: colorBgTableHeadHover,
     },
   },
 });

@@ -238,9 +238,9 @@ export const StandingsTable = ({
                       }
                     >
                       {formDisplay === 'badges' ? (
-                        <SparklineIcon size={14} />
+                        <SparklineIcon size={16} />
                       ) : (
-                        <RoundedSquareBadgesIcon size={14} />
+                        <RoundedSquareBadgesIcon size={16} />
                       )}
                     </button>
                   )}

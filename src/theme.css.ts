@@ -78,6 +78,7 @@ export const colorBgFixtureCardHighlight = createVar();
 export const colorBgRowEven = createVar();
 export const colorBgRowAlt = createVar();
 export const colorBgTableHead = createVar();
+export const colorBgTableHeadHover = createVar();
 export const colorTextTableHead = createVar();
 
 export const colorTextPosition = createVar();
@@ -169,6 +170,7 @@ globalStyle(':root', {
     [colorNeutralLight]: tailwind.slate[300],
 
     [colorBgTableHead]: tailwind.slate[200],
+    [colorBgTableHeadHover]: tailwind.slate[300],
     [colorTextTableHead]: tailwind.slate[500],
 
     [colorBgRowEven]: tailwind.white,
@@ -321,6 +323,7 @@ const darkVars = {
   [colorNeutralLight]: tailwind.slate[700],
 
   [colorBgTableHead]: tailwind.slate[800],
+  [colorBgTableHeadHover]: tailwind.slate[700],
   [colorTextTableHead]: tailwind.slate[500],
 
   [colorBgRowEven]: tailwind.slate[900],

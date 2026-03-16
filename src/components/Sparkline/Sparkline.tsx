@@ -1,6 +1,6 @@
 import { useEffect, useId, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { ResponsiveContainer, LineChart, Line, Tooltip, YAxis } from 'recharts';
+import { ResponsiveContainer, AreaChart, Area, Tooltip, YAxis } from 'recharts';
 import type { TooltipPayload } from 'recharts';
 import { colorSuccess, colorDanger, colorNeutral } from '../../theme.css';
 import type { PositionTrend } from '../../utils/positionHistory';
@@ -99,7 +99,9 @@ export const Sparkline = ({ data, teamCount, trend }: SparklineProps) => {
   }, [hovered]);
 
   const strokeColor = trendStrokeColor[trend];
-  const gradientId = `sparklineGradient-${useId()}`;
+  const instanceId = useId();
+  const strokeGradientId = `sparklineStroke-${instanceId}`;
+  const fillGradientId = `sparklineFill-${instanceId}`;
 
   return (
     <div
@@ -109,14 +111,18 @@ export const Sparkline = ({ data, teamCount, trend }: SparklineProps) => {
       onMouseLeave={() => setHovered(false)}
     >
       <ResponsiveContainer width={SPARKLINE_WIDTH} height="100%">
-        <LineChart
+        <AreaChart
           data={chartData}
-          margin={{ top: 2, right: 2, bottom: 2, left: 2 }}
+          margin={{ top: 2, right: 12, bottom: 2, left: 12 }}
         >
           <defs>
-            <linearGradient id={gradientId} gradientUnits="userSpaceOnUse" x1="0" y1="0" x2={SPARKLINE_WIDTH} y2="0">
-              <stop offset="0%" stopColor={strokeColor} stopOpacity={0.3} />
+            <linearGradient id={strokeGradientId} gradientUnits="userSpaceOnUse" x1="0" y1="0" x2={SPARKLINE_WIDTH} y2="0">
+              <stop offset="0%" stopColor={strokeColor} stopOpacity={0.1} />
               <stop offset="100%" stopColor={strokeColor} stopOpacity={1} />
+            </linearGradient>
+            <linearGradient id={fillGradientId} x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor={strokeColor} stopOpacity={0.3} />
+              <stop offset="100%" stopColor={strokeColor} stopOpacity={0} />
             </linearGradient>
           </defs>
           <YAxis domain={[1, teamCount]} reversed hide />
@@ -131,10 +137,12 @@ export const Sparkline = ({ data, teamCount, trend }: SparklineProps) => {
             isAnimationActive={false}
             allowEscapeViewBox={{ x: true, y: true }}
           />
-          <Line
+          <Area
             type="linear"
             dataKey="position"
-            stroke={`url(#${gradientId})`}
+            baseValue={teamCount}
+            stroke={`url(#${strokeGradientId})`}
+            fill={`url(#${fillGradientId})`}
             strokeWidth={2}
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -142,7 +150,7 @@ export const Sparkline = ({ data, teamCount, trend }: SparklineProps) => {
             activeDot={{ r: 3, strokeWidth: 0 }}
             isAnimationActive={false}
           />
-        </LineChart>
+        </AreaChart>
       </ResponsiveContainer>
     </div>
   );
