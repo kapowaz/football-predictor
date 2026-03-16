@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useId, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { ResponsiveContainer, LineChart, Line, Tooltip, YAxis } from 'recharts';
 import type { TooltipPayload } from 'recharts';
@@ -98,6 +98,9 @@ export const Sparkline = ({ data, teamCount, trend }: SparklineProps) => {
     return () => clearTimeout(timerRef.current);
   }, [hovered]);
 
+  const strokeColor = trendStrokeColor[trend];
+  const gradientId = `sparklineGradient-${useId()}`;
+
   return (
     <div
       ref={containerRef}
@@ -110,6 +113,12 @@ export const Sparkline = ({ data, teamCount, trend }: SparklineProps) => {
           data={chartData}
           margin={{ top: 2, right: 2, bottom: 2, left: 2 }}
         >
+          <defs>
+            <linearGradient id={gradientId} gradientUnits="userSpaceOnUse" x1="0" y1="0" x2={SPARKLINE_WIDTH} y2="0">
+              <stop offset="0%" stopColor={strokeColor} stopOpacity={0.3} />
+              <stop offset="100%" stopColor={strokeColor} stopOpacity={1} />
+            </linearGradient>
+          </defs>
           <YAxis domain={[1, teamCount]} reversed hide />
           <Tooltip
             content={
@@ -123,10 +132,12 @@ export const Sparkline = ({ data, teamCount, trend }: SparklineProps) => {
             allowEscapeViewBox={{ x: true, y: true }}
           />
           <Line
-            type="monotone"
+            type="linear"
             dataKey="position"
-            stroke={trendStrokeColor[trend]}
+            stroke={`url(#${gradientId})`}
             strokeWidth={2}
+            strokeLinecap="round"
+            strokeLinejoin="round"
             dot={false}
             activeDot={{ r: 3, strokeWidth: 0 }}
             isAnimationActive={false}
