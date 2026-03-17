@@ -5,7 +5,7 @@ import { AppPanels } from './components/AppPanels';
 import { Button } from './components/Button';
 import { FixturePanel } from './components/FixturePanel';
 import { StandingsTable, type FormDisplayMode } from './components/StandingsTable/StandingsTable';
-import { BrainIcon } from './components/icons';
+import { SparklesIcon } from './components/icons';
 import { competitionData } from './data';
 import { allCompetitions, getCompetition, type CompetitionConfig } from './data/competitions';
 import { useCompetitionData } from './hooks/useCompetitionData';
@@ -131,7 +131,7 @@ const RelegationContent = ({ slug, config }: RelegationContentProps) => {
             <div className={styles.panelHeaderActions}>
               {hasModelPredictions && !allScheduledPredicted && (
                 <Button variant="success" onClick={() => fillFromModel(modelPredictions)}>
-                  <BrainIcon />
+                  <SparklesIcon />
                   AI Predictions
                 </Button>
               )}

@@ -17,7 +17,7 @@ import { AppPanels } from '../AppPanels';
 import { StandingsTable, type FormDisplayMode } from '../StandingsTable/StandingsTable';
 import { Button } from '../Button';
 import { FixturePanel } from '../FixturePanel';
-import { ArrowDownFromDotIcon, BrainIcon, ImageDownIcon } from '../icons';
+import { ArrowDownFromDotIcon, SparklesIcon, ImageDownIcon } from '../icons';
 import * as styles from './CompetitionPanels.css.ts';
 
 type AppHeaderProps = ComponentProps<typeof AppHeader>;
@@ -177,7 +177,7 @@ export const CompetitionPanels = ({
             <div className={styles.panelHeaderActions}>
               {hasModelPredictions && !panelModel.allScheduledPredicted && (
                 <Button variant="success" onClick={() => fillFromModel(modelPredictions)}>
-                  <BrainIcon />
+                  <SparklesIcon />
                   AI Predictions
                 </Button>
               )}
