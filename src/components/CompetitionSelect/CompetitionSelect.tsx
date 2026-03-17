@@ -100,9 +100,11 @@ interface CompetitionSelectProps {
   competitions: CompetitionConfig[];
   value: string;
   onChange: (slug: string) => void;
+  /** Direction the options menu opens. Defaults to 'bottom'. */
+  menuPlacement?: 'auto' | 'bottom' | 'top';
 }
 
-export const CompetitionSelect = ({ competitions, value, onChange }: CompetitionSelectProps) => {
+export const CompetitionSelect = ({ competitions, value, onChange, menuPlacement = 'bottom' }: CompetitionSelectProps) => {
   const options = competitions.map(toOption);
   const selected = options.find((o) => o.value === value) ?? null;
 
@@ -120,6 +122,7 @@ export const CompetitionSelect = ({ competitions, value, onChange }: Competition
       styles={selectStyles}
       formatOptionLabel={(option) => <OptionLabel logo={option.logo} label={option.label} />}
       isSearchable={false}
+      menuPlacement={menuPlacement}
       aria-label="Select competition"
     />
   );

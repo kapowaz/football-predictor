@@ -15,6 +15,7 @@ import {
   space1,
   space2,
   radiusLg,
+  radiusMd,
 } from '../../theme.css';
 
 const base = style({
@@ -36,6 +37,23 @@ const base = style({
     opacity: 0.4,
     cursor: 'not-allowed',
   },
+});
+
+export const iconOnly = style({
+  width: '36px',
+  height: '36px',
+  padding: 0,
+  justifyContent: 'center',
+});
+
+export const compact = style({
+  width: '24px',
+  height: '24px',
+  minHeight: 'unset',
+  padding: 0,
+  gap: 0,
+  justifyContent: 'center',
+  borderRadius: radiusMd,
 });
 
 export const variant = styleVariants({

@@ -89,15 +89,9 @@ export const awayTeamMain = style({
 });
 
 export const crest = style({
-  width: '24px',
-  height: '24px',
+  width: '18px',
+  height: '18px',
   objectFit: 'contain',
-  '@media': {
-    '(min-width: 680px)': {
-      width: '32px',
-      height: '32px',
-    },
-  },
 });
 
 const teamNameBase = style({

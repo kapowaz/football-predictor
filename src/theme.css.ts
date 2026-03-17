@@ -2,6 +2,7 @@ import { createVar, globalStyle } from '@vanilla-extract/css';
 import * as tailwind from './tailwind.css';
 
 export const colorBgPage = createVar();
+export const colorBgOverlayPanel = createVar();
 export const colorBgSurface = createVar();
 export const colorBgSurfaceHover = createVar();
 
@@ -144,6 +145,7 @@ globalStyle(':root', {
   vars: {
     ...tailwind.palette,
     [colorBgPage]: tailwind.gray[100],
+    [colorBgOverlayPanel]: `color-mix(in oklch, ${tailwind.gray[50]}, transparent 30%)`,
     [colorBgSurface]: tailwind.white,
     [colorBgSurfaceHover]: tailwind.gray[50],
 
@@ -304,6 +306,7 @@ globalStyle(':root', {
 
 const darkVars = {
   [colorBgPage]: tailwind.slate[950],
+  [colorBgOverlayPanel]: `color-mix(in oklch, ${tailwind.slate[950]}, transparent 30%)`,
   [colorBgSurface]: tailwind.black,
   [colorBgSurfaceHover]: tailwind.slate[950],
 

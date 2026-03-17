@@ -12,7 +12,7 @@ import {
 import { useCompetitionSessionSlice } from '../../state/useCompetitionSessionSlice';
 import type { CompetitionConfig } from '../../data/competitions';
 import type { VariantRulesMode } from '../../types';
-import { AppHeader } from '../AppHeader';
+import { NavBar } from '../NavBar';
 import { AppPanels } from '../AppPanels';
 import { StandingsTable, type FormDisplayMode } from '../StandingsTable/StandingsTable';
 import { Button } from '../Button';
@@ -20,7 +20,7 @@ import { FixturePanel } from '../FixturePanel';
 import { ArrowDownFromDotIcon, SparklesIcon, ImageDownIcon } from '../icons';
 import * as styles from './CompetitionPanels.css.ts';
 
-type AppHeaderProps = ComponentProps<typeof AppHeader>;
+type NavBarProps = ComponentProps<typeof NavBar>;
 
 interface CompetitionPanelsProps {
   /** Competition slug used to source state for panels. */
@@ -30,7 +30,7 @@ interface CompetitionPanelsProps {
   /** Page wrapper ref used for page-level animations. */
   pageContentRef: RefObject<HTMLDivElement | null>;
   /** Props passed through to the page header. */
-  headerProps: AppHeaderProps;
+  headerProps: NavBarProps;
   /** Downloads the generated standings image. Omit along with `isRenderingImage` and `hasStandingsImage` to hide the button entirely. */
   onDownloadImage?: () => void;
   /** True while standings image generation is in progress. */
@@ -110,6 +110,43 @@ export const CompetitionPanels = ({
     setNavigateToMatchId(matchId);
   };
 
+  const navBarActions = (
+    <>
+      {onDownloadImage != null && (
+        <Button
+          variant="success"
+          iconOnly
+          compact
+          aria-label="Save Image"
+          onClick={onDownloadImage}
+          disabled={!hasStandingsImage || isRenderingImage}
+        >
+          <ImageDownIcon size={16} />
+        </Button>
+      )}
+      <Button
+        variant="danger"
+        iconOnly
+        compact
+        aria-label="Deductions"
+        onClick={() => setDeductionsModalOpen(true)}
+      >
+        <ArrowDownFromDotIcon size={16} />
+      </Button>
+      {hasModelPredictions && !panelModel.allScheduledPredicted && (
+        <Button
+          variant="success"
+          iconOnly
+          compact
+          aria-label="AI Predictions"
+          onClick={() => fillFromModel(modelPredictions)}
+        >
+          <SparklesIcon size={16} />
+        </Button>
+      )}
+    </>
+  );
+
   return (
     <AppPanels
       pageContentRef={pageContentRef}
@@ -117,42 +154,24 @@ export const CompetitionPanels = ({
       onTabChange={setActiveTab}
       standingsTabLabel="Standings"
       fixturesTabLabel="Fixtures"
-      header={<AppHeader {...headerProps} />}
+      header={<NavBar {...headerProps} actions={navBarActions} />}
       standingsPanel={
         <>
           <div className={styles.panelHeaderWithNotes}>
             <h2 className={styles.panelTitle}>Standings</h2>
-            <div className={styles.panelHeaderDeductions}>
-              {panelModel.deductionNotes.length > 0 && (
-                <div className={styles.deductionNotes}>
-                  {panelModel.deductionNotes.map((note) => (
-                    <span
-                      key={note.label}
-                      className={styles.deductionNote}
-                      title={note.reason || undefined}
-                    >
-                      {note.label}
-                    </span>
-                  ))}
-                </div>
-              )}
-              <div className={styles.panelHeaderDeductionsButtons}>
-                {onDownloadImage != null && (
-                  <Button
-                    variant="success"
-                    onClick={onDownloadImage}
-                    disabled={!hasStandingsImage || isRenderingImage}
+            {panelModel.deductionNotes.length > 0 && (
+              <div className={styles.deductionNotes}>
+                {panelModel.deductionNotes.map((note) => (
+                  <span
+                    key={note.label}
+                    className={styles.deductionNote}
+                    title={note.reason || undefined}
                   >
-                    <ImageDownIcon />
-                    Save Image
-                  </Button>
-                )}
-                <Button variant="danger" onClick={() => setDeductionsModalOpen(true)}>
-                  <ArrowDownFromDotIcon size={14} className={styles.deductionsButtonIcon} />
-                  Deductions
-                </Button>
+                    {note.label}
+                  </span>
+                ))}
               </div>
-            </div>
+            )}
           </div>
           <StandingsTable
             standings={panelModel.standings}
@@ -174,19 +193,13 @@ export const CompetitionPanels = ({
         <>
           <div className={styles.panelHeader}>
             <h2 className={styles.panelTitle}>Fixtures</h2>
-            <div className={styles.panelHeaderActions}>
-              {hasModelPredictions && !panelModel.allScheduledPredicted && (
-                <Button variant="success" onClick={() => fillFromModel(modelPredictions)}>
-                  <SparklesIcon />
-                  AI Predictions
-                </Button>
-              )}
-              {panelModel.predictedCount > 0 && (
+            {panelModel.predictedCount > 0 && (
+              <div className={styles.panelHeaderActions}>
                 <Button variant="danger" onClick={resetAllPredictions}>
                   Reset Predictions
                 </Button>
-              )}
-            </div>
+              </div>
+            )}
           </div>
           <FixturePanel
             slug={slug}

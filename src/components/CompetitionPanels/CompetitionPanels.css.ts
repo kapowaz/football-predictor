@@ -77,30 +77,6 @@ export const panelHeaderWithNotes = style({
   },
 });
 
-export const panelHeaderDeductions = style({
-  display: 'flex',
-  alignItems: 'center',
-  gap: space3,
-  '@media': {
-    'screen and (max-width: 680px)': {
-      flex: 1,
-      justifyContent: 'space-between',
-      flexDirection: 'column-reverse',
-    },
-  },
-});
-
-export const panelHeaderDeductionsButtons = style({
-  display: 'flex',
-  alignItems: 'center',
-  gap: space3,
-  '@media': {
-    'screen and (max-width: 680px)': {
-      justifyContent: 'center',
-    },
-  },
-});
-
 export const panelHeaderActions = style({
   display: 'flex',
   alignItems: 'center',
@@ -138,11 +114,6 @@ export const panelTitle = style({
       display: 'none',
     },
   },
-});
-
-export const deductionsButtonIcon = style({
-  width: '14px',
-  height: '14px',
 });
 
 const mobileBreakpoint = 'screen and (max-width: 1024px)';

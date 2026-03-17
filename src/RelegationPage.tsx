@@ -1,6 +1,6 @@
 import { useMemo, useRef, useState } from 'react';
 import { Navigate, useNavigate, useParams } from 'react-router-dom';
-import { AppHeader } from './components/AppHeader';
+import { NavBar } from './components/NavBar';
 import { AppPanels } from './components/AppPanels';
 import { Button } from './components/Button';
 import { FixturePanel } from './components/FixturePanel';
@@ -90,7 +90,7 @@ const RelegationContent = ({ slug, config }: RelegationContentProps) => {
       standingsTabLabel="Standings"
       fixturesTabLabel="Fixtures"
       header={
-        <AppHeader
+        <NavBar
           competitions={competitions}
           activeSlug={slug}
           onCompetitionChange={(nextSlug) => navigate(`/relegation/${nextSlug}/`)}

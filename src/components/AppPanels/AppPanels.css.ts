@@ -3,7 +3,7 @@ import { maxWidthContent, space2, space4, space6 } from '../../theme.css';
 
 export const main = style({
   display: 'grid',
-  gridTemplateColumns: 'minmax(640px, 1fr) 1fr',
+  gridTemplateColumns: 'minmax(640px, 1fr) minmax(360px, 1fr)',
   gap: space6,
   maxWidth: maxWidthContent,
   width: '100%',

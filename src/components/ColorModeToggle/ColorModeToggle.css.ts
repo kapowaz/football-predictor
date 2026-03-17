@@ -2,7 +2,6 @@ import { style } from '@vanilla-extract/css';
 import {
   colorTextSecondary,
   colorTextHeading,
-  space2,
   radiusMd,
 } from '../../theme.css';
 
@@ -14,10 +13,12 @@ export const toggleButton = style({
   border: 'none',
   color: colorTextSecondary,
   cursor: 'pointer',
-  padding: space2,
+  padding: '3px',
   lineHeight: 1,
   borderRadius: radiusMd,
   flexShrink: 0,
+  width: '24px',
+  height: '24px',
   transition: 'color 0.2s',
   ':hover': {
     color: colorTextHeading,
