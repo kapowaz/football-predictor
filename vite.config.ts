@@ -7,6 +7,9 @@ import { vanillaExtractPlugin } from '@vanilla-extract/vite-plugin'
 export default defineConfig({
   base: '/football-predictor/',
   plugins: [react(), vanillaExtractPlugin()],
+  optimizeDeps: {
+    entries: ['index.html'],
+  },
   test: {
     environment: 'jsdom',
     setupFiles: ['./src/test/setup.ts'],
