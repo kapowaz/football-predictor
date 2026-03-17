@@ -102,6 +102,11 @@ export const colorResultBonusText = createVar();
 export const colorResultBonusTextHover = createVar();
 export const colorResultBonusAway = createVar();
 
+export const colorLoadingBg = createVar();
+export const colorLoadingProgress = createVar();
+export const colorLoadingInvertedBg = createVar();
+export const colorLoadingInvertedProgress = createVar();
+
 export const colorFocus = createVar();
 export const colorFocusRing = createVar();
 
@@ -254,6 +259,11 @@ globalStyle(':root', {
     [colorResultBonusText]: tailwind.green[200],
     [colorResultBonusTextHover]: tailwind.green[300],
     [colorResultBonusAway]: tailwind.red[700],
+
+    [colorLoadingBg]: tailwind.neutral[300],
+    [colorLoadingProgress]: tailwind.blue[600],
+    [colorLoadingInvertedBg]: tailwind.white,
+    [colorLoadingInvertedProgress]: tailwind.white,
 
     [colorFocus]: tailwind.blue[500],
     [colorFocusRing]: `color-mix(in oklch, ${tailwind.blue[500]}, transparent 80%)`,
@@ -408,6 +418,11 @@ const darkVars = {
   [colorResultBonusText]: tailwind.green[700],
   [colorResultBonusTextHover]: tailwind.green[800],
   [colorResultBonusAway]: tailwind.rose[300],
+
+  [colorLoadingBg]: tailwind.gray[700],
+  [colorLoadingProgress]: tailwind.blue[400],
+  [colorLoadingInvertedBg]: tailwind.white,
+  [colorLoadingInvertedProgress]: tailwind.white,
 
   [colorFocusRing]: `color-mix(in oklch, ${tailwind.blue[500]}, transparent 70%)`,
 
