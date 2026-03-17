@@ -17,7 +17,7 @@ import { AppPanels } from '../AppPanels';
 import { StandingsTable, type FormDisplayMode } from '../StandingsTable/StandingsTable';
 import { Button } from '../Button';
 import { FixturePanel } from '../FixturePanel';
-import { ArrowDownFromDotIcon, SparklesIcon, ImageDownIcon } from '../icons';
+import { ImageDownIcon } from '../icons';
 import * as styles from './CompetitionPanels.css.ts';
 
 type NavBarProps = ComponentProps<typeof NavBar>;
@@ -110,42 +110,18 @@ export const CompetitionPanels = ({
     setNavigateToMatchId(matchId);
   };
 
-  const navBarActions = (
-    <>
-      {onDownloadImage != null && (
-        <Button
-          variant="success"
-          iconOnly
-          compact
-          aria-label="Save Image"
-          onClick={onDownloadImage}
-          disabled={!hasStandingsImage || isRenderingImage}
-        >
-          <ImageDownIcon size={16} />
-        </Button>
-      )}
-      <Button
-        variant="danger"
-        iconOnly
-        compact
-        aria-label="Deductions"
-        onClick={() => setDeductionsModalOpen(true)}
-      >
-        <ArrowDownFromDotIcon size={16} />
-      </Button>
-      {hasModelPredictions && !panelModel.allScheduledPredicted && (
-        <Button
-          variant="success"
-          iconOnly
-          compact
-          aria-label="AI Predictions"
-          onClick={() => fillFromModel(modelPredictions)}
-        >
-          <SparklesIcon size={16} />
-        </Button>
-      )}
-    </>
-  );
+  const navBarActions = onDownloadImage != null ? (
+    <Button
+      variant="success"
+      iconOnly
+      compact
+      aria-label="Save Image"
+      onClick={onDownloadImage}
+      disabled={!hasStandingsImage || isRenderingImage}
+    >
+      <ImageDownIcon size={16} />
+    </Button>
+  ) : undefined;
 
   return (
     <AppPanels
@@ -154,7 +130,18 @@ export const CompetitionPanels = ({
       onTabChange={setActiveTab}
       standingsTabLabel="Standings"
       fixturesTabLabel="Fixtures"
-      header={<NavBar {...headerProps} actions={navBarActions} />}
+      header={
+        <NavBar
+          {...headerProps}
+          actions={navBarActions}
+          onDeductionsClick={() => setDeductionsModalOpen(true)}
+          onAIPredictionsClick={
+            hasModelPredictions && !panelModel.allScheduledPredicted
+              ? () => fillFromModel(modelPredictions)
+              : undefined
+          }
+        />
+      }
       standingsPanel={
         <>
           <div className={styles.panelHeaderWithNotes}>

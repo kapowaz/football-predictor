@@ -5,7 +5,7 @@ import { AppPanels } from './components/AppPanels';
 import { Button } from './components/Button';
 import { FixturePanel } from './components/FixturePanel';
 import { StandingsTable, type FormDisplayMode } from './components/StandingsTable/StandingsTable';
-import { SparklesIcon } from './components/icons';
+import { DeductionsModal } from './components/DeductionsModal';
 import { competitionData } from './data';
 import { allCompetitions, getCompetition, type CompetitionConfig } from './data/competitions';
 import { useCompetitionData } from './hooks/useCompetitionData';
@@ -35,11 +35,18 @@ const RelegationContent = ({ slug, config }: RelegationContentProps) => {
   const {
     predictions,
     deductions,
+    deductionsCustomised,
+    deductionsModalOpen,
     activeTab,
     setActiveTab,
     setNavigateToMatchId,
     fillFromModel,
     resetAllPredictions,
+    updateDeduction,
+    addDeduction,
+    removeDeduction,
+    resetDeductions,
+    setDeductionsModalOpen,
   } = useCompetitionSession({
     slug,
     matches,
@@ -83,77 +90,91 @@ const RelegationContent = ({ slug, config }: RelegationContentProps) => {
   const allScheduledPredicted = selectAllScheduledPredicted(matches, predictions);
 
   return (
-    <AppPanels
-      pageContentRef={pageContentRef}
-      activeTab={activeTab}
-      onTabChange={setActiveTab}
-      standingsTabLabel="Standings"
-      fixturesTabLabel="Fixtures"
-      header={
-        <NavBar
-          competitions={competitions}
-          activeSlug={slug}
-          onCompetitionChange={(nextSlug) => navigate(`/relegation/${nextSlug}/`)}
-          colorMode={theme}
-          onColorModeToggle={toggleTheme}
-        />
-      }
-      standingsPanel={
-        <>
-          <div className={styles.panelHeader}>
-            <h2 className={styles.panelTitle}>Standings</h2>
-          </div>
-          <StandingsTable
-            standings={standings}
-            deductionMarkers={deductionMarkers}
-            zoneGuaranteedByTeamId={zoneGuaranteedByTeamId}
-            zones={config.zones}
-            partial="bottom"
-            hasGradient
-            onResultClick={(matchId) => {
-              setActiveTab('fixtures');
-              setNavigateToMatchId(matchId);
-            }}
-            clickableMatchIds={fixtureMatchIds}
-            formDisplay={formDisplay}
-            positionHistory={positionHistory}
-            teamCount={teams.length}
-            onFormDisplayToggle={() =>
-              setFormDisplay((prev) => (prev === 'badges' ? 'sparkline' : 'badges'))
+    <>
+      <AppPanels
+        pageContentRef={pageContentRef}
+        activeTab={activeTab}
+        onTabChange={setActiveTab}
+        standingsTabLabel="Standings"
+        fixturesTabLabel="Fixtures"
+        header={
+          <NavBar
+            competitions={competitions}
+            activeSlug={slug}
+            onCompetitionChange={(nextSlug) => navigate(`/relegation/${nextSlug}/`)}
+            colorMode={theme}
+            onColorModeToggle={toggleTheme}
+            onDeductionsClick={() => setDeductionsModalOpen(true)}
+            onAIPredictionsClick={
+              hasModelPredictions && !allScheduledPredicted
+                ? () => fillFromModel(modelPredictions)
+                : undefined
             }
           />
-        </>
-      }
-      fixturesPanel={
-        <>
-          <div className={styles.panelHeader}>
-            <h2 className={styles.panelTitle}>Fixtures</h2>
-            <div className={styles.panelHeaderActions}>
-              {hasModelPredictions && !allScheduledPredicted && (
-                <Button variant="success" onClick={() => fillFromModel(modelPredictions)}>
-                  <SparklesIcon />
-                  AI Predictions
-                </Button>
-              )}
-              {predictedCount > 0 && (
-                <Button variant="danger" onClick={resetAllPredictions}>
-                  Reset Predictions
-                </Button>
-              )}
+        }
+        standingsPanel={
+          <>
+            <div className={styles.panelHeader}>
+              <h2 className={styles.panelTitle}>Standings</h2>
             </div>
-          </div>
-          <FixturePanel
-            slug={slug}
-            isVisible={activeTab === 'fixtures'}
-            showFinished={false}
-            filterTeams={relegationTeamIds}
-            groupBy="team"
-            showDate
-            zones={config.zones}
-          />
-        </>
-      }
-    />
+            <StandingsTable
+              standings={standings}
+              deductionMarkers={deductionMarkers}
+              zoneGuaranteedByTeamId={zoneGuaranteedByTeamId}
+              zones={config.zones}
+              partial="bottom"
+              hasGradient
+              onResultClick={(matchId) => {
+                setActiveTab('fixtures');
+                setNavigateToMatchId(matchId);
+              }}
+              clickableMatchIds={fixtureMatchIds}
+              formDisplay={formDisplay}
+              positionHistory={positionHistory}
+              teamCount={teams.length}
+              onFormDisplayToggle={() =>
+                setFormDisplay((prev) => (prev === 'badges' ? 'sparkline' : 'badges'))
+              }
+            />
+          </>
+        }
+        fixturesPanel={
+          <>
+            <div className={styles.panelHeader}>
+              <h2 className={styles.panelTitle}>Fixtures</h2>
+              <div className={styles.panelHeaderActions}>
+                {predictedCount > 0 && (
+                  <Button variant="danger" onClick={resetAllPredictions}>
+                    Reset Predictions
+                  </Button>
+                )}
+              </div>
+            </div>
+            <FixturePanel
+              slug={slug}
+              isVisible={activeTab === 'fixtures'}
+              showFinished={false}
+              filterTeams={relegationTeamIds}
+              groupBy="team"
+              showDate
+              zones={config.zones}
+            />
+          </>
+        }
+      />
+
+      <DeductionsModal
+        isOpen={deductionsModalOpen}
+        onClose={() => setDeductionsModalOpen(false)}
+        deductions={deductions}
+        teams={teams}
+        isCustomised={deductionsCustomised}
+        onUpdate={updateDeduction}
+        onAdd={addDeduction}
+        onRemove={removeDeduction}
+        onReset={resetDeductions}
+      />
+    </>
   );
 };
 

@@ -5,9 +5,10 @@ import { Link, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import type { CompetitionConfig } from '../../data/competitions';
 import { AppHeading } from '../AppHeading';
+import { Button } from '../Button';
 import { CompetitionSelect } from '../CompetitionSelect';
 import { ColorModeToggle } from '../ColorModeToggle';
-import { MenuSquareIcon, XIcon } from '../icons';
+import { ArrowDownFromDotIcon, MenuSquareIcon, SparklesIcon, XIcon } from '../icons';
 import * as styles from './NavBar.css';
 
 interface NavBarProps {
@@ -21,8 +22,11 @@ interface NavBarProps {
   colorMode: 'light' | 'dark';
   /** Called with the next color mode when the user toggles it. */
   onColorModeToggle: (colorMode: 'light' | 'dark') => void;
-  /** Action buttons rendered between the competition select and color mode toggle (desktop),
-   *  and to the left of the color mode toggle inside the mobile menu. */
+  /** Opens the deductions modal. */
+  onDeductionsClick?: () => void;
+  /** Fills all remaining fixtures with AI model predictions. Only rendered when provided. */
+  onAIPredictionsClick?: () => void;
+  /** Additional action buttons rendered alongside the built-in actions. */
   actions?: ReactNode;
 }
 
@@ -32,6 +36,8 @@ export const NavBar = ({
   onCompetitionChange,
   colorMode,
   onColorModeToggle,
+  onDeductionsClick,
+  onAIPredictionsClick,
   actions,
 }: NavBarProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -78,7 +84,33 @@ export const NavBar = ({
             />
           </div>
         )}
-        {actions && <div className={styles.desktopActions}>{actions}</div>}
+        {(actions || onDeductionsClick || onAIPredictionsClick) && (
+          <div className={styles.desktopActions}>
+            {actions}
+            {onDeductionsClick && (
+              <Button
+                variant="danger"
+                iconOnly
+                compact
+                aria-label="Deductions"
+                onClick={onDeductionsClick}
+              >
+                <ArrowDownFromDotIcon size={16} />
+              </Button>
+            )}
+            {onAIPredictionsClick && (
+              <Button
+                variant="success"
+                iconOnly
+                compact
+                aria-label="AI Predictions"
+                onClick={onAIPredictionsClick}
+              >
+                <SparklesIcon size={16} />
+              </Button>
+            )}
+          </div>
+        )}
         <button
           className={styles.menuButton}
           aria-label="Open navigation menu"
@@ -112,6 +144,28 @@ export const NavBar = ({
               >
                 <div className={styles.overlayHeader}>
                   {actions}
+                  {onDeductionsClick && (
+                    <Button
+                      variant="danger"
+                      iconOnly
+                      compact
+                      aria-label="Deductions"
+                      onClick={onDeductionsClick}
+                    >
+                      <ArrowDownFromDotIcon size={16} />
+                    </Button>
+                  )}
+                  {onAIPredictionsClick && (
+                    <Button
+                      variant="success"
+                      iconOnly
+                      compact
+                      aria-label="AI Predictions"
+                      onClick={onAIPredictionsClick}
+                    >
+                      <SparklesIcon size={16} />
+                    </Button>
+                  )}
                   <ColorModeToggle colorMode={colorMode} onColorModeToggle={onColorModeToggle} />
                   <button
                     className={styles.overlayCloseButton}
