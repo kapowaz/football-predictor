@@ -1,10 +1,15 @@
 import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { action } from 'storybook/actions';
 import { TabBar } from './TabBar';
 
 const meta = {
   title: 'Components/TabBar',
   component: TabBar,
+  args: {
+    activeTab: '',
+    onTabChange: action('onTabChange'),
+  },
   argTypes: {
     alwaysVisible: { control: 'boolean' },
   },

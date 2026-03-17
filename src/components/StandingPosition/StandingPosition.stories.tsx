@@ -13,6 +13,10 @@ const premierLeagueZones: ZoneDefinition[] = [
 const meta = {
   title: 'Components/StandingPosition',
   component: StandingPosition,
+  args: {
+    position: 1,
+    zones: premierLeagueZones,
+  },
   argTypes: {
     position: { control: { type: 'number', min: 1, max: 20 } },
   },

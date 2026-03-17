@@ -1,11 +1,17 @@
 import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { action } from 'storybook/actions';
 import { Modal } from './Modal';
 import { Button } from '../Button';
 
 const meta = {
   title: 'Components/Modal',
   component: Modal,
+  args: {
+    isOpen: false,
+    onClose: action('onClose'),
+    children: null,
+  },
   argTypes: {
     shakeOnOpen: { control: 'boolean' },
   },

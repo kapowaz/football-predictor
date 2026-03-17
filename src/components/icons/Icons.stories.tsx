@@ -1,8 +1,9 @@
+import type { ReactElement } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import type { IconProps } from './types';
 import * as IconExports from './index';
 
-type IconComponent = (props: IconProps) => JSX.Element;
+type IconComponent = (props: IconProps) => ReactElement;
 
 const icons = Object.entries(IconExports)
   .filter((entry): entry is [string, IconComponent] => typeof entry[1] === 'function')

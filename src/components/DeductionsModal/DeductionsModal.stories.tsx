@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { action } from 'storybook/actions';
 import { DeductionsModal } from './DeductionsModal';
 import { Button } from '../Button';
 import type { Team, PointDeduction } from '../../types';
@@ -18,6 +19,17 @@ const deductions: PointDeduction[] = [
 const meta = {
   title: 'Components/DeductionsModal',
   component: DeductionsModal,
+  args: {
+    isOpen: false,
+    onClose: action('onClose'),
+    deductions: [],
+    teams,
+    isCustomised: false,
+    onUpdate: action('onUpdate'),
+    onAdd: action('onAdd'),
+    onRemove: action('onRemove'),
+    onReset: action('onReset'),
+  },
 } satisfies Meta<typeof DeductionsModal>;
 
 export default meta;

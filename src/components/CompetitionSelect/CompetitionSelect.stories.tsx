@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { action } from 'storybook/actions';
 import { CompetitionSelect } from './CompetitionSelect';
 import type { CompetitionConfig } from '../../data/competitions';
 import plLogo from '../../assets/premier-league-logo.svg';
@@ -15,6 +16,11 @@ const competitions: CompetitionConfig[] = [
 const meta = {
   title: 'Components/CompetitionSelect',
   component: CompetitionSelect,
+  args: {
+    competitions,
+    value: 'premier-league',
+    onChange: action('onChange'),
+  },
   decorators: [
     (Story) => (
       <div style={{ maxWidth: 300 }}>

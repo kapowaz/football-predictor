@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { action } from 'storybook/actions';
 import { TeamSelect } from './TeamSelect';
 import type { Team } from '../../types';
 
@@ -15,6 +16,11 @@ const teams: Team[] = [
 const meta = {
   title: 'Components/TeamSelect',
   component: TeamSelect,
+  args: {
+    teams,
+    value: '',
+    onChange: action('onChange'),
+  },
   argTypes: {
     menuPlacement: {
       control: 'select',

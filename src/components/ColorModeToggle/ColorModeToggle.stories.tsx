@@ -1,10 +1,15 @@
 import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { action } from 'storybook/actions';
 import { ColorModeToggle } from './ColorModeToggle';
 
 const meta = {
   title: 'Components/ColorModeToggle',
   component: ColorModeToggle,
+  args: {
+    colorMode: 'light',
+    onColorModeToggle: action('onColorModeToggle'),
+  },
   argTypes: {
     colorMode: {
       control: 'inline-radio',

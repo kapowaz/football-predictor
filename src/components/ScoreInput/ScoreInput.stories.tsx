@@ -1,10 +1,16 @@
 import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { action } from 'storybook/actions';
 import { ScoreInput } from './ScoreInput';
 
 const meta = {
   title: 'Components/ScoreInput',
   component: ScoreInput,
+  args: {
+    homeGoals: null,
+    awayGoals: null,
+    onChange: action('onChange'),
+  },
 } satisfies Meta<typeof ScoreInput>;
 
 export default meta;
