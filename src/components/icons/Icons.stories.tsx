@@ -1,35 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import {
-  ArrowDownFromDotIcon,
-  BrainIcon,
-  ChevronRightIcon,
-  ImageDownIcon,
-  KBoltIcon,
-  MoonIcon,
-  RoundedSquareBadgesIcon,
-  ShareIcon,
-  SparklesIcon,
-  SparklineIcon,
-  SunIcon,
-  TrashIcon,
-  TrendingDownIcon,
-} from './index';
+import type { IconProps } from './types';
+import * as IconExports from './index';
 
-const icons = [
-  { name: 'ArrowDownFromDotIcon', Component: ArrowDownFromDotIcon },
-  { name: 'BrainIcon', Component: BrainIcon },
-  { name: 'ChevronRightIcon', Component: ChevronRightIcon },
-  { name: 'ImageDownIcon', Component: ImageDownIcon },
-  { name: 'KBoltIcon', Component: KBoltIcon },
-  { name: 'MoonIcon', Component: MoonIcon },
-  { name: 'RoundedSquareBadgesIcon', Component: RoundedSquareBadgesIcon },
-  { name: 'ShareIcon', Component: ShareIcon },
-  { name: 'SparklesIcon', Component: SparklesIcon },
-  { name: 'SparklineIcon', Component: SparklineIcon },
-  { name: 'SunIcon', Component: SunIcon },
-  { name: 'TrashIcon', Component: TrashIcon },
-  { name: 'TrendingDownIcon', Component: TrendingDownIcon },
-];
+type IconComponent = (props: IconProps) => JSX.Element;
+
+const icons = Object.entries(IconExports)
+  .filter((entry): entry is [string, IconComponent] => typeof entry[1] === 'function')
+  .map(([name, Component]) => ({ name, Component }))
+  .sort((a, b) => a.name.localeCompare(b.name));
 
 const IconGrid = ({ size }: { size: number }) => (
   <div
