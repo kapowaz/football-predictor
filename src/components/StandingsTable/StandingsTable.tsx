@@ -236,6 +236,11 @@ export const StandingsTable = ({
                           ? 'Switch to sparkline view'
                           : 'Switch to form badges view'
                       }
+                      title={
+                        formDisplay === 'badges'
+                          ? 'Show table position over last 12 games'
+                          : 'Show last 6 results'
+                      }
                     >
                       {formDisplay === 'badges' ? (
                         <SparklineIcon size={16} />

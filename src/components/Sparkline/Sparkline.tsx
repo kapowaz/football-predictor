@@ -20,10 +20,14 @@ const getOrdinal = (n: number): string => {
   const mod100 = n % 100;
   if (mod100 >= 11 && mod100 <= 13) return `${n}th`;
   switch (n % 10) {
-    case 1: return `${n}st`;
-    case 2: return `${n}nd`;
-    case 3: return `${n}rd`;
-    default: return `${n}th`;
+    case 1:
+      return `${n}st`;
+    case 2:
+      return `${n}nd`;
+    case 3:
+      return `${n}rd`;
+    default:
+      return `${n}th`;
   }
 };
 
@@ -32,7 +36,7 @@ interface PositionTooltipProps {
   payload?: TooltipPayload;
   coordinate?: { x: number; y: number };
   visible?: boolean;
-  containerRef?: React.RefObject<HTMLDivElement | null>;
+  svgRect?: DOMRect | null;
 }
 
 const PositionTooltip = ({
@@ -40,17 +44,12 @@ const PositionTooltip = ({
   payload,
   coordinate,
   visible,
-  containerRef,
+  svgRect,
 }: PositionTooltipProps) => {
   const value = payload?.[0]?.value;
-  if (!visible || !active || typeof value !== 'number' || !coordinate) {
+  if (!visible || !active || typeof value !== 'number' || !coordinate || !svgRect) {
     return null;
   }
-
-  const svg = containerRef?.current?.querySelector('svg');
-  if (!svg) return null;
-
-  const svgRect = svg.getBoundingClientRect();
 
   return createPortal(
     <div
@@ -84,18 +83,14 @@ export const Sparkline = ({ data, teamCount, trend }: SparklineProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [hovered, setHovered] = useState(false);
   const [tooltipVisible, setTooltipVisible] = useState(false);
+  const [svgRect, setSvgRect] = useState<DOMRect | null>(null);
   const timerRef = useRef<ReturnType<typeof setTimeout>>(undefined);
 
   useEffect(() => {
     if (hovered) {
-      timerRef.current = setTimeout(
-        () => setTooltipVisible(true),
-        TOOLTIP_DEBOUNCE_MS,
-      );
-    } else {
-      setTooltipVisible(false);
+      timerRef.current = setTimeout(() => setTooltipVisible(true), TOOLTIP_DEBOUNCE_MS);
+      return () => clearTimeout(timerRef.current);
     }
-    return () => clearTimeout(timerRef.current);
   }, [hovered]);
 
   const strokeColor = trendStrokeColor[trend];
@@ -107,16 +102,28 @@ export const Sparkline = ({ data, teamCount, trend }: SparklineProps) => {
     <div
       ref={containerRef}
       className={styles.container}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
+      onMouseEnter={() => {
+        setHovered(true);
+        const svg = containerRef.current?.querySelector('svg');
+        if (svg) setSvgRect(svg.getBoundingClientRect());
+      }}
+      onMouseLeave={() => {
+        setHovered(false);
+        setTooltipVisible(false);
+        setSvgRect(null);
+      }}
     >
       <ResponsiveContainer width={SPARKLINE_WIDTH} height="100%">
-        <AreaChart
-          data={chartData}
-          margin={{ top: 2, right: 12, bottom: 2, left: 12 }}
-        >
+        <AreaChart data={chartData} margin={{ top: 2, right: 12, bottom: 2, left: 12 }}>
           <defs>
-            <linearGradient id={strokeGradientId} gradientUnits="userSpaceOnUse" x1="0" y1="0" x2={SPARKLINE_WIDTH} y2="0">
+            <linearGradient
+              id={strokeGradientId}
+              gradientUnits="userSpaceOnUse"
+              x1="0"
+              y1="0"
+              x2={SPARKLINE_WIDTH}
+              y2="0"
+            >
               <stop offset="0%" stopColor={strokeColor} stopOpacity={0.1} />
               <stop offset="100%" stopColor={strokeColor} stopOpacity={1} />
             </linearGradient>
@@ -127,12 +134,7 @@ export const Sparkline = ({ data, teamCount, trend }: SparklineProps) => {
           </defs>
           <YAxis domain={[1, teamCount]} reversed hide />
           <Tooltip
-            content={
-              <PositionTooltip
-                containerRef={containerRef}
-                visible={tooltipVisible}
-              />
-            }
+            content={<PositionTooltip svgRect={svgRect} visible={tooltipVisible} />}
             cursor={false}
             isAnimationActive={false}
             allowEscapeViewBox={{ x: true, y: true }}

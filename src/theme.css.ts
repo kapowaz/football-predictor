@@ -385,8 +385,8 @@ const darkVars = {
   [colorBgFixtureCard]: tailwind.slate[900],
   [colorBgFixtureCardHighlight]: tailwind.slate[800],
 
-  [colorTextGdPositive]: tailwind.green[300],
-  [colorTextGdNegative]: tailwind.red[300],
+  [colorTextGdPositive]: tailwind.green[400],
+  [colorTextGdNegative]: tailwind.red[400],
 
   [colorResultWin]: tailwind.green[500],
   [colorResultWinHover]: tailwind.green[600],
