@@ -1,9 +1,6 @@
-interface RoundedSquareBadgesIconProps {
-  size?: number;
-  className?: string;
-}
+import type { IconProps } from './types';
 
-export const RoundedSquareBadgesIcon = ({ size = 16, className }: RoundedSquareBadgesIconProps) => (
+export const RoundedSquareBadgesIcon = ({ size = 16, className }: IconProps) => (
   <svg
     width={size}
     height={size}

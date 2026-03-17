@@ -1,7 +1,9 @@
-export const BrainIcon = () => (
+import type { IconProps } from './types';
+
+export const BrainIcon = ({ size = 16, className }: IconProps) => (
   <svg
-    width="16"
-    height="16"
+    width={size}
+    height={size}
     viewBox="0 0 24 24"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
@@ -10,6 +12,7 @@ export const BrainIcon = () => (
     strokeLinecap="round"
     strokeLinejoin="round"
     aria-hidden="true"
+    className={className}
   >
     <path d="M12 18V5" />
     <path d="M15 13a4.17 4.17 0 0 1-3-4 4.17 4.17 0 0 1-3 4" />

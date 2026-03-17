@@ -1,9 +1,6 @@
-interface SparklineIconProps {
-  size?: number;
-  className?: string;
-}
+import type { IconProps } from './types';
 
-export const SparklineIcon = ({ size = 16, className }: SparklineIconProps) => (
+export const SparklineIcon = ({ size = 16, className }: IconProps) => (
   <svg
     width={size}
     height={size}

@@ -1,11 +1,14 @@
-export const SparklesIcon = () => (
+import type { IconProps } from './types';
+
+export const SparklesIcon = ({ size = 16, className }: IconProps) => (
   <svg
-    width="16"
-    height="16"
+    width={size}
+    height={size}
     viewBox="0 0 24 24"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
     aria-hidden="true"
+    className={className}
   >
     <path
       d="M21.8435 13.8094C16.4228 12.724 15.2761 11.5774 14.1907 6.15656C14.149 5.94788 13.851 5.94788 13.8093 6.15656C12.7239 11.5772 11.5773 12.724 6.15641 13.8094C5.94778 13.8511 5.94778 14.1491 6.15641 14.1908C11.5771 15.2762 12.7239 16.4228 13.8093 21.8437C13.851 22.0524 14.149 22.0524 14.1907 21.8437C15.2761 16.423 16.4227 15.2762 21.8435 14.1908C22.0521 14.1491 22.0521 13.8511 21.8435 13.8094Z"

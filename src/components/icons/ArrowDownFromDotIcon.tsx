@@ -1,9 +1,6 @@
-interface ArrowDownFromDotIconProps {
-  size?: number;
-  className?: string;
-}
+import type { IconProps } from './types';
 
-export const ArrowDownFromDotIcon = ({ size = 16, className }: ArrowDownFromDotIconProps) => (
+export const ArrowDownFromDotIcon = ({ size = 16, className }: IconProps) => (
   <svg
     width={size}
     height={size}

@@ -1,9 +1,6 @@
-interface ShareIconProps {
-  size?: number;
-  className?: string;
-}
+import type { IconProps } from './types';
 
-export const ShareIcon = ({ size = 16, className }: ShareIconProps) => (
+export const ShareIcon = ({ size = 16, className }: IconProps) => (
   <svg
     width={size}
     height={size}

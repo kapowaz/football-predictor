@@ -1,9 +1,6 @@
-interface MoonIconProps {
-  size?: number;
-  className?: string;
-}
+import type { IconProps } from './types';
 
-export const MoonIcon = ({ size = 16, className }: MoonIconProps) => (
+export const MoonIcon = ({ size = 16, className }: IconProps) => (
   <svg
     width={size}
     height={size}

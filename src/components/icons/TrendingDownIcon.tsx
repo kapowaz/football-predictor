@@ -1,9 +1,6 @@
-interface TrendingDownIconProps {
-  size?: number;
-  className?: string;
-}
+import type { IconProps } from './types';
 
-export const TrendingDownIcon = ({ size = 16, className }: TrendingDownIconProps) => (
+export const TrendingDownIcon = ({ size = 16, className }: IconProps) => (
   <svg
     width={size}
     height={size}

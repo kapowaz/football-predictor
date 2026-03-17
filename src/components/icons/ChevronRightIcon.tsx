@@ -1,12 +1,6 @@
-interface ChevronRightIconProps {
-  size?: number;
-  className?: string;
-}
+import type { IconProps } from './types';
 
-export const ChevronRightIcon = ({
-  size = 16,
-  className,
-}: ChevronRightIconProps) => (
+export const ChevronRightIcon = ({ size = 16, className }: IconProps) => (
   <svg
     width={size}
     height={size}

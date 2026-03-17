@@ -1,9 +1,6 @@
-interface TrashIconProps {
-  size?: number;
-  className?: string;
-}
+import type { IconProps } from './types';
 
-export const TrashIcon = ({ size = 16, className }: TrashIconProps) => (
+export const TrashIcon = ({ size = 16, className }: IconProps) => (
   <svg
     width={size}
     height={size}

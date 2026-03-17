@@ -1,9 +1,6 @@
-interface KBoltIconProps {
-  size?: number;
-  className?: string;
-}
+import type { IconProps } from './types';
 
-export const KBoltIcon = ({ size = 16, className }: KBoltIconProps) => (
+export const KBoltIcon = ({ size = 16, className }: IconProps) => (
   <svg
     width={size}
     height={size}

@@ -1,9 +1,6 @@
-interface ImageDownIconProps {
-  size?: number;
-  className?: string;
-}
+import type { IconProps } from './types';
 
-export const ImageDownIcon = ({ size = 16, className }: ImageDownIconProps) => (
+export const ImageDownIcon = ({ size = 16, className }: IconProps) => (
   <svg
     width={size}
     height={size}
