@@ -127,7 +127,6 @@ export const amountInput = style({
   border: `1px solid ${colorBorderInput}`,
   borderRadius: radiusSm,
   outline: 'none',
-  fontVariantNumeric: 'tabular-nums',
   ':focus': {
     borderColor: colorFocus,
     boxShadow: `0 0 0 2px rgba(59, 130, 246, 0.2)`,
