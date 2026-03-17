@@ -32,7 +32,9 @@
     "generate-predictions:premier-league": "python3 scripts/generate-predictions.py --competition premier-league --simulations 50000",
     "ensure-data-stubs": "tsx scripts/ensure-data-stubs.ts",
     "preview": "vite preview",
-    "check-for-updates": "tsx scripts/check-for-updates.ts"
+    "check-for-updates": "tsx scripts/check-for-updates.ts",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "@floating-ui/react": "^0.27.18",
@@ -48,6 +50,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
+    "@storybook/react-vite": "^10.2.19",
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.2",
@@ -69,6 +72,7 @@
     "globals": "^16.5.0",
     "jsdom": "^29.0.0",
     "prettier": "^3.8.1",
+    "storybook": "^10.2.19",
     "tsx": "^4.21.0",
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.48.0",
