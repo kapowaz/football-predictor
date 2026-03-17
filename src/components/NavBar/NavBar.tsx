@@ -150,7 +150,10 @@ export const NavBar = ({
                       iconOnly
                       compact
                       aria-label="Deductions"
-                      onClick={onDeductionsClick}
+                      onClick={() => {
+                        closeMenu();
+                        onDeductionsClick();
+                      }}
                     >
                       <ArrowDownFromDotIcon size={16} />
                     </Button>
@@ -161,7 +164,10 @@ export const NavBar = ({
                       iconOnly
                       compact
                       aria-label="AI Predictions"
-                      onClick={onAIPredictionsClick}
+                      onClick={() => {
+                        closeMenu();
+                        onAIPredictionsClick();
+                      }}
                     >
                       <SparklesIcon size={16} />
                     </Button>
