@@ -6,7 +6,7 @@ import {
   colorFocusRing,
   colorTextMuted,
   colorTextPrimary,
-  fontFamilyMono,
+  fontFamily,
 } from '../../theme.css';
 
 export const container = style({
@@ -20,9 +20,10 @@ export const input = style({
   width: '32px',
   height: '32px',
   textAlign: 'center',
-  fontFamily: fontFamilyMono,
+  fontFamily: fontFamily,
   fontSize: '14px',
   fontWeight: 600,
+  fontVariantNumeric: 'tabular-nums',
   color: colorTextPrimary,
   border: `2px solid ${colorBorderInput}`,
   borderRadius: '6px',

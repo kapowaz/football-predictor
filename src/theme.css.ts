@@ -107,7 +107,6 @@ export const colorFocusRing = createVar();
 
 export const fontFamily = createVar();
 export const fontFamilyDisplay = createVar();
-export const fontFamilyMono = createVar();
 
 export const fontSizeXs = createVar();
 export const fontSizeSm = createVar();
@@ -260,11 +259,9 @@ globalStyle(':root', {
     [colorFocusRing]: `color-mix(in oklch, ${tailwind.blue[500]}, transparent 80%)`,
 
     [fontFamily]:
-      'Geist, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
+      '"Mona Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
     [fontFamilyDisplay]:
-      '"Barlow Condensed", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
-    [fontFamilyMono]:
-      '"Geist Mono", ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace',
+      '"Mona Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
 
     [fontSizeXs]: '11px',
     [fontSizeSm]: '12px',

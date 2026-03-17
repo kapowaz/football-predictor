@@ -47,8 +47,8 @@ import {
   colorTextZoneConferenceLeague,
   colorBgTableHead,
   colorBgTableHeadHover,
+  fontFamily,
   fontFamilyDisplay,
-  fontFamilyMono,
   fontSizeXs,
   fontSizeSm,
   fontSizeBase,
@@ -228,7 +228,8 @@ export const tdCenter = style([
   {
     textAlign: 'center',
     whiteSpace: 'nowrap',
-    fontFamily: fontFamilyMono,
+    fontFamily: fontFamily,
+    fontVariantNumeric: 'tabular-nums',
     '@container': {
       [`${tableContainer} (min-width: 768px)`]: {
         padding: space3,
@@ -320,7 +321,7 @@ export const cellRenderNoRightPaddingStrong = style({
 });
 
 export const position = style({
-  fontFamily: fontFamilyMono,
+  fontFamily: fontFamily,
   fontWeight: 600,
   color: colorTextPosition,
   textAlign: 'center',
@@ -374,7 +375,7 @@ export const crest = style({
 
 export const teamName = style({
   fontFamily: fontFamilyDisplay,
-  fontSize: fontSizeMd,
+  fontStretch: '75%',
   fontWeight: 600,
   textTransform: 'uppercase',
 });

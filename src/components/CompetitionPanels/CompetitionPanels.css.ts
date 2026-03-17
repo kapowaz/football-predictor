@@ -127,6 +127,7 @@ export const deductionNote = style({
 
 export const panelTitle = style({
   fontFamily: fontFamilyDisplay,
+  fontStretch: '75%',
   fontSize: fontSizeXl,
   fontWeight: 600,
   textTransform: 'uppercase',

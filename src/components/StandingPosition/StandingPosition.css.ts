@@ -18,7 +18,7 @@ import {
   colorTextStandingPositionEuropaLeague,
   colorBgStandingPositionConferenceLeague,
   colorTextStandingPositionConferenceLeague,
-  fontFamilyMono,
+  fontFamily,
   fontSizeSm,
   radiusMd,
 } from '../../theme.css';
@@ -32,7 +32,7 @@ export const positionBadge = style({
   width: '22px',
   height: '22px',
   borderRadius: radiusMd,
-  fontFamily: fontFamilyMono,
+  fontFamily: fontFamily,
   fontSize: fontSizeSm,
   fontWeight: 600,
   lineHeight: 1,

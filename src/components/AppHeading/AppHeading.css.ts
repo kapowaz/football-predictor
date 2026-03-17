@@ -14,6 +14,7 @@ export const logo = style({
 
 export const title = style({
   fontFamily: fontFamilyDisplay,
+  fontStretch: '75%',
   fontSize: fontSize3xl,
   fontWeight: 700,
   textTransform: 'uppercase',
@@ -32,6 +33,7 @@ export const title = style({
 
 export const titleFullRender = style({
   fontFamily: fontFamilyDisplay,
+  fontStretch: '75%',
   fontSize: fontSize3xl,
   fontWeight: 700,
   textTransform: 'uppercase',

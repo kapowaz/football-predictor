@@ -3,7 +3,7 @@ import {
   colorBgFixtureCard,
   colorBgFixtureCardHighlight,
   colorTextPrimary,
-  fontFamilyMono,
+  fontFamily,
   fontSizeBase,
   space2,
   space3,
@@ -137,9 +137,10 @@ export const finalScore = style({
   display: 'flex',
   justifyContent: 'center',
   textAlign: 'center',
-  fontFamily: fontFamilyMono,
+  fontFamily: fontFamily,
   fontSize: fontSizeBase,
   fontWeight: 700,
+  fontVariantNumeric: 'tabular-nums',
   color: colorTextPrimary,
 });
 
