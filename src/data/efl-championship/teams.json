@@ -37,7 +37,7 @@
     {
       "id": 72,
       "fotmobId": 10003,
-      "name": "Swansea City AFC",
+      "name": "Swansea City",
       "shortName": "Swansea",
       "tla": "SWA",
       "crest": "swansea-city"
@@ -53,7 +53,7 @@
     {
       "id": 322,
       "fotmobId": 8667,
-      "name": "Hull City AFC",
+      "name": "Hull City",
       "shortName": "Hull City",
       "tla": "HUL",
       "crest": "hull-city"
@@ -165,7 +165,7 @@
     {
       "id": 404,
       "fotmobId": 9841,
-      "name": "Wrexham AFC",
+      "name": "Wrexham",
       "shortName": "Wrexham",
       "tla": "WRE",
       "crest": "wrexham"

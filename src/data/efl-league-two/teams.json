@@ -1,5 +1,198 @@
 {
-  "competition": "",
-  "season": "",
-  "teams": []
+  "competition": "League Two",
+  "season": "2025-26",
+  "teams": [
+    {
+      "id": 363,
+      "fotmobId": 9786,
+      "name": "Chesterfield",
+      "shortName": "Chesterfield",
+      "tla": "CFD",
+      "crest": "chesterfield"
+    },
+    {
+      "id": 365,
+      "fotmobId": 8416,
+      "name": "Colchester United",
+      "shortName": "Colchester Utd",
+      "tla": "COL",
+      "crest": "colchester-united"
+    },
+    {
+      "id": 369,
+      "fotmobId": 10006,
+      "name": "Walsall",
+      "shortName": "Walsall",
+      "tla": "WAL",
+      "crest": "walsall"
+    },
+    {
+      "id": 370,
+      "fotmobId": 10173,
+      "name": "Gillingham",
+      "shortName": "Gillingham",
+      "tla": "GIL",
+      "crest": "gillingham"
+    },
+    {
+      "id": 391,
+      "fotmobId": 9819,
+      "name": "Notts County",
+      "shortName": "Notts County",
+      "tla": "NOT",
+      "crest": "notts-county"
+    },
+    {
+      "id": 400,
+      "fotmobId": 10104,
+      "name": "Bristol Rovers",
+      "shortName": "Bristol Rovers",
+      "tla": "BRV",
+      "crest": "bristol-rovers"
+    },
+    {
+      "id": 409,
+      "fotmobId": 8645,
+      "name": "Milton Keynes Dons",
+      "shortName": "Milton Keynes",
+      "tla": "MKD",
+      "crest": "milton-keynes-dons"
+    },
+    {
+      "id": 411,
+      "fotmobId": 8680,
+      "name": "Cheltenham Town",
+      "shortName": "Cheltenham T",
+      "tla": "CHT",
+      "crest": "cheltenham-town"
+    },
+    {
+      "id": 1073,
+      "fotmobId": 45723,
+      "name": "Fleetwood Town",
+      "shortName": "Fleetwood Town",
+      "tla": "FLT",
+      "crest": "fleetwood-town"
+    },
+    {
+      "id": 1074,
+      "fotmobId": 9784,
+      "name": "Crewe Alexandra",
+      "shortName": "Crewe Alex",
+      "tla": "CRE",
+      "crest": "crewe-alexandra"
+    },
+    {
+      "id": 1075,
+      "fotmobId": 9785,
+      "name": "Oldham Athletic",
+      "shortName": "Oldham Athl",
+      "tla": "OLD",
+      "crest": "oldham-athletic"
+    },
+    {
+      "id": 1079,
+      "fotmobId": 9795,
+      "name": "Swindon Town",
+      "shortName": "Swindon Town",
+      "tla": "SWI",
+      "crest": "swindon-town"
+    },
+    {
+      "id": 1080,
+      "fotmobId": 9896,
+      "name": "Shrewsbury Town",
+      "shortName": "Shrewsbury",
+      "tla": "SHR",
+      "crest": "shrewsbury-town"
+    },
+    {
+      "id": 1110,
+      "fotmobId": 6350,
+      "name": "Barrow",
+      "shortName": "Barrow",
+      "tla": "BAW",
+      "crest": "barrow"
+    },
+    {
+      "id": 1118,
+      "fotmobId": 45729,
+      "name": "Bromley",
+      "shortName": "Bromley",
+      "tla": "BRO",
+      "crest": "bromley"
+    },
+    {
+      "id": 1132,
+      "fotmobId": 8647,
+      "name": "Crawley Town",
+      "shortName": "Crawley Town",
+      "tla": "CRA",
+      "crest": "crawley-town"
+    },
+    {
+      "id": 1134,
+      "fotmobId": 8175,
+      "name": "Barnet",
+      "shortName": "Barnet",
+      "tla": "BNT",
+      "crest": "barnet"
+    },
+    {
+      "id": 1137,
+      "fotmobId": 10005,
+      "name": "Grimsby Town",
+      "shortName": "Grimsby Town",
+      "tla": "GRI",
+      "crest": "grimsby-town"
+    },
+    {
+      "id": 1142,
+      "fotmobId": 10262,
+      "name": "Newport County",
+      "shortName": "Newport County",
+      "tla": "NPT",
+      "crest": "newport-county"
+    },
+    {
+      "id": 1145,
+      "fotmobId": 8671,
+      "name": "Accrington Stanley",
+      "shortName": "Accrington",
+      "tla": "ACC",
+      "crest": "accrington-stanley"
+    },
+    {
+      "id": 1147,
+      "fotmobId": 9834,
+      "name": "Cambridge United",
+      "shortName": "Cambridge Utd",
+      "tla": "CAM",
+      "crest": "cambridge-united"
+    },
+    {
+      "id": 1219,
+      "fotmobId": 282326,
+      "name": "Salford City",
+      "shortName": "Salford City",
+      "tla": "SAL",
+      "crest": "salford-city"
+    },
+    {
+      "id": 4536,
+      "fotmobId": 8313,
+      "name": "Tranmere Rovers",
+      "shortName": "Tranmere",
+      "tla": "TRA",
+      "crest": "tranmere-rovers"
+    },
+    {
+      "id": 4809,
+      "fotmobId": 7946,
+      "name": "Harrogate Town",
+      "shortName": "Harrogate",
+      "tla": "HAR",
+      "crest": "harrogate-town"
+    }
+  ]
 }

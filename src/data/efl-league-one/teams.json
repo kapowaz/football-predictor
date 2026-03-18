@@ -1,5 +1,198 @@
 {
-  "competition": "",
-  "season": "",
-  "teams": []
+  "competition": "League One",
+  "season": "2025-26",
+  "teams": [
+    {
+      "id": 60,
+      "fotmobId": 8559,
+      "name": "Bolton Wanderers",
+      "shortName": "Bolton",
+      "tla": "BOL",
+      "crest": "bolton-wanderers"
+    },
+    {
+      "id": 75,
+      "fotmobId": 8528,
+      "name": "Wigan Athletic",
+      "shortName": "Wigan Athletic",
+      "tla": "WIG",
+      "crest": "wigan-athletic"
+    },
+    {
+      "id": 336,
+      "fotmobId": 8483,
+      "name": "Blackpool",
+      "shortName": "Blackpool",
+      "tla": "BPL",
+      "crest": "blackpool"
+    },
+    {
+      "id": 347,
+      "fotmobId": 158319,
+      "name": "AFC Wimbledon",
+      "shortName": "AFC Wimbledon",
+      "tla": "WMB",
+      "crest": "afc-wimbledon"
+    },
+    {
+      "id": 355,
+      "fotmobId": 9798,
+      "name": "Reading",
+      "shortName": "Reading",
+      "tla": "REA",
+      "crest": "reading"
+    },
+    {
+      "id": 357,
+      "fotmobId": 8283,
+      "name": "Barnsley",
+      "shortName": "Barnsley",
+      "tla": "BAR",
+      "crest": "barnsley"
+    },
+    {
+      "id": 376,
+      "fotmobId": 8651,
+      "name": "Northampton Town",
+      "shortName": "Northampton",
+      "tla": "NTH",
+      "crest": "northampton-town"
+    },
+    {
+      "id": 385,
+      "fotmobId": 8119,
+      "name": "Rotherham United",
+      "shortName": "Rotherham Utd",
+      "tla": "ROT",
+      "crest": "rotherham-united"
+    },
+    {
+      "id": 389,
+      "fotmobId": 8346,
+      "name": "Luton Town",
+      "shortName": "Luton Town",
+      "tla": "LUT",
+      "crest": "luton-town"
+    },
+    {
+      "id": 393,
+      "fotmobId": 9799,
+      "name": "Port Vale",
+      "shortName": "Port Vale",
+      "tla": "PVL",
+      "crest": "port-vale"
+    },
+    {
+      "id": 394,
+      "fotmobId": 9796,
+      "name": "Huddersfield Town",
+      "shortName": "Huddersfield",
+      "tla": "HUD",
+      "crest": "huddersfield-town"
+    },
+    {
+      "id": 396,
+      "fotmobId": 10007,
+      "name": "Stockport County",
+      "shortName": "Stockport",
+      "tla": "STO",
+      "crest": "stockport-county"
+    },
+    {
+      "id": 399,
+      "fotmobId": 8351,
+      "name": "Leyton Orient",
+      "shortName": "Leyton Orient",
+      "tla": "LEY",
+      "crest": "leyton-orient"
+    },
+    {
+      "id": 715,
+      "fotmobId": 8344,
+      "name": "Cardiff City",
+      "shortName": "Cardiff",
+      "tla": "CAR",
+      "crest": "cardiff-city"
+    },
+    {
+      "id": 1067,
+      "fotmobId": 8484,
+      "name": "Bradford City",
+      "shortName": "Bradford City",
+      "tla": "BRA",
+      "crest": "bradford-city"
+    },
+    {
+      "id": 1071,
+      "fotmobId": 9903,
+      "name": "Doncaster Rovers",
+      "shortName": "Doncaster",
+      "tla": "DON",
+      "crest": "doncaster-rovers"
+    },
+    {
+      "id": 1072,
+      "fotmobId": 9792,
+      "name": "Burton Albion",
+      "shortName": "Burton Albion",
+      "tla": "BTA",
+      "crest": "burton-albion"
+    },
+    {
+      "id": 1077,
+      "fotmobId": 8677,
+      "name": "Peterborough United",
+      "shortName": "Peterborough",
+      "tla": "PET",
+      "crest": "peterborough-united"
+    },
+    {
+      "id": 1126,
+      "fotmobId": 8430,
+      "name": "Lincoln City",
+      "shortName": "Lincoln City",
+      "tla": "LIN",
+      "crest": "lincoln-city"
+    },
+    {
+      "id": 1133,
+      "fotmobId": 9818,
+      "name": "Mansfield Town",
+      "shortName": "Mansfield Town",
+      "tla": "MAN",
+      "crest": "mansfield-town"
+    },
+    {
+      "id": 1135,
+      "fotmobId": 9833,
+      "name": "Exeter City",
+      "shortName": "Exeter City",
+      "tla": "EXE",
+      "crest": "exeter-city"
+    },
+    {
+      "id": 1138,
+      "fotmobId": 8401,
+      "name": "Plymouth Argyle",
+      "shortName": "Plymouth Arg",
+      "tla": "PLY",
+      "crest": "plymouth-argyle"
+    },
+    {
+      "id": 1144,
+      "fotmobId": 10253,
+      "name": "Stevenage",
+      "shortName": "Stevenage",
+      "tla": "STE",
+      "crest": "stevenage"
+    },
+    {
+      "id": 1146,
+      "fotmobId": 8676,
+      "name": "Wycombe Wanderers",
+      "shortName": "Wycombe",
+      "tla": "WYC",
+      "crest": "wycombe-wanderers"
+    }
+  ]
 }

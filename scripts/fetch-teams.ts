@@ -34,6 +34,26 @@ const formatSeason = (startDate: string, endDate: string): string => {
   return `${startYear}-${String(endYear).slice(2)}`;
 };
 
+/**
+ * Custom TLA overrides for teams whose football-data.org TLA clashes
+ * with another team across the four enabled competitions.
+ * Keyed by football-data.org team ID.
+ */
+const TLA_OVERRIDES: Record<number, string> = {
+  336: 'BPL',   // Blackpool       (API: BLA, clashes with Blackburn Rovers)
+  376: 'NTH',   // Northampton Town (API: NOR, clashes with Norwich City)
+  1072: 'BTA',  // Burton Albion   (API: BUR, clashes with Burnley)
+  363: 'CFD',   // Chesterfield    (API: CHE, clashes with Chelsea)
+  411: 'CHT',   // Cheltenham Town (API: CHE, clashes with Chelsea)
+  400: 'BRV',   // Bristol Rovers  (API: BRI, clashes with Bristol City)
+  1110: 'BAW',  // Barrow          (API: BAR, clashes with Barnet)
+  1134: 'BNT',  // Barnet          (API: BAR, clashes with Barrow)
+  1142: 'NPT',  // Newport County  (API: NEW, clashes with Newcastle United)
+};
+
+const stripNameSuffix = (name: string): string =>
+  name.replace(/\s+(FC|AFC)$/i, '').trim();
+
 const teamNameToCrestKey = (name: string): string => {
   return name
     .replace(/\s*(FC|AFC)\s*$/i, '')
@@ -53,11 +73,16 @@ const fetchTeams = async (comp: ScriptCompetition): Promise<void> => {
   fs.mkdirSync(dir, { recursive: true });
   const outputPath = path.join(dir, 'teams.json');
 
-  const existingFotmobIds = new Map<number, number>();
+  interface ExistingTeam { fotmobId?: number; shortName: string; tla: string }
+  const existingTeams = new Map<number, ExistingTeam>();
   try {
     const existing = JSON.parse(fs.readFileSync(outputPath, 'utf-8'));
     for (const team of existing.teams) {
-      if (team.fotmobId) existingFotmobIds.set(team.id, team.fotmobId);
+      existingTeams.set(team.id, {
+        ...(team.fotmobId && { fotmobId: team.fotmobId }),
+        shortName: team.shortName,
+        tla: team.tla,
+      });
     }
   } catch {
     // File doesn't exist yet on first run
@@ -66,20 +91,28 @@ const fetchTeams = async (comp: ScriptCompetition): Promise<void> => {
   const teamsData = {
     competition: data.competition.name,
     season: formatSeason(data.season.startDate, data.season.endDate),
-    teams: data.teams.map((team) => ({
-      id: team.id,
-      ...(existingFotmobIds.has(team.id) && { fotmobId: existingFotmobIds.get(team.id) }),
-      name: team.name,
-      shortName: team.shortName,
-      tla: team.tla,
-      crest: teamNameToCrestKey(team.name),
-    })),
+    teams: data.teams.map((team) => {
+      const existing = existingTeams.get(team.id);
+      return {
+        id: team.id,
+        ...(existing?.fotmobId && { fotmobId: existing.fotmobId }),
+        name: stripNameSuffix(team.name),
+        shortName: existing?.shortName ?? team.shortName,
+        tla: TLA_OVERRIDES[team.id] ?? existing?.tla ?? team.tla,
+        crest: teamNameToCrestKey(team.name),
+      };
+    }),
   };
+
+  const tlaOverrideCount = teamsData.teams.filter((t) => t.id in TLA_OVERRIDES).length;
 
   fs.writeFileSync(outputPath, JSON.stringify(teamsData, null, 2));
   console.log(`✓ Wrote ${teamsData.teams.length} teams to src/data/${comp.slug}/teams.json`);
-  if (existingFotmobIds.size > 0) {
-    console.log(`  (preserved ${existingFotmobIds.size} fotmobId mappings)`);
+  if (existingTeams.size > 0) {
+    console.log(`  (preserved local overrides from ${existingTeams.size} existing teams)`);
+  }
+  if (tlaOverrideCount > 0) {
+    console.log(`  (applied ${tlaOverrideCount} TLA overrides)`);
   }
 };
 
