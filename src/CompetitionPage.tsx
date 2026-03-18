@@ -64,6 +64,7 @@ const CompetitionContent = ({ slug, config }: CompetitionContentProps) => {
     shouldShake: isSummaryOpen,
     targetRef: pageContentRef,
     duration: 0.7,
+    delay: 0.15,
   });
 
   const competitions = allCompetitions();

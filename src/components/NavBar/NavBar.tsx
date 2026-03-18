@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { Link, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
@@ -41,6 +41,7 @@ export const NavBar = ({
   actions,
 }: NavBarProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const pendingActionRef = useRef<(() => void) | null>(null);
   const location = useLocation();
 
   const navItems = [
@@ -124,7 +125,14 @@ export const NavBar = ({
         </div>
       </div>
       {createPortal(
-        <AnimatePresence>
+        <AnimatePresence
+          onExitComplete={() => {
+            if (pendingActionRef.current) {
+              pendingActionRef.current();
+              pendingActionRef.current = null;
+            }
+          }}
+        >
           {isMenuOpen && (
             <>
               <motion.div
@@ -151,8 +159,8 @@ export const NavBar = ({
                       compact
                       aria-label="Deductions"
                       onClick={() => {
+                        pendingActionRef.current = onDeductionsClick;
                         closeMenu();
-                        onDeductionsClick();
                       }}
                     >
                       <ArrowDownFromDotIcon size={16} />
@@ -165,8 +173,8 @@ export const NavBar = ({
                       compact
                       aria-label="AI Predictions"
                       onClick={() => {
+                        pendingActionRef.current = onAIPredictionsClick;
                         closeMenu();
-                        onAIPredictionsClick();
                       }}
                     >
                       <SparklesIcon size={16} />

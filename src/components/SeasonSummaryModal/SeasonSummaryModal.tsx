@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import type { TeamStanding } from '../../types';
 import type { CompetitionConfig, ZoneType } from '../../data/competitions';
 import { groupStandingsByZone } from '../../utils/zones';
@@ -42,6 +42,8 @@ const zoneLabelStyles: Record<ZoneType, string> = {
   relegation: styles.relegatedLabel,
 };
 
+const CONFETTI_DELAY_MS = 200;
+
 export const SeasonSummaryModal = ({
   standings,
   isOpen,
@@ -50,17 +52,16 @@ export const SeasonSummaryModal = ({
   standingsImageFiles,
   isRenderingStandingsImage = false,
 }: SeasonSummaryModalProps) => {
-  const [showConfetti, setShowConfetti] = useState(isOpen);
-  const [prevIsOpen, setPrevIsOpen] = useState(isOpen);
+  const [showConfetti, setShowConfetti] = useState(false);
   const hasShareApi = typeof navigator.share === 'function';
   const isShareImageReady = Boolean(standingsImageFiles) && !isRenderingStandingsImage;
 
-  if (isOpen !== prevIsOpen) {
-    setPrevIsOpen(isOpen);
-    if (isOpen) {
-      setShowConfetti(true);
-    }
-  }
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const id = window.setTimeout(() => setShowConfetti(true), CONFETTI_DELAY_MS);
+    return () => window.clearTimeout(id);
+  }, [isOpen]);
 
   const champion = standings[0];
   const zoneGroups = groupStandingsByZone(standings, competition.zones);

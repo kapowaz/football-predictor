@@ -6,27 +6,48 @@ interface UseScreenShakeOptions {
   shouldShake: boolean;
   targetRef: RefObject<HTMLElement | null>;
   duration: number;
+  /** Delay in seconds before the shake animation starts. */
+  delay?: number;
 }
 
 export const useScreenShake = ({
   shouldShake,
   targetRef,
   duration,
+  delay = 0,
 }: UseScreenShakeOptions): void => {
   const prevShouldShake = useRef(false);
 
   useEffect(() => {
-    if (shouldShake && !prevShouldShake.current && targetRef.current) {
+    const wasShaking = prevShouldShake.current;
+    prevShouldShake.current = shouldShake;
+
+    if (!shouldShake || wasShaking || !targetRef.current) return;
+
+    const el = targetRef.current;
+    el.style.willChange = 'transform';
+
+    const run = () => {
       animate(
-        targetRef.current,
+        el,
         {
           x: [0, -9, 8, -7, 9, -8, 6, -9, 7, -5, 6, -4, 3, -2, 1, 0],
           y: [0, 5, -8, 9, -4, 8, -9, 4, 7, -5, 3, -4, 2, -1, 1, 0],
         },
         { duration, ease: 'easeOut' },
-      );
+      ).then(() => {
+        el.style.willChange = '';
+      });
+    };
+
+    if (delay > 0) {
+      const id = window.setTimeout(run, delay * 1000);
+      return () => {
+        window.clearTimeout(id);
+        el.style.willChange = '';
+      };
     }
 
-    prevShouldShake.current = shouldShake;
-  }, [duration, shouldShake, targetRef]);
+    run();
+  }, [delay, duration, shouldShake, targetRef]);
 };
