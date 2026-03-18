@@ -253,8 +253,8 @@ export const stickyCell = style({
   left: 0,
   zIndex: 1,
   backgroundColor: 'inherit',
-  WebkitMaskImage: 'linear-gradient(to right, black 80%, transparent 100%)',
-  maskImage: 'linear-gradient(to right, black 80%, transparent 100%)',
+  WebkitMaskImage: 'linear-gradient(to right, black 90%, transparent 100%)',
+  maskImage: 'linear-gradient(to right, black 90%, transparent 100%)',
 });
 
 export const stickyCellTh = style([
@@ -326,6 +326,7 @@ export const position = style({
   color: colorTextPosition,
   textAlign: 'center',
   fontVariantNumeric: 'tabular-nums',
+  flexShrink: 0,
 });
 
 export const positionNumber = style({
@@ -365,12 +366,14 @@ export const teamCell = style({
   display: 'flex',
   alignItems: 'center',
   gap: space2,
+  overflow: 'hidden',
 });
 
 export const crest = style({
   width: '18px',
   height: '18px',
   objectFit: 'contain',
+  flexShrink: 0,
 });
 
 export const teamName = style({
@@ -378,14 +381,15 @@ export const teamName = style({
   fontStretch: '75%',
   fontWeight: 600,
   textTransform: 'uppercase',
+  overflow: 'hidden',
+  textOverflow: 'ellipsis',
+  whiteSpace: 'nowrap',
+  minWidth: 0,
 });
 
 export const teamNameRender = style({
   display: 'inline-block',
   maxWidth: '100%',
-  overflow: 'hidden',
-  textOverflow: 'ellipsis',
-  whiteSpace: 'nowrap',
 });
 
 export const teamShortName = style({
