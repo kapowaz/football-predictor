@@ -8,6 +8,7 @@ import { DeductionsModal } from './components/DeductionsModal';
 import { competitionData } from './data';
 import { allCompetitions, getCompetition, type CompetitionConfig } from './data/competitions';
 import { useCompetitionData } from './hooks/useCompetitionData';
+import { useLiveScores } from './hooks/useLiveScores';
 import { useTheme } from './hooks/useTheme';
 import { useCompetitionSession } from './state/useCompetitionSession';
 import {
@@ -16,6 +17,7 @@ import {
   selectPositionHistory,
   selectStandingsViewModel,
 } from './state/selectors';
+import { getEffectivePredictions } from './utils/liveScores';
 import * as styles from './RelegationPage.css';
 
 const RELEGATION_POINTS_MARGIN = 6;
@@ -31,6 +33,7 @@ const RelegationContent = ({ slug, config }: RelegationContentProps) => {
   const pageContentRef = useRef<HTMLDivElement>(null);
   const { theme, toggleTheme } = useTheme();
   const { teams, matches, defaultDeductions, modelPredictions } = useCompetitionData(slug);
+  const { liveScores } = useLiveScores(slug);
   const {
     predictions,
     deductions,
@@ -52,14 +55,18 @@ const RelegationContent = ({ slug, config }: RelegationContentProps) => {
     defaultDeductions,
     persistenceMode: 'full',
   });
+  const effectivePredictions = useMemo(
+    () => getEffectivePredictions(predictions, liveScores),
+    [predictions, liveScores],
+  );
   const { standings, deductionMarkers, zoneGuaranteedByTeamId } = selectStandingsViewModel(
     teams,
     matches,
-    predictions,
+    effectivePredictions,
     deductions,
     config.zones,
   );
-  const positionHistory = selectPositionHistory(teams, matches, predictions, deductions);
+  const positionHistory = selectPositionHistory(teams, matches, effectivePredictions, deductions);
   const [formDisplay, setFormDisplay] = useState<FormDisplayMode>('badges');
   const relegationZone = useMemo(
     () => config.zones.find((z) => z.type === 'relegation'),

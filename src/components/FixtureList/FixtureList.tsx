@@ -8,13 +8,17 @@ import { FixtureGroup } from '../FixtureGroup';
 import type { FixtureGroupData } from './types';
 import * as styles from './FixtureList.css';
 
+const EMPTY_LIVE_SCORE_MATCH_IDS: ReadonlySet<string> = new Set();
+
 interface FixtureListProps {
   /** Pre-grouped fixture data to render. */
   groups: FixtureGroupData[];
   /** Lookup from team ID to Team object. */
   teamsById: ReadonlyMap<number, Team>;
-  /** Current predictions store. */
+  /** Current predictions store (with live scores merged in). */
   predictions: PredictionsStore;
+  /** Set of match ID strings whose displayed score originates from live data. */
+  liveScoreMatchIds?: ReadonlySet<string>;
   /** Match ID to scroll to, if any. */
   navigateToMatchId: number | null;
   /** Callback to set a prediction for a match. */
@@ -39,6 +43,7 @@ export const FixtureList = ({
   groups,
   teamsById,
   predictions,
+  liveScoreMatchIds = EMPTY_LIVE_SCORE_MATCH_IDS,
   navigateToMatchId,
   setPrediction,
   removePrediction,
@@ -281,6 +286,7 @@ export const FixtureList = ({
                       awayPosition={standingPositionsByTeamId.get(match.awayTeamId)!}
                       zones={zones}
                       result={prediction}
+                      isLiveScore={liveScoreMatchIds.has(String(match.id))}
                       onPredictionChange={setPrediction}
                       onPredictionRemove={removePrediction}
                       showDate={showDate}

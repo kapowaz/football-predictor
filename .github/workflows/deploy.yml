@@ -36,6 +36,9 @@ jobs:
           FOOTBALL_DATA_API_KEY: ${{ secrets.FOOTBALL_DATA_API_KEY }}
       - run: yarn fetch-fotmob-stats --all
       - run: yarn generate-predictions --all --simulations 50000
+      - run: yarn generate-live-scores
+        env:
+          FOOTBALL_DATA_API_KEY: ${{ secrets.FOOTBALL_DATA_API_KEY }}
       - run: yarn build
 
       - uses: actions/upload-pages-artifact@v3

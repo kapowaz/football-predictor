@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react';
 import type { ComponentProps, RefObject } from 'react';
 import { useCompetitionData } from '../../hooks/useCompetitionData';
+import { useLiveScores } from '../../hooks/useLiveScores';
 import {
   selectAllScheduledPredicted,
   selectDeductionNotes,
@@ -10,6 +11,7 @@ import {
   selectTeamsById,
 } from '../../state/selectors';
 import { useCompetitionSessionSlice } from '../../state/useCompetitionSessionSlice';
+import { getEffectivePredictions } from '../../utils/liveScores';
 import type { CompetitionConfig } from '../../data/competitions';
 import type { VariantRulesMode } from '../../types';
 import { NavBar } from '../NavBar';
@@ -50,6 +52,7 @@ export const CompetitionPanels = ({
   variantRules = false as VariantRulesMode,
 }: CompetitionPanelsProps) => {
   const { teams, matches, modelPredictions } = useCompetitionData(slug);
+  const { liveScores } = useLiveScores(slug);
   const {
     session,
     setActiveTab,
@@ -67,10 +70,12 @@ export const CompetitionPanels = ({
       return null;
     }
 
+    const effectivePredictions = getEffectivePredictions(session.predictions, liveScores);
+
     const { standings, deductionMarkers, zoneGuaranteedByTeamId } = selectStandingsViewModel(
       teams,
       matches,
-      session.predictions,
+      effectivePredictions,
       session.deductions,
       config.zones,
       variantRules,
@@ -78,7 +83,7 @@ export const CompetitionPanels = ({
     const positionHistory = selectPositionHistory(
       teams,
       matches,
-      session.predictions,
+      effectivePredictions,
       session.deductions,
       variantRules,
     );
@@ -95,7 +100,7 @@ export const CompetitionPanels = ({
       predictedCount,
       allScheduledPredicted,
     };
-  }, [config.zones, matches, session, teams, teamsById, variantRules]);
+  }, [config.zones, liveScores, matches, session, teams, teamsById, variantRules]);
 
   const hasModelPredictions = Object.keys(modelPredictions).length > 0;
 

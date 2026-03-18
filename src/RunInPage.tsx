@@ -8,6 +8,7 @@ import { DeductionsModal } from './components/DeductionsModal';
 import { competitionData } from './data';
 import { allCompetitions, getCompetition, type CompetitionConfig } from './data/competitions';
 import { useCompetitionData } from './hooks/useCompetitionData';
+import { useLiveScores } from './hooks/useLiveScores';
 import { useTheme } from './hooks/useTheme';
 import { useCompetitionSession } from './state/useCompetitionSession';
 import {
@@ -16,6 +17,7 @@ import {
   selectPositionHistory,
   selectStandingsViewModel,
 } from './state/selectors';
+import { getEffectivePredictions } from './utils/liveScores';
 import { getRunInPointsMargin, getTopZoneBoundary } from './utils/zones';
 import * as styles from './RunInPage.css';
 
@@ -30,6 +32,7 @@ const RunInContent = ({ slug, config }: RunInContentProps) => {
   const pageContentRef = useRef<HTMLDivElement>(null);
   const { theme, toggleTheme } = useTheme();
   const { teams, matches, defaultDeductions, modelPredictions } = useCompetitionData(slug);
+  const { liveScores } = useLiveScores(slug);
   const {
     predictions,
     deductions,
@@ -51,20 +54,24 @@ const RunInContent = ({ slug, config }: RunInContentProps) => {
     defaultDeductions,
     persistenceMode: 'full',
   });
+  const effectivePredictions = useMemo(
+    () => getEffectivePredictions(predictions, liveScores),
+    [predictions, liveScores],
+  );
   const { standings, deductionMarkers, zoneGuaranteedByTeamId } = selectStandingsViewModel(
     teams,
     matches,
-    predictions,
+    effectivePredictions,
     deductions,
     config.zones,
   );
-  const positionHistory = selectPositionHistory(teams, matches, predictions, deductions);
+  const positionHistory = selectPositionHistory(teams, matches, effectivePredictions, deductions);
   const [formDisplay, setFormDisplay] = useState<FormDisplayMode>('badges');
   const boundaryPosition = getTopZoneBoundary(config.zones);
   const allTeamIds = useMemo(() => teams.map((t) => t.id), [teams]);
   const pointsMargin = useMemo(
-    () => getRunInPointsMargin(matches, predictions, allTeamIds),
-    [matches, predictions, allTeamIds],
+    () => getRunInPointsMargin(matches, effectivePredictions, allTeamIds),
+    [matches, effectivePredictions, allTeamIds],
   );
   const runInTeamIds = useMemo(() => {
     if (boundaryPosition === 0 || boundaryPosition > standings.length) {

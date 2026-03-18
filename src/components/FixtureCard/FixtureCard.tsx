@@ -24,6 +24,8 @@ interface FixtureCardBaseProps {
 interface ScheduledFixtureCardProps extends FixtureCardBaseProps {
   status: 'SCHEDULED';
   result: { homeGoals: number; awayGoals: number } | null;
+  /** Whether the current result originates from live score data rather than a user prediction. */
+  isLiveScore?: boolean;
   onPredictionChange: (matchId: number, homeGoals: number, awayGoals: number) => void;
   onPredictionRemove: (matchId: number) => void;
 }
@@ -109,6 +111,7 @@ export const FixtureCard = (props: FixtureCardProps) => {
             homeGoals={result?.homeGoals ?? null}
             awayGoals={result?.awayGoals ?? null}
             separatorText={separator}
+            isLiveScore={props.isLiveScore}
             onChange={handleScoreChange}
           />
         ) : (

@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react';
 import type { FocusEvent, ReactNode } from 'react';
+import clsx from 'clsx';
 import * as styles from './ScoreInput.css';
 
 interface ScoreInputProps {
@@ -11,6 +12,8 @@ interface ScoreInputProps {
   awayGoals: number | null;
   /** Content shown between the two score inputs. */
   separatorText?: ReactNode;
+  /** Whether the current values originate from live score data. */
+  isLiveScore?: boolean;
   onChange: (homeGoals: number | null, awayGoals: number | null) => void;
 }
 
@@ -27,6 +30,7 @@ export const ScoreInput = ({
   homeGoals,
   awayGoals,
   separatorText = 'vs',
+  isLiveScore = false,
   onChange,
 }: ScoreInputProps) => {
   const awayRef = useRef<HTMLInputElement>(null);
@@ -45,13 +49,13 @@ export const ScoreInput = ({
   }
 
   return (
-    <div className={styles.container}>
+    <div className={clsx(styles.container, isLiveScore && styles.liveScoreContainer)}>
       <input
         id={homeInputId}
         type="number"
         min="0"
         max="99"
-        className={styles.input}
+        className={clsx(styles.input, isLiveScore && styles.liveScoreInput)}
         value={localHome ?? ''}
         onFocus={selectOnFocus}
         onChange={(e) => {
@@ -64,14 +68,17 @@ export const ScoreInput = ({
         }}
         aria-label="Home team goals"
       />
-      <span className={styles.separator}>{separatorText}</span>
+      <span className={styles.separator}>
+        {isLiveScore && <span className={styles.liveIndicator}>LIVE</span>}
+        {separatorText}
+      </span>
       <input
         ref={awayRef}
         id={awayInputId}
         type="number"
         min="0"
         max="99"
-        className={styles.input}
+        className={clsx(styles.input, isLiveScore && styles.liveScoreInput)}
         value={localAway ?? ''}
         onFocus={selectOnFocus}
         onChange={(e) => {

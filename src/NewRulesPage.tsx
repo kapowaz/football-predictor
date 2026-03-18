@@ -1,7 +1,8 @@
-import { useRef } from 'react';
+import { useMemo, useRef } from 'react';
 import { useParams, Navigate, useNavigate } from 'react-router-dom';
 import { useCompetitionData } from './hooks/useCompetitionData';
 import { useImageDownload } from './hooks/useImageDownload';
+import { useLiveScores } from './hooks/useLiveScores';
 import { useTheme } from './hooks/useTheme';
 import { useCompetitionSession } from './state/useCompetitionSession';
 import {
@@ -10,6 +11,7 @@ import {
   selectStandingsViewModel,
   selectTeamsById,
 } from './state/selectors';
+import { getEffectivePredictions } from './utils/liveScores';
 import { CompetitionPanels } from './components/CompetitionPanels';
 import { StandingsImageView } from './components/StandingsImageView';
 import { DeductionsModal } from './components/DeductionsModal';
@@ -25,6 +27,7 @@ const NewRulesContent = ({ slug, config }: NewRulesContentProps) => {
   const navigate = useNavigate();
   const { theme, toggleTheme } = useTheme();
   const { teams, matches, defaultDeductions } = useCompetitionData(slug);
+  const { liveScores } = useLiveScores(slug);
   const {
     predictions,
     deductions,
@@ -42,10 +45,15 @@ const NewRulesContent = ({ slug, config }: NewRulesContentProps) => {
     persistenceMode: 'full',
   });
 
+  const effectivePredictions = useMemo(
+    () => getEffectivePredictions(predictions, liveScores),
+    [predictions, liveScores],
+  );
+
   const { standings, deductionMarkers, zoneGuaranteedByTeamId } = selectStandingsViewModel(
     teams,
     matches,
-    predictions,
+    effectivePredictions,
     deductions,
     config.zones,
     'new-rules',

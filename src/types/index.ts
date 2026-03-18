@@ -80,6 +80,17 @@ export interface ModelPredictionsData {
   predictions: Record<string, { homeGoals: number; awayGoals: number }>;
 }
 
+export interface LiveScore {
+  homeGoals: number;
+  awayGoals: number;
+  status: string;
+}
+
+export interface LiveScoresData {
+  lastUpdated: string;
+  scores: Record<string, LiveScore>;
+}
+
 export type FormResult = 'W' | 'D' | 'L' | 'B';
 
 /** Identifies which variant scoring system is active, or `false` for standard rules. */

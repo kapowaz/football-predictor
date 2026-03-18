@@ -2,10 +2,12 @@ import { useMemo } from 'react';
 import type { VariantRulesMode } from '../../types';
 import type { ZoneDefinition } from '../../data/competitions';
 import { useCompetitionData } from '../../hooks/useCompetitionData';
+import { useLiveScores } from '../../hooks/useLiveScores';
 import { useGroupedMatches } from '../../hooks/useGroupedMatches';
 import { useTeamGroupedMatches } from '../../hooks/useTeamGroupedMatches';
 import { selectStandingsViewModel, selectTeamsById } from '../../state/selectors';
 import { useCompetitionSessionSlice } from '../../state/useCompetitionSessionSlice';
+import { getEffectivePredictions, getLiveScoreMatchIds } from '../../utils/liveScores';
 import { FixtureList } from '../FixtureList/FixtureList';
 import type { GroupBy } from '../FixtureList/types';
 
@@ -44,7 +46,20 @@ export const FixturePanel = ({
   const { session, setPrediction, removePrediction, setNavigateToMatchId } =
     useCompetitionSessionSlice(slug);
 
-  const predictions = session?.predictions ?? { predictions: {}, lastModified: '' };
+  const { liveScores } = useLiveScores(slug);
+  const sessionPredictions = session?.predictions;
+  const rawPredictions = useMemo(
+    () => sessionPredictions ?? { predictions: {}, lastModified: '' },
+    [sessionPredictions],
+  );
+  const predictions = useMemo(
+    () => getEffectivePredictions(rawPredictions, liveScores),
+    [rawPredictions, liveScores],
+  );
+  const liveScoreMatchIds = useMemo(
+    () => getLiveScoreMatchIds(rawPredictions, liveScores),
+    [rawPredictions, liveScores],
+  );
   const deductions = session?.deductions ?? [];
   const navigateToMatchId = session?.navigateToMatchId ?? null;
   const teamsById = selectTeamsById(teams);
@@ -90,6 +105,7 @@ export const FixturePanel = ({
       groups={groups}
       teamsById={teamsById}
       predictions={predictions}
+      liveScoreMatchIds={liveScoreMatchIds}
       navigateToMatchId={navigateToMatchId}
       setPrediction={setPrediction}
       removePrediction={removePrediction}
