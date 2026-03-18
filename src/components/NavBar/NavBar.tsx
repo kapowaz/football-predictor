@@ -1,4 +1,3 @@
-import type { ReactNode } from 'react';
 import { useState, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { Link, useLocation } from 'react-router-dom';
@@ -8,7 +7,14 @@ import { AppHeading } from '../AppHeading';
 import { Button } from '../Button';
 import { CompetitionSelect } from '../CompetitionSelect';
 import { ColorModeToggle } from '../ColorModeToggle';
-import { ArrowDownFromDotIcon, MenuSquareIcon, SparklesIcon, XIcon } from '../icons';
+import {
+  ArrowDownFromDotIcon,
+  ImageDownIcon,
+  MenuSquareIcon,
+  SparklesIcon,
+  TrashIcon,
+  XIcon,
+} from '../icons';
 import * as styles from './NavBar.css';
 
 interface NavBarProps {
@@ -26,8 +32,12 @@ interface NavBarProps {
   onDeductionsClick?: () => void;
   /** Fills all remaining fixtures with AI model predictions. Only rendered when provided. */
   onAIPredictionsClick?: () => void;
-  /** Additional action buttons rendered alongside the built-in actions. */
-  actions?: ReactNode;
+  /** Resets all user predictions. Only rendered when provided. */
+  onResetPredictionsClick?: () => void;
+  /** Downloads the generated standings image. Only rendered when provided. */
+  onSaveImageClick?: () => void;
+  /** Whether the save image button should be disabled (e.g. image not ready). */
+  isSaveImageDisabled?: boolean;
 }
 
 export const NavBar = ({
@@ -38,7 +48,9 @@ export const NavBar = ({
   onColorModeToggle,
   onDeductionsClick,
   onAIPredictionsClick,
-  actions,
+  onResetPredictionsClick,
+  onSaveImageClick,
+  isSaveImageDisabled,
 }: NavBarProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const pendingActionRef = useRef<(() => void) | null>(null);
@@ -76,6 +88,40 @@ export const NavBar = ({
         ))}
       </nav>
       <div className={styles.controls}>
+        {(onSaveImageClick || onDeductionsClick || onAIPredictionsClick || onResetPredictionsClick) && (
+          <div className={styles.desktopActions}>
+            {onSaveImageClick && (
+              <Button
+                variant="success"
+                aria-label="Save Image"
+                title="Save Image"
+                onClick={onSaveImageClick}
+                disabled={isSaveImageDisabled}
+              >
+                <ImageDownIcon size={16} />
+                <span className={styles.desktopActionLabel}>Save Image</span>
+              </Button>
+            )}
+            {onDeductionsClick && (
+              <Button variant="danger" aria-label="Deductions" title="Deductions" onClick={onDeductionsClick}>
+                <ArrowDownFromDotIcon size={16} />
+                <span className={styles.desktopActionLabel}>Deductions</span>
+              </Button>
+            )}
+            {onAIPredictionsClick && (
+              <Button variant="success" aria-label="AI Predictions" title="AI Predictions" onClick={onAIPredictionsClick}>
+                <SparklesIcon size={16} />
+                <span className={styles.desktopActionLabel}>AI Predictions</span>
+              </Button>
+            )}
+            {onResetPredictionsClick && (
+              <Button variant="danger" aria-label="Reset Predictions" title="Reset Predictions" onClick={onResetPredictionsClick}>
+                <TrashIcon size={16} />
+                <span className={styles.desktopActionLabel}>Reset Predictions</span>
+              </Button>
+            )}
+          </div>
+        )}
         {competitions.length > 1 && (
           <div className={styles.competitionSelectWrapper}>
             <CompetitionSelect
@@ -83,33 +129,6 @@ export const NavBar = ({
               value={activeSlug}
               onChange={onCompetitionChange}
             />
-          </div>
-        )}
-        {(actions || onDeductionsClick || onAIPredictionsClick) && (
-          <div className={styles.desktopActions}>
-            {actions}
-            {onDeductionsClick && (
-              <Button
-                variant="danger"
-                iconOnly
-                compact
-                aria-label="Deductions"
-                onClick={onDeductionsClick}
-              >
-                <ArrowDownFromDotIcon size={16} />
-              </Button>
-            )}
-            {onAIPredictionsClick && (
-              <Button
-                variant="success"
-                iconOnly
-                compact
-                aria-label="AI Predictions"
-                onClick={onAIPredictionsClick}
-              >
-                <SparklesIcon size={16} />
-              </Button>
-            )}
           </div>
         )}
         <button
@@ -151,35 +170,6 @@ export const NavBar = ({
                 transition={{ type: 'spring', damping: 30, stiffness: 300 }}
               >
                 <div className={styles.overlayHeader}>
-                  {actions}
-                  {onDeductionsClick && (
-                    <Button
-                      variant="danger"
-                      iconOnly
-                      compact
-                      aria-label="Deductions"
-                      onClick={() => {
-                        pendingActionRef.current = onDeductionsClick;
-                        closeMenu();
-                      }}
-                    >
-                      <ArrowDownFromDotIcon size={16} />
-                    </Button>
-                  )}
-                  {onAIPredictionsClick && (
-                    <Button
-                      variant="success"
-                      iconOnly
-                      compact
-                      aria-label="AI Predictions"
-                      onClick={() => {
-                        pendingActionRef.current = onAIPredictionsClick;
-                        closeMenu();
-                      }}
-                    >
-                      <SparklesIcon size={16} />
-                    </Button>
-                  )}
                   <ColorModeToggle colorMode={colorMode} onColorModeToggle={onColorModeToggle} />
                   <button
                     className={styles.overlayCloseButton}
@@ -201,6 +191,59 @@ export const NavBar = ({
                     </Link>
                   ))}
                 </nav>
+                {(onSaveImageClick || onDeductionsClick || onAIPredictionsClick || onResetPredictionsClick) && (
+                  <div className={styles.overlayActions}>
+                    {onSaveImageClick && (
+                      <Button
+                        variant="success"
+                        onClick={() => {
+                          pendingActionRef.current = onSaveImageClick;
+                          closeMenu();
+                        }}
+                        disabled={isSaveImageDisabled}
+                      >
+                        <ImageDownIcon size={16} />
+                        Save Image
+                      </Button>
+                    )}
+                    {onDeductionsClick && (
+                      <Button
+                        variant="danger"
+                        onClick={() => {
+                          pendingActionRef.current = onDeductionsClick;
+                          closeMenu();
+                        }}
+                      >
+                        <ArrowDownFromDotIcon size={16} />
+                        Deductions
+                      </Button>
+                    )}
+                    {onAIPredictionsClick && (
+                      <Button
+                        variant="success"
+                        onClick={() => {
+                          pendingActionRef.current = onAIPredictionsClick;
+                          closeMenu();
+                        }}
+                      >
+                        <SparklesIcon size={16} />
+                        AI Predictions
+                      </Button>
+                    )}
+                    {onResetPredictionsClick && (
+                      <Button
+                        variant="danger"
+                        onClick={() => {
+                          pendingActionRef.current = onResetPredictionsClick;
+                          closeMenu();
+                        }}
+                      >
+                        <TrashIcon size={16} />
+                        Reset Predictions
+                      </Button>
+                    )}
+                  </div>
+                )}
                 {competitions.length > 1 && (
                   <div className={styles.overlayCompetitionSelect}>
                     <CompetitionSelect

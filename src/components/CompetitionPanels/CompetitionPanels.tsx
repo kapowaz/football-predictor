@@ -15,9 +15,7 @@ import type { VariantRulesMode } from '../../types';
 import { NavBar } from '../NavBar';
 import { AppPanels } from '../AppPanels';
 import { StandingsTable, type FormDisplayMode } from '../StandingsTable/StandingsTable';
-import { Button } from '../Button';
 import { FixturePanel } from '../FixturePanel';
-import { ImageDownIcon } from '../icons';
 import * as styles from './CompetitionPanels.css.ts';
 
 type NavBarProps = ComponentProps<typeof NavBar>;
@@ -110,19 +108,6 @@ export const CompetitionPanels = ({
     setNavigateToMatchId(matchId);
   };
 
-  const navBarActions = onDownloadImage != null ? (
-    <Button
-      variant="success"
-      iconOnly
-      compact
-      aria-label="Save Image"
-      onClick={onDownloadImage}
-      disabled={!hasStandingsImage || isRenderingImage}
-    >
-      <ImageDownIcon size={16} />
-    </Button>
-  ) : undefined;
-
   return (
     <AppPanels
       pageContentRef={pageContentRef}
@@ -133,32 +118,23 @@ export const CompetitionPanels = ({
       header={
         <NavBar
           {...headerProps}
-          actions={navBarActions}
+          onSaveImageClick={onDownloadImage}
+          isSaveImageDisabled={!hasStandingsImage || isRenderingImage}
           onDeductionsClick={() => setDeductionsModalOpen(true)}
           onAIPredictionsClick={
             hasModelPredictions && !panelModel.allScheduledPredicted
               ? () => fillFromModel(modelPredictions)
               : undefined
           }
+          onResetPredictionsClick={
+            panelModel.predictedCount > 0 ? resetAllPredictions : undefined
+          }
         />
       }
       standingsPanel={
         <>
-          <div className={styles.panelHeaderWithNotes}>
+          <div className={styles.panelHeader}>
             <h2 className={styles.panelTitle}>Standings</h2>
-            {panelModel.deductionNotes.length > 0 && (
-              <div className={styles.deductionNotes}>
-                {panelModel.deductionNotes.map((note) => (
-                  <span
-                    key={note.label}
-                    className={styles.deductionNote}
-                    title={note.reason || undefined}
-                  >
-                    {note.label}
-                  </span>
-                ))}
-              </div>
-            )}
           </div>
           <StandingsTable
             standings={panelModel.standings}
@@ -174,19 +150,25 @@ export const CompetitionPanels = ({
               setFormDisplay((prev) => (prev === 'badges' ? 'sparkline' : 'badges'))
             }
           />
+          {panelModel.deductionNotes.length > 0 && (
+            <div className={styles.deductionNotes}>
+              {panelModel.deductionNotes.map((note) => (
+                <span
+                  key={note.label}
+                  className={styles.deductionNote}
+                  title={note.reason || undefined}
+                >
+                  {note.label}
+                </span>
+              ))}
+            </div>
+          )}
         </>
       }
       fixturesPanel={
         <>
           <div className={styles.panelHeader}>
             <h2 className={styles.panelTitle}>Fixtures</h2>
-            {panelModel.predictedCount > 0 && (
-              <div className={styles.panelHeaderActions}>
-                <Button variant="danger" onClick={resetAllPredictions}>
-                  Reset Predictions
-                </Button>
-              </div>
-            )}
           </div>
           <FixturePanel
             slug={slug}

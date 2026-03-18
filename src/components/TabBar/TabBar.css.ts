@@ -26,6 +26,9 @@ export const tabBar = style({
       position: 'sticky',
       left: 0,
     },
+    'screen and (max-width: 680px)': {
+      marginBottom: 0,
+    },
   },
 });
 

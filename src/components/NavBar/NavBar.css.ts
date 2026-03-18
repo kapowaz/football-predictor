@@ -116,6 +116,8 @@ export const desktopColorModeToggle = style({
   },
 });
 
+const compactActionsBreakpoint = 'screen and (min-width: 1025px) and (max-width: 1220px)';
+
 export const desktopActions = style({
   display: 'none',
   '@media': {
@@ -123,6 +125,15 @@ export const desktopActions = style({
       display: 'flex',
       alignItems: 'center',
       gap: space2,
+      marginLeft: 'auto',
+    },
+  },
+});
+
+export const desktopActionLabel = style({
+  '@media': {
+    [compactActionsBreakpoint]: {
+      display: 'none',
     },
   },
 });
@@ -201,10 +212,17 @@ export const overlayNavItemActive = style({
   color: colorFocus,
 });
 
+export const overlayActions = style({
+  display: 'flex',
+  flexDirection: 'column',
+  gap: space2,
+  padding: `${space3} ${space4}`,
+  marginTop: 'auto',
+});
+
 export const overlayCompetitionSelect = style({
   display: 'none',
-  padding: space4,
-  marginTop: 'auto',
+  padding: `0 ${space4} ${space4}`,
   '@media': {
     'screen and (max-width: 480px)': {
       display: 'block',

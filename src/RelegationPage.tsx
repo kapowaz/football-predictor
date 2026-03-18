@@ -2,7 +2,6 @@ import { useMemo, useRef, useState } from 'react';
 import { Navigate, useNavigate, useParams } from 'react-router-dom';
 import { NavBar } from './components/NavBar';
 import { AppPanels } from './components/AppPanels';
-import { Button } from './components/Button';
 import { FixturePanel } from './components/FixturePanel';
 import { StandingsTable, type FormDisplayMode } from './components/StandingsTable/StandingsTable';
 import { DeductionsModal } from './components/DeductionsModal';
@@ -110,6 +109,9 @@ const RelegationContent = ({ slug, config }: RelegationContentProps) => {
                 ? () => fillFromModel(modelPredictions)
                 : undefined
             }
+            onResetPredictionsClick={
+              predictedCount > 0 ? resetAllPredictions : undefined
+            }
           />
         }
         standingsPanel={
@@ -142,13 +144,6 @@ const RelegationContent = ({ slug, config }: RelegationContentProps) => {
           <>
             <div className={styles.panelHeader}>
               <h2 className={styles.panelTitle}>Fixtures</h2>
-              <div className={styles.panelHeaderActions}>
-                {predictedCount > 0 && (
-                  <Button variant="danger" onClick={resetAllPredictions}>
-                    Reset Predictions
-                  </Button>
-                )}
-              </div>
             </div>
             <FixturePanel
               slug={slug}

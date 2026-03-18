@@ -60,32 +60,9 @@ export const panelHeader = style({
   justifyContent: 'space-between',
   alignItems: 'center',
   height: '36px',
-});
-
-export const panelHeaderWithNotes = style({
-  display: 'flex',
-  justifyContent: 'space-between',
-  alignItems: 'center',
-  gap: space3,
   '@media': {
     'screen and (max-width: 680px)': {
-      padding: `0 ${space4}`,
-    },
-    'screen and (min-width: 680px)': {
-      height: '36px',
-    },
-  },
-});
-
-export const panelHeaderActions = style({
-  display: 'flex',
-  alignItems: 'center',
-  gap: space3,
-  '@media': {
-    'screen and (max-width: 680px)': {
-      flex: 1,
-      justifyContent: 'center',
-      display: 'flex',
+      display: 'none',
     },
   },
 });
@@ -93,8 +70,14 @@ export const panelHeaderActions = style({
 export const deductionNotes = style({
   display: 'flex',
   gap: space3,
+  padding: `${space4} 0`,
   fontSize: fontSizeSm,
   color: colorTextSecondary,
+  '@media': {
+    'screen and (max-width: 680px)': {
+      padding: space4,
+    },
+  },
 });
 
 export const deductionNote = style({
