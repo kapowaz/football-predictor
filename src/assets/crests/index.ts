@@ -1,6 +1,7 @@
 import accringtonStanley from './accrington-stanley.svg';
 import afcBournemouth from './afc-bournemouth.svg';
 import afcWimbledon from './afc-wimbledon.svg';
+import aldershotTown from './aldershot-town.svg';
 import arsenal from './arsenal.svg';
 import astonVilla from './aston-villa.svg';
 import barnet from './barnet.svg';
@@ -20,6 +21,7 @@ import burnley from './burnley.svg';
 import burtonAlbion from './burton-albion.svg';
 import cambridgeUnited from './cambridge-united.svg';
 import cardiffCity from './cardiff-city.svg';
+import carlisleUnited from './carlisle-united.svg';
 import charltonAthletic from './charlton-athletic.svg';
 import cheltenhamTown from './cheltenham-town.svg';
 import chelsea from './chelsea.svg';
@@ -34,10 +36,14 @@ import doncasterRovers from './doncaster-rovers.svg';
 import everton from './everton.svg';
 import exeterCity from './exeter-city.svg';
 import fleetwoodTown from './fleetwood-town.svg';
+import forestGreenRovers from './forest-green-rovers.svg';
 import fulham from './fulham.svg';
+import gateshead from './gateshead.svg';
 import gillingham from './gillingham.svg';
 import grimsbyTown from './grimsby-town.svg';
+import halifaxTown from './halifax-town.svg';
 import harrogate from './harrogate-town.svg';
+import hartlepoolUnited from './hartlepool-united.svg';
 import huddersfieldTown from './huddersfield-town.svg';
 import hullCity from './hull-city.svg';
 import ipswichTown from './ipswich-town.svg';
@@ -52,6 +58,7 @@ import manchesterUnited from './manchester-united.svg';
 import mansfieldTown from './mansfield-town.svg';
 import middlesbrough from './middlesbrough.svg';
 import millwall from './millwall.svg';
+import morecambe from './morecambe.svg';
 import miltonKeynesDons from './milton-keynes-dons.svg';
 import newcastleUnited from './newcastle-united.svg';
 import newportCounty from './newport-county.svg';
@@ -68,12 +75,15 @@ import portsmouth from './portsmouth.svg';
 import prestonNorthEnd from './preston-north-end.svg';
 import queensParkRangers from './queens-park-rangers.svg';
 import reading from './reading.svg';
+import rochdale from './rochdale.svg';
 import rotherhamUnited from './rotherham-united.svg';
 import salfordCity from './salford-city.svg';
+import scunthorpeUnited from './scunthorpe-united.svg';
 import sheffieldUnited from './sheffield-united.svg';
 import sheffieldWednesday from './sheffield-wednesday.svg';
 import shrewsburyTown from './shrewsbury-town.svg';
 import southampton from './southampton.svg';
+import southendUnited from './southend-united.svg';
 import stevenage from './stevenage.svg';
 import stockportCounty from './stockport-county.svg';
 import stokeCity from './stoke-city.svg';
@@ -90,11 +100,14 @@ import wiganAthletic from './wigan-athletic.svg';
 import wolverhamptonWanderers from './wolverhampton-wanderers.svg';
 import wrexham from './wrexham.svg';
 import wycombeWanderers from './wycombe-wanderers.svg';
+import yeovilTown from './yeovil-town.svg';
+import yorkCity from './york-city.svg';
 
 const crests: Record<string, string> = {
   'accrington-stanley': accringtonStanley,
   'afc-bournemouth': afcBournemouth,
   'afc-wimbledon': afcWimbledon,
+  'aldershot-town': aldershotTown,
   arsenal: arsenal,
   'aston-villa': astonVilla,
   barnet: barnet,
@@ -114,6 +127,7 @@ const crests: Record<string, string> = {
   'burton-albion': burtonAlbion,
   'cambridge-united': cambridgeUnited,
   'cardiff-city': cardiffCity,
+  'carlisle-united': carlisleUnited,
   'charlton-athletic': charltonAthletic,
   'cheltenham-town': cheltenhamTown,
   chelsea: chelsea,
@@ -128,10 +142,14 @@ const crests: Record<string, string> = {
   everton: everton,
   'exeter-city': exeterCity,
   'fleetwood-town': fleetwoodTown,
+  'forest-green-rovers': forestGreenRovers,
   fulham: fulham,
+  gateshead: gateshead,
   gillingham: gillingham,
   'grimsby-town': grimsbyTown,
+  'halifax-town': halifaxTown,
   'harrogate-town': harrogate,
+  'hartlepool-united': hartlepoolUnited,
   'huddersfield-town': huddersfieldTown,
   'hull-city': hullCity,
   'ipswich-town': ipswichTown,
@@ -147,6 +165,7 @@ const crests: Record<string, string> = {
   middlesbrough: middlesbrough,
   millwall: millwall,
   'milton-keynes-dons': miltonKeynesDons,
+  morecambe: morecambe,
   'newcastle-united': newcastleUnited,
   'newport-county': newportCounty,
   'northampton-town': northamptonTown,
@@ -162,12 +181,15 @@ const crests: Record<string, string> = {
   'preston-north-end': prestonNorthEnd,
   'queens-park-rangers': queensParkRangers,
   reading: reading,
+  rochdale: rochdale,
   'rotherham-united': rotherhamUnited,
   'salford-city': salfordCity,
+  'scunthorpe-united': scunthorpeUnited,
   'sheffield-united': sheffieldUnited,
   'sheffield-wednesday': sheffieldWednesday,
   'shrewsbury-town': shrewsburyTown,
   southampton: southampton,
+  'southend-united': southendUnited,
   stevenage: stevenage,
   'stockport-county': stockportCounty,
   'stoke-city': stokeCity,
@@ -184,6 +206,8 @@ const crests: Record<string, string> = {
   'wolverhampton-wanderers': wolverhamptonWanderers,
   wrexham: wrexham,
   'wycombe-wanderers': wycombeWanderers,
+  'yeovil-town': yeovilTown,
+  'york-city': yorkCity,
 };
 
 export const getCrest = (crestKey: string): string => {

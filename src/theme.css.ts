@@ -82,6 +82,9 @@ export const colorBgTableHead = createVar();
 export const colorBgTableHeadHover = createVar();
 export const colorTextTableHead = createVar();
 
+export const colorPremierLeagueFg = createVar();
+export const colorPremierLeagueBg = createVar();
+
 export const colorTextPosition = createVar();
 export const colorTextGdPositive = createVar();
 export const colorTextGdNegative = createVar();
@@ -180,6 +183,9 @@ globalStyle(':root', {
     [colorBgTableHead]: tailwind.slate[200],
     [colorBgTableHeadHover]: tailwind.slate[300],
     [colorTextTableHead]: tailwind.slate[500],
+
+    [colorPremierLeagueFg]: tailwind.slate[500],
+    [colorPremierLeagueBg]: tailwind.slate[200],
 
     [colorBgRowEven]: tailwind.white,
     [colorBgRowAlt]: tailwind.gray[100],
@@ -340,6 +346,9 @@ const darkVars = {
   [colorBgTableHead]: tailwind.slate[800],
   [colorBgTableHeadHover]: tailwind.slate[700],
   [colorTextTableHead]: tailwind.slate[500],
+
+  [colorPremierLeagueFg]: tailwind.slate[800],
+  [colorPremierLeagueBg]: tailwind.slate[500],
 
   [colorBgRowEven]: tailwind.slate[900],
   [colorBgRowAlt]: tailwind.slate[925],

@@ -10,6 +10,7 @@ import { RunInPage } from './RunInPage';
 import { NewRulesPage } from './NewRulesPage';
 import { BonusPointsPage } from './BonusPointsPage';
 import { StandingsImagePage } from './StandingsImagePage';
+import { AllTimeRankPage } from './AllTimeRankPage';
 import { ColorPalettePage } from './ColorPalettePage';
 
 createRoot(document.getElementById('root')!).render(
@@ -18,6 +19,7 @@ createRoot(document.getElementById('root')!).render(
       <Routes>
         <Route element={<App />}>
           <Route index element={<IndexRedirect />} />
+          <Route path="all-time-rank" element={<AllTimeRankPage />} />
           <Route path="colors" element={<ColorPalettePage />} />
           <Route path="relegation/:slug/" element={<RelegationPage />} />
           <Route path="run-in/:slug/" element={<RunInPage />} />

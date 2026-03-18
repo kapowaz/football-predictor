@@ -60,10 +60,12 @@ export const NavBar = ({
     { id: 'competition', label: 'Standings', href: `/${activeSlug}/` },
     { id: 'run-in', label: 'Run In', href: `/run-in/${activeSlug}/` },
     { id: 'relegation', label: 'Relegation', href: `/relegation/${activeSlug}/` },
+    { id: 'all-time-rank', label: 'All Time', href: '/all-time-rank' },
   ];
 
   const getActiveItemId = () => {
     const { pathname } = location;
+    if (pathname.startsWith('/all-time-rank')) return 'all-time-rank';
     if (pathname.startsWith(`/run-in/${activeSlug}`)) return 'run-in';
     if (pathname.startsWith(`/relegation/${activeSlug}`)) return 'relegation';
     return 'competition';
