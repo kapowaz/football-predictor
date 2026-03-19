@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { allSeasons } from './index';
-import { allTimeClubs } from '../all-time-rank/index';
+import { allTimeClubs } from '../all-time-rank/all-clubs';
 import type { HistoricalSeason } from './types';
 import type { AllTimeClubData } from '../all-time-rank/types';
 

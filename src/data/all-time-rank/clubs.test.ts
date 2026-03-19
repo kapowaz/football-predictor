@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import type { AllTimeClubData } from './types';
-import { allTimeClubs } from './index';
+import { allTimeClubs } from './all-clubs';
 
 const clubs = allTimeClubs;
 

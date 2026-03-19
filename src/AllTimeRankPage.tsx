@@ -1,11 +1,12 @@
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import clsx from 'clsx';
 import { useTheme } from './hooks/useTheme';
 import { AppHeading } from './components/AppHeading';
 import { ColorModeToggle } from './components/ColorModeToggle';
 import { ChevronRightIcon } from './components/icons';
 import { AllTimeRankTable } from './components/AllTimeRankTable';
-import { allTimeClubs } from './data/all-time-rank';
+import type { AllTimeClubData } from './data/all-time-rank';
+import { loadAllTimeClubs } from './data/all-time-rank';
 import { calculateAllTimeScores, DEFAULT_WEIGHTS, HONOUR_BASE_VALUES } from './utils/allTimeRank';
 import * as styles from './AllTimeRankPage.css';
 
@@ -13,8 +14,16 @@ export const AllTimeRankPage = () => {
   const { theme, toggleTheme } = useTheme();
   const weights = DEFAULT_WEIGHTS;
   const [isExpanded, setIsExpanded] = useState(false);
+  const [clubs, setClubs] = useState<AllTimeClubData[] | null>(null);
 
-  const rankedClubs = useMemo(() => calculateAllTimeScores(allTimeClubs, weights), [weights]);
+  useEffect(() => {
+    loadAllTimeClubs().then(setClubs);
+  }, []);
+
+  const rankedClubs = useMemo(
+    () => (clubs ? calculateAllTimeScores(clubs, weights) : []),
+    [clubs, weights],
+  );
 
   const toggleExpanded = useCallback(() => {
     setIsExpanded((prev) => !prev);
@@ -90,7 +99,11 @@ export const AllTimeRankPage = () => {
         </div>
       </div>
       <div className={styles.tableWrapper}>
-        <AllTimeRankTable rankedClubs={rankedClubs} weights={weights} />
+        {clubs ? (
+          <AllTimeRankTable rankedClubs={rankedClubs} weights={weights} />
+        ) : (
+          <div className={styles.loading}>Loading club data…</div>
+        )}
       </div>
     </div>
   );
