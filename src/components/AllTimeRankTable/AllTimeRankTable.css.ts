@@ -330,7 +330,7 @@ export const statValue = style({
 });
 
 export const statZero = style({
-  color: colorTextMuted,
+  color: fallbackVar(zoneTextTertiary, colorTextMuted),
 });
 
 export const leagueScore = style({
