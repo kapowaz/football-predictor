@@ -47,15 +47,23 @@ export const colorTextZoneRelegation = createVar();
 export const colorBgZoneChampions = createVar();
 export const colorBgZoneChampionsAlt = createVar();
 export const colorTextZoneChampions = createVar();
+export const colorTextZoneChampionsAlt = createVar();
+export const colorTextZoneChampionsTertiary = createVar();
 export const colorBgZoneChampionsLeague = createVar();
 export const colorBgZoneChampionsLeagueAlt = createVar();
 export const colorTextZoneChampionsLeague = createVar();
+export const colorTextZoneChampionsLeagueAlt = createVar();
+export const colorTextZoneChampionsLeagueTertiary = createVar();
 export const colorBgZoneEuropaLeague = createVar();
 export const colorBgZoneEuropaLeagueAlt = createVar();
 export const colorTextZoneEuropaLeague = createVar();
+export const colorTextZoneEuropaLeagueAlt = createVar();
+export const colorTextZoneEuropaLeagueTertiary = createVar();
 export const colorBgZoneConferenceLeague = createVar();
 export const colorBgZoneConferenceLeagueAlt = createVar();
 export const colorTextZoneConferenceLeague = createVar();
+export const colorTextZoneConferenceLeagueAlt = createVar();
+export const colorTextZoneConferenceLeagueTertiary = createVar();
 export const colorBgStandingPositionDefaultUpper = createVar();
 export const colorTextStandingPositionDefaultUpper = createVar();
 export const colorBgStandingPositionDefaultLower = createVar();
@@ -85,6 +93,7 @@ export const colorBgTableHeadHover = createVar();
 export const colorTextTableHead = createVar();
 
 export const colorTextStatFaded = createVar();
+export const colorTextStatStrong = createVar();
 
 export const colorPremierLeagueFg = createVar();
 export const colorPremierLeagueBg = createVar();
@@ -187,6 +196,7 @@ globalStyle(':root', {
     [colorNeutralLight]: tailwind.slate[300],
 
     [colorTextStatFaded]: tailwind.gray[300],
+    [colorTextStatStrong]: tailwind.black,
 
     [colorBgTableHead]: tailwind.slate[200],
     [colorBgTableHeadHover]: tailwind.slate[300],
@@ -214,18 +224,26 @@ globalStyle(':root', {
     [colorBgZoneChampions]: tailwind.green[100],
     [colorBgZoneChampionsAlt]: tailwind.green[200],
     [colorTextZoneChampions]: tailwind.green[800],
+    [colorTextZoneChampionsAlt]: tailwind.green[700],
+    [colorTextZoneChampionsTertiary]: tailwind.green[500],
 
     [colorBgZoneChampionsLeague]: tailwind.teal[100],
     [colorBgZoneChampionsLeagueAlt]: tailwind.teal[200],
     [colorTextZoneChampionsLeague]: tailwind.teal[900],
+    [colorTextZoneChampionsLeagueAlt]: tailwind.teal[700],
+    [colorTextZoneChampionsLeagueTertiary]: tailwind.teal[500],
 
     [colorBgZoneEuropaLeague]: tailwind.cyan[100],
     [colorBgZoneEuropaLeagueAlt]: tailwind.cyan[200],
     [colorTextZoneEuropaLeague]: tailwind.cyan[900],
+    [colorTextZoneEuropaLeagueAlt]: tailwind.cyan[700],
+    [colorTextZoneEuropaLeagueTertiary]: tailwind.cyan[500],
 
     [colorBgZoneConferenceLeague]: tailwind.sky[100],
     [colorBgZoneConferenceLeagueAlt]: tailwind.sky[200],
     [colorTextZoneConferenceLeague]: tailwind.sky[800],
+    [colorTextZoneConferenceLeagueAlt]: tailwind.sky[600],
+    [colorTextZoneConferenceLeagueTertiary]: tailwind.sky[400],
 
     // Intentionally inverted relative to the matching zone row text/background colors.
     [colorBgStandingPositionDefaultUpper]: tailwind.slate[600],
@@ -354,6 +372,7 @@ const darkVars = {
   [colorNeutralLight]: tailwind.slate[700],
 
   [colorTextStatFaded]: tailwind.slate[700],
+  [colorTextStatStrong]: tailwind.white,
 
   [colorBgTableHead]: tailwind.slate[800],
   [colorBgTableHeadHover]: tailwind.slate[700],
@@ -381,18 +400,26 @@ const darkVars = {
   [colorBgZoneChampions]: tailwind.green[925],
   [colorBgZoneChampionsAlt]: tailwind.green[950],
   [colorTextZoneChampions]: tailwind.green[300],
+  [colorTextZoneChampionsAlt]: tailwind.green[400],
+  [colorTextZoneChampionsTertiary]: tailwind.green[600],
 
   [colorBgZoneChampionsLeague]: tailwind.teal[925],
   [colorBgZoneChampionsLeagueAlt]: tailwind.teal[950],
   [colorTextZoneChampionsLeague]: tailwind.teal[300],
+  [colorTextZoneChampionsLeagueAlt]: tailwind.teal[500],
+  [colorTextZoneChampionsLeagueTertiary]: tailwind.teal[700],
 
   [colorBgZoneEuropaLeague]: tailwind.cyan[925],
   [colorBgZoneEuropaLeagueAlt]: tailwind.cyan[950],
   [colorTextZoneEuropaLeague]: tailwind.cyan[300],
+  [colorTextZoneEuropaLeagueAlt]: tailwind.cyan[500],
+  [colorTextZoneEuropaLeagueTertiary]: tailwind.cyan[700],
 
   [colorBgZoneConferenceLeague]: tailwind.sky[925],
   [colorBgZoneConferenceLeagueAlt]: tailwind.sky[950],
   [colorTextZoneConferenceLeague]: tailwind.sky[300],
+  [colorTextZoneConferenceLeagueAlt]: tailwind.sky[500],
+  [colorTextZoneConferenceLeagueTertiary]: tailwind.sky[700],
 
   // Intentionally inverted relative to the matching zone row text/background colors.
   [colorBgStandingPositionDefaultUpper]: tailwind.slate[400],

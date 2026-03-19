@@ -10,12 +10,35 @@ import {
   colorTextSecondary,
   colorTextMuted,
   colorTextStatFaded,
+  colorTextStatStrong,
+  colorBgZoneChampions,
+  colorBgZoneChampionsAlt,
+  colorBgZoneChampionsLeague,
+  colorBgZoneChampionsLeagueAlt,
+  colorBgZoneEuropaLeague,
+  colorBgZoneEuropaLeagueAlt,
+  colorBgZoneConferenceLeague,
+  colorBgZoneConferenceLeagueAlt,
+  colorTextZoneChampions,
+  colorTextZoneChampionsAlt,
+  colorTextZoneChampionsTertiary,
+  colorTextZoneChampionsLeague,
+  colorTextZoneChampionsLeagueAlt,
+  colorTextZoneChampionsLeagueTertiary,
+  colorTextZoneEuropaLeague,
+  colorTextZoneEuropaLeagueAlt,
+  colorTextZoneEuropaLeagueTertiary,
+  colorTextZoneConferenceLeague,
+  colorTextZoneConferenceLeagueAlt,
+  colorTextZoneConferenceLeagueTertiary,
   colorPremierLeagueFg,
   colorPremierLeagueBg,
   fontFamily,
+  fontFamilyDisplay,
   fontSizeXs,
   fontSizeSm,
   fontSizeBase,
+  fontSizeLg,
   maxWidthContent,
   space1,
   space2,
@@ -26,6 +49,8 @@ import {
 } from '../../theme.css';
 
 export const honourRecency = createVar();
+export const zoneTextAlt = createVar();
+export const zoneTextTertiary = createVar();
 
 export const tableContainer = createContainer();
 
@@ -40,6 +65,11 @@ export const container = style({
   overflowY: 'auto',
   height: '100%',
   minHeight: 0,
+  '@media': {
+    'screen and (max-width: 680px)': {
+      borderRadius: 0,
+    },
+  },
 });
 
 export const table = style({
@@ -50,6 +80,11 @@ export const table = style({
   fontSize: fontSizeBase,
   lineHeight: '24px',
   borderRadius: radiusLg,
+  '@media': {
+    'screen and (max-width: 680px)': {
+      borderRadius: 0,
+    },
+  },
 });
 
 export const colScore = style({
@@ -116,6 +151,70 @@ export const rowOdd = style({
   backgroundColor: colorBgRowAlt,
 });
 
+export const zoneChampionsEven = style({
+  backgroundColor: colorBgZoneChampions,
+  vars: {
+    [zoneTextAlt]: colorTextZoneChampionsAlt,
+    [zoneTextTertiary]: colorTextZoneChampionsTertiary,
+  },
+});
+
+export const zoneChampionsOdd = style({
+  backgroundColor: colorBgZoneChampionsAlt,
+  vars: {
+    [zoneTextAlt]: colorTextZoneChampionsAlt,
+    [zoneTextTertiary]: colorTextZoneChampionsTertiary,
+  },
+});
+
+export const zoneChampionsLeagueEven = style({
+  backgroundColor: colorBgZoneChampionsLeague,
+  vars: {
+    [zoneTextAlt]: colorTextZoneChampionsLeagueAlt,
+    [zoneTextTertiary]: colorTextZoneChampionsLeagueTertiary,
+  },
+});
+
+export const zoneChampionsLeagueOdd = style({
+  backgroundColor: colorBgZoneChampionsLeagueAlt,
+  vars: {
+    [zoneTextAlt]: colorTextZoneChampionsLeagueAlt,
+    [zoneTextTertiary]: colorTextZoneChampionsLeagueTertiary,
+  },
+});
+
+export const zoneEuropaLeagueEven = style({
+  backgroundColor: colorBgZoneEuropaLeague,
+  vars: {
+    [zoneTextAlt]: colorTextZoneEuropaLeagueAlt,
+    [zoneTextTertiary]: colorTextZoneEuropaLeagueTertiary,
+  },
+});
+
+export const zoneEuropaLeagueOdd = style({
+  backgroundColor: colorBgZoneEuropaLeagueAlt,
+  vars: {
+    [zoneTextAlt]: colorTextZoneEuropaLeagueAlt,
+    [zoneTextTertiary]: colorTextZoneEuropaLeagueTertiary,
+  },
+});
+
+export const zoneConferenceLeagueEven = style({
+  backgroundColor: colorBgZoneConferenceLeague,
+  vars: {
+    [zoneTextAlt]: colorTextZoneConferenceLeagueAlt,
+    [zoneTextTertiary]: colorTextZoneConferenceLeagueTertiary,
+  },
+});
+
+export const zoneConferenceLeagueOdd = style({
+  backgroundColor: colorBgZoneConferenceLeagueAlt,
+  vars: {
+    [zoneTextAlt]: colorTextZoneConferenceLeagueAlt,
+    [zoneTextTertiary]: colorTextZoneConferenceLeagueTertiary,
+  },
+});
+
 export const td = style({
   padding: `${space3} ${space2}`,
   color: colorTextPrimary,
@@ -171,6 +270,22 @@ export const positionNumber = style({
   minWidth: '22px',
 });
 
+export const positionChampions = style({
+  color: colorTextZoneChampions,
+});
+
+export const positionChampionsLeague = style({
+  color: colorTextZoneChampionsLeague,
+});
+
+export const positionEuropaLeague = style({
+  color: colorTextZoneEuropaLeague,
+});
+
+export const positionConferenceLeague = style({
+  color: colorTextZoneConferenceLeague,
+});
+
 export const teamCell = style({
   display: 'flex',
   alignItems: 'center',
@@ -192,7 +307,11 @@ export const crest = style({
 });
 
 export const teamName = style({
+  fontFamily: fontFamilyDisplay,
+  fontStretch: '75%',
   fontWeight: 600,
+  fontSize: fontSizeLg,
+  textTransform: 'uppercase',
   whiteSpace: 'nowrap',
   overflow: 'hidden',
   textOverflow: 'ellipsis',
@@ -207,7 +326,7 @@ export const scoreValue = style({
 export const statValue = style({
   fontFamily: fontFamily,
   fontVariantNumeric: 'tabular-nums',
-  color: `color-mix(in oklch, ${colorTextPrimary} ${fallbackVar(honourRecency, '100%')}, ${colorTextStatFaded})`,
+  color: `color-mix(in lch, ${colorTextStatStrong} ${fallbackVar(honourRecency, '100%')}, ${fallbackVar(zoneTextTertiary, colorTextStatFaded)})`,
 });
 
 export const statZero = style({
@@ -217,7 +336,7 @@ export const statZero = style({
 export const leagueScore = style({
   fontFamily: fontFamily,
   fontVariantNumeric: 'tabular-nums',
-  color: colorTextSecondary,
+  color: fallbackVar(zoneTextAlt, colorTextSecondary),
   fontSize: fontSizeXs,
 });
 

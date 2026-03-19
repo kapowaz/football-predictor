@@ -36,6 +36,23 @@ const formatYearsList = (years: number[], asSeason = false): string | undefined 
   return years.map((y) => (asSeason ? formatSeasonYear(y) : String(y))).join(', ');
 };
 
+const getRowZoneClass = (rank: number, index: number): string => {
+  const isEven = index % 2 === 0;
+  if (rank <= 10) return isEven ? styles.zoneChampionsEven : styles.zoneChampionsOdd;
+  if (rank <= 20) return isEven ? styles.zoneChampionsLeagueEven : styles.zoneChampionsLeagueOdd;
+  if (rank <= 40) return isEven ? styles.zoneEuropaLeagueEven : styles.zoneEuropaLeagueOdd;
+  if (rank <= 80) return isEven ? styles.zoneConferenceLeagueEven : styles.zoneConferenceLeagueOdd;
+  return isEven ? styles.rowEven : styles.rowOdd;
+};
+
+const getPositionZoneClass = (rank: number): string | undefined => {
+  if (rank <= 10) return styles.positionChampions;
+  if (rank <= 20) return styles.positionChampionsLeague;
+  if (rank <= 40) return styles.positionEuropaLeague;
+  if (rank <= 80) return styles.positionConferenceLeague;
+  return undefined;
+};
+
 export const AllTimeRankTable = ({ rankedClubs, weights }: AllTimeRankTableProps) => {
   const { currentYear, oldestYear, latestYears } = useMemo(() => {
     const clubs = rankedClubs.map((r) => r.club);
@@ -198,13 +215,18 @@ export const AllTimeRankTable = ({ rankedClubs, weights }: AllTimeRankTableProps
               const ueclYears = club.europeanHonours.conferenceLeagueWinners;
 
               return (
-                <tr
-                  key={club.name}
-                  className={clsx(styles.tr, index % 2 === 0 ? styles.rowEven : styles.rowOdd)}
-                >
+                <tr key={club.name} className={clsx(styles.tr, getRowZoneClass(rank, index))}>
                   <td className={clsx(styles.td, styles.stickyCell)}>
                     <div className={styles.teamCell}>
-                      <span className={clsx(styles.position, styles.positionNumber)}>{rank}</span>
+                      <span
+                        className={clsx(
+                          styles.position,
+                          styles.positionNumber,
+                          getPositionZoneClass(rank),
+                        )}
+                      >
+                        {rank}
+                      </span>
                       {crestUrl && (
                         <img className={styles.crest} src={crestUrl} alt="" loading="lazy" />
                       )}

@@ -5,9 +5,11 @@ import { AppHeading } from './components/AppHeading';
 import { ColorModeToggle } from './components/ColorModeToggle';
 import { ChevronRightIcon } from './components/icons';
 import { AllTimeRankTable } from './components/AllTimeRankTable';
+import { LoadingIndicator } from './components/LoadingIndicator';
 import type { AllTimeClubData } from './data/all-time-rank';
 import { loadAllTimeClubs } from './data/all-time-rank';
 import { calculateAllTimeScores, DEFAULT_WEIGHTS, HONOUR_BASE_VALUES } from './utils/allTimeRank';
+import { colorNeutralLight } from './theme.css';
 import * as styles from './AllTimeRankPage.css';
 
 export const AllTimeRankPage = () => {
@@ -17,7 +19,9 @@ export const AllTimeRankPage = () => {
   const [clubs, setClubs] = useState<AllTimeClubData[] | null>(null);
 
   useEffect(() => {
-    loadAllTimeClubs().then(setClubs);
+    loadAllTimeClubs().then((data) => {
+      setTimeout(() => setClubs(data), 1000);
+    });
   }, []);
 
   const rankedClubs = useMemo(
@@ -102,7 +106,9 @@ export const AllTimeRankPage = () => {
         {clubs ? (
           <AllTimeRankTable rankedClubs={rankedClubs} weights={weights} />
         ) : (
-          <div className={styles.loading}>Loading club data…</div>
+          <div className={styles.loading}>
+            <LoadingIndicator size="xl" customColor={colorNeutralLight} />
+          </div>
         )}
       </div>
     </div>

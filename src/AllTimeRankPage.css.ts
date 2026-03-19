@@ -151,7 +151,14 @@ export const tableWrapper = style({
   overflow: 'hidden',
   '@media': {
     'screen and (max-width: 680px)': {
-      padding: `0 ${space4} ${space6}`,
+      padding: `0 0 ${space6}`,
     },
   },
+});
+
+export const loading = style({
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  height: '100%',
 });
