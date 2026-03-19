@@ -1,9 +1,8 @@
 import { createRef } from 'react';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { screen, waitFor } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { Popover } from './Popover';
-import { renderWithProvider } from '../../test/helpers';
 
 describe('Popover', () => {
   beforeEach(() => {
@@ -12,7 +11,7 @@ describe('Popover', () => {
   });
 
   it('should not have aria-describedby attribute on the trigger element when the popover is closed', () => {
-    renderWithProvider(
+    render(
       <Popover trigger={<button>Trigger</button>} placement="top">
         <div>Popover content</div>
       </Popover>,
@@ -26,7 +25,7 @@ describe('Popover', () => {
   it('should have aria-describedby attribute on the trigger element when the popover is open', async () => {
     const user = userEvent.setup();
 
-    renderWithProvider(
+    render(
       <Popover trigger={<button>Trigger</button>} placement="top">
         <div>Popover content</div>
       </Popover>,
@@ -48,7 +47,7 @@ describe('Popover', () => {
   it('should have role="tooltip" on popover content', async () => {
     const user = userEvent.setup();
 
-    renderWithProvider(
+    render(
       <Popover trigger={<button>Trigger</button>} placement="top">
         <div>Popover content</div>
       </Popover>,
@@ -64,7 +63,7 @@ describe('Popover', () => {
   });
 
   it('should have tabIndex="0" on trigger for keyboard navigation', () => {
-    renderWithProvider(
+    render(
       <Popover trigger={<div>Trigger div</div>} placement="top">
         <div>Popover content</div>
       </Popover>,
@@ -77,7 +76,7 @@ describe('Popover', () => {
   it('should display when focusing the trigger element via keyboard navigation', async () => {
     const user = userEvent.setup();
 
-    renderWithProvider(
+    render(
       <Popover trigger={<button>Trigger</button>} placement="top">
         <div>Popover content</div>
       </Popover>,
@@ -98,7 +97,7 @@ describe('Popover', () => {
   it('should close on blur when navigated to via keyboard', async () => {
     const user = userEvent.setup();
 
-    renderWithProvider(
+    render(
       <>
         <Popover trigger={<button>Trigger</button>} placement="top">
           <div>Popover content</div>
@@ -131,7 +130,7 @@ describe('Popover', () => {
   it('should open on hover for mouse users', async () => {
     const user = userEvent.setup();
 
-    renderWithProvider(
+    render(
       <Popover trigger={<button>Trigger</button>} placement="top">
         <div>Popover content</div>
       </Popover>,
@@ -149,7 +148,7 @@ describe('Popover', () => {
   it('should close on unhover for mouse users', async () => {
     const user = userEvent.setup({ delay: null });
 
-    renderWithProvider(
+    render(
       <Popover trigger={<button>Trigger</button>} placement="top" hideDelay={0}>
         <div>Popover content</div>
       </Popover>,
@@ -174,7 +173,7 @@ describe('Popover', () => {
 
   it('should support controlled open state', () => {
     const reference = createRef<HTMLDivElement>();
-    const { rerender } = renderWithProvider(
+    const { rerender } = render(
       <>
         <div ref={reference}>virtual element</div>
         <Popover virtualElement={reference} placement="top" isOpen={false}>
@@ -201,7 +200,7 @@ describe('Popover', () => {
     const user = userEvent.setup({ delay: null });
     const handleClick = vi.fn();
 
-    renderWithProvider(
+    render(
       <Popover
         trigger={<button>Trigger</button>}
         placement="top"
@@ -228,7 +227,7 @@ describe('Popover', () => {
   it('should maintain unique IDs for multiple popovers', async () => {
     const user = userEvent.setup();
 
-    renderWithProvider(
+    render(
       <>
         <Popover trigger={<button>Trigger 1</button>} placement="top">
           <div>Content 1</div>
@@ -265,7 +264,7 @@ describe('Popover', () => {
   it('should clean up on unmount', async () => {
     const user = userEvent.setup();
 
-    const { unmount } = renderWithProvider(
+    const { unmount } = render(
       <Popover trigger={<button>Trigger</button>} placement="top">
         <div>Popover content</div>
       </Popover>,

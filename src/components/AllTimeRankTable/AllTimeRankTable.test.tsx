@@ -70,7 +70,7 @@ describe('AllTimeRankTable', () => {
 
     render(<AllTimeRankTable rankedClubs={[club]} weights={weights} />);
 
-    expect(screen.getByText('1234.6')).toBeInTheDocument();
+    expect(screen.getByText('1,234.6')).toBeInTheDocument();
   });
 
   it('displays trophy counts as raw numbers', () => {
