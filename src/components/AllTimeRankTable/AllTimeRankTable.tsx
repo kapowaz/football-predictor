@@ -10,11 +10,13 @@ import {
   UefaEuropaLeagueLogo,
   UefaConferenceLeagueLogo,
 } from '../honours';
+import { Popover, PopoverGroup } from '../Popover';
 import { findOldestYear, computeHonourRecency } from '../../utils/allTimeRank';
 import type { AllTimeRankTableProps } from './types';
 import * as styles from './AllTimeRankTable.css';
 
-const formatScore = (score: number): string => score.toFixed(1);
+const formatScore = (score: number): string =>
+  score.toLocaleString('en-GB', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
 
 const formatAttendance = (attendance: number): string => {
   if (attendance >= 1000) {
@@ -35,150 +37,320 @@ const formatYearsList = (years: number[], asSeason = false): string | undefined 
 };
 
 export const AllTimeRankTable = ({ rankedClubs, weights }: AllTimeRankTableProps) => {
-  const { currentYear, oldestYear } = useMemo(() => {
+  const { currentYear, oldestYear, latestYears } = useMemo(() => {
     const clubs = rankedClubs.map((r) => r.club);
+
+    const maxYear = (arrays: number[][]) => {
+      let max = -Infinity;
+      for (const arr of arrays) {
+        for (const y of arr) {
+          if (y > max) max = y;
+        }
+      }
+      return max === -Infinity ? undefined : max;
+    };
+
     return {
       currentYear: new Date().getFullYear(),
       oldestYear: findOldestYear(clubs),
+      latestYears: {
+        t1Titles: maxYear(clubs.map((c) => c.honours.leagueTitles.tier1)),
+        faCup: maxYear(clubs.map((c) => c.honours.faCupWinners)),
+        leagueCup: maxYear(clubs.map((c) => c.honours.leagueCupWinners)),
+        ucl: maxYear(clubs.map((c) => c.europeanHonours.championsLeagueWinners)),
+        uel: maxYear(clubs.map((c) => c.europeanHonours.europaLeagueWinners)),
+        uecl: maxYear(clubs.map((c) => c.europeanHonours.conferenceLeagueWinners)),
+      },
     };
   }, [rankedClubs]);
 
-  const recency = (years: number[]) =>
-    computeHonourRecency(years, currentYear, oldestYear, weights.decayFloor);
+  const recency = (years: number[], latestYear?: number) =>
+    computeHonourRecency(years, currentYear, oldestYear, weights.decayFloor, latestYear);
 
   return (
-    <div className={styles.container}>
-      <table className={styles.table}>
-        <colgroup>
-          <col />
-          <col className={styles.colScore} />
-          <col className={styles.colScore} />
-          <col className={styles.colStat} />
-          <col className={styles.colStat} />
-          <col className={styles.colStat} />
-          <col className={styles.colStat} />
-          <col className={styles.colStat} />
-          <col className={styles.colStat} />
-          <col className={styles.colAttendance} />
-        </colgroup>
-        <thead className={styles.thead}>
-          <tr>
-            <th className={clsx(styles.th, styles.stickyCellTh)}>Team</th>
-            <th className={clsx(styles.th, styles.thCenter)}>Score</th>
-            <th className={clsx(styles.th, styles.thCenter)}>League</th>
-            <th className={clsx(styles.th, styles.thCenter)} title="Top-flight league titles">
-              <span className={styles.thIcon}>
-                <PremierLeagueLogo size={20} foregroundColor={styles.colorPremierLeagueFg} backgroundColor={styles.colorPremierLeagueBg} />
-              </span>
-            </th>
-            <th className={clsx(styles.th, styles.thCenter)} title="FA Cup wins">
-              <span className={styles.thIcon}><FaCupLogo size={20} /></span>
-            </th>
-            <th className={clsx(styles.th, styles.thCenter)} title="League Cup wins">
-              <span className={styles.thIcon}><EflCupLogo size={20} /></span>
-            </th>
-            <th className={clsx(styles.th, styles.thCenter)} title="UEFA Champions League / European Cup wins">
-              <span className={styles.thIcon}><UefaChampionsLeagueLogo size={20} /></span>
-            </th>
-            <th className={clsx(styles.th, styles.thCenter)} title="UEFA Europa League / UEFA Cup wins">
-              <span className={styles.thIcon}><UefaEuropaLeagueLogo size={20} /></span>
-            </th>
-            <th className={clsx(styles.th, styles.thCenter)} title="UEFA Europa Conference League wins">
-              <span className={styles.thIcon}><UefaConferenceLeagueLogo size={20} /></span>
-            </th>
-            <th className={clsx(styles.th, styles.thCenter)} title="Historical average home attendance">Att</th>
-          </tr>
-        </thead>
-        <tbody>
-          {rankedClubs.map((entry, index) => {
-            const { club, rank, totalScore, leagueScore } = entry;
-            const crestUrl = getCrest(club.crest);
-
-            const t1TitleYears = club.honours.leagueTitles.tier1;
-            const faCupYears = club.honours.faCupWinners;
-            const leagueCupYears = club.honours.leagueCupWinners;
-            const uclYears = club.europeanHonours.championsLeagueWinners;
-            const uelYears = club.europeanHonours.europaLeagueWinners;
-            const ueclYears = club.europeanHonours.conferenceLeagueWinners;
-
-            return (
-              <tr
-                key={club.name}
-                className={clsx(
-                  styles.tr,
-                  index % 2 === 0 ? styles.rowEven : styles.rowOdd,
-                )}
-              >
-                <td className={clsx(styles.td, styles.stickyCell)}>
-                  <div className={styles.teamCell}>
-                    <span
-                      className={clsx(styles.position, styles.positionNumber)}
-                    >
-                      {rank}
-                    </span>
-                    {crestUrl && (
-                      <img
-                        className={styles.crest}
-                        src={crestUrl}
-                        alt=""
-                        loading="lazy"
-                      />
-                    )}
-                    <span className={styles.teamName}>{club.name}</span>
-                  </div>
-                </td>
-                <td className={clsx(styles.td, styles.tdCenter)}>
-                  <span className={styles.scoreValue}>{formatScore(totalScore)}</span>
-                </td>
-                <td className={clsx(styles.td, styles.tdCenter)}>
-                  <span className={styles.leagueScore}>{formatScore(leagueScore)}</span>
-                </td>
-                <td className={clsx(styles.td, styles.tdCenter)}>
-                  <StatCell value={t1TitleYears.length} title={formatYearsList(t1TitleYears, true)} recency={recency(t1TitleYears)} />
-                </td>
-                <td className={clsx(styles.td, styles.tdCenter)}>
-                  <StatCell value={faCupYears.length} title={formatYearsList(faCupYears)} recency={recency(faCupYears)} />
-                </td>
-                <td className={clsx(styles.td, styles.tdCenter)}>
-                  <StatCell value={leagueCupYears.length} title={formatYearsList(leagueCupYears)} recency={recency(leagueCupYears)} />
-                </td>
-                <td className={clsx(styles.td, styles.tdCenter)}>
-                  <StatCell value={uclYears.length} title={formatYearsList(uclYears)} recency={recency(uclYears)} />
-                </td>
-                <td className={clsx(styles.td, styles.tdCenter)}>
-                  <StatCell value={uelYears.length} title={formatYearsList(uelYears)} recency={recency(uelYears)} />
-                </td>
-                <td className={clsx(styles.td, styles.tdCenter)}>
-                  <StatCell value={ueclYears.length} title={formatYearsList(ueclYears)} recency={recency(ueclYears)} />
-                </td>
-                <td className={clsx(styles.td, styles.tdCenter)}>
-                  <span className={styles.attendanceValue}>
-                    {formatAttendance(club.averageAttendance)}
+    <PopoverGroup>
+      <div className={styles.container}>
+        <table className={styles.table}>
+          <colgroup>
+            <col />
+            <col className={styles.colScore} />
+            <col className={styles.colScore} />
+            <col className={styles.colStat} />
+            <col className={styles.colStat} />
+            <col className={styles.colStat} />
+            <col className={styles.colStat} />
+            <col className={styles.colStat} />
+            <col className={styles.colStat} />
+            <col className={styles.colAttendance} />
+          </colgroup>
+          <thead className={styles.thead}>
+            <tr>
+              <th className={clsx(styles.th, styles.stickyCellTh)}>Team</th>
+              <th className={clsx(styles.th, styles.thCenter)}>Score</th>
+              <th className={clsx(styles.th, styles.thCenter)}>League</th>
+              <th className={clsx(styles.th, styles.thCenter)}>
+                <Popover
+                  content={<div className={styles.popoverContent}>Top-flight league titles</div>}
+                  placement="top"
+                >
+                  <span className={styles.thIcon}>
+                    <PremierLeagueLogo
+                      size={20}
+                      foregroundColor={styles.colorPremierLeagueFg}
+                      backgroundColor={styles.colorPremierLeagueBg}
+                    />
                   </span>
-                </td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
-    </div>
+                </Popover>
+              </th>
+              <th className={clsx(styles.th, styles.thCenter)}>
+                <Popover
+                  content={<div className={styles.popoverContent}>FA Cup</div>}
+                  placement="top"
+                >
+                  <span className={styles.thIcon}>
+                    <FaCupLogo size={20} />
+                  </span>
+                </Popover>
+              </th>
+              <th className={clsx(styles.th, styles.thCenter)}>
+                <Popover
+                  content={<div className={styles.popoverContent}>League Cup</div>}
+                  placement="top"
+                >
+                  <span className={styles.thIcon}>
+                    <EflCupLogo size={20} />
+                  </span>
+                </Popover>
+              </th>
+              <th className={clsx(styles.th, styles.thCenter)}>
+                <Popover
+                  content={
+                    <div className={styles.popoverContent}>
+                      UEFA&nbsp;Champions&nbsp;League / European&nbsp;Cup
+                    </div>
+                  }
+                  placement="top"
+                  hideDelay={50000}
+                >
+                  <span className={styles.thIcon}>
+                    <UefaChampionsLeagueLogo size={20} />
+                  </span>
+                </Popover>
+              </th>
+              <th className={clsx(styles.th, styles.thCenter)}>
+                <Popover
+                  content={
+                    <div className={styles.popoverContent}>
+                      UEFA&nbsp;Europa&nbsp;League / UEFA&nbsp;Cup
+                    </div>
+                  }
+                  placement="top"
+                >
+                  <span className={styles.thIcon}>
+                    <UefaEuropaLeagueLogo size={20} />
+                  </span>
+                </Popover>
+              </th>
+              <th className={clsx(styles.th, styles.thCenter)}>
+                <Popover
+                  content={
+                    <div className={styles.popoverContent}>
+                      UEFA&nbsp;Europa&nbsp;Conference&nbsp;League
+                    </div>
+                  }
+                  placement="top"
+                >
+                  <span className={styles.thIcon}>
+                    <UefaConferenceLeagueLogo size={20} />
+                  </span>
+                </Popover>
+              </th>
+              <th className={clsx(styles.th, styles.thCenter)}>
+                <Popover
+                  content={
+                    <div className={styles.popoverContent}>Historical average home attendance</div>
+                  }
+                  placement="top"
+                >
+                  <span>Att</span>
+                </Popover>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {rankedClubs.map((entry, index) => {
+              const {
+                club,
+                rank,
+                totalScore,
+                leagueScore,
+                domesticScore,
+                europeanScore,
+                attendanceScore,
+              } = entry;
+              const crestUrl = getCrest(club.crest);
+
+              const t1TitleYears = club.honours.leagueTitles.tier1;
+              const faCupYears = club.honours.faCupWinners;
+              const leagueCupYears = club.honours.leagueCupWinners;
+              const uclYears = club.europeanHonours.championsLeagueWinners;
+              const uelYears = club.europeanHonours.europaLeagueWinners;
+              const ueclYears = club.europeanHonours.conferenceLeagueWinners;
+
+              return (
+                <tr
+                  key={club.name}
+                  className={clsx(styles.tr, index % 2 === 0 ? styles.rowEven : styles.rowOdd)}
+                >
+                  <td className={clsx(styles.td, styles.stickyCell)}>
+                    <div className={styles.teamCell}>
+                      <span className={clsx(styles.position, styles.positionNumber)}>{rank}</span>
+                      {crestUrl && (
+                        <img className={styles.crest} src={crestUrl} alt="" loading="lazy" />
+                      )}
+                      <span className={styles.teamName}>{club.name}</span>
+                    </div>
+                  </td>
+                  <td className={clsx(styles.td, styles.tdCenter)}>
+                    <Popover
+                      placement="top"
+                      content={
+                        <div className={styles.popoverContent}>
+                          <table className={styles.scoreBreakdownTable}>
+                            <tbody>
+                              <tr>
+                                <td className={styles.scoreBreakdownLabel}>League</td>
+                                <td className={styles.scoreBreakdownValue}>
+                                  {formatScore(leagueScore)}
+                                </td>
+                              </tr>
+                              <tr>
+                                <td className={styles.scoreBreakdownLabel}>Domestic</td>
+                                <td className={styles.scoreBreakdownValue}>
+                                  {formatScore(domesticScore)}
+                                </td>
+                              </tr>
+                              <tr>
+                                <td className={styles.scoreBreakdownLabel}>Europe</td>
+                                <td className={styles.scoreBreakdownValue}>
+                                  {formatScore(europeanScore)}
+                                </td>
+                              </tr>
+                              <tr>
+                                <td className={styles.scoreBreakdownLabel}>Attendance</td>
+                                <td className={styles.scoreBreakdownValue}>
+                                  {formatScore(attendanceScore)}
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      }
+                    >
+                      <span className={styles.scoreValue}>{formatScore(totalScore)}</span>
+                    </Popover>
+                  </td>
+                  <td className={clsx(styles.td, styles.tdCenter)}>
+                    <span className={styles.leagueScore}>{formatScore(leagueScore)}</span>
+                  </td>
+                  <td className={clsx(styles.td, styles.tdCenter)}>
+                    <StatCell
+                      value={t1TitleYears.length}
+                      label={'League\u00A0Titles'}
+                      title={formatYearsList(t1TitleYears, true)}
+                      recency={recency(t1TitleYears, latestYears.t1Titles)}
+                    />
+                  </td>
+                  <td className={clsx(styles.td, styles.tdCenter)}>
+                    <StatCell
+                      value={faCupYears.length}
+                      label={'FA\u00A0Cup winners'}
+                      title={formatYearsList(faCupYears)}
+                      recency={recency(faCupYears, latestYears.faCup)}
+                    />
+                  </td>
+                  <td className={clsx(styles.td, styles.tdCenter)}>
+                    <StatCell
+                      value={leagueCupYears.length}
+                      label={'League\u00A0Cup winners'}
+                      title={formatYearsList(leagueCupYears)}
+                      recency={recency(leagueCupYears, latestYears.leagueCup)}
+                    />
+                  </td>
+                  <td className={clsx(styles.td, styles.tdCenter)}>
+                    <StatCell
+                      value={uclYears.length}
+                      label={'Champions\u00A0League winners'}
+                      title={formatYearsList(uclYears)}
+                      recency={recency(uclYears, latestYears.ucl)}
+                    />
+                  </td>
+                  <td className={clsx(styles.td, styles.tdCenter)}>
+                    <StatCell
+                      value={uelYears.length}
+                      label={'Europa\u00A0League winners'}
+                      title={formatYearsList(uelYears)}
+                      recency={recency(uelYears, latestYears.uel)}
+                    />
+                  </td>
+                  <td className={clsx(styles.td, styles.tdCenter)}>
+                    <StatCell
+                      value={ueclYears.length}
+                      label={'Conference\u00A0League winners'}
+                      title={formatYearsList(ueclYears)}
+                      recency={recency(ueclYears, latestYears.uecl)}
+                    />
+                  </td>
+                  <td className={clsx(styles.td, styles.tdCenter)}>
+                    <span className={styles.attendanceValue}>
+                      {formatAttendance(club.averageAttendance)}
+                    </span>
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+    </PopoverGroup>
   );
 };
 
 interface StatCellProps {
   value: number;
+  /** Competition name shown as a label in the popover */
+  label: string;
   /** Tooltip listing the years of each win */
   title?: string;
   /** Normalised recency percentage (0–100) driving the color-mix weighting */
   recency: number;
 }
 
-const StatCell = ({ value, title, recency }: StatCellProps) => (
-  <span
-    className={clsx(styles.statValue, value === 0 && styles.statZero)}
-    title={title}
-    style={assignInlineVars({ [styles.honourRecency]: `${recency}%` })}
-  >
-    {value === 0 ? '-' : value}
-  </span>
-);
+const StatCell = ({ value, label, title, recency }: StatCellProps) => {
+  const content = (
+    <span
+      className={clsx(styles.statValue, value === 0 && styles.statZero)}
+      style={assignInlineVars({ [styles.honourRecency]: `${recency}%` })}
+    >
+      {value === 0 ? '-' : value}
+    </span>
+  );
+
+  if (title) {
+    return (
+      <Popover
+        content={
+          <div className={styles.popoverContent}>
+            <span className={styles.popoverLabel}>{label}</span>
+            <span className={styles.popoverYears}>{title}</span>
+          </div>
+        }
+        placement="top"
+      >
+        {content}
+      </Popover>
+    );
+  }
+
+  return content;
+};

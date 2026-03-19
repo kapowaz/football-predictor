@@ -1,0 +1,150 @@
+{
+  "name": "Stevenage",
+  "shortName": "Stevenage",
+  "crest": "stevenage",
+  "founded": 1976,
+  "currentTier": 3,
+  "leagueRecord": {
+    "tier1": {},
+    "tier2": {},
+    "tier3": {
+      "2012": {
+        "won": 18,
+        "drawn": 19,
+        "lost": 9,
+        "goalsFor": 69,
+        "goalsAgainst": 44
+      },
+      "2013": {
+        "won": 15,
+        "drawn": 9,
+        "lost": 22,
+        "goalsFor": 47,
+        "goalsAgainst": 64
+      },
+      "2014": {
+        "won": 11,
+        "drawn": 9,
+        "lost": 26,
+        "goalsFor": 46,
+        "goalsAgainst": 72
+      },
+      "2024": {
+        "won": 19,
+        "drawn": 14,
+        "lost": 13,
+        "goalsFor": 57,
+        "goalsAgainst": 46
+      },
+      "2025": {
+        "won": 15,
+        "drawn": 12,
+        "lost": 19,
+        "goalsFor": 42,
+        "goalsAgainst": 50
+      }
+    },
+    "tier4": {
+      "2011": {
+        "won": 18,
+        "drawn": 15,
+        "lost": 13,
+        "goalsFor": 62,
+        "goalsAgainst": 45
+      },
+      "2015": {
+        "won": 20,
+        "drawn": 12,
+        "lost": 14,
+        "goalsFor": 62,
+        "goalsAgainst": 54
+      },
+      "2016": {
+        "won": 11,
+        "drawn": 15,
+        "lost": 20,
+        "goalsFor": 52,
+        "goalsAgainst": 67
+      },
+      "2017": {
+        "won": 20,
+        "drawn": 7,
+        "lost": 19,
+        "goalsFor": 67,
+        "goalsAgainst": 63
+      },
+      "2018": {
+        "won": 14,
+        "drawn": 13,
+        "lost": 19,
+        "goalsFor": 60,
+        "goalsAgainst": 65
+      },
+      "2019": {
+        "won": 20,
+        "drawn": 10,
+        "lost": 16,
+        "goalsFor": 59,
+        "goalsAgainst": 55
+      },
+      "2020": {
+        "won": 3,
+        "drawn": 13,
+        "lost": 20,
+        "goalsFor": 24,
+        "goalsAgainst": 50
+      },
+      "2021": {
+        "won": 14,
+        "drawn": 18,
+        "lost": 14,
+        "goalsFor": 41,
+        "goalsAgainst": 41
+      },
+      "2022": {
+        "won": 11,
+        "drawn": 14,
+        "lost": 21,
+        "goalsFor": 45,
+        "goalsAgainst": 68
+      }
+    }
+  },
+  "honours": {
+    "leagueTitles": {
+      "tier1": [],
+      "tier2": [],
+      "tier3": [],
+      "tier4": []
+    },
+    "leagueRunnersUp": {
+      "tier1": [],
+      "tier2": [],
+      "tier3": [],
+      "tier4": [
+        2023
+      ]
+    },
+    "playoffWinners": {
+      "tier1": [],
+      "tier2": [],
+      "tier3": [],
+      "tier4": [
+        2011
+      ]
+    },
+    "faCupWinners": [],
+    "faCupRunnersUp": [],
+    "leagueCupWinners": [],
+    "leagueCupRunnersUp": []
+  },
+  "europeanHonours": {
+    "championsLeagueWinners": [],
+    "championsLeagueRunnersUp": [],
+    "europaLeagueWinners": [],
+    "europaLeagueRunnersUp": [],
+    "conferenceLeagueWinners": [],
+    "conferenceLeagueRunnersUp": []
+  },
+  "averageAttendance": 4200
+}

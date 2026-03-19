@@ -1,0 +1,164 @@
+[
+  {
+    "year": 1889,
+    "season": "1888-89",
+    "nextYear": 1890,
+    "divisions": [
+      {
+        "tier": 1,
+        "name": "Football League",
+        "teamCount": 12,
+        "zones": [
+          {
+            "type": "champions",
+            "label": "Champions",
+            "startPosition": 1,
+            "endPosition": 1
+          },
+          {
+            "type": "relegation",
+            "label": "Re-election",
+            "startPosition": 9,
+            "endPosition": 12
+          }
+        ],
+        "teams": [
+          "preston-north-end",
+          "aston-villa",
+          "wolverhampton-wanderers",
+          "blackburn-rovers",
+          "bolton-wanderers",
+          "west-bromwich-albion",
+          "accrington-fc",
+          "everton",
+          "burnley",
+          "derby-county",
+          "notts-county",
+          "stoke-city"
+        ]
+      }
+    ]
+  },
+  {
+    "year": 1890,
+    "season": "1889-90",
+    "nextYear": 1891,
+    "divisions": [
+      {
+        "tier": 1,
+        "name": "Football League",
+        "teamCount": 12,
+        "zones": [
+          {
+            "type": "champions",
+            "label": "Champions",
+            "startPosition": 1,
+            "endPosition": 1
+          },
+          {
+            "type": "relegation",
+            "label": "Re-election",
+            "startPosition": 9,
+            "endPosition": 12
+          }
+        ],
+        "teams": [
+          "preston-north-end",
+          "everton",
+          "blackburn-rovers",
+          "wolverhampton-wanderers",
+          "west-bromwich-albion",
+          "accrington-fc",
+          "derby-county",
+          "aston-villa",
+          "bolton-wanderers",
+          "notts-county",
+          "burnley",
+          "stoke-city"
+        ]
+      }
+    ]
+  },
+  {
+    "year": 1891,
+    "season": "1890-91",
+    "nextYear": 1892,
+    "divisions": [
+      {
+        "tier": 1,
+        "name": "Football League",
+        "teamCount": 12,
+        "zones": [
+          {
+            "type": "champions",
+            "label": "Champions",
+            "startPosition": 1,
+            "endPosition": 1
+          },
+          {
+            "type": "relegation",
+            "label": "Re-election",
+            "startPosition": 9,
+            "endPosition": 12
+          }
+        ],
+        "teams": [
+          "everton",
+          "preston-north-end",
+          "notts-county",
+          "wolverhampton-wanderers",
+          "bolton-wanderers",
+          "blackburn-rovers",
+          "sunderland",
+          "burnley",
+          "aston-villa",
+          "accrington-fc",
+          "derby-county",
+          "west-bromwich-albion"
+        ]
+      }
+    ]
+  },
+  {
+    "year": 1892,
+    "season": "1891-92",
+    "nextYear": 1893,
+    "divisions": [
+      {
+        "tier": 1,
+        "name": "Football League",
+        "teamCount": 14,
+        "zones": [
+          {
+            "type": "champions",
+            "label": "Champions",
+            "startPosition": 1,
+            "endPosition": 1
+          },
+          {
+            "type": "relegation",
+            "label": "Re-election",
+            "startPosition": 11,
+            "endPosition": 14
+          }
+        ],
+        "teams": [
+          "sunderland",
+          "preston-north-end",
+          "bolton-wanderers",
+          "aston-villa",
+          "everton",
+          "wolverhampton-wanderers",
+          "burnley",
+          "notts-county",
+          "blackburn-rovers",
+          "derby-county",
+          "accrington-fc",
+          "west-bromwich-albion",
+          "stoke-city",
+          "darwen"
+        ]
+      }
+    ]
+  }
+]

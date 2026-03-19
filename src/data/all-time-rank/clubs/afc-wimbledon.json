@@ -1,0 +1,149 @@
+{
+  "name": "AFC Wimbledon",
+  "shortName": "AFC Wimbledon",
+  "crest": "afc-wimbledon",
+  "founded": 2002,
+  "currentTier": 3,
+  "leagueRecord": {
+    "tier1": {},
+    "tier2": {},
+    "tier3": {
+      "2017": {
+        "won": 13,
+        "drawn": 18,
+        "lost": 15,
+        "goalsFor": 52,
+        "goalsAgainst": 55
+      },
+      "2018": {
+        "won": 13,
+        "drawn": 14,
+        "lost": 19,
+        "goalsFor": 47,
+        "goalsAgainst": 58
+      },
+      "2019": {
+        "won": 13,
+        "drawn": 11,
+        "lost": 22,
+        "goalsFor": 42,
+        "goalsAgainst": 63
+      },
+      "2020": {
+        "won": 8,
+        "drawn": 11,
+        "lost": 16,
+        "goalsFor": 39,
+        "goalsAgainst": 52
+      },
+      "2021": {
+        "won": 12,
+        "drawn": 15,
+        "lost": 19,
+        "goalsFor": 54,
+        "goalsAgainst": 70
+      },
+      "2022": {
+        "won": 6,
+        "drawn": 19,
+        "lost": 21,
+        "goalsFor": 49,
+        "goalsAgainst": 75
+      }
+    },
+    "tier4": {
+      "2012": {
+        "won": 15,
+        "drawn": 9,
+        "lost": 22,
+        "goalsFor": 62,
+        "goalsAgainst": 78
+      },
+      "2013": {
+        "won": 14,
+        "drawn": 11,
+        "lost": 21,
+        "goalsFor": 54,
+        "goalsAgainst": 76
+      },
+      "2014": {
+        "won": 14,
+        "drawn": 14,
+        "lost": 18,
+        "goalsFor": 49,
+        "goalsAgainst": 57
+      },
+      "2015": {
+        "won": 13,
+        "drawn": 11,
+        "lost": 22,
+        "goalsFor": 42,
+        "goalsAgainst": 63
+      },
+      "2016": {
+        "won": 21,
+        "drawn": 12,
+        "lost": 13,
+        "goalsFor": 64,
+        "goalsAgainst": 50
+      },
+      "2023": {
+        "won": 11,
+        "drawn": 15,
+        "lost": 20,
+        "goalsFor": 48,
+        "goalsAgainst": 60
+      },
+      "2024": {
+        "won": 17,
+        "drawn": 14,
+        "lost": 15,
+        "goalsFor": 64,
+        "goalsAgainst": 51
+      },
+      "2025": {
+        "won": 20,
+        "drawn": 13,
+        "lost": 13,
+        "goalsFor": 56,
+        "goalsAgainst": 35
+      }
+    }
+  },
+  "honours": {
+    "leagueTitles": {
+      "tier1": [],
+      "tier2": [],
+      "tier3": [],
+      "tier4": []
+    },
+    "leagueRunnersUp": {
+      "tier1": [],
+      "tier2": [],
+      "tier3": [],
+      "tier4": []
+    },
+    "playoffWinners": {
+      "tier1": [],
+      "tier2": [],
+      "tier3": [],
+      "tier4": [
+        2016,
+        2025
+      ]
+    },
+    "faCupWinners": [],
+    "faCupRunnersUp": [],
+    "leagueCupWinners": [],
+    "leagueCupRunnersUp": []
+  },
+  "europeanHonours": {
+    "championsLeagueWinners": [],
+    "championsLeagueRunnersUp": [],
+    "europaLeagueWinners": [],
+    "europaLeagueRunnersUp": [],
+    "conferenceLeagueWinners": [],
+    "conferenceLeagueRunnersUp": []
+  },
+  "averageAttendance": 7200
+}

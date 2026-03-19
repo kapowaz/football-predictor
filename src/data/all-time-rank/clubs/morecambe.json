@@ -1,0 +1,178 @@
+{
+  "name": "Morecambe",
+  "shortName": "Morecambe",
+  "crest": "morecambe",
+  "founded": 1920,
+  "currentTier": null,
+  "leagueRecord": {
+    "tier1": {},
+    "tier2": {},
+    "tier3": {
+      "2022": {
+        "won": 10,
+        "drawn": 12,
+        "lost": 24,
+        "goalsFor": 57,
+        "goalsAgainst": 88
+      },
+      "2023": {
+        "won": 10,
+        "drawn": 14,
+        "lost": 22,
+        "goalsFor": 47,
+        "goalsAgainst": 78
+      }
+    },
+    "tier4": {
+      "2008": {
+        "won": 16,
+        "drawn": 12,
+        "lost": 18,
+        "goalsFor": 59,
+        "goalsAgainst": 63
+      },
+      "2009": {
+        "won": 15,
+        "drawn": 18,
+        "lost": 13,
+        "goalsFor": 53,
+        "goalsAgainst": 56
+      },
+      "2010": {
+        "won": 20,
+        "drawn": 13,
+        "lost": 13,
+        "goalsFor": 73,
+        "goalsAgainst": 64
+      },
+      "2011": {
+        "won": 13,
+        "drawn": 12,
+        "lost": 21,
+        "goalsFor": 54,
+        "goalsAgainst": 73
+      },
+      "2012": {
+        "won": 14,
+        "drawn": 14,
+        "lost": 18,
+        "goalsFor": 63,
+        "goalsAgainst": 57
+      },
+      "2013": {
+        "won": 15,
+        "drawn": 13,
+        "lost": 18,
+        "goalsFor": 55,
+        "goalsAgainst": 61
+      },
+      "2014": {
+        "won": 13,
+        "drawn": 15,
+        "lost": 18,
+        "goalsFor": 52,
+        "goalsAgainst": 64
+      },
+      "2015": {
+        "won": 17,
+        "drawn": 12,
+        "lost": 17,
+        "goalsFor": 53,
+        "goalsAgainst": 52
+      },
+      "2016": {
+        "won": 12,
+        "drawn": 10,
+        "lost": 24,
+        "goalsFor": 69,
+        "goalsAgainst": 91
+      },
+      "2017": {
+        "won": 14,
+        "drawn": 10,
+        "lost": 22,
+        "goalsFor": 53,
+        "goalsAgainst": 73
+      },
+      "2018": {
+        "won": 9,
+        "drawn": 19,
+        "lost": 18,
+        "goalsFor": 41,
+        "goalsAgainst": 56
+      },
+      "2019": {
+        "won": 14,
+        "drawn": 12,
+        "lost": 20,
+        "goalsFor": 54,
+        "goalsAgainst": 70
+      },
+      "2020": {
+        "won": 7,
+        "drawn": 11,
+        "lost": 19,
+        "goalsFor": 35,
+        "goalsAgainst": 60
+      },
+      "2021": {
+        "won": 23,
+        "drawn": 9,
+        "lost": 14,
+        "goalsFor": 69,
+        "goalsAgainst": 58
+      },
+      "2024": {
+        "won": 17,
+        "drawn": 10,
+        "lost": 19,
+        "goalsFor": 67,
+        "goalsAgainst": 81
+      },
+      "2025": {
+        "won": 10,
+        "drawn": 6,
+        "lost": 30,
+        "goalsFor": 40,
+        "goalsAgainst": 72
+      }
+    }
+  },
+  "honours": {
+    "leagueTitles": {
+      "tier1": [],
+      "tier2": [],
+      "tier3": [],
+      "tier4": []
+    },
+    "leagueRunnersUp": {
+      "tier1": [],
+      "tier2": [],
+      "tier3": [],
+      "tier4": [
+        2010
+      ]
+    },
+    "playoffWinners": {
+      "tier1": [],
+      "tier2": [],
+      "tier3": [],
+      "tier4": [
+        2021
+      ]
+    },
+    "faCupWinners": [],
+    "faCupRunnersUp": [],
+    "leagueCupWinners": [],
+    "leagueCupRunnersUp": []
+  },
+  "europeanHonours": {
+    "championsLeagueWinners": [],
+    "championsLeagueRunnersUp": [],
+    "europaLeagueWinners": [],
+    "europaLeagueRunnersUp": [],
+    "conferenceLeagueWinners": [],
+    "conferenceLeagueRunnersUp": []
+  },
+  "averageAttendance": 3500
+}

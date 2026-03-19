@@ -53,15 +53,15 @@ export const table = style({
 });
 
 export const colScore = style({
-  width: '88px',
+  width: '96px',
 });
 
 export const colStat = style({
-  width: '72px',
+  width: '96px',
 });
 
 export const colAttendance = style({
-  width: '72px',
+  width: '96px',
 });
 
 export const thead = style({
@@ -225,4 +225,37 @@ export const attendanceValue = style({
   fontFamily: fontFamily,
   fontVariantNumeric: 'tabular-nums',
   fontSize: fontSizeSm,
+});
+
+export const popoverContent = style({
+  padding: space2,
+  display: 'flex',
+  flexDirection: 'column',
+  gap: space2,
+});
+
+export const popoverLabel = style({
+  fontWeight: 600,
+});
+
+export const popoverYears = style({
+  maxWidth: '240px',
+  fontVariantNumeric: 'tabular-nums',
+});
+
+export const scoreBreakdownTable = style({
+  borderCollapse: 'collapse',
+  borderSpacing: 0,
+  fontSize: fontSizeBase,
+  fontVariantNumeric: 'tabular-nums',
+});
+
+export const scoreBreakdownLabel = style({
+  fontWeight: 600,
+  paddingRight: space3,
+});
+
+export const scoreBreakdownValue = style({
+  textAlign: 'right',
+  fontSize: fontSizeBase,
 });

@@ -1,0 +1,54 @@
+{
+  "name": "Bromley",
+  "shortName": "Bromley",
+  "crest": "bromley",
+  "founded": 1892,
+  "currentTier": 4,
+  "leagueRecord": {
+    "tier1": {},
+    "tier2": {},
+    "tier3": {},
+    "tier4": {
+      "2025": {
+        "won": 17,
+        "drawn": 15,
+        "lost": 14,
+        "goalsFor": 64,
+        "goalsAgainst": 59
+      }
+    }
+  },
+  "honours": {
+    "leagueTitles": {
+      "tier1": [],
+      "tier2": [],
+      "tier3": [],
+      "tier4": []
+    },
+    "leagueRunnersUp": {
+      "tier1": [],
+      "tier2": [],
+      "tier3": [],
+      "tier4": []
+    },
+    "playoffWinners": {
+      "tier1": [],
+      "tier2": [],
+      "tier3": [],
+      "tier4": []
+    },
+    "faCupWinners": [],
+    "faCupRunnersUp": [],
+    "leagueCupWinners": [],
+    "leagueCupRunnersUp": []
+  },
+  "europeanHonours": {
+    "championsLeagueWinners": [],
+    "championsLeagueRunnersUp": [],
+    "europaLeagueWinners": [],
+    "europaLeagueRunnersUp": [],
+    "conferenceLeagueWinners": [],
+    "conferenceLeagueRunnersUp": []
+  },
+  "averageAttendance": 3600
+}

@@ -1,0 +1,50 @@
+{
+  "name": "Halifax Town",
+  "shortName": "Halifax",
+  "crest": "halifax-town",
+  "founded": 1911,
+  "currentTier": null,
+  "leagueRecord": {
+    "tier1": {},
+    "tier2": {},
+    "tier3": {},
+    "tier4": {}
+  },
+  "honours": {
+    "leagueTitles": {
+      "tier1": [],
+      "tier2": [],
+      "tier3": [],
+      "tier4": [
+        1969
+      ]
+    },
+    "leagueRunnersUp": {
+      "tier1": [],
+      "tier2": [],
+      "tier3": [],
+      "tier4": [
+        1971
+      ]
+    },
+    "playoffWinners": {
+      "tier1": [],
+      "tier2": [],
+      "tier3": [],
+      "tier4": []
+    },
+    "faCupWinners": [],
+    "faCupRunnersUp": [],
+    "leagueCupWinners": [],
+    "leagueCupRunnersUp": []
+  },
+  "europeanHonours": {
+    "championsLeagueWinners": [],
+    "championsLeagueRunnersUp": [],
+    "europaLeagueWinners": [],
+    "europaLeagueRunnersUp": [],
+    "conferenceLeagueWinners": [],
+    "conferenceLeagueRunnersUp": []
+  },
+  "averageAttendance": 3200
+}

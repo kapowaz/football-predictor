@@ -1,0 +1,143 @@
+{
+  "name": "Fleetwood Town",
+  "shortName": "Fleetwood",
+  "crest": "fleetwood-town",
+  "founded": 1908,
+  "currentTier": 4,
+  "leagueRecord": {
+    "tier1": {},
+    "tier2": {},
+    "tier3": {
+      "2015": {
+        "won": 17,
+        "drawn": 12,
+        "lost": 17,
+        "goalsFor": 49,
+        "goalsAgainst": 52
+      },
+      "2016": {
+        "won": 12,
+        "drawn": 15,
+        "lost": 19,
+        "goalsFor": 52,
+        "goalsAgainst": 56
+      },
+      "2017": {
+        "won": 23,
+        "drawn": 13,
+        "lost": 10,
+        "goalsFor": 64,
+        "goalsAgainst": 43
+      },
+      "2018": {
+        "won": 16,
+        "drawn": 9,
+        "lost": 21,
+        "goalsFor": 59,
+        "goalsAgainst": 68
+      },
+      "2019": {
+        "won": 16,
+        "drawn": 13,
+        "lost": 17,
+        "goalsFor": 58,
+        "goalsAgainst": 52
+      },
+      "2020": {
+        "won": 16,
+        "drawn": 12,
+        "lost": 7,
+        "goalsFor": 51,
+        "goalsAgainst": 38
+      },
+      "2021": {
+        "won": 16,
+        "drawn": 12,
+        "lost": 18,
+        "goalsFor": 49,
+        "goalsAgainst": 46
+      },
+      "2022": {
+        "won": 8,
+        "drawn": 16,
+        "lost": 22,
+        "goalsFor": 62,
+        "goalsAgainst": 82
+      },
+      "2023": {
+        "won": 14,
+        "drawn": 16,
+        "lost": 16,
+        "goalsFor": 53,
+        "goalsAgainst": 51
+      },
+      "2024": {
+        "won": 10,
+        "drawn": 13,
+        "lost": 23,
+        "goalsFor": 49,
+        "goalsAgainst": 72
+      }
+    },
+    "tier4": {
+      "2013": {
+        "won": 15,
+        "drawn": 15,
+        "lost": 16,
+        "goalsFor": 55,
+        "goalsAgainst": 57
+      },
+      "2014": {
+        "won": 22,
+        "drawn": 10,
+        "lost": 14,
+        "goalsFor": 66,
+        "goalsAgainst": 52
+      },
+      "2025": {
+        "won": 15,
+        "drawn": 15,
+        "lost": 16,
+        "goalsFor": 60,
+        "goalsAgainst": 60
+      }
+    }
+  },
+  "honours": {
+    "leagueTitles": {
+      "tier1": [],
+      "tier2": [],
+      "tier3": [],
+      "tier4": [
+        2012
+      ]
+    },
+    "leagueRunnersUp": {
+      "tier1": [],
+      "tier2": [],
+      "tier3": [],
+      "tier4": []
+    },
+    "playoffWinners": {
+      "tier1": [],
+      "tier2": [],
+      "tier3": [],
+      "tier4": [
+        2014
+      ]
+    },
+    "faCupWinners": [],
+    "faCupRunnersUp": [],
+    "leagueCupWinners": [],
+    "leagueCupRunnersUp": []
+  },
+  "europeanHonours": {
+    "championsLeagueWinners": [],
+    "championsLeagueRunnersUp": [],
+    "europaLeagueWinners": [],
+    "europaLeagueRunnersUp": [],
+    "conferenceLeagueWinners": [],
+    "conferenceLeagueRunnersUp": []
+  },
+  "averageAttendance": 3500
+}

@@ -1,0 +1,163 @@
+{
+  "name": "Burton Albion",
+  "shortName": "Burton",
+  "crest": "burton-albion",
+  "founded": 1950,
+  "currentTier": 3,
+  "leagueRecord": {
+    "tier1": {},
+    "tier2": {
+      "2017": {
+        "won": 13,
+        "drawn": 13,
+        "lost": 20,
+        "goalsFor": 49,
+        "goalsAgainst": 63
+      },
+      "2018": {
+        "won": 10,
+        "drawn": 11,
+        "lost": 25,
+        "goalsFor": 38,
+        "goalsAgainst": 81
+      }
+    },
+    "tier3": {
+      "2016": {
+        "won": 25,
+        "drawn": 10,
+        "lost": 11,
+        "goalsFor": 57,
+        "goalsAgainst": 37
+      },
+      "2019": {
+        "won": 17,
+        "drawn": 12,
+        "lost": 17,
+        "goalsFor": 66,
+        "goalsAgainst": 57
+      },
+      "2020": {
+        "won": 12,
+        "drawn": 12,
+        "lost": 11,
+        "goalsFor": 50,
+        "goalsAgainst": 50
+      },
+      "2021": {
+        "won": 15,
+        "drawn": 12,
+        "lost": 19,
+        "goalsFor": 61,
+        "goalsAgainst": 73
+      },
+      "2022": {
+        "won": 14,
+        "drawn": 11,
+        "lost": 21,
+        "goalsFor": 51,
+        "goalsAgainst": 67
+      },
+      "2023": {
+        "won": 15,
+        "drawn": 11,
+        "lost": 20,
+        "goalsFor": 57,
+        "goalsAgainst": 79
+      },
+      "2024": {
+        "won": 12,
+        "drawn": 10,
+        "lost": 24,
+        "goalsFor": 39,
+        "goalsAgainst": 67
+      },
+      "2025": {
+        "won": 11,
+        "drawn": 14,
+        "lost": 21,
+        "goalsFor": 49,
+        "goalsAgainst": 66
+      }
+    },
+    "tier4": {
+      "2010": {
+        "won": 17,
+        "drawn": 11,
+        "lost": 18,
+        "goalsFor": 71,
+        "goalsAgainst": 71
+      },
+      "2011": {
+        "won": 12,
+        "drawn": 15,
+        "lost": 19,
+        "goalsFor": 56,
+        "goalsAgainst": 70
+      },
+      "2012": {
+        "won": 14,
+        "drawn": 12,
+        "lost": 20,
+        "goalsFor": 54,
+        "goalsAgainst": 81
+      },
+      "2013": {
+        "won": 22,
+        "drawn": 10,
+        "lost": 14,
+        "goalsFor": 71,
+        "goalsAgainst": 65
+      },
+      "2014": {
+        "won": 19,
+        "drawn": 15,
+        "lost": 12,
+        "goalsFor": 47,
+        "goalsAgainst": 42
+      },
+      "2015": {
+        "won": 28,
+        "drawn": 10,
+        "lost": 8,
+        "goalsFor": 69,
+        "goalsAgainst": 39
+      }
+    }
+  },
+  "honours": {
+    "leagueTitles": {
+      "tier1": [],
+      "tier2": [],
+      "tier3": [],
+      "tier4": [
+        2015
+      ]
+    },
+    "leagueRunnersUp": {
+      "tier1": [],
+      "tier2": [],
+      "tier3": [],
+      "tier4": []
+    },
+    "playoffWinners": {
+      "tier1": [],
+      "tier2": [],
+      "tier3": [],
+      "tier4": []
+    },
+    "faCupWinners": [],
+    "faCupRunnersUp": [],
+    "leagueCupWinners": [],
+    "leagueCupRunnersUp": []
+  },
+  "europeanHonours": {
+    "championsLeagueWinners": [],
+    "championsLeagueRunnersUp": [],
+    "europaLeagueWinners": [],
+    "europaLeagueRunnersUp": [],
+    "conferenceLeagueWinners": [],
+    "conferenceLeagueRunnersUp": []
+  },
+  "averageAttendance": 4800
+}

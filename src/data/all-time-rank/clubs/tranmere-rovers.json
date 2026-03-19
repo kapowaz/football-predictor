@@ -1,0 +1,731 @@
+{
+  "name": "Tranmere Rovers",
+  "shortName": "Tranmere",
+  "crest": "tranmere-rovers",
+  "founded": 1884,
+  "currentTier": 4,
+  "leagueRecord": {
+    "tier1": {},
+    "tier2": {
+      "1939": {
+        "won": 6,
+        "drawn": 5,
+        "lost": 31,
+        "goalsFor": 39,
+        "goalsAgainst": 99
+      },
+      "1992": {
+        "won": 14,
+        "drawn": 19,
+        "lost": 13,
+        "goalsFor": 56,
+        "goalsAgainst": 56
+      },
+      "1993": {
+        "won": 23,
+        "drawn": 10,
+        "lost": 13,
+        "goalsFor": 72,
+        "goalsAgainst": 56
+      },
+      "1994": {
+        "won": 21,
+        "drawn": 9,
+        "lost": 16,
+        "goalsFor": 69,
+        "goalsAgainst": 53
+      },
+      "1995": {
+        "won": 22,
+        "drawn": 10,
+        "lost": 14,
+        "goalsFor": 67,
+        "goalsAgainst": 58
+      },
+      "1996": {
+        "won": 14,
+        "drawn": 17,
+        "lost": 15,
+        "goalsFor": 64,
+        "goalsAgainst": 60
+      },
+      "1997": {
+        "won": 17,
+        "drawn": 14,
+        "lost": 15,
+        "goalsFor": 63,
+        "goalsAgainst": 56
+      },
+      "1998": {
+        "won": 14,
+        "drawn": 14,
+        "lost": 18,
+        "goalsFor": 54,
+        "goalsAgainst": 57
+      },
+      "1999": {
+        "won": 12,
+        "drawn": 20,
+        "lost": 14,
+        "goalsFor": 63,
+        "goalsAgainst": 63
+      },
+      "2000": {
+        "won": 15,
+        "drawn": 12,
+        "lost": 19,
+        "goalsFor": 57,
+        "goalsAgainst": 68
+      },
+      "2001": {
+        "won": 9,
+        "drawn": 11,
+        "lost": 26,
+        "goalsFor": 46,
+        "goalsAgainst": 77
+      }
+    },
+    "tier3": {
+      "1922": {
+        "won": 9,
+        "drawn": 11,
+        "lost": 18,
+        "goalsFor": 51,
+        "goalsAgainst": 61
+      },
+      "1923": {
+        "won": 12,
+        "drawn": 8,
+        "lost": 18,
+        "goalsFor": 49,
+        "goalsAgainst": 59
+      },
+      "1924": {
+        "won": 13,
+        "drawn": 15,
+        "lost": 14,
+        "goalsFor": 51,
+        "goalsAgainst": 60
+      },
+      "1925": {
+        "won": 14,
+        "drawn": 4,
+        "lost": 24,
+        "goalsFor": 59,
+        "goalsAgainst": 78
+      },
+      "1926": {
+        "won": 19,
+        "drawn": 6,
+        "lost": 17,
+        "goalsFor": 73,
+        "goalsAgainst": 83
+      },
+      "1927": {
+        "won": 19,
+        "drawn": 8,
+        "lost": 15,
+        "goalsFor": 85,
+        "goalsAgainst": 67
+      },
+      "1928": {
+        "won": 22,
+        "drawn": 9,
+        "lost": 11,
+        "goalsFor": 105,
+        "goalsAgainst": 72
+      },
+      "1929": {
+        "won": 22,
+        "drawn": 3,
+        "lost": 17,
+        "goalsFor": 79,
+        "goalsAgainst": 77
+      },
+      "1930": {
+        "won": 16,
+        "drawn": 9,
+        "lost": 17,
+        "goalsFor": 83,
+        "goalsAgainst": 86
+      },
+      "1931": {
+        "won": 24,
+        "drawn": 6,
+        "lost": 12,
+        "goalsFor": 111,
+        "goalsAgainst": 74
+      },
+      "1932": {
+        "won": 19,
+        "drawn": 11,
+        "lost": 10,
+        "goalsFor": 107,
+        "goalsAgainst": 58
+      },
+      "1933": {
+        "won": 17,
+        "drawn": 8,
+        "lost": 17,
+        "goalsFor": 70,
+        "goalsAgainst": 66
+      },
+      "1934": {
+        "won": 20,
+        "drawn": 7,
+        "lost": 15,
+        "goalsFor": 84,
+        "goalsAgainst": 63
+      },
+      "1935": {
+        "won": 20,
+        "drawn": 11,
+        "lost": 11,
+        "goalsFor": 74,
+        "goalsAgainst": 55
+      },
+      "1936": {
+        "won": 22,
+        "drawn": 11,
+        "lost": 9,
+        "goalsFor": 93,
+        "goalsAgainst": 58
+      },
+      "1937": {
+        "won": 12,
+        "drawn": 9,
+        "lost": 21,
+        "goalsFor": 71,
+        "goalsAgainst": 88
+      },
+      "1938": {
+        "won": 23,
+        "drawn": 10,
+        "lost": 9,
+        "goalsFor": 81,
+        "goalsAgainst": 41
+      },
+      "1947": {
+        "won": 17,
+        "drawn": 7,
+        "lost": 18,
+        "goalsFor": 66,
+        "goalsAgainst": 77
+      },
+      "1948": {
+        "won": 16,
+        "drawn": 4,
+        "lost": 22,
+        "goalsFor": 54,
+        "goalsAgainst": 72
+      },
+      "1949": {
+        "won": 13,
+        "drawn": 15,
+        "lost": 14,
+        "goalsFor": 46,
+        "goalsAgainst": 57
+      },
+      "1950": {
+        "won": 19,
+        "drawn": 11,
+        "lost": 12,
+        "goalsFor": 51,
+        "goalsAgainst": 48
+      },
+      "1951": {
+        "won": 24,
+        "drawn": 11,
+        "lost": 11,
+        "goalsFor": 83,
+        "goalsAgainst": 62
+      },
+      "1952": {
+        "won": 21,
+        "drawn": 6,
+        "lost": 19,
+        "goalsFor": 76,
+        "goalsAgainst": 71
+      },
+      "1953": {
+        "won": 21,
+        "drawn": 5,
+        "lost": 20,
+        "goalsFor": 65,
+        "goalsAgainst": 63
+      },
+      "1954": {
+        "won": 18,
+        "drawn": 7,
+        "lost": 21,
+        "goalsFor": 59,
+        "goalsAgainst": 70
+      },
+      "1955": {
+        "won": 13,
+        "drawn": 11,
+        "lost": 22,
+        "goalsFor": 55,
+        "goalsAgainst": 70
+      },
+      "1956": {
+        "won": 16,
+        "drawn": 9,
+        "lost": 21,
+        "goalsFor": 59,
+        "goalsAgainst": 84
+      },
+      "1957": {
+        "won": 7,
+        "drawn": 13,
+        "lost": 26,
+        "goalsFor": 51,
+        "goalsAgainst": 91
+      },
+      "1958": {
+        "won": 18,
+        "drawn": 10,
+        "lost": 18,
+        "goalsFor": 82,
+        "goalsAgainst": 76
+      },
+      "1959": {
+        "won": 21,
+        "drawn": 8,
+        "lost": 17,
+        "goalsFor": 82,
+        "goalsAgainst": 67
+      },
+      "1960": {
+        "won": 14,
+        "drawn": 13,
+        "lost": 19,
+        "goalsFor": 72,
+        "goalsAgainst": 75
+      },
+      "1961": {
+        "won": 15,
+        "drawn": 8,
+        "lost": 23,
+        "goalsFor": 79,
+        "goalsAgainst": 115
+      },
+      "1968": {
+        "won": 14,
+        "drawn": 12,
+        "lost": 20,
+        "goalsFor": 62,
+        "goalsAgainst": 74
+      },
+      "1969": {
+        "won": 19,
+        "drawn": 10,
+        "lost": 17,
+        "goalsFor": 70,
+        "goalsAgainst": 68
+      },
+      "1970": {
+        "won": 14,
+        "drawn": 16,
+        "lost": 16,
+        "goalsFor": 56,
+        "goalsAgainst": 72
+      },
+      "1971": {
+        "won": 10,
+        "drawn": 22,
+        "lost": 14,
+        "goalsFor": 45,
+        "goalsAgainst": 55
+      },
+      "1972": {
+        "won": 10,
+        "drawn": 16,
+        "lost": 20,
+        "goalsFor": 50,
+        "goalsAgainst": 71
+      },
+      "1973": {
+        "won": 15,
+        "drawn": 16,
+        "lost": 15,
+        "goalsFor": 56,
+        "goalsAgainst": 52
+      },
+      "1974": {
+        "won": 15,
+        "drawn": 15,
+        "lost": 16,
+        "goalsFor": 50,
+        "goalsAgainst": 44
+      },
+      "1975": {
+        "won": 14,
+        "drawn": 9,
+        "lost": 23,
+        "goalsFor": 55,
+        "goalsAgainst": 57
+      },
+      "1977": {
+        "won": 13,
+        "drawn": 17,
+        "lost": 16,
+        "goalsFor": 51,
+        "goalsAgainst": 53
+      },
+      "1978": {
+        "won": 16,
+        "drawn": 15,
+        "lost": 15,
+        "goalsFor": 57,
+        "goalsAgainst": 52
+      },
+      "1979": {
+        "won": 6,
+        "drawn": 16,
+        "lost": 24,
+        "goalsFor": 45,
+        "goalsAgainst": 78
+      },
+      "1990": {
+        "won": 23,
+        "drawn": 11,
+        "lost": 12,
+        "goalsFor": 86,
+        "goalsAgainst": 49
+      },
+      "1991": {
+        "won": 23,
+        "drawn": 9,
+        "lost": 14,
+        "goalsFor": 64,
+        "goalsAgainst": 46
+      },
+      "2002": {
+        "won": 16,
+        "drawn": 15,
+        "lost": 15,
+        "goalsFor": 63,
+        "goalsAgainst": 60
+      },
+      "2003": {
+        "won": 23,
+        "drawn": 11,
+        "lost": 12,
+        "goalsFor": 66,
+        "goalsAgainst": 57
+      },
+      "2004": {
+        "won": 17,
+        "drawn": 16,
+        "lost": 13,
+        "goalsFor": 59,
+        "goalsAgainst": 56
+      },
+      "2005": {
+        "won": 22,
+        "drawn": 13,
+        "lost": 11,
+        "goalsFor": 73,
+        "goalsAgainst": 55
+      },
+      "2006": {
+        "won": 13,
+        "drawn": 15,
+        "lost": 18,
+        "goalsFor": 50,
+        "goalsAgainst": 52
+      },
+      "2007": {
+        "won": 18,
+        "drawn": 13,
+        "lost": 15,
+        "goalsFor": 58,
+        "goalsAgainst": 53
+      },
+      "2008": {
+        "won": 18,
+        "drawn": 11,
+        "lost": 17,
+        "goalsFor": 52,
+        "goalsAgainst": 47
+      },
+      "2009": {
+        "won": 21,
+        "drawn": 11,
+        "lost": 14,
+        "goalsFor": 62,
+        "goalsAgainst": 49
+      },
+      "2010": {
+        "won": 14,
+        "drawn": 9,
+        "lost": 23,
+        "goalsFor": 45,
+        "goalsAgainst": 72
+      },
+      "2011": {
+        "won": 15,
+        "drawn": 11,
+        "lost": 20,
+        "goalsFor": 53,
+        "goalsAgainst": 60
+      },
+      "2012": {
+        "won": 14,
+        "drawn": 14,
+        "lost": 18,
+        "goalsFor": 49,
+        "goalsAgainst": 53
+      },
+      "2013": {
+        "won": 19,
+        "drawn": 10,
+        "lost": 17,
+        "goalsFor": 58,
+        "goalsAgainst": 48
+      },
+      "2014": {
+        "won": 12,
+        "drawn": 11,
+        "lost": 23,
+        "goalsFor": 52,
+        "goalsAgainst": 79
+      },
+      "2020": {
+        "won": 8,
+        "drawn": 8,
+        "lost": 18,
+        "goalsFor": 36,
+        "goalsAgainst": 60
+      }
+    },
+    "tier4": {
+      "1962": {
+        "won": 20,
+        "drawn": 4,
+        "lost": 20,
+        "goalsFor": 70,
+        "goalsAgainst": 81
+      },
+      "1963": {
+        "won": 20,
+        "drawn": 10,
+        "lost": 16,
+        "goalsFor": 81,
+        "goalsAgainst": 67
+      },
+      "1964": {
+        "won": 20,
+        "drawn": 11,
+        "lost": 15,
+        "goalsFor": 85,
+        "goalsAgainst": 73
+      },
+      "1965": {
+        "won": 27,
+        "drawn": 6,
+        "lost": 13,
+        "goalsFor": 99,
+        "goalsAgainst": 56
+      },
+      "1966": {
+        "won": 24,
+        "drawn": 8,
+        "lost": 14,
+        "goalsFor": 93,
+        "goalsAgainst": 66
+      },
+      "1967": {
+        "won": 22,
+        "drawn": 14,
+        "lost": 10,
+        "goalsFor": 66,
+        "goalsAgainst": 43
+      },
+      "1976": {
+        "won": 24,
+        "drawn": 10,
+        "lost": 12,
+        "goalsFor": 89,
+        "goalsAgainst": 55
+      },
+      "1980": {
+        "won": 14,
+        "drawn": 13,
+        "lost": 19,
+        "goalsFor": 50,
+        "goalsAgainst": 56
+      },
+      "1981": {
+        "won": 13,
+        "drawn": 10,
+        "lost": 23,
+        "goalsFor": 59,
+        "goalsAgainst": 73
+      },
+      "1982": {
+        "won": 14,
+        "drawn": 18,
+        "lost": 14,
+        "goalsFor": 51,
+        "goalsAgainst": 56
+      },
+      "1983": {
+        "won": 13,
+        "drawn": 11,
+        "lost": 22,
+        "goalsFor": 49,
+        "goalsAgainst": 71
+      },
+      "1984": {
+        "won": 17,
+        "drawn": 15,
+        "lost": 14,
+        "goalsFor": 53,
+        "goalsAgainst": 53
+      },
+      "1985": {
+        "won": 24,
+        "drawn": 3,
+        "lost": 19,
+        "goalsFor": 83,
+        "goalsAgainst": 66
+      },
+      "1986": {
+        "won": 15,
+        "drawn": 9,
+        "lost": 22,
+        "goalsFor": 74,
+        "goalsAgainst": 73
+      },
+      "1987": {
+        "won": 11,
+        "drawn": 17,
+        "lost": 18,
+        "goalsFor": 54,
+        "goalsAgainst": 72
+      },
+      "1988": {
+        "won": 19,
+        "drawn": 9,
+        "lost": 18,
+        "goalsFor": 61,
+        "goalsAgainst": 53
+      },
+      "1989": {
+        "won": 21,
+        "drawn": 17,
+        "lost": 8,
+        "goalsFor": 62,
+        "goalsAgainst": 43
+      },
+      "2015": {
+        "won": 9,
+        "drawn": 12,
+        "lost": 25,
+        "goalsFor": 45,
+        "goalsAgainst": 67
+      },
+      "2017": {
+        "won": 29,
+        "drawn": 8,
+        "lost": 9,
+        "goalsFor": 79,
+        "goalsAgainst": 39
+      },
+      "2018": {
+        "won": 24,
+        "drawn": 10,
+        "lost": 12,
+        "goalsFor": 78,
+        "goalsAgainst": 46
+      },
+      "2019": {
+        "won": 20,
+        "drawn": 13,
+        "lost": 13,
+        "goalsFor": 63,
+        "goalsAgainst": 50
+      },
+      "2021": {
+        "won": 20,
+        "drawn": 13,
+        "lost": 13,
+        "goalsFor": 55,
+        "goalsAgainst": 50
+      },
+      "2022": {
+        "won": 21,
+        "drawn": 12,
+        "lost": 13,
+        "goalsFor": 53,
+        "goalsAgainst": 40
+      },
+      "2023": {
+        "won": 15,
+        "drawn": 13,
+        "lost": 18,
+        "goalsFor": 45,
+        "goalsAgainst": 48
+      },
+      "2024": {
+        "won": 17,
+        "drawn": 6,
+        "lost": 23,
+        "goalsFor": 67,
+        "goalsAgainst": 70
+      },
+      "2025": {
+        "won": 12,
+        "drawn": 15,
+        "lost": 19,
+        "goalsFor": 45,
+        "goalsAgainst": 65
+      }
+    }
+  },
+  "honours": {
+    "leagueTitles": {
+      "tier1": [],
+      "tier2": [],
+      "tier3": [],
+      "tier4": [
+        1989
+      ]
+    },
+    "leagueRunnersUp": {
+      "tier1": [],
+      "tier2": [],
+      "tier3": [],
+      "tier4": [
+        1991
+      ]
+    },
+    "playoffWinners": {
+      "tier1": [],
+      "tier2": [],
+      "tier3": [
+        1991
+      ],
+      "tier4": [
+        2019
+      ]
+    },
+    "faCupWinners": [],
+    "faCupRunnersUp": [],
+    "leagueCupWinners": [],
+    "leagueCupRunnersUp": [
+      2000
+    ]
+  },
+  "europeanHonours": {
+    "championsLeagueWinners": [],
+    "championsLeagueRunnersUp": [],
+    "europaLeagueWinners": [],
+    "europaLeagueRunnersUp": [],
+    "conferenceLeagueWinners": [],
+    "conferenceLeagueRunnersUp": []
+  },
+  "averageAttendance": 6200
+}

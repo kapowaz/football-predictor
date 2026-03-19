@@ -1,0 +1,101 @@
+{
+  "name": "Forest Green Rovers",
+  "shortName": "Forest Green",
+  "crest": "forest-green-rovers",
+  "founded": 1889,
+  "currentTier": null,
+  "leagueRecord": {
+    "tier1": {},
+    "tier2": {},
+    "tier3": {
+      "2023": {
+        "won": 6,
+        "drawn": 9,
+        "lost": 31,
+        "goalsFor": 31,
+        "goalsAgainst": 89
+      }
+    },
+    "tier4": {
+      "2018": {
+        "won": 13,
+        "drawn": 8,
+        "lost": 25,
+        "goalsFor": 54,
+        "goalsAgainst": 77
+      },
+      "2019": {
+        "won": 20,
+        "drawn": 14,
+        "lost": 12,
+        "goalsFor": 68,
+        "goalsAgainst": 47
+      },
+      "2020": {
+        "won": 13,
+        "drawn": 10,
+        "lost": 13,
+        "goalsFor": 43,
+        "goalsAgainst": 40
+      },
+      "2021": {
+        "won": 20,
+        "drawn": 13,
+        "lost": 13,
+        "goalsFor": 59,
+        "goalsAgainst": 51
+      },
+      "2022": {
+        "won": 23,
+        "drawn": 15,
+        "lost": 8,
+        "goalsFor": 75,
+        "goalsAgainst": 44
+      },
+      "2024": {
+        "won": 11,
+        "drawn": 9,
+        "lost": 26,
+        "goalsFor": 44,
+        "goalsAgainst": 78
+      }
+    }
+  },
+  "honours": {
+    "leagueTitles": {
+      "tier1": [],
+      "tier2": [],
+      "tier3": [],
+      "tier4": [
+        2017
+      ]
+    },
+    "leagueRunnersUp": {
+      "tier1": [],
+      "tier2": [],
+      "tier3": [],
+      "tier4": [
+        2022
+      ]
+    },
+    "playoffWinners": {
+      "tier1": [],
+      "tier2": [],
+      "tier3": [],
+      "tier4": []
+    },
+    "faCupWinners": [],
+    "faCupRunnersUp": [],
+    "leagueCupWinners": [],
+    "leagueCupRunnersUp": []
+  },
+  "europeanHonours": {
+    "championsLeagueWinners": [],
+    "championsLeagueRunnersUp": [],
+    "europaLeagueWinners": [],
+    "europaLeagueRunnersUp": [],
+    "conferenceLeagueWinners": [],
+    "conferenceLeagueRunnersUp": []
+  },
+  "averageAttendance": 2200
+}

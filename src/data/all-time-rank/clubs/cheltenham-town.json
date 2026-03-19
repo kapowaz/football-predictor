@@ -1,0 +1,238 @@
+{
+  "name": "Cheltenham Town",
+  "shortName": "Cheltenham",
+  "crest": "cheltenham-town",
+  "founded": 1887,
+  "currentTier": 4,
+  "leagueRecord": {
+    "tier1": {
+      "2016": {
+        "won": 30,
+        "drawn": 11,
+        "lost": 5,
+        "goalsFor": 87,
+        "goalsAgainst": 30
+      }
+    },
+    "tier2": {},
+    "tier3": {
+      "2003": {
+        "won": 10,
+        "drawn": 18,
+        "lost": 18,
+        "goalsFor": 53,
+        "goalsAgainst": 68
+      },
+      "2007": {
+        "won": 15,
+        "drawn": 9,
+        "lost": 22,
+        "goalsFor": 49,
+        "goalsAgainst": 61
+      },
+      "2008": {
+        "won": 13,
+        "drawn": 12,
+        "lost": 21,
+        "goalsFor": 42,
+        "goalsAgainst": 64
+      },
+      "2009": {
+        "won": 9,
+        "drawn": 12,
+        "lost": 25,
+        "goalsFor": 51,
+        "goalsAgainst": 91
+      },
+      "2022": {
+        "won": 13,
+        "drawn": 17,
+        "lost": 16,
+        "goalsFor": 68,
+        "goalsAgainst": 78
+      },
+      "2023": {
+        "won": 14,
+        "drawn": 12,
+        "lost": 20,
+        "goalsFor": 45,
+        "goalsAgainst": 61
+      },
+      "2024": {
+        "won": 12,
+        "drawn": 8,
+        "lost": 26,
+        "goalsFor": 41,
+        "goalsAgainst": 65
+      }
+    },
+    "tier4": {
+      "2000": {
+        "won": 20,
+        "drawn": 10,
+        "lost": 16,
+        "goalsFor": 50,
+        "goalsAgainst": 42
+      },
+      "2001": {
+        "won": 18,
+        "drawn": 14,
+        "lost": 14,
+        "goalsFor": 59,
+        "goalsAgainst": 52
+      },
+      "2002": {
+        "won": 21,
+        "drawn": 15,
+        "lost": 10,
+        "goalsFor": 66,
+        "goalsAgainst": 49
+      },
+      "2004": {
+        "won": 14,
+        "drawn": 14,
+        "lost": 18,
+        "goalsFor": 57,
+        "goalsAgainst": 71
+      },
+      "2005": {
+        "won": 16,
+        "drawn": 12,
+        "lost": 18,
+        "goalsFor": 51,
+        "goalsAgainst": 54
+      },
+      "2006": {
+        "won": 19,
+        "drawn": 15,
+        "lost": 12,
+        "goalsFor": 65,
+        "goalsAgainst": 53
+      },
+      "2010": {
+        "won": 10,
+        "drawn": 18,
+        "lost": 18,
+        "goalsFor": 54,
+        "goalsAgainst": 71
+      },
+      "2011": {
+        "won": 13,
+        "drawn": 13,
+        "lost": 20,
+        "goalsFor": 56,
+        "goalsAgainst": 77
+      },
+      "2012": {
+        "won": 23,
+        "drawn": 8,
+        "lost": 15,
+        "goalsFor": 66,
+        "goalsAgainst": 50
+      },
+      "2013": {
+        "won": 20,
+        "drawn": 15,
+        "lost": 11,
+        "goalsFor": 58,
+        "goalsAgainst": 51
+      },
+      "2014": {
+        "won": 13,
+        "drawn": 16,
+        "lost": 17,
+        "goalsFor": 53,
+        "goalsAgainst": 63
+      },
+      "2015": {
+        "won": 9,
+        "drawn": 14,
+        "lost": 23,
+        "goalsFor": 40,
+        "goalsAgainst": 67
+      },
+      "2017": {
+        "won": 12,
+        "drawn": 14,
+        "lost": 20,
+        "goalsFor": 49,
+        "goalsAgainst": 69
+      },
+      "2018": {
+        "won": 13,
+        "drawn": 12,
+        "lost": 21,
+        "goalsFor": 67,
+        "goalsAgainst": 73
+      },
+      "2019": {
+        "won": 15,
+        "drawn": 12,
+        "lost": 19,
+        "goalsFor": 57,
+        "goalsAgainst": 68
+      },
+      "2020": {
+        "won": 17,
+        "drawn": 13,
+        "lost": 6,
+        "goalsFor": 52,
+        "goalsAgainst": 27
+      },
+      "2021": {
+        "won": 24,
+        "drawn": 10,
+        "lost": 12,
+        "goalsFor": 61,
+        "goalsAgainst": 39
+      },
+      "2025": {
+        "won": 16,
+        "drawn": 12,
+        "lost": 18,
+        "goalsFor": 60,
+        "goalsAgainst": 70
+      }
+    }
+  },
+  "honours": {
+    "leagueTitles": {
+      "tier1": [],
+      "tier2": [],
+      "tier3": [],
+      "tier4": [
+        1999
+      ]
+    },
+    "leagueRunnersUp": {
+      "tier1": [],
+      "tier2": [],
+      "tier3": [],
+      "tier4": [
+        2002
+      ]
+    },
+    "playoffWinners": {
+      "tier1": [],
+      "tier2": [],
+      "tier3": [],
+      "tier4": [
+        2002,
+        2006
+      ]
+    },
+    "faCupWinners": [],
+    "faCupRunnersUp": [],
+    "leagueCupWinners": [],
+    "leagueCupRunnersUp": []
+  },
+  "europeanHonours": {
+    "championsLeagueWinners": [],
+    "championsLeagueRunnersUp": [],
+    "europaLeagueWinners": [],
+    "europaLeagueRunnersUp": [],
+    "conferenceLeagueWinners": [],
+    "conferenceLeagueRunnersUp": []
+  },
+  "averageAttendance": 4200
+}

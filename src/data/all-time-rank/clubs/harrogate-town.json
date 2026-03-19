@@ -1,0 +1,82 @@
+{
+  "name": "Harrogate Town",
+  "shortName": "Harrogate",
+  "crest": "harrogate-town",
+  "founded": 1914,
+  "currentTier": 4,
+  "leagueRecord": {
+    "tier1": {},
+    "tier2": {},
+    "tier3": {},
+    "tier4": {
+      "2021": {
+        "won": 16,
+        "drawn": 9,
+        "lost": 21,
+        "goalsFor": 52,
+        "goalsAgainst": 61
+      },
+      "2022": {
+        "won": 14,
+        "drawn": 11,
+        "lost": 21,
+        "goalsFor": 64,
+        "goalsAgainst": 75
+      },
+      "2023": {
+        "won": 12,
+        "drawn": 16,
+        "lost": 18,
+        "goalsFor": 59,
+        "goalsAgainst": 68
+      },
+      "2024": {
+        "won": 17,
+        "drawn": 12,
+        "lost": 17,
+        "goalsFor": 60,
+        "goalsAgainst": 69
+      },
+      "2025": {
+        "won": 14,
+        "drawn": 11,
+        "lost": 21,
+        "goalsFor": 43,
+        "goalsAgainst": 61
+      }
+    }
+  },
+  "honours": {
+    "leagueTitles": {
+      "tier1": [],
+      "tier2": [],
+      "tier3": [],
+      "tier4": []
+    },
+    "leagueRunnersUp": {
+      "tier1": [],
+      "tier2": [],
+      "tier3": [],
+      "tier4": []
+    },
+    "playoffWinners": {
+      "tier1": [],
+      "tier2": [],
+      "tier3": [],
+      "tier4": []
+    },
+    "faCupWinners": [],
+    "faCupRunnersUp": [],
+    "leagueCupWinners": [],
+    "leagueCupRunnersUp": []
+  },
+  "europeanHonours": {
+    "championsLeagueWinners": [],
+    "championsLeagueRunnersUp": [],
+    "europaLeagueWinners": [],
+    "europaLeagueRunnersUp": [],
+    "conferenceLeagueWinners": [],
+    "conferenceLeagueRunnersUp": []
+  },
+  "averageAttendance": 2500
+}

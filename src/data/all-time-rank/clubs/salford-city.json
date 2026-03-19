@@ -1,0 +1,91 @@
+{
+  "name": "Salford City",
+  "shortName": "Salford",
+  "crest": "salford-city",
+  "founded": 1940,
+  "currentTier": 4,
+  "leagueRecord": {
+    "tier1": {},
+    "tier2": {},
+    "tier3": {},
+    "tier4": {
+      "2020": {
+        "won": 13,
+        "drawn": 11,
+        "lost": 13,
+        "goalsFor": 49,
+        "goalsAgainst": 46
+      },
+      "2021": {
+        "won": 19,
+        "drawn": 14,
+        "lost": 13,
+        "goalsFor": 54,
+        "goalsAgainst": 34
+      },
+      "2022": {
+        "won": 19,
+        "drawn": 13,
+        "lost": 14,
+        "goalsFor": 60,
+        "goalsAgainst": 46
+      },
+      "2023": {
+        "won": 22,
+        "drawn": 9,
+        "lost": 15,
+        "goalsFor": 72,
+        "goalsAgainst": 54
+      },
+      "2024": {
+        "won": 13,
+        "drawn": 12,
+        "lost": 21,
+        "goalsFor": 66,
+        "goalsAgainst": 82
+      },
+      "2025": {
+        "won": 18,
+        "drawn": 15,
+        "lost": 13,
+        "goalsFor": 64,
+        "goalsAgainst": 54
+      }
+    }
+  },
+  "honours": {
+    "leagueTitles": {
+      "tier1": [],
+      "tier2": [],
+      "tier3": [],
+      "tier4": [
+        2019
+      ]
+    },
+    "leagueRunnersUp": {
+      "tier1": [],
+      "tier2": [],
+      "tier3": [],
+      "tier4": []
+    },
+    "playoffWinners": {
+      "tier1": [],
+      "tier2": [],
+      "tier3": [],
+      "tier4": []
+    },
+    "faCupWinners": [],
+    "faCupRunnersUp": [],
+    "leagueCupWinners": [],
+    "leagueCupRunnersUp": []
+  },
+  "europeanHonours": {
+    "championsLeagueWinners": [],
+    "championsLeagueRunnersUp": [],
+    "europaLeagueWinners": [],
+    "europaLeagueRunnersUp": [],
+    "conferenceLeagueWinners": [],
+    "conferenceLeagueRunnersUp": []
+  },
+  "averageAttendance": 2800
+}

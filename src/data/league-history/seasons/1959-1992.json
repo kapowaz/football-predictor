@@ -1,0 +1,6421 @@
+[
+  {
+    "year": 1959,
+    "season": "1958-59",
+    "nextYear": 1960,
+    "divisions": [
+      {
+        "tier": 1,
+        "name": "First Division",
+        "teamCount": 22,
+        "zones": [
+          {
+            "type": "champions",
+            "label": "Champions",
+            "startPosition": 1,
+            "endPosition": 1
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 21,
+            "endPosition": 22
+          }
+        ],
+        "teams": [
+          "wolverhampton-wanderers",
+          "manchester-united",
+          "arsenal",
+          "bolton-wanderers",
+          "west-bromwich-albion",
+          "west-ham-united",
+          "burnley",
+          "blackpool",
+          "birmingham-city",
+          "blackburn-rovers",
+          "newcastle-united",
+          "preston-north-end",
+          "nottingham-forest",
+          "chelsea",
+          "leeds-united",
+          "everton",
+          "luton-town",
+          "tottenham-hotspur",
+          "leicester-city",
+          "manchester-city",
+          "aston-villa",
+          "portsmouth"
+        ]
+      },
+      {
+        "tier": 2,
+        "name": "Second Division",
+        "teamCount": 22,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 2
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 21,
+            "endPosition": 22
+          }
+        ],
+        "teams": [
+          "sheffield-wednesday",
+          "fulham",
+          "sheffield-united",
+          "liverpool",
+          "stoke-city",
+          "bristol-rovers",
+          "derby-county",
+          "charlton-athletic",
+          "cardiff-city",
+          "bristol-city",
+          "swansea-city",
+          "brighton-and-hove-albion",
+          "middlesbrough",
+          "huddersfield-town",
+          "sunderland",
+          "ipswich-town",
+          "leyton-orient",
+          "scunthorpe-united",
+          "lincoln-city",
+          "rotherham-united",
+          "grimsby-town",
+          "barnsley"
+        ]
+      },
+      {
+        "tier": 3,
+        "name": "Third Division",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 2
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 21,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "plymouth-argyle",
+          "hull-city",
+          "brentford",
+          "norwich-city",
+          "colchester-united",
+          "reading",
+          "tranmere-rovers",
+          "southend-united",
+          "halifax-town",
+          "bury",
+          "bradford-city",
+          "afc-bournemouth",
+          "queens-park-rangers",
+          "southampton",
+          "swindon-town",
+          "chesterfield",
+          "newport-county",
+          "wrexham",
+          "accrington-stanley",
+          "mansfield-town",
+          "stockport-county",
+          "doncaster-rovers",
+          "notts-county",
+          "rochdale"
+        ]
+      },
+      {
+        "tier": 4,
+        "name": "Fourth Division",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 4
+          },
+          {
+            "type": "relegation",
+            "label": "Re-election",
+            "startPosition": 21,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "port-vale",
+          "coventry-city",
+          "york-city",
+          "shrewsbury-town",
+          "exeter-city",
+          "walsall",
+          "crystal-palace",
+          "northampton-town",
+          "millwall",
+          "carlisle-united",
+          "gillingham",
+          "torquay-united",
+          "chester-city",
+          "bradford-park-avenue",
+          "watford",
+          "darlington",
+          "workington",
+          "crewe-alexandra",
+          "hartlepool-united",
+          "gateshead",
+          "oldham-athletic",
+          "aldershot-town",
+          "barrow",
+          "southport"
+        ]
+      }
+    ]
+  },
+  {
+    "year": 1960,
+    "season": "1959-60",
+    "nextYear": 1961,
+    "divisions": [
+      {
+        "tier": 1,
+        "name": "First Division",
+        "teamCount": 22,
+        "zones": [
+          {
+            "type": "champions",
+            "label": "Champions",
+            "startPosition": 1,
+            "endPosition": 1
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 21,
+            "endPosition": 22
+          }
+        ],
+        "teams": [
+          "burnley",
+          "wolverhampton-wanderers",
+          "tottenham-hotspur",
+          "west-bromwich-albion",
+          "sheffield-wednesday",
+          "bolton-wanderers",
+          "manchester-united",
+          "newcastle-united",
+          "preston-north-end",
+          "fulham",
+          "blackpool",
+          "leicester-city",
+          "arsenal",
+          "west-ham-united",
+          "everton",
+          "manchester-city",
+          "blackburn-rovers",
+          "chelsea",
+          "birmingham-city",
+          "nottingham-forest",
+          "leeds-united",
+          "luton-town"
+        ]
+      },
+      {
+        "tier": 2,
+        "name": "Second Division",
+        "teamCount": 22,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 2
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 21,
+            "endPosition": 22
+          }
+        ],
+        "teams": [
+          "aston-villa",
+          "cardiff-city",
+          "liverpool",
+          "sheffield-united",
+          "middlesbrough",
+          "huddersfield-town",
+          "charlton-athletic",
+          "rotherham-united",
+          "bristol-rovers",
+          "leyton-orient",
+          "ipswich-town",
+          "swansea-city",
+          "lincoln-city",
+          "brighton-and-hove-albion",
+          "scunthorpe-united",
+          "sunderland",
+          "stoke-city",
+          "derby-county",
+          "plymouth-argyle",
+          "portsmouth",
+          "hull-city",
+          "bristol-city"
+        ]
+      },
+      {
+        "tier": 3,
+        "name": "Third Division",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 2
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 21,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "southampton",
+          "norwich-city",
+          "shrewsbury-town",
+          "grimsby-town",
+          "coventry-city",
+          "brentford",
+          "bury",
+          "queens-park-rangers",
+          "colchester-united",
+          "afc-bournemouth",
+          "reading",
+          "southend-united",
+          "newport-county",
+          "port-vale",
+          "halifax-town",
+          "swindon-town",
+          "barnsley",
+          "chesterfield",
+          "bradford-city",
+          "tranmere-rovers",
+          "york-city",
+          "mansfield-town",
+          "wrexham",
+          "accrington-stanley"
+        ]
+      },
+      {
+        "tier": 4,
+        "name": "Fourth Division",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 4
+          },
+          {
+            "type": "relegation",
+            "label": "Re-election",
+            "startPosition": 21,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "walsall",
+          "notts-county",
+          "torquay-united",
+          "watford",
+          "millwall",
+          "northampton-town",
+          "gillingham",
+          "crystal-palace",
+          "exeter-city",
+          "stockport-county",
+          "bradford-park-avenue",
+          "rochdale",
+          "aldershot-town",
+          "crewe-alexandra",
+          "darlington",
+          "workington",
+          "doncaster-rovers",
+          "barrow",
+          "carlisle-united",
+          "chester-city",
+          "southport",
+          "gateshead",
+          "oldham-athletic",
+          "hartlepool-united"
+        ]
+      }
+    ]
+  },
+  {
+    "year": 1961,
+    "season": "1960-61",
+    "nextYear": 1962,
+    "divisions": [
+      {
+        "tier": 1,
+        "name": "First Division",
+        "teamCount": 22,
+        "zones": [
+          {
+            "type": "champions",
+            "label": "Champions",
+            "startPosition": 1,
+            "endPosition": 1
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 21,
+            "endPosition": 22
+          }
+        ],
+        "teams": [
+          "tottenham-hotspur",
+          "sheffield-wednesday",
+          "wolverhampton-wanderers",
+          "burnley",
+          "everton",
+          "leicester-city",
+          "manchester-united",
+          "blackburn-rovers",
+          "aston-villa",
+          "west-bromwich-albion",
+          "arsenal",
+          "chelsea",
+          "manchester-city",
+          "nottingham-forest",
+          "cardiff-city",
+          "west-ham-united",
+          "fulham",
+          "bolton-wanderers",
+          "birmingham-city",
+          "blackpool",
+          "newcastle-united",
+          "preston-north-end"
+        ]
+      },
+      {
+        "tier": 2,
+        "name": "Second Division",
+        "teamCount": 22,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 2
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 21,
+            "endPosition": 22
+          }
+        ],
+        "teams": [
+          "ipswich-town",
+          "sheffield-united",
+          "liverpool",
+          "norwich-city",
+          "middlesbrough",
+          "sunderland",
+          "swansea-city",
+          "southampton",
+          "scunthorpe-united",
+          "charlton-athletic",
+          "plymouth-argyle",
+          "derby-county",
+          "luton-town",
+          "leeds-united",
+          "rotherham-united",
+          "brighton-and-hove-albion",
+          "bristol-rovers",
+          "stoke-city",
+          "leyton-orient",
+          "huddersfield-town",
+          "portsmouth",
+          "lincoln-city"
+        ]
+      },
+      {
+        "tier": 3,
+        "name": "Third Division",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 2
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 21,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "bury",
+          "walsall",
+          "queens-park-rangers",
+          "watford",
+          "notts-county",
+          "grimsby-town",
+          "port-vale",
+          "barnsley",
+          "halifax-town",
+          "shrewsbury-town",
+          "hull-city",
+          "torquay-united",
+          "newport-county",
+          "bristol-city",
+          "coventry-city",
+          "swindon-town",
+          "brentford",
+          "reading",
+          "afc-bournemouth",
+          "southend-united",
+          "tranmere-rovers",
+          "bradford-city",
+          "colchester-united",
+          "chesterfield"
+        ]
+      },
+      {
+        "tier": 4,
+        "name": "Fourth Division",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 4
+          },
+          {
+            "type": "relegation",
+            "label": "Re-election",
+            "startPosition": 21,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "peterborough-united",
+          "crystal-palace",
+          "northampton-town",
+          "bradford-park-avenue",
+          "york-city",
+          "millwall",
+          "darlington",
+          "workington",
+          "crewe-alexandra",
+          "aldershot-town",
+          "doncaster-rovers",
+          "oldham-athletic",
+          "stockport-county",
+          "southport",
+          "gillingham",
+          "wrexham",
+          "rochdale",
+          "accrington-stanley",
+          "carlisle-united",
+          "mansfield-town",
+          "exeter-city",
+          "barrow",
+          "hartlepool-united",
+          "chester-city"
+        ]
+      }
+    ]
+  },
+  {
+    "year": 1962,
+    "season": "1961-62",
+    "nextYear": 1963,
+    "divisions": [
+      {
+        "tier": 1,
+        "name": "First Division",
+        "teamCount": 22,
+        "zones": [
+          {
+            "type": "champions",
+            "label": "Champions",
+            "startPosition": 1,
+            "endPosition": 1
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 21,
+            "endPosition": 22
+          }
+        ],
+        "teams": [
+          "ipswich-town",
+          "burnley",
+          "tottenham-hotspur",
+          "everton",
+          "sheffield-united",
+          "sheffield-wednesday",
+          "aston-villa",
+          "west-ham-united",
+          "west-bromwich-albion",
+          "arsenal",
+          "bolton-wanderers",
+          "manchester-city",
+          "blackpool",
+          "leicester-city",
+          "manchester-united",
+          "blackburn-rovers",
+          "birmingham-city",
+          "wolverhampton-wanderers",
+          "nottingham-forest",
+          "fulham",
+          "cardiff-city",
+          "chelsea"
+        ]
+      },
+      {
+        "tier": 2,
+        "name": "Second Division",
+        "teamCount": 22,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 2
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 21,
+            "endPosition": 22
+          }
+        ],
+        "teams": [
+          "liverpool",
+          "leyton-orient",
+          "sunderland",
+          "scunthorpe-united",
+          "plymouth-argyle",
+          "southampton",
+          "huddersfield-town",
+          "stoke-city",
+          "rotherham-united",
+          "preston-north-end",
+          "newcastle-united",
+          "middlesbrough",
+          "luton-town",
+          "walsall",
+          "charlton-athletic",
+          "derby-county",
+          "norwich-city",
+          "bury",
+          "leeds-united",
+          "swansea-city",
+          "bristol-rovers",
+          "brighton-and-hove-albion"
+        ]
+      },
+      {
+        "tier": 3,
+        "name": "Third Division",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 2
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 21,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "portsmouth",
+          "grimsby-town",
+          "afc-bournemouth",
+          "queens-park-rangers",
+          "peterborough-united",
+          "bristol-city",
+          "reading",
+          "northampton-town",
+          "swindon-town",
+          "hull-city",
+          "bradford-park-avenue",
+          "port-vale",
+          "notts-county",
+          "coventry-city",
+          "crystal-palace",
+          "southend-united",
+          "watford",
+          "halifax-town",
+          "shrewsbury-town",
+          "barnsley",
+          "torquay-united",
+          "lincoln-city",
+          "brentford",
+          "newport-county"
+        ]
+      },
+      {
+        "tier": 4,
+        "name": "Fourth Division",
+        "teamCount": 23,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 4
+          },
+          {
+            "type": "relegation",
+            "label": "Re-election",
+            "startPosition": 21,
+            "endPosition": 23
+          }
+        ],
+        "teams": [
+          "millwall",
+          "colchester-united",
+          "wrexham",
+          "carlisle-united",
+          "bradford-city",
+          "york-city",
+          "aldershot-town",
+          "workington",
+          "barrow",
+          "crewe-alexandra",
+          "oldham-athletic",
+          "rochdale",
+          "darlington",
+          "mansfield-town",
+          "tranmere-rovers",
+          "stockport-county",
+          "southport",
+          "exeter-city",
+          "chesterfield",
+          "gillingham",
+          "doncaster-rovers",
+          "hartlepool-united",
+          "chester-city"
+        ]
+      }
+    ]
+  },
+  {
+    "year": 1963,
+    "season": "1962-63",
+    "nextYear": 1964,
+    "divisions": [
+      {
+        "tier": 1,
+        "name": "First Division",
+        "teamCount": 22,
+        "zones": [
+          {
+            "type": "champions",
+            "label": "Champions",
+            "startPosition": 1,
+            "endPosition": 1
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 21,
+            "endPosition": 22
+          }
+        ],
+        "teams": [
+          "everton",
+          "tottenham-hotspur",
+          "burnley",
+          "leicester-city",
+          "wolverhampton-wanderers",
+          "sheffield-wednesday",
+          "arsenal",
+          "liverpool",
+          "nottingham-forest",
+          "sheffield-united",
+          "blackburn-rovers",
+          "west-ham-united",
+          "blackpool",
+          "west-bromwich-albion",
+          "aston-villa",
+          "fulham",
+          "ipswich-town",
+          "bolton-wanderers",
+          "manchester-united",
+          "birmingham-city",
+          "manchester-city",
+          "leyton-orient"
+        ]
+      },
+      {
+        "tier": 2,
+        "name": "Second Division",
+        "teamCount": 22,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 2
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 21,
+            "endPosition": 22
+          }
+        ],
+        "teams": [
+          "stoke-city",
+          "chelsea",
+          "sunderland",
+          "middlesbrough",
+          "leeds-united",
+          "huddersfield-town",
+          "newcastle-united",
+          "bury",
+          "scunthorpe-united",
+          "cardiff-city",
+          "southampton",
+          "plymouth-argyle",
+          "norwich-city",
+          "rotherham-united",
+          "swansea-city",
+          "portsmouth",
+          "preston-north-end",
+          "derby-county",
+          "grimsby-town",
+          "charlton-athletic",
+          "walsall",
+          "luton-town"
+        ]
+      },
+      {
+        "tier": 3,
+        "name": "Third Division",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 2
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 21,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "northampton-town",
+          "swindon-town",
+          "port-vale",
+          "coventry-city",
+          "afc-bournemouth",
+          "peterborough-united",
+          "notts-county",
+          "southend-united",
+          "wrexham",
+          "hull-city",
+          "crystal-palace",
+          "colchester-united",
+          "queens-park-rangers",
+          "bristol-city",
+          "shrewsbury-town",
+          "millwall",
+          "watford",
+          "barnsley",
+          "bristol-rovers",
+          "reading",
+          "bradford-park-avenue",
+          "brighton-and-hove-albion",
+          "carlisle-united",
+          "halifax-town"
+        ]
+      },
+      {
+        "tier": 4,
+        "name": "Fourth Division",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 4
+          },
+          {
+            "type": "relegation",
+            "label": "Re-election",
+            "startPosition": 21,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "brentford",
+          "oldham-athletic",
+          "crewe-alexandra",
+          "mansfield-town",
+          "gillingham",
+          "torquay-united",
+          "rochdale",
+          "tranmere-rovers",
+          "barrow",
+          "workington",
+          "aldershot-town",
+          "darlington",
+          "southport",
+          "york-city",
+          "chesterfield",
+          "doncaster-rovers",
+          "exeter-city",
+          "oxford-united",
+          "stockport-county",
+          "newport-county",
+          "chester-city",
+          "lincoln-city",
+          "bradford-city",
+          "hartlepool-united"
+        ]
+      }
+    ]
+  },
+  {
+    "year": 1964,
+    "season": "1963-64",
+    "nextYear": 1965,
+    "divisions": [
+      {
+        "tier": 1,
+        "name": "First Division",
+        "teamCount": 22,
+        "zones": [
+          {
+            "type": "champions",
+            "label": "Champions",
+            "startPosition": 1,
+            "endPosition": 1
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 21,
+            "endPosition": 22
+          }
+        ],
+        "teams": [
+          "liverpool",
+          "manchester-united",
+          "everton",
+          "tottenham-hotspur",
+          "chelsea",
+          "sheffield-wednesday",
+          "blackburn-rovers",
+          "arsenal",
+          "burnley",
+          "west-bromwich-albion",
+          "leicester-city",
+          "sheffield-united",
+          "nottingham-forest",
+          "west-ham-united",
+          "fulham",
+          "wolverhampton-wanderers",
+          "stoke-city",
+          "blackpool",
+          "aston-villa",
+          "birmingham-city",
+          "bolton-wanderers",
+          "ipswich-town"
+        ]
+      },
+      {
+        "tier": 2,
+        "name": "Second Division",
+        "teamCount": 22,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 2
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 21,
+            "endPosition": 22
+          }
+        ],
+        "teams": [
+          "leeds-united",
+          "sunderland",
+          "preston-north-end",
+          "charlton-athletic",
+          "southampton",
+          "manchester-city",
+          "rotherham-united",
+          "newcastle-united",
+          "portsmouth",
+          "middlesbrough",
+          "northampton-town",
+          "huddersfield-town",
+          "derby-county",
+          "swindon-town",
+          "cardiff-city",
+          "leyton-orient",
+          "norwich-city",
+          "bury",
+          "swansea-city",
+          "plymouth-argyle",
+          "grimsby-town",
+          "scunthorpe-united"
+        ]
+      },
+      {
+        "tier": 3,
+        "name": "Third Division",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 2
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 21,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "coventry-city",
+          "crystal-palace",
+          "watford",
+          "afc-bournemouth",
+          "bristol-city",
+          "reading",
+          "mansfield-town",
+          "hull-city",
+          "oldham-athletic",
+          "peterborough-united",
+          "shrewsbury-town",
+          "bristol-rovers",
+          "port-vale",
+          "southend-united",
+          "queens-park-rangers",
+          "brentford",
+          "colchester-united",
+          "luton-town",
+          "walsall",
+          "barnsley",
+          "millwall",
+          "crewe-alexandra",
+          "wrexham",
+          "notts-county"
+        ]
+      },
+      {
+        "tier": 4,
+        "name": "Fourth Division",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 4
+          },
+          {
+            "type": "relegation",
+            "label": "Re-election",
+            "startPosition": 21,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "gillingham",
+          "carlisle-united",
+          "workington",
+          "exeter-city",
+          "bradford-city",
+          "torquay-united",
+          "tranmere-rovers",
+          "brighton-and-hove-albion",
+          "aldershot-town",
+          "halifax-town",
+          "lincoln-city",
+          "chester-city",
+          "bradford-park-avenue",
+          "doncaster-rovers",
+          "newport-county",
+          "chesterfield",
+          "stockport-county",
+          "oxford-united",
+          "darlington",
+          "rochdale",
+          "southport",
+          "york-city",
+          "hartlepool-united",
+          "barrow"
+        ]
+      }
+    ]
+  },
+  {
+    "year": 1965,
+    "season": "1964-65",
+    "nextYear": 1966,
+    "divisions": [
+      {
+        "tier": 1,
+        "name": "First Division",
+        "teamCount": 22,
+        "zones": [
+          {
+            "type": "champions",
+            "label": "Champions",
+            "startPosition": 1,
+            "endPosition": 1
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 21,
+            "endPosition": 22
+          }
+        ],
+        "teams": [
+          "manchester-united",
+          "leeds-united",
+          "chelsea",
+          "everton",
+          "nottingham-forest",
+          "tottenham-hotspur",
+          "liverpool",
+          "sheffield-wednesday",
+          "west-ham-united",
+          "blackburn-rovers",
+          "stoke-city",
+          "burnley",
+          "arsenal",
+          "west-bromwich-albion",
+          "sunderland",
+          "aston-villa",
+          "blackpool",
+          "leicester-city",
+          "sheffield-united",
+          "fulham",
+          "wolverhampton-wanderers",
+          "birmingham-city"
+        ]
+      },
+      {
+        "tier": 2,
+        "name": "Second Division",
+        "teamCount": 22,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 2
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 21,
+            "endPosition": 22
+          }
+        ],
+        "teams": [
+          "newcastle-united",
+          "northampton-town",
+          "bolton-wanderers",
+          "southampton",
+          "ipswich-town",
+          "norwich-city",
+          "crystal-palace",
+          "huddersfield-town",
+          "derby-county",
+          "coventry-city",
+          "manchester-city",
+          "preston-north-end",
+          "cardiff-city",
+          "rotherham-united",
+          "plymouth-argyle",
+          "bury",
+          "middlesbrough",
+          "charlton-athletic",
+          "leyton-orient",
+          "portsmouth",
+          "swindon-town",
+          "swansea-city"
+        ]
+      },
+      {
+        "tier": 3,
+        "name": "Third Division",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 2
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 21,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "carlisle-united",
+          "bristol-city",
+          "mansfield-town",
+          "hull-city",
+          "brentford",
+          "bristol-rovers",
+          "gillingham",
+          "peterborough-united",
+          "watford",
+          "grimsby-town",
+          "afc-bournemouth",
+          "southend-united",
+          "reading",
+          "queens-park-rangers",
+          "workington",
+          "shrewsbury-town",
+          "exeter-city",
+          "scunthorpe-united",
+          "walsall",
+          "oldham-athletic",
+          "luton-town",
+          "port-vale",
+          "colchester-united",
+          "barnsley"
+        ]
+      },
+      {
+        "tier": 4,
+        "name": "Fourth Division",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 4
+          },
+          {
+            "type": "relegation",
+            "label": "Re-election",
+            "startPosition": 21,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "brighton-and-hove-albion",
+          "millwall",
+          "york-city",
+          "oxford-united",
+          "tranmere-rovers",
+          "rochdale",
+          "bradford-park-avenue",
+          "chester-city",
+          "doncaster-rovers",
+          "crewe-alexandra",
+          "torquay-united",
+          "chesterfield",
+          "notts-county",
+          "wrexham",
+          "hartlepool-united",
+          "newport-county",
+          "darlington",
+          "aldershot-town",
+          "bradford-city",
+          "southport",
+          "barrow",
+          "lincoln-city",
+          "halifax-town",
+          "stockport-county"
+        ]
+      }
+    ]
+  },
+  {
+    "year": 1966,
+    "season": "1965-66",
+    "nextYear": 1967,
+    "divisions": [
+      {
+        "tier": 1,
+        "name": "First Division",
+        "teamCount": 22,
+        "zones": [
+          {
+            "type": "champions",
+            "label": "Champions",
+            "startPosition": 1,
+            "endPosition": 1
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 21,
+            "endPosition": 22
+          }
+        ],
+        "teams": [
+          "liverpool",
+          "leeds-united",
+          "burnley",
+          "manchester-united",
+          "chelsea",
+          "west-bromwich-albion",
+          "leicester-city",
+          "tottenham-hotspur",
+          "sheffield-united",
+          "stoke-city",
+          "everton",
+          "west-ham-united",
+          "blackpool",
+          "arsenal",
+          "newcastle-united",
+          "aston-villa",
+          "sheffield-wednesday",
+          "nottingham-forest",
+          "sunderland",
+          "fulham",
+          "northampton-town",
+          "blackburn-rovers"
+        ]
+      },
+      {
+        "tier": 2,
+        "name": "Second Division",
+        "teamCount": 22,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 2
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 21,
+            "endPosition": 22
+          }
+        ],
+        "teams": [
+          "manchester-city",
+          "southampton",
+          "coventry-city",
+          "huddersfield-town",
+          "bristol-city",
+          "wolverhampton-wanderers",
+          "rotherham-united",
+          "derby-county",
+          "bolton-wanderers",
+          "birmingham-city",
+          "crystal-palace",
+          "portsmouth",
+          "norwich-city",
+          "carlisle-united",
+          "ipswich-town",
+          "charlton-athletic",
+          "preston-north-end",
+          "plymouth-argyle",
+          "bury",
+          "cardiff-city",
+          "middlesbrough",
+          "leyton-orient"
+        ]
+      },
+      {
+        "tier": 3,
+        "name": "Third Division",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 2
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 21,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "hull-city",
+          "millwall",
+          "queens-park-rangers",
+          "scunthorpe-united",
+          "workington",
+          "gillingham",
+          "swindon-town",
+          "reading",
+          "walsall",
+          "shrewsbury-town",
+          "grimsby-town",
+          "watford",
+          "peterborough-united",
+          "oxford-united",
+          "brighton-and-hove-albion",
+          "bristol-rovers",
+          "swansea-city",
+          "afc-bournemouth",
+          "mansfield-town",
+          "oldham-athletic",
+          "southend-united",
+          "exeter-city",
+          "brentford",
+          "york-city"
+        ]
+      },
+      {
+        "tier": 4,
+        "name": "Fourth Division",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 4
+          },
+          {
+            "type": "relegation",
+            "label": "Re-election",
+            "startPosition": 21,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "doncaster-rovers",
+          "darlington",
+          "torquay-united",
+          "colchester-united",
+          "tranmere-rovers",
+          "luton-town",
+          "chester-city",
+          "notts-county",
+          "newport-county",
+          "southport",
+          "bradford-park-avenue",
+          "barrow",
+          "stockport-county",
+          "crewe-alexandra",
+          "halifax-town",
+          "barnsley",
+          "aldershot-town",
+          "hartlepool-united",
+          "port-vale",
+          "chesterfield",
+          "rochdale",
+          "lincoln-city",
+          "bradford-city",
+          "wrexham"
+        ]
+      }
+    ]
+  },
+  {
+    "year": 1967,
+    "season": "1966-67",
+    "nextYear": 1968,
+    "divisions": [
+      {
+        "tier": 1,
+        "name": "First Division",
+        "teamCount": 22,
+        "zones": [
+          {
+            "type": "champions",
+            "label": "Champions",
+            "startPosition": 1,
+            "endPosition": 1
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 21,
+            "endPosition": 22
+          }
+        ],
+        "teams": [
+          "manchester-united",
+          "nottingham-forest",
+          "tottenham-hotspur",
+          "leeds-united",
+          "liverpool",
+          "everton",
+          "arsenal",
+          "leicester-city",
+          "chelsea",
+          "sheffield-united",
+          "sheffield-wednesday",
+          "stoke-city",
+          "west-bromwich-albion",
+          "burnley",
+          "manchester-city",
+          "west-ham-united",
+          "sunderland",
+          "fulham",
+          "southampton",
+          "newcastle-united",
+          "aston-villa",
+          "blackpool"
+        ]
+      },
+      {
+        "tier": 2,
+        "name": "Second Division",
+        "teamCount": 22,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 2
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 21,
+            "endPosition": 22
+          }
+        ],
+        "teams": [
+          "coventry-city",
+          "wolverhampton-wanderers",
+          "carlisle-united",
+          "blackburn-rovers",
+          "ipswich-town",
+          "huddersfield-town",
+          "crystal-palace",
+          "millwall",
+          "bolton-wanderers",
+          "birmingham-city",
+          "norwich-city",
+          "hull-city",
+          "preston-north-end",
+          "portsmouth",
+          "bristol-city",
+          "plymouth-argyle",
+          "derby-county",
+          "rotherham-united",
+          "charlton-athletic",
+          "cardiff-city",
+          "northampton-town",
+          "bury"
+        ]
+      },
+      {
+        "tier": 3,
+        "name": "Third Division",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 2
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 21,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "queens-park-rangers",
+          "middlesbrough",
+          "watford",
+          "reading",
+          "bristol-rovers",
+          "shrewsbury-town",
+          "torquay-united",
+          "swindon-town",
+          "mansfield-town",
+          "oldham-athletic",
+          "gillingham",
+          "walsall",
+          "colchester-united",
+          "leyton-orient",
+          "peterborough-united",
+          "oxford-united",
+          "grimsby-town",
+          "scunthorpe-united",
+          "brighton-and-hove-albion",
+          "afc-bournemouth",
+          "swansea-city",
+          "darlington",
+          "doncaster-rovers",
+          "workington"
+        ]
+      },
+      {
+        "tier": 4,
+        "name": "Fourth Division",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 4
+          },
+          {
+            "type": "relegation",
+            "label": "Re-election",
+            "startPosition": 21,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "stockport-county",
+          "southport",
+          "barrow",
+          "tranmere-rovers",
+          "crewe-alexandra",
+          "southend-united",
+          "wrexham",
+          "hartlepool-united",
+          "brentford",
+          "aldershot-town",
+          "bradford-city",
+          "halifax-town",
+          "port-vale",
+          "exeter-city",
+          "chesterfield",
+          "barnsley",
+          "luton-town",
+          "newport-county",
+          "chester-city",
+          "notts-county",
+          "rochdale",
+          "york-city",
+          "bradford-park-avenue",
+          "lincoln-city"
+        ]
+      }
+    ]
+  },
+  {
+    "year": 1968,
+    "season": "1967-68",
+    "nextYear": 1969,
+    "divisions": [
+      {
+        "tier": 1,
+        "name": "First Division",
+        "teamCount": 22,
+        "zones": [
+          {
+            "type": "champions",
+            "label": "Champions",
+            "startPosition": 1,
+            "endPosition": 1
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 20,
+            "endPosition": 22
+          }
+        ],
+        "teams": [
+          "manchester-city",
+          "manchester-united",
+          "liverpool",
+          "leeds-united",
+          "everton",
+          "chelsea",
+          "tottenham-hotspur",
+          "west-bromwich-albion",
+          "arsenal",
+          "newcastle-united",
+          "nottingham-forest",
+          "west-ham-united",
+          "leicester-city",
+          "burnley",
+          "sunderland",
+          "southampton",
+          "wolverhampton-wanderers",
+          "stoke-city",
+          "sheffield-wednesday",
+          "coventry-city",
+          "sheffield-united",
+          "fulham"
+        ]
+      },
+      {
+        "tier": 2,
+        "name": "Second Division",
+        "teamCount": 22,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 3
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 20,
+            "endPosition": 22
+          }
+        ],
+        "teams": [
+          "ipswich-town",
+          "queens-park-rangers",
+          "blackpool",
+          "birmingham-city",
+          "portsmouth",
+          "middlesbrough",
+          "millwall",
+          "blackburn-rovers",
+          "norwich-city",
+          "carlisle-united",
+          "crystal-palace",
+          "bolton-wanderers",
+          "cardiff-city",
+          "huddersfield-town",
+          "charlton-athletic",
+          "aston-villa",
+          "hull-city",
+          "derby-county",
+          "bristol-city",
+          "preston-north-end",
+          "rotherham-united",
+          "plymouth-argyle"
+        ]
+      },
+      {
+        "tier": 3,
+        "name": "Third Division",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 3
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 21,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "oxford-united",
+          "bury",
+          "shrewsbury-town",
+          "torquay-united",
+          "reading",
+          "watford",
+          "walsall",
+          "barrow",
+          "swindon-town",
+          "brighton-and-hove-albion",
+          "gillingham",
+          "afc-bournemouth",
+          "stockport-county",
+          "southport",
+          "bristol-rovers",
+          "oldham-athletic",
+          "northampton-town",
+          "leyton-orient",
+          "tranmere-rovers",
+          "mansfield-town",
+          "grimsby-town",
+          "colchester-united",
+          "scunthorpe-united",
+          "peterborough-united"
+        ]
+      },
+      {
+        "tier": 4,
+        "name": "Fourth Division",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 4
+          },
+          {
+            "type": "relegation",
+            "label": "Re-election",
+            "startPosition": 21,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "luton-town",
+          "barnsley",
+          "hartlepool-united",
+          "crewe-alexandra",
+          "bradford-city",
+          "southend-united",
+          "chesterfield",
+          "wrexham",
+          "aldershot-town",
+          "doncaster-rovers",
+          "halifax-town",
+          "newport-county",
+          "lincoln-city",
+          "brentford",
+          "swansea-city",
+          "darlington",
+          "notts-county",
+          "port-vale",
+          "rochdale",
+          "exeter-city",
+          "york-city",
+          "chester-city",
+          "workington",
+          "bradford-park-avenue"
+        ]
+      }
+    ]
+  },
+  {
+    "year": 1969,
+    "season": "1968-69",
+    "nextYear": 1970,
+    "divisions": [
+      {
+        "tier": 1,
+        "name": "First Division",
+        "teamCount": 22,
+        "zones": [
+          {
+            "type": "champions",
+            "label": "Champions",
+            "startPosition": 1,
+            "endPosition": 1
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 20,
+            "endPosition": 22
+          }
+        ],
+        "teams": [
+          "leeds-united",
+          "liverpool",
+          "everton",
+          "arsenal",
+          "chelsea",
+          "tottenham-hotspur",
+          "southampton",
+          "west-ham-united",
+          "newcastle-united",
+          "west-bromwich-albion",
+          "manchester-united",
+          "ipswich-town",
+          "manchester-city",
+          "burnley",
+          "sheffield-wednesday",
+          "wolverhampton-wanderers",
+          "sunderland",
+          "nottingham-forest",
+          "stoke-city",
+          "coventry-city",
+          "leicester-city",
+          "queens-park-rangers"
+        ]
+      },
+      {
+        "tier": 2,
+        "name": "Second Division",
+        "teamCount": 22,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 3
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 20,
+            "endPosition": 22
+          }
+        ],
+        "teams": [
+          "derby-county",
+          "crystal-palace",
+          "charlton-athletic",
+          "middlesbrough",
+          "cardiff-city",
+          "huddersfield-town",
+          "birmingham-city",
+          "blackpool",
+          "sheffield-united",
+          "millwall",
+          "hull-city",
+          "carlisle-united",
+          "norwich-city",
+          "preston-north-end",
+          "portsmouth",
+          "bristol-city",
+          "bolton-wanderers",
+          "aston-villa",
+          "blackburn-rovers",
+          "oxford-united",
+          "bury",
+          "fulham"
+        ]
+      },
+      {
+        "tier": 3,
+        "name": "Third Division",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 3
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 21,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "watford",
+          "swindon-town",
+          "luton-town",
+          "afc-bournemouth",
+          "plymouth-argyle",
+          "torquay-united",
+          "tranmere-rovers",
+          "southport",
+          "stockport-county",
+          "barnsley",
+          "rotherham-united",
+          "brighton-and-hove-albion",
+          "walsall",
+          "reading",
+          "mansfield-town",
+          "bristol-rovers",
+          "shrewsbury-town",
+          "leyton-orient",
+          "barrow",
+          "gillingham",
+          "northampton-town",
+          "hartlepool-united",
+          "crewe-alexandra",
+          "oldham-athletic"
+        ]
+      },
+      {
+        "tier": 4,
+        "name": "Fourth Division",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 4
+          },
+          {
+            "type": "relegation",
+            "label": "Re-election",
+            "startPosition": 21,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "doncaster-rovers",
+          "halifax-town",
+          "rochdale",
+          "bradford-city",
+          "darlington",
+          "colchester-united",
+          "southend-united",
+          "lincoln-city",
+          "wrexham",
+          "swansea-city",
+          "brentford",
+          "workington",
+          "port-vale",
+          "chester-city",
+          "aldershot-town",
+          "scunthorpe-united",
+          "exeter-city",
+          "peterborough-united",
+          "notts-county",
+          "chesterfield",
+          "york-city",
+          "newport-county",
+          "grimsby-town",
+          "bradford-park-avenue"
+        ]
+      }
+    ]
+  },
+  {
+    "year": 1970,
+    "season": "1969-70",
+    "nextYear": 1971,
+    "divisions": [
+      {
+        "tier": 1,
+        "name": "First Division",
+        "teamCount": 22,
+        "zones": [
+          {
+            "type": "champions",
+            "label": "Champions",
+            "startPosition": 1,
+            "endPosition": 1
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 20,
+            "endPosition": 22
+          }
+        ],
+        "teams": [
+          "everton",
+          "leeds-united",
+          "chelsea",
+          "derby-county",
+          "liverpool",
+          "coventry-city",
+          "newcastle-united",
+          "manchester-united",
+          "stoke-city",
+          "manchester-city",
+          "tottenham-hotspur",
+          "arsenal",
+          "wolverhampton-wanderers",
+          "burnley",
+          "nottingham-forest",
+          "west-bromwich-albion",
+          "west-ham-united",
+          "ipswich-town",
+          "southampton",
+          "crystal-palace",
+          "sunderland",
+          "sheffield-wednesday"
+        ]
+      },
+      {
+        "tier": 2,
+        "name": "Second Division",
+        "teamCount": 22,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 3
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 20,
+            "endPosition": 22
+          }
+        ],
+        "teams": [
+          "huddersfield-town",
+          "blackpool",
+          "leicester-city",
+          "middlesbrough",
+          "swindon-town",
+          "sheffield-united",
+          "cardiff-city",
+          "blackburn-rovers",
+          "queens-park-rangers",
+          "millwall",
+          "norwich-city",
+          "carlisle-united",
+          "hull-city",
+          "bristol-city",
+          "oxford-united",
+          "bolton-wanderers",
+          "portsmouth",
+          "birmingham-city",
+          "watford",
+          "charlton-athletic",
+          "aston-villa",
+          "preston-north-end"
+        ]
+      },
+      {
+        "tier": 3,
+        "name": "Third Division",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 3
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 21,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "leyton-orient",
+          "luton-town",
+          "bristol-rovers",
+          "fulham",
+          "brighton-and-hove-albion",
+          "mansfield-town",
+          "barnsley",
+          "reading",
+          "rochdale",
+          "bradford-city",
+          "doncaster-rovers",
+          "walsall",
+          "torquay-united",
+          "rotherham-united",
+          "shrewsbury-town",
+          "tranmere-rovers",
+          "plymouth-argyle",
+          "halifax-town",
+          "bury",
+          "gillingham",
+          "afc-bournemouth",
+          "southport",
+          "barrow",
+          "stockport-county"
+        ]
+      },
+      {
+        "tier": 4,
+        "name": "Fourth Division",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 4
+          },
+          {
+            "type": "relegation",
+            "label": "Re-election",
+            "startPosition": 21,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "chesterfield",
+          "wrexham",
+          "swansea-city",
+          "port-vale",
+          "brentford",
+          "aldershot-town",
+          "notts-county",
+          "lincoln-city",
+          "peterborough-united",
+          "colchester-united",
+          "chester-city",
+          "scunthorpe-united",
+          "york-city",
+          "northampton-town",
+          "crewe-alexandra",
+          "grimsby-town",
+          "southend-united",
+          "exeter-city",
+          "oldham-athletic",
+          "workington",
+          "newport-county",
+          "darlington",
+          "hartlepool-united",
+          "bradford-park-avenue"
+        ]
+      }
+    ]
+  },
+  {
+    "year": 1971,
+    "season": "1970-71",
+    "nextYear": 1972,
+    "divisions": [
+      {
+        "tier": 1,
+        "name": "First Division",
+        "teamCount": 22,
+        "zones": [
+          {
+            "type": "champions",
+            "label": "Champions",
+            "startPosition": 1,
+            "endPosition": 1
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 20,
+            "endPosition": 22
+          }
+        ],
+        "teams": [
+          "arsenal",
+          "leeds-united",
+          "tottenham-hotspur",
+          "wolverhampton-wanderers",
+          "liverpool",
+          "chelsea",
+          "southampton",
+          "manchester-united",
+          "derby-county",
+          "coventry-city",
+          "manchester-city",
+          "newcastle-united",
+          "stoke-city",
+          "everton",
+          "huddersfield-town",
+          "nottingham-forest",
+          "west-bromwich-albion",
+          "crystal-palace",
+          "ipswich-town",
+          "west-ham-united",
+          "burnley",
+          "blackpool"
+        ]
+      },
+      {
+        "tier": 2,
+        "name": "Second Division",
+        "teamCount": 22,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 3
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 20,
+            "endPosition": 22
+          }
+        ],
+        "teams": [
+          "leicester-city",
+          "sheffield-united",
+          "cardiff-city",
+          "carlisle-united",
+          "hull-city",
+          "luton-town",
+          "middlesbrough",
+          "millwall",
+          "birmingham-city",
+          "norwich-city",
+          "queens-park-rangers",
+          "swindon-town",
+          "sunderland",
+          "oxford-united",
+          "sheffield-wednesday",
+          "portsmouth",
+          "leyton-orient",
+          "watford",
+          "bristol-city",
+          "charlton-athletic",
+          "blackburn-rovers",
+          "bolton-wanderers"
+        ]
+      },
+      {
+        "tier": 3,
+        "name": "Third Division",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 3
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 21,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "preston-north-end",
+          "fulham",
+          "halifax-town",
+          "aston-villa",
+          "chesterfield",
+          "bristol-rovers",
+          "mansfield-town",
+          "rotherham-united",
+          "wrexham",
+          "torquay-united",
+          "swansea-city",
+          "barnsley",
+          "shrewsbury-town",
+          "brighton-and-hove-albion",
+          "plymouth-argyle",
+          "rochdale",
+          "port-vale",
+          "tranmere-rovers",
+          "bradford-city",
+          "walsall",
+          "reading",
+          "bury",
+          "doncaster-rovers",
+          "gillingham"
+        ]
+      },
+      {
+        "tier": 4,
+        "name": "Fourth Division",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 4
+          },
+          {
+            "type": "relegation",
+            "label": "Re-election",
+            "startPosition": 21,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "notts-county",
+          "afc-bournemouth",
+          "oldham-athletic",
+          "york-city",
+          "chester-city",
+          "colchester-united",
+          "northampton-town",
+          "southport",
+          "exeter-city",
+          "workington",
+          "stockport-county",
+          "darlington",
+          "aldershot-town",
+          "brentford",
+          "crewe-alexandra",
+          "peterborough-united",
+          "scunthorpe-united",
+          "southend-united",
+          "grimsby-town",
+          "cambridge-united",
+          "lincoln-city",
+          "newport-county",
+          "hartlepool-united",
+          "barrow"
+        ]
+      }
+    ]
+  },
+  {
+    "year": 1972,
+    "season": "1971-72",
+    "nextYear": 1973,
+    "divisions": [
+      {
+        "tier": 1,
+        "name": "First Division",
+        "teamCount": 22,
+        "zones": [
+          {
+            "type": "champions",
+            "label": "Champions",
+            "startPosition": 1,
+            "endPosition": 1
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 20,
+            "endPosition": 22
+          }
+        ],
+        "teams": [
+          "derby-county",
+          "leeds-united",
+          "liverpool",
+          "manchester-city",
+          "arsenal",
+          "tottenham-hotspur",
+          "chelsea",
+          "manchester-united",
+          "wolverhampton-wanderers",
+          "sheffield-united",
+          "newcastle-united",
+          "leicester-city",
+          "ipswich-town",
+          "west-ham-united",
+          "everton",
+          "west-bromwich-albion",
+          "stoke-city",
+          "coventry-city",
+          "southampton",
+          "crystal-palace",
+          "nottingham-forest",
+          "huddersfield-town"
+        ]
+      },
+      {
+        "tier": 2,
+        "name": "Second Division",
+        "teamCount": 22,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 3
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 20,
+            "endPosition": 22
+          }
+        ],
+        "teams": [
+          "norwich-city",
+          "birmingham-city",
+          "millwall",
+          "queens-park-rangers",
+          "sunderland",
+          "blackpool",
+          "burnley",
+          "bristol-city",
+          "middlesbrough",
+          "carlisle-united",
+          "swindon-town",
+          "hull-city",
+          "luton-town",
+          "sheffield-wednesday",
+          "oxford-united",
+          "portsmouth",
+          "leyton-orient",
+          "preston-north-end",
+          "cardiff-city",
+          "fulham",
+          "charlton-athletic",
+          "watford"
+        ]
+      },
+      {
+        "tier": 3,
+        "name": "Third Division",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 3
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 21,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "aston-villa",
+          "brighton-and-hove-albion",
+          "afc-bournemouth",
+          "notts-county",
+          "rotherham-united",
+          "bristol-rovers",
+          "bolton-wanderers",
+          "plymouth-argyle",
+          "walsall",
+          "blackburn-rovers",
+          "oldham-athletic",
+          "shrewsbury-town",
+          "chesterfield",
+          "swansea-city",
+          "port-vale",
+          "wrexham",
+          "halifax-town",
+          "rochdale",
+          "york-city",
+          "tranmere-rovers",
+          "mansfield-town",
+          "barnsley",
+          "torquay-united",
+          "bradford-city"
+        ]
+      },
+      {
+        "tier": 4,
+        "name": "Fourth Division",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 4
+          },
+          {
+            "type": "relegation",
+            "label": "Re-election",
+            "startPosition": 21,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "grimsby-town",
+          "southend-united",
+          "brentford",
+          "scunthorpe-united",
+          "lincoln-city",
+          "workington",
+          "southport",
+          "peterborough-united",
+          "bury",
+          "cambridge-united",
+          "colchester-united",
+          "doncaster-rovers",
+          "gillingham",
+          "newport-county",
+          "exeter-city",
+          "reading",
+          "aldershot-town",
+          "hartlepool-united",
+          "darlington",
+          "chester-city",
+          "northampton-town",
+          "barrow",
+          "stockport-county",
+          "crewe-alexandra"
+        ]
+      }
+    ]
+  },
+  {
+    "year": 1973,
+    "season": "1972-73",
+    "nextYear": 1974,
+    "divisions": [
+      {
+        "tier": 1,
+        "name": "First Division",
+        "teamCount": 22,
+        "zones": [
+          {
+            "type": "champions",
+            "label": "Champions",
+            "startPosition": 1,
+            "endPosition": 1
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 20,
+            "endPosition": 22
+          }
+        ],
+        "teams": [
+          "liverpool",
+          "arsenal",
+          "leeds-united",
+          "ipswich-town",
+          "wolverhampton-wanderers",
+          "west-ham-united",
+          "derby-county",
+          "tottenham-hotspur",
+          "newcastle-united",
+          "birmingham-city",
+          "manchester-city",
+          "chelsea",
+          "southampton",
+          "sheffield-united",
+          "stoke-city",
+          "leicester-city",
+          "everton",
+          "manchester-united",
+          "coventry-city",
+          "norwich-city",
+          "crystal-palace",
+          "west-bromwich-albion"
+        ]
+      },
+      {
+        "tier": 2,
+        "name": "Second Division",
+        "teamCount": 22,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 3
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 20,
+            "endPosition": 22
+          }
+        ],
+        "teams": [
+          "burnley",
+          "queens-park-rangers",
+          "aston-villa",
+          "middlesbrough",
+          "bristol-city",
+          "sunderland",
+          "blackpool",
+          "oxford-united",
+          "fulham",
+          "sheffield-wednesday",
+          "millwall",
+          "luton-town",
+          "hull-city",
+          "nottingham-forest",
+          "leyton-orient",
+          "swindon-town",
+          "portsmouth",
+          "carlisle-united",
+          "preston-north-end",
+          "cardiff-city",
+          "huddersfield-town",
+          "brighton-and-hove-albion"
+        ]
+      },
+      {
+        "tier": 3,
+        "name": "Third Division",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 3
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 21,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "bolton-wanderers",
+          "notts-county",
+          "blackburn-rovers",
+          "oldham-athletic",
+          "bristol-rovers",
+          "port-vale",
+          "afc-bournemouth",
+          "plymouth-argyle",
+          "grimsby-town",
+          "tranmere-rovers",
+          "charlton-athletic",
+          "wrexham",
+          "rochdale",
+          "southend-united",
+          "shrewsbury-town",
+          "chesterfield",
+          "walsall",
+          "york-city",
+          "watford",
+          "halifax-town",
+          "rotherham-united",
+          "brentford",
+          "swansea-city",
+          "scunthorpe-united"
+        ]
+      },
+      {
+        "tier": 4,
+        "name": "Fourth Division",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 4
+          },
+          {
+            "type": "relegation",
+            "label": "Re-election",
+            "startPosition": 21,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "southport",
+          "hereford-united",
+          "cambridge-united",
+          "aldershot-town",
+          "newport-county",
+          "mansfield-town",
+          "reading",
+          "exeter-city",
+          "gillingham",
+          "lincoln-city",
+          "stockport-county",
+          "bury",
+          "workington",
+          "barnsley",
+          "chester-city",
+          "bradford-city",
+          "doncaster-rovers",
+          "torquay-united",
+          "peterborough-united",
+          "hartlepool-united",
+          "crewe-alexandra",
+          "colchester-united",
+          "northampton-town",
+          "darlington"
+        ]
+      }
+    ]
+  },
+  {
+    "year": 1974,
+    "season": "1973-74",
+    "nextYear": 1975,
+    "divisions": [
+      {
+        "tier": 1,
+        "name": "First Division",
+        "teamCount": 22,
+        "zones": [
+          {
+            "type": "champions",
+            "label": "Champions",
+            "startPosition": 1,
+            "endPosition": 1
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 20,
+            "endPosition": 22
+          }
+        ],
+        "teams": [
+          "leeds-united",
+          "liverpool",
+          "derby-county",
+          "ipswich-town",
+          "stoke-city",
+          "burnley",
+          "everton",
+          "queens-park-rangers",
+          "leicester-city",
+          "arsenal",
+          "tottenham-hotspur",
+          "wolverhampton-wanderers",
+          "sheffield-united",
+          "manchester-city",
+          "newcastle-united",
+          "coventry-city",
+          "chelsea",
+          "west-ham-united",
+          "birmingham-city",
+          "southampton",
+          "manchester-united",
+          "norwich-city"
+        ]
+      },
+      {
+        "tier": 2,
+        "name": "Second Division",
+        "teamCount": 22,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 3
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 20,
+            "endPosition": 22
+          }
+        ],
+        "teams": [
+          "middlesbrough",
+          "luton-town",
+          "carlisle-united",
+          "leyton-orient",
+          "blackpool",
+          "sunderland",
+          "nottingham-forest",
+          "west-bromwich-albion",
+          "hull-city",
+          "notts-county",
+          "bolton-wanderers",
+          "millwall",
+          "fulham",
+          "aston-villa",
+          "portsmouth",
+          "bristol-city",
+          "cardiff-city",
+          "oxford-united",
+          "sheffield-wednesday",
+          "crystal-palace",
+          "preston-north-end",
+          "swindon-town"
+        ]
+      },
+      {
+        "tier": 3,
+        "name": "Third Division",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 3
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 21,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "oldham-athletic",
+          "bristol-rovers",
+          "york-city",
+          "wrexham",
+          "chesterfield",
+          "grimsby-town",
+          "watford",
+          "aldershot-town",
+          "halifax-town",
+          "huddersfield-town",
+          "afc-bournemouth",
+          "southend-united",
+          "blackburn-rovers",
+          "charlton-athletic",
+          "walsall",
+          "tranmere-rovers",
+          "plymouth-argyle",
+          "hereford-united",
+          "brighton-and-hove-albion",
+          "port-vale",
+          "cambridge-united",
+          "shrewsbury-town",
+          "southport",
+          "rochdale"
+        ]
+      },
+      {
+        "tier": 4,
+        "name": "Fourth Division",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 4
+          },
+          {
+            "type": "relegation",
+            "label": "Re-election",
+            "startPosition": 21,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "peterborough-united",
+          "gillingham",
+          "colchester-united",
+          "bury",
+          "northampton-town",
+          "reading",
+          "chester-city",
+          "bradford-city",
+          "newport-county",
+          "exeter-city",
+          "hartlepool-united",
+          "lincoln-city",
+          "barnsley",
+          "swansea-city",
+          "rotherham-united",
+          "torquay-united",
+          "mansfield-town",
+          "scunthorpe-united",
+          "brentford",
+          "darlington",
+          "crewe-alexandra",
+          "doncaster-rovers",
+          "workington",
+          "stockport-county"
+        ]
+      }
+    ]
+  },
+  {
+    "year": 1975,
+    "season": "1974-75",
+    "nextYear": 1976,
+    "divisions": [
+      {
+        "tier": 1,
+        "name": "First Division",
+        "teamCount": 22,
+        "zones": [
+          {
+            "type": "champions",
+            "label": "Champions",
+            "startPosition": 1,
+            "endPosition": 1
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 20,
+            "endPosition": 22
+          }
+        ],
+        "teams": [
+          "derby-county",
+          "liverpool",
+          "ipswich-town",
+          "everton",
+          "stoke-city",
+          "sheffield-united",
+          "middlesbrough",
+          "manchester-city",
+          "leeds-united",
+          "burnley",
+          "queens-park-rangers",
+          "wolverhampton-wanderers",
+          "west-ham-united",
+          "coventry-city",
+          "newcastle-united",
+          "arsenal",
+          "birmingham-city",
+          "leicester-city",
+          "tottenham-hotspur",
+          "luton-town",
+          "chelsea",
+          "carlisle-united"
+        ]
+      },
+      {
+        "tier": 2,
+        "name": "Second Division",
+        "teamCount": 22,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 3
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 20,
+            "endPosition": 22
+          }
+        ],
+        "teams": [
+          "manchester-united",
+          "aston-villa",
+          "norwich-city",
+          "sunderland",
+          "bristol-city",
+          "west-bromwich-albion",
+          "blackpool",
+          "hull-city",
+          "fulham",
+          "bolton-wanderers",
+          "oxford-united",
+          "leyton-orient",
+          "southampton",
+          "notts-county",
+          "york-city",
+          "nottingham-forest",
+          "portsmouth",
+          "oldham-athletic",
+          "bristol-rovers",
+          "millwall",
+          "cardiff-city",
+          "sheffield-wednesday"
+        ]
+      },
+      {
+        "tier": 3,
+        "name": "Third Division",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 3
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 21,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "blackburn-rovers",
+          "plymouth-argyle",
+          "charlton-athletic",
+          "swindon-town",
+          "crystal-palace",
+          "port-vale",
+          "peterborough-united",
+          "walsall",
+          "preston-north-end",
+          "gillingham",
+          "colchester-united",
+          "hereford-united",
+          "wrexham",
+          "bury",
+          "chesterfield",
+          "grimsby-town",
+          "halifax-town",
+          "southend-united",
+          "brighton-and-hove-albion",
+          "aldershot-town",
+          "afc-bournemouth",
+          "tranmere-rovers",
+          "watford",
+          "huddersfield-town"
+        ]
+      },
+      {
+        "tier": 4,
+        "name": "Fourth Division",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 4
+          },
+          {
+            "type": "relegation",
+            "label": "Re-election",
+            "startPosition": 21,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "mansfield-town",
+          "shrewsbury-town",
+          "rotherham-united",
+          "chester-city",
+          "lincoln-city",
+          "cambridge-united",
+          "reading",
+          "brentford",
+          "exeter-city",
+          "bradford-city",
+          "southport",
+          "newport-county",
+          "hartlepool-united",
+          "torquay-united",
+          "barnsley",
+          "northampton-town",
+          "doncaster-rovers",
+          "crewe-alexandra",
+          "rochdale",
+          "stockport-county",
+          "darlington",
+          "swansea-city",
+          "workington",
+          "scunthorpe-united"
+        ]
+      }
+    ]
+  },
+  {
+    "year": 1976,
+    "season": "1975-76",
+    "nextYear": 1977,
+    "divisions": [
+      {
+        "tier": 1,
+        "name": "First Division",
+        "teamCount": 22,
+        "zones": [
+          {
+            "type": "champions",
+            "label": "Champions",
+            "startPosition": 1,
+            "endPosition": 1
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 20,
+            "endPosition": 22
+          }
+        ],
+        "teams": [
+          "liverpool",
+          "queens-park-rangers",
+          "manchester-united",
+          "derby-county",
+          "leeds-united",
+          "ipswich-town",
+          "leicester-city",
+          "manchester-city",
+          "tottenham-hotspur",
+          "norwich-city",
+          "everton",
+          "stoke-city",
+          "middlesbrough",
+          "coventry-city",
+          "newcastle-united",
+          "aston-villa",
+          "arsenal",
+          "west-ham-united",
+          "birmingham-city",
+          "wolverhampton-wanderers",
+          "burnley",
+          "sheffield-united"
+        ]
+      },
+      {
+        "tier": 2,
+        "name": "Second Division",
+        "teamCount": 22,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 3
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 20,
+            "endPosition": 22
+          }
+        ],
+        "teams": [
+          "sunderland",
+          "bristol-city",
+          "west-bromwich-albion",
+          "bolton-wanderers",
+          "notts-county",
+          "southampton",
+          "luton-town",
+          "nottingham-forest",
+          "charlton-athletic",
+          "blackpool",
+          "chelsea",
+          "fulham",
+          "leyton-orient",
+          "hull-city",
+          "blackburn-rovers",
+          "plymouth-argyle",
+          "oldham-athletic",
+          "bristol-rovers",
+          "carlisle-united",
+          "oxford-united",
+          "york-city",
+          "portsmouth"
+        ]
+      },
+      {
+        "tier": 3,
+        "name": "Third Division",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 3
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 21,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "hereford-united",
+          "cardiff-city",
+          "millwall",
+          "brighton-and-hove-albion",
+          "crystal-palace",
+          "wrexham",
+          "walsall",
+          "preston-north-end",
+          "shrewsbury-town",
+          "peterborough-united",
+          "mansfield-town",
+          "port-vale",
+          "bury",
+          "chesterfield",
+          "gillingham",
+          "rotherham-united",
+          "chester-city",
+          "grimsby-town",
+          "swindon-town",
+          "sheffield-wednesday",
+          "aldershot-town",
+          "colchester-united",
+          "southend-united",
+          "halifax-town"
+        ]
+      },
+      {
+        "tier": 4,
+        "name": "Fourth Division",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 4
+          },
+          {
+            "type": "relegation",
+            "label": "Re-election",
+            "startPosition": 21,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "lincoln-city",
+          "northampton-town",
+          "reading",
+          "tranmere-rovers",
+          "huddersfield-town",
+          "afc-bournemouth",
+          "exeter-city",
+          "watford",
+          "torquay-united",
+          "doncaster-rovers",
+          "swansea-city",
+          "barnsley",
+          "cambridge-united",
+          "hartlepool-united",
+          "rochdale",
+          "crewe-alexandra",
+          "bradford-city",
+          "brentford",
+          "scunthorpe-united",
+          "darlington",
+          "stockport-county",
+          "newport-county",
+          "southport",
+          "workington"
+        ]
+      }
+    ]
+  },
+  {
+    "year": 1977,
+    "season": "1976-77",
+    "nextYear": 1978,
+    "divisions": [
+      {
+        "tier": 1,
+        "name": "First Division",
+        "teamCount": 22,
+        "zones": [
+          {
+            "type": "champions",
+            "label": "Champions",
+            "startPosition": 1,
+            "endPosition": 1
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 20,
+            "endPosition": 22
+          }
+        ],
+        "teams": [
+          "liverpool",
+          "manchester-city",
+          "ipswich-town",
+          "aston-villa",
+          "newcastle-united",
+          "manchester-united",
+          "west-bromwich-albion",
+          "arsenal",
+          "everton",
+          "leeds-united",
+          "leicester-city",
+          "middlesbrough",
+          "birmingham-city",
+          "queens-park-rangers",
+          "derby-county",
+          "norwich-city",
+          "west-ham-united",
+          "bristol-city",
+          "coventry-city",
+          "sunderland",
+          "stoke-city",
+          "tottenham-hotspur"
+        ]
+      },
+      {
+        "tier": 2,
+        "name": "Second Division",
+        "teamCount": 22,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 3
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 20,
+            "endPosition": 22
+          }
+        ],
+        "teams": [
+          "wolverhampton-wanderers",
+          "chelsea",
+          "nottingham-forest",
+          "bolton-wanderers",
+          "blackpool",
+          "luton-town",
+          "charlton-athletic",
+          "notts-county",
+          "southampton",
+          "millwall",
+          "sheffield-united",
+          "blackburn-rovers",
+          "oldham-athletic",
+          "hull-city",
+          "bristol-rovers",
+          "burnley",
+          "fulham",
+          "cardiff-city",
+          "leyton-orient",
+          "carlisle-united",
+          "plymouth-argyle",
+          "hereford-united"
+        ]
+      },
+      {
+        "tier": 3,
+        "name": "Third Division",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 3
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 21,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "mansfield-town",
+          "brighton-and-hove-albion",
+          "crystal-palace",
+          "rotherham-united",
+          "wrexham",
+          "preston-north-end",
+          "bury",
+          "sheffield-wednesday",
+          "lincoln-city",
+          "shrewsbury-town",
+          "swindon-town",
+          "gillingham",
+          "chester-city",
+          "tranmere-rovers",
+          "walsall",
+          "peterborough-united",
+          "oxford-united",
+          "chesterfield",
+          "port-vale",
+          "portsmouth",
+          "reading",
+          "northampton-town",
+          "grimsby-town",
+          "york-city"
+        ]
+      },
+      {
+        "tier": 4,
+        "name": "Fourth Division",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 4
+          },
+          {
+            "type": "relegation",
+            "label": "Re-election",
+            "startPosition": 21,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "cambridge-united",
+          "exeter-city",
+          "colchester-united",
+          "bradford-city",
+          "swansea-city",
+          "barnsley",
+          "watford",
+          "doncaster-rovers",
+          "huddersfield-town",
+          "southend-united",
+          "darlington",
+          "crewe-alexandra",
+          "afc-bournemouth",
+          "stockport-county",
+          "brentford",
+          "torquay-united",
+          "aldershot-town",
+          "rochdale",
+          "newport-county",
+          "scunthorpe-united",
+          "halifax-town",
+          "hartlepool-united",
+          "southport",
+          "workington"
+        ]
+      }
+    ]
+  },
+  {
+    "year": 1978,
+    "season": "1977-78",
+    "nextYear": 1979,
+    "divisions": [
+      {
+        "tier": 1,
+        "name": "First Division",
+        "teamCount": 22,
+        "zones": [
+          {
+            "type": "champions",
+            "label": "Champions",
+            "startPosition": 1,
+            "endPosition": 1
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 20,
+            "endPosition": 22
+          }
+        ],
+        "teams": [
+          "nottingham-forest",
+          "liverpool",
+          "everton",
+          "manchester-city",
+          "arsenal",
+          "west-bromwich-albion",
+          "coventry-city",
+          "aston-villa",
+          "leeds-united",
+          "manchester-united",
+          "birmingham-city",
+          "derby-county",
+          "norwich-city",
+          "middlesbrough",
+          "wolverhampton-wanderers",
+          "chelsea",
+          "bristol-city",
+          "ipswich-town",
+          "queens-park-rangers",
+          "west-ham-united",
+          "newcastle-united",
+          "leicester-city"
+        ]
+      },
+      {
+        "tier": 2,
+        "name": "Second Division",
+        "teamCount": 22,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 3
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 20,
+            "endPosition": 22
+          }
+        ],
+        "teams": [
+          "bolton-wanderers",
+          "southampton",
+          "tottenham-hotspur",
+          "brighton-and-hove-albion",
+          "blackburn-rovers",
+          "sunderland",
+          "stoke-city",
+          "oldham-athletic",
+          "crystal-palace",
+          "fulham",
+          "burnley",
+          "sheffield-united",
+          "luton-town",
+          "leyton-orient",
+          "notts-county",
+          "millwall",
+          "charlton-athletic",
+          "bristol-rovers",
+          "cardiff-city",
+          "blackpool",
+          "mansfield-town",
+          "hull-city"
+        ]
+      },
+      {
+        "tier": 3,
+        "name": "Third Division",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 3
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 21,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "wrexham",
+          "cambridge-united",
+          "preston-north-end",
+          "peterborough-united",
+          "chester-city",
+          "walsall",
+          "gillingham",
+          "colchester-united",
+          "chesterfield",
+          "swindon-town",
+          "shrewsbury-town",
+          "tranmere-rovers",
+          "carlisle-united",
+          "sheffield-wednesday",
+          "bury",
+          "lincoln-city",
+          "exeter-city",
+          "oxford-united",
+          "plymouth-argyle",
+          "rotherham-united",
+          "port-vale",
+          "bradford-city",
+          "hereford-united",
+          "portsmouth"
+        ]
+      },
+      {
+        "tier": 4,
+        "name": "Fourth Division",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 4
+          },
+          {
+            "type": "relegation",
+            "label": "Re-election",
+            "startPosition": 21,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "watford",
+          "southend-united",
+          "swansea-city",
+          "brentford",
+          "aldershot-town",
+          "grimsby-town",
+          "barnsley",
+          "reading",
+          "torquay-united",
+          "northampton-town",
+          "huddersfield-town",
+          "doncaster-rovers",
+          "wimbledon",
+          "scunthorpe-united",
+          "crewe-alexandra",
+          "newport-county",
+          "afc-bournemouth",
+          "stockport-county",
+          "darlington",
+          "halifax-town",
+          "hartlepool-united",
+          "york-city",
+          "southport",
+          "rochdale"
+        ]
+      }
+    ]
+  },
+  {
+    "year": 1979,
+    "season": "1978-79",
+    "nextYear": 1980,
+    "divisions": [
+      {
+        "tier": 1,
+        "name": "First Division",
+        "teamCount": 22,
+        "zones": [
+          {
+            "type": "champions",
+            "label": "Champions",
+            "startPosition": 1,
+            "endPosition": 1
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 20,
+            "endPosition": 22
+          }
+        ],
+        "teams": [
+          "liverpool",
+          "nottingham-forest",
+          "west-bromwich-albion",
+          "everton",
+          "leeds-united",
+          "ipswich-town",
+          "arsenal",
+          "aston-villa",
+          "manchester-united",
+          "coventry-city",
+          "tottenham-hotspur",
+          "middlesbrough",
+          "bristol-city",
+          "southampton",
+          "manchester-city",
+          "norwich-city",
+          "bolton-wanderers",
+          "wolverhampton-wanderers",
+          "derby-county",
+          "queens-park-rangers",
+          "birmingham-city",
+          "chelsea"
+        ]
+      },
+      {
+        "tier": 2,
+        "name": "Second Division",
+        "teamCount": 22,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 3
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 20,
+            "endPosition": 22
+          }
+        ],
+        "teams": [
+          "crystal-palace",
+          "brighton-and-hove-albion",
+          "stoke-city",
+          "sunderland",
+          "west-ham-united",
+          "notts-county",
+          "preston-north-end",
+          "newcastle-united",
+          "cardiff-city",
+          "fulham",
+          "leyton-orient",
+          "cambridge-united",
+          "burnley",
+          "oldham-athletic",
+          "wrexham",
+          "bristol-rovers",
+          "leicester-city",
+          "luton-town",
+          "charlton-athletic",
+          "sheffield-united",
+          "millwall",
+          "blackburn-rovers"
+        ]
+      },
+      {
+        "tier": 3,
+        "name": "Third Division",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 3
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 21,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "shrewsbury-town",
+          "watford",
+          "swansea-city",
+          "gillingham",
+          "swindon-town",
+          "carlisle-united",
+          "colchester-united",
+          "hull-city",
+          "exeter-city",
+          "brentford",
+          "oxford-united",
+          "blackpool",
+          "southend-united",
+          "sheffield-wednesday",
+          "plymouth-argyle",
+          "chester-city",
+          "rotherham-united",
+          "mansfield-town",
+          "bury",
+          "chesterfield",
+          "peterborough-united",
+          "walsall",
+          "tranmere-rovers",
+          "lincoln-city"
+        ]
+      },
+      {
+        "tier": 4,
+        "name": "Fourth Division",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 4
+          },
+          {
+            "type": "relegation",
+            "label": "Re-election",
+            "startPosition": 21,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "reading",
+          "grimsby-town",
+          "wimbledon",
+          "barnsley",
+          "aldershot-town",
+          "wigan-athletic",
+          "portsmouth",
+          "newport-county",
+          "huddersfield-town",
+          "york-city",
+          "torquay-united",
+          "scunthorpe-united",
+          "hartlepool-united",
+          "hereford-united",
+          "bradford-city",
+          "port-vale",
+          "stockport-county",
+          "afc-bournemouth",
+          "northampton-town",
+          "rochdale",
+          "darlington",
+          "doncaster-rovers",
+          "halifax-town",
+          "crewe-alexandra"
+        ]
+      }
+    ]
+  },
+  {
+    "year": 1980,
+    "season": "1979-80",
+    "nextYear": 1981,
+    "divisions": [
+      {
+        "tier": 1,
+        "name": "First Division",
+        "teamCount": 22,
+        "zones": [
+          {
+            "type": "champions",
+            "label": "Champions",
+            "startPosition": 1,
+            "endPosition": 1
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 20,
+            "endPosition": 22
+          }
+        ],
+        "teams": [
+          "liverpool",
+          "manchester-united",
+          "ipswich-town",
+          "arsenal",
+          "nottingham-forest",
+          "wolverhampton-wanderers",
+          "aston-villa",
+          "southampton",
+          "middlesbrough",
+          "west-bromwich-albion",
+          "leeds-united",
+          "norwich-city",
+          "crystal-palace",
+          "tottenham-hotspur",
+          "coventry-city",
+          "brighton-and-hove-albion",
+          "manchester-city",
+          "stoke-city",
+          "everton",
+          "bristol-city",
+          "derby-county",
+          "bolton-wanderers"
+        ]
+      },
+      {
+        "tier": 2,
+        "name": "Second Division",
+        "teamCount": 22,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 3
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 20,
+            "endPosition": 22
+          }
+        ],
+        "teams": [
+          "leicester-city",
+          "sunderland",
+          "birmingham-city",
+          "chelsea",
+          "queens-park-rangers",
+          "luton-town",
+          "west-ham-united",
+          "cambridge-united",
+          "newcastle-united",
+          "preston-north-end",
+          "oldham-athletic",
+          "swansea-city",
+          "shrewsbury-town",
+          "leyton-orient",
+          "cardiff-city",
+          "wrexham",
+          "notts-county",
+          "watford",
+          "bristol-rovers",
+          "fulham",
+          "burnley",
+          "charlton-athletic"
+        ]
+      },
+      {
+        "tier": 3,
+        "name": "Third Division",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 3
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 21,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "grimsby-town",
+          "blackburn-rovers",
+          "sheffield-wednesday",
+          "chesterfield",
+          "colchester-united",
+          "carlisle-united",
+          "reading",
+          "exeter-city",
+          "chester-city",
+          "swindon-town",
+          "barnsley",
+          "sheffield-united",
+          "rotherham-united",
+          "millwall",
+          "plymouth-argyle",
+          "gillingham",
+          "oxford-united",
+          "blackpool",
+          "brentford",
+          "hull-city",
+          "bury",
+          "southend-united",
+          "mansfield-town",
+          "wimbledon"
+        ]
+      },
+      {
+        "tier": 4,
+        "name": "Fourth Division",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 4
+          },
+          {
+            "type": "relegation",
+            "label": "Re-election",
+            "startPosition": 21,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "huddersfield-town",
+          "walsall",
+          "newport-county",
+          "portsmouth",
+          "bradford-city",
+          "wigan-athletic",
+          "lincoln-city",
+          "peterborough-united",
+          "torquay-united",
+          "aldershot-town",
+          "afc-bournemouth",
+          "doncaster-rovers",
+          "northampton-town",
+          "scunthorpe-united",
+          "tranmere-rovers",
+          "stockport-county",
+          "york-city",
+          "halifax-town",
+          "hartlepool-united",
+          "port-vale",
+          "hereford-united",
+          "darlington",
+          "crewe-alexandra",
+          "rochdale"
+        ]
+      }
+    ]
+  },
+  {
+    "year": 1981,
+    "season": "1980-81",
+    "nextYear": 1982,
+    "divisions": [
+      {
+        "tier": 1,
+        "name": "First Division",
+        "teamCount": 22,
+        "zones": [
+          {
+            "type": "champions",
+            "label": "Champions",
+            "startPosition": 1,
+            "endPosition": 1
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 20,
+            "endPosition": 22
+          }
+        ],
+        "teams": [
+          "aston-villa",
+          "ipswich-town",
+          "arsenal",
+          "west-bromwich-albion",
+          "liverpool",
+          "southampton",
+          "nottingham-forest",
+          "manchester-united",
+          "leeds-united",
+          "tottenham-hotspur",
+          "stoke-city",
+          "manchester-city",
+          "birmingham-city",
+          "middlesbrough",
+          "everton",
+          "coventry-city",
+          "sunderland",
+          "wolverhampton-wanderers",
+          "brighton-and-hove-albion",
+          "norwich-city",
+          "leicester-city",
+          "crystal-palace"
+        ]
+      },
+      {
+        "tier": 2,
+        "name": "Second Division",
+        "teamCount": 22,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 3
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 20,
+            "endPosition": 22
+          }
+        ],
+        "teams": [
+          "west-ham-united",
+          "notts-county",
+          "swansea-city",
+          "blackburn-rovers",
+          "luton-town",
+          "derby-county",
+          "grimsby-town",
+          "queens-park-rangers",
+          "watford",
+          "sheffield-wednesday",
+          "newcastle-united",
+          "chelsea",
+          "cambridge-united",
+          "shrewsbury-town",
+          "oldham-athletic",
+          "wrexham",
+          "leyton-orient",
+          "bolton-wanderers",
+          "cardiff-city",
+          "preston-north-end",
+          "bristol-city",
+          "bristol-rovers"
+        ]
+      },
+      {
+        "tier": 3,
+        "name": "Third Division",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 3
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 21,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "rotherham-united",
+          "barnsley",
+          "charlton-athletic",
+          "huddersfield-town",
+          "chesterfield",
+          "portsmouth",
+          "plymouth-argyle",
+          "burnley",
+          "brentford",
+          "reading",
+          "exeter-city",
+          "newport-county",
+          "fulham",
+          "oxford-united",
+          "gillingham",
+          "millwall",
+          "swindon-town",
+          "chester-city",
+          "carlisle-united",
+          "walsall",
+          "sheffield-united",
+          "colchester-united",
+          "blackpool",
+          "hull-city"
+        ]
+      },
+      {
+        "tier": 4,
+        "name": "Fourth Division",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 4
+          },
+          {
+            "type": "relegation",
+            "label": "Re-election",
+            "startPosition": 21,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "southend-united",
+          "lincoln-city",
+          "doncaster-rovers",
+          "wimbledon",
+          "peterborough-united",
+          "aldershot-town",
+          "mansfield-town",
+          "darlington",
+          "hartlepool-united",
+          "northampton-town",
+          "wigan-athletic",
+          "bury",
+          "afc-bournemouth",
+          "bradford-city",
+          "rochdale",
+          "scunthorpe-united",
+          "torquay-united",
+          "crewe-alexandra",
+          "port-vale",
+          "stockport-county",
+          "tranmere-rovers",
+          "hereford-united",
+          "halifax-town",
+          "york-city"
+        ]
+      }
+    ]
+  },
+  {
+    "year": 1982,
+    "season": "1981-82",
+    "nextYear": 1983,
+    "divisions": [
+      {
+        "tier": 1,
+        "name": "First Division",
+        "teamCount": 22,
+        "zones": [
+          {
+            "type": "champions",
+            "label": "Champions",
+            "startPosition": 1,
+            "endPosition": 1
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 20,
+            "endPosition": 22
+          }
+        ],
+        "teams": [
+          "liverpool",
+          "ipswich-town",
+          "manchester-united",
+          "tottenham-hotspur",
+          "arsenal",
+          "swansea-city",
+          "southampton",
+          "everton",
+          "west-ham-united",
+          "manchester-city",
+          "aston-villa",
+          "nottingham-forest",
+          "brighton-and-hove-albion",
+          "coventry-city",
+          "notts-county",
+          "birmingham-city",
+          "west-bromwich-albion",
+          "stoke-city",
+          "sunderland",
+          "leeds-united",
+          "wolverhampton-wanderers",
+          "middlesbrough"
+        ]
+      },
+      {
+        "tier": 2,
+        "name": "Second Division",
+        "teamCount": 22,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 2
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 3,
+            "endPosition": 5
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 20,
+            "endPosition": 22
+          }
+        ],
+        "teams": [
+          "luton-town",
+          "watford",
+          "norwich-city",
+          "sheffield-wednesday",
+          "queens-park-rangers",
+          "barnsley",
+          "rotherham-united",
+          "leicester-city",
+          "newcastle-united",
+          "blackburn-rovers",
+          "oldham-athletic",
+          "chelsea",
+          "charlton-athletic",
+          "cambridge-united",
+          "crystal-palace",
+          "derby-county",
+          "grimsby-town",
+          "shrewsbury-town",
+          "bolton-wanderers",
+          "cardiff-city",
+          "wrexham",
+          "leyton-orient"
+        ]
+      },
+      {
+        "tier": 3,
+        "name": "Third Division",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 3
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 4,
+            "endPosition": 6
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 21,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "burnley",
+          "carlisle-united",
+          "fulham",
+          "lincoln-city",
+          "oxford-united",
+          "gillingham",
+          "southend-united",
+          "brentford",
+          "millwall",
+          "plymouth-argyle",
+          "chesterfield",
+          "reading",
+          "portsmouth",
+          "preston-north-end",
+          "bristol-rovers",
+          "newport-county",
+          "huddersfield-town",
+          "exeter-city",
+          "doncaster-rovers",
+          "walsall",
+          "wimbledon",
+          "swindon-town",
+          "bristol-city",
+          "chester-city"
+        ]
+      },
+      {
+        "tier": 4,
+        "name": "Fourth Division",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 3
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 4,
+            "endPosition": 6
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated to Conference",
+            "startPosition": 24,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "sheffield-united",
+          "bradford-city",
+          "wigan-athletic",
+          "afc-bournemouth",
+          "peterborough-united",
+          "colchester-united",
+          "port-vale",
+          "hull-city",
+          "bury",
+          "hereford-united",
+          "tranmere-rovers",
+          "blackpool",
+          "darlington",
+          "hartlepool-united",
+          "torquay-united",
+          "aldershot-town",
+          "york-city",
+          "stockport-county",
+          "halifax-town",
+          "mansfield-town",
+          "rochdale",
+          "northampton-town",
+          "scunthorpe-united",
+          "crewe-alexandra"
+        ]
+      }
+    ]
+  },
+  {
+    "year": 1983,
+    "season": "1982-83",
+    "nextYear": 1984,
+    "divisions": [
+      {
+        "tier": 1,
+        "name": "First Division",
+        "teamCount": 22,
+        "zones": [
+          {
+            "type": "champions",
+            "label": "Champions",
+            "startPosition": 1,
+            "endPosition": 1
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 20,
+            "endPosition": 22
+          }
+        ],
+        "teams": [
+          "liverpool",
+          "watford",
+          "manchester-united",
+          "tottenham-hotspur",
+          "nottingham-forest",
+          "aston-villa",
+          "everton",
+          "west-ham-united",
+          "ipswich-town",
+          "arsenal",
+          "west-bromwich-albion",
+          "southampton",
+          "stoke-city",
+          "norwich-city",
+          "notts-county",
+          "sunderland",
+          "birmingham-city",
+          "luton-town",
+          "coventry-city",
+          "manchester-city",
+          "swansea-city",
+          "brighton-and-hove-albion"
+        ]
+      },
+      {
+        "tier": 2,
+        "name": "Second Division",
+        "teamCount": 22,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 2
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 3,
+            "endPosition": 5
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 20,
+            "endPosition": 22
+          }
+        ],
+        "teams": [
+          "queens-park-rangers",
+          "wolverhampton-wanderers",
+          "leicester-city",
+          "fulham",
+          "newcastle-united",
+          "sheffield-wednesday",
+          "oldham-athletic",
+          "leeds-united",
+          "shrewsbury-town",
+          "barnsley",
+          "blackburn-rovers",
+          "cambridge-united",
+          "derby-county",
+          "carlisle-united",
+          "crystal-palace",
+          "middlesbrough",
+          "charlton-athletic",
+          "chelsea",
+          "grimsby-town",
+          "rotherham-united",
+          "burnley",
+          "bolton-wanderers"
+        ]
+      },
+      {
+        "tier": 3,
+        "name": "Third Division",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 3
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 4,
+            "endPosition": 6
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 21,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "portsmouth",
+          "cardiff-city",
+          "huddersfield-town",
+          "newport-county",
+          "oxford-united",
+          "lincoln-city",
+          "bristol-rovers",
+          "plymouth-argyle",
+          "brentford",
+          "walsall",
+          "sheffield-united",
+          "bradford-city",
+          "gillingham",
+          "afc-bournemouth",
+          "southend-united",
+          "preston-north-end",
+          "millwall",
+          "wigan-athletic",
+          "exeter-city",
+          "leyton-orient",
+          "reading",
+          "wrexham",
+          "doncaster-rovers",
+          "chesterfield"
+        ]
+      },
+      {
+        "tier": 4,
+        "name": "Fourth Division",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 3
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 4,
+            "endPosition": 6
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated to Conference",
+            "startPosition": 24,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "wimbledon",
+          "hull-city",
+          "port-vale",
+          "scunthorpe-united",
+          "bury",
+          "colchester-united",
+          "york-city",
+          "swindon-town",
+          "peterborough-united",
+          "mansfield-town",
+          "halifax-town",
+          "torquay-united",
+          "chester-city",
+          "bristol-city",
+          "northampton-town",
+          "stockport-county",
+          "darlington",
+          "aldershot-town",
+          "tranmere-rovers",
+          "rochdale",
+          "blackpool",
+          "hartlepool-united",
+          "crewe-alexandra",
+          "hereford-united"
+        ]
+      }
+    ]
+  },
+  {
+    "year": 1984,
+    "season": "1983-84",
+    "nextYear": 1985,
+    "divisions": [
+      {
+        "tier": 1,
+        "name": "First Division",
+        "teamCount": 22,
+        "zones": [
+          {
+            "type": "champions",
+            "label": "Champions",
+            "startPosition": 1,
+            "endPosition": 1
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 20,
+            "endPosition": 22
+          }
+        ],
+        "teams": [
+          "liverpool",
+          "southampton",
+          "nottingham-forest",
+          "manchester-united",
+          "queens-park-rangers",
+          "arsenal",
+          "everton",
+          "tottenham-hotspur",
+          "west-ham-united",
+          "aston-villa",
+          "watford",
+          "ipswich-town",
+          "sunderland",
+          "norwich-city",
+          "leicester-city",
+          "luton-town",
+          "west-bromwich-albion",
+          "stoke-city",
+          "coventry-city",
+          "birmingham-city",
+          "notts-county",
+          "wolverhampton-wanderers"
+        ]
+      },
+      {
+        "tier": 2,
+        "name": "Second Division",
+        "teamCount": 22,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 2
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 3,
+            "endPosition": 5
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 20,
+            "endPosition": 22
+          }
+        ],
+        "teams": [
+          "chelsea",
+          "sheffield-wednesday",
+          "newcastle-united",
+          "manchester-city",
+          "grimsby-town",
+          "blackburn-rovers",
+          "carlisle-united",
+          "shrewsbury-town",
+          "brighton-and-hove-albion",
+          "leeds-united",
+          "fulham",
+          "huddersfield-town",
+          "charlton-athletic",
+          "barnsley",
+          "cardiff-city",
+          "portsmouth",
+          "middlesbrough",
+          "crystal-palace",
+          "oldham-athletic",
+          "derby-county",
+          "swansea-city",
+          "cambridge-united"
+        ]
+      },
+      {
+        "tier": 3,
+        "name": "Third Division",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 3
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 4,
+            "endPosition": 6
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 21,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "oxford-united",
+          "wimbledon",
+          "sheffield-united",
+          "hull-city",
+          "bristol-rovers",
+          "walsall",
+          "bradford-city",
+          "gillingham",
+          "millwall",
+          "bolton-wanderers",
+          "leyton-orient",
+          "burnley",
+          "newport-county",
+          "lincoln-city",
+          "wigan-athletic",
+          "preston-north-end",
+          "afc-bournemouth",
+          "rotherham-united",
+          "plymouth-argyle",
+          "brentford",
+          "scunthorpe-united",
+          "southend-united",
+          "port-vale",
+          "exeter-city"
+        ]
+      },
+      {
+        "tier": 4,
+        "name": "Fourth Division",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 3
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 4,
+            "endPosition": 6
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated to Conference",
+            "startPosition": 24,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "york-city",
+          "doncaster-rovers",
+          "reading",
+          "bristol-city",
+          "aldershot-town",
+          "blackpool",
+          "peterborough-united",
+          "colchester-united",
+          "torquay-united",
+          "tranmere-rovers",
+          "hereford-united",
+          "stockport-county",
+          "chesterfield",
+          "darlington",
+          "bury",
+          "crewe-alexandra",
+          "swindon-town",
+          "northampton-town",
+          "mansfield-town",
+          "wrexham",
+          "halifax-town",
+          "rochdale",
+          "hartlepool-united",
+          "chester-city"
+        ]
+      }
+    ]
+  },
+  {
+    "year": 1985,
+    "season": "1984-85",
+    "nextYear": 1986,
+    "divisions": [
+      {
+        "tier": 1,
+        "name": "First Division",
+        "teamCount": 22,
+        "zones": [
+          {
+            "type": "champions",
+            "label": "Champions",
+            "startPosition": 1,
+            "endPosition": 1
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 20,
+            "endPosition": 22
+          }
+        ],
+        "teams": [
+          "everton",
+          "liverpool",
+          "tottenham-hotspur",
+          "manchester-united",
+          "southampton",
+          "chelsea",
+          "arsenal",
+          "sheffield-wednesday",
+          "nottingham-forest",
+          "aston-villa",
+          "watford",
+          "west-bromwich-albion",
+          "luton-town",
+          "newcastle-united",
+          "leicester-city",
+          "west-ham-united",
+          "ipswich-town",
+          "coventry-city",
+          "queens-park-rangers",
+          "norwich-city",
+          "sunderland",
+          "stoke-city"
+        ]
+      },
+      {
+        "tier": 2,
+        "name": "Second Division",
+        "teamCount": 22,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 2
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 3,
+            "endPosition": 5
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 20,
+            "endPosition": 22
+          }
+        ],
+        "teams": [
+          "oxford-united",
+          "birmingham-city",
+          "manchester-city",
+          "portsmouth",
+          "blackburn-rovers",
+          "brighton-and-hove-albion",
+          "leeds-united",
+          "shrewsbury-town",
+          "fulham",
+          "grimsby-town",
+          "barnsley",
+          "wimbledon",
+          "huddersfield-town",
+          "oldham-athletic",
+          "crystal-palace",
+          "carlisle-united",
+          "charlton-athletic",
+          "sheffield-united",
+          "middlesbrough",
+          "notts-county",
+          "cardiff-city",
+          "wolverhampton-wanderers"
+        ]
+      },
+      {
+        "tier": 3,
+        "name": "Third Division",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 3
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 4,
+            "endPosition": 6
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 21,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "bradford-city",
+          "millwall",
+          "hull-city",
+          "gillingham",
+          "bristol-city",
+          "bristol-rovers",
+          "derby-county",
+          "york-city",
+          "reading",
+          "afc-bournemouth",
+          "walsall",
+          "rotherham-united",
+          "brentford",
+          "doncaster-rovers",
+          "plymouth-argyle",
+          "wigan-athletic",
+          "bolton-wanderers",
+          "newport-county",
+          "lincoln-city",
+          "swansea-city",
+          "burnley",
+          "leyton-orient",
+          "preston-north-end",
+          "cambridge-united"
+        ]
+      },
+      {
+        "tier": 4,
+        "name": "Fourth Division",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 3
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 4,
+            "endPosition": 6
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated to Conference",
+            "startPosition": 24,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "chesterfield",
+          "blackpool",
+          "darlington",
+          "bury",
+          "hereford-united",
+          "tranmere-rovers",
+          "colchester-united",
+          "swindon-town",
+          "scunthorpe-united",
+          "crewe-alexandra",
+          "peterborough-united",
+          "port-vale",
+          "aldershot-town",
+          "mansfield-town",
+          "wrexham",
+          "chester-city",
+          "rochdale",
+          "exeter-city",
+          "hartlepool-united",
+          "southend-united",
+          "halifax-town",
+          "stockport-county",
+          "northampton-town",
+          "torquay-united"
+        ]
+      }
+    ]
+  },
+  {
+    "year": 1986,
+    "season": "1985-86",
+    "nextYear": 1987,
+    "divisions": [
+      {
+        "tier": 1,
+        "name": "First Division",
+        "teamCount": 22,
+        "zones": [
+          {
+            "type": "champions",
+            "label": "Champions",
+            "startPosition": 1,
+            "endPosition": 1
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 20,
+            "endPosition": 22
+          }
+        ],
+        "teams": [
+          "liverpool",
+          "everton",
+          "west-ham-united",
+          "manchester-united",
+          "sheffield-wednesday",
+          "chelsea",
+          "arsenal",
+          "nottingham-forest",
+          "luton-town",
+          "tottenham-hotspur",
+          "newcastle-united",
+          "watford",
+          "queens-park-rangers",
+          "southampton",
+          "manchester-city",
+          "aston-villa",
+          "coventry-city",
+          "oxford-united",
+          "leicester-city",
+          "ipswich-town",
+          "birmingham-city",
+          "west-bromwich-albion"
+        ]
+      },
+      {
+        "tier": 2,
+        "name": "Second Division",
+        "teamCount": 22,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 2
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 3,
+            "endPosition": 5
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 20,
+            "endPosition": 22
+          }
+        ],
+        "teams": [
+          "norwich-city",
+          "charlton-athletic",
+          "wimbledon",
+          "portsmouth",
+          "crystal-palace",
+          "hull-city",
+          "sheffield-united",
+          "oldham-athletic",
+          "millwall",
+          "stoke-city",
+          "brighton-and-hove-albion",
+          "barnsley",
+          "bradford-city",
+          "leeds-united",
+          "grimsby-town",
+          "huddersfield-town",
+          "shrewsbury-town",
+          "sunderland",
+          "blackburn-rovers",
+          "carlisle-united",
+          "middlesbrough",
+          "fulham"
+        ]
+      },
+      {
+        "tier": 3,
+        "name": "Third Division",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 3
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 4,
+            "endPosition": 6
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 21,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "reading",
+          "plymouth-argyle",
+          "derby-county",
+          "wigan-athletic",
+          "gillingham",
+          "walsall",
+          "york-city",
+          "notts-county",
+          "bristol-city",
+          "brentford",
+          "doncaster-rovers",
+          "blackpool",
+          "darlington",
+          "rotherham-united",
+          "afc-bournemouth",
+          "bristol-rovers",
+          "chesterfield",
+          "bolton-wanderers",
+          "newport-county",
+          "bury",
+          "lincoln-city",
+          "cardiff-city",
+          "wolverhampton-wanderers",
+          "swansea-city"
+        ]
+      },
+      {
+        "tier": 4,
+        "name": "Fourth Division",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 3
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 4,
+            "endPosition": 6
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated to Conference",
+            "startPosition": 24,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "swindon-town",
+          "chester-city",
+          "mansfield-town",
+          "port-vale",
+          "leyton-orient",
+          "colchester-united",
+          "hartlepool-united",
+          "northampton-town",
+          "southend-united",
+          "hereford-united",
+          "stockport-county",
+          "crewe-alexandra",
+          "wrexham",
+          "burnley",
+          "scunthorpe-united",
+          "aldershot-town",
+          "peterborough-united",
+          "rochdale",
+          "tranmere-rovers",
+          "halifax-town",
+          "exeter-city",
+          "cambridge-united",
+          "preston-north-end",
+          "torquay-united"
+        ]
+      }
+    ]
+  },
+  {
+    "year": 1987,
+    "season": "1986-87",
+    "nextYear": 1988,
+    "divisions": [
+      {
+        "tier": 1,
+        "name": "First Division",
+        "teamCount": 22,
+        "zones": [
+          {
+            "type": "champions",
+            "label": "Champions",
+            "startPosition": 1,
+            "endPosition": 1
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 20,
+            "endPosition": 22
+          }
+        ],
+        "teams": [
+          "everton",
+          "liverpool",
+          "tottenham-hotspur",
+          "arsenal",
+          "norwich-city",
+          "wimbledon",
+          "luton-town",
+          "nottingham-forest",
+          "watford",
+          "coventry-city",
+          "manchester-united",
+          "southampton",
+          "sheffield-wednesday",
+          "chelsea",
+          "west-ham-united",
+          "queens-park-rangers",
+          "newcastle-united",
+          "oxford-united",
+          "charlton-athletic",
+          "leicester-city",
+          "manchester-city",
+          "aston-villa"
+        ]
+      },
+      {
+        "tier": 2,
+        "name": "Second Division",
+        "teamCount": 22,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 2
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 3,
+            "endPosition": 5
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 20,
+            "endPosition": 22
+          }
+        ],
+        "teams": [
+          "derby-county",
+          "portsmouth",
+          "oldham-athletic",
+          "leeds-united",
+          "ipswich-town",
+          "crystal-palace",
+          "plymouth-argyle",
+          "stoke-city",
+          "sheffield-united",
+          "bradford-city",
+          "barnsley",
+          "blackburn-rovers",
+          "reading",
+          "hull-city",
+          "west-bromwich-albion",
+          "millwall",
+          "huddersfield-town",
+          "shrewsbury-town",
+          "birmingham-city",
+          "sunderland",
+          "grimsby-town",
+          "brighton-and-hove-albion"
+        ]
+      },
+      {
+        "tier": 3,
+        "name": "Third Division",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 3
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 4,
+            "endPosition": 6
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 21,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "afc-bournemouth",
+          "middlesbrough",
+          "swindon-town",
+          "wigan-athletic",
+          "gillingham",
+          "bristol-city",
+          "notts-county",
+          "walsall",
+          "blackpool",
+          "mansfield-town",
+          "brentford",
+          "port-vale",
+          "doncaster-rovers",
+          "rotherham-united",
+          "chester-city",
+          "bury",
+          "chesterfield",
+          "fulham",
+          "bristol-rovers",
+          "york-city",
+          "bolton-wanderers",
+          "carlisle-united",
+          "darlington",
+          "newport-county"
+        ]
+      },
+      {
+        "tier": 4,
+        "name": "Fourth Division",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 3
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 4,
+            "endPosition": 6
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated to Conference",
+            "startPosition": 24,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "northampton-town",
+          "preston-north-end",
+          "southend-united",
+          "wolverhampton-wanderers",
+          "colchester-united",
+          "aldershot-town",
+          "leyton-orient",
+          "scunthorpe-united",
+          "wrexham",
+          "peterborough-united",
+          "cambridge-united",
+          "swansea-city",
+          "cardiff-city",
+          "exeter-city",
+          "halifax-town",
+          "hereford-united",
+          "crewe-alexandra",
+          "hartlepool-united",
+          "stockport-county",
+          "tranmere-rovers",
+          "rochdale",
+          "burnley",
+          "torquay-united",
+          "lincoln-city"
+        ]
+      }
+    ]
+  },
+  {
+    "year": 1988,
+    "season": "1987-88",
+    "nextYear": 1989,
+    "divisions": [
+      {
+        "tier": 1,
+        "name": "First Division",
+        "teamCount": 21,
+        "zones": [
+          {
+            "type": "champions",
+            "label": "Champions",
+            "startPosition": 1,
+            "endPosition": 1
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 19,
+            "endPosition": 21
+          }
+        ],
+        "teams": [
+          "liverpool",
+          "manchester-united",
+          "nottingham-forest",
+          "everton",
+          "queens-park-rangers",
+          "arsenal",
+          "wimbledon",
+          "newcastle-united",
+          "luton-town",
+          "coventry-city",
+          "sheffield-wednesday",
+          "southampton",
+          "tottenham-hotspur",
+          "norwich-city",
+          "derby-county",
+          "west-ham-united",
+          "charlton-athletic",
+          "chelsea",
+          "portsmouth",
+          "watford",
+          "oxford-united"
+        ]
+      },
+      {
+        "tier": 2,
+        "name": "Second Division",
+        "teamCount": 23,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 2
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 3,
+            "endPosition": 5
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 21,
+            "endPosition": 23
+          }
+        ],
+        "teams": [
+          "millwall",
+          "aston-villa",
+          "middlesbrough",
+          "bradford-city",
+          "blackburn-rovers",
+          "crystal-palace",
+          "leeds-united",
+          "ipswich-town",
+          "manchester-city",
+          "oldham-athletic",
+          "stoke-city",
+          "swindon-town",
+          "leicester-city",
+          "barnsley",
+          "hull-city",
+          "plymouth-argyle",
+          "afc-bournemouth",
+          "shrewsbury-town",
+          "birmingham-city",
+          "west-bromwich-albion",
+          "sheffield-united",
+          "reading",
+          "huddersfield-town"
+        ]
+      },
+      {
+        "tier": 3,
+        "name": "Third Division",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 3
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 4,
+            "endPosition": 6
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 21,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "sunderland",
+          "brighton-and-hove-albion",
+          "walsall",
+          "notts-county",
+          "bristol-city",
+          "northampton-town",
+          "wigan-athletic",
+          "bristol-rovers",
+          "fulham",
+          "blackpool",
+          "port-vale",
+          "brentford",
+          "gillingham",
+          "bury",
+          "chester-city",
+          "preston-north-end",
+          "southend-united",
+          "chesterfield",
+          "mansfield-town",
+          "aldershot-town",
+          "rotherham-united",
+          "grimsby-town",
+          "york-city",
+          "doncaster-rovers"
+        ]
+      },
+      {
+        "tier": 4,
+        "name": "Fourth Division",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 3
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 4,
+            "endPosition": 6
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated to Conference",
+            "startPosition": 24,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "wolverhampton-wanderers",
+          "cardiff-city",
+          "bolton-wanderers",
+          "scunthorpe-united",
+          "torquay-united",
+          "swansea-city",
+          "peterborough-united",
+          "leyton-orient",
+          "colchester-united",
+          "burnley",
+          "wrexham",
+          "scarborough",
+          "darlington",
+          "tranmere-rovers",
+          "cambridge-united",
+          "hartlepool-united",
+          "crewe-alexandra",
+          "halifax-town",
+          "hereford-united",
+          "stockport-county",
+          "rochdale",
+          "exeter-city",
+          "carlisle-united",
+          "newport-county"
+        ]
+      }
+    ]
+  },
+  {
+    "year": 1989,
+    "season": "1988-89",
+    "nextYear": 1990,
+    "divisions": [
+      {
+        "tier": 1,
+        "name": "First Division",
+        "teamCount": 20,
+        "zones": [
+          {
+            "type": "champions",
+            "label": "Champions",
+            "startPosition": 1,
+            "endPosition": 1
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 18,
+            "endPosition": 20
+          }
+        ],
+        "teams": [
+          "arsenal",
+          "liverpool",
+          "nottingham-forest",
+          "norwich-city",
+          "derby-county",
+          "tottenham-hotspur",
+          "coventry-city",
+          "everton",
+          "queens-park-rangers",
+          "millwall",
+          "manchester-united",
+          "wimbledon",
+          "southampton",
+          "charlton-athletic",
+          "sheffield-wednesday",
+          "luton-town",
+          "aston-villa",
+          "middlesbrough",
+          "west-ham-united",
+          "newcastle-united"
+        ]
+      },
+      {
+        "tier": 2,
+        "name": "Second Division",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 2
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 3,
+            "endPosition": 6
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 22,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "chelsea",
+          "manchester-city",
+          "crystal-palace",
+          "watford",
+          "blackburn-rovers",
+          "swindon-town",
+          "barnsley",
+          "ipswich-town",
+          "west-bromwich-albion",
+          "leeds-united",
+          "sunderland",
+          "afc-bournemouth",
+          "stoke-city",
+          "bradford-city",
+          "leicester-city",
+          "oldham-athletic",
+          "oxford-united",
+          "plymouth-argyle",
+          "brighton-and-hove-albion",
+          "portsmouth",
+          "hull-city",
+          "shrewsbury-town",
+          "birmingham-city",
+          "walsall"
+        ]
+      },
+      {
+        "tier": 3,
+        "name": "Third Division",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 2
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 3,
+            "endPosition": 6
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 21,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "wolverhampton-wanderers",
+          "sheffield-united",
+          "port-vale",
+          "fulham",
+          "bristol-rovers",
+          "preston-north-end",
+          "brentford",
+          "chester-city",
+          "notts-county",
+          "bolton-wanderers",
+          "bristol-city",
+          "swansea-city",
+          "bury",
+          "huddersfield-town",
+          "mansfield-town",
+          "cardiff-city",
+          "wigan-athletic",
+          "reading",
+          "blackpool",
+          "northampton-town",
+          "southend-united",
+          "chesterfield",
+          "gillingham",
+          "aldershot-town"
+        ]
+      },
+      {
+        "tier": 4,
+        "name": "Fourth Division",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 3
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 4,
+            "endPosition": 7
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated to Conference",
+            "startPosition": 24,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "rotherham-united",
+          "tranmere-rovers",
+          "crewe-alexandra",
+          "scunthorpe-united",
+          "scarborough",
+          "leyton-orient",
+          "wrexham",
+          "cambridge-united",
+          "grimsby-town",
+          "lincoln-city",
+          "york-city",
+          "carlisle-united",
+          "exeter-city",
+          "torquay-united",
+          "hereford-united",
+          "burnley",
+          "peterborough-united",
+          "rochdale",
+          "hartlepool-united",
+          "stockport-county",
+          "halifax-town",
+          "colchester-united",
+          "doncaster-rovers",
+          "darlington"
+        ]
+      }
+    ]
+  },
+  {
+    "year": 1990,
+    "season": "1989-90",
+    "nextYear": 1991,
+    "divisions": [
+      {
+        "tier": 1,
+        "name": "First Division",
+        "teamCount": 20,
+        "zones": [
+          {
+            "type": "champions",
+            "label": "Champions",
+            "startPosition": 1,
+            "endPosition": 1
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 18,
+            "endPosition": 20
+          }
+        ],
+        "teams": [
+          "liverpool",
+          "aston-villa",
+          "tottenham-hotspur",
+          "arsenal",
+          "chelsea",
+          "everton",
+          "southampton",
+          "wimbledon",
+          "nottingham-forest",
+          "norwich-city",
+          "queens-park-rangers",
+          "coventry-city",
+          "manchester-united",
+          "manchester-city",
+          "crystal-palace",
+          "derby-county",
+          "luton-town",
+          "sheffield-wednesday",
+          "charlton-athletic",
+          "millwall"
+        ]
+      },
+      {
+        "tier": 2,
+        "name": "Second Division",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 2
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 3,
+            "endPosition": 6
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 22,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "leeds-united",
+          "sheffield-united",
+          "newcastle-united",
+          "swindon-town",
+          "blackburn-rovers",
+          "sunderland",
+          "west-ham-united",
+          "oldham-athletic",
+          "ipswich-town",
+          "wolverhampton-wanderers",
+          "port-vale",
+          "portsmouth",
+          "leicester-city",
+          "hull-city",
+          "watford",
+          "plymouth-argyle",
+          "oxford-united",
+          "brighton-and-hove-albion",
+          "barnsley",
+          "west-bromwich-albion",
+          "middlesbrough",
+          "afc-bournemouth",
+          "bradford-city",
+          "stoke-city"
+        ]
+      },
+      {
+        "tier": 3,
+        "name": "Third Division",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 2
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 3,
+            "endPosition": 6
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 21,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "bristol-rovers",
+          "bristol-city",
+          "notts-county",
+          "tranmere-rovers",
+          "bury",
+          "bolton-wanderers",
+          "birmingham-city",
+          "huddersfield-town",
+          "rotherham-united",
+          "reading",
+          "shrewsbury-town",
+          "crewe-alexandra",
+          "brentford",
+          "leyton-orient",
+          "mansfield-town",
+          "chester-city",
+          "swansea-city",
+          "wigan-athletic",
+          "preston-north-end",
+          "fulham",
+          "cardiff-city",
+          "northampton-town",
+          "blackpool",
+          "walsall"
+        ]
+      },
+      {
+        "tier": 4,
+        "name": "Fourth Division",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 3
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 4,
+            "endPosition": 7
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated to Conference",
+            "startPosition": 24,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "exeter-city",
+          "grimsby-town",
+          "southend-united",
+          "stockport-county",
+          "maidstone-united",
+          "cambridge-united",
+          "chesterfield",
+          "carlisle-united",
+          "peterborough-united",
+          "lincoln-city",
+          "scunthorpe-united",
+          "rochdale",
+          "york-city",
+          "gillingham",
+          "torquay-united",
+          "burnley",
+          "hereford-united",
+          "scarborough",
+          "hartlepool-united",
+          "doncaster-rovers",
+          "wrexham",
+          "aldershot-town",
+          "halifax-town",
+          "colchester-united"
+        ]
+      }
+    ]
+  },
+  {
+    "year": 1991,
+    "season": "1990-91",
+    "nextYear": 1992,
+    "divisions": [
+      {
+        "tier": 1,
+        "name": "First Division",
+        "teamCount": 20,
+        "zones": [
+          {
+            "type": "champions",
+            "label": "Champions",
+            "startPosition": 1,
+            "endPosition": 1
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 18,
+            "endPosition": 20
+          }
+        ],
+        "teams": [
+          "arsenal",
+          "liverpool",
+          "crystal-palace",
+          "leeds-united",
+          "manchester-city",
+          "manchester-united",
+          "wimbledon",
+          "nottingham-forest",
+          "everton",
+          "tottenham-hotspur",
+          "chelsea",
+          "queens-park-rangers",
+          "sheffield-united",
+          "southampton",
+          "norwich-city",
+          "coventry-city",
+          "aston-villa",
+          "luton-town",
+          "sunderland",
+          "derby-county"
+        ]
+      },
+      {
+        "tier": 2,
+        "name": "Second Division",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 2
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 3,
+            "endPosition": 6
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 22,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "oldham-athletic",
+          "west-ham-united",
+          "sheffield-wednesday",
+          "notts-county",
+          "millwall",
+          "brighton-and-hove-albion",
+          "middlesbrough",
+          "barnsley",
+          "bristol-city",
+          "oxford-united",
+          "newcastle-united",
+          "wolverhampton-wanderers",
+          "bristol-rovers",
+          "ipswich-town",
+          "port-vale",
+          "charlton-athletic",
+          "portsmouth",
+          "plymouth-argyle",
+          "blackburn-rovers",
+          "watford",
+          "swindon-town",
+          "leicester-city",
+          "west-bromwich-albion",
+          "hull-city"
+        ]
+      },
+      {
+        "tier": 3,
+        "name": "Third Division",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 2
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 3,
+            "endPosition": 6
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 21,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "cambridge-united",
+          "southend-united",
+          "grimsby-town",
+          "bolton-wanderers",
+          "tranmere-rovers",
+          "brentford",
+          "bury",
+          "bradford-city",
+          "afc-bournemouth",
+          "wigan-athletic",
+          "huddersfield-town",
+          "birmingham-city",
+          "leyton-orient",
+          "stoke-city",
+          "reading",
+          "exeter-city",
+          "preston-north-end",
+          "shrewsbury-town",
+          "chester-city",
+          "swansea-city",
+          "fulham",
+          "crewe-alexandra",
+          "rotherham-united",
+          "mansfield-town"
+        ]
+      },
+      {
+        "tier": 4,
+        "name": "Fourth Division",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 3
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 4,
+            "endPosition": 7
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated to Conference",
+            "startPosition": 24,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "darlington",
+          "stockport-county",
+          "hartlepool-united",
+          "peterborough-united",
+          "blackpool",
+          "burnley",
+          "torquay-united",
+          "scunthorpe-united",
+          "scarborough",
+          "northampton-town",
+          "doncaster-rovers",
+          "rochdale",
+          "cardiff-city",
+          "lincoln-city",
+          "gillingham",
+          "walsall",
+          "hereford-united",
+          "chesterfield",
+          "maidstone-united",
+          "carlisle-united",
+          "york-city",
+          "halifax-town",
+          "aldershot-town",
+          "wrexham"
+        ]
+      }
+    ]
+  },
+  {
+    "year": 1992,
+    "season": "1991-92",
+    "nextYear": 1993,
+    "divisions": [
+      {
+        "tier": 1,
+        "name": "First Division",
+        "teamCount": 22,
+        "zones": [
+          {
+            "type": "champions",
+            "label": "Champions",
+            "startPosition": 1,
+            "endPosition": 1
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 20,
+            "endPosition": 22
+          }
+        ],
+        "teams": [
+          "leeds-united",
+          "manchester-united",
+          "sheffield-wednesday",
+          "arsenal",
+          "manchester-city",
+          "liverpool",
+          "aston-villa",
+          "nottingham-forest",
+          "sheffield-united",
+          "crystal-palace",
+          "queens-park-rangers",
+          "everton",
+          "wimbledon",
+          "chelsea",
+          "tottenham-hotspur",
+          "southampton",
+          "oldham-athletic",
+          "norwich-city",
+          "coventry-city",
+          "luton-town",
+          "notts-county",
+          "west-ham-united"
+        ]
+      },
+      {
+        "tier": 2,
+        "name": "Second Division",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 2
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 3,
+            "endPosition": 6
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 22,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "ipswich-town",
+          "middlesbrough",
+          "derby-county",
+          "leicester-city",
+          "cambridge-united",
+          "blackburn-rovers",
+          "charlton-athletic",
+          "swindon-town",
+          "portsmouth",
+          "watford",
+          "wolverhampton-wanderers",
+          "southend-united",
+          "bristol-rovers",
+          "tranmere-rovers",
+          "millwall",
+          "barnsley",
+          "bristol-city",
+          "sunderland",
+          "grimsby-town",
+          "newcastle-united",
+          "oxford-united",
+          "plymouth-argyle",
+          "brighton-and-hove-albion",
+          "port-vale"
+        ]
+      },
+      {
+        "tier": 3,
+        "name": "Third Division",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 2
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 3,
+            "endPosition": 6
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 21,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "brentford",
+          "birmingham-city",
+          "huddersfield-town",
+          "stoke-city",
+          "stockport-county",
+          "peterborough-united",
+          "west-bromwich-albion",
+          "afc-bournemouth",
+          "fulham",
+          "leyton-orient",
+          "hartlepool-united",
+          "reading",
+          "bolton-wanderers",
+          "hull-city",
+          "wigan-athletic",
+          "bradford-city",
+          "preston-north-end",
+          "chester-city",
+          "swansea-city",
+          "exeter-city",
+          "bury",
+          "shrewsbury-town",
+          "torquay-united",
+          "darlington"
+        ]
+      },
+      {
+        "tier": 4,
+        "name": "Fourth Division",
+        "teamCount": 22,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 3
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 4,
+            "endPosition": 7
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated to Conference",
+            "startPosition": 22,
+            "endPosition": 22
+          }
+        ],
+        "teams": [
+          "burnley",
+          "rotherham-united",
+          "mansfield-town",
+          "blackpool",
+          "scunthorpe-united",
+          "crewe-alexandra",
+          "barnet",
+          "rochdale",
+          "cardiff-city",
+          "lincoln-city",
+          "gillingham",
+          "scarborough",
+          "chesterfield",
+          "wrexham",
+          "walsall",
+          "northampton-town",
+          "hereford-united",
+          "maidstone-united",
+          "york-city",
+          "halifax-town",
+          "doncaster-rovers",
+          "carlisle-united"
+        ]
+      }
+    ]
+  }
+]

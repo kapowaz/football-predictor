@@ -1,0 +1,4622 @@
+[
+  {
+    "year": 2005,
+    "season": "2004-05",
+    "nextYear": 2006,
+    "divisions": [
+      {
+        "tier": 1,
+        "name": "Premier League",
+        "teamCount": 20,
+        "zones": [
+          {
+            "type": "champions",
+            "label": "Champions",
+            "startPosition": 1,
+            "endPosition": 1
+          },
+          {
+            "type": "championsLeague",
+            "label": "Champions League",
+            "startPosition": 2,
+            "endPosition": 4
+          },
+          {
+            "type": "europaLeague",
+            "label": "UEFA Cup",
+            "startPosition": 5,
+            "endPosition": 6
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 18,
+            "endPosition": 20
+          }
+        ],
+        "teams": [
+          "chelsea",
+          "arsenal",
+          "manchester-united",
+          "everton",
+          "liverpool",
+          "bolton-wanderers",
+          "middlesbrough",
+          "manchester-city",
+          "tottenham-hotspur",
+          "aston-villa",
+          "charlton-athletic",
+          "birmingham-city",
+          "fulham",
+          "newcastle-united",
+          "blackburn-rovers",
+          "portsmouth",
+          "west-bromwich-albion",
+          "crystal-palace",
+          "norwich-city",
+          "southampton"
+        ]
+      },
+      {
+        "tier": 2,
+        "name": "Championship",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 2
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 3,
+            "endPosition": 6
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 22,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "sunderland",
+          "wigan-athletic",
+          "ipswich-town",
+          "derby-county",
+          "preston-north-end",
+          "west-ham-united",
+          "reading",
+          "sheffield-united",
+          "wolverhampton-wanderers",
+          "millwall",
+          "queens-park-rangers",
+          "stoke-city",
+          "burnley",
+          "leeds-united",
+          "leicester-city",
+          "cardiff-city",
+          "plymouth-argyle",
+          "watford",
+          "coventry-city",
+          "brighton-and-hove-albion",
+          "crewe-alexandra",
+          "gillingham",
+          "nottingham-forest",
+          "rotherham-united"
+        ]
+      },
+      {
+        "tier": 3,
+        "name": "League One",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 2
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 3,
+            "endPosition": 6
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 21,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "luton-town",
+          "hull-city",
+          "tranmere-rovers",
+          "brentford",
+          "sheffield-wednesday",
+          "hartlepool-united",
+          "bristol-city",
+          "afc-bournemouth",
+          "huddersfield-town",
+          "doncaster-rovers",
+          "bradford-city",
+          "swindon-town",
+          "barnsley",
+          "walsall",
+          "colchester-united",
+          "blackpool",
+          "chesterfield",
+          "port-vale",
+          "oldham-athletic",
+          "milton-keynes-dons",
+          "torquay-united",
+          "wrexham",
+          "peterborough-united",
+          "stockport-county"
+        ]
+      },
+      {
+        "tier": 4,
+        "name": "League Two",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 3
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 4,
+            "endPosition": 7
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 23,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "yeovil-town",
+          "scunthorpe-united",
+          "swansea-city",
+          "southend-united",
+          "macclesfield-town",
+          "lincoln-city",
+          "northampton-town",
+          "darlington",
+          "rochdale",
+          "wycombe-wanderers",
+          "leyton-orient",
+          "bristol-rovers",
+          "mansfield-town",
+          "cheltenham-town",
+          "oxford-united",
+          "boston-united",
+          "bury",
+          "grimsby-town",
+          "notts-county",
+          "chester-city",
+          "shrewsbury-town",
+          "rushden-and-diamonds",
+          "kidderminster-harriers",
+          "cambridge-united"
+        ]
+      }
+    ]
+  },
+  {
+    "year": 2006,
+    "season": "2005-06",
+    "nextYear": 2007,
+    "divisions": [
+      {
+        "tier": 1,
+        "name": "Premier League",
+        "teamCount": 20,
+        "zones": [
+          {
+            "type": "champions",
+            "label": "Champions",
+            "startPosition": 1,
+            "endPosition": 1
+          },
+          {
+            "type": "championsLeague",
+            "label": "Champions League",
+            "startPosition": 2,
+            "endPosition": 4
+          },
+          {
+            "type": "europaLeague",
+            "label": "UEFA Cup",
+            "startPosition": 5,
+            "endPosition": 6
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 18,
+            "endPosition": 20
+          }
+        ],
+        "teams": [
+          "chelsea",
+          "manchester-united",
+          "liverpool",
+          "arsenal",
+          "tottenham-hotspur",
+          "blackburn-rovers",
+          "newcastle-united",
+          "bolton-wanderers",
+          "west-ham-united",
+          "wigan-athletic",
+          "everton",
+          "fulham",
+          "charlton-athletic",
+          "middlesbrough",
+          "manchester-city",
+          "aston-villa",
+          "portsmouth",
+          "birmingham-city",
+          "west-bromwich-albion",
+          "sunderland"
+        ]
+      },
+      {
+        "tier": 2,
+        "name": "Championship",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 2
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 3,
+            "endPosition": 6
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 22,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "reading",
+          "sheffield-united",
+          "watford",
+          "preston-north-end",
+          "leeds-united",
+          "crystal-palace",
+          "wolverhampton-wanderers",
+          "coventry-city",
+          "norwich-city",
+          "luton-town",
+          "cardiff-city",
+          "southampton",
+          "stoke-city",
+          "plymouth-argyle",
+          "ipswich-town",
+          "leicester-city",
+          "burnley",
+          "hull-city",
+          "sheffield-wednesday",
+          "derby-county",
+          "queens-park-rangers",
+          "crewe-alexandra",
+          "millwall",
+          "brighton-and-hove-albion"
+        ]
+      },
+      {
+        "tier": 3,
+        "name": "League One",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 2
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 3,
+            "endPosition": 6
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 21,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "southend-united",
+          "colchester-united",
+          "brentford",
+          "huddersfield-town",
+          "barnsley",
+          "swansea-city",
+          "nottingham-forest",
+          "doncaster-rovers",
+          "bristol-city",
+          "oldham-athletic",
+          "bradford-city",
+          "scunthorpe-united",
+          "port-vale",
+          "gillingham",
+          "yeovil-town",
+          "chesterfield",
+          "afc-bournemouth",
+          "tranmere-rovers",
+          "blackpool",
+          "rotherham-united",
+          "hartlepool-united",
+          "milton-keynes-dons",
+          "swindon-town",
+          "walsall"
+        ]
+      },
+      {
+        "tier": 4,
+        "name": "League Two",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 3
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 4,
+            "endPosition": 7
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 23,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "carlisle-united",
+          "northampton-town",
+          "leyton-orient",
+          "grimsby-town",
+          "cheltenham-town",
+          "wycombe-wanderers",
+          "lincoln-city",
+          "darlington",
+          "peterborough-united",
+          "shrewsbury-town",
+          "boston-united",
+          "bristol-rovers",
+          "wrexham",
+          "rochdale",
+          "chester-city",
+          "mansfield-town",
+          "macclesfield-town",
+          "barnet",
+          "bury",
+          "torquay-united",
+          "notts-county",
+          "stockport-county",
+          "oxford-united",
+          "rushden-and-diamonds"
+        ]
+      }
+    ]
+  },
+  {
+    "year": 2007,
+    "season": "2006-07",
+    "nextYear": 2008,
+    "divisions": [
+      {
+        "tier": 1,
+        "name": "Premier League",
+        "teamCount": 20,
+        "zones": [
+          {
+            "type": "champions",
+            "label": "Champions",
+            "startPosition": 1,
+            "endPosition": 1
+          },
+          {
+            "type": "championsLeague",
+            "label": "Champions League",
+            "startPosition": 2,
+            "endPosition": 4
+          },
+          {
+            "type": "europaLeague",
+            "label": "UEFA Cup",
+            "startPosition": 5,
+            "endPosition": 6
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 18,
+            "endPosition": 20
+          }
+        ],
+        "teams": [
+          "manchester-united",
+          "chelsea",
+          "liverpool",
+          "arsenal",
+          "tottenham-hotspur",
+          "everton",
+          "bolton-wanderers",
+          "reading",
+          "portsmouth",
+          "blackburn-rovers",
+          "aston-villa",
+          "middlesbrough",
+          "newcastle-united",
+          "manchester-city",
+          "west-ham-united",
+          "fulham",
+          "wigan-athletic",
+          "sheffield-united",
+          "charlton-athletic",
+          "watford"
+        ]
+      },
+      {
+        "tier": 2,
+        "name": "Championship",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 2
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 3,
+            "endPosition": 6
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 22,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "sunderland",
+          "birmingham-city",
+          "derby-county",
+          "west-bromwich-albion",
+          "wolverhampton-wanderers",
+          "southampton",
+          "preston-north-end",
+          "stoke-city",
+          "sheffield-wednesday",
+          "colchester-united",
+          "plymouth-argyle",
+          "crystal-palace",
+          "cardiff-city",
+          "ipswich-town",
+          "burnley",
+          "norwich-city",
+          "coventry-city",
+          "queens-park-rangers",
+          "leicester-city",
+          "barnsley",
+          "hull-city",
+          "southend-united",
+          "luton-town",
+          "leeds-united"
+        ]
+      },
+      {
+        "tier": 3,
+        "name": "League One",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 2
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 3,
+            "endPosition": 6
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 21,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "scunthorpe-united",
+          "bristol-city",
+          "blackpool",
+          "nottingham-forest",
+          "yeovil-town",
+          "oldham-athletic",
+          "swansea-city",
+          "carlisle-united",
+          "tranmere-rovers",
+          "millwall",
+          "doncaster-rovers",
+          "port-vale",
+          "crewe-alexandra",
+          "northampton-town",
+          "huddersfield-town",
+          "gillingham",
+          "cheltenham-town",
+          "brighton-and-hove-albion",
+          "afc-bournemouth",
+          "leyton-orient",
+          "chesterfield",
+          "bradford-city",
+          "rotherham-united",
+          "brentford"
+        ]
+      },
+      {
+        "tier": 4,
+        "name": "League Two",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 3
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 4,
+            "endPosition": 7
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 23,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "walsall",
+          "hartlepool-united",
+          "swindon-town",
+          "milton-keynes-dons",
+          "lincoln-city",
+          "bristol-rovers",
+          "shrewsbury-town",
+          "stockport-county",
+          "rochdale",
+          "peterborough-united",
+          "darlington",
+          "wycombe-wanderers",
+          "notts-county",
+          "barnet",
+          "grimsby-town",
+          "hereford-united",
+          "mansfield-town",
+          "chester-city",
+          "wrexham",
+          "accrington-stanley",
+          "bury",
+          "macclesfield-town",
+          "boston-united",
+          "torquay-united"
+        ]
+      }
+    ]
+  },
+  {
+    "year": 2008,
+    "season": "2007-08",
+    "nextYear": 2009,
+    "divisions": [
+      {
+        "tier": 1,
+        "name": "Premier League",
+        "teamCount": 20,
+        "zones": [
+          {
+            "type": "champions",
+            "label": "Champions",
+            "startPosition": 1,
+            "endPosition": 1
+          },
+          {
+            "type": "championsLeague",
+            "label": "Champions League",
+            "startPosition": 2,
+            "endPosition": 4
+          },
+          {
+            "type": "europaLeague",
+            "label": "UEFA Cup",
+            "startPosition": 5,
+            "endPosition": 6
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 18,
+            "endPosition": 20
+          }
+        ],
+        "teams": [
+          "manchester-united",
+          "chelsea",
+          "arsenal",
+          "liverpool",
+          "everton",
+          "aston-villa",
+          "blackburn-rovers",
+          "portsmouth",
+          "manchester-city",
+          "west-ham-united",
+          "tottenham-hotspur",
+          "newcastle-united",
+          "middlesbrough",
+          "wigan-athletic",
+          "sunderland",
+          "bolton-wanderers",
+          "fulham",
+          "reading",
+          "birmingham-city",
+          "derby-county"
+        ]
+      },
+      {
+        "tier": 2,
+        "name": "Championship",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 2
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 3,
+            "endPosition": 6
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 22,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "west-bromwich-albion",
+          "stoke-city",
+          "hull-city",
+          "bristol-city",
+          "crystal-palace",
+          "watford",
+          "wolverhampton-wanderers",
+          "ipswich-town",
+          "sheffield-united",
+          "plymouth-argyle",
+          "charlton-athletic",
+          "cardiff-city",
+          "burnley",
+          "queens-park-rangers",
+          "preston-north-end",
+          "sheffield-wednesday",
+          "norwich-city",
+          "barnsley",
+          "blackpool",
+          "southampton",
+          "coventry-city",
+          "leicester-city",
+          "scunthorpe-united",
+          "colchester-united"
+        ]
+      },
+      {
+        "tier": 3,
+        "name": "League One",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 2
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 3,
+            "endPosition": 6
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 21,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "swansea-city",
+          "nottingham-forest",
+          "doncaster-rovers",
+          "carlisle-united",
+          "leeds-united",
+          "southend-united",
+          "brighton-and-hove-albion",
+          "oldham-athletic",
+          "northampton-town",
+          "huddersfield-town",
+          "tranmere-rovers",
+          "walsall",
+          "swindon-town",
+          "leyton-orient",
+          "hartlepool-united",
+          "bristol-rovers",
+          "millwall",
+          "yeovil-town",
+          "cheltenham-town",
+          "crewe-alexandra",
+          "afc-bournemouth",
+          "gillingham",
+          "port-vale",
+          "luton-town"
+        ]
+      },
+      {
+        "tier": 4,
+        "name": "League Two",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 3
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 4,
+            "endPosition": 7
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 23,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "milton-keynes-dons",
+          "peterborough-united",
+          "hereford-united",
+          "stockport-county",
+          "rochdale",
+          "darlington",
+          "wycombe-wanderers",
+          "chesterfield",
+          "rotherham-united",
+          "bradford-city",
+          "morecambe",
+          "barnet",
+          "bury",
+          "brentford",
+          "lincoln-city",
+          "grimsby-town",
+          "accrington-stanley",
+          "shrewsbury-town",
+          "macclesfield-town",
+          "dagenham-and-redbridge",
+          "notts-county",
+          "chester-city",
+          "mansfield-town",
+          "wrexham"
+        ]
+      }
+    ]
+  },
+  {
+    "year": 2009,
+    "season": "2008-09",
+    "nextYear": 2010,
+    "divisions": [
+      {
+        "tier": 1,
+        "name": "Premier League",
+        "teamCount": 20,
+        "zones": [
+          {
+            "type": "champions",
+            "label": "Champions",
+            "startPosition": 1,
+            "endPosition": 1
+          },
+          {
+            "type": "championsLeague",
+            "label": "Champions League",
+            "startPosition": 2,
+            "endPosition": 4
+          },
+          {
+            "type": "europaLeague",
+            "label": "UEFA Cup",
+            "startPosition": 5,
+            "endPosition": 6
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 18,
+            "endPosition": 20
+          }
+        ],
+        "teams": [
+          "manchester-united",
+          "liverpool",
+          "chelsea",
+          "arsenal",
+          "everton",
+          "aston-villa",
+          "fulham",
+          "tottenham-hotspur",
+          "west-ham-united",
+          "manchester-city",
+          "wigan-athletic",
+          "stoke-city",
+          "bolton-wanderers",
+          "portsmouth",
+          "blackburn-rovers",
+          "sunderland",
+          "hull-city",
+          "newcastle-united",
+          "middlesbrough",
+          "west-bromwich-albion"
+        ]
+      },
+      {
+        "tier": 2,
+        "name": "Championship",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 2
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 3,
+            "endPosition": 6
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 22,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "wolverhampton-wanderers",
+          "birmingham-city",
+          "sheffield-united",
+          "reading",
+          "burnley",
+          "preston-north-end",
+          "cardiff-city",
+          "swansea-city",
+          "ipswich-town",
+          "bristol-city",
+          "queens-park-rangers",
+          "sheffield-wednesday",
+          "watford",
+          "doncaster-rovers",
+          "crystal-palace",
+          "blackpool",
+          "coventry-city",
+          "derby-county",
+          "nottingham-forest",
+          "barnsley",
+          "plymouth-argyle",
+          "norwich-city",
+          "southampton",
+          "charlton-athletic"
+        ]
+      },
+      {
+        "tier": 3,
+        "name": "League One",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 2
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 3,
+            "endPosition": 6
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 21,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "leicester-city",
+          "peterborough-united",
+          "milton-keynes-dons",
+          "leeds-united",
+          "millwall",
+          "scunthorpe-united",
+          "tranmere-rovers",
+          "southend-united",
+          "huddersfield-town",
+          "oldham-athletic",
+          "bristol-rovers",
+          "colchester-united",
+          "walsall",
+          "leyton-orient",
+          "swindon-town",
+          "brighton-and-hove-albion",
+          "yeovil-town",
+          "stockport-county",
+          "hartlepool-united",
+          "carlisle-united",
+          "northampton-town",
+          "crewe-alexandra",
+          "cheltenham-town",
+          "hereford-united"
+        ]
+      },
+      {
+        "tier": 4,
+        "name": "League Two",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 3
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 4,
+            "endPosition": 7
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 23,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "brentford",
+          "exeter-city",
+          "wycombe-wanderers",
+          "bury",
+          "gillingham",
+          "rochdale",
+          "shrewsbury-town",
+          "dagenham-and-redbridge",
+          "bradford-city",
+          "chesterfield",
+          "morecambe",
+          "darlington",
+          "lincoln-city",
+          "rotherham-united",
+          "aldershot-town",
+          "accrington-stanley",
+          "barnet",
+          "port-vale",
+          "notts-county",
+          "macclesfield-town",
+          "afc-bournemouth",
+          "grimsby-town",
+          "chester-city",
+          "luton-town"
+        ]
+      }
+    ]
+  },
+  {
+    "year": 2010,
+    "season": "2009-10",
+    "nextYear": 2011,
+    "divisions": [
+      {
+        "tier": 1,
+        "name": "Premier League",
+        "teamCount": 20,
+        "zones": [
+          {
+            "type": "champions",
+            "label": "Champions",
+            "startPosition": 1,
+            "endPosition": 1
+          },
+          {
+            "type": "championsLeague",
+            "label": "Champions League",
+            "startPosition": 2,
+            "endPosition": 4
+          },
+          {
+            "type": "europaLeague",
+            "label": "Europa League",
+            "startPosition": 5,
+            "endPosition": 6
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 18,
+            "endPosition": 20
+          }
+        ],
+        "teams": [
+          "chelsea",
+          "manchester-united",
+          "arsenal",
+          "tottenham-hotspur",
+          "manchester-city",
+          "aston-villa",
+          "liverpool",
+          "everton",
+          "birmingham-city",
+          "blackburn-rovers",
+          "stoke-city",
+          "fulham",
+          "sunderland",
+          "bolton-wanderers",
+          "wolverhampton-wanderers",
+          "wigan-athletic",
+          "west-ham-united",
+          "burnley",
+          "hull-city",
+          "portsmouth"
+        ]
+      },
+      {
+        "tier": 2,
+        "name": "Championship",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 2
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 3,
+            "endPosition": 6
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 22,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "newcastle-united",
+          "west-bromwich-albion",
+          "nottingham-forest",
+          "cardiff-city",
+          "leicester-city",
+          "blackpool",
+          "swansea-city",
+          "sheffield-united",
+          "reading",
+          "bristol-city",
+          "middlesbrough",
+          "doncaster-rovers",
+          "queens-park-rangers",
+          "derby-county",
+          "ipswich-town",
+          "watford",
+          "preston-north-end",
+          "barnsley",
+          "coventry-city",
+          "scunthorpe-united",
+          "crystal-palace",
+          "sheffield-wednesday",
+          "plymouth-argyle",
+          "peterborough-united"
+        ]
+      },
+      {
+        "tier": 3,
+        "name": "League One",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 2
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 3,
+            "endPosition": 6
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 21,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "norwich-city",
+          "leeds-united",
+          "millwall",
+          "charlton-athletic",
+          "swindon-town",
+          "huddersfield-town",
+          "southampton",
+          "colchester-united",
+          "brentford",
+          "walsall",
+          "bristol-rovers",
+          "milton-keynes-dons",
+          "brighton-and-hove-albion",
+          "carlisle-united",
+          "yeovil-town",
+          "oldham-athletic",
+          "leyton-orient",
+          "exeter-city",
+          "tranmere-rovers",
+          "hartlepool-united",
+          "gillingham",
+          "wycombe-wanderers",
+          "southend-united",
+          "stockport-county"
+        ]
+      },
+      {
+        "tier": 4,
+        "name": "League Two",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 3
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 4,
+            "endPosition": 7
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 23,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "notts-county",
+          "afc-bournemouth",
+          "rochdale",
+          "morecambe",
+          "rotherham-united",
+          "aldershot-town",
+          "dagenham-and-redbridge",
+          "chesterfield",
+          "bury",
+          "port-vale",
+          "northampton-town",
+          "shrewsbury-town",
+          "burton-albion",
+          "bradford-city",
+          "accrington-stanley",
+          "hereford-united",
+          "torquay-united",
+          "crewe-alexandra",
+          "macclesfield-town",
+          "lincoln-city",
+          "barnet",
+          "cheltenham-town",
+          "grimsby-town",
+          "darlington"
+        ]
+      }
+    ]
+  },
+  {
+    "year": 2011,
+    "season": "2010-11",
+    "nextYear": 2012,
+    "divisions": [
+      {
+        "tier": 1,
+        "name": "Premier League",
+        "teamCount": 20,
+        "zones": [
+          {
+            "type": "champions",
+            "label": "Champions",
+            "startPosition": 1,
+            "endPosition": 1
+          },
+          {
+            "type": "championsLeague",
+            "label": "Champions League",
+            "startPosition": 2,
+            "endPosition": 4
+          },
+          {
+            "type": "europaLeague",
+            "label": "Europa League",
+            "startPosition": 5,
+            "endPosition": 6
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 18,
+            "endPosition": 20
+          }
+        ],
+        "teams": [
+          "manchester-united",
+          "chelsea",
+          "manchester-city",
+          "arsenal",
+          "tottenham-hotspur",
+          "liverpool",
+          "everton",
+          "fulham",
+          "aston-villa",
+          "sunderland",
+          "west-bromwich-albion",
+          "newcastle-united",
+          "stoke-city",
+          "bolton-wanderers",
+          "blackburn-rovers",
+          "wigan-athletic",
+          "wolverhampton-wanderers",
+          "birmingham-city",
+          "blackpool",
+          "west-ham-united"
+        ]
+      },
+      {
+        "tier": 2,
+        "name": "Championship",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 2
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 3,
+            "endPosition": 6
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 22,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "queens-park-rangers",
+          "norwich-city",
+          "swansea-city",
+          "cardiff-city",
+          "reading",
+          "nottingham-forest",
+          "leeds-united",
+          "burnley",
+          "millwall",
+          "leicester-city",
+          "hull-city",
+          "middlesbrough",
+          "ipswich-town",
+          "watford",
+          "bristol-city",
+          "portsmouth",
+          "barnsley",
+          "coventry-city",
+          "derby-county",
+          "crystal-palace",
+          "doncaster-rovers",
+          "preston-north-end",
+          "sheffield-united",
+          "scunthorpe-united"
+        ]
+      },
+      {
+        "tier": 3,
+        "name": "League One",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 2
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 3,
+            "endPosition": 6
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 21,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "brighton-and-hove-albion",
+          "southampton",
+          "huddersfield-town",
+          "peterborough-united",
+          "milton-keynes-dons",
+          "afc-bournemouth",
+          "leyton-orient",
+          "exeter-city",
+          "rochdale",
+          "colchester-united",
+          "brentford",
+          "carlisle-united",
+          "charlton-athletic",
+          "yeovil-town",
+          "sheffield-wednesday",
+          "hartlepool-united",
+          "oldham-athletic",
+          "tranmere-rovers",
+          "notts-county",
+          "walsall",
+          "dagenham-and-redbridge",
+          "bristol-rovers",
+          "plymouth-argyle",
+          "swindon-town"
+        ]
+      },
+      {
+        "tier": 4,
+        "name": "League Two",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 3
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 4,
+            "endPosition": 7
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 23,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "chesterfield",
+          "bury",
+          "wycombe-wanderers",
+          "shrewsbury-town",
+          "accrington-stanley",
+          "stevenage",
+          "torquay-united",
+          "gillingham",
+          "rotherham-united",
+          "crewe-alexandra",
+          "port-vale",
+          "oxford-united",
+          "southend-united",
+          "aldershot-town",
+          "macclesfield-town",
+          "northampton-town",
+          "cheltenham-town",
+          "bradford-city",
+          "burton-albion",
+          "morecambe",
+          "hereford-united",
+          "barnet",
+          "lincoln-city",
+          "stockport-county"
+        ]
+      }
+    ]
+  },
+  {
+    "year": 2012,
+    "season": "2011-12",
+    "nextYear": 2013,
+    "divisions": [
+      {
+        "tier": 1,
+        "name": "Premier League",
+        "teamCount": 20,
+        "zones": [
+          {
+            "type": "champions",
+            "label": "Champions",
+            "startPosition": 1,
+            "endPosition": 1
+          },
+          {
+            "type": "championsLeague",
+            "label": "Champions League",
+            "startPosition": 2,
+            "endPosition": 4
+          },
+          {
+            "type": "europaLeague",
+            "label": "Europa League",
+            "startPosition": 5,
+            "endPosition": 6
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 18,
+            "endPosition": 20
+          }
+        ],
+        "teams": [
+          "manchester-city",
+          "manchester-united",
+          "arsenal",
+          "tottenham-hotspur",
+          "newcastle-united",
+          "chelsea",
+          "everton",
+          "liverpool",
+          "fulham",
+          "west-bromwich-albion",
+          "swansea-city",
+          "norwich-city",
+          "sunderland",
+          "stoke-city",
+          "wigan-athletic",
+          "aston-villa",
+          "queens-park-rangers",
+          "bolton-wanderers",
+          "blackburn-rovers",
+          "wolverhampton-wanderers"
+        ]
+      },
+      {
+        "tier": 2,
+        "name": "Championship",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 2
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 3,
+            "endPosition": 6
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 22,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "reading",
+          "southampton",
+          "west-ham-united",
+          "birmingham-city",
+          "blackpool",
+          "cardiff-city",
+          "middlesbrough",
+          "hull-city",
+          "leicester-city",
+          "brighton-and-hove-albion",
+          "watford",
+          "derby-county",
+          "burnley",
+          "leeds-united",
+          "ipswich-town",
+          "millwall",
+          "crystal-palace",
+          "peterborough-united",
+          "nottingham-forest",
+          "bristol-city",
+          "barnsley",
+          "portsmouth",
+          "coventry-city",
+          "doncaster-rovers"
+        ]
+      },
+      {
+        "tier": 3,
+        "name": "League One",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 2
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 3,
+            "endPosition": 6
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 21,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "charlton-athletic",
+          "sheffield-wednesday",
+          "sheffield-united",
+          "huddersfield-town",
+          "milton-keynes-dons",
+          "stevenage",
+          "notts-county",
+          "carlisle-united",
+          "brentford",
+          "colchester-united",
+          "afc-bournemouth",
+          "tranmere-rovers",
+          "hartlepool-united",
+          "bury",
+          "preston-north-end",
+          "oldham-athletic",
+          "yeovil-town",
+          "scunthorpe-united",
+          "walsall",
+          "leyton-orient",
+          "wycombe-wanderers",
+          "chesterfield",
+          "exeter-city",
+          "rochdale"
+        ]
+      },
+      {
+        "tier": 4,
+        "name": "League Two",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 3
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 4,
+            "endPosition": 7
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 23,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "swindon-town",
+          "shrewsbury-town",
+          "crawley-town",
+          "southend-united",
+          "torquay-united",
+          "cheltenham-town",
+          "crewe-alexandra",
+          "gillingham",
+          "oxford-united",
+          "rotherham-united",
+          "aldershot-town",
+          "port-vale",
+          "bristol-rovers",
+          "accrington-stanley",
+          "morecambe",
+          "afc-wimbledon",
+          "burton-albion",
+          "bradford-city",
+          "dagenham-and-redbridge",
+          "northampton-town",
+          "plymouth-argyle",
+          "barnet",
+          "hereford-united",
+          "macclesfield-town"
+        ]
+      }
+    ]
+  },
+  {
+    "year": 2013,
+    "season": "2012-13",
+    "nextYear": 2014,
+    "divisions": [
+      {
+        "tier": 1,
+        "name": "Premier League",
+        "teamCount": 20,
+        "zones": [
+          {
+            "type": "champions",
+            "label": "Champions",
+            "startPosition": 1,
+            "endPosition": 1
+          },
+          {
+            "type": "championsLeague",
+            "label": "Champions League",
+            "startPosition": 2,
+            "endPosition": 4
+          },
+          {
+            "type": "europaLeague",
+            "label": "Europa League",
+            "startPosition": 5,
+            "endPosition": 6
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 18,
+            "endPosition": 20
+          }
+        ],
+        "teams": [
+          "manchester-united",
+          "manchester-city",
+          "chelsea",
+          "arsenal",
+          "tottenham-hotspur",
+          "everton",
+          "liverpool",
+          "west-bromwich-albion",
+          "swansea-city",
+          "west-ham-united",
+          "norwich-city",
+          "fulham",
+          "stoke-city",
+          "southampton",
+          "aston-villa",
+          "newcastle-united",
+          "sunderland",
+          "wigan-athletic",
+          "reading",
+          "queens-park-rangers"
+        ]
+      },
+      {
+        "tier": 2,
+        "name": "Championship",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 2
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 3,
+            "endPosition": 6
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 22,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "cardiff-city",
+          "hull-city",
+          "watford",
+          "brighton-and-hove-albion",
+          "crystal-palace",
+          "leicester-city",
+          "bolton-wanderers",
+          "nottingham-forest",
+          "charlton-athletic",
+          "derby-county",
+          "burnley",
+          "birmingham-city",
+          "leeds-united",
+          "ipswich-town",
+          "blackpool",
+          "middlesbrough",
+          "blackburn-rovers",
+          "sheffield-wednesday",
+          "huddersfield-town",
+          "millwall",
+          "barnsley",
+          "peterborough-united",
+          "wolverhampton-wanderers",
+          "bristol-city"
+        ]
+      },
+      {
+        "tier": 3,
+        "name": "League One",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 2
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 3,
+            "endPosition": 6
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 21,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "doncaster-rovers",
+          "afc-bournemouth",
+          "brentford",
+          "yeovil-town",
+          "sheffield-united",
+          "swindon-town",
+          "leyton-orient",
+          "milton-keynes-dons",
+          "walsall",
+          "crawley-town",
+          "tranmere-rovers",
+          "notts-county",
+          "crewe-alexandra",
+          "preston-north-end",
+          "coventry-city",
+          "shrewsbury-town",
+          "carlisle-united",
+          "stevenage",
+          "oldham-athletic",
+          "colchester-united",
+          "scunthorpe-united",
+          "bury",
+          "hartlepool-united",
+          "portsmouth"
+        ]
+      },
+      {
+        "tier": 4,
+        "name": "League Two",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 3
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 4,
+            "endPosition": 7
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 23,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "gillingham",
+          "rotherham-united",
+          "port-vale",
+          "burton-albion",
+          "cheltenham-town",
+          "northampton-town",
+          "bradford-city",
+          "chesterfield",
+          "oxford-united",
+          "exeter-city",
+          "southend-united",
+          "rochdale",
+          "fleetwood-town",
+          "bristol-rovers",
+          "wycombe-wanderers",
+          "morecambe",
+          "york-city",
+          "accrington-stanley",
+          "torquay-united",
+          "afc-wimbledon",
+          "plymouth-argyle",
+          "dagenham-and-redbridge",
+          "barnet",
+          "aldershot-town"
+        ]
+      }
+    ]
+  },
+  {
+    "year": 2014,
+    "season": "2013-14",
+    "nextYear": 2015,
+    "divisions": [
+      {
+        "tier": 1,
+        "name": "Premier League",
+        "teamCount": 20,
+        "zones": [
+          {
+            "type": "champions",
+            "label": "Champions",
+            "startPosition": 1,
+            "endPosition": 1
+          },
+          {
+            "type": "championsLeague",
+            "label": "Champions League",
+            "startPosition": 2,
+            "endPosition": 4
+          },
+          {
+            "type": "europaLeague",
+            "label": "Europa League",
+            "startPosition": 5,
+            "endPosition": 6
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 18,
+            "endPosition": 20
+          }
+        ],
+        "teams": [
+          "manchester-city",
+          "liverpool",
+          "chelsea",
+          "arsenal",
+          "everton",
+          "tottenham-hotspur",
+          "manchester-united",
+          "southampton",
+          "stoke-city",
+          "newcastle-united",
+          "crystal-palace",
+          "swansea-city",
+          "west-ham-united",
+          "sunderland",
+          "aston-villa",
+          "hull-city",
+          "west-bromwich-albion",
+          "norwich-city",
+          "fulham",
+          "cardiff-city"
+        ]
+      },
+      {
+        "tier": 2,
+        "name": "Championship",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 2
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 3,
+            "endPosition": 6
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 22,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "leicester-city",
+          "burnley",
+          "derby-county",
+          "queens-park-rangers",
+          "wigan-athletic",
+          "brighton-and-hove-albion",
+          "reading",
+          "blackburn-rovers",
+          "ipswich-town",
+          "afc-bournemouth",
+          "nottingham-forest",
+          "middlesbrough",
+          "watford",
+          "bolton-wanderers",
+          "leeds-united",
+          "sheffield-wednesday",
+          "huddersfield-town",
+          "charlton-athletic",
+          "millwall",
+          "blackpool",
+          "birmingham-city",
+          "doncaster-rovers",
+          "barnsley",
+          "yeovil-town"
+        ]
+      },
+      {
+        "tier": 3,
+        "name": "League One",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 2
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 3,
+            "endPosition": 6
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 21,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "wolverhampton-wanderers",
+          "brentford",
+          "leyton-orient",
+          "rotherham-united",
+          "preston-north-end",
+          "peterborough-united",
+          "sheffield-united",
+          "swindon-town",
+          "port-vale",
+          "milton-keynes-dons",
+          "bradford-city",
+          "bristol-city",
+          "walsall",
+          "crawley-town",
+          "oldham-athletic",
+          "colchester-united",
+          "gillingham",
+          "coventry-city",
+          "crewe-alexandra",
+          "notts-county",
+          "tranmere-rovers",
+          "carlisle-united",
+          "shrewsbury-town",
+          "stevenage"
+        ]
+      },
+      {
+        "tier": 4,
+        "name": "League Two",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 3
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 4,
+            "endPosition": 7
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 23,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "chesterfield",
+          "scunthorpe-united",
+          "rochdale",
+          "fleetwood-town",
+          "southend-united",
+          "burton-albion",
+          "york-city",
+          "oxford-united",
+          "dagenham-and-redbridge",
+          "plymouth-argyle",
+          "mansfield-town",
+          "bury",
+          "portsmouth",
+          "newport-county",
+          "accrington-stanley",
+          "exeter-city",
+          "cheltenham-town",
+          "morecambe",
+          "hartlepool-united",
+          "afc-wimbledon",
+          "northampton-town",
+          "wycombe-wanderers",
+          "bristol-rovers",
+          "torquay-united"
+        ]
+      }
+    ]
+  },
+  {
+    "year": 2015,
+    "season": "2014-15",
+    "nextYear": 2016,
+    "divisions": [
+      {
+        "tier": 1,
+        "name": "Premier League",
+        "teamCount": 20,
+        "zones": [
+          {
+            "type": "champions",
+            "label": "Champions",
+            "startPosition": 1,
+            "endPosition": 1
+          },
+          {
+            "type": "championsLeague",
+            "label": "Champions League",
+            "startPosition": 2,
+            "endPosition": 4
+          },
+          {
+            "type": "europaLeague",
+            "label": "Europa League",
+            "startPosition": 5,
+            "endPosition": 6
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 18,
+            "endPosition": 20
+          }
+        ],
+        "teams": [
+          "chelsea",
+          "manchester-city",
+          "arsenal",
+          "manchester-united",
+          "tottenham-hotspur",
+          "liverpool",
+          "southampton",
+          "swansea-city",
+          "stoke-city",
+          "crystal-palace",
+          "everton",
+          "west-ham-united",
+          "west-bromwich-albion",
+          "leicester-city",
+          "newcastle-united",
+          "sunderland",
+          "aston-villa",
+          "hull-city",
+          "burnley",
+          "queens-park-rangers"
+        ]
+      },
+      {
+        "tier": 2,
+        "name": "Championship",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 2
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 3,
+            "endPosition": 6
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 22,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "afc-bournemouth",
+          "watford",
+          "norwich-city",
+          "middlesbrough",
+          "brentford",
+          "ipswich-town",
+          "wolverhampton-wanderers",
+          "derby-county",
+          "blackburn-rovers",
+          "birmingham-city",
+          "cardiff-city",
+          "charlton-athletic",
+          "sheffield-wednesday",
+          "nottingham-forest",
+          "leeds-united",
+          "huddersfield-town",
+          "fulham",
+          "bolton-wanderers",
+          "reading",
+          "brighton-and-hove-albion",
+          "rotherham-united",
+          "millwall",
+          "wigan-athletic",
+          "blackpool"
+        ]
+      },
+      {
+        "tier": 3,
+        "name": "League One",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 2
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 3,
+            "endPosition": 6
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 21,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "bristol-city",
+          "milton-keynes-dons",
+          "preston-north-end",
+          "swindon-town",
+          "sheffield-united",
+          "chesterfield",
+          "bradford-city",
+          "rochdale",
+          "peterborough-united",
+          "fleetwood-town",
+          "barnsley",
+          "gillingham",
+          "doncaster-rovers",
+          "walsall",
+          "oldham-athletic",
+          "scunthorpe-united",
+          "coventry-city",
+          "port-vale",
+          "colchester-united",
+          "crewe-alexandra",
+          "notts-county",
+          "crawley-town",
+          "leyton-orient",
+          "yeovil-town"
+        ]
+      },
+      {
+        "tier": 4,
+        "name": "League Two",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 3
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 4,
+            "endPosition": 7
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 23,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "burton-albion",
+          "shrewsbury-town",
+          "bury",
+          "wycombe-wanderers",
+          "southend-united",
+          "stevenage",
+          "plymouth-argyle",
+          "luton-town",
+          "newport-county",
+          "exeter-city",
+          "morecambe",
+          "northampton-town",
+          "oxford-united",
+          "dagenham-and-redbridge",
+          "afc-wimbledon",
+          "portsmouth",
+          "accrington-stanley",
+          "york-city",
+          "cambridge-united",
+          "carlisle-united",
+          "mansfield-town",
+          "hartlepool-united",
+          "cheltenham-town",
+          "tranmere-rovers"
+        ]
+      }
+    ]
+  },
+  {
+    "year": 2016,
+    "season": "2015-16",
+    "nextYear": 2017,
+    "divisions": [
+      {
+        "tier": 1,
+        "name": "Premier League",
+        "teamCount": 20,
+        "zones": [
+          {
+            "type": "champions",
+            "label": "Champions",
+            "startPosition": 1,
+            "endPosition": 1
+          },
+          {
+            "type": "championsLeague",
+            "label": "Champions League",
+            "startPosition": 2,
+            "endPosition": 4
+          },
+          {
+            "type": "europaLeague",
+            "label": "Europa League",
+            "startPosition": 5,
+            "endPosition": 6
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 18,
+            "endPosition": 20
+          }
+        ],
+        "teams": [
+          "leicester-city",
+          "arsenal",
+          "tottenham-hotspur",
+          "manchester-city",
+          "manchester-united",
+          "southampton",
+          "west-ham-united",
+          "liverpool",
+          "stoke-city",
+          "chelsea",
+          "everton",
+          "swansea-city",
+          "watford",
+          "west-bromwich-albion",
+          "crystal-palace",
+          "afc-bournemouth",
+          "sunderland",
+          "newcastle-united",
+          "norwich-city",
+          "aston-villa"
+        ]
+      },
+      {
+        "tier": 2,
+        "name": "Championship",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 2
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 3,
+            "endPosition": 6
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 22,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "burnley",
+          "middlesbrough",
+          "brighton-and-hove-albion",
+          "hull-city",
+          "derby-county",
+          "sheffield-wednesday",
+          "ipswich-town",
+          "cardiff-city",
+          "brentford",
+          "birmingham-city",
+          "preston-north-end",
+          "queens-park-rangers",
+          "leeds-united",
+          "wolverhampton-wanderers",
+          "blackburn-rovers",
+          "nottingham-forest",
+          "reading",
+          "bristol-city",
+          "huddersfield-town",
+          "fulham",
+          "rotherham-united",
+          "charlton-athletic",
+          "milton-keynes-dons",
+          "bolton-wanderers"
+        ]
+      },
+      {
+        "tier": 3,
+        "name": "League One",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 2
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 3,
+            "endPosition": 6
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 21,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "wigan-athletic",
+          "burton-albion",
+          "walsall",
+          "millwall",
+          "bradford-city",
+          "barnsley",
+          "scunthorpe-united",
+          "coventry-city",
+          "gillingham",
+          "rochdale",
+          "sheffield-united",
+          "port-vale",
+          "peterborough-united",
+          "southend-united",
+          "swindon-town",
+          "bury",
+          "oldham-athletic",
+          "chesterfield",
+          "fleetwood-town",
+          "shrewsbury-town",
+          "doncaster-rovers",
+          "blackpool",
+          "colchester-united",
+          "crewe-alexandra"
+        ]
+      },
+      {
+        "tier": 4,
+        "name": "League Two",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 3
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 4,
+            "endPosition": 7
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 23,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "northampton-town",
+          "oxford-united",
+          "bristol-rovers",
+          "accrington-stanley",
+          "plymouth-argyle",
+          "portsmouth",
+          "afc-wimbledon",
+          "leyton-orient",
+          "cambridge-united",
+          "carlisle-united",
+          "luton-town",
+          "mansfield-town",
+          "wycombe-wanderers",
+          "exeter-city",
+          "barnet",
+          "hartlepool-united",
+          "notts-county",
+          "stevenage",
+          "yeovil-town",
+          "crawley-town",
+          "morecambe",
+          "newport-county",
+          "dagenham-and-redbridge",
+          "york-city"
+        ]
+      }
+    ]
+  },
+  {
+    "year": 2017,
+    "season": "2016-17",
+    "nextYear": 2018,
+    "divisions": [
+      {
+        "tier": 1,
+        "name": "Premier League",
+        "teamCount": 20,
+        "zones": [
+          {
+            "type": "champions",
+            "label": "Champions",
+            "startPosition": 1,
+            "endPosition": 1
+          },
+          {
+            "type": "championsLeague",
+            "label": "Champions League",
+            "startPosition": 2,
+            "endPosition": 4
+          },
+          {
+            "type": "europaLeague",
+            "label": "Europa League",
+            "startPosition": 5,
+            "endPosition": 6
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 18,
+            "endPosition": 20
+          }
+        ],
+        "teams": [
+          "chelsea",
+          "tottenham-hotspur",
+          "manchester-city",
+          "liverpool",
+          "arsenal",
+          "manchester-united",
+          "everton",
+          "southampton",
+          "afc-bournemouth",
+          "west-bromwich-albion",
+          "west-ham-united",
+          "leicester-city",
+          "stoke-city",
+          "crystal-palace",
+          "swansea-city",
+          "burnley",
+          "watford",
+          "hull-city",
+          "middlesbrough",
+          "sunderland"
+        ]
+      },
+      {
+        "tier": 2,
+        "name": "EFL Championship",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 2
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 3,
+            "endPosition": 6
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 22,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "newcastle-united",
+          "brighton-and-hove-albion",
+          "reading",
+          "sheffield-wednesday",
+          "huddersfield-town",
+          "fulham",
+          "leeds-united",
+          "norwich-city",
+          "derby-county",
+          "brentford",
+          "preston-north-end",
+          "cardiff-city",
+          "aston-villa",
+          "barnsley",
+          "wolverhampton-wanderers",
+          "ipswich-town",
+          "bristol-city",
+          "queens-park-rangers",
+          "birmingham-city",
+          "burton-albion",
+          "nottingham-forest",
+          "blackburn-rovers",
+          "wigan-athletic",
+          "rotherham-united"
+        ]
+      },
+      {
+        "tier": 3,
+        "name": "EFL League One",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 2
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 3,
+            "endPosition": 6
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 21,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "sheffield-united",
+          "bolton-wanderers",
+          "scunthorpe-united",
+          "fleetwood-town",
+          "bradford-city",
+          "millwall",
+          "southend-united",
+          "oxford-united",
+          "rochdale",
+          "bristol-rovers",
+          "peterborough-united",
+          "milton-keynes-dons",
+          "charlton-athletic",
+          "walsall",
+          "afc-wimbledon",
+          "northampton-town",
+          "oldham-athletic",
+          "shrewsbury-town",
+          "bury",
+          "gillingham",
+          "port-vale",
+          "swindon-town",
+          "coventry-city",
+          "chesterfield"
+        ]
+      },
+      {
+        "tier": 4,
+        "name": "EFL League Two",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 3
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 4,
+            "endPosition": 7
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 23,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "portsmouth",
+          "plymouth-argyle",
+          "doncaster-rovers",
+          "luton-town",
+          "exeter-city",
+          "carlisle-united",
+          "blackpool",
+          "colchester-united",
+          "wycombe-wanderers",
+          "stevenage",
+          "cambridge-united",
+          "mansfield-town",
+          "accrington-stanley",
+          "grimsby-town",
+          "barnet",
+          "notts-county",
+          "crewe-alexandra",
+          "morecambe",
+          "crawley-town",
+          "yeovil-town",
+          "cheltenham-town",
+          "newport-county",
+          "hartlepool-united",
+          "leyton-orient"
+        ]
+      }
+    ]
+  },
+  {
+    "year": 2018,
+    "season": "2017-18",
+    "nextYear": 2019,
+    "divisions": [
+      {
+        "tier": 1,
+        "name": "Premier League",
+        "teamCount": 20,
+        "zones": [
+          {
+            "type": "champions",
+            "label": "Champions",
+            "startPosition": 1,
+            "endPosition": 1
+          },
+          {
+            "type": "championsLeague",
+            "label": "Champions League",
+            "startPosition": 2,
+            "endPosition": 4
+          },
+          {
+            "type": "europaLeague",
+            "label": "Europa League",
+            "startPosition": 5,
+            "endPosition": 6
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 18,
+            "endPosition": 20
+          }
+        ],
+        "teams": [
+          "manchester-city",
+          "manchester-united",
+          "tottenham-hotspur",
+          "liverpool",
+          "chelsea",
+          "arsenal",
+          "burnley",
+          "everton",
+          "leicester-city",
+          "newcastle-united",
+          "crystal-palace",
+          "afc-bournemouth",
+          "west-ham-united",
+          "watford",
+          "brighton-and-hove-albion",
+          "huddersfield-town",
+          "southampton",
+          "swansea-city",
+          "stoke-city",
+          "west-bromwich-albion"
+        ]
+      },
+      {
+        "tier": 2,
+        "name": "EFL Championship",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 2
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 3,
+            "endPosition": 6
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 22,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "wolverhampton-wanderers",
+          "cardiff-city",
+          "fulham",
+          "aston-villa",
+          "middlesbrough",
+          "derby-county",
+          "preston-north-end",
+          "millwall",
+          "brentford",
+          "sheffield-united",
+          "bristol-city",
+          "ipswich-town",
+          "leeds-united",
+          "norwich-city",
+          "sheffield-wednesday",
+          "queens-park-rangers",
+          "nottingham-forest",
+          "hull-city",
+          "birmingham-city",
+          "reading",
+          "bolton-wanderers",
+          "barnsley",
+          "burton-albion",
+          "sunderland"
+        ]
+      },
+      {
+        "tier": 3,
+        "name": "EFL League One",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 2
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 3,
+            "endPosition": 6
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 21,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "wigan-athletic",
+          "blackburn-rovers",
+          "shrewsbury-town",
+          "rotherham-united",
+          "scunthorpe-united",
+          "charlton-athletic",
+          "plymouth-argyle",
+          "portsmouth",
+          "peterborough-united",
+          "southend-united",
+          "bradford-city",
+          "blackpool",
+          "bristol-rovers",
+          "fleetwood-town",
+          "doncaster-rovers",
+          "oxford-united",
+          "gillingham",
+          "afc-wimbledon",
+          "walsall",
+          "rochdale",
+          "oldham-athletic",
+          "northampton-town",
+          "milton-keynes-dons",
+          "bury"
+        ]
+      },
+      {
+        "tier": 4,
+        "name": "EFL League Two",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 3
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 4,
+            "endPosition": 7
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 23,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "accrington-stanley",
+          "luton-town",
+          "wycombe-wanderers",
+          "exeter-city",
+          "notts-county",
+          "coventry-city",
+          "lincoln-city",
+          "mansfield-town",
+          "swindon-town",
+          "carlisle-united",
+          "newport-county",
+          "cambridge-united",
+          "colchester-united",
+          "crawley-town",
+          "crewe-alexandra",
+          "stevenage",
+          "cheltenham-town",
+          "grimsby-town",
+          "yeovil-town",
+          "port-vale",
+          "forest-green-rovers",
+          "morecambe",
+          "barnet",
+          "chesterfield"
+        ]
+      }
+    ]
+  },
+  {
+    "year": 2019,
+    "season": "2018-19",
+    "nextYear": 2020,
+    "divisions": [
+      {
+        "tier": 1,
+        "name": "Premier League",
+        "teamCount": 20,
+        "zones": [
+          {
+            "type": "champions",
+            "label": "Champions",
+            "startPosition": 1,
+            "endPosition": 1
+          },
+          {
+            "type": "championsLeague",
+            "label": "Champions League",
+            "startPosition": 2,
+            "endPosition": 4
+          },
+          {
+            "type": "europaLeague",
+            "label": "Europa League",
+            "startPosition": 5,
+            "endPosition": 6
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 18,
+            "endPosition": 20
+          }
+        ],
+        "teams": [
+          "manchester-city",
+          "liverpool",
+          "chelsea",
+          "tottenham-hotspur",
+          "arsenal",
+          "manchester-united",
+          "wolverhampton-wanderers",
+          "everton",
+          "leicester-city",
+          "west-ham-united",
+          "watford",
+          "crystal-palace",
+          "newcastle-united",
+          "afc-bournemouth",
+          "burnley",
+          "southampton",
+          "brighton-and-hove-albion",
+          "cardiff-city",
+          "fulham",
+          "huddersfield-town"
+        ]
+      },
+      {
+        "tier": 2,
+        "name": "EFL Championship",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 2
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 3,
+            "endPosition": 6
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 22,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "norwich-city",
+          "sheffield-united",
+          "leeds-united",
+          "west-bromwich-albion",
+          "aston-villa",
+          "derby-county",
+          "middlesbrough",
+          "bristol-city",
+          "nottingham-forest",
+          "swansea-city",
+          "brentford",
+          "sheffield-wednesday",
+          "hull-city",
+          "preston-north-end",
+          "blackburn-rovers",
+          "stoke-city",
+          "birmingham-city",
+          "wigan-athletic",
+          "queens-park-rangers",
+          "reading",
+          "millwall",
+          "rotherham-united",
+          "bolton-wanderers",
+          "ipswich-town"
+        ]
+      },
+      {
+        "tier": 3,
+        "name": "EFL League One",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 2
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 3,
+            "endPosition": 6
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 21,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "luton-town",
+          "barnsley",
+          "charlton-athletic",
+          "portsmouth",
+          "sunderland",
+          "doncaster-rovers",
+          "peterborough-united",
+          "coventry-city",
+          "burton-albion",
+          "blackpool",
+          "fleetwood-town",
+          "oxford-united",
+          "gillingham",
+          "accrington-stanley",
+          "bristol-rovers",
+          "rochdale",
+          "wycombe-wanderers",
+          "shrewsbury-town",
+          "southend-united",
+          "afc-wimbledon",
+          "plymouth-argyle",
+          "walsall",
+          "scunthorpe-united",
+          "bradford-city"
+        ]
+      },
+      {
+        "tier": 4,
+        "name": "EFL League Two",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 3
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 4,
+            "endPosition": 7
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 23,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "lincoln-city",
+          "bury",
+          "milton-keynes-dons",
+          "mansfield-town",
+          "forest-green-rovers",
+          "tranmere-rovers",
+          "newport-county",
+          "colchester-united",
+          "exeter-city",
+          "stevenage",
+          "carlisle-united",
+          "crewe-alexandra",
+          "swindon-town",
+          "oldham-athletic",
+          "northampton-town",
+          "cheltenham-town",
+          "grimsby-town",
+          "morecambe",
+          "crawley-town",
+          "port-vale",
+          "cambridge-united",
+          "macclesfield-town",
+          "notts-county",
+          "yeovil-town"
+        ]
+      }
+    ]
+  },
+  {
+    "year": 2020,
+    "season": "2019-20",
+    "nextYear": 2021,
+    "divisions": [
+      {
+        "tier": 1,
+        "name": "Premier League",
+        "teamCount": 20,
+        "zones": [
+          {
+            "type": "champions",
+            "label": "Champions",
+            "startPosition": 1,
+            "endPosition": 1
+          },
+          {
+            "type": "championsLeague",
+            "label": "Champions League",
+            "startPosition": 2,
+            "endPosition": 4
+          },
+          {
+            "type": "europaLeague",
+            "label": "Europa League",
+            "startPosition": 5,
+            "endPosition": 6
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 18,
+            "endPosition": 20
+          }
+        ],
+        "teams": [
+          "liverpool",
+          "manchester-city",
+          "manchester-united",
+          "chelsea",
+          "leicester-city",
+          "tottenham-hotspur",
+          "wolverhampton-wanderers",
+          "arsenal",
+          "sheffield-united",
+          "burnley",
+          "southampton",
+          "everton",
+          "newcastle-united",
+          "crystal-palace",
+          "brighton-and-hove-albion",
+          "west-ham-united",
+          "aston-villa",
+          "afc-bournemouth",
+          "watford",
+          "norwich-city"
+        ]
+      },
+      {
+        "tier": 2,
+        "name": "EFL Championship",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 2
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 3,
+            "endPosition": 6
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 22,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "leeds-united",
+          "west-bromwich-albion",
+          "brentford",
+          "fulham",
+          "cardiff-city",
+          "swansea-city",
+          "nottingham-forest",
+          "millwall",
+          "preston-north-end",
+          "derby-county",
+          "blackburn-rovers",
+          "bristol-city",
+          "queens-park-rangers",
+          "reading",
+          "stoke-city",
+          "sheffield-wednesday",
+          "middlesbrough",
+          "huddersfield-town",
+          "luton-town",
+          "birmingham-city",
+          "barnsley",
+          "charlton-athletic",
+          "wigan-athletic",
+          "hull-city"
+        ]
+      },
+      {
+        "tier": 3,
+        "name": "EFL League One",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 2
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 3,
+            "endPosition": 6
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 21,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "coventry-city",
+          "rotherham-united",
+          "wycombe-wanderers",
+          "oxford-united",
+          "portsmouth",
+          "fleetwood-town",
+          "peterborough-united",
+          "sunderland",
+          "doncaster-rovers",
+          "gillingham",
+          "ipswich-town",
+          "burton-albion",
+          "blackpool",
+          "bristol-rovers",
+          "shrewsbury-town",
+          "lincoln-city",
+          "accrington-stanley",
+          "rochdale",
+          "milton-keynes-dons",
+          "afc-wimbledon",
+          "tranmere-rovers",
+          "southend-united",
+          "bolton-wanderers",
+          "bury"
+        ]
+      },
+      {
+        "tier": 4,
+        "name": "EFL League Two",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 3
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 4,
+            "endPosition": 7
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 23,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "swindon-town",
+          "crewe-alexandra",
+          "plymouth-argyle",
+          "cheltenham-town",
+          "exeter-city",
+          "colchester-united",
+          "northampton-town",
+          "port-vale",
+          "bradford-city",
+          "forest-green-rovers",
+          "salford-city",
+          "walsall",
+          "crawley-town",
+          "newport-county",
+          "grimsby-town",
+          "cambridge-united",
+          "leyton-orient",
+          "carlisle-united",
+          "oldham-athletic",
+          "scunthorpe-united",
+          "mansfield-town",
+          "morecambe",
+          "stevenage",
+          "macclesfield-town"
+        ]
+      }
+    ]
+  },
+  {
+    "year": 2021,
+    "season": "2020-21",
+    "nextYear": 2022,
+    "divisions": [
+      {
+        "tier": 1,
+        "name": "Premier League",
+        "teamCount": 20,
+        "zones": [
+          {
+            "type": "champions",
+            "label": "Champions",
+            "startPosition": 1,
+            "endPosition": 1
+          },
+          {
+            "type": "championsLeague",
+            "label": "Champions League",
+            "startPosition": 2,
+            "endPosition": 4
+          },
+          {
+            "type": "europaLeague",
+            "label": "Europa League",
+            "startPosition": 5,
+            "endPosition": 6
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 18,
+            "endPosition": 20
+          }
+        ],
+        "teams": [
+          "manchester-city",
+          "manchester-united",
+          "liverpool",
+          "chelsea",
+          "leicester-city",
+          "west-ham-united",
+          "tottenham-hotspur",
+          "arsenal",
+          "leeds-united",
+          "everton",
+          "aston-villa",
+          "newcastle-united",
+          "wolverhampton-wanderers",
+          "crystal-palace",
+          "southampton",
+          "brighton-and-hove-albion",
+          "burnley",
+          "fulham",
+          "west-bromwich-albion",
+          "sheffield-united"
+        ]
+      },
+      {
+        "tier": 2,
+        "name": "EFL Championship",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 2
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 3,
+            "endPosition": 6
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 22,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "norwich-city",
+          "watford",
+          "brentford",
+          "swansea-city",
+          "barnsley",
+          "afc-bournemouth",
+          "reading",
+          "cardiff-city",
+          "queens-park-rangers",
+          "middlesbrough",
+          "millwall",
+          "luton-town",
+          "preston-north-end",
+          "stoke-city",
+          "blackburn-rovers",
+          "coventry-city",
+          "nottingham-forest",
+          "birmingham-city",
+          "bristol-city",
+          "huddersfield-town",
+          "derby-county",
+          "wycombe-wanderers",
+          "rotherham-united",
+          "sheffield-wednesday"
+        ]
+      },
+      {
+        "tier": 3,
+        "name": "EFL League One",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 2
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 3,
+            "endPosition": 6
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 21,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "hull-city",
+          "peterborough-united",
+          "blackpool",
+          "sunderland",
+          "lincoln-city",
+          "oxford-united",
+          "charlton-athletic",
+          "portsmouth",
+          "ipswich-town",
+          "gillingham",
+          "accrington-stanley",
+          "crewe-alexandra",
+          "milton-keynes-dons",
+          "doncaster-rovers",
+          "fleetwood-town",
+          "burton-albion",
+          "shrewsbury-town",
+          "plymouth-argyle",
+          "afc-wimbledon",
+          "wigan-athletic",
+          "rochdale",
+          "northampton-town",
+          "swindon-town",
+          "bristol-rovers"
+        ]
+      },
+      {
+        "tier": 4,
+        "name": "EFL League Two",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 3
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 4,
+            "endPosition": 7
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 23,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "cheltenham-town",
+          "cambridge-united",
+          "bolton-wanderers",
+          "morecambe",
+          "newport-county",
+          "forest-green-rovers",
+          "tranmere-rovers",
+          "salford-city",
+          "exeter-city",
+          "carlisle-united",
+          "leyton-orient",
+          "crawley-town",
+          "port-vale",
+          "stevenage",
+          "bradford-city",
+          "mansfield-town",
+          "harrogate-town",
+          "oldham-athletic",
+          "walsall",
+          "colchester-united",
+          "barrow",
+          "scunthorpe-united",
+          "southend-united",
+          "grimsby-town"
+        ]
+      }
+    ]
+  },
+  {
+    "year": 2022,
+    "season": "2021-22",
+    "nextYear": 2023,
+    "divisions": [
+      {
+        "tier": 1,
+        "name": "Premier League",
+        "teamCount": 20,
+        "zones": [
+          {
+            "type": "champions",
+            "label": "Champions",
+            "startPosition": 1,
+            "endPosition": 1
+          },
+          {
+            "type": "championsLeague",
+            "label": "Champions League",
+            "startPosition": 2,
+            "endPosition": 4
+          },
+          {
+            "type": "europaLeague",
+            "label": "Europa League",
+            "startPosition": 5,
+            "endPosition": 5
+          },
+          {
+            "type": "conferenceLeague",
+            "label": "Conference League",
+            "startPosition": 6,
+            "endPosition": 6
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 18,
+            "endPosition": 20
+          }
+        ],
+        "teams": [
+          "manchester-city",
+          "liverpool",
+          "chelsea",
+          "tottenham-hotspur",
+          "arsenal",
+          "manchester-united",
+          "west-ham-united",
+          "leicester-city",
+          "brighton-and-hove-albion",
+          "wolverhampton-wanderers",
+          "newcastle-united",
+          "crystal-palace",
+          "brentford",
+          "aston-villa",
+          "southampton",
+          "everton",
+          "leeds-united",
+          "burnley",
+          "watford",
+          "norwich-city"
+        ]
+      },
+      {
+        "tier": 2,
+        "name": "EFL Championship",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 2
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 3,
+            "endPosition": 6
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 22,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "fulham",
+          "afc-bournemouth",
+          "huddersfield-town",
+          "nottingham-forest",
+          "sheffield-united",
+          "luton-town",
+          "middlesbrough",
+          "blackburn-rovers",
+          "millwall",
+          "west-bromwich-albion",
+          "queens-park-rangers",
+          "coventry-city",
+          "preston-north-end",
+          "stoke-city",
+          "swansea-city",
+          "blackpool",
+          "bristol-city",
+          "cardiff-city",
+          "hull-city",
+          "birmingham-city",
+          "reading",
+          "peterborough-united",
+          "derby-county",
+          "barnsley"
+        ]
+      },
+      {
+        "tier": 3,
+        "name": "EFL League One",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 2
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 3,
+            "endPosition": 6
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 21,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "wigan-athletic",
+          "rotherham-united",
+          "milton-keynes-dons",
+          "sheffield-wednesday",
+          "sunderland",
+          "wycombe-wanderers",
+          "plymouth-argyle",
+          "oxford-united",
+          "bolton-wanderers",
+          "portsmouth",
+          "ipswich-town",
+          "accrington-stanley",
+          "charlton-athletic",
+          "cambridge-united",
+          "cheltenham-town",
+          "burton-albion",
+          "lincoln-city",
+          "shrewsbury-town",
+          "morecambe",
+          "fleetwood-town",
+          "gillingham",
+          "doncaster-rovers",
+          "afc-wimbledon",
+          "crewe-alexandra"
+        ]
+      },
+      {
+        "tier": 4,
+        "name": "EFL League Two",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 3
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 4,
+            "endPosition": 7
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 23,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "forest-green-rovers",
+          "exeter-city",
+          "bristol-rovers",
+          "northampton-town",
+          "port-vale",
+          "swindon-town",
+          "mansfield-town",
+          "sutton-united",
+          "tranmere-rovers",
+          "salford-city",
+          "newport-county",
+          "crawley-town",
+          "leyton-orient",
+          "bradford-city",
+          "colchester-united",
+          "walsall",
+          "hartlepool-united",
+          "rochdale",
+          "harrogate-town",
+          "carlisle-united",
+          "stevenage",
+          "barrow",
+          "oldham-athletic",
+          "scunthorpe-united"
+        ]
+      }
+    ]
+  },
+  {
+    "year": 2023,
+    "season": "2022-23",
+    "nextYear": 2024,
+    "divisions": [
+      {
+        "tier": 1,
+        "name": "Premier League",
+        "teamCount": 20,
+        "zones": [
+          {
+            "type": "champions",
+            "label": "Champions",
+            "startPosition": 1,
+            "endPosition": 1
+          },
+          {
+            "type": "championsLeague",
+            "label": "Champions League",
+            "startPosition": 2,
+            "endPosition": 4
+          },
+          {
+            "type": "europaLeague",
+            "label": "Europa League",
+            "startPosition": 5,
+            "endPosition": 5
+          },
+          {
+            "type": "conferenceLeague",
+            "label": "Conference League",
+            "startPosition": 6,
+            "endPosition": 6
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 18,
+            "endPosition": 20
+          }
+        ],
+        "teams": [
+          "manchester-city",
+          "arsenal",
+          "manchester-united",
+          "newcastle-united",
+          "liverpool",
+          "brighton-and-hove-albion",
+          "aston-villa",
+          "tottenham-hotspur",
+          "brentford",
+          "fulham",
+          "crystal-palace",
+          "chelsea",
+          "wolverhampton-wanderers",
+          "west-ham-united",
+          "afc-bournemouth",
+          "nottingham-forest",
+          "everton",
+          "leicester-city",
+          "leeds-united",
+          "southampton"
+        ]
+      },
+      {
+        "tier": 2,
+        "name": "EFL Championship",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 2
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 3,
+            "endPosition": 6
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 22,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "burnley",
+          "sheffield-united",
+          "luton-town",
+          "middlesbrough",
+          "coventry-city",
+          "sunderland",
+          "blackburn-rovers",
+          "millwall",
+          "west-bromwich-albion",
+          "swansea-city",
+          "watford",
+          "preston-north-end",
+          "norwich-city",
+          "bristol-city",
+          "hull-city",
+          "stoke-city",
+          "birmingham-city",
+          "huddersfield-town",
+          "rotherham-united",
+          "queens-park-rangers",
+          "cardiff-city",
+          "reading",
+          "blackpool",
+          "wigan-athletic"
+        ]
+      },
+      {
+        "tier": 3,
+        "name": "EFL League One",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 2
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 3,
+            "endPosition": 6
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 21,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "plymouth-argyle",
+          "ipswich-town",
+          "sheffield-wednesday",
+          "barnsley",
+          "bolton-wanderers",
+          "peterborough-united",
+          "derby-county",
+          "portsmouth",
+          "wycombe-wanderers",
+          "charlton-athletic",
+          "lincoln-city",
+          "shrewsbury-town",
+          "fleetwood-town",
+          "exeter-city",
+          "burton-albion",
+          "cheltenham-town",
+          "bristol-rovers",
+          "port-vale",
+          "oxford-united",
+          "cambridge-united",
+          "milton-keynes-dons",
+          "morecambe",
+          "accrington-stanley",
+          "forest-green-rovers"
+        ]
+      },
+      {
+        "tier": 4,
+        "name": "EFL League Two",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 3
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 4,
+            "endPosition": 7
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 23,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "leyton-orient",
+          "stevenage",
+          "northampton-town",
+          "stockport-county",
+          "carlisle-united",
+          "bradford-city",
+          "salford-city",
+          "mansfield-town",
+          "barrow",
+          "swindon-town",
+          "grimsby-town",
+          "tranmere-rovers",
+          "crewe-alexandra",
+          "sutton-united",
+          "newport-county",
+          "walsall",
+          "gillingham",
+          "doncaster-rovers",
+          "harrogate-town",
+          "colchester-united",
+          "afc-wimbledon",
+          "crawley-town",
+          "hartlepool-united",
+          "rochdale"
+        ]
+      }
+    ]
+  },
+  {
+    "year": 2024,
+    "season": "2023-24",
+    "nextYear": 2025,
+    "divisions": [
+      {
+        "tier": 1,
+        "name": "Premier League",
+        "teamCount": 20,
+        "zones": [
+          {
+            "type": "champions",
+            "label": "Champions",
+            "startPosition": 1,
+            "endPosition": 1
+          },
+          {
+            "type": "championsLeague",
+            "label": "Champions League",
+            "startPosition": 2,
+            "endPosition": 4
+          },
+          {
+            "type": "europaLeague",
+            "label": "Europa League",
+            "startPosition": 5,
+            "endPosition": 5
+          },
+          {
+            "type": "conferenceLeague",
+            "label": "Conference League",
+            "startPosition": 6,
+            "endPosition": 6
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 18,
+            "endPosition": 20
+          }
+        ],
+        "teams": [
+          "manchester-city",
+          "arsenal",
+          "liverpool",
+          "aston-villa",
+          "tottenham-hotspur",
+          "chelsea",
+          "newcastle-united",
+          "manchester-united",
+          "west-ham-united",
+          "crystal-palace",
+          "brighton-and-hove-albion",
+          "afc-bournemouth",
+          "fulham",
+          "wolverhampton-wanderers",
+          "everton",
+          "brentford",
+          "nottingham-forest",
+          "luton-town",
+          "burnley",
+          "sheffield-united"
+        ]
+      },
+      {
+        "tier": 2,
+        "name": "EFL Championship",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 2
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 3,
+            "endPosition": 6
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 22,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "leicester-city",
+          "ipswich-town",
+          "leeds-united",
+          "southampton",
+          "west-bromwich-albion",
+          "norwich-city",
+          "hull-city",
+          "middlesbrough",
+          "coventry-city",
+          "preston-north-end",
+          "bristol-city",
+          "cardiff-city",
+          "millwall",
+          "swansea-city",
+          "watford",
+          "sunderland",
+          "stoke-city",
+          "queens-park-rangers",
+          "blackburn-rovers",
+          "sheffield-wednesday",
+          "plymouth-argyle",
+          "birmingham-city",
+          "huddersfield-town",
+          "rotherham-united"
+        ]
+      },
+      {
+        "tier": 3,
+        "name": "EFL League One",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 2
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 3,
+            "endPosition": 6
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 21,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "portsmouth",
+          "derby-county",
+          "bolton-wanderers",
+          "peterborough-united",
+          "oxford-united",
+          "barnsley",
+          "lincoln-city",
+          "blackpool",
+          "stevenage",
+          "wycombe-wanderers",
+          "leyton-orient",
+          "wigan-athletic",
+          "exeter-city",
+          "northampton-town",
+          "bristol-rovers",
+          "charlton-athletic",
+          "reading",
+          "cambridge-united",
+          "shrewsbury-town",
+          "burton-albion",
+          "cheltenham-town",
+          "fleetwood-town",
+          "port-vale",
+          "carlisle-united"
+        ]
+      },
+      {
+        "tier": 4,
+        "name": "EFL League Two",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 3
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 4,
+            "endPosition": 7
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 23,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "stockport-county",
+          "wrexham",
+          "mansfield-town",
+          "milton-keynes-dons",
+          "doncaster-rovers",
+          "crewe-alexandra",
+          "crawley-town",
+          "barrow",
+          "bradford-city",
+          "afc-wimbledon",
+          "walsall",
+          "gillingham",
+          "harrogate-town",
+          "notts-county",
+          "morecambe",
+          "tranmere-rovers",
+          "accrington-stanley",
+          "newport-county",
+          "swindon-town",
+          "salford-city",
+          "grimsby-town",
+          "colchester-united",
+          "sutton-united",
+          "forest-green-rovers"
+        ]
+      }
+    ]
+  },
+  {
+    "year": 2025,
+    "season": "2024-25",
+    "nextYear": 2026,
+    "divisions": [
+      {
+        "tier": 1,
+        "name": "Premier League",
+        "teamCount": 20,
+        "zones": [
+          {
+            "type": "champions",
+            "label": "Champions",
+            "startPosition": 1,
+            "endPosition": 1
+          },
+          {
+            "type": "championsLeague",
+            "label": "Champions League",
+            "startPosition": 2,
+            "endPosition": 5
+          },
+          {
+            "type": "europaLeague",
+            "label": "Europa League",
+            "startPosition": 6,
+            "endPosition": 6
+          },
+          {
+            "type": "conferenceLeague",
+            "label": "Conference League",
+            "startPosition": 7,
+            "endPosition": 7
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 18,
+            "endPosition": 20
+          }
+        ],
+        "teams": [
+          "liverpool",
+          "arsenal",
+          "manchester-city",
+          "chelsea",
+          "newcastle-united",
+          "aston-villa",
+          "nottingham-forest",
+          "brighton-and-hove-albion",
+          "afc-bournemouth",
+          "brentford",
+          "fulham",
+          "crystal-palace",
+          "everton",
+          "west-ham-united",
+          "manchester-united",
+          "wolverhampton-wanderers",
+          "tottenham-hotspur",
+          "leicester-city",
+          "ipswich-town",
+          "southampton"
+        ]
+      },
+      {
+        "tier": 2,
+        "name": "EFL Championship",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 2
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 3,
+            "endPosition": 6
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 22,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "leeds-united",
+          "burnley",
+          "sheffield-united",
+          "sunderland",
+          "coventry-city",
+          "bristol-city",
+          "blackburn-rovers",
+          "millwall",
+          "west-bromwich-albion",
+          "middlesbrough",
+          "swansea-city",
+          "sheffield-wednesday",
+          "norwich-city",
+          "watford",
+          "queens-park-rangers",
+          "portsmouth",
+          "oxford-united",
+          "stoke-city",
+          "derby-county",
+          "preston-north-end",
+          "hull-city",
+          "luton-town",
+          "plymouth-argyle",
+          "cardiff-city"
+        ]
+      },
+      {
+        "tier": 3,
+        "name": "EFL League One",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 2
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 3,
+            "endPosition": 6
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 21,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "birmingham-city",
+          "wrexham",
+          "stockport-county",
+          "charlton-athletic",
+          "wycombe-wanderers",
+          "leyton-orient",
+          "reading",
+          "bolton-wanderers",
+          "blackpool",
+          "huddersfield-town",
+          "lincoln-city",
+          "barnsley",
+          "rotherham-united",
+          "stevenage",
+          "wigan-athletic",
+          "exeter-city",
+          "mansfield-town",
+          "peterborough-united",
+          "northampton-town",
+          "burton-albion",
+          "crawley-town",
+          "bristol-rovers",
+          "cambridge-united",
+          "shrewsbury-town"
+        ]
+      },
+      {
+        "tier": 4,
+        "name": "EFL League Two",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 3
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 4,
+            "endPosition": 7
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 23,
+            "endPosition": 24
+          }
+        ],
+        "teams": [
+          "doncaster-rovers",
+          "port-vale",
+          "bradford-city",
+          "walsall",
+          "afc-wimbledon",
+          "notts-county",
+          "chesterfield",
+          "salford-city",
+          "grimsby-town",
+          "colchester-united",
+          "bromley",
+          "swindon-town",
+          "crewe-alexandra",
+          "fleetwood-town",
+          "cheltenham-town",
+          "barrow",
+          "gillingham",
+          "harrogate-town",
+          "milton-keynes-dons",
+          "tranmere-rovers",
+          "accrington-stanley",
+          "newport-county",
+          "carlisle-united",
+          "morecambe"
+        ]
+      }
+    ]
+  },
+  {
+    "year": 2026,
+    "season": "2025-26",
+    "nextYear": 2027,
+    "divisions": [
+      {
+        "tier": 1,
+        "name": "Premier League",
+        "teamCount": 20,
+        "zones": [
+          {
+            "type": "champions",
+            "label": "Champions",
+            "startPosition": 1,
+            "endPosition": 1
+          },
+          {
+            "type": "championsLeague",
+            "label": "Champions League",
+            "startPosition": 2,
+            "endPosition": 5
+          },
+          {
+            "type": "europaLeague",
+            "label": "Europa League",
+            "startPosition": 6,
+            "endPosition": 6
+          },
+          {
+            "type": "conferenceLeague",
+            "label": "Conference League",
+            "startPosition": 7,
+            "endPosition": 7
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 18,
+            "endPosition": 20
+          }
+        ],
+        "teams": []
+      },
+      {
+        "tier": 2,
+        "name": "EFL Championship",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 2
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 3,
+            "endPosition": 6
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 22,
+            "endPosition": 24
+          }
+        ],
+        "teams": []
+      },
+      {
+        "tier": 3,
+        "name": "EFL League One",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 2
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 3,
+            "endPosition": 6
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 21,
+            "endPosition": 24
+          }
+        ],
+        "teams": []
+      },
+      {
+        "tier": 4,
+        "name": "EFL League Two",
+        "teamCount": 24,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 3
+          },
+          {
+            "type": "playoff",
+            "label": "Playoffs",
+            "startPosition": 4,
+            "endPosition": 7
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 23,
+            "endPosition": 24
+          }
+        ],
+        "teams": []
+      }
+    ]
+  }
+]

@@ -6,7 +6,7 @@ import type {
   TieredHonourYears,
 } from '../data/all-time-rank/types';
 
-const TIER_WEIGHTS: Record<string, number> = {
+export const TIER_WEIGHTS: Record<string, number> = {
   tier1: 4,
   tier2: 3,
   tier3: 2,
@@ -16,11 +16,39 @@ const TIER_WEIGHTS: Record<string, number> = {
 const TIERS = ['tier1', 'tier2', 'tier3', 'tier4'] as const;
 
 export const DEFAULT_WEIGHTS: ScoringWeights = {
-  league: 1.0,
+  league: 0.5,
   domestic: 1.0,
   european: 1.0,
   attendance: 0.01,
   decayFloor: 0.15,
+};
+
+export const HONOUR_BASE_VALUES = {
+  league: {
+    champions: 25,
+    runnersUp: 12.5,
+    playoffWinners: 5,
+  },
+  faCup: {
+    winners: 80,
+    runnersUp: 40,
+  },
+  leagueCup: {
+    winners: 50,
+    runnersUp: 25,
+  },
+  championsLeague: {
+    winners: 200,
+    runnersUp: 100,
+  },
+  europaLeague: {
+    winners: 100,
+    runnersUp: 50,
+  },
+  conferenceLeague: {
+    winners: 50,
+    runnersUp: 25,
+  },
 };
 
 /**
@@ -69,7 +97,12 @@ export const easeInOut = (t: number): number => {
  * relative to the dataset span, applies the cubic Bezier ease-in-out curve,
  * and maps the result to [decayFloor..1.0].
  */
-export const decayWeight = (year: number, currentYear: number, oldestYear: number, decayFloor: number): number => {
+export const decayWeight = (
+  year: number,
+  currentYear: number,
+  oldestYear: number,
+  decayFloor: number,
+): number => {
   if (decayFloor >= 1.0) return 1.0;
   if (currentYear === oldestYear) return 1.0;
 
@@ -146,12 +179,6 @@ const scoreLeaguePerformance = (
   return score;
 };
 
-const HONOUR_BASE_VALUES = {
-  champions: 25,
-  runnersUp: 12.5,
-  playoffWinners: 5,
-};
-
 const scoreTieredHonours = (
   honours: TieredHonourYears,
   baseValue: number,
@@ -194,14 +221,56 @@ const scoreDomesticHonours = (
 ): number => {
   let score = 0;
 
-  score += scoreTieredHonours(honours.leagueTitles, HONOUR_BASE_VALUES.champions, currentYear, oldestYear, decayFloor);
-  score += scoreTieredHonours(honours.leagueRunnersUp, HONOUR_BASE_VALUES.runnersUp, currentYear, oldestYear, decayFloor);
-  score += scoreTieredHonours(honours.playoffWinners, HONOUR_BASE_VALUES.playoffWinners, currentYear, oldestYear, decayFloor);
+  score += scoreTieredHonours(
+    honours.leagueTitles,
+    HONOUR_BASE_VALUES.league.champions,
+    currentYear,
+    oldestYear,
+    decayFloor,
+  );
+  score += scoreTieredHonours(
+    honours.leagueRunnersUp,
+    HONOUR_BASE_VALUES.league.runnersUp,
+    currentYear,
+    oldestYear,
+    decayFloor,
+  );
+  score += scoreTieredHonours(
+    honours.playoffWinners,
+    HONOUR_BASE_VALUES.league.playoffWinners,
+    currentYear,
+    oldestYear,
+    decayFloor,
+  );
 
-  score += scoreYearArray(honours.faCupWinners, 80, currentYear, oldestYear, decayFloor);
-  score += scoreYearArray(honours.faCupRunnersUp, 40, currentYear, oldestYear, decayFloor);
-  score += scoreYearArray(honours.leagueCupWinners, 50, currentYear, oldestYear, decayFloor);
-  score += scoreYearArray(honours.leagueCupRunnersUp, 25, currentYear, oldestYear, decayFloor);
+  score += scoreYearArray(
+    honours.faCupWinners,
+    HONOUR_BASE_VALUES.faCup.winners,
+    currentYear,
+    oldestYear,
+    decayFloor,
+  );
+  score += scoreYearArray(
+    honours.faCupRunnersUp,
+    HONOUR_BASE_VALUES.faCup.runnersUp,
+    currentYear,
+    oldestYear,
+    decayFloor,
+  );
+  score += scoreYearArray(
+    honours.leagueCupWinners,
+    HONOUR_BASE_VALUES.leagueCup.winners,
+    currentYear,
+    oldestYear,
+    decayFloor,
+  );
+  score += scoreYearArray(
+    honours.leagueCupRunnersUp,
+    HONOUR_BASE_VALUES.leagueCup.runnersUp,
+    currentYear,
+    oldestYear,
+    decayFloor,
+  );
 
   return score;
 };
@@ -214,12 +283,48 @@ const scoreEuropeanHonours = (
 ): number => {
   let score = 0;
 
-  score += scoreYearArray(europeanHonours.championsLeagueWinners, 200, currentYear, oldestYear, decayFloor);
-  score += scoreYearArray(europeanHonours.championsLeagueRunnersUp, 100, currentYear, oldestYear, decayFloor);
-  score += scoreYearArray(europeanHonours.europaLeagueWinners, 100, currentYear, oldestYear, decayFloor);
-  score += scoreYearArray(europeanHonours.europaLeagueRunnersUp, 50, currentYear, oldestYear, decayFloor);
-  score += scoreYearArray(europeanHonours.conferenceLeagueWinners, 50, currentYear, oldestYear, decayFloor);
-  score += scoreYearArray(europeanHonours.conferenceLeagueRunnersUp, 25, currentYear, oldestYear, decayFloor);
+  score += scoreYearArray(
+    europeanHonours.championsLeagueWinners,
+    HONOUR_BASE_VALUES.championsLeague.winners,
+    currentYear,
+    oldestYear,
+    decayFloor,
+  );
+  score += scoreYearArray(
+    europeanHonours.championsLeagueRunnersUp,
+    HONOUR_BASE_VALUES.championsLeague.runnersUp,
+    currentYear,
+    oldestYear,
+    decayFloor,
+  );
+  score += scoreYearArray(
+    europeanHonours.europaLeagueWinners,
+    HONOUR_BASE_VALUES.europaLeague.winners,
+    currentYear,
+    oldestYear,
+    decayFloor,
+  );
+  score += scoreYearArray(
+    europeanHonours.europaLeagueRunnersUp,
+    HONOUR_BASE_VALUES.europaLeague.runnersUp,
+    currentYear,
+    oldestYear,
+    decayFloor,
+  );
+  score += scoreYearArray(
+    europeanHonours.conferenceLeagueWinners,
+    HONOUR_BASE_VALUES.conferenceLeague.winners,
+    currentYear,
+    oldestYear,
+    decayFloor,
+  );
+  score += scoreYearArray(
+    europeanHonours.conferenceLeagueRunnersUp,
+    HONOUR_BASE_VALUES.conferenceLeague.runnersUp,
+    currentYear,
+    oldestYear,
+    decayFloor,
+  );
 
   return score;
 };
@@ -228,14 +333,21 @@ const scoreEuropeanHonours = (
  * Compute a normalised recency value (0–100) for a set of honour years.
  * Uses the same decay curve as the ranking equations: a high value means
  * the honours skew recent, a low value means they skew historic.
+ *
+ * If `latestYear` is provided and the club's years include it, the club
+ * is treated as the current holder and always receives 100 — regardless
+ * of how many older honours dilute the average.
  */
 export const computeHonourRecency = (
   years: number[],
   currentYear: number,
   oldestYear: number,
   decayFloor: number,
+  latestYear?: number,
 ): number => {
   if (years.length === 0) return 0;
+
+  if (latestYear !== undefined && years.includes(latestYear)) return 100;
 
   const totalDecay = years.reduce(
     (sum, year) => sum + decayWeight(year, currentYear, oldestYear, decayFloor),
@@ -254,11 +366,26 @@ export const calculateAllTimeScores = (
   const oldestYear = findOldestYear(clubs);
 
   const scored = clubs.map((club) => {
-    const leagueScore = scoreLeaguePerformance(club.leagueRecord, currentYear, oldestYear, weights.decayFloor);
+    const leagueScore = scoreLeaguePerformance(
+      club.leagueRecord,
+      currentYear,
+      oldestYear,
+      weights.decayFloor,
+    );
 
-    const domesticScore = scoreDomesticHonours(club.honours, currentYear, oldestYear, weights.decayFloor);
+    const domesticScore = scoreDomesticHonours(
+      club.honours,
+      currentYear,
+      oldestYear,
+      weights.decayFloor,
+    );
 
-    const europeanScore = scoreEuropeanHonours(club.europeanHonours, currentYear, oldestYear, weights.decayFloor);
+    const europeanScore = scoreEuropeanHonours(
+      club.europeanHonours,
+      currentYear,
+      oldestYear,
+      weights.decayFloor,
+    );
 
     const attendanceScore = club.averageAttendance;
 

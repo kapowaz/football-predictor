@@ -1,0 +1,2061 @@
+[
+  {
+    "year": 1893,
+    "season": "1892-93",
+    "nextYear": 1894,
+    "divisions": [
+      {
+        "tier": 1,
+        "name": "First Division",
+        "teamCount": 16,
+        "zones": [
+          {
+            "type": "champions",
+            "label": "Champions",
+            "startPosition": 1,
+            "endPosition": 1
+          },
+          {
+            "type": "relegation",
+            "label": "Test matches",
+            "startPosition": 14,
+            "endPosition": 16
+          }
+        ],
+        "teams": [
+          "sunderland",
+          "preston-north-end",
+          "everton",
+          "aston-villa",
+          "bolton-wanderers",
+          "burnley",
+          "stoke-city",
+          "west-bromwich-albion",
+          "blackburn-rovers",
+          "nottingham-forest",
+          "wolverhampton-wanderers",
+          "sheffield-wednesday",
+          "derby-county",
+          "notts-county",
+          "accrington-fc",
+          "manchester-united"
+        ]
+      },
+      {
+        "tier": 2,
+        "name": "Second Division",
+        "teamCount": 12,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Test matches",
+            "startPosition": 1,
+            "endPosition": 3
+          },
+          {
+            "type": "relegation",
+            "label": "Re-election",
+            "startPosition": 9,
+            "endPosition": 12
+          }
+        ],
+        "teams": [
+          "birmingham-city",
+          "sheffield-united",
+          "darwen",
+          "grimsby-town",
+          "manchester-city",
+          "burton-swifts",
+          "northwich-victoria",
+          "bootle",
+          "lincoln-city",
+          "crewe-alexandra",
+          "port-vale",
+          "walsall"
+        ]
+      }
+    ]
+  },
+  {
+    "year": 1894,
+    "season": "1893-94",
+    "nextYear": 1895,
+    "divisions": [
+      {
+        "tier": 1,
+        "name": "First Division",
+        "teamCount": 16,
+        "zones": [
+          {
+            "type": "champions",
+            "label": "Champions",
+            "startPosition": 1,
+            "endPosition": 1
+          },
+          {
+            "type": "relegation",
+            "label": "Test matches",
+            "startPosition": 14,
+            "endPosition": 16
+          }
+        ],
+        "teams": [
+          "aston-villa",
+          "sunderland",
+          "derby-county",
+          "blackburn-rovers",
+          "burnley",
+          "everton",
+          "nottingham-forest",
+          "west-bromwich-albion",
+          "wolverhampton-wanderers",
+          "sheffield-united",
+          "stoke-city",
+          "sheffield-wednesday",
+          "bolton-wanderers",
+          "preston-north-end",
+          "darwen",
+          "manchester-united"
+        ]
+      },
+      {
+        "tier": 2,
+        "name": "Second Division",
+        "teamCount": 15,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Test matches",
+            "startPosition": 1,
+            "endPosition": 3
+          },
+          {
+            "type": "relegation",
+            "label": "Re-election",
+            "startPosition": 12,
+            "endPosition": 15
+          }
+        ],
+        "teams": [
+          "liverpool",
+          "birmingham-city",
+          "notts-county",
+          "newcastle-united",
+          "grimsby-town",
+          "burton-swifts",
+          "port-vale",
+          "lincoln-city",
+          "arsenal",
+          "walsall",
+          "middlesbrough-ironopolis",
+          "crewe-alexandra",
+          "manchester-city",
+          "rotherham-town",
+          "northwich-victoria"
+        ]
+      }
+    ]
+  },
+  {
+    "year": 1895,
+    "season": "1894-95",
+    "nextYear": 1896,
+    "divisions": [
+      {
+        "tier": 1,
+        "name": "First Division",
+        "teamCount": 16,
+        "zones": [
+          {
+            "type": "champions",
+            "label": "Champions",
+            "startPosition": 1,
+            "endPosition": 1
+          },
+          {
+            "type": "relegation",
+            "label": "Test matches",
+            "startPosition": 14,
+            "endPosition": 16
+          }
+        ],
+        "teams": [
+          "sunderland",
+          "everton",
+          "aston-villa",
+          "preston-north-end",
+          "blackburn-rovers",
+          "sheffield-united",
+          "nottingham-forest",
+          "sheffield-wednesday",
+          "burnley",
+          "bolton-wanderers",
+          "wolverhampton-wanderers",
+          "birmingham-city",
+          "west-bromwich-albion",
+          "stoke-city",
+          "derby-county",
+          "liverpool"
+        ]
+      },
+      {
+        "tier": 2,
+        "name": "Second Division",
+        "teamCount": 16,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Test matches",
+            "startPosition": 1,
+            "endPosition": 3
+          },
+          {
+            "type": "relegation",
+            "label": "Re-election",
+            "startPosition": 13,
+            "endPosition": 16
+          }
+        ],
+        "teams": [
+          "bury",
+          "notts-county",
+          "manchester-united",
+          "leicester-city",
+          "grimsby-town",
+          "darwen",
+          "burton-wanderers",
+          "arsenal",
+          "manchester-city",
+          "newcastle-united",
+          "burton-swifts",
+          "rotherham-town",
+          "lincoln-city",
+          "walsall",
+          "port-vale",
+          "crewe-alexandra"
+        ]
+      }
+    ]
+  },
+  {
+    "year": 1896,
+    "season": "1895-96",
+    "nextYear": 1897,
+    "divisions": [
+      {
+        "tier": 1,
+        "name": "First Division",
+        "teamCount": 16,
+        "zones": [
+          {
+            "type": "champions",
+            "label": "Champions",
+            "startPosition": 1,
+            "endPosition": 1
+          },
+          {
+            "type": "relegation",
+            "label": "Test matches",
+            "startPosition": 14,
+            "endPosition": 16
+          }
+        ],
+        "teams": [
+          "aston-villa",
+          "derby-county",
+          "everton",
+          "bolton-wanderers",
+          "sunderland",
+          "stoke-city",
+          "sheffield-wednesday",
+          "blackburn-rovers",
+          "preston-north-end",
+          "burnley",
+          "bury",
+          "sheffield-united",
+          "nottingham-forest",
+          "wolverhampton-wanderers",
+          "birmingham-city",
+          "west-bromwich-albion"
+        ]
+      },
+      {
+        "tier": 2,
+        "name": "Second Division",
+        "teamCount": 16,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Test matches",
+            "startPosition": 1,
+            "endPosition": 3
+          },
+          {
+            "type": "relegation",
+            "label": "Re-election",
+            "startPosition": 13,
+            "endPosition": 16
+          }
+        ],
+        "teams": [
+          "liverpool",
+          "manchester-city",
+          "grimsby-town",
+          "burton-wanderers",
+          "newcastle-united",
+          "manchester-united",
+          "arsenal",
+          "leicester-city",
+          "darwen",
+          "notts-county",
+          "burton-swifts",
+          "loughborough",
+          "lincoln-city",
+          "port-vale",
+          "rotherham-town",
+          "crewe-alexandra"
+        ]
+      }
+    ]
+  },
+  {
+    "year": 1897,
+    "season": "1896-97",
+    "nextYear": 1898,
+    "divisions": [
+      {
+        "tier": 1,
+        "name": "First Division",
+        "teamCount": 16,
+        "zones": [
+          {
+            "type": "champions",
+            "label": "Champions",
+            "startPosition": 1,
+            "endPosition": 1
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 15,
+            "endPosition": 16
+          }
+        ],
+        "teams": [
+          "aston-villa",
+          "sheffield-united",
+          "derby-county",
+          "preston-north-end",
+          "liverpool",
+          "sheffield-wednesday",
+          "everton",
+          "bolton-wanderers",
+          "bury",
+          "wolverhampton-wanderers",
+          "nottingham-forest",
+          "west-bromwich-albion",
+          "stoke-city",
+          "blackburn-rovers",
+          "sunderland",
+          "burnley"
+        ]
+      },
+      {
+        "tier": 2,
+        "name": "Second Division",
+        "teamCount": 16,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 2
+          },
+          {
+            "type": "relegation",
+            "label": "Re-election",
+            "startPosition": 13,
+            "endPosition": 16
+          }
+        ],
+        "teams": [
+          "notts-county",
+          "manchester-united",
+          "grimsby-town",
+          "birmingham-city",
+          "newcastle-united",
+          "manchester-city",
+          "gainsborough-trinity",
+          "blackpool",
+          "leicester-city",
+          "arsenal",
+          "darwen",
+          "walsall",
+          "loughborough",
+          "burton-swifts",
+          "burton-wanderers",
+          "lincoln-city"
+        ]
+      }
+    ]
+  },
+  {
+    "year": 1898,
+    "season": "1897-98",
+    "nextYear": 1899,
+    "divisions": [
+      {
+        "tier": 1,
+        "name": "First Division",
+        "teamCount": 16,
+        "zones": [
+          {
+            "type": "champions",
+            "label": "Champions",
+            "startPosition": 1,
+            "endPosition": 1
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 15,
+            "endPosition": 16
+          }
+        ],
+        "teams": [
+          "sheffield-united",
+          "sunderland",
+          "wolverhampton-wanderers",
+          "everton",
+          "sheffield-wednesday",
+          "aston-villa",
+          "west-bromwich-albion",
+          "nottingham-forest",
+          "liverpool",
+          "derby-county",
+          "bolton-wanderers",
+          "preston-north-end",
+          "notts-county",
+          "bury",
+          "blackburn-rovers",
+          "stoke-city"
+        ]
+      },
+      {
+        "tier": 2,
+        "name": "Second Division",
+        "teamCount": 16,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 2
+          },
+          {
+            "type": "relegation",
+            "label": "Re-election",
+            "startPosition": 13,
+            "endPosition": 16
+          }
+        ],
+        "teams": [
+          "burnley",
+          "newcastle-united",
+          "manchester-city",
+          "manchester-united",
+          "arsenal",
+          "birmingham-city",
+          "leicester-city",
+          "luton-town",
+          "gainsborough-trinity",
+          "walsall",
+          "blackpool",
+          "grimsby-town",
+          "burton-swifts",
+          "lincoln-city",
+          "darwen",
+          "loughborough"
+        ]
+      }
+    ]
+  },
+  {
+    "year": 1899,
+    "season": "1898-99",
+    "nextYear": 1900,
+    "divisions": [
+      {
+        "tier": 1,
+        "name": "First Division",
+        "teamCount": 18,
+        "zones": [
+          {
+            "type": "champions",
+            "label": "Champions",
+            "startPosition": 1,
+            "endPosition": 1
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 17,
+            "endPosition": 18
+          }
+        ],
+        "teams": [
+          "aston-villa",
+          "liverpool",
+          "burnley",
+          "everton",
+          "notts-county",
+          "blackburn-rovers",
+          "sunderland",
+          "wolverhampton-wanderers",
+          "derby-county",
+          "bury",
+          "nottingham-forest",
+          "stoke-city",
+          "newcastle-united",
+          "west-bromwich-albion",
+          "preston-north-end",
+          "sheffield-united",
+          "bolton-wanderers",
+          "sheffield-wednesday"
+        ]
+      },
+      {
+        "tier": 2,
+        "name": "Second Division",
+        "teamCount": 18,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 2
+          },
+          {
+            "type": "relegation",
+            "label": "Re-election",
+            "startPosition": 15,
+            "endPosition": 18
+          }
+        ],
+        "teams": [
+          "manchester-city",
+          "glossop",
+          "leicester-city",
+          "manchester-united",
+          "new-brighton-tower",
+          "walsall",
+          "arsenal",
+          "birmingham-city",
+          "port-vale",
+          "grimsby-town",
+          "barnsley",
+          "lincoln-city",
+          "burton-swifts",
+          "gainsborough-trinity",
+          "luton-town",
+          "blackpool",
+          "loughborough",
+          "darwen"
+        ]
+      }
+    ]
+  },
+  {
+    "year": 1900,
+    "season": "1899-1900",
+    "nextYear": 1901,
+    "divisions": [
+      {
+        "tier": 1,
+        "name": "First Division",
+        "teamCount": 18,
+        "zones": [
+          {
+            "type": "champions",
+            "label": "Champions",
+            "startPosition": 1,
+            "endPosition": 1
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 17,
+            "endPosition": 18
+          }
+        ],
+        "teams": [
+          "aston-villa",
+          "sheffield-united",
+          "sunderland",
+          "wolverhampton-wanderers",
+          "newcastle-united",
+          "derby-county",
+          "manchester-city",
+          "nottingham-forest",
+          "stoke-city",
+          "liverpool",
+          "everton",
+          "bury",
+          "west-bromwich-albion",
+          "blackburn-rovers",
+          "notts-county",
+          "preston-north-end",
+          "burnley",
+          "glossop"
+        ]
+      },
+      {
+        "tier": 2,
+        "name": "Second Division",
+        "teamCount": 18,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 2
+          },
+          {
+            "type": "relegation",
+            "label": "Re-election",
+            "startPosition": 15,
+            "endPosition": 18
+          }
+        ],
+        "teams": [
+          "sheffield-wednesday",
+          "bolton-wanderers",
+          "birmingham-city",
+          "manchester-united",
+          "leicester-city",
+          "grimsby-town",
+          "chesterfield",
+          "arsenal",
+          "lincoln-city",
+          "new-brighton-tower",
+          "port-vale",
+          "walsall",
+          "gainsborough-trinity",
+          "middlesbrough",
+          "burton-swifts",
+          "barnsley",
+          "luton-town",
+          "loughborough"
+        ]
+      }
+    ]
+  },
+  {
+    "year": 1901,
+    "season": "1900-01",
+    "nextYear": 1902,
+    "divisions": [
+      {
+        "tier": 1,
+        "name": "First Division",
+        "teamCount": 18,
+        "zones": [
+          {
+            "type": "champions",
+            "label": "Champions",
+            "startPosition": 1,
+            "endPosition": 1
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 17,
+            "endPosition": 18
+          }
+        ],
+        "teams": [
+          "liverpool",
+          "sunderland",
+          "notts-county",
+          "nottingham-forest",
+          "bury",
+          "newcastle-united",
+          "everton",
+          "sheffield-wednesday",
+          "blackburn-rovers",
+          "bolton-wanderers",
+          "manchester-city",
+          "derby-county",
+          "wolverhampton-wanderers",
+          "sheffield-united",
+          "aston-villa",
+          "stoke-city",
+          "preston-north-end",
+          "west-bromwich-albion"
+        ]
+      },
+      {
+        "tier": 2,
+        "name": "Second Division",
+        "teamCount": 18,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 2
+          },
+          {
+            "type": "relegation",
+            "label": "Re-election",
+            "startPosition": 15,
+            "endPosition": 18
+          }
+        ],
+        "teams": [
+          "grimsby-town",
+          "birmingham-city",
+          "burnley",
+          "new-brighton-tower",
+          "glossop",
+          "middlesbrough",
+          "arsenal",
+          "lincoln-city",
+          "port-vale",
+          "manchester-united",
+          "leicester-city",
+          "blackpool",
+          "gainsborough-trinity",
+          "chesterfield",
+          "barnsley",
+          "walsall",
+          "stockport-county",
+          "burton-swifts"
+        ]
+      }
+    ]
+  },
+  {
+    "year": 1902,
+    "season": "1901-02",
+    "nextYear": 1903,
+    "divisions": [
+      {
+        "tier": 1,
+        "name": "First Division",
+        "teamCount": 18,
+        "zones": [
+          {
+            "type": "champions",
+            "label": "Champions",
+            "startPosition": 1,
+            "endPosition": 1
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 17,
+            "endPosition": 18
+          }
+        ],
+        "teams": [
+          "sunderland",
+          "everton",
+          "newcastle-united",
+          "blackburn-rovers",
+          "nottingham-forest",
+          "derby-county",
+          "bury",
+          "aston-villa",
+          "sheffield-wednesday",
+          "sheffield-united",
+          "liverpool",
+          "bolton-wanderers",
+          "notts-county",
+          "wolverhampton-wanderers",
+          "grimsby-town",
+          "stoke-city",
+          "birmingham-city",
+          "manchester-city"
+        ]
+      },
+      {
+        "tier": 2,
+        "name": "Second Division",
+        "teamCount": 18,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 2
+          },
+          {
+            "type": "relegation",
+            "label": "Re-election",
+            "startPosition": 15,
+            "endPosition": 18
+          }
+        ],
+        "teams": [
+          "west-bromwich-albion",
+          "middlesbrough",
+          "preston-north-end",
+          "arsenal",
+          "lincoln-city",
+          "bristol-city",
+          "doncaster-rovers",
+          "glossop",
+          "burnley",
+          "burton-united",
+          "barnsley",
+          "port-vale",
+          "blackpool",
+          "leicester-city",
+          "manchester-united",
+          "chesterfield",
+          "stockport-county",
+          "gainsborough-trinity"
+        ]
+      }
+    ]
+  },
+  {
+    "year": 1903,
+    "season": "1902-03",
+    "nextYear": 1904,
+    "divisions": [
+      {
+        "tier": 1,
+        "name": "First Division",
+        "teamCount": 18,
+        "zones": [
+          {
+            "type": "champions",
+            "label": "Champions",
+            "startPosition": 1,
+            "endPosition": 1
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 17,
+            "endPosition": 18
+          }
+        ],
+        "teams": [
+          "sheffield-wednesday",
+          "aston-villa",
+          "sunderland",
+          "sheffield-united",
+          "liverpool",
+          "stoke-city",
+          "west-bromwich-albion",
+          "bury",
+          "derby-county",
+          "nottingham-forest",
+          "wolverhampton-wanderers",
+          "everton",
+          "middlesbrough",
+          "newcastle-united",
+          "notts-county",
+          "blackburn-rovers",
+          "grimsby-town",
+          "bolton-wanderers"
+        ]
+      },
+      {
+        "tier": 2,
+        "name": "Second Division",
+        "teamCount": 18,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 2
+          },
+          {
+            "type": "relegation",
+            "label": "Re-election",
+            "startPosition": 15,
+            "endPosition": 18
+          }
+        ],
+        "teams": [
+          "manchester-city",
+          "birmingham-city",
+          "arsenal",
+          "bristol-city",
+          "manchester-united",
+          "chesterfield",
+          "preston-north-end",
+          "barnsley",
+          "port-vale",
+          "lincoln-city",
+          "glossop",
+          "gainsborough-trinity",
+          "burton-united",
+          "blackpool",
+          "leicester-city",
+          "doncaster-rovers",
+          "stockport-county",
+          "burnley"
+        ]
+      }
+    ]
+  },
+  {
+    "year": 1904,
+    "season": "1903-04",
+    "nextYear": 1905,
+    "divisions": [
+      {
+        "tier": 1,
+        "name": "First Division",
+        "teamCount": 18,
+        "zones": [
+          {
+            "type": "champions",
+            "label": "Champions",
+            "startPosition": 1,
+            "endPosition": 1
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 17,
+            "endPosition": 18
+          }
+        ],
+        "teams": [
+          "sheffield-wednesday",
+          "manchester-city",
+          "everton",
+          "newcastle-united",
+          "aston-villa",
+          "sunderland",
+          "sheffield-united",
+          "wolverhampton-wanderers",
+          "nottingham-forest",
+          "middlesbrough",
+          "birmingham-city",
+          "bury",
+          "notts-county",
+          "derby-county",
+          "blackburn-rovers",
+          "stoke-city",
+          "liverpool",
+          "west-bromwich-albion"
+        ]
+      },
+      {
+        "tier": 2,
+        "name": "Second Division",
+        "teamCount": 18,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 2
+          },
+          {
+            "type": "relegation",
+            "label": "Re-election",
+            "startPosition": 15,
+            "endPosition": 18
+          }
+        ],
+        "teams": [
+          "preston-north-end",
+          "arsenal",
+          "manchester-united",
+          "bristol-city",
+          "burnley",
+          "grimsby-town",
+          "bolton-wanderers",
+          "barnsley",
+          "gainsborough-trinity",
+          "bradford-city",
+          "chesterfield",
+          "lincoln-city",
+          "port-vale",
+          "burton-united",
+          "blackpool",
+          "stockport-county",
+          "glossop",
+          "leicester-city"
+        ]
+      }
+    ]
+  },
+  {
+    "year": 1905,
+    "season": "1904-05",
+    "nextYear": 1906,
+    "divisions": [
+      {
+        "tier": 1,
+        "name": "First Division",
+        "teamCount": 18,
+        "zones": [
+          {
+            "type": "champions",
+            "label": "Champions",
+            "startPosition": 1,
+            "endPosition": 1
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 17,
+            "endPosition": 18
+          }
+        ],
+        "teams": [
+          "newcastle-united",
+          "everton",
+          "manchester-city",
+          "aston-villa",
+          "sunderland",
+          "sheffield-united",
+          "birmingham-city",
+          "preston-north-end",
+          "sheffield-wednesday",
+          "arsenal",
+          "derby-county",
+          "stoke-city",
+          "blackburn-rovers",
+          "wolverhampton-wanderers",
+          "middlesbrough",
+          "nottingham-forest",
+          "bury",
+          "notts-county"
+        ]
+      },
+      {
+        "tier": 2,
+        "name": "Second Division",
+        "teamCount": 18,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 2
+          },
+          {
+            "type": "relegation",
+            "label": "Re-election",
+            "startPosition": 15,
+            "endPosition": 18
+          }
+        ],
+        "teams": [
+          "liverpool",
+          "bolton-wanderers",
+          "manchester-united",
+          "bristol-city",
+          "chesterfield",
+          "gainsborough-trinity",
+          "barnsley",
+          "bradford-city",
+          "lincoln-city",
+          "west-bromwich-albion",
+          "burnley",
+          "glossop",
+          "grimsby-town",
+          "leicester-city",
+          "blackpool",
+          "port-vale",
+          "burton-united",
+          "doncaster-rovers"
+        ]
+      }
+    ]
+  },
+  {
+    "year": 1906,
+    "season": "1905-06",
+    "nextYear": 1907,
+    "divisions": [
+      {
+        "tier": 1,
+        "name": "First Division",
+        "teamCount": 20,
+        "zones": [
+          {
+            "type": "champions",
+            "label": "Champions",
+            "startPosition": 1,
+            "endPosition": 1
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 19,
+            "endPosition": 20
+          }
+        ],
+        "teams": [
+          "liverpool",
+          "preston-north-end",
+          "sheffield-wednesday",
+          "newcastle-united",
+          "manchester-city",
+          "bolton-wanderers",
+          "birmingham-city",
+          "aston-villa",
+          "blackburn-rovers",
+          "stoke-city",
+          "everton",
+          "arsenal",
+          "sheffield-united",
+          "sunderland",
+          "derby-county",
+          "notts-county",
+          "bury",
+          "middlesbrough",
+          "nottingham-forest",
+          "wolverhampton-wanderers"
+        ]
+      },
+      {
+        "tier": 2,
+        "name": "Second Division",
+        "teamCount": 20,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 2
+          },
+          {
+            "type": "relegation",
+            "label": "Re-election",
+            "startPosition": 17,
+            "endPosition": 20
+          }
+        ],
+        "teams": [
+          "bristol-city",
+          "manchester-united",
+          "chelsea",
+          "west-bromwich-albion",
+          "hull-city",
+          "leeds-city",
+          "leicester-city",
+          "grimsby-town",
+          "burnley",
+          "stockport-county",
+          "bradford-city",
+          "barnsley",
+          "lincoln-city",
+          "blackpool",
+          "gainsborough-trinity",
+          "glossop",
+          "port-vale",
+          "chesterfield",
+          "burton-united",
+          "leyton-orient"
+        ]
+      }
+    ]
+  },
+  {
+    "year": 1907,
+    "season": "1906-07",
+    "nextYear": 1908,
+    "divisions": [
+      {
+        "tier": 1,
+        "name": "First Division",
+        "teamCount": 20,
+        "zones": [
+          {
+            "type": "champions",
+            "label": "Champions",
+            "startPosition": 1,
+            "endPosition": 1
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 19,
+            "endPosition": 20
+          }
+        ],
+        "teams": [
+          "newcastle-united",
+          "bristol-city",
+          "everton",
+          "sheffield-united",
+          "aston-villa",
+          "bolton-wanderers",
+          "arsenal",
+          "manchester-united",
+          "birmingham-city",
+          "sunderland",
+          "middlesbrough",
+          "blackburn-rovers",
+          "sheffield-wednesday",
+          "preston-north-end",
+          "liverpool",
+          "bury",
+          "manchester-city",
+          "notts-county",
+          "derby-county",
+          "stoke-city"
+        ]
+      },
+      {
+        "tier": 2,
+        "name": "Second Division",
+        "teamCount": 20,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 2
+          },
+          {
+            "type": "relegation",
+            "label": "Re-election",
+            "startPosition": 17,
+            "endPosition": 20
+          }
+        ],
+        "teams": [
+          "nottingham-forest",
+          "chelsea",
+          "leicester-city",
+          "west-bromwich-albion",
+          "bradford-city",
+          "wolverhampton-wanderers",
+          "burnley",
+          "barnsley",
+          "hull-city",
+          "leeds-city",
+          "grimsby-town",
+          "stockport-county",
+          "blackpool",
+          "gainsborough-trinity",
+          "glossop",
+          "port-vale",
+          "leyton-orient",
+          "chesterfield",
+          "lincoln-city",
+          "burton-united"
+        ]
+      }
+    ]
+  },
+  {
+    "year": 1908,
+    "season": "1907-08",
+    "nextYear": 1909,
+    "divisions": [
+      {
+        "tier": 1,
+        "name": "First Division",
+        "teamCount": 20,
+        "zones": [
+          {
+            "type": "champions",
+            "label": "Champions",
+            "startPosition": 1,
+            "endPosition": 1
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 19,
+            "endPosition": 20
+          }
+        ],
+        "teams": [
+          "manchester-united",
+          "aston-villa",
+          "manchester-city",
+          "newcastle-united",
+          "sheffield-wednesday",
+          "middlesbrough",
+          "bury",
+          "liverpool",
+          "nottingham-forest",
+          "bristol-city",
+          "everton",
+          "preston-north-end",
+          "chelsea",
+          "blackburn-rovers",
+          "arsenal",
+          "sunderland",
+          "sheffield-united",
+          "notts-county",
+          "bolton-wanderers",
+          "birmingham-city"
+        ]
+      },
+      {
+        "tier": 2,
+        "name": "Second Division",
+        "teamCount": 20,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 2
+          },
+          {
+            "type": "relegation",
+            "label": "Re-election",
+            "startPosition": 17,
+            "endPosition": 20
+          }
+        ],
+        "teams": [
+          "bradford-city",
+          "leicester-city",
+          "oldham-athletic",
+          "fulham",
+          "west-bromwich-albion",
+          "derby-county",
+          "burnley",
+          "hull-city",
+          "wolverhampton-wanderers",
+          "stoke-city",
+          "gainsborough-trinity",
+          "leeds-city",
+          "stockport-county",
+          "leyton-orient",
+          "blackpool",
+          "barnsley",
+          "glossop",
+          "grimsby-town",
+          "chesterfield",
+          "lincoln-city"
+        ]
+      }
+    ]
+  },
+  {
+    "year": 1909,
+    "season": "1908-09",
+    "nextYear": 1910,
+    "divisions": [
+      {
+        "tier": 1,
+        "name": "First Division",
+        "teamCount": 20,
+        "zones": [
+          {
+            "type": "champions",
+            "label": "Champions",
+            "startPosition": 1,
+            "endPosition": 1
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 19,
+            "endPosition": 20
+          }
+        ],
+        "teams": [
+          "newcastle-united",
+          "everton",
+          "sunderland",
+          "blackburn-rovers",
+          "sheffield-wednesday",
+          "arsenal",
+          "aston-villa",
+          "bristol-city",
+          "middlesbrough",
+          "preston-north-end",
+          "chelsea",
+          "sheffield-united",
+          "manchester-united",
+          "nottingham-forest",
+          "notts-county",
+          "liverpool",
+          "bury",
+          "bradford-city",
+          "manchester-city",
+          "leicester-city"
+        ]
+      },
+      {
+        "tier": 2,
+        "name": "Second Division",
+        "teamCount": 20,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 2
+          },
+          {
+            "type": "relegation",
+            "label": "Re-election",
+            "startPosition": 17,
+            "endPosition": 20
+          }
+        ],
+        "teams": [
+          "bolton-wanderers",
+          "tottenham-hotspur",
+          "west-bromwich-albion",
+          "hull-city",
+          "derby-county",
+          "oldham-athletic",
+          "wolverhampton-wanderers",
+          "glossop",
+          "gainsborough-trinity",
+          "fulham",
+          "birmingham-city",
+          "leeds-city",
+          "grimsby-town",
+          "burnley",
+          "leyton-orient",
+          "bradford-park-avenue",
+          "barnsley",
+          "stockport-county",
+          "chesterfield",
+          "blackpool"
+        ]
+      }
+    ]
+  },
+  {
+    "year": 1910,
+    "season": "1909-10",
+    "nextYear": 1911,
+    "divisions": [
+      {
+        "tier": 1,
+        "name": "First Division",
+        "teamCount": 20,
+        "zones": [
+          {
+            "type": "champions",
+            "label": "Champions",
+            "startPosition": 1,
+            "endPosition": 1
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 19,
+            "endPosition": 20
+          }
+        ],
+        "teams": [
+          "aston-villa",
+          "liverpool",
+          "blackburn-rovers",
+          "newcastle-united",
+          "manchester-united",
+          "sheffield-united",
+          "bradford-city",
+          "sunderland",
+          "notts-county",
+          "everton",
+          "sheffield-wednesday",
+          "preston-north-end",
+          "bury",
+          "nottingham-forest",
+          "tottenham-hotspur",
+          "bristol-city",
+          "middlesbrough",
+          "arsenal",
+          "chelsea",
+          "bolton-wanderers"
+        ]
+      },
+      {
+        "tier": 2,
+        "name": "Second Division",
+        "teamCount": 20,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 2
+          },
+          {
+            "type": "relegation",
+            "label": "Re-election",
+            "startPosition": 17,
+            "endPosition": 20
+          }
+        ],
+        "teams": [
+          "manchester-city",
+          "oldham-athletic",
+          "hull-city",
+          "derby-county",
+          "leicester-city",
+          "glossop",
+          "fulham",
+          "wolverhampton-wanderers",
+          "barnsley",
+          "bradford-park-avenue",
+          "west-bromwich-albion",
+          "blackpool",
+          "stockport-county",
+          "burnley",
+          "lincoln-city",
+          "leyton-orient",
+          "leeds-city",
+          "gainsborough-trinity",
+          "grimsby-town",
+          "birmingham-city"
+        ]
+      }
+    ]
+  },
+  {
+    "year": 1911,
+    "season": "1910-11",
+    "nextYear": 1912,
+    "divisions": [
+      {
+        "tier": 1,
+        "name": "First Division",
+        "teamCount": 20,
+        "zones": [
+          {
+            "type": "champions",
+            "label": "Champions",
+            "startPosition": 1,
+            "endPosition": 1
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 19,
+            "endPosition": 20
+          }
+        ],
+        "teams": [
+          "manchester-united",
+          "aston-villa",
+          "sunderland",
+          "everton",
+          "bradford-city",
+          "sheffield-wednesday",
+          "oldham-athletic",
+          "newcastle-united",
+          "sheffield-united",
+          "arsenal",
+          "notts-county",
+          "blackburn-rovers",
+          "liverpool",
+          "preston-north-end",
+          "tottenham-hotspur",
+          "middlesbrough",
+          "manchester-city",
+          "bury",
+          "bristol-city",
+          "nottingham-forest"
+        ]
+      },
+      {
+        "tier": 2,
+        "name": "Second Division",
+        "teamCount": 20,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 2
+          },
+          {
+            "type": "relegation",
+            "label": "Re-election",
+            "startPosition": 17,
+            "endPosition": 20
+          }
+        ],
+        "teams": [
+          "west-bromwich-albion",
+          "bolton-wanderers",
+          "chelsea",
+          "leyton-orient",
+          "hull-city",
+          "derby-county",
+          "blackpool",
+          "burnley",
+          "wolverhampton-wanderers",
+          "fulham",
+          "leeds-city",
+          "bradford-park-avenue",
+          "huddersfield-town",
+          "glossop",
+          "leicester-city",
+          "birmingham-city",
+          "stockport-county",
+          "gainsborough-trinity",
+          "barnsley",
+          "lincoln-city"
+        ]
+      }
+    ]
+  },
+  {
+    "year": 1912,
+    "season": "1911-12",
+    "nextYear": 1913,
+    "divisions": [
+      {
+        "tier": 1,
+        "name": "First Division",
+        "teamCount": 20,
+        "zones": [
+          {
+            "type": "champions",
+            "label": "Champions",
+            "startPosition": 1,
+            "endPosition": 1
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 19,
+            "endPosition": 20
+          }
+        ],
+        "teams": [
+          "blackburn-rovers",
+          "everton",
+          "newcastle-united",
+          "bolton-wanderers",
+          "sheffield-wednesday",
+          "aston-villa",
+          "middlesbrough",
+          "sunderland",
+          "west-bromwich-albion",
+          "arsenal",
+          "bradford-city",
+          "tottenham-hotspur",
+          "manchester-united",
+          "sheffield-united",
+          "manchester-city",
+          "notts-county",
+          "liverpool",
+          "oldham-athletic",
+          "preston-north-end",
+          "bury"
+        ]
+      },
+      {
+        "tier": 2,
+        "name": "Second Division",
+        "teamCount": 20,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 2
+          },
+          {
+            "type": "relegation",
+            "label": "Re-election",
+            "startPosition": 17,
+            "endPosition": 20
+          }
+        ],
+        "teams": [
+          "derby-county",
+          "chelsea",
+          "burnley",
+          "leyton-orient",
+          "wolverhampton-wanderers",
+          "barnsley",
+          "hull-city",
+          "fulham",
+          "grimsby-town",
+          "leicester-city",
+          "bradford-park-avenue",
+          "birmingham-city",
+          "bristol-city",
+          "blackpool",
+          "nottingham-forest",
+          "stockport-county",
+          "huddersfield-town",
+          "glossop",
+          "leeds-city",
+          "gainsborough-trinity"
+        ]
+      }
+    ]
+  },
+  {
+    "year": 1913,
+    "season": "1912-13",
+    "nextYear": 1914,
+    "divisions": [
+      {
+        "tier": 1,
+        "name": "First Division",
+        "teamCount": 20,
+        "zones": [
+          {
+            "type": "champions",
+            "label": "Champions",
+            "startPosition": 1,
+            "endPosition": 1
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 19,
+            "endPosition": 20
+          }
+        ],
+        "teams": [
+          "sunderland",
+          "aston-villa",
+          "sheffield-wednesday",
+          "manchester-united",
+          "blackburn-rovers",
+          "manchester-city",
+          "derby-county",
+          "bolton-wanderers",
+          "oldham-athletic",
+          "west-bromwich-albion",
+          "everton",
+          "liverpool",
+          "bradford-city",
+          "newcastle-united",
+          "sheffield-united",
+          "middlesbrough",
+          "tottenham-hotspur",
+          "chelsea",
+          "notts-county",
+          "arsenal"
+        ]
+      },
+      {
+        "tier": 2,
+        "name": "Second Division",
+        "teamCount": 20,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 2
+          },
+          {
+            "type": "relegation",
+            "label": "Re-election",
+            "startPosition": 17,
+            "endPosition": 20
+          }
+        ],
+        "teams": [
+          "preston-north-end",
+          "burnley",
+          "birmingham-city",
+          "barnsley",
+          "huddersfield-town",
+          "leeds-city",
+          "grimsby-town",
+          "lincoln-city",
+          "fulham",
+          "wolverhampton-wanderers",
+          "bury",
+          "hull-city",
+          "bradford-park-avenue",
+          "leyton-orient",
+          "leicester-city",
+          "bristol-city",
+          "nottingham-forest",
+          "glossop",
+          "stockport-county",
+          "blackpool"
+        ]
+      }
+    ]
+  },
+  {
+    "year": 1914,
+    "season": "1913-14",
+    "nextYear": 1915,
+    "divisions": [
+      {
+        "tier": 1,
+        "name": "First Division",
+        "teamCount": 20,
+        "zones": [
+          {
+            "type": "champions",
+            "label": "Champions",
+            "startPosition": 1,
+            "endPosition": 1
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 19,
+            "endPosition": 20
+          }
+        ],
+        "teams": [
+          "blackburn-rovers",
+          "aston-villa",
+          "middlesbrough",
+          "oldham-athletic",
+          "west-bromwich-albion",
+          "bolton-wanderers",
+          "sunderland",
+          "chelsea",
+          "bradford-city",
+          "sheffield-united",
+          "newcastle-united",
+          "burnley",
+          "manchester-city",
+          "manchester-united",
+          "everton",
+          "liverpool",
+          "tottenham-hotspur",
+          "sheffield-wednesday",
+          "preston-north-end",
+          "derby-county"
+        ]
+      },
+      {
+        "tier": 2,
+        "name": "Second Division",
+        "teamCount": 20,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 2
+          },
+          {
+            "type": "relegation",
+            "label": "Re-election",
+            "startPosition": 17,
+            "endPosition": 20
+          }
+        ],
+        "teams": [
+          "notts-county",
+          "bradford-park-avenue",
+          "arsenal",
+          "leeds-city",
+          "barnsley",
+          "leyton-orient",
+          "hull-city",
+          "bristol-city",
+          "wolverhampton-wanderers",
+          "bury",
+          "fulham",
+          "stockport-county",
+          "huddersfield-town",
+          "birmingham-city",
+          "grimsby-town",
+          "blackpool",
+          "glossop",
+          "leicester-city",
+          "lincoln-city",
+          "nottingham-forest"
+        ]
+      }
+    ]
+  },
+  {
+    "year": 1915,
+    "season": "1914-15",
+    "nextYear": 1920,
+    "divisions": [
+      {
+        "tier": 1,
+        "name": "First Division",
+        "teamCount": 20,
+        "zones": [
+          {
+            "type": "champions",
+            "label": "Champions",
+            "startPosition": 1,
+            "endPosition": 1
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 19,
+            "endPosition": 20
+          }
+        ],
+        "teams": [
+          "everton",
+          "oldham-athletic",
+          "blackburn-rovers",
+          "burnley",
+          "manchester-city",
+          "sheffield-united",
+          "sheffield-wednesday",
+          "sunderland",
+          "bradford-park-avenue",
+          "west-bromwich-albion",
+          "bradford-city",
+          "middlesbrough",
+          "liverpool",
+          "aston-villa",
+          "newcastle-united",
+          "notts-county",
+          "bolton-wanderers",
+          "manchester-united",
+          "chelsea",
+          "tottenham-hotspur"
+        ]
+      },
+      {
+        "tier": 2,
+        "name": "Second Division",
+        "teamCount": 20,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 2
+          },
+          {
+            "type": "relegation",
+            "label": "Re-election",
+            "startPosition": 17,
+            "endPosition": 20
+          }
+        ],
+        "teams": [
+          "derby-county",
+          "preston-north-end",
+          "barnsley",
+          "wolverhampton-wanderers",
+          "arsenal",
+          "birmingham-city",
+          "hull-city",
+          "huddersfield-town",
+          "leyton-orient",
+          "blackpool",
+          "bury",
+          "fulham",
+          "bristol-city",
+          "stockport-county",
+          "leeds-city",
+          "lincoln-city",
+          "grimsby-town",
+          "nottingham-forest",
+          "leicester-city",
+          "glossop"
+        ]
+      }
+    ]
+  },
+  {
+    "year": 1920,
+    "season": "1919-20",
+    "nextYear": 1921,
+    "divisions": [
+      {
+        "tier": 1,
+        "name": "First Division",
+        "teamCount": 22,
+        "zones": [
+          {
+            "type": "champions",
+            "label": "Champions",
+            "startPosition": 1,
+            "endPosition": 1
+          },
+          {
+            "type": "relegation",
+            "label": "Relegated",
+            "startPosition": 21,
+            "endPosition": 22
+          }
+        ],
+        "teams": [
+          "west-bromwich-albion",
+          "burnley",
+          "chelsea",
+          "liverpool",
+          "sunderland",
+          "bolton-wanderers",
+          "manchester-city",
+          "newcastle-united",
+          "aston-villa",
+          "arsenal",
+          "bradford-park-avenue",
+          "manchester-united",
+          "middlesbrough",
+          "sheffield-united",
+          "bradford-city",
+          "everton",
+          "oldham-athletic",
+          "derby-county",
+          "preston-north-end",
+          "blackburn-rovers",
+          "notts-county",
+          "sheffield-wednesday"
+        ]
+      },
+      {
+        "tier": 2,
+        "name": "Second Division",
+        "teamCount": 22,
+        "zones": [
+          {
+            "type": "promotion",
+            "label": "Promoted",
+            "startPosition": 1,
+            "endPosition": 2
+          },
+          {
+            "type": "relegation",
+            "label": "Re-election",
+            "startPosition": 20,
+            "endPosition": 22
+          }
+        ],
+        "teams": [
+          "tottenham-hotspur",
+          "huddersfield-town",
+          "birmingham-city",
+          "blackpool",
+          "bury",
+          "fulham",
+          "west-ham-united",
+          "bristol-city",
+          "gateshead",
+          "stoke-city",
+          "hull-city",
+          "barnsley",
+          "port-vale",
+          "leicester-city",
+          "leyton-orient",
+          "stockport-county",
+          "rotherham-county",
+          "nottingham-forest",
+          "wolverhampton-wanderers",
+          "coventry-city",
+          "lincoln-city",
+          "grimsby-town"
+        ]
+      }
+    ]
+  }
+]

@@ -1,6 +1,10 @@
 export * from './types';
 
 import type { AllTimeClubData } from './types';
-import clubsData from './clubs.json';
 
-export const allTimeClubs: AllTimeClubData[] = clubsData as unknown as AllTimeClubData[];
+const clubModules = import.meta.glob<AllTimeClubData>('./clubs/*.json', {
+  eager: true,
+  import: 'default',
+});
+
+export const allTimeClubs: AllTimeClubData[] = Object.values(clubModules);

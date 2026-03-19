@@ -1,0 +1,170 @@
+{
+  "name": "Aldershot Town",
+  "shortName": "Aldershot",
+  "crest": "aldershot-town",
+  "founded": 1926,
+  "currentTier": null,
+  "leagueRecord": {
+    "tier1": {},
+    "tier2": {},
+    "tier3": {},
+    "tier4": {
+      "2009": {
+        "won": 14,
+        "drawn": 12,
+        "lost": 20,
+        "goalsFor": 59,
+        "goalsAgainst": 80
+      },
+      "2010": {
+        "won": 20,
+        "drawn": 12,
+        "lost": 14,
+        "goalsFor": 69,
+        "goalsAgainst": 56
+      },
+      "2011": {
+        "won": 14,
+        "drawn": 19,
+        "lost": 13,
+        "goalsFor": 54,
+        "goalsAgainst": 54
+      },
+      "2012": {
+        "won": 19,
+        "drawn": 9,
+        "lost": 18,
+        "goalsFor": 54,
+        "goalsAgainst": 52
+      },
+      "2013": {
+        "won": 11,
+        "drawn": 15,
+        "lost": 20,
+        "goalsFor": 42,
+        "goalsAgainst": 60
+      },
+      "2014": {
+        "won": 16,
+        "drawn": 13,
+        "lost": 17,
+        "goalsFor": 69,
+        "goalsAgainst": 62
+      },
+      "2015": {
+        "won": 14,
+        "drawn": 11,
+        "lost": 21,
+        "goalsFor": 51,
+        "goalsAgainst": 61
+      },
+      "2016": {
+        "won": 16,
+        "drawn": 8,
+        "lost": 22,
+        "goalsFor": 54,
+        "goalsAgainst": 72
+      },
+      "2017": {
+        "won": 23,
+        "drawn": 13,
+        "lost": 10,
+        "goalsFor": 66,
+        "goalsAgainst": 37
+      },
+      "2018": {
+        "won": 20,
+        "drawn": 15,
+        "lost": 11,
+        "goalsFor": 64,
+        "goalsAgainst": 52
+      },
+      "2019": {
+        "won": 11,
+        "drawn": 11,
+        "lost": 24,
+        "goalsFor": 38,
+        "goalsAgainst": 67
+      },
+      "2020": {
+        "won": 12,
+        "drawn": 10,
+        "lost": 17,
+        "goalsFor": 43,
+        "goalsAgainst": 55
+      },
+      "2021": {
+        "won": 15,
+        "drawn": 7,
+        "lost": 20,
+        "goalsFor": 59,
+        "goalsAgainst": 66
+      },
+      "2022": {
+        "won": 11,
+        "drawn": 10,
+        "lost": 23,
+        "goalsFor": 46,
+        "goalsAgainst": 73
+      },
+      "2023": {
+        "won": 14,
+        "drawn": 11,
+        "lost": 21,
+        "goalsFor": 64,
+        "goalsAgainst": 76
+      },
+      "2024": {
+        "won": 20,
+        "drawn": 9,
+        "lost": 17,
+        "goalsFor": 74,
+        "goalsAgainst": 83
+      },
+      "2025": {
+        "won": 14,
+        "drawn": 15,
+        "lost": 17,
+        "goalsFor": 69,
+        "goalsAgainst": 83
+      }
+    }
+  },
+  "honours": {
+    "leagueTitles": {
+      "tier1": [],
+      "tier2": [],
+      "tier3": [],
+      "tier4": [
+        2008
+      ]
+    },
+    "leagueRunnersUp": {
+      "tier1": [],
+      "tier2": [],
+      "tier3": [],
+      "tier4": [
+        2010
+      ]
+    },
+    "playoffWinners": {
+      "tier1": [],
+      "tier2": [],
+      "tier3": [],
+      "tier4": []
+    },
+    "faCupWinners": [],
+    "faCupRunnersUp": [],
+    "leagueCupWinners": [],
+    "leagueCupRunnersUp": []
+  },
+  "europeanHonours": {
+    "championsLeagueWinners": [],
+    "championsLeagueRunnersUp": [],
+    "europaLeagueWinners": [],
+    "europaLeagueRunnersUp": [],
+    "conferenceLeagueWinners": [],
+    "conferenceLeagueRunnersUp": []
+  },
+  "averageAttendance": 2800
+}

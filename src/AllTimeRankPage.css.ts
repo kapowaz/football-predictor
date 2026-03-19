@@ -1,6 +1,7 @@
 import { style } from '@vanilla-extract/css';
 import {
   colorTextHeading,
+  colorTextHover,
   colorTextMuted,
   colorTextSecondary,
   fontFamilyDisplay,
@@ -68,11 +69,61 @@ export const descriptionBlock = style({
   },
 });
 
+export const descriptionToggle = style({
+  display: 'flex',
+  alignItems: 'center',
+  gap: space2,
+  fontFamily: 'inherit',
+  fontSize: fontSizeSm,
+  fontWeight: 600,
+  color: colorTextSecondary,
+  cursor: 'pointer',
+  userSelect: 'none',
+  background: 'none',
+  border: 'none',
+  padding: `${space1} 0`,
+  textAlign: 'left',
+  transition: 'color 0.2s ease-in-out',
+  selectors: {
+    '&:hover': {
+      color: colorTextHover,
+    },
+  },
+});
+
+export const chevron = style({
+  width: '16px',
+  height: '16px',
+  flexShrink: 0,
+  transition: 'transform 0.2s ease, color 0.2s ease-in-out',
+});
+
+export const chevronExpanded = style({
+  transform: 'rotate(90deg)',
+});
+
+export const descriptionContent = style({
+  display: 'grid',
+  gridTemplateRows: '0fr',
+  opacity: 0,
+  transition: 'grid-template-rows 0.25s ease-in-out, opacity 0.25s ease-in-out',
+});
+
+export const descriptionContentExpanded = style({
+  gridTemplateRows: '1fr',
+  opacity: 1,
+});
+
+export const descriptionInner = style({
+  overflow: 'hidden',
+  minHeight: 0,
+});
+
 export const description = style({
   color: colorTextSecondary,
   fontSize: fontSizeSm,
   lineHeight: 1.6,
-  margin: 0,
+  margin: `${space2} 0 0`,
 });
 
 export const componentList = style({

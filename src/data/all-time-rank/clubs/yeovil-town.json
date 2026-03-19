@@ -1,0 +1,209 @@
+{
+  "name": "Yeovil Town",
+  "shortName": "Yeovil",
+  "crest": "yeovil-town",
+  "founded": 1895,
+  "currentTier": null,
+  "leagueRecord": {
+    "tier1": {},
+    "tier2": {
+      "2014": {
+        "won": 8,
+        "drawn": 13,
+        "lost": 25,
+        "goalsFor": 44,
+        "goalsAgainst": 75
+      }
+    },
+    "tier3": {
+      "2006": {
+        "won": 15,
+        "drawn": 11,
+        "lost": 20,
+        "goalsFor": 54,
+        "goalsAgainst": 62
+      },
+      "2007": {
+        "won": 23,
+        "drawn": 10,
+        "lost": 13,
+        "goalsFor": 55,
+        "goalsAgainst": 39
+      },
+      "2008": {
+        "won": 14,
+        "drawn": 10,
+        "lost": 22,
+        "goalsFor": 38,
+        "goalsAgainst": 59
+      },
+      "2009": {
+        "won": 12,
+        "drawn": 15,
+        "lost": 19,
+        "goalsFor": 41,
+        "goalsAgainst": 66
+      },
+      "2010": {
+        "won": 13,
+        "drawn": 14,
+        "lost": 19,
+        "goalsFor": 55,
+        "goalsAgainst": 59
+      },
+      "2011": {
+        "won": 13,
+        "drawn": 14,
+        "lost": 19,
+        "goalsFor": 55,
+        "goalsAgainst": 66
+      },
+      "2012": {
+        "won": 14,
+        "drawn": 12,
+        "lost": 20,
+        "goalsFor": 59,
+        "goalsAgainst": 80
+      },
+      "2013": {
+        "won": 23,
+        "drawn": 8,
+        "lost": 15,
+        "goalsFor": 71,
+        "goalsAgainst": 56
+      },
+      "2015": {
+        "won": 10,
+        "drawn": 10,
+        "lost": 26,
+        "goalsFor": 36,
+        "goalsAgainst": 75
+      }
+    },
+    "tier4": {
+      "2004": {
+        "won": 23,
+        "drawn": 5,
+        "lost": 18,
+        "goalsFor": 70,
+        "goalsAgainst": 57
+      },
+      "2005": {
+        "won": 25,
+        "drawn": 8,
+        "lost": 13,
+        "goalsFor": 90,
+        "goalsAgainst": 65
+      },
+      "2016": {
+        "won": 11,
+        "drawn": 15,
+        "lost": 20,
+        "goalsFor": 43,
+        "goalsAgainst": 59
+      },
+      "2017": {
+        "won": 11,
+        "drawn": 17,
+        "lost": 18,
+        "goalsFor": 49,
+        "goalsAgainst": 64
+      },
+      "2018": {
+        "won": 12,
+        "drawn": 12,
+        "lost": 22,
+        "goalsFor": 59,
+        "goalsAgainst": 75
+      },
+      "2019": {
+        "won": 9,
+        "drawn": 13,
+        "lost": 24,
+        "goalsFor": 41,
+        "goalsAgainst": 66
+      },
+      "2020": {
+        "won": 17,
+        "drawn": 9,
+        "lost": 11,
+        "goalsFor": 61,
+        "goalsAgainst": 44
+      },
+      "2021": {
+        "won": 15,
+        "drawn": 7,
+        "lost": 20,
+        "goalsFor": 58,
+        "goalsAgainst": 68
+      },
+      "2022": {
+        "won": 15,
+        "drawn": 14,
+        "lost": 15,
+        "goalsFor": 43,
+        "goalsAgainst": 46
+      },
+      "2023": {
+        "won": 7,
+        "drawn": 19,
+        "lost": 20,
+        "goalsFor": 35,
+        "goalsAgainst": 60
+      },
+      "2024": {
+        "won": 29,
+        "drawn": 8,
+        "lost": 9,
+        "goalsFor": 81,
+        "goalsAgainst": 49
+      },
+      "2025": {
+        "won": 15,
+        "drawn": 11,
+        "lost": 20,
+        "goalsFor": 51,
+        "goalsAgainst": 60
+      }
+    }
+  },
+  "honours": {
+    "leagueTitles": {
+      "tier1": [],
+      "tier2": [],
+      "tier3": [
+        2013
+      ],
+      "tier4": [
+        2003
+      ]
+    },
+    "leagueRunnersUp": {
+      "tier1": [],
+      "tier2": [],
+      "tier3": [],
+      "tier4": []
+    },
+    "playoffWinners": {
+      "tier1": [],
+      "tier2": [],
+      "tier3": [
+        2013
+      ],
+      "tier4": []
+    },
+    "faCupWinners": [],
+    "faCupRunnersUp": [],
+    "leagueCupWinners": [],
+    "leagueCupRunnersUp": []
+  },
+  "europeanHonours": {
+    "championsLeagueWinners": [],
+    "championsLeagueRunnersUp": [],
+    "europaLeagueWinners": [],
+    "europaLeagueRunnersUp": [],
+    "conferenceLeagueWinners": [],
+    "conferenceLeagueRunnersUp": []
+  },
+  "averageAttendance": 4200
+}

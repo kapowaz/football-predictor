@@ -1,0 +1,152 @@
+{
+  "name": "Crawley Town",
+  "shortName": "Crawley",
+  "crest": "crawley-town",
+  "founded": 1896,
+  "currentTier": 4,
+  "leagueRecord": {
+    "tier1": {},
+    "tier2": {},
+    "tier3": {
+      "2013": {
+        "won": 18,
+        "drawn": 14,
+        "lost": 14,
+        "goalsFor": 59,
+        "goalsAgainst": 58
+      },
+      "2014": {
+        "won": 14,
+        "drawn": 15,
+        "lost": 17,
+        "goalsFor": 48,
+        "goalsAgainst": 54
+      },
+      "2015": {
+        "won": 13,
+        "drawn": 11,
+        "lost": 22,
+        "goalsFor": 53,
+        "goalsAgainst": 79
+      },
+      "2025": {
+        "won": 12,
+        "drawn": 10,
+        "lost": 24,
+        "goalsFor": 57,
+        "goalsAgainst": 83
+      }
+    },
+    "tier4": {
+      "2012": {
+        "won": 23,
+        "drawn": 15,
+        "lost": 8,
+        "goalsFor": 76,
+        "goalsAgainst": 54
+      },
+      "2016": {
+        "won": 13,
+        "drawn": 8,
+        "lost": 25,
+        "goalsFor": 45,
+        "goalsAgainst": 78
+      },
+      "2017": {
+        "won": 13,
+        "drawn": 12,
+        "lost": 21,
+        "goalsFor": 53,
+        "goalsAgainst": 71
+      },
+      "2018": {
+        "won": 16,
+        "drawn": 11,
+        "lost": 19,
+        "goalsFor": 58,
+        "goalsAgainst": 66
+      },
+      "2019": {
+        "won": 15,
+        "drawn": 8,
+        "lost": 23,
+        "goalsFor": 51,
+        "goalsAgainst": 68
+      },
+      "2020": {
+        "won": 11,
+        "drawn": 15,
+        "lost": 11,
+        "goalsFor": 51,
+        "goalsAgainst": 47
+      },
+      "2021": {
+        "won": 16,
+        "drawn": 13,
+        "lost": 17,
+        "goalsFor": 56,
+        "goalsAgainst": 62
+      },
+      "2022": {
+        "won": 17,
+        "drawn": 10,
+        "lost": 19,
+        "goalsFor": 56,
+        "goalsAgainst": 66
+      },
+      "2023": {
+        "won": 11,
+        "drawn": 13,
+        "lost": 22,
+        "goalsFor": 48,
+        "goalsAgainst": 71
+      },
+      "2024": {
+        "won": 21,
+        "drawn": 7,
+        "lost": 18,
+        "goalsFor": 73,
+        "goalsAgainst": 67
+      }
+    }
+  },
+  "honours": {
+    "leagueTitles": {
+      "tier1": [],
+      "tier2": [],
+      "tier3": [],
+      "tier4": [
+        2011
+      ]
+    },
+    "leagueRunnersUp": {
+      "tier1": [],
+      "tier2": [],
+      "tier3": [],
+      "tier4": [
+        2024
+      ]
+    },
+    "playoffWinners": {
+      "tier1": [],
+      "tier2": [],
+      "tier3": [],
+      "tier4": [
+        2024
+      ]
+    },
+    "faCupWinners": [],
+    "faCupRunnersUp": [],
+    "leagueCupWinners": [],
+    "leagueCupRunnersUp": []
+  },
+  "europeanHonours": {
+    "championsLeagueWinners": [],
+    "championsLeagueRunnersUp": [],
+    "europaLeagueWinners": [],
+    "europaLeagueRunnersUp": [],
+    "conferenceLeagueWinners": [],
+    "conferenceLeagueRunnersUp": []
+  },
+  "averageAttendance": 3200
+}

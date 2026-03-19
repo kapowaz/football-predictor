@@ -5,6 +5,8 @@ export const colorBgPage = createVar();
 export const colorBgOverlayPanel = createVar();
 export const colorBgSurface = createVar();
 export const colorBgSurfaceHover = createVar();
+export const colorBgPopover = createVar();
+export const colorTextPopover = createVar();
 
 export const colorTextPrimary = createVar();
 export const colorTextHeading = createVar();
@@ -153,6 +155,8 @@ globalStyle(':root', {
     [colorBgOverlayPanel]: `color-mix(in oklch, ${tailwind.gray[50]}, transparent 30%)`,
     [colorBgSurface]: tailwind.white,
     [colorBgSurfaceHover]: tailwind.gray[50],
+    [colorBgPopover]: tailwind.slate[50],
+    [colorTextPopover]: tailwind.slate[700],
 
     [colorTextPrimary]: tailwind.gray[800],
     [colorTextHeading]: tailwind.gray[900],
@@ -319,6 +323,8 @@ const darkVars = {
   [colorBgOverlayPanel]: `color-mix(in oklch, ${tailwind.slate[950]}, transparent 30%)`,
   [colorBgSurface]: tailwind.black,
   [colorBgSurfaceHover]: tailwind.slate[950],
+  [colorBgPopover]: tailwind.slate[950],
+  [colorTextPopover]: tailwind.slate[300],
 
   [colorTextPrimary]: tailwind.slate[200],
   [colorTextHeading]: tailwind.slate[300],
