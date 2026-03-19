@@ -20,6 +20,17 @@ const formatAttendance = (attendance: number): string => {
   return String(attendance);
 };
 
+const formatSeasonYear = (year: number): string => {
+  const startYear = year - 1;
+  const endYearShort = String(year).slice(-2);
+  return `${startYear}/${endYearShort}`;
+};
+
+const formatYearsList = (years: number[], asSeason = false): string | undefined => {
+  if (years.length === 0) return undefined;
+  return years.map((y) => (asSeason ? formatSeasonYear(y) : String(y))).join(', ');
+};
+
 export const AllTimeRankTable = ({ rankedClubs }: AllTimeRankTableProps) => {
   return (
     <div className={styles.container}>
@@ -69,12 +80,12 @@ export const AllTimeRankTable = ({ rankedClubs }: AllTimeRankTableProps) => {
             const { club, rank, totalScore, leagueScore } = entry;
             const crestUrl = getCrest(club.crest);
 
-            const t1Titles = club.honours.leagueTitles.tier1.length;
-            const faCups = club.honours.faCupWinners.length;
-            const leagueCups = club.honours.leagueCupWinners.length;
-            const uclWins = club.europeanHonours.championsLeagueWinners.length;
-            const uelWins = club.europeanHonours.europaLeagueWinners.length;
-            const ueclWins = club.europeanHonours.conferenceLeagueWinners.length;
+            const t1TitleYears = club.honours.leagueTitles.tier1;
+            const faCupYears = club.honours.faCupWinners;
+            const leagueCupYears = club.honours.leagueCupWinners;
+            const uclYears = club.europeanHonours.championsLeagueWinners;
+            const uelYears = club.europeanHonours.europaLeagueWinners;
+            const ueclYears = club.europeanHonours.conferenceLeagueWinners;
 
             return (
               <tr
@@ -109,22 +120,22 @@ export const AllTimeRankTable = ({ rankedClubs }: AllTimeRankTableProps) => {
                   <span className={styles.leagueScore}>{formatScore(leagueScore)}</span>
                 </td>
                 <td className={clsx(styles.td, styles.tdCenter)}>
-                  <StatCell value={t1Titles} />
+                  <StatCell value={t1TitleYears.length} title={formatYearsList(t1TitleYears, true)} />
                 </td>
                 <td className={clsx(styles.td, styles.tdCenter)}>
-                  <StatCell value={faCups} />
+                  <StatCell value={faCupYears.length} title={formatYearsList(faCupYears)} />
                 </td>
                 <td className={clsx(styles.td, styles.tdCenter)}>
-                  <StatCell value={leagueCups} />
+                  <StatCell value={leagueCupYears.length} title={formatYearsList(leagueCupYears)} />
                 </td>
                 <td className={clsx(styles.td, styles.tdCenter)}>
-                  <StatCell value={uclWins} />
+                  <StatCell value={uclYears.length} title={formatYearsList(uclYears)} />
                 </td>
                 <td className={clsx(styles.td, styles.tdCenter)}>
-                  <StatCell value={uelWins} />
+                  <StatCell value={uelYears.length} title={formatYearsList(uelYears)} />
                 </td>
                 <td className={clsx(styles.td, styles.tdCenter)}>
-                  <StatCell value={ueclWins} />
+                  <StatCell value={ueclYears.length} title={formatYearsList(ueclYears)} />
                 </td>
                 <td className={clsx(styles.td, styles.tdCenter)}>
                   <span className={styles.attendanceValue}>
@@ -142,10 +153,12 @@ export const AllTimeRankTable = ({ rankedClubs }: AllTimeRankTableProps) => {
 
 interface StatCellProps {
   value: number;
+  /** Tooltip listing the years of each win */
+  title?: string;
 }
 
-const StatCell = ({ value }: StatCellProps) => (
-  <span className={clsx(styles.statValue, value === 0 && styles.statZero)}>
+const StatCell = ({ value, title }: StatCellProps) => (
+  <span className={clsx(styles.statValue, value === 0 && styles.statZero)} title={title}>
     {value === 0 ? '-' : value}
   </span>
 );
