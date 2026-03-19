@@ -1,4 +1,4 @@
-import { style, createContainer } from '@vanilla-extract/css';
+import { style, createContainer, createVar, fallbackVar } from '@vanilla-extract/css';
 import {
   colorBgSurface,
   colorBgRowEven,
@@ -9,6 +9,7 @@ import {
   colorTextPosition,
   colorTextSecondary,
   colorTextMuted,
+  colorTextStatFaded,
   colorPremierLeagueFg,
   colorPremierLeagueBg,
   fontFamily,
@@ -23,6 +24,8 @@ import {
   radiusLg,
   shadowMd,
 } from '../../theme.css';
+
+export const honourRecency = createVar();
 
 export const tableContainer = createContainer();
 
@@ -204,6 +207,7 @@ export const scoreValue = style({
 export const statValue = style({
   fontFamily: fontFamily,
   fontVariantNumeric: 'tabular-nums',
+  color: `color-mix(in oklch, ${colorTextPrimary} ${fallbackVar(honourRecency, '100%')}, ${colorTextStatFaded})`,
 });
 
 export const statZero = style({

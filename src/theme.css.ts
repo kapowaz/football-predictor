@@ -82,6 +82,8 @@ export const colorBgTableHead = createVar();
 export const colorBgTableHeadHover = createVar();
 export const colorTextTableHead = createVar();
 
+export const colorTextStatFaded = createVar();
+
 export const colorPremierLeagueFg = createVar();
 export const colorPremierLeagueBg = createVar();
 
@@ -179,6 +181,8 @@ globalStyle(':root', {
     [colorSuccessBorderHover]: tailwind.green[600],
     [colorNeutral]: tailwind.amber[600],
     [colorNeutralLight]: tailwind.slate[300],
+
+    [colorTextStatFaded]: tailwind.gray[300],
 
     [colorBgTableHead]: tailwind.slate[200],
     [colorBgTableHeadHover]: tailwind.slate[300],
@@ -342,6 +346,8 @@ const darkVars = {
   [colorSuccessBorderHover]: tailwind.green[400],
   [colorNeutral]: tailwind.amber[400],
   [colorNeutralLight]: tailwind.slate[700],
+
+  [colorTextStatFaded]: tailwind.slate[700],
 
   [colorBgTableHead]: tailwind.slate[800],
   [colorBgTableHeadHover]: tailwind.slate[700],

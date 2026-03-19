@@ -30,7 +30,7 @@ export const DEFAULT_WEIGHTS: ScoringWeights = {
  * The cubic Bezier maps an input t (0..1) to an output y (0..1) following
  * an S-curve: slow start, fast middle, slow end.
  */
-const easeInOut = (t: number): number => {
+export const easeInOut = (t: number): number => {
   if (t <= 0) return 0;
   if (t >= 1) return 1;
 
@@ -69,7 +69,7 @@ const easeInOut = (t: number): number => {
  * relative to the dataset span, applies the cubic Bezier ease-in-out curve,
  * and maps the result to [decayFloor..1.0].
  */
-const decayWeight = (year: number, currentYear: number, oldestYear: number, decayFloor: number): number => {
+export const decayWeight = (year: number, currentYear: number, oldestYear: number, decayFloor: number): number => {
   if (decayFloor >= 1.0) return 1.0;
   if (currentYear === oldestYear) return 1.0;
 
@@ -77,7 +77,7 @@ const decayWeight = (year: number, currentYear: number, oldestYear: number, deca
   return 1 - easeInOut(t) * (1 - decayFloor);
 };
 
-const findOldestYear = (clubs: AllTimeClubData[]): number => {
+export const findOldestYear = (clubs: AllTimeClubData[]): number => {
   let oldest = Infinity;
 
   for (const club of clubs) {
@@ -222,6 +222,28 @@ const scoreEuropeanHonours = (
   score += scoreYearArray(europeanHonours.conferenceLeagueRunnersUp, 25, currentYear, oldestYear, decayFloor);
 
   return score;
+};
+
+/**
+ * Compute a normalised recency value (0–100) for a set of honour years.
+ * Uses the same decay curve as the ranking equations: a high value means
+ * the honours skew recent, a low value means they skew historic.
+ */
+export const computeHonourRecency = (
+  years: number[],
+  currentYear: number,
+  oldestYear: number,
+  decayFloor: number,
+): number => {
+  if (years.length === 0) return 0;
+
+  const totalDecay = years.reduce(
+    (sum, year) => sum + decayWeight(year, currentYear, oldestYear, decayFloor),
+    0,
+  );
+  const avgDecay = totalDecay / years.length;
+
+  return Math.round(((avgDecay - decayFloor) / (1 - decayFloor)) * 100);
 };
 
 export const calculateAllTimeScores = (

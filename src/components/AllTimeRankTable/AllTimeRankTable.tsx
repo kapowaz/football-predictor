@@ -1,4 +1,6 @@
+import { useMemo } from 'react';
 import clsx from 'clsx';
+import { assignInlineVars } from '@vanilla-extract/dynamic';
 import { getCrest } from '../../assets/crests';
 import {
   PremierLeagueLogo,
@@ -8,6 +10,7 @@ import {
   UefaEuropaLeagueLogo,
   UefaConferenceLeagueLogo,
 } from '../honours';
+import { findOldestYear, computeHonourRecency } from '../../utils/allTimeRank';
 import type { AllTimeRankTableProps } from './types';
 import * as styles from './AllTimeRankTable.css';
 
@@ -31,7 +34,18 @@ const formatYearsList = (years: number[], asSeason = false): string | undefined 
   return years.map((y) => (asSeason ? formatSeasonYear(y) : String(y))).join(', ');
 };
 
-export const AllTimeRankTable = ({ rankedClubs }: AllTimeRankTableProps) => {
+export const AllTimeRankTable = ({ rankedClubs, weights }: AllTimeRankTableProps) => {
+  const { currentYear, oldestYear } = useMemo(() => {
+    const clubs = rankedClubs.map((r) => r.club);
+    return {
+      currentYear: new Date().getFullYear(),
+      oldestYear: findOldestYear(clubs),
+    };
+  }, [rankedClubs]);
+
+  const recency = (years: number[]) =>
+    computeHonourRecency(years, currentYear, oldestYear, weights.decayFloor);
+
   return (
     <div className={styles.container}>
       <table className={styles.table}>
@@ -120,22 +134,22 @@ export const AllTimeRankTable = ({ rankedClubs }: AllTimeRankTableProps) => {
                   <span className={styles.leagueScore}>{formatScore(leagueScore)}</span>
                 </td>
                 <td className={clsx(styles.td, styles.tdCenter)}>
-                  <StatCell value={t1TitleYears.length} title={formatYearsList(t1TitleYears, true)} />
+                  <StatCell value={t1TitleYears.length} title={formatYearsList(t1TitleYears, true)} recency={recency(t1TitleYears)} />
                 </td>
                 <td className={clsx(styles.td, styles.tdCenter)}>
-                  <StatCell value={faCupYears.length} title={formatYearsList(faCupYears)} />
+                  <StatCell value={faCupYears.length} title={formatYearsList(faCupYears)} recency={recency(faCupYears)} />
                 </td>
                 <td className={clsx(styles.td, styles.tdCenter)}>
-                  <StatCell value={leagueCupYears.length} title={formatYearsList(leagueCupYears)} />
+                  <StatCell value={leagueCupYears.length} title={formatYearsList(leagueCupYears)} recency={recency(leagueCupYears)} />
                 </td>
                 <td className={clsx(styles.td, styles.tdCenter)}>
-                  <StatCell value={uclYears.length} title={formatYearsList(uclYears)} />
+                  <StatCell value={uclYears.length} title={formatYearsList(uclYears)} recency={recency(uclYears)} />
                 </td>
                 <td className={clsx(styles.td, styles.tdCenter)}>
-                  <StatCell value={uelYears.length} title={formatYearsList(uelYears)} />
+                  <StatCell value={uelYears.length} title={formatYearsList(uelYears)} recency={recency(uelYears)} />
                 </td>
                 <td className={clsx(styles.td, styles.tdCenter)}>
-                  <StatCell value={ueclYears.length} title={formatYearsList(ueclYears)} />
+                  <StatCell value={ueclYears.length} title={formatYearsList(ueclYears)} recency={recency(ueclYears)} />
                 </td>
                 <td className={clsx(styles.td, styles.tdCenter)}>
                   <span className={styles.attendanceValue}>
@@ -155,10 +169,16 @@ interface StatCellProps {
   value: number;
   /** Tooltip listing the years of each win */
   title?: string;
+  /** Normalised recency percentage (0–100) driving the color-mix weighting */
+  recency: number;
 }
 
-const StatCell = ({ value, title }: StatCellProps) => (
-  <span className={clsx(styles.statValue, value === 0 && styles.statZero)} title={title}>
+const StatCell = ({ value, title, recency }: StatCellProps) => (
+  <span
+    className={clsx(styles.statValue, value === 0 && styles.statZero)}
+    title={title}
+    style={assignInlineVars({ [styles.honourRecency]: `${recency}%` })}
+  >
     {value === 0 ? '-' : value}
   </span>
 );
