@@ -21,9 +21,6 @@ const BonusPointsPage = lazy(() =>
 const StandingsImagePage = lazy(() =>
   import('./StandingsImagePage').then((m) => ({ default: m.StandingsImagePage })),
 );
-const AllTimeRankPage = lazy(() =>
-  import('./AllTimeRankPage').then((m) => ({ default: m.AllTimeRankPage })),
-);
 const ColorPalettePage = lazy(() =>
   import('./ColorPalettePage').then((m) => ({ default: m.ColorPalettePage })),
 );
@@ -35,7 +32,6 @@ createRoot(document.getElementById('root')!).render(
         <Routes>
           <Route element={<App />}>
             <Route index element={<IndexRedirect />} />
-            <Route path="all-time-rank" element={<AllTimeRankPage />} />
             <Route path="colors" element={<ColorPalettePage />} />
             <Route path="relegation/:slug/" element={<RelegationPage />} />
             <Route path="run-in/:slug/" element={<RunInPage />} />
