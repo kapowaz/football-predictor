@@ -36,6 +36,17 @@ interface FotMobLeagueResponse {
   };
 }
 
+/** Shape of `__NEXT_DATA__` we read from the league stats HTML page */
+interface FotMobNextDataPayload {
+  props?: {
+    pageProps?: {
+      stats?: {
+        teams?: FotMobLeagueStatsTeamEntry[];
+      };
+    };
+  };
+}
+
 interface TeamJson {
   id: number | null;
   fotmobId?: number;
@@ -74,16 +85,65 @@ const fotmobFetch = async <T>(url: string): Promise<T> => {
   return response.json() as Promise<T>;
 };
 
+/**
+ * FotMob removed the JSON `GET /api/leagues?...&tab=stats` route (404). League
+ * stats metadata (including `fetchAllUrl` for each stat) is now embedded in
+ * the Next.js `__NEXT_DATA__` payload on the league stats HTML page.
+ */
+const fetchFotmobLeagueStatsOverview = async (
+  comp: ScriptCompetition,
+): Promise<FotMobLeagueResponse> => {
+  const pageUrl = new URL(
+    `https://www.fotmob.com/leagues/${String(comp.fotmobLeagueId)}/stats/${comp.fotmobStatsSeoStr}`,
+  );
+  const response = await fetch(pageUrl.toString(), {
+    headers: {
+      'User-Agent': USER_AGENT,
+      Accept: 'text/html,application/xhtml+xml',
+      'Accept-Encoding': 'gzip, deflate',
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error(
+      `FotMob request failed: ${response.status} ${response.statusText} for ${pageUrl.toString()}`,
+    );
+  }
+
+  const html = await response.text();
+  const match = html.match(
+    /<script id="__NEXT_DATA__" type="application\/json">([^<]+)<\/script>/,
+  );
+  if (!match) {
+    throw new Error(
+      `FotMob league stats page did not include __NEXT_DATA__ (${pageUrl.toString()})`,
+    );
+  }
+
+  let nextData: FotMobNextDataPayload;
+  try {
+    nextData = JSON.parse(match[1]) as FotMobNextDataPayload;
+  } catch {
+    throw new Error(`Failed to parse __NEXT_DATA__ JSON from ${pageUrl.toString()}`);
+  }
+
+  const teams = nextData.props?.pageProps?.stats?.teams;
+  if (!teams?.length) {
+    throw new Error(`FotMob page had no stats.teams (${pageUrl.toString()})`);
+  }
+
+  return { stats: { teams } };
+};
+
 const fetchStatsForCompetition = async (comp: ScriptCompetition): Promise<void> => {
-  const leagueStatsUrl = `https://www.fotmob.com/api/leagues?id=${comp.fotmobLeagueId}&tab=stats&type=league`;
   console.log(`Fetching FotMob stats for ${comp.name}...\n`);
 
   const dataDir = path.join(import.meta.dirname, '../src/data', comp.slug);
   const teamsPath = path.join(dataDir, 'teams.json');
   const teamsData: TeamsJson = JSON.parse(fs.readFileSync(teamsPath, 'utf-8'));
 
-  console.log('Discovering available stats from FotMob league endpoint...');
-  const leagueData = await fotmobFetch<FotMobLeagueResponse>(leagueStatsUrl);
+  console.log('Discovering available stats from FotMob league stats page...');
+  const leagueData = await fetchFotmobLeagueStatsOverview(comp);
 
   const statEntries = leagueData.stats.teams;
   if (!statEntries || statEntries.length === 0) {

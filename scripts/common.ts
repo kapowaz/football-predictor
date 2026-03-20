@@ -9,6 +9,12 @@ export interface ScriptCompetition {
   slug: string;
   footballDataCode: string;
   fotmobLeagueId: number;
+  /**
+   * Last path segment of FotMob's league stats URL:
+   * `https://www.fotmob.com/leagues/{fotmobLeagueId}/stats/{fotmobStatsSeoStr}`
+   * (from their `seostr` field; not always the same as our app slug).
+   */
+  fotmobStatsSeoStr: string;
   name: string;
 }
 
@@ -23,24 +29,28 @@ export const COMPETITIONS: Record<string, ScriptCompetition> = {
     slug: 'efl-championship',
     footballDataCode: 'ELC',
     fotmobLeagueId: 48,
+    fotmobStatsSeoStr: 'championship',
     name: 'EFL Championship',
   },
   'efl-league-one': {
     slug: 'efl-league-one',
     footballDataCode: 'EL1',
     fotmobLeagueId: 108,
+    fotmobStatsSeoStr: 'league-one',
     name: 'EFL League One',
   },
   'efl-league-two': {
     slug: 'efl-league-two',
     footballDataCode: 'EL2',
     fotmobLeagueId: 109,
+    fotmobStatsSeoStr: 'league-two',
     name: 'EFL League Two',
   },
   'premier-league': {
     slug: 'premier-league',
     footballDataCode: 'PL',
     fotmobLeagueId: 47,
+    fotmobStatsSeoStr: 'premier-league',
     name: 'Premier League',
   },
 };

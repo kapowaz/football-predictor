@@ -43,7 +43,7 @@ FotMob provides free, unauthenticated season-level aggregate team statistics via
 https://data.fotmob.com/stats/{leagueId}/season/{seasonId}/{statName}.json
 ```
 
-For the EFL Championship: `leagueId = 48`. The current season ID is discovered dynamically from the league overview endpoint at `https://www.fotmob.com/api/leagues?id=48&tab=stats&type=league` by reading `stats.teams[].fetchAllUrl`.
+For the EFL Championship: `leagueId = 48`. The current season ID is discovered from the league stats **HTML** page (FotMob no longer serves the old `GET /api/leagues?...&tab=stats` JSON route). The script loads `https://www.fotmob.com/leagues/{id}/stats/{seostr}` (see `fotmobStatsSeoStr` in `scripts/common.ts`), parses the embedded Next.js `__NEXT_DATA__` JSON, and reads `stats.teams[].fetchAllUrl` the same as before.
 
 ### Available team stats
 
@@ -127,7 +127,7 @@ A TypeScript script (consistent with existing `fetch-data.ts` / `fetch-teams.ts`
 
 **Steps:**
 
-1. Fetch the league stats overview from `https://www.fotmob.com/api/leagues?id=48&tab=stats&type=league` to discover all available stats and their `fetchAllUrl` values
+1. Fetch the league stats HTML page and parse `__NEXT_DATA__` to discover all available stats and their `fetchAllUrl` values (same metadata FotMob used to expose via `GET /api/leagues?...&tab=stats`)
 2. Fetch each stat's full data concurrently via `Promise.all`
 3. Read `src/data/teams.json` to get the football-data.org team list
 4. Build the FotMob-to-football-data.org team ID mapping (existing `fotmobId` values first, then name normalization fallback)
