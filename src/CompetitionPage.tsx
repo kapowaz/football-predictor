@@ -13,11 +13,12 @@ import {
   selectTeamsById,
 } from './state/selectors';
 import { getEffectivePredictions } from './utils/liveScores';
+import { useZoneGuarantees } from './hooks/useZoneGuarantees';
 import { CompetitionPanels } from './components/CompetitionPanels';
 import { StandingsImageView } from './components/StandingsImageView';
 import { SeasonSummaryModal } from './components/SeasonSummaryModal';
 import { DeductionsModal } from './components/DeductionsModal';
-import { competitionData } from './data';
+import { hasCompetitionData } from './data';
 import { getCompetition, allCompetitions, type CompetitionConfig } from './data/competitions';
 
 interface CompetitionContentProps {
@@ -54,13 +55,14 @@ const CompetitionContent = ({ slug, config }: CompetitionContentProps) => {
     [predictions, liveScores],
   );
 
-  const { standings, deductionMarkers, zoneGuaranteedByTeamId } = selectStandingsViewModel(
+  const { standings, deductionMarkers } = selectStandingsViewModel(
     teams,
     matches,
     effectivePredictions,
     deductions,
     config.zones,
   );
+  const zoneGuaranteedByTeamId = useZoneGuarantees(standings, matches, effectivePredictions, config.zones);
   const teamsById = selectTeamsById(teams);
   const deductionNotes = selectDeductionNotes(deductions, teamsById);
 
@@ -169,8 +171,7 @@ export const CompetitionPage = () => {
     return <Navigate to="/" replace />;
   }
 
-  const data = competitionData[slug];
-  if (!data) {
+  if (!hasCompetitionData(slug)) {
     return <Navigate to="/" replace />;
   }
 

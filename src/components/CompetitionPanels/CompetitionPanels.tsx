@@ -12,6 +12,7 @@ import {
 } from '../../state/selectors';
 import { useCompetitionSessionSlice } from '../../state/useCompetitionSessionSlice';
 import { getEffectivePredictions } from '../../utils/liveScores';
+import { useZoneGuarantees } from '../../hooks/useZoneGuarantees';
 import type { CompetitionConfig } from '../../data/competitions';
 import type { VariantRulesMode } from '../../types';
 import { NavBar } from '../NavBar';
@@ -65,14 +66,17 @@ export const CompetitionPanels = ({
   const teamsById = selectTeamsById(teams);
   const [formDisplay, setFormDisplay] = useState<FormDisplayMode>('badges');
 
+  const effectivePredictions = useMemo(
+    () => (session ? getEffectivePredictions(session.predictions, liveScores) : null),
+    [session, liveScores],
+  );
+
   const panelModel = useMemo(() => {
-    if (!session) {
+    if (!session || !effectivePredictions) {
       return null;
     }
 
-    const effectivePredictions = getEffectivePredictions(session.predictions, liveScores);
-
-    const { standings, deductionMarkers, zoneGuaranteedByTeamId } = selectStandingsViewModel(
+    const { standings, deductionMarkers } = selectStandingsViewModel(
       teams,
       matches,
       effectivePredictions,
@@ -94,13 +98,19 @@ export const CompetitionPanels = ({
     return {
       standings,
       deductionMarkers,
-      zoneGuaranteedByTeamId,
       positionHistory,
       deductionNotes,
       predictedCount,
       allScheduledPredicted,
     };
-  }, [config.zones, liveScores, matches, session, teams, teamsById, variantRules]);
+  }, [config.zones, effectivePredictions, matches, session, teams, teamsById, variantRules]);
+
+  const zoneGuaranteedByTeamId = useZoneGuarantees(
+    panelModel?.standings ?? [],
+    matches,
+    effectivePredictions ?? { predictions: {}, lastModified: '' },
+    config.zones,
+  );
 
   const hasModelPredictions = Object.keys(modelPredictions).length > 0;
 
@@ -144,7 +154,7 @@ export const CompetitionPanels = ({
           <StandingsTable
             standings={panelModel.standings}
             deductionMarkers={panelModel.deductionMarkers}
-            zoneGuaranteedByTeamId={panelModel.zoneGuaranteedByTeamId}
+            zoneGuaranteedByTeamId={zoneGuaranteedByTeamId}
             zones={config.zones}
             onResultClick={handleResultClick}
             variantRules={variantRules}

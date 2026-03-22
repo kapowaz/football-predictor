@@ -3,7 +3,9 @@ import { createRoot } from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './fonts.css';
 import App from './App';
+import * as styles from './App.css';
 import { IndexRedirect } from './IndexRedirect';
+import { LoadingIndicator } from './components/LoadingIndicator';
 
 const CompetitionPage = lazy(() =>
   import('./CompetitionPage').then((m) => ({ default: m.CompetitionPage })),
@@ -25,10 +27,16 @@ const ColorPalettePage = lazy(() =>
   import('./ColorPalettePage').then((m) => ({ default: m.ColorPalettePage })),
 );
 
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register(`${import.meta.env.BASE_URL}sw.js`);
+  });
+}
+
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <BrowserRouter basename="/football-predictor">
-      <Suspense>
+      <Suspense fallback={<div className={styles.suspenseFallback}><LoadingIndicator size="xl" /></div>}>
         <Routes>
           <Route element={<App />}>
             <Route index element={<IndexRedirect />} />

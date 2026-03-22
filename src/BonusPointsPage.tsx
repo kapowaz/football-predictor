@@ -12,10 +12,11 @@ import {
   selectTeamsById,
 } from './state/selectors';
 import { getEffectivePredictions } from './utils/liveScores';
+import { useZoneGuarantees } from './hooks/useZoneGuarantees';
 import { CompetitionPanels } from './components/CompetitionPanels';
 import { StandingsImageView } from './components/StandingsImageView';
 import { DeductionsModal } from './components/DeductionsModal';
-import { competitionData } from './data';
+import { hasCompetitionData } from './data';
 import { getCompetition, allCompetitions, type CompetitionConfig } from './data/competitions';
 
 interface BonusPointsContentProps {
@@ -50,7 +51,7 @@ const BonusPointsContent = ({ slug, config }: BonusPointsContentProps) => {
     [predictions, liveScores],
   );
 
-  const { standings, deductionMarkers, zoneGuaranteedByTeamId } = selectStandingsViewModel(
+  const { standings, deductionMarkers } = selectStandingsViewModel(
     teams,
     matches,
     effectivePredictions,
@@ -58,6 +59,7 @@ const BonusPointsContent = ({ slug, config }: BonusPointsContentProps) => {
     config.zones,
     'bonus-points',
   );
+  const zoneGuaranteedByTeamId = useZoneGuarantees(standings, matches, effectivePredictions, config.zones);
   const teamsById = selectTeamsById(teams);
   const deductionNotes = selectDeductionNotes(deductions, teamsById);
 
@@ -153,8 +155,7 @@ export const BonusPointsPage = () => {
     return <Navigate to="/" replace />;
   }
 
-  const data = competitionData[slug];
-  if (!data) {
+  if (!hasCompetitionData(slug)) {
     return <Navigate to="/" replace />;
   }
 

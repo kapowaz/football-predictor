@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from 'react';
+import { use, useEffect, useMemo } from 'react';
 import type {
   Team,
   Match,
@@ -8,7 +8,7 @@ import type {
   ApiStandingsData,
   ModelPredictionsData,
 } from '../types';
-import { competitionData } from '../data';
+import { loadCompetitionData } from '../data';
 import { calculateStandings } from '../utils/standings';
 import { validateStandings } from '../utils/validateStandings';
 
@@ -25,7 +25,7 @@ interface CompetitionDataResult {
 }
 
 export const useCompetitionData = (slug: string): CompetitionDataResult => {
-  const data = competitionData[slug];
+  const data = use(loadCompetitionData(slug));
 
   const teams = useMemo(() => (data.teamsData as TeamsData).teams, [data.teamsData]);
   const matches = useMemo(

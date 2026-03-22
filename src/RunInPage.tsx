@@ -5,7 +5,7 @@ import { AppPanels } from './components/AppPanels';
 import { FixturePanel } from './components/FixturePanel';
 import { StandingsTable, type FormDisplayMode } from './components/StandingsTable/StandingsTable';
 import { DeductionsModal } from './components/DeductionsModal';
-import { competitionData } from './data';
+import { hasCompetitionData } from './data';
 import { allCompetitions, getCompetition, type CompetitionConfig } from './data/competitions';
 import { useCompetitionData } from './hooks/useCompetitionData';
 import { useLiveScores } from './hooks/useLiveScores';
@@ -18,6 +18,7 @@ import {
   selectStandingsViewModel,
 } from './state/selectors';
 import { getEffectivePredictions } from './utils/liveScores';
+import { useZoneGuarantees } from './hooks/useZoneGuarantees';
 import { getRunInPointsMargin, getTopZoneBoundary } from './utils/zones';
 import * as styles from './RunInPage.css';
 
@@ -58,13 +59,14 @@ const RunInContent = ({ slug, config }: RunInContentProps) => {
     () => getEffectivePredictions(predictions, liveScores),
     [predictions, liveScores],
   );
-  const { standings, deductionMarkers, zoneGuaranteedByTeamId } = selectStandingsViewModel(
+  const { standings, deductionMarkers } = selectStandingsViewModel(
     teams,
     matches,
     effectivePredictions,
     deductions,
     config.zones,
   );
+  const zoneGuaranteedByTeamId = useZoneGuarantees(standings, matches, effectivePredictions, config.zones);
   const positionHistory = selectPositionHistory(teams, matches, effectivePredictions, deductions);
   const [formDisplay, setFormDisplay] = useState<FormDisplayMode>('badges');
   const boundaryPosition = getTopZoneBoundary(config.zones);
@@ -195,8 +197,7 @@ export const RunInPage = () => {
     return <Navigate to="/" replace />;
   }
 
-  const data = competitionData[slug];
-  if (!data) {
+  if (!hasCompetitionData(slug)) {
     return <Navigate to="/" replace />;
   }
 

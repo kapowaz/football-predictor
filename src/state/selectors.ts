@@ -1,7 +1,6 @@
 import type { Match, PointDeduction, PredictionsStore, Team, TeamStanding, VariantRulesMode } from '../types';
 import { calculateStandings } from '../utils/standings';
 import { calculatePositionHistory } from '../utils/positionHistory';
-import { calculateZoneGuaranteedByTeamId } from '../utils/zoneGuarantees';
 import type { ZoneDefinition } from '../data/competitions';
 import type { CompetitionSessionState } from './competitionSessionStore';
 
@@ -13,7 +12,6 @@ interface DeductionNote {
 interface StandingsViewModel {
   standings: TeamStanding[];
   deductionMarkers: Map<number, string>;
-  zoneGuaranteedByTeamId: Map<number, boolean>;
 }
 
 const memoizeByReference = <TArgs extends unknown[], TResult>(
@@ -122,19 +120,13 @@ export const selectStandingsViewModel = memoizeByReference(
     matches: Match[],
     predictions: PredictionsStore,
     deductions: PointDeduction[],
-    zones: ZoneDefinition[],
+    _zones: ZoneDefinition[],
     variantRules: VariantRulesMode = false,
   ): StandingsViewModel => {
     const standings = selectStandings(teams, matches, predictions, deductions, variantRules);
     const deductionMarkers = selectDeductionMarkers(deductions);
-    const zoneGuaranteedByTeamId = calculateZoneGuaranteedByTeamId(
-      standings,
-      matches,
-      predictions,
-      zones,
-    );
 
-    return { standings, deductionMarkers, zoneGuaranteedByTeamId };
+    return { standings, deductionMarkers };
   },
 );
 

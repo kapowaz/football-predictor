@@ -1,5 +1,5 @@
 import { style, globalStyle } from '@vanilla-extract/css';
-import { colorBgPage, colorTextPrimary, fontFamily, space6 } from './theme.css';
+import { colorBgPage, colorLoadingProgress, colorTextPrimary, fontFamily, space6 } from './theme.css';
 
 globalStyle('*, *::before, *::after', {
   boxSizing: 'border-box',
@@ -24,4 +24,12 @@ export const app = style({
       padding: 0,
     },
   },
+});
+
+export const suspenseFallback = style({
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  height: '100dvh',
+  color: colorLoadingProgress,
 });

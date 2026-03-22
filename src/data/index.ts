@@ -7,11 +7,6 @@ import type {
 } from '../types';
 import ENABLED_COMPETITION_SLUGS from './enabled-competitions.json';
 
-import * as eflChampionship from './efl-championship';
-import * as eflLeagueOne from './efl-league-one';
-import * as eflLeagueTwo from './efl-league-two';
-import * as premierLeague from './premier-league';
-
 export interface CompetitionData {
   teamsData: TeamsData;
   matchesData: MatchesData;
@@ -21,15 +16,34 @@ export interface CompetitionData {
   modelPredictionsData: ModelPredictionsData;
 }
 
-const allCompetitionData: Record<string, CompetitionData> = {
-  'premier-league': premierLeague as unknown as CompetitionData,
-  'efl-championship': eflChampionship as unknown as CompetitionData,
-  'efl-league-one': eflLeagueOne as unknown as CompetitionData,
-  'efl-league-two': eflLeagueTwo as unknown as CompetitionData,
+const loaders: Record<string, () => Promise<CompetitionData>> = {
+  'premier-league': () =>
+    import('./premier-league').then((m) => m as unknown as CompetitionData),
+  'efl-championship': () =>
+    import('./efl-championship').then((m) => m as unknown as CompetitionData),
+  'efl-league-one': () =>
+    import('./efl-league-one').then((m) => m as unknown as CompetitionData),
+  'efl-league-two': () =>
+    import('./efl-league-two').then((m) => m as unknown as CompetitionData),
 };
 
-export const competitionData: Record<string, CompetitionData> = Object.fromEntries(
-  Object.entries(allCompetitionData).filter(([slug]) =>
-    ENABLED_COMPETITION_SLUGS.includes(slug),
-  ),
-);
+const cache = new Map<string, Promise<CompetitionData>>();
+
+/** Dynamically load competition data. Returns a cached promise for repeated calls. */
+export const loadCompetitionData = (slug: string): Promise<CompetitionData> => {
+  let promise = cache.get(slug);
+  if (!promise) {
+    const loader = loaders[slug];
+    if (!loader) {
+      return Promise.reject(new Error(`No data loader for competition: ${slug}`));
+    }
+    promise = loader();
+    cache.set(slug, promise);
+  }
+  return promise;
+};
+
+/** Synchronous check for whether a competition has loadable data. */
+export const hasCompetitionData = (slug: string): boolean => {
+  return ENABLED_COMPETITION_SLUGS.includes(slug) && slug in loaders;
+};

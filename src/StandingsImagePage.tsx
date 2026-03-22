@@ -4,13 +4,14 @@ import type { VariantRulesMode } from './types';
 import { StandingsImageView } from './components/StandingsImageView';
 import { ColorModeToggle } from './components/ColorModeToggle';
 import { getCompetition, type CompetitionConfig } from './data/competitions';
-import { competitionData } from './data';
+import { hasCompetitionData } from './data';
 import { useCompetitionData } from './hooks/useCompetitionData';
 import { useLiveScores } from './hooks/useLiveScores';
 import { useTheme } from './hooks/useTheme';
 import { useCompetitionSession } from './state/useCompetitionSession';
 import { selectDeductionNotes, selectStandingsViewModel, selectTeamsById } from './state/selectors';
 import { getEffectivePredictions } from './utils/liveScores';
+import { useZoneGuarantees } from './hooks/useZoneGuarantees';
 import * as styles from './StandingsImagePage.css.ts';
 
 const VALID_VARIANT_RULES = new Set<string>(['new-rules', 'bonus-points']);
@@ -43,7 +44,7 @@ const StandingsImageContent = ({ slug, config }: StandingsImageContentProps) => 
     () => getEffectivePredictions(predictions, liveScores),
     [predictions, liveScores],
   );
-  const { standings, deductionMarkers, zoneGuaranteedByTeamId } = selectStandingsViewModel(
+  const { standings, deductionMarkers } = selectStandingsViewModel(
     teams,
     matches,
     effectivePredictions,
@@ -51,6 +52,7 @@ const StandingsImageContent = ({ slug, config }: StandingsImageContentProps) => 
     config.zones,
     variantRules,
   );
+  const zoneGuaranteedByTeamId = useZoneGuarantees(standings, matches, effectivePredictions, config.zones);
   const teamsById = selectTeamsById(teams);
   const deductionNotes = selectDeductionNotes(deductions, teamsById);
 
@@ -110,8 +112,7 @@ export const StandingsImagePage = () => {
     return <Navigate to="/" replace />;
   }
 
-  const data = competitionData[slug];
-  if (!data) {
+  if (!hasCompetitionData(slug)) {
     return <Navigate to="/" replace />;
   }
 
