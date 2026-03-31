@@ -37,12 +37,6 @@ export const input = style({
     borderColor: colorFocus,
     boxShadow: `0 0 0 3px ${colorFocusRing}`,
   },
-  '::-webkit-inner-spin-button': {
-    appearance: 'none',
-  },
-  '::-webkit-outer-spin-button': {
-    appearance: 'none',
-  },
 });
 
 export const liveScoreInput = style({

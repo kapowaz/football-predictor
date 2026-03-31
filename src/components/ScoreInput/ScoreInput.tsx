@@ -17,8 +17,11 @@ interface ScoreInputProps {
   onChange: (homeGoals: number | null, awayGoals: number | null) => void;
 }
 
-const parseGoals = (value: string): number | null =>
-  value === '' ? null : Math.max(0, parseInt(value, 10) || 0);
+const parseGoals = (value: string): number | null => {
+  const digits = value.replace(/\D/g, '');
+  if (digits === '') return null;
+  return Math.min(99, parseInt(digits, 10));
+};
 
 const selectOnFocus = (e: FocusEvent<HTMLInputElement>) => {
   e.target.select();
@@ -52,9 +55,10 @@ export const ScoreInput = ({
     <div className={clsx(styles.container, isLiveScore && styles.liveScoreContainer)}>
       <input
         id={homeInputId}
-        type="number"
-        min="0"
-        max="99"
+        type="text"
+        inputMode="numeric"
+        pattern="[0-9]*"
+        maxLength={2}
         className={clsx(styles.input, isLiveScore && styles.liveScoreInput)}
         value={localHome ?? ''}
         onFocus={selectOnFocus}
@@ -75,9 +79,10 @@ export const ScoreInput = ({
       <input
         ref={awayRef}
         id={awayInputId}
-        type="number"
-        min="0"
-        max="99"
+        type="text"
+        inputMode="numeric"
+        pattern="[0-9]*"
+        maxLength={2}
         className={clsx(styles.input, isLiveScore && styles.liveScoreInput)}
         value={localAway ?? ''}
         onFocus={selectOnFocus}
