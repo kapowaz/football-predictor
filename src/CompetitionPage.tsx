@@ -1,9 +1,9 @@
-import { useMemo, useRef } from 'react';
-import { useParams, Navigate, useNavigate } from 'react-router-dom';
+import { useEffect, useMemo, useRef } from 'react';
+import { useParams, Navigate, useNavigate, useSearchParams } from 'react-router-dom';
 import { useCompetitionData } from './hooks/useCompetitionData';
 import { useImageDownload } from './hooks/useImageDownload';
 import { useLiveScores } from './hooks/useLiveScores';
-import { useScreenShake } from './hooks/useScreenShake';
+// import { useScreenShake } from './hooks/useScreenShake';
 import { useTheme } from './hooks/useTheme';
 import { useCompetitionSession } from './state/useCompetitionSession';
 import {
@@ -20,6 +20,7 @@ import { SeasonSummaryModal } from './components/SeasonSummaryModal';
 import { DeductionsModal } from './components/DeductionsModal';
 import { hasCompetitionData } from './data';
 import { getCompetition, allCompetitions, type CompetitionConfig } from './data/competitions';
+import { clearConfettiShown } from './utils/storage';
 
 interface CompetitionContentProps {
   slug: string;
@@ -28,6 +29,16 @@ interface CompetitionContentProps {
 
 const CompetitionContent = ({ slug, config }: CompetitionContentProps) => {
   const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  useEffect(() => {
+    if (searchParams.get('resetConfetti') === 'true') {
+      clearConfettiShown(slug);
+      const nextParams = new URLSearchParams(searchParams);
+      nextParams.delete('resetConfetti');
+      setSearchParams(nextParams, { replace: true });
+    }
+  }, [slug, searchParams, setSearchParams]);
   const { theme, toggleTheme } = useTheme();
   const { teams, matches, defaultDeductions } = useCompetitionData(slug);
   const { liveScores } = useLiveScores(slug);
@@ -62,7 +73,12 @@ const CompetitionContent = ({ slug, config }: CompetitionContentProps) => {
     deductions,
     config.zones,
   );
-  const zoneGuaranteedByTeamId = useZoneGuarantees(standings, matches, effectivePredictions, config.zones);
+  const zoneGuaranteedByTeamId = useZoneGuarantees(
+    standings,
+    matches,
+    effectivePredictions,
+    config.zones,
+  );
   const teamsById = selectTeamsById(teams);
   const deductionNotes = selectDeductionNotes(deductions, teamsById);
 
@@ -70,12 +86,13 @@ const CompetitionContent = ({ slug, config }: CompetitionContentProps) => {
   const topStandingsCaptureRef = useRef<HTMLDivElement>(null);
   const bottomStandingsCaptureRef = useRef<HTMLDivElement>(null);
 
-  useScreenShake({
-    shouldShake: isSummaryOpen,
-    targetRef: pageContentRef,
-    duration: 0.7,
-    delay: 0.15,
-  });
+  // disabled for now
+  // useScreenShake({
+  //   shouldShake: isSummaryOpen,
+  //   targetRef: pageContentRef,
+  //   duration: 0.7,
+  //   delay: 0.15,
+  // });
 
   const competitions = allCompetitions();
 

@@ -1,8 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import type { TeamStanding } from '../../types';
 import type { CompetitionConfig, ZoneType } from '../../data/competitions';
 import { groupStandingsByZone } from '../../utils/zones';
 import { generateShareText } from '../../utils/share';
+import { hasConfettiShown, markConfettiShown } from '../../utils/storage';
 import { Modal } from '../Modal';
 import { Confetti } from '../Confetti';
 import { Button } from '../Button';
@@ -42,7 +43,7 @@ const zoneLabelStyles: Record<ZoneType, string> = {
   relegation: styles.relegatedLabel,
 };
 
-const CONFETTI_DELAY_MS = 200;
+const CONFETTI_POST_ANIMATION_DELAY_MS = 1000;
 
 export const SeasonSummaryModal = ({
   standings,
@@ -53,14 +54,24 @@ export const SeasonSummaryModal = ({
   isRenderingStandingsImage = false,
 }: SeasonSummaryModalProps) => {
   const [showConfetti, setShowConfetti] = useState(false);
+  const confettiTimeoutRef = useRef<number | undefined>(undefined);
   const hasShareApi = typeof navigator.share === 'function';
   const isShareImageReady = Boolean(standingsImageFiles) && !isRenderingStandingsImage;
 
-  useEffect(() => {
-    if (!isOpen) return;
+  const handleOpenAnimationComplete = useCallback(() => {
+    if (hasConfettiShown(competition.slug)) return;
 
-    const id = window.setTimeout(() => setShowConfetti(true), CONFETTI_DELAY_MS);
-    return () => window.clearTimeout(id);
+    confettiTimeoutRef.current = window.setTimeout(() => {
+      setShowConfetti(true);
+      markConfettiShown(competition.slug);
+    }, CONFETTI_POST_ANIMATION_DELAY_MS);
+  }, [competition.slug]);
+
+  useEffect(() => {
+    if (!isOpen) {
+      window.clearTimeout(confettiTimeoutRef.current);
+    }
+    return () => window.clearTimeout(confettiTimeoutRef.current);
   }, [isOpen]);
 
   const champion = standings[0];
@@ -95,7 +106,13 @@ export const SeasonSummaryModal = ({
 
   return (
     <>
-      <Modal isOpen={isOpen} onClose={onClose} className={styles.modal} initialFocus={-1} shakeOnOpen>
+      <Modal
+        isOpen={isOpen}
+        onClose={onClose}
+        className={styles.modal}
+        initialFocus={-1}
+        onOpenAnimationComplete={handleOpenAnimationComplete}
+      >
         {champion && (
           <img
             src={getCrest(champion.team.crest)}
@@ -126,8 +143,7 @@ export const SeasonSummaryModal = ({
             <span>
               {competition.name}
               <br />
-              Champions {competition.season}!
-              <span className={styles.asterisk}>*</span>
+              Champions {competition.season}!<span className={styles.asterisk}>*</span>
             </span>
           </p>
           <p className={styles.predictionParagraph}>*This is only a prediction…</p>

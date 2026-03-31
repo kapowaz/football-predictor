@@ -1,4 +1,4 @@
-import { useCallback, type ReactNode } from 'react';
+import { useCallback, useEffect, useRef, type ReactNode } from 'react';
 import {
   useFloating,
   useDismiss,
@@ -28,6 +28,8 @@ interface ModalProps {
   initialFocus?: number | React.MutableRefObject<HTMLElement | null>;
   /** When true, the panel shakes on open */
   shakeOnOpen?: boolean;
+  /** Called when the open (entrance) animation finishes */
+  onOpenAnimationComplete?: () => void;
 }
 
 const SHAKE_X = [0, -9, 8, -7, 9, -8, 6, -9, 7, -5, 6, -4, 3, -2, 1, 0];
@@ -39,7 +41,13 @@ export const Modal = ({
   className,
   initialFocus,
   shakeOnOpen,
+  onOpenAnimationComplete,
 }: ModalProps) => {
+  const isOpenRef = useRef(isOpen);
+  useEffect(() => {
+    isOpenRef.current = isOpen;
+  }, [isOpen]);
+
   const { refs, context } = useFloating({
     open: isOpen,
     onOpenChange: (open) => {
@@ -91,6 +99,11 @@ export const Modal = ({
                         }
                       : { type: 'spring', damping: 25, stiffness: 300 }
                   }
+                  onAnimationComplete={() => {
+                    if (isOpenRef.current) {
+                      onOpenAnimationComplete?.();
+                    }
+                  }}
                   {...getFloatingProps()}
                 >
                   {children}

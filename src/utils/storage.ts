@@ -113,3 +113,30 @@ export const clearDeductions = (slug: string): void => {
     console.error('Failed to clear deductions from localStorage:', error);
   }
 };
+
+const confettiShownKey = (slug: string) => `football-predictor-confetti-shown-${slug}`;
+
+export const hasConfettiShown = (slug: string): boolean => {
+  try {
+    return localStorage.getItem(confettiShownKey(slug)) === 'true';
+  } catch (error) {
+    console.error('Failed to read confetti state from localStorage:', error);
+    return false;
+  }
+};
+
+export const markConfettiShown = (slug: string): void => {
+  try {
+    localStorage.setItem(confettiShownKey(slug), 'true');
+  } catch (error) {
+    console.error('Failed to save confetti state to localStorage:', error);
+  }
+};
+
+export const clearConfettiShown = (slug: string): void => {
+  try {
+    localStorage.removeItem(confettiShownKey(slug));
+  } catch (error) {
+    console.error('Failed to clear confetti state from localStorage:', error);
+  }
+};
