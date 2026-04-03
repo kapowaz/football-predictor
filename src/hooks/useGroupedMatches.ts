@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import type { Match, PredictionsStore } from '../types';
+import type { Match, PredictionsStore, Team } from '../types';
 import type { FixtureGroupData } from '../components/FixtureList/types';
 
 export type { FixtureGroupData };
@@ -27,6 +27,7 @@ const getDateKey = (utcDate: string): string => {
 export const useGroupedMatches = (
   matches: Match[],
   predictions: PredictionsStore,
+  teamsById: ReadonlyMap<number, Team>,
   { showFinished = true, filterTeams = [] }: UseGroupedMatchesOptions = {},
 ): FixtureGroupData[] => {
   const filterTeamSet = useMemo(() => new Set(filterTeams), [filterTeams]);
@@ -45,8 +46,14 @@ export const useGroupedMatches = (
 
         return filterTeamSet.has(match.homeTeamId) || filterTeamSet.has(match.awayTeamId);
       })
-      .sort((a, b) => new Date(a.utcDate).getTime() - new Date(b.utcDate).getTime());
-  }, [filterTeamSet, hasTeamFilter, matches, showFinished]);
+      .sort((a, b) => {
+        const timeDiff = new Date(a.utcDate).getTime() - new Date(b.utcDate).getTime();
+        if (timeDiff !== 0) return timeDiff;
+        const homeA = teamsById.get(a.homeTeamId)?.name ?? '';
+        const homeB = teamsById.get(b.homeTeamId)?.name ?? '';
+        return homeA.localeCompare(homeB);
+      });
+  }, [filterTeamSet, hasTeamFilter, matches, showFinished, teamsById]);
 
   return useMemo(() => {
     const groups = new Map<string, Match[]>();

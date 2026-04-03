@@ -70,7 +70,7 @@ export const FixtureList = ({
     didAutoExpandInitialGroup.current = true;
 
     const firstUpcomingGroup = groups.find((group) =>
-      group.matches.every((match) => match.status !== 'FINISHED'),
+      group.matches.some((match) => match.status !== 'FINISHED'),
     );
     if (!firstUpcomingGroup) return;
 

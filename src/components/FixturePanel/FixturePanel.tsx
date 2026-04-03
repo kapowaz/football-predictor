@@ -81,7 +81,7 @@ export const FixturePanel = ({
     [showFinished, filterTeams],
   );
 
-  const dateGroups = useGroupedMatches(matches, predictions, groupOptions);
+  const dateGroups = useGroupedMatches(matches, predictions, teamsById, groupOptions);
   const teamGroups = useTeamGroupedMatches(matches, predictions, teamsById, groupOptions);
 
   const sortedTeamGroups = useMemo(
