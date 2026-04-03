@@ -15,6 +15,7 @@ import { getEffectivePredictions } from '../../utils/liveScores';
 import { useZoneGuarantees } from '../../hooks/useZoneGuarantees';
 import type { CompetitionConfig } from '../../data/competitions';
 import type { VariantRulesMode } from '../../types';
+import type { ZoneThreshold } from '../../utils/zoneThresholds';
 import { NavBar } from '../NavBar';
 import { AppPanels } from '../AppPanels';
 import { StandingsTable, type FormDisplayMode } from '../StandingsTable/StandingsTable';
@@ -40,6 +41,10 @@ interface CompetitionPanelsProps {
   hasStandingsImage?: boolean;
   /** Enable variant rules mode for standings and fixture indicators. */
   variantRules?: VariantRulesMode;
+  /** Enables dashed zone boundaries on the standings table. */
+  isRunIn?: boolean;
+  /** Zone thresholds to display inside run-in boundary popovers. */
+  zoneThresholds?: ZoneThreshold[];
 }
 
 export const CompetitionPanels = ({
@@ -51,6 +56,8 @@ export const CompetitionPanels = ({
   isRenderingImage,
   hasStandingsImage,
   variantRules = false as VariantRulesMode,
+  isRunIn = false,
+  zoneThresholds,
 }: CompetitionPanelsProps) => {
   const { teams, matches, modelPredictions } = useCompetitionData(slug);
   const { liveScores } = useLiveScores(slug);
@@ -156,6 +163,8 @@ export const CompetitionPanels = ({
             deductionMarkers={panelModel.deductionMarkers}
             zoneGuaranteedByTeamId={zoneGuaranteedByTeamId}
             zones={config.zones}
+            isRunIn={isRunIn}
+            zoneThresholds={zoneThresholds}
             onResultClick={handleResultClick}
             variantRules={variantRules}
             formDisplay={formDisplay}

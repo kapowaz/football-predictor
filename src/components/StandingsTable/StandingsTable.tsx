@@ -1,6 +1,8 @@
 import clsx from 'clsx';
+import { Fragment } from 'react';
 import type { TeamStanding, FormResult, FormEntry, VariantRulesMode } from '../../types';
 import type { ZoneDefinition, ZoneType } from '../../data/competitions';
+import type { ZoneThreshold } from '../../utils/zoneThresholds';
 import { getCrest } from '../../assets/crests';
 import { getBonusPointsForResult } from '../../utils/standings';
 import { getPositionTrend } from '../../utils/positionHistory';
@@ -9,8 +11,11 @@ import { useScrollDirectionLock } from '../../hooks/useScrollDirectionLock';
 import { StandingPosition } from '../StandingPosition';
 import { Sparkline } from '../Sparkline';
 import { SparklineIcon, RoundedSquareBadgesIcon } from '../icons';
+import { ZoneThresholdLabel, zoneLabels } from '../ZoneThresholdLabel';
 import { shouldRenderGuaranteedPositionBadge } from './positionBadge';
 import * as styles from './StandingsTable.css';
+
+type NonRelegationZoneType = Exclude<ZoneType, 'relegation'>;
 
 export type FormDisplayMode = 'badges' | 'sparkline';
 
@@ -45,6 +50,13 @@ interface StandingsTableProps {
   teamCount?: number;
   /** Called when the form display toggle button is clicked. */
   onFormDisplayToggle?: () => void;
+  /**
+   * When true, draws a dashed zone separator on the bottom edge of the last row of each
+   * non-relegation zone and on the top edge of the first relegation row (no layout shift).
+   */
+  isRunIn?: boolean;
+  /** Zone thresholds to display inside run-in boundary popovers. */
+  zoneThresholds?: ZoneThreshold[];
 }
 
 const formatGD = (gd: number): string => {
@@ -117,6 +129,15 @@ const zoneRowStyles: Record<ZoneType | 'default', [string, string]> = {
   default: [styles.rowEven, styles.rowOdd],
 };
 
+const trRunInDashBottomByZone: Record<NonRelegationZoneType, string> = {
+  champions: styles.trRunInDashBottomChampions,
+  promotion: styles.trRunInDashBottomPromotion,
+  playoff: styles.trRunInDashBottomPlayoff,
+  championsLeague: styles.trRunInDashBottomChampionsLeague,
+  europaLeague: styles.trRunInDashBottomEuropaLeague,
+  conferenceLeague: styles.trRunInDashBottomConferenceLeague,
+};
+
 export const StandingsTable = ({
   standings,
   deductionMarkers,
@@ -134,6 +155,8 @@ export const StandingsTable = ({
   positionHistory,
   teamCount,
   onFormDisplayToggle,
+  isRunIn = false,
+  zoneThresholds,
 }: StandingsTableProps) => {
   const showBonusColumn = variantRules === 'new-rules';
   const containerRef = useScrollDirectionLock<HTMLDivElement>();
@@ -172,6 +195,15 @@ export const StandingsTable = ({
       : hasGradient && partial === 'bottom'
         ? styles.tableGradientTop
         : undefined;
+
+  const relegationStartPosition = zones.find((z) => z.type === 'relegation')?.startPosition;
+
+  const thresholdByZoneType = new Map<string, number>();
+  if (zoneThresholds) {
+    for (const t of zoneThresholds) {
+      thresholdByZoneType.set(t.zone.type, t.threshold);
+    }
+  }
 
   return (
     <div
@@ -257,8 +289,25 @@ export const StandingsTable = ({
         <tbody>
           {displayedStandings.map((standing, sliceIndex) => {
             const tableIndex = sliceStart + sliceIndex;
-            const zone = getZoneForPosition(tableIndex + 1, zones);
+            const leaguePosition = tableIndex + 1;
+            const zone = getZoneForPosition(leaguePosition, zones);
             const rowStyle = zoneRowStyles[zone][tableIndex % 2];
+            const zoneEndingHere = zones.find(
+              (z): z is ZoneDefinition & { type: NonRelegationZoneType } =>
+                z.type !== 'relegation' && z.endPosition === leaguePosition,
+            );
+            const runInTrClass =
+              isRunIn && zoneEndingHere && trRunInDashBottomByZone[zoneEndingHere.type];
+            const runInFormTdTopRelegationClass =
+              isRunIn &&
+              relegationStartPosition === leaguePosition &&
+              styles.tdFormRunInDashTopRelegation;
+            const zoneEndedPreviously = zones.find(
+              (z): z is ZoneDefinition & { type: NonRelegationZoneType } =>
+                z.type !== 'relegation' && z.endPosition === leaguePosition - 1,
+            );
+            const isFirstRelegationRow =
+              relegationStartPosition === leaguePosition;
             const gdAndPtsCells = (
               <>
                 <td
@@ -281,123 +330,152 @@ export const StandingsTable = ({
               </>
             );
             return (
-              <tr key={standing.team.id} className={clsx(styles.tr, rowStyle)}>
-                <td
-                  className={clsx(
-                    styles.td,
-                    styles.stickyCell,
-                    isRenderView && styles.cellRenderNoRightPaddingStrong,
-                  )}
-                >
-                  <div className={styles.teamCell}>
-                    {shouldRenderGuaranteedPositionBadge(standing.team.id, zoneGuaranteedByTeamId) ? (
-                      <StandingPosition position={tableIndex + 1} zones={zones} />
-                    ) : (
-                      <span
-                        className={clsx(
-                          styles.position,
-                          styles.positionNumber,
-                          zonePositionStyles[zone],
-                        )}
-                      >
-                        {tableIndex + 1}
-                      </span>
-                    )}
-                    <img
-                      src={getCrest(standing.team.crest)}
-                      alt={standing.team.name}
-                      className={styles.crest}
-                    />
-                    <span className={clsx(styles.teamName, isRenderView && styles.teamNameRender)}>
-                      <span className={styles.teamShortName}>{standing.team.shortName}</span>
-                      <span className={styles.teamTla}>{standing.team.tla}</span>
-                      {deductionMarkers?.get(standing.team.id)}
-                    </span>
-                  </div>
-                </td>
-                <td className={centeredBodyCellClassName}>{standing.played}</td>
-                {!isRenderView && gdAndPtsCells}
-                {showBonusColumn && (
-                  <td className={centeredBodyCellClassName}>{standing.bonus}</td>
-                )}
-                <td className={centeredBodyCellClassName}>
-                  {showBonusColumn ? standing.won - standing.bonus : standing.won}
-                </td>
-                <td className={centeredBodyCellClassName}>{standing.drawn}</td>
-                <td className={centeredBodyCellClassName}>{standing.lost}</td>
-                <td className={centeredBodyCellClassName}>{standing.goalsFor}</td>
-                <td className={centeredBodyCellClassName}>{standing.goalsAgainst}</td>
-                {isRenderView && gdAndPtsCells}
-                <td
-                  className={clsx(
-                    styles.td,
-                    formDisplay === 'sparkline' && styles.formTdSparkline,
-                  )}
-                >
-                  <div
+              <Fragment key={standing.team.id}>
+                <tr className={clsx(styles.tr, rowStyle, runInTrClass)}>
+                  <td
                     className={clsx(
-                      styles.formCell,
-                      formDisplay !== 'badges' && styles.formDisplayHidden,
+                      styles.td,
+                      styles.stickyCell,
+                      isRenderView && styles.cellRenderNoRightPaddingStrong,
                     )}
                   >
-                    {standing.form.map((entry, i) => {
-                      const isBonusPoints = variantRules === 'bonus-points';
-                      const label = isBonusPoints
-                        ? getBonusPointsFormLabel(entry)
-                        : variantRules === 'new-rules'
-                          ? newRulesFormLabel[entry.result]
-                          : entry.result;
-                      const badgeStyle = isBonusPoints
-                        ? getBonusPointsFormStyle(entry)
-                        : formStyles[entry.result];
-                      const buttonStyle = isBonusPoints
-                        ? getBonusPointsFormButtonStyle(entry)
-                        : formButtonStyles[entry.result];
-                      const isClickable =
-                        onResultClick &&
-                        (!clickableMatchIds || clickableMatchIds.has(entry.matchId));
-                      return isClickable ? (
-                        <button
-                          key={i}
-                          type="button"
-                          className={clsx(styles.formBadgeButton, buttonStyle)}
-                          title={formatFormTitle(entry)}
-                          onClick={() => onResultClick(entry.matchId)}
-                        >
-                          {label}
-                        </button>
+                    <div className={styles.teamCell}>
+                      {shouldRenderGuaranteedPositionBadge(standing.team.id, zoneGuaranteedByTeamId) ? (
+                        <StandingPosition position={tableIndex + 1} zones={zones} />
                       ) : (
                         <span
-                          key={i}
-                          className={clsx(styles.formBadge, badgeStyle)}
-                          title={formatFormTitle(entry)}
+                          className={clsx(
+                            styles.position,
+                            styles.positionNumber,
+                            zonePositionStyles[zone],
+                          )}
                         >
-                          {label}
+                          {tableIndex + 1}
                         </span>
-                      );
-                    })}
-                  </div>
-                  <div
+                      )}
+                      <img
+                        src={getCrest(standing.team.crest)}
+                        alt={standing.team.name}
+                        className={styles.crest}
+                      />
+                      <span className={clsx(styles.teamName, isRenderView && styles.teamNameRender)}>
+                        <span className={styles.teamShortName}>{standing.team.shortName}</span>
+                        <span className={styles.teamTla}>{standing.team.tla}</span>
+                        {deductionMarkers?.get(standing.team.id)}
+                      </span>
+                    </div>
+                  </td>
+                  <td className={centeredBodyCellClassName}>{standing.played}</td>
+                  {!isRenderView && gdAndPtsCells}
+                  {showBonusColumn && (
+                    <td className={centeredBodyCellClassName}>{standing.bonus}</td>
+                  )}
+                  <td className={centeredBodyCellClassName}>
+                    {showBonusColumn ? standing.won - standing.bonus : standing.won}
+                  </td>
+                  <td className={centeredBodyCellClassName}>{standing.drawn}</td>
+                  <td className={centeredBodyCellClassName}>{standing.lost}</td>
+                  <td className={centeredBodyCellClassName}>{standing.goalsFor}</td>
+                  <td className={centeredBodyCellClassName}>{standing.goalsAgainst}</td>
+                  {isRenderView && gdAndPtsCells}
+                  <td
                     className={clsx(
-                      styles.sparklineWrapper,
-                      formDisplay !== 'sparkline' && styles.formDisplayHidden,
+                      styles.td,
+                      formDisplay === 'sparkline' && styles.formTdSparkline,
+                      runInFormTdTopRelegationClass,
                     )}
                   >
-                    {positionHistory && teamCount && (() => {
-                      const fullHistory = positionHistory.get(standing.team.id) ?? [];
-                      const positions = fullHistory.slice(-SPARKLINE_HISTORY_LENGTH);
-                      const trend = getPositionTrend(positions);
-                      return (
-                        <Sparkline
-                          data={positions}
-                          teamCount={teamCount}
-                          trend={trend}
+                    <div
+                      className={clsx(
+                        styles.formCell,
+                        formDisplay !== 'badges' && styles.formDisplayHidden,
+                      )}
+                    >
+                      {standing.form.map((entry, i) => {
+                        const isBonusPoints = variantRules === 'bonus-points';
+                        const label = isBonusPoints
+                          ? getBonusPointsFormLabel(entry)
+                          : variantRules === 'new-rules'
+                            ? newRulesFormLabel[entry.result]
+                            : entry.result;
+                        const badgeStyle = isBonusPoints
+                          ? getBonusPointsFormStyle(entry)
+                          : formStyles[entry.result];
+                        const buttonStyle = isBonusPoints
+                          ? getBonusPointsFormButtonStyle(entry)
+                          : formButtonStyles[entry.result];
+                        const isClickable =
+                          onResultClick &&
+                          (!clickableMatchIds || clickableMatchIds.has(entry.matchId));
+                        return isClickable ? (
+                          <button
+                            key={i}
+                            type="button"
+                            className={clsx(styles.formBadgeButton, buttonStyle)}
+                            title={formatFormTitle(entry)}
+                            onClick={() => onResultClick(entry.matchId)}
+                          >
+                            {label}
+                          </button>
+                        ) : (
+                          <span
+                            key={i}
+                            className={clsx(styles.formBadge, badgeStyle)}
+                            title={formatFormTitle(entry)}
+                          >
+                            {label}
+                          </span>
+                        );
+                      })}
+                    </div>
+                    <div
+                      className={clsx(
+                        styles.sparklineWrapper,
+                        formDisplay !== 'sparkline' && styles.formDisplayHidden,
+                      )}
+                    >
+                      {positionHistory && teamCount && (() => {
+                        const fullHistory = positionHistory.get(standing.team.id) ?? [];
+                        const positions = fullHistory.slice(-SPARKLINE_HISTORY_LENGTH);
+                        const trend = getPositionTrend(positions);
+                        return (
+                          <Sparkline
+                            data={positions}
+                            teamCount={teamCount}
+                            trend={trend}
+                          />
+                        );
+                      })()}
+                    </div>
+                  </td>
+                </tr>
+                {isRunIn && zoneEndedPreviously && thresholdByZoneType.has(zoneEndedPreviously.type) && (
+                  <tr className={styles.trZoneBoundary}>
+                    <td className={styles.tdZoneBoundary} colSpan={99}>
+                      <div className={styles.zoneLabelPosition}>
+                        <ZoneThresholdLabel
+                          zone={zoneEndedPreviously.type}
+                          label={zoneLabels[zoneEndedPreviously.type]}
+                          threshold={thresholdByZoneType.get(zoneEndedPreviously.type)!}
                         />
-                      );
-                    })()}
-                  </div>
-                </td>
-              </tr>
+                      </div>
+                    </td>
+                  </tr>
+                )}
+                {isRunIn && isFirstRelegationRow && thresholdByZoneType.has('relegation') && (
+                  <tr className={styles.trZoneBoundary}>
+                    <td className={styles.tdZoneBoundary} colSpan={99}>
+                      <div className={clsx(styles.zoneLabelPosition, styles.zoneLabelPositionRelegation)}>
+                        <ZoneThresholdLabel
+                          zone="relegation"
+                          label={zoneLabels.relegation}
+                          threshold={thresholdByZoneType.get('relegation')!}
+                        />
+                      </div>
+                    </td>
+                  </tr>
+                )}
+              </Fragment>
             );
           })}
         </tbody>

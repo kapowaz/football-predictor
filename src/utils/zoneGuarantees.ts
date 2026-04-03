@@ -8,12 +8,12 @@ export type StandingPositionOutcome =
   | 'safeFromRelegation'
   | null;
 
-interface UnresolvedMatch {
+export interface UnresolvedMatch {
   homeTeamId: number;
   awayTeamId: number;
 }
 
-interface TeamState {
+export interface TeamState {
   points: number;
   remaining: number;
 }
@@ -24,7 +24,7 @@ interface Edge {
   cap: number;
 }
 
-class Dinic {
+export class Dinic {
   private graph: Edge[][];
   private level: number[];
   private it: number[];
@@ -117,7 +117,7 @@ const getRelegationZone = (zones: ZoneDefinition[]): ZoneDefinition | null => {
   return null;
 };
 
-const buildTeamState = (
+export const buildTeamState = (
   standings: TeamStanding[],
   unresolvedMatches: UnresolvedMatch[],
 ): Map<number, TeamState> => {
@@ -132,13 +132,13 @@ const buildTeamState = (
   return state;
 };
 
-const getUnresolvedMatches = (matches: Match[], predictions: PredictionsStore): UnresolvedMatch[] => {
+export const getUnresolvedMatches = (matches: Match[], predictions: PredictionsStore): UnresolvedMatch[] => {
   return matches
     .filter((match) => match.status === 'SCHEDULED' && !predictions.predictions[String(match.id)])
     .map((match) => ({ homeTeamId: match.homeTeamId, awayTeamId: match.awayTeamId }));
 };
 
-const combinationSearch = (
+export const combinationSearch = (
   candidateTeamIds: number[],
   pickCount: number,
   canSubsetReachThreshold: (teamIds: number[]) => boolean,

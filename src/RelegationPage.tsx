@@ -19,6 +19,7 @@ import {
 } from './state/selectors';
 import { getEffectivePredictions } from './utils/liveScores';
 import { useZoneGuarantees } from './hooks/useZoneGuarantees';
+import { useZoneThresholds } from './hooks/useZoneThresholds';
 import * as styles from './RelegationPage.css';
 
 const RELEGATION_POINTS_MARGIN = 6;
@@ -68,6 +69,7 @@ const RelegationContent = ({ slug, config }: RelegationContentProps) => {
     config.zones,
   );
   const zoneGuaranteedByTeamId = useZoneGuarantees(standings, matches, effectivePredictions, config.zones);
+  const zoneThresholds = useZoneThresholds(standings, matches, effectivePredictions, config.zones);
   const positionHistory = selectPositionHistory(teams, matches, effectivePredictions, deductions);
   const [formDisplay, setFormDisplay] = useState<FormDisplayMode>('badges');
   const relegationZone = useMemo(
@@ -133,6 +135,8 @@ const RelegationContent = ({ slug, config }: RelegationContentProps) => {
               deductionMarkers={deductionMarkers}
               zoneGuaranteedByTeamId={zoneGuaranteedByTeamId}
               zones={config.zones}
+              isRunIn
+              zoneThresholds={zoneThresholds}
               partial="bottom"
               hasGradient
               onResultClick={(matchId) => {

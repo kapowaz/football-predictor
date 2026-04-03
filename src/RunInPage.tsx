@@ -19,6 +19,7 @@ import {
 } from './state/selectors';
 import { getEffectivePredictions } from './utils/liveScores';
 import { useZoneGuarantees } from './hooks/useZoneGuarantees';
+import { useZoneThresholds } from './hooks/useZoneThresholds';
 import { getRunInPointsMargin, getTopZoneBoundary } from './utils/zones';
 import * as styles from './RunInPage.css';
 
@@ -67,6 +68,7 @@ const RunInContent = ({ slug, config }: RunInContentProps) => {
     config.zones,
   );
   const zoneGuaranteedByTeamId = useZoneGuarantees(standings, matches, effectivePredictions, config.zones);
+  const zoneThresholds = useZoneThresholds(standings, matches, effectivePredictions, config.zones);
   const positionHistory = selectPositionHistory(teams, matches, effectivePredictions, deductions);
   const [formDisplay, setFormDisplay] = useState<FormDisplayMode>('badges');
   const boundaryPosition = getTopZoneBoundary(config.zones);
@@ -136,6 +138,8 @@ const RunInContent = ({ slug, config }: RunInContentProps) => {
               deductionMarkers={deductionMarkers}
               zoneGuaranteedByTeamId={zoneGuaranteedByTeamId}
               zones={config.zones}
+              isRunIn
+              zoneThresholds={zoneThresholds}
               partial="top"
               hasGradient
               onResultClick={(matchId) => {

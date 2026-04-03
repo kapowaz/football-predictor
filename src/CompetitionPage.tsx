@@ -14,6 +14,7 @@ import {
 } from './state/selectors';
 import { getEffectivePredictions } from './utils/liveScores';
 import { useZoneGuarantees } from './hooks/useZoneGuarantees';
+import { useZoneThresholds } from './hooks/useZoneThresholds';
 import { CompetitionPanels } from './components/CompetitionPanels';
 import { StandingsImageView } from './components/StandingsImageView';
 import { SeasonSummaryModal } from './components/SeasonSummaryModal';
@@ -79,6 +80,9 @@ const CompetitionContent = ({ slug, config }: CompetitionContentProps) => {
     effectivePredictions,
     config.zones,
   );
+
+  const zoneThresholds = useZoneThresholds(standings, matches, effectivePredictions, config.zones);
+
   const teamsById = selectTeamsById(teams);
   const deductionNotes = selectDeductionNotes(deductions, teamsById);
 
@@ -140,6 +144,8 @@ const CompetitionContent = ({ slug, config }: CompetitionContentProps) => {
         slug={slug}
         config={config}
         pageContentRef={pageContentRef}
+        isRunIn
+        zoneThresholds={zoneThresholds}
         headerProps={{
           competitions,
           activeSlug: slug,

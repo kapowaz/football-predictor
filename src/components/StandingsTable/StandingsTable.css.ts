@@ -1,4 +1,9 @@
-import { style, createContainer } from '@vanilla-extract/css';
+import {
+  style,
+  createContainer,
+  type ComplexStyleRule,
+  type CSSProperties,
+} from '@vanilla-extract/css';
 import {
   colorBgSurface,
   colorBgRowEven,
@@ -45,6 +50,13 @@ import {
   colorTextZoneChampionsLeague,
   colorTextZoneEuropaLeague,
   colorTextZoneConferenceLeague,
+  colorDashZoneChampions,
+  colorDashZonePromotion,
+  colorDashZonePlayoff,
+  colorDashZoneChampionsLeague,
+  colorDashZoneEuropaLeague,
+  colorDashZoneConferenceLeague,
+  colorDashZoneRelegation,
   colorBgTableHead,
   colorBgTableHeadHover,
   fontFamily,
@@ -147,7 +159,7 @@ export const th = style({
   fontVariantNumeric: 'tabular-nums',
   position: 'sticky',
   top: 0,
-  zIndex: 2,
+  zIndex: 3,
   backgroundColor: colorBgTableHead,
   '@container': {
     [`${tableContainer} (min-width: 480px)`]: {
@@ -263,7 +275,7 @@ export const stickyCellTh = style([
     position: 'sticky',
     left: 0,
     top: 0,
-    zIndex: 3,
+    zIndex: 4,
     backgroundColor: colorBgTableHead,
     paddingLeft: space3,
     WebkitMaskImage: 'unset',
@@ -653,3 +665,115 @@ export const formBonusButton = style({
     },
   },
 });
+
+const dashedLine = (color: string, dashLengthPx: number, gapLengthPx: number): string => {
+  const transparentFrom = dashLengthPx;
+  const periodEnd = dashLengthPx + gapLengthPx;
+  return `repeating-linear-gradient(90deg, ${color} 0, ${color} ${dashLengthPx}px, transparent ${transparentFrom}px, transparent ${periodEnd}px)`;
+};
+
+/**
+ * Single continuous dash across the row (avoids per-cell gradient phase resets).
+ * Pseudo-elements sit above cell backgrounds; does not affect row height.
+ *
+ * - `after` + `tr`: full-width line on the bottom edge (zone boundaries).
+ * - `before` + form `td`: wide line anchored right, extending left — WebKit/Blink `tr::before` acts like
+ *   an extra cell; this avoids that and the team column `mask-image` fading the line.
+ */
+const dashedRowEdge = (color: string, position: 'before' | 'after'): ComplexStyleRule => {
+  const dashBg = dashedLine(color, 3, 3);
+
+  const commonStyles: CSSProperties = {
+    content: '""',
+    position: 'absolute',
+    height: '1px',
+    right: 0,
+    backgroundImage: dashBg,
+    pointerEvents: 'none',
+    zIndex: 2,
+  };
+
+  if (position === 'after') {
+    return {
+      position: 'relative',
+      selectors: {
+        '&::after': {
+          ...commonStyles,
+          left: 0,
+          bottom: '-0.5px',
+        },
+      },
+    };
+  }
+  return {
+    position: 'relative',
+    selectors: {
+      '&::before': {
+        ...commonStyles,
+        top: '0.5px',
+        // Wider than any realistic table; clipped by the scroll container.
+        width: '10000px',
+      },
+    },
+  };
+};
+
+export const tdFormRunInDashTopRelegation = style(dashedRowEdge(colorDashZoneRelegation, 'before'));
+
+export const trRunInDashBottomChampions = style(dashedRowEdge(colorDashZoneChampions, 'after'));
+
+export const trRunInDashBottomPromotion = style(dashedRowEdge(colorDashZonePromotion, 'after'));
+
+export const trRunInDashBottomPlayoff = style(dashedRowEdge(colorDashZonePlayoff, 'after'));
+
+export const trRunInDashBottomChampionsLeague = style(
+  dashedRowEdge(colorDashZoneChampionsLeague, 'after'),
+);
+
+export const trRunInDashBottomEuropaLeague = style(
+  dashedRowEdge(colorDashZoneEuropaLeague, 'after'),
+);
+
+export const trRunInDashBottomConferenceLeague = style(
+  dashedRowEdge(colorDashZoneConferenceLeague, 'after'),
+);
+
+export const trZoneBoundary = style({
+  position: 'relative',
+  zIndex: 3,
+  height: 0,
+  lineHeight: 0,
+  fontSize: 0,
+});
+
+export const tdZoneBoundary = style({
+  padding: 0,
+  border: 'none',
+  position: 'relative',
+  height: 0,
+  overflow: 'visible',
+});
+
+export const zoneLabelPosition = style({
+  position: 'absolute',
+  top: 0,
+  left: space2,
+  transform: `translateY(calc(-50% - 24px - ${space3} - ${space3}))`,
+  zIndex: 5,
+  pointerEvents: 'none',
+  '@container': {
+    [`${tableContainer} (max-width: 680px)`]: {
+      transform: `translateY(calc(-50% - 24px - ${space2} - ${space2}))`,
+    },
+  },
+});
+
+export const zoneLabelPositionRelegation = style({
+  transform: `translateY(calc(-50% - 24px - ${space3} - ${space3} + 1px))`,
+  '@container': {
+    [`${tableContainer} (max-width: 680px)`]: {
+      transform: `translateY(calc(-50% - 24px - ${space2} - ${space2} + 1px))`,
+    },
+  },
+});
+
