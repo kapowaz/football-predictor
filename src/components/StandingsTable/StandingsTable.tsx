@@ -436,21 +436,16 @@ export const StandingsTable = ({
                         );
                       })}
                     </div>
-                    <div
-                      className={clsx(
-                        styles.sparklineWrapper,
-                        formDisplay !== 'sparkline' && styles.formDisplayHidden,
-                      )}
-                    >
-                      {positionHistory &&
-                        teamCount &&
-                        (() => {
+                    {formDisplay === 'sparkline' && positionHistory && teamCount && (
+                      <div className={styles.sparklineWrapper}>
+                        {(() => {
                           const fullHistory = positionHistory.get(standing.team.id) ?? [];
                           const positions = fullHistory.slice(-SPARKLINE_HISTORY_LENGTH);
                           const trend = getPositionTrend(positions);
                           return <Sparkline data={positions} teamCount={teamCount} trend={trend} />;
                         })()}
-                    </div>
+                      </div>
+                    )}
                   </td>
                 </tr>
                 {isRunIn &&

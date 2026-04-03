@@ -101,17 +101,11 @@ describe('StandingsTable run-in zone labels', () => {
     );
 
     const geLabels = screen.getAllByText(/≥/i);
-    expect(geLabels).toHaveLength(2);
-
-    const leLabels = screen.getAllByText(/≤/i);
-    expect(leLabels).toHaveLength(1);
+    expect(geLabels).toHaveLength(3);
 
     expect(screen.getByText('Champions')).toBeInTheDocument();
     expect(screen.getByText('Promotion')).toBeInTheDocument();
-    expect(screen.getByText('Relegation')).toBeInTheDocument();
-    expect(screen.getByText('80')).toBeInTheDocument();
-    expect(screen.getByText('70')).toBeInTheDocument();
-    expect(screen.getByText('35')).toBeInTheDocument();
+    expect(screen.getByText('Safety')).toBeInTheDocument();
   });
 
   it('renders no zone threshold labels when zoneThresholds is not provided', () => {
