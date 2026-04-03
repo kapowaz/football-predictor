@@ -19,7 +19,7 @@ type NonRelegationZoneType = Exclude<ZoneType, 'relegation'>;
 
 export type FormDisplayMode = 'badges' | 'sparkline';
 
-const SPARKLINE_HISTORY_LENGTH = 12;
+const SPARKLINE_HISTORY_LENGTH = 16;
 
 interface StandingsTableProps {
   standings: TeamStanding[];
@@ -160,8 +160,12 @@ export const StandingsTable = ({
 }: StandingsTableProps) => {
   const showBonusColumn = variantRules === 'new-rules';
   const containerRef = useScrollDirectionLock<HTMLDivElement>();
-  const renderCellPaddingClass = isRenderView ? styles.cellRenderNoHorizontalPaddingStrong : undefined;
-  const renderCellRightPaddingClass = isRenderView ? styles.cellRenderNoRightPaddingStrong : undefined;
+  const renderCellPaddingClass = isRenderView
+    ? styles.cellRenderNoHorizontalPaddingStrong
+    : undefined;
+  const renderCellRightPaddingClass = isRenderView
+    ? styles.cellRenderNoRightPaddingStrong
+    : undefined;
   const headerBaseClassName = clsx(renderCellPaddingClass, isRenderView && styles.thLarge);
   const teamHeaderClassName = clsx(
     styles.th,
@@ -306,8 +310,7 @@ export const StandingsTable = ({
               (z): z is ZoneDefinition & { type: NonRelegationZoneType } =>
                 z.type !== 'relegation' && z.endPosition === leaguePosition - 1,
             );
-            const isFirstRelegationRow =
-              relegationStartPosition === leaguePosition;
+            const isFirstRelegationRow = relegationStartPosition === leaguePosition;
             const gdAndPtsCells = (
               <>
                 <td
@@ -340,7 +343,10 @@ export const StandingsTable = ({
                     )}
                   >
                     <div className={styles.teamCell}>
-                      {shouldRenderGuaranteedPositionBadge(standing.team.id, zoneGuaranteedByTeamId) ? (
+                      {shouldRenderGuaranteedPositionBadge(
+                        standing.team.id,
+                        zoneGuaranteedByTeamId,
+                      ) ? (
                         <StandingPosition position={tableIndex + 1} zones={zones} />
                       ) : (
                         <span
@@ -358,7 +364,9 @@ export const StandingsTable = ({
                         alt={standing.team.name}
                         className={styles.crest}
                       />
-                      <span className={clsx(styles.teamName, isRenderView && styles.teamNameRender)}>
+                      <span
+                        className={clsx(styles.teamName, isRenderView && styles.teamNameRender)}
+                      >
                         <span className={styles.teamShortName}>{standing.team.shortName}</span>
                         <span className={styles.teamTla}>{standing.team.tla}</span>
                         {deductionMarkers?.get(standing.team.id)}
@@ -434,38 +442,41 @@ export const StandingsTable = ({
                         formDisplay !== 'sparkline' && styles.formDisplayHidden,
                       )}
                     >
-                      {positionHistory && teamCount && (() => {
-                        const fullHistory = positionHistory.get(standing.team.id) ?? [];
-                        const positions = fullHistory.slice(-SPARKLINE_HISTORY_LENGTH);
-                        const trend = getPositionTrend(positions);
-                        return (
-                          <Sparkline
-                            data={positions}
-                            teamCount={teamCount}
-                            trend={trend}
-                          />
-                        );
-                      })()}
+                      {positionHistory &&
+                        teamCount &&
+                        (() => {
+                          const fullHistory = positionHistory.get(standing.team.id) ?? [];
+                          const positions = fullHistory.slice(-SPARKLINE_HISTORY_LENGTH);
+                          const trend = getPositionTrend(positions);
+                          return <Sparkline data={positions} teamCount={teamCount} trend={trend} />;
+                        })()}
                     </div>
                   </td>
                 </tr>
-                {isRunIn && zoneEndedPreviously && thresholdByZoneType.has(zoneEndedPreviously.type) && (
-                  <tr className={styles.trZoneBoundary}>
-                    <td className={styles.tdZoneBoundary} colSpan={99}>
-                      <div className={styles.zoneLabelPosition}>
-                        <ZoneThresholdLabel
-                          zone={zoneEndedPreviously.type}
-                          label={zoneLabels[zoneEndedPreviously.type]}
-                          threshold={thresholdByZoneType.get(zoneEndedPreviously.type)!}
-                        />
-                      </div>
-                    </td>
-                  </tr>
-                )}
+                {isRunIn &&
+                  zoneEndedPreviously &&
+                  thresholdByZoneType.has(zoneEndedPreviously.type) && (
+                    <tr className={styles.trZoneBoundary}>
+                      <td className={styles.tdZoneBoundary} colSpan={99}>
+                        <div className={styles.zoneLabelPosition}>
+                          <ZoneThresholdLabel
+                            zone={zoneEndedPreviously.type}
+                            label={zoneLabels[zoneEndedPreviously.type]}
+                            threshold={thresholdByZoneType.get(zoneEndedPreviously.type)!}
+                          />
+                        </div>
+                      </td>
+                    </tr>
+                  )}
                 {isRunIn && isFirstRelegationRow && thresholdByZoneType.has('relegation') && (
                   <tr className={styles.trZoneBoundary}>
                     <td className={styles.tdZoneBoundary} colSpan={99}>
-                      <div className={clsx(styles.zoneLabelPosition, styles.zoneLabelPositionRelegation)}>
+                      <div
+                        className={clsx(
+                          styles.zoneLabelPosition,
+                          styles.zoneLabelPositionRelegation,
+                        )}
+                      >
                         <ZoneThresholdLabel
                           zone="relegation"
                           label={zoneLabels.relegation}

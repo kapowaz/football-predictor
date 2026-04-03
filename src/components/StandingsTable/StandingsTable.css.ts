@@ -159,7 +159,7 @@ export const th = style({
   fontVariantNumeric: 'tabular-nums',
   position: 'sticky',
   top: 0,
-  zIndex: 3,
+  zIndex: 6,
   backgroundColor: colorBgTableHead,
   '@container': {
     [`${tableContainer} (min-width: 480px)`]: {
@@ -275,7 +275,7 @@ export const stickyCellTh = style([
     position: 'sticky',
     left: 0,
     top: 0,
-    zIndex: 4,
+    zIndex: 7,
     backgroundColor: colorBgTableHead,
     paddingLeft: space3,
     WebkitMaskImage: 'unset',
@@ -749,31 +749,31 @@ export const trZoneBoundary = style({
 export const tdZoneBoundary = style({
   padding: 0,
   border: 'none',
-  position: 'relative',
   height: 0,
   overflow: 'visible',
 });
 
 export const zoneLabelPosition = style({
-  position: 'absolute',
-  top: 0,
+  position: 'sticky',
   left: space2,
-  transform: `translateY(calc(-50% - 24px - ${space3} - ${space3}))`,
+  width: 'fit-content',
+  height: 0,
+  overflow: 'visible',
+  transform: `translateY(calc(-8px - 24px - ${space3} - ${space3}))`,
   zIndex: 5,
   pointerEvents: 'none',
   '@container': {
     [`${tableContainer} (max-width: 680px)`]: {
-      transform: `translateY(calc(-50% - 24px - ${space2} - ${space2}))`,
+      transform: `translateY(calc(-8px - 24px - ${space2} - ${space2}))`,
     },
   },
 });
 
 export const zoneLabelPositionRelegation = style({
-  transform: `translateY(calc(-50% - 24px - ${space3} - ${space3} + 1px))`,
+  transform: `translateY(calc(-8px - 24px - ${space3} - ${space3} + 1px))`,
   '@container': {
     [`${tableContainer} (max-width: 680px)`]: {
-      transform: `translateY(calc(-50% - 24px - ${space2} - ${space2} + 1px))`,
+      transform: `translateY(calc(-8px - 24px - ${space2} - ${space2} + 1px))`,
     },
   },
 });
-
