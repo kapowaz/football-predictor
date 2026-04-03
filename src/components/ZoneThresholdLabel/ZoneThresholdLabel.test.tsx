@@ -12,32 +12,33 @@ describe('ZoneThresholdLabel', () => {
       <ZoneThresholdLabel zone="champions" label="Champions" threshold={85} />,
     );
 
-    expect(normalise(container.textContent)).toMatch(/Champions\s*:\s*≥\s*85 pts/);
+    expect(normalise(container.textContent)).toMatch(/Champions\s*≥\s*85\s*pts/);
   });
 
-  it('renders ≤ instead of ≥ for relegation zones', () => {
+  it('renders ≥ for relegation zones', () => {
     const { container } = render(
-      <ZoneThresholdLabel zone="relegation" label="Relegation" threshold={30} />,
+      <ZoneThresholdLabel zone="relegation" label="Safety" threshold={30} />,
     );
 
-    expect(normalise(container.textContent)).toMatch(/Relegation\s*:\s*≤\s*30 pts/);
+    expect(normalise(container.textContent)).toMatch(/Safety\s*≥\s*30\s*pts/);
   });
 
-  it('renders correctly for each non-relegation zone type', () => {
-    const nonRelegationZones: { zone: ZoneType; label: string; threshold: number }[] = [
+  it('renders correctly for each zone type', () => {
+    const allZones: { zone: ZoneType; label: string; threshold: number }[] = [
       { zone: 'champions', label: 'Champions', threshold: 90 },
       { zone: 'promotion', label: 'Promotion', threshold: 80 },
       { zone: 'playoff', label: 'Playoffs', threshold: 70 },
       { zone: 'championsLeague', label: 'Champions League', threshold: 75 },
       { zone: 'europaLeague', label: 'Europa League', threshold: 65 },
       { zone: 'conferenceLeague', label: 'Conference League', threshold: 60 },
+      { zone: 'relegation', label: 'Safety', threshold: 35 },
     ];
 
-    for (const { zone, label, threshold } of nonRelegationZones) {
+    for (const { zone, label, threshold } of allZones) {
       const { container, unmount } = render(
         <ZoneThresholdLabel zone={zone} label={label} threshold={threshold} />,
       );
-      const pattern = new RegExp(`${label}\\s*:\\s*≥\\s*${threshold} pts`);
+      const pattern = new RegExp(`${label}\\s*≥\\s*${threshold}\\s*pts`);
       expect(normalise(container.textContent)).toMatch(pattern);
       unmount();
     }
