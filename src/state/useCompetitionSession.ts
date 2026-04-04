@@ -1,5 +1,4 @@
 import { useEffect, useMemo, useRef } from 'react';
-import { useSearchParams } from 'react-router-dom';
 import type { Match, PointDeduction, PredictionsStore } from '../types';
 import { clearDeductions, loadDeductions, loadPredictions, saveDeductions, savePredictions } from '../utils/storage';
 import {
@@ -103,17 +102,17 @@ export const useCompetitionSession = ({
   defaultDeductions,
   persistenceMode = 'full',
 }: UseCompetitionSessionOptions): UseCompetitionSessionResult => {
-  const [searchParams, setSearchParams] = useSearchParams();
   const session = useCompetitionSessionStore((state) => selectSessionForSlug(state.sessions, slug));
   const initialSessionRef = useRef<{ slug: string; session: ReturnType<typeof createDefaultSession> } | null>(null);
 
   if (!initialSessionRef.current || initialSessionRef.current.slug !== slug) {
-    const predictions = resolveInitialPredictions(slug, matches, persistenceMode, searchParams);
+    const initialSearchParams = new URLSearchParams(window.location.search);
+    const predictions = resolveInitialPredictions(slug, matches, persistenceMode, initialSearchParams);
     const deductionsState = resolveInitialDeductions(
       slug,
       defaultDeductions,
       persistenceMode,
-      searchParams,
+      initialSearchParams,
     );
     initialSessionRef.current = {
       slug,
@@ -162,7 +161,6 @@ export const useCompetitionSession = ({
     }
   }, [activeSession.deductions, activeSession.deductionsCustomised, slug]);
 
-  const isInitialUrlSync = useRef(true);
   useEffect(() => {
     if (persistenceMode !== 'full') {
       return;
@@ -175,38 +173,31 @@ export const useCompetitionSession = ({
     const encodedDeductions = activeSession.deductionsCustomised
       ? encodeDeductions(activeSession.deductions)
       : null;
-    const currentEncodedPredictions = searchParams.get('predictions');
-    const currentEncodedDeductions = searchParams.get('deductions');
+    const currentParams = new URLSearchParams(window.location.search);
+    const currentEncodedPredictions = currentParams.get('predictions');
+    const currentEncodedDeductions = currentParams.get('deductions');
 
     const shouldUpdatePredictions = currentEncodedPredictions !== encodedPredictions;
     const shouldUpdateDeductions = currentEncodedDeductions !== encodedDeductions;
 
     if (shouldUpdatePredictions || shouldUpdateDeductions) {
-      const shouldReplace = isInitialUrlSync.current;
-      setSearchParams(
-        (previous) => {
-          const params = new URLSearchParams(previous);
+      const params = new URLSearchParams(window.location.search);
 
-          if (encodedPredictions) {
-            params.set('predictions', encodedPredictions);
-          } else {
-            params.delete('predictions');
-          }
+      if (encodedPredictions) {
+        params.set('predictions', encodedPredictions);
+      } else {
+        params.delete('predictions');
+      }
 
-          if (encodedDeductions) {
-            params.set('deductions', encodedDeductions);
-          } else {
-            params.delete('deductions');
-          }
+      if (encodedDeductions) {
+        params.set('deductions', encodedDeductions);
+      } else {
+        params.delete('deductions');
+      }
 
-          return params;
-        },
-        { replace: shouldReplace },
-      );
-    }
-
-    if (isInitialUrlSync.current) {
-      isInitialUrlSync.current = false;
+      const search = params.toString();
+      const newUrl = `${window.location.pathname}${search ? `?${search}` : ''}`;
+      window.history.replaceState(null, '', newUrl);
     }
   }, [
     activeSession.deductions,
@@ -214,8 +205,6 @@ export const useCompetitionSession = ({
     activeSession.predictions,
     matches,
     persistenceMode,
-    searchParams,
-    setSearchParams,
   ]);
 
   const allFixturesResolved = useMemo(

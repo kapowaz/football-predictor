@@ -1,5 +1,5 @@
-import { useMemo } from 'react';
-import type { VariantRulesMode } from '../../types';
+import { memo, useMemo } from 'react';
+import type { TeamStanding, VariantRulesMode } from '../../types';
 import type { ZoneDefinition } from '../../data/competitions';
 import { useCompetitionData } from '../../hooks/useCompetitionData';
 import { useLiveScores } from '../../hooks/useLiveScores';
@@ -28,11 +28,13 @@ interface FixturePanelProps {
   zones: ZoneDefinition[];
   /** Enable variant rules mode for indicator dots. */
   variantRules?: VariantRulesMode;
+  /** Pre-computed standings from the parent. When provided, avoids an independent selectStandingsViewModel call that can thrash the single-entry memoization cache. */
+  standings?: TeamStanding[];
 }
 
 const EMPTY_FILTER_TEAMS: number[] = [];
 
-export const FixturePanel = ({
+export const FixturePanel = memo(({
   slug,
   isVisible = true,
   showFinished = true,
@@ -41,6 +43,7 @@ export const FixturePanel = ({
   showDate = false,
   zones,
   variantRules = false as VariantRulesMode,
+  standings: standingsProp,
 }: FixturePanelProps) => {
   const { teams, matches } = useCompetitionData(slug);
   const { session, setPrediction, removePrediction, setNavigateToMatchId } =
@@ -64,16 +67,17 @@ export const FixturePanel = ({
   const navigateToMatchId = session?.navigateToMatchId ?? null;
   const teamsById = selectTeamsById(teams);
 
-  const { standings } = selectStandingsViewModel(teams, matches, predictions, deductions, zones, variantRules);
+  const computedStandings = standingsProp
+    ?? selectStandingsViewModel(teams, matches, predictions, deductions, zones, variantRules).standings;
 
   const standingPositionsByTeamId = useMemo(
     () =>
       new Map(
-        standings.map((entry, index) => {
+        computedStandings.map((entry, index) => {
           return [entry.team.id, index + 1] as const;
         }),
       ),
-    [standings],
+    [computedStandings],
   );
 
   const groupOptions = useMemo(
@@ -117,4 +121,4 @@ export const FixturePanel = ({
       variantRules={variantRules}
     />
   );
-};
+});

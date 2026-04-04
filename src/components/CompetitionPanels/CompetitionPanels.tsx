@@ -6,10 +6,10 @@ import {
   selectAllScheduledPredicted,
   selectDeductionNotes,
   selectPredictedCount,
-  selectPositionHistory,
   selectStandingsViewModel,
   selectTeamsById,
 } from '../../state/selectors';
+import { usePositionHistory } from '../../hooks/usePositionHistory';
 import { useCompetitionSessionSlice } from '../../state/useCompetitionSessionSlice';
 import { getEffectivePredictions } from '../../utils/liveScores';
 import { useZoneGuarantees } from '../../hooks/useZoneGuarantees';
@@ -78,6 +78,15 @@ export const CompetitionPanels = ({
     [session, liveScores],
   );
 
+  const emptyPredictions = useMemo(() => ({ predictions: {}, lastModified: '' }), []);
+  const positionHistory = usePositionHistory(
+    teams,
+    matches,
+    effectivePredictions ?? emptyPredictions,
+    session?.deductions ?? [],
+    variantRules,
+  );
+
   const panelModel = useMemo(() => {
     if (!session || !effectivePredictions) {
       return null;
@@ -91,13 +100,6 @@ export const CompetitionPanels = ({
       config.zones,
       variantRules,
     );
-    const positionHistory = selectPositionHistory(
-      teams,
-      matches,
-      effectivePredictions,
-      session.deductions,
-      variantRules,
-    );
     const deductionNotes = selectDeductionNotes(session.deductions, teamsById);
     const predictedCount = selectPredictedCount(session.predictions);
     const allScheduledPredicted = selectAllScheduledPredicted(matches, session.predictions);
@@ -105,7 +107,6 @@ export const CompetitionPanels = ({
     return {
       standings,
       deductionMarkers,
-      positionHistory,
       deductionNotes,
       predictedCount,
       allScheduledPredicted,
@@ -168,7 +169,7 @@ export const CompetitionPanels = ({
             onResultClick={handleResultClick}
             variantRules={variantRules}
             formDisplay={formDisplay}
-            positionHistory={panelModel.positionHistory}
+            positionHistory={positionHistory}
             teamCount={teams.length}
             onFormDisplayToggle={() =>
               setFormDisplay((prev) => (prev === 'badges' ? 'sparkline' : 'badges'))
@@ -200,6 +201,7 @@ export const CompetitionPanels = ({
             groupBy="date"
             zones={config.zones}
             variantRules={variantRules}
+            standings={panelModel?.standings}
           />
         </>
       }

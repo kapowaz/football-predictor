@@ -14,9 +14,9 @@ import { useCompetitionSession } from './state/useCompetitionSession';
 import {
   selectAllScheduledPredicted,
   selectPredictedCount,
-  selectPositionHistory,
   selectStandingsViewModel,
 } from './state/selectors';
+import { usePositionHistory } from './hooks/usePositionHistory';
 import { getEffectivePredictions } from './utils/liveScores';
 import { useZoneGuarantees } from './hooks/useZoneGuarantees';
 import { useZoneThresholds } from './hooks/useZoneThresholds';
@@ -69,7 +69,8 @@ const RunInContent = ({ slug, config }: RunInContentProps) => {
   );
   const zoneGuaranteedByTeamId = useZoneGuarantees(standings, matches, effectivePredictions, config.zones);
   const zoneThresholds = useZoneThresholds(standings, matches, effectivePredictions, config.zones);
-  const positionHistory = selectPositionHistory(teams, matches, effectivePredictions, deductions);
+  const positionHistory = usePositionHistory(teams, matches, effectivePredictions, deductions);
+
   const [formDisplay, setFormDisplay] = useState<FormDisplayMode>('badges');
   const boundaryPosition = getTopZoneBoundary(config.zones);
   const allTeamIds = useMemo(() => teams.map((t) => t.id), [teams]);
@@ -169,6 +170,7 @@ const RunInContent = ({ slug, config }: RunInContentProps) => {
               groupBy="team"
               showDate
               zones={config.zones}
+              standings={standings}
             />
           </>
         }

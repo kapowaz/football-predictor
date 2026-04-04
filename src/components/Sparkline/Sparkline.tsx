@@ -85,6 +85,7 @@ export const Sparkline = ({ data, teamCount, trend }: SparklineProps) => {
   const [tooltipVisible, setTooltipVisible] = useState(false);
   const [svgRect, setSvgRect] = useState<DOMRect | null>(null);
   const timerRef = useRef<ReturnType<typeof setTimeout>>(undefined);
+  const lastMousePos = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
     if (hovered) {
@@ -92,6 +93,39 @@ export const Sparkline = ({ data, teamCount, trend }: SparklineProps) => {
       return () => clearTimeout(timerRef.current);
     }
   }, [hovered]);
+
+  useEffect(() => {
+    if (!tooltipVisible) return;
+
+    const handleMouseMove = (e: MouseEvent) => {
+      lastMousePos.current = { x: e.clientX, y: e.clientY };
+    };
+
+    document.addEventListener('mousemove', handleMouseMove);
+
+    const interval = setInterval(() => {
+      const el = containerRef.current;
+      if (!el) return;
+
+      const rect = el.getBoundingClientRect();
+      const isInside =
+        lastMousePos.current.x >= rect.left &&
+        lastMousePos.current.x <= rect.right &&
+        lastMousePos.current.y >= rect.top &&
+        lastMousePos.current.y <= rect.bottom;
+
+      if (!isInside) {
+        setHovered(false);
+        setTooltipVisible(false);
+        setSvgRect(null);
+      }
+    }, 1000);
+
+    return () => {
+      document.removeEventListener('mousemove', handleMouseMove);
+      clearInterval(interval);
+    };
+  }, [tooltipVisible]);
 
   const strokeColor = trendStrokeColor[trend];
   const instanceId = useId();
@@ -149,7 +183,7 @@ export const Sparkline = ({ data, teamCount, trend }: SparklineProps) => {
             strokeLinecap="round"
             strokeLinejoin="round"
             dot={false}
-            activeDot={{ r: 3, strokeWidth: 0 }}
+            activeDot={hovered ? { r: 3, strokeWidth: 0 } : false}
             isAnimationActive={false}
           />
         </AreaChart>

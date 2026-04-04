@@ -1,4 +1,4 @@
-import { use, useEffect, useMemo } from 'react';
+import { use, useEffect, useMemo, useRef } from 'react';
 import type {
   Team,
   Match,
@@ -9,12 +9,24 @@ import type {
   ModelPredictionsData,
 } from '../types';
 import { loadCompetitionData } from '../data';
-import { calculateStandings } from '../utils/standings';
-import { validateStandings } from '../utils/validateStandings';
+import type { ValidateStandingsResponse } from '../workers/validateStandings.worker';
 
 const applyOverrides = (base: Match[], overrides: Match[]): Match[] => {
   const overrideMap = new Map(overrides.map((m) => [m.id, m]));
   return base.map((match) => overrideMap.get(match.id) ?? match);
+};
+
+let validationWorker: Worker | null = null;
+let nextValidationRequestId = 0;
+
+const getValidationWorker = (): Worker => {
+  if (!validationWorker) {
+    validationWorker = new Worker(
+      new URL('../workers/validateStandings.worker.ts', import.meta.url),
+      { type: 'module' },
+    );
+  }
+  return validationWorker;
 };
 
 interface CompetitionDataResult {
@@ -46,16 +58,34 @@ export const useCompetitionData = (slug: string): CompetitionDataResult => {
     [data.modelPredictionsData],
   );
 
-  const calculatedFromResults = useMemo(() => {
-    const emptyPredictions = { predictions: {}, lastModified: '' };
-    return calculateStandings(teams, matches, emptyPredictions, defaultDeductions);
-  }, [teams, matches, defaultDeductions]);
+  const validationRequestId = useRef(-1);
 
   useEffect(() => {
-    if (apiStandings.standings.length > 0) {
-      validateStandings(calculatedFromResults, apiStandings);
-    }
-  }, [calculatedFromResults, apiStandings]);
+    if (apiStandings.standings.length === 0) return;
+
+    const id = ++nextValidationRequestId;
+    validationRequestId.current = id;
+
+    const w = getValidationWorker();
+
+    const handler = (event: MessageEvent<ValidateStandingsResponse>) => {
+      if (event.data.requestId !== id) return;
+      for (const entry of event.data.logs) {
+        if (entry.level === 'warn') {
+          console.warn(...entry.args);
+        } else {
+          console.log(...entry.args);
+        }
+      }
+    };
+
+    w.addEventListener('message', handler);
+    w.postMessage({ requestId: id, teams, matches, defaultDeductions, apiStandings });
+
+    return () => {
+      w.removeEventListener('message', handler);
+    };
+  }, [teams, matches, defaultDeductions, apiStandings]);
 
   return { teams, matches, defaultDeductions, modelPredictions };
 };

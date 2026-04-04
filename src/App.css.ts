@@ -33,3 +33,11 @@ export const suspenseFallback = style({
   height: '100dvh',
   color: colorLoadingProgress,
 });
+
+export const routeFallback = style({
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  flex: 1,
+  color: colorLoadingProgress,
+});
