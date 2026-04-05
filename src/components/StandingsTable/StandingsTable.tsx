@@ -455,43 +455,45 @@ export const StandingsTable = ({
                 </tr>
                 {isRunIn && zoneEndedPreviously && (
                   <tr className={styles.trZoneBoundary}>
-                    <td
-                      className={clsx(
-                        styles.tdZoneBoundary,
-                        styles.tdZoneBoundaryDash[zoneEndedPreviously.type],
-                      )}
-                      colSpan={99}
-                    >
-                      {thresholdByZoneType.has(zoneEndedPreviously.type) && (
-                        <div className={styles.zoneLabelPosition}>
-                          <ZoneThresholdLabel
-                            zone={zoneEndedPreviously.type}
-                            label={zoneLabels[zoneEndedPreviously.type]}
-                            threshold={thresholdByZoneType.get(zoneEndedPreviously.type)!}
-                          />
-                        </div>
-                      )}
+                    <td className={styles.tdZoneBoundary} colSpan={99}>
+                      <div
+                        className={clsx(
+                          styles.zoneBoundaryLine,
+                          styles.tdZoneBoundaryDash[zoneEndedPreviously.type],
+                        )}
+                      >
+                        {thresholdByZoneType.has(zoneEndedPreviously.type) && (
+                          <div className={styles.zoneLabelPosition}>
+                            <ZoneThresholdLabel
+                              zone={zoneEndedPreviously.type}
+                              label={zoneLabels[zoneEndedPreviously.type]}
+                              threshold={thresholdByZoneType.get(zoneEndedPreviously.type)!}
+                            />
+                          </div>
+                        )}
+                      </div>
                     </td>
                   </tr>
                 )}
                 {isRunIn && isFirstRelegationRow && (
                   <tr className={styles.trZoneBoundary}>
-                    <td
-                      className={clsx(
-                        styles.tdZoneBoundary,
-                        styles.tdZoneBoundaryDash.relegation,
-                      )}
-                      colSpan={99}
-                    >
-                      {thresholdByZoneType.has('relegation') && (
-                        <div className={styles.zoneLabelPosition}>
-                          <ZoneThresholdLabel
-                            zone="relegation"
-                            label={zoneLabels.relegation}
-                            threshold={thresholdByZoneType.get('relegation')!}
-                          />
-                        </div>
-                      )}
+                    <td className={styles.tdZoneBoundary} colSpan={99}>
+                      <div
+                        className={clsx(
+                          styles.zoneBoundaryLine,
+                          styles.tdZoneBoundaryDash.relegation,
+                        )}
+                      >
+                        {thresholdByZoneType.has('relegation') && (
+                          <div className={styles.zoneLabelPosition}>
+                            <ZoneThresholdLabel
+                              zone="relegation"
+                              label={zoneLabels.relegation}
+                              threshold={thresholdByZoneType.get('relegation')!}
+                            />
+                          </div>
+                        )}
+                      </div>
                     </td>
                   </tr>
                 )}

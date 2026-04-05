@@ -678,8 +678,6 @@ const dashedLine = (color: string, dashLengthPx: number, gapLengthPx: number): s
 };
 
 export const trZoneBoundary = style({
-  position: 'relative',
-  zIndex: 3,
   height: 0,
   lineHeight: 0,
   fontSize: 0,
@@ -688,9 +686,15 @@ export const trZoneBoundary = style({
 export const tdZoneBoundary = style({
   padding: 0,
   border: 'none',
+  position: 'relative',
+  overflow: 'visible',
+  zIndex: 3,
+});
+
+export const zoneBoundaryLine = style({
   position: 'absolute',
   left: 0,
-  width: '100%',
+  right: 0,
   height: '1px',
   overflow: 'visible',
   pointerEvents: 'none',
