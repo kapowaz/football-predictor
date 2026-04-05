@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
 import type { ComponentProps, RefObject } from 'react';
+import type { TeamStanding } from '../../types';
 import { useCompetitionData } from '../../hooks/useCompetitionData';
 import { useLiveScores } from '../../hooks/useLiveScores';
 import {
@@ -45,6 +46,10 @@ interface CompetitionPanelsProps {
   isRunIn?: boolean;
   /** Zone thresholds to display inside run-in boundary popovers. */
   zoneThresholds?: ZoneThreshold[];
+  /** Pre-computed standings from the parent to avoid cache thrashing in selectStandingsViewModel. */
+  standings?: TeamStanding[];
+  /** Pre-computed deduction markers from the parent. */
+  deductionMarkers?: Map<number, string>;
 }
 
 export const CompetitionPanels = ({
@@ -58,6 +63,8 @@ export const CompetitionPanels = ({
   variantRules = false as VariantRulesMode,
   isRunIn = false,
   zoneThresholds,
+  standings: standingsProp,
+  deductionMarkers: deductionMarkersProp,
 }: CompetitionPanelsProps) => {
   const { teams, matches, modelPredictions } = useCompetitionData(slug);
   const { liveScores } = useLiveScores(slug);
@@ -87,19 +94,17 @@ export const CompetitionPanels = ({
     variantRules,
   );
 
+  const ownViewModel = !standingsProp && session && effectivePredictions
+    ? selectStandingsViewModel(teams, matches, effectivePredictions, session.deductions, config.zones, variantRules)
+    : null;
+
   const panelModel = useMemo(() => {
     if (!session || !effectivePredictions) {
       return null;
     }
 
-    const { standings, deductionMarkers } = selectStandingsViewModel(
-      teams,
-      matches,
-      effectivePredictions,
-      session.deductions,
-      config.zones,
-      variantRules,
-    );
+    const standings = standingsProp ?? ownViewModel?.standings ?? [];
+    const deductionMarkers = deductionMarkersProp ?? ownViewModel?.deductionMarkers ?? new Map();
     const deductionNotes = selectDeductionNotes(session.deductions, teamsById);
     const predictedCount = selectPredictedCount(session.predictions);
     const allScheduledPredicted = selectAllScheduledPredicted(matches, session.predictions);
@@ -111,7 +116,7 @@ export const CompetitionPanels = ({
       predictedCount,
       allScheduledPredicted,
     };
-  }, [config.zones, effectivePredictions, matches, session, teams, teamsById, variantRules]);
+  }, [standingsProp, deductionMarkersProp, ownViewModel, effectivePredictions, matches, session, teamsById]);
 
   const zoneGuaranteedByTeamId = useZoneGuarantees(
     panelModel?.standings ?? [],

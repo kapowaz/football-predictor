@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef } from 'react';
-import { useParams, Navigate, useNavigate, useSearchParams } from 'react-router-dom';
+import { useParams, Navigate, useNavigate } from 'react-router-dom';
 import { useCompetitionData } from './hooks/useCompetitionData';
 import { useImageDownload } from './hooks/useImageDownload';
 import { useLiveScores } from './hooks/useLiveScores';
@@ -30,16 +30,17 @@ interface CompetitionContentProps {
 
 const CompetitionContent = ({ slug, config }: CompetitionContentProps) => {
   const navigate = useNavigate();
-  const [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
-    if (searchParams.get('resetConfetti') === 'true') {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('resetConfetti') === 'true') {
       clearConfettiShown(slug);
-      const nextParams = new URLSearchParams(searchParams);
-      nextParams.delete('resetConfetti');
-      setSearchParams(nextParams, { replace: true });
+      params.delete('resetConfetti');
+      const search = params.toString();
+      const newUrl = `${window.location.pathname}${search ? `?${search}` : ''}`;
+      window.history.replaceState(null, '', newUrl);
     }
-  }, [slug, searchParams, setSearchParams]);
+  }, [slug]);
   const { theme, toggleTheme } = useTheme();
   const { teams, matches, defaultDeductions } = useCompetitionData(slug);
   const { liveScores } = useLiveScores(slug);
@@ -146,6 +147,8 @@ const CompetitionContent = ({ slug, config }: CompetitionContentProps) => {
         pageContentRef={pageContentRef}
         isRunIn
         zoneThresholds={zoneThresholds}
+        standings={standings}
+        deductionMarkers={deductionMarkers}
         headerProps={{
           competitions,
           activeSlug: slug,
