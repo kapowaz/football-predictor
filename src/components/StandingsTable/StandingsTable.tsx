@@ -46,8 +46,6 @@ interface StandingsTableProps {
   formDisplay?: FormDisplayMode;
   /** Position history per team (team ID -> array of positions). Required when formDisplay is `'sparkline'`. */
   positionHistory?: Map<number, number[]>;
-  /** Total number of teams in the competition (used for sparkline Y-axis domain). */
-  teamCount?: number;
   /** Called when the form display toggle button is clicked. */
   onFormDisplayToggle?: () => void;
   /**
@@ -129,15 +127,6 @@ const zoneRowStyles: Record<ZoneType | 'default', [string, string]> = {
   default: [styles.rowEven, styles.rowOdd],
 };
 
-const trRunInDashBottomByZone: Record<NonRelegationZoneType, string> = {
-  champions: styles.trRunInDashBottomChampions,
-  promotion: styles.trRunInDashBottomPromotion,
-  playoff: styles.trRunInDashBottomPlayoff,
-  championsLeague: styles.trRunInDashBottomChampionsLeague,
-  europaLeague: styles.trRunInDashBottomEuropaLeague,
-  conferenceLeague: styles.trRunInDashBottomConferenceLeague,
-};
-
 export const StandingsTable = ({
   standings,
   deductionMarkers,
@@ -153,7 +142,6 @@ export const StandingsTable = ({
   variantRules = false as VariantRulesMode,
   formDisplay = 'badges' as FormDisplayMode,
   positionHistory,
-  teamCount,
   onFormDisplayToggle,
   isRunIn = false,
   zoneThresholds,
@@ -208,6 +196,26 @@ export const StandingsTable = ({
       thresholdByZoneType.set(t.zone.type, t.threshold);
     }
   }
+
+  const sparklineScale = (() => {
+    if (formDisplay !== 'sparkline' || !positionHistory) return undefined;
+
+    let maxRange = 0;
+
+    for (const [index, standing] of standings.entries()) {
+      const fullHistory = positionHistory.get(standing.team.id) ?? [];
+      const currentPosition = index + 1;
+      const positions = [...fullHistory, currentPosition].slice(-SPARKLINE_HISTORY_LENGTH);
+      if (positions.length === 0) continue;
+
+      const min = Math.min(...positions);
+      const max = Math.max(...positions);
+      maxRange = Math.max(maxRange, max - min);
+    }
+
+    const padding = Math.max(1, Math.floor(maxRange * 0.2));
+    return maxRange + padding * 2;
+  })();
 
   return (
     <div
@@ -296,16 +304,6 @@ export const StandingsTable = ({
             const leaguePosition = tableIndex + 1;
             const zone = getZoneForPosition(leaguePosition, zones);
             const rowStyle = zoneRowStyles[zone][tableIndex % 2];
-            const zoneEndingHere = zones.find(
-              (z): z is ZoneDefinition & { type: NonRelegationZoneType } =>
-                z.type !== 'relegation' && z.endPosition === leaguePosition,
-            );
-            const runInTrClass =
-              isRunIn && zoneEndingHere && trRunInDashBottomByZone[zoneEndingHere.type];
-            const runInFormTdTopRelegationClass =
-              isRunIn &&
-              relegationStartPosition === leaguePosition &&
-              styles.tdFormRunInDashTopRelegation;
             const zoneEndedPreviously = zones.find(
               (z): z is ZoneDefinition & { type: NonRelegationZoneType } =>
                 z.type !== 'relegation' && z.endPosition === leaguePosition - 1,
@@ -334,7 +332,7 @@ export const StandingsTable = ({
             );
             return (
               <Fragment key={standing.team.id}>
-                <tr className={clsx(styles.tr, rowStyle, runInTrClass)}>
+                <tr className={clsx(styles.tr, rowStyle)}>
                   <td
                     className={clsx(
                       styles.td,
@@ -390,7 +388,6 @@ export const StandingsTable = ({
                     className={clsx(
                       styles.td,
                       formDisplay === 'sparkline' && styles.formTdSparkline,
-                      runInFormTdTopRelegationClass,
                     )}
                   >
                     <div
@@ -436,23 +433,36 @@ export const StandingsTable = ({
                         );
                       })}
                     </div>
-                    {formDisplay === 'sparkline' && positionHistory && teamCount && (
+                    {formDisplay === 'sparkline' && positionHistory && sparklineScale && (
                       <div className={styles.sparklineWrapper}>
                         {(() => {
                           const fullHistory = positionHistory.get(standing.team.id) ?? [];
-                          const positions = fullHistory.slice(-SPARKLINE_HISTORY_LENGTH);
+                          const positions = [...fullHistory, leaguePosition].slice(
+                            -SPARKLINE_HISTORY_LENGTH,
+                          );
                           const trend = getPositionTrend(positions);
-                          return <Sparkline data={positions} teamCount={teamCount} trend={trend} />;
+                          const mid =
+                            (Math.min(...positions) + Math.max(...positions)) / 2;
+                          const half = sparklineScale / 2;
+                          const domain: [number, number] = [mid - half, mid + half];
+                          return (
+                            <Sparkline data={positions} domain={domain} trend={trend} />
+                          );
                         })()}
                       </div>
                     )}
                   </td>
                 </tr>
-                {isRunIn &&
-                  zoneEndedPreviously &&
-                  thresholdByZoneType.has(zoneEndedPreviously.type) && (
-                    <tr className={styles.trZoneBoundary}>
-                      <td className={styles.tdZoneBoundary} colSpan={99}>
+                {isRunIn && zoneEndedPreviously && (
+                  <tr className={styles.trZoneBoundary}>
+                    <td
+                      className={clsx(
+                        styles.tdZoneBoundary,
+                        styles.tdZoneBoundaryDash[zoneEndedPreviously.type],
+                      )}
+                      colSpan={99}
+                    >
+                      {thresholdByZoneType.has(zoneEndedPreviously.type) && (
                         <div className={styles.zoneLabelPosition}>
                           <ZoneThresholdLabel
                             zone={zoneEndedPreviously.type}
@@ -460,24 +470,28 @@ export const StandingsTable = ({
                             threshold={thresholdByZoneType.get(zoneEndedPreviously.type)!}
                           />
                         </div>
-                      </td>
-                    </tr>
-                  )}
-                {isRunIn && isFirstRelegationRow && thresholdByZoneType.has('relegation') && (
+                      )}
+                    </td>
+                  </tr>
+                )}
+                {isRunIn && isFirstRelegationRow && (
                   <tr className={styles.trZoneBoundary}>
-                    <td className={styles.tdZoneBoundary} colSpan={99}>
-                      <div
-                        className={clsx(
-                          styles.zoneLabelPosition,
-                          styles.zoneLabelPositionRelegation,
-                        )}
-                      >
-                        <ZoneThresholdLabel
-                          zone="relegation"
-                          label={zoneLabels.relegation}
-                          threshold={thresholdByZoneType.get('relegation')!}
-                        />
-                      </div>
+                    <td
+                      className={clsx(
+                        styles.tdZoneBoundary,
+                        styles.tdZoneBoundaryDash.relegation,
+                      )}
+                      colSpan={99}
+                    >
+                      {thresholdByZoneType.has('relegation') && (
+                        <div className={styles.zoneLabelPosition}>
+                          <ZoneThresholdLabel
+                            zone="relegation"
+                            label={zoneLabels.relegation}
+                            threshold={thresholdByZoneType.get('relegation')!}
+                          />
+                        </div>
+                      )}
                     </td>
                   </tr>
                 )}

@@ -146,7 +146,6 @@ const RelegationContent = ({ slug, config }: RelegationContentProps) => {
               clickableMatchIds={fixtureMatchIds}
               formDisplay={formDisplay}
               positionHistory={positionHistory}
-              teamCount={teams.length}
               onFormDisplayToggle={() =>
                 setFormDisplay((prev) => (prev === 'badges' ? 'sparkline' : 'badges'))
               }

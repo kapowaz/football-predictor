@@ -12,7 +12,7 @@ describe('Sparkline', () => {
   it('renders a responsive container', () => {
     const { container } = render(
       <Wrapper>
-        <Sparkline data={[5, 4, 3, 2, 1]} teamCount={20} trend="positive" />
+        <Sparkline data={[5, 4, 3, 2, 1]} domain={[0, 21]} trend="positive" />
       </Wrapper>,
     );
 
@@ -22,7 +22,7 @@ describe('Sparkline', () => {
   it('renders with a single data point without crashing', () => {
     const { container } = render(
       <Wrapper>
-        <Sparkline data={[10]} teamCount={20} trend="stable" />
+        <Sparkline data={[10]} domain={[0, 21]} trend="stable" />
       </Wrapper>,
     );
 
@@ -32,7 +32,7 @@ describe('Sparkline', () => {
   it('renders with empty data without crashing', () => {
     const { container } = render(
       <Wrapper>
-        <Sparkline data={[]} teamCount={20} trend="stable" />
+        <Sparkline data={[]} domain={[0, 21]} trend="stable" />
       </Wrapper>,
     );
 

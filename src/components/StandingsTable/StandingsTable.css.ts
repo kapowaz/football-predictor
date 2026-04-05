@@ -1,9 +1,4 @@
-import {
-  style,
-  createContainer,
-  type ComplexStyleRule,
-  type CSSProperties,
-} from '@vanilla-extract/css';
+import { style, styleVariants, createContainer } from '@vanilla-extract/css';
 import {
   colorBgSurface,
   colorBgRowEven,
@@ -87,6 +82,11 @@ export const container = style({
   overflowX: 'auto',
   overflowY: 'auto',
   minHeight: 0,
+  '@media': {
+    'screen and (max-width: 680px)': {
+      borderRadius: 0,
+    },
+  },
 });
 
 export const containerNoBorderRadius = style({
@@ -112,6 +112,11 @@ export const table = style({
   fontSize: fontSizeBase,
   lineHeight: '24px',
   borderRadius: radiusLg,
+  '@media': {
+    'screen and (max-width: 680px)': {
+      borderRadius: 0,
+    },
+  },
 });
 
 export const tableLarge = style({
@@ -672,72 +677,6 @@ const dashedLine = (color: string, dashLengthPx: number, gapLengthPx: number): s
   return `repeating-linear-gradient(90deg, ${color} 0, ${color} ${dashLengthPx}px, transparent ${transparentFrom}px, transparent ${periodEnd}px)`;
 };
 
-/**
- * Single continuous dash across the row (avoids per-cell gradient phase resets).
- * Pseudo-elements sit above cell backgrounds; does not affect row height.
- *
- * - `after` + `tr`: full-width line on the bottom edge (zone boundaries).
- * - `before` + form `td`: wide line anchored right, extending left — WebKit/Blink `tr::before` acts like
- *   an extra cell; this avoids that and the team column `mask-image` fading the line.
- */
-const dashedRowEdge = (color: string, position: 'before' | 'after'): ComplexStyleRule => {
-  const dashBg = dashedLine(color, 3, 3);
-
-  const commonStyles: CSSProperties = {
-    content: '""',
-    position: 'absolute',
-    height: '1px',
-    right: 0,
-    backgroundImage: dashBg,
-    pointerEvents: 'none',
-    zIndex: 2,
-  };
-
-  if (position === 'after') {
-    return {
-      position: 'relative',
-      selectors: {
-        '&::after': {
-          ...commonStyles,
-          left: 0,
-          bottom: '-0.5px',
-        },
-      },
-    };
-  }
-  return {
-    position: 'relative',
-    selectors: {
-      '&::before': {
-        ...commonStyles,
-        top: '0.5px',
-        // Wider than any realistic table; clipped by the scroll container.
-        width: '10000px',
-      },
-    },
-  };
-};
-
-export const tdFormRunInDashTopRelegation = style(dashedRowEdge(colorDashZoneRelegation, 'before'));
-
-export const trRunInDashBottomChampions = style(dashedRowEdge(colorDashZoneChampions, 'after'));
-
-export const trRunInDashBottomPromotion = style(dashedRowEdge(colorDashZonePromotion, 'after'));
-
-export const trRunInDashBottomPlayoff = style(dashedRowEdge(colorDashZonePlayoff, 'after'));
-
-export const trRunInDashBottomChampionsLeague = style(
-  dashedRowEdge(colorDashZoneChampionsLeague, 'after'),
-);
-
-export const trRunInDashBottomEuropaLeague = style(
-  dashedRowEdge(colorDashZoneEuropaLeague, 'after'),
-);
-
-export const trRunInDashBottomConferenceLeague = style(
-  dashedRowEdge(colorDashZoneConferenceLeague, 'after'),
-);
-
 export const trZoneBoundary = style({
   position: 'relative',
   zIndex: 3,
@@ -749,8 +688,28 @@ export const trZoneBoundary = style({
 export const tdZoneBoundary = style({
   padding: 0,
   border: 'none',
-  height: 0,
+  position: 'absolute',
+  left: 0,
+  width: '100%',
+  height: '1px',
   overflow: 'visible',
+  pointerEvents: 'none',
+  top: `calc(-24px - ${space3} - ${space3})`,
+  '@container': {
+    [`${tableContainer} (max-width: 680px)`]: {
+      top: `calc(-24px - ${space2} - ${space2})`,
+    },
+  },
+});
+
+export const tdZoneBoundaryDash = styleVariants({
+  champions: { backgroundImage: dashedLine(colorDashZoneChampions, 3, 3) },
+  promotion: { backgroundImage: dashedLine(colorDashZonePromotion, 3, 3) },
+  playoff: { backgroundImage: dashedLine(colorDashZonePlayoff, 3, 3) },
+  championsLeague: { backgroundImage: dashedLine(colorDashZoneChampionsLeague, 3, 3) },
+  europaLeague: { backgroundImage: dashedLine(colorDashZoneEuropaLeague, 3, 3) },
+  conferenceLeague: { backgroundImage: dashedLine(colorDashZoneConferenceLeague, 3, 3) },
+  relegation: { backgroundImage: dashedLine(colorDashZoneRelegation, 3, 3) },
 });
 
 export const zoneLabelPosition = style({
@@ -759,21 +718,7 @@ export const zoneLabelPosition = style({
   width: 'fit-content',
   height: 0,
   overflow: 'visible',
-  transform: `translateY(calc(-8px - 24px - ${space3} - ${space3}))`,
+  transform: 'translateY(-8px)',
   zIndex: 5,
   pointerEvents: 'none',
-  '@container': {
-    [`${tableContainer} (max-width: 680px)`]: {
-      transform: `translateY(calc(-8px - 24px - ${space2} - ${space2}))`,
-    },
-  },
-});
-
-export const zoneLabelPositionRelegation = style({
-  transform: `translateY(calc(-8px - 24px - ${space3} - ${space3} + 1px))`,
-  '@container': {
-    [`${tableContainer} (max-width: 680px)`]: {
-      transform: `translateY(calc(-8px - 24px - ${space2} - ${space2} + 1px))`,
-    },
-  },
 });

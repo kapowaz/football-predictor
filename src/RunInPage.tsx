@@ -150,7 +150,6 @@ const RunInContent = ({ slug, config }: RunInContentProps) => {
               clickableMatchIds={fixtureMatchIds}
               formDisplay={formDisplay}
               positionHistory={positionHistory}
-              teamCount={teams.length}
               onFormDisplayToggle={() =>
                 setFormDisplay((prev) => (prev === 'badges' ? 'sparkline' : 'badges'))
               }

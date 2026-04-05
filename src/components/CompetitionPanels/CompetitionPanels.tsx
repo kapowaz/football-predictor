@@ -175,7 +175,6 @@ export const CompetitionPanels = ({
             variantRules={variantRules}
             formDisplay={formDisplay}
             positionHistory={positionHistory}
-            teamCount={teams.length}
             onFormDisplayToggle={() =>
               setFormDisplay((prev) => (prev === 'badges' ? 'sparkline' : 'badges'))
             }

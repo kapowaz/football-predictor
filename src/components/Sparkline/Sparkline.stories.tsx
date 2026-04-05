@@ -9,7 +9,6 @@ const meta = {
       control: 'select',
       options: ['positive', 'negative', 'stable'],
     },
-    teamCount: { control: { type: 'number', min: 4, max: 24 } },
   },
   decorators: [
     (Story) => (
@@ -26,7 +25,7 @@ type Story = StoryObj<typeof meta>;
 export const Positive: Story = {
   args: {
     data: [15, 12, 10, 8, 6, 5, 4, 3],
-    teamCount: 20,
+    domain: [0, 21],
     trend: 'positive',
   },
 };
@@ -34,7 +33,7 @@ export const Positive: Story = {
 export const Negative: Story = {
   args: {
     data: [3, 5, 7, 9, 12, 14, 16, 18],
-    teamCount: 20,
+    domain: [0, 21],
     trend: 'negative',
   },
 };
@@ -42,7 +41,7 @@ export const Negative: Story = {
 export const Stable: Story = {
   args: {
     data: [10, 11, 10, 9, 10, 11, 10, 10],
-    teamCount: 20,
+    domain: [0, 21],
     trend: 'stable',
   },
 };

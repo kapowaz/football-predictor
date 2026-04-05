@@ -72,14 +72,15 @@ const PositionTooltip = ({
 interface SparklineProps {
   /** Array of 1-based league positions (lower = better). */
   data: number[];
-  /** Total number of teams in the competition (Y-axis domain max). */
-  teamCount: number;
+  /** Y-axis domain [min, max] shared across all sparklines in the table. */
+  domain: [number, number];
   /** Overall trend direction, determines stroke colour. */
   trend: PositionTrend;
 }
 
-export const Sparkline = ({ data, teamCount, trend }: SparklineProps) => {
+export const Sparkline = ({ data, domain, trend }: SparklineProps) => {
   const chartData = data.map((position) => ({ position }));
+
   const containerRef = useRef<HTMLDivElement>(null);
   const [hovered, setHovered] = useState(false);
   const [tooltipVisible, setTooltipVisible] = useState(false);
@@ -166,7 +167,7 @@ export const Sparkline = ({ data, teamCount, trend }: SparklineProps) => {
               <stop offset="100%" stopColor={strokeColor} stopOpacity={0} />
             </linearGradient>
           </defs>
-          <YAxis domain={[1, teamCount]} reversed hide />
+          <YAxis domain={domain} reversed hide />
           <Tooltip
             content={<PositionTooltip svgRect={svgRect} visible={tooltipVisible} />}
             cursor={false}
@@ -176,7 +177,7 @@ export const Sparkline = ({ data, teamCount, trend }: SparklineProps) => {
           <Area
             type="linear"
             dataKey="position"
-            baseValue={teamCount}
+            baseValue={domain[1]}
             stroke={`url(#${strokeGradientId})`}
             fill={`url(#${fillGradientId})`}
             strokeWidth={2}
