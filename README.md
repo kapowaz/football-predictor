@@ -17,7 +17,7 @@ Built with React, TypeScript, Vite and [Vanilla Extract](https://vanilla-extract
 ### Prerequisites
 
 - [Node.js](https://nodejs.org/) (v18+)
-- [Yarn](https://classic.yarnpkg.com/) (v1)
+- [pnpm](https://pnpm.io/)
 - [Python 3](https://www.python.org/) (required for `generate-predictions` scripts)
 
 ### API Key
@@ -35,19 +35,19 @@ The data-fetching script requires a free API key from football-data.org:
 
 ```bash
 # Install dependencies
-yarn install
+pnpm install
 
 # Fetch latest matches/standings data for enabled competitions
-yarn fetch-data
+pnpm fetch-data
 
 # (Optional) fetch latest FotMob stats used by the model
-yarn fetch-fotmob-stats
+pnpm fetch-fotmob-stats
 
 # (Optional) generate model predictions
-yarn generate-predictions
+pnpm generate-predictions
 
 # Start the dev server
-yarn dev
+pnpm dev
 ```
 
 The app will be available at `http://localhost:5173`.
@@ -56,15 +56,15 @@ The app will be available at `http://localhost:5173`.
 
 | Command                  | Description                                                                 |
 | ------------------------ | --------------------------------------------------------------------------- |
-| `yarn build`             | Type-check and build for production                                         |
-| `yarn preview`           | Preview the production build locally                                        |
-| `yarn lint`              | Run ESLint                                                                  |
-| `yarn format`            | Format source files with Prettier                                           |
-| `yarn fetch-data:*`      | Fetch football-data.org matches/standings for a specific competition        |
-| `yarn fetch-teams:*`     | Refresh teams metadata for a specific competition                           |
-| `yarn fetch-fotmob-stats:*` | Fetch FotMob stats for all or specific competitions                      |
-| `yarn generate-predictions:*` | Generate model predictions for all or specific competitions            |
-| `yarn ensure-data-stubs` | Create empty JSON stubs so static imports still resolve before data fetches |
+| `pnpm build`             | Type-check and build for production                                         |
+| `pnpm preview`           | Preview the production build locally                                        |
+| `pnpm lint`              | Run ESLint                                                                  |
+| `pnpm format`            | Format source files with Prettier                                           |
+| `pnpm fetch-data:*`      | Fetch football-data.org matches/standings for a specific competition        |
+| `pnpm fetch-teams:*`     | Refresh teams metadata for a specific competition                           |
+| `pnpm fetch-fotmob-stats:*` | Fetch FotMob stats for all or specific competitions                      |
+| `pnpm generate-predictions:*` | Generate model predictions for all or specific competitions            |
+| `pnpm ensure-data-stubs` | Create empty JSON stubs so static imports still resolve before data fetches |
 
 ## Data Files
 
@@ -80,7 +80,7 @@ Data is organized per competition under `src/data/<competition-slug>/`.
 | `fotmob-stats.json` | Team-level stat payload from FotMob (used by prediction generation when available).                       |
 | `model-predictions.json` | Output of the Monte Carlo prediction script for unresolved fixtures.                                |
 
-Use `yarn fetch-data`, `yarn fetch-teams`, and `yarn fetch-fotmob-stats` to refresh data. Then run `yarn generate-predictions` to regenerate `model-predictions.json`.
+Use `pnpm fetch-data`, `pnpm fetch-teams`, and `pnpm fetch-fotmob-stats` to refresh data. Then run `pnpm generate-predictions` to regenerate `model-predictions.json`.
 
 ### Maintained manually
 

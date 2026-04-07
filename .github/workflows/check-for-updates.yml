@@ -20,12 +20,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - uses: pnpm/action-setup@v4
+
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: yarn
+          cache: pnpm
 
-      - run: yarn install --frozen-lockfile
+      - run: pnpm install --frozen-lockfile
 
       - uses: actions/cache/restore@v4
         with:
@@ -34,7 +36,7 @@ jobs:
           restore-keys: match-state-
 
       - id: check
-        run: yarn check-for-updates
+        run: pnpm check-for-updates
         env:
           FOOTBALL_DATA_API_KEY: ${{ secrets.FOOTBALL_DATA_API_KEY }}
 

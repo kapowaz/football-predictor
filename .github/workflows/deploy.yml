@@ -20,26 +20,28 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - uses: pnpm/action-setup@v4
+
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: yarn
+          cache: pnpm
 
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
 
-      - run: yarn install --frozen-lockfile
-      - run: yarn ensure-data-stubs
-      - run: yarn fetch-data --all
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm ensure-data-stubs
+      - run: pnpm fetch-data --all
         env:
           FOOTBALL_DATA_API_KEY: ${{ secrets.FOOTBALL_DATA_API_KEY }}
-      - run: yarn fetch-fotmob-stats --all
-      - run: yarn generate-predictions --all --simulations 50000
-      - run: yarn generate-live-scores
+      - run: pnpm fetch-fotmob-stats --all
+      - run: pnpm generate-predictions --all --simulations 50000
+      - run: pnpm generate-live-scores
         env:
           FOOTBALL_DATA_API_KEY: ${{ secrets.FOOTBALL_DATA_API_KEY }}
-      - run: yarn build
+      - run: pnpm build
 
       - uses: actions/upload-pages-artifact@v3
         with:
