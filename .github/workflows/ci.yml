@@ -36,6 +36,9 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
+      - name: Ensure data stubs
+        run: pnpm ensure-data-stubs
+
       - name: Lint
         run: pnpm lint
 
