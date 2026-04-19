@@ -40,13 +40,20 @@
     "preview": "vite preview",
     "check-for-updates": "tsx scripts/check-for-updates.ts",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "typecheck": "tsc --noEmit -p tsconfig.app.json && tsc --noEmit -p tsconfig.node.json"
   },
   "dependencies": {
     "@floating-ui/react": "^0.27.18",
+    "@kapowaz/components": "^13.1.1",
+    "@kapowaz/design-tokens": "^0.1.1",
+    "@kapowaz/fonts": "^0.1.0",
+    "@kapowaz/football": "^0.1.2",
+    "@kapowaz/football-badges": "^0.3.0",
+    "@kapowaz/icons": "^0.3.0",
     "@vanilla-extract/dynamic": "^2.1.5",
     "clsx": "^2.1.1",
-    "framer-motion": "^12.34.3",
+    "motion": "^12.38.0",
     "modern-screenshot": "^4.6.8",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",

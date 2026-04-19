@@ -10,9 +10,25 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url))
 // https://vite.dev/config/
 export default defineConfig({
   base: '/football-predictor/',
-  plugins: [react(), vanillaExtractPlugin()],
+  plugins: [
+    react(),
+    vanillaExtractPlugin(),
+  ],
   optimizeDeps: {
-    entries: ['index.html', 'all-time-rank/index.html'],
+    entries: [
+      'index.html',
+      'all-time-rank/index.html',
+    ],
+  },
+  resolve: {
+    dedupe: [
+      'react',
+      'react-dom',
+      // @kapowaz/design-tokens depends on @vanilla-extract/css; without
+      // deduplication, cssVariablesByColorMode calls globalStyle() on a
+      // separate instance whose fileScope doesn't match the Vite plugin's.
+      '@vanilla-extract/css',
+    ],
   },
   build: {
     rollupOptions: {
@@ -24,7 +40,7 @@ export default defineConfig({
         manualChunks: {
           'react-vendor': ['react', 'react-dom', 'react-router-dom'],
           recharts: ['recharts'],
-          'framer-motion': ['framer-motion'],
+          'framer-motion': ['motion'],
         },
       },
     },
