@@ -4,7 +4,7 @@ export interface Team {
   name: string;
   shortName: string;
   tla: string;
-  crest: string;
+  badge: string;
 }
 
 export interface PointDeduction {

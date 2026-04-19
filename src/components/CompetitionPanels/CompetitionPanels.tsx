@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
 import type { ComponentProps, RefObject } from 'react';
+import { AbstractText } from '@kapowaz/components';
 import type { TeamStanding } from '../../types';
 import { useCompetitionData } from '../../hooks/useCompetitionData';
 import { useLiveScores } from '../../hooks/useLiveScores';
@@ -19,8 +20,15 @@ import type { VariantRulesMode } from '../../types';
 import type { ZoneThreshold } from '../../utils/zoneThresholds';
 import { NavBar } from '../NavBar';
 import { AppPanels } from '../AppPanels';
-import { StandingsTable, type FormDisplayMode } from '../StandingsTable/StandingsTable';
+import {
+  StandingsTable,
+  type FormDisplayMode,
+  getRelegationStartPosition,
+  buildThresholdByZoneType,
+  calculateSparklineScale,
+} from '@kapowaz/football';
 import { FixturePanel } from '../FixturePanel';
+import { PanelHeader } from '../PanelHeader';
 import * as styles from './CompetitionPanels.css.ts';
 
 type NavBarProps = ComponentProps<typeof NavBar>;
@@ -94,9 +102,17 @@ export const CompetitionPanels = ({
     variantRules,
   );
 
-  const ownViewModel = !standingsProp && session && effectivePredictions
-    ? selectStandingsViewModel(teams, matches, effectivePredictions, session.deductions, config.zones, variantRules)
-    : null;
+  const ownViewModel =
+    !standingsProp && session && effectivePredictions
+      ? selectStandingsViewModel(
+          teams,
+          matches,
+          effectivePredictions,
+          session.deductions,
+          config.zones,
+          variantRules,
+        )
+      : null;
 
   const panelModel = useMemo(() => {
     if (!session || !effectivePredictions) {
@@ -116,7 +132,15 @@ export const CompetitionPanels = ({
       predictedCount,
       allScheduledPredicted,
     };
-  }, [standingsProp, deductionMarkersProp, ownViewModel, effectivePredictions, matches, session, teamsById]);
+  }, [
+    standingsProp,
+    deductionMarkersProp,
+    ownViewModel,
+    effectivePredictions,
+    matches,
+    session,
+    teamsById,
+  ]);
 
   const zoneGuaranteedByTeamId = useZoneGuarantees(
     panelModel?.standings ?? [],
@@ -154,23 +178,27 @@ export const CompetitionPanels = ({
               ? () => fillFromModel(modelPredictions)
               : undefined
           }
-          onResetPredictionsClick={
-            panelModel.predictedCount > 0 ? resetAllPredictions : undefined
-          }
+          onResetPredictionsClick={panelModel.predictedCount > 0 ? resetAllPredictions : undefined}
         />
       }
       standingsPanel={
         <>
-          <div className={styles.panelHeader}>
-            <h2 className={styles.panelTitle}>Standings</h2>
-          </div>
+          <PanelHeader title="Standings" />
           <StandingsTable
             standings={panelModel.standings}
             deductionMarkers={panelModel.deductionMarkers}
             zoneGuaranteedByTeamId={zoneGuaranteedByTeamId}
             zones={config.zones}
             isRunIn={isRunIn}
-            zoneThresholds={zoneThresholds}
+            relegationStartPosition={getRelegationStartPosition(config.zones)}
+            thresholdByZoneType={
+              zoneThresholds ? buildThresholdByZoneType(zoneThresholds) : undefined
+            }
+            sparklineScale={
+              formDisplay === 'sparkline'
+                ? calculateSparklineScale(panelModel.standings, positionHistory, 16)
+                : undefined
+            }
             onResultClick={handleResultClick}
             variantRules={variantRules}
             formDisplay={formDisplay}
@@ -182,13 +210,15 @@ export const CompetitionPanels = ({
           {panelModel.deductionNotes.length > 0 && (
             <div className={styles.deductionNotes}>
               {panelModel.deductionNotes.map((note) => (
-                <span
+                <AbstractText
+                  tagName="span"
                   key={note.label}
                   className={styles.deductionNote}
                   title={note.reason || undefined}
+                  fontSize="sm"
                 >
                   {note.label}
-                </span>
+                </AbstractText>
               ))}
             </div>
           )}
@@ -196,9 +226,7 @@ export const CompetitionPanels = ({
       }
       fixturesPanel={
         <>
-          <div className={styles.panelHeader}>
-            <h2 className={styles.panelTitle}>Fixtures</h2>
-          </div>
+          <PanelHeader title="Fixtures" />
           <FixturePanel
             slug={slug}
             isVisible={session.activeTab === 'fixtures'}

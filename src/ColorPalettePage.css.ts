@@ -1,5 +1,8 @@
 import { style } from '@vanilla-extract/css';
-import { fontFamily, space2, space4, space6 } from './theme.css';
+import { getDesignTokens } from '@kapowaz/design-tokens';
+import { space2, space4, space6 } from './theme.css';
+
+const { typography } = getDesignTokens();
 
 export const page = style({
   display: 'flex',
@@ -11,7 +14,7 @@ export const page = style({
 });
 
 export const heading = style({
-  fontFamily,
+  fontFamily: typography.fontFamily.ui,
   fontSize: '24px',
   fontWeight: 700,
   margin: 0,
@@ -24,7 +27,7 @@ export const grid = style({
 });
 
 export const headerCell = style({
-  fontFamily,
+  fontFamily: typography.fontFamily.ui,
   fontSize: '11px',
   fontWeight: 600,
   textAlign: 'center',
@@ -33,7 +36,7 @@ export const headerCell = style({
 });
 
 export const hueLabel = style({
-  fontFamily,
+  fontFamily: typography.fontFamily.ui,
   fontSize: '12px',
   fontWeight: 600,
   display: 'flex',
@@ -60,7 +63,7 @@ export const swatch = style({
 });
 
 export const swatchLabel = style({
-  fontFamily,
+  fontFamily: typography.fontFamily.ui,
   fontSize: '9px',
   fontWeight: 500,
   lineHeight: 1,

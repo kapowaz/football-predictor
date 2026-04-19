@@ -1,23 +1,27 @@
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import { AbstractText, Confetti, Modal } from '@kapowaz/components';
+import type { ModalAction } from '@kapowaz/components';
+import { Share } from '@kapowaz/icons';
 import type { TeamStanding } from '../../types';
 import type { CompetitionConfig, ZoneType } from '../../data/competitions';
 import { groupStandingsByZone } from '../../utils/zones';
 import { generateShareText } from '../../utils/share';
 import { hasConfettiShown, markConfettiShown } from '../../utils/storage';
-import { Modal } from '../Modal';
-import { Confetti } from '../Confetti';
-import { Button } from '../Button';
-import { ShareIcon } from '../icons';
-import { getCrest } from '../../assets/crests';
 import { TeamRow } from './TeamRow';
 import * as styles from './SeasonSummaryModal.css';
 
 interface SeasonSummaryModalProps {
+  /** Final standings for the season. */
   standings: TeamStanding[];
+  /** Whether the modal is currently open. */
   isOpen: boolean;
+  /** Callback fired when the modal is closed. */
   onClose: () => void;
+  /** Competition configuration (name, zones, season, etc.). */
   competition: CompetitionConfig;
+  /** Pre-rendered standings image files for sharing. */
   standingsImageFiles?: { top: File; bottom: File } | null;
+  /** Whether the standings image is still being rendered. */
   isRenderingStandingsImage?: boolean;
 }
 
@@ -43,6 +47,8 @@ const zoneLabelStyles: Record<ZoneType, string> = {
   relegation: styles.relegatedLabel,
 };
 
+/** Approximate modal open animation duration (delay + transition) in ms. */
+const MODAL_ANIMATION_DURATION_MS = 300;
 const CONFETTI_POST_ANIMATION_DELAY_MS = 1000;
 
 export const SeasonSummaryModal = ({
@@ -51,28 +57,26 @@ export const SeasonSummaryModal = ({
   onClose,
   competition,
   standingsImageFiles,
-  isRenderingStandingsImage = false,
 }: SeasonSummaryModalProps) => {
   const [showConfetti, setShowConfetti] = useState(false);
   const confettiTimeoutRef = useRef<number | undefined>(undefined);
   const hasShareApi = typeof navigator.share === 'function';
-  const isShareImageReady = Boolean(standingsImageFiles) && !isRenderingStandingsImage;
 
-  const handleOpenAnimationComplete = useCallback(() => {
+  useEffect(() => {
+    if (!isOpen) {
+      window.clearTimeout(confettiTimeoutRef.current);
+      return;
+    }
+
     if (hasConfettiShown(competition.slug)) return;
 
     confettiTimeoutRef.current = window.setTimeout(() => {
       setShowConfetti(true);
       markConfettiShown(competition.slug);
-    }, CONFETTI_POST_ANIMATION_DELAY_MS);
-  }, [competition.slug]);
+    }, MODAL_ANIMATION_DURATION_MS + CONFETTI_POST_ANIMATION_DELAY_MS);
 
-  useEffect(() => {
-    if (!isOpen) {
-      window.clearTimeout(confettiTimeoutRef.current);
-    }
     return () => window.clearTimeout(confettiTimeoutRef.current);
-  }, [isOpen]);
+  }, [isOpen, competition.slug]);
 
   const champion = standings[0];
   const zoneGroups = groupStandingsByZone(standings, competition.zones);
@@ -104,90 +108,81 @@ export const SeasonSummaryModal = ({
     }
   };
 
+  const actions: ModalAction[] = hasShareApi
+    ? [{ type: 'primary' as const, label: 'Share your Predictions', icon: Share, onClick: handleShare }]
+    : [];
+
   return (
     <>
       <Modal
         isOpen={isOpen}
-        onClose={onClose}
-        className={styles.modal}
-        initialFocus={-1}
-        onOpenAnimationComplete={handleOpenAnimationComplete}
-      >
-        {champion && (
-          <img
-            src={getCrest(champion.team.crest)}
-            alt=""
-            className={styles.backgroundCrest}
-            aria-hidden="true"
-          />
-        )}
-
-        <div className={styles.contentLayer}>
-          <button className={styles.closeButton} onClick={onClose} aria-label="Close">
-            ✕
-          </button>
-
-          <h2 className={styles.championHeading}>
-            Congratulations
-            <br />
-            <span className={styles.championName}>{champion?.team.name}!</span>
-          </h2>
-
-          <p className={styles.championSubheading}>
+        onRequestClose={onClose}
+        contentLabel="Season Summary"
+        heading={
+          <span className={styles.modalHeading}>
             <img
               src={competition.logo}
               alt=""
               aria-hidden="true"
               className={styles.competitionLogo}
             />
-            <span>
-              {competition.name}
-              <br />
-              Champions {competition.season}!<span className={styles.asterisk}>*</span>
-            </span>
-          </p>
-          <p className={styles.predictionParagraph}>*This is only a prediction…</p>
+            {competition.name} {competition.season}
+          </span>
+        }
+        actions={actions}
+      >
+        <AbstractText
+          tagName="h3"
+          className={styles.championHeading}
+          fontSize="xxl"
+          fontWeight="bold"
+        >
+          Congratulations <span className={styles.championName}>{champion?.team.name}!</span>
+        </AbstractText>
 
-          <div className={styles.scrollableContent}>
-            <hr className={styles.divider} />
+        {nonRelegationZones.map(({ zone, teams }) => {
+          const isGridZone = zone.type === 'playoff' || zone.type === 'championsLeague';
 
-            {nonRelegationZones.map(({ zone, teams }) => (
-              <div key={zone.name} className={styles.section}>
-                <div className={zoneLabelStyles[zone.type] ?? styles.sectionLabel}>
-                  {zone.label}
-                </div>
-                <div className={styles.teamList}>
-                  {teams.map((s) => (
-                    <TeamRow key={s.team.id} standing={s} />
-                  ))}
-                </div>
+          return (
+            <div key={zone.name} className={styles.section}>
+              <AbstractText
+                tagName="div"
+                className={zoneLabelStyles[zone.type] ?? styles.sectionLabel}
+                fontSize="sm"
+                fontWeight="semibold"
+                textTransform="uppercase"
+                letterSpacing="wide"
+              >
+                {zone.label}
+              </AbstractText>
+              <div className={isGridZone ? styles.teamListGrid : styles.teamList}>
+                {teams.map((s) => (
+                  <TeamRow key={s.team.id} standing={s} />
+                ))}
               </div>
-            ))}
-
-            {relegationZone && (
-              <>
-                <hr className={styles.divider} />
-                <div className={styles.section}>
-                  <div className={styles.relegatedLabel}>{relegationZone.zone.label}</div>
-                  <div className={styles.teamList}>
-                    {relegationZone.teams.map((s) => (
-                      <TeamRow key={s.team.id} standing={s} />
-                    ))}
-                  </div>
-                </div>
-              </>
-            )}
-          </div>
-
-          {hasShareApi && (
-            <div className={styles.shareButtonWrapper}>
-              <Button variant="success" onClick={handleShare} disabled={!isShareImageReady}>
-                <ShareIcon size={14} />
-                Share your Predictions
-              </Button>
             </div>
-          )}
-        </div>
+          );
+        })}
+
+        {relegationZone && (
+          <div className={styles.section}>
+            <AbstractText
+              tagName="div"
+              className={styles.relegatedLabel}
+              fontSize="sm"
+              fontWeight="semibold"
+              textTransform="uppercase"
+              letterSpacing="wide"
+            >
+              {relegationZone.zone.label}
+            </AbstractText>
+            <div className={styles.teamList}>
+              {relegationZone.teams.map((s) => (
+                <TeamRow key={s.team.id} standing={s} />
+              ))}
+            </div>
+          </div>
+        )}
       </Modal>
       {showConfetti && (
         <Confetti

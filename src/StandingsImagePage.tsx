@@ -1,17 +1,19 @@
 import { Navigate, useParams, useSearchParams } from 'react-router-dom';
-import { useCallback, useMemo, useRef } from 'react';
+import { useMemo, useRef } from 'react';
 import type { VariantRulesMode } from './types';
 import { StandingsImageView } from './components/StandingsImageView';
-import { ColorModeToggle } from './components/ColorModeToggle';
+import { ToggleColorMode } from '@kapowaz/components';
 import { getCompetition, type CompetitionConfig } from './data/competitions';
 import { hasCompetitionData } from './data';
 import { useCompetitionData } from './hooks/useCompetitionData';
 import { useLiveScores } from './hooks/useLiveScores';
-import { useTheme } from './hooks/useTheme';
+import { useColorMode } from './hooks/useColorMode';
 import { useCompetitionSession } from './state/useCompetitionSession';
 import { selectDeductionNotes, selectStandingsViewModel, selectTeamsById } from './state/selectors';
 import { getEffectivePredictions } from './utils/liveScores';
 import { useZoneGuarantees } from './hooks/useZoneGuarantees';
+import { useZoneThresholds } from './hooks/useZoneThresholds';
+import { getRelegationStartPosition, buildThresholdByZoneType } from '@kapowaz/football';
 import * as styles from './StandingsImagePage.css.ts';
 
 const VALID_VARIANT_RULES = new Set<string>(['new-rules', 'bonus-points']);
@@ -31,7 +33,7 @@ const StandingsImageContent = ({ slug, config }: StandingsImageContentProps) => 
   const variantRules = parseVariantRules(searchParams.get('variantRules'));
   const topCaptureRef = useRef<HTMLDivElement>(null);
   const bottomCaptureRef = useRef<HTMLDivElement>(null);
-  const { theme, toggleTheme } = useTheme();
+  const { colorMode, toggleColorMode } = useColorMode();
   const { teams, matches, defaultDeductions } = useCompetitionData(slug);
   const { liveScores } = useLiveScores(slug);
   const { predictions, deductions } = useCompetitionSession({
@@ -55,18 +57,14 @@ const StandingsImageContent = ({ slug, config }: StandingsImageContentProps) => 
   const zoneGuaranteedByTeamId = useZoneGuarantees(standings, matches, effectivePredictions, config.zones);
   const teamsById = selectTeamsById(teams);
   const deductionNotes = selectDeductionNotes(deductions, teamsById);
-
-  const handleColorModeToggle = useCallback(
-    (colorMode: 'light' | 'dark') => {
-      toggleTheme(colorMode);
-    },
-    [toggleTheme],
-  );
+  const zoneThresholds = useZoneThresholds(standings, matches, effectivePredictions, config.zones);
+  const relegationStartPosition = getRelegationStartPosition(config.zones);
+  const thresholdByZoneType = buildThresholdByZoneType(zoneThresholds);
 
   return (
     <div className={styles.page}>
       <header className={styles.toolbar}>
-        <ColorModeToggle colorMode={theme} onColorModeToggle={handleColorModeToggle} />
+        <ToggleColorMode isDarkMode={colorMode === 'dark'} onChange={(dark) => toggleColorMode(dark ? 'dark' : 'light')} />
       </header>
       <StandingsImageView
         standings={standings}
@@ -81,6 +79,9 @@ const StandingsImageContent = ({ slug, config }: StandingsImageContentProps) => 
         captureRef={topCaptureRef}
         isHidden={false}
         variantRules={variantRules}
+        isRunIn
+        relegationStartPosition={relegationStartPosition}
+        thresholdByZoneType={thresholdByZoneType}
       />
       <StandingsImageView
         standings={standings}
@@ -95,6 +96,9 @@ const StandingsImageContent = ({ slug, config }: StandingsImageContentProps) => 
         captureRef={bottomCaptureRef}
         isHidden={false}
         variantRules={variantRules}
+        isRunIn
+        relegationStartPosition={relegationStartPosition}
+        thresholdByZoneType={thresholdByZoneType}
       />
     </div>
   );

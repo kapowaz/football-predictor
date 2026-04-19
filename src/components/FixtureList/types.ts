@@ -12,7 +12,7 @@ export interface FixtureGroupData {
   /** Matches belonging to this group. */
   matches: Match[];
   /** Whether every match in this group has a prediction or result. */
-  allPredicted: boolean;
+  isAllPredicted: boolean;
   /** The team this group represents; present only when groupBy is 'team'. */
   team?: Team;
 }

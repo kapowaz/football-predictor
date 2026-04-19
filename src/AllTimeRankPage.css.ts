@@ -1,10 +1,10 @@
 import { style } from '@vanilla-extract/css';
+import { getDesignTokens } from '@kapowaz/design-tokens';
 import {
   colorTextHeading,
   colorTextHover,
   colorTextMuted,
   colorTextSecondary,
-  fontFamilyDisplay,
   fontSizeSm,
   fontSizeXs,
   fontSizeXl,
@@ -16,6 +16,8 @@ import {
   space4,
   space6,
 } from './theme.css';
+
+const { typography } = getDesignTokens();
 
 export const page = style({
   display: 'flex',
@@ -48,7 +50,7 @@ export const headerLeft = style({
 });
 
 export const title = style({
-  fontFamily: fontFamilyDisplay,
+  fontFamily: typography.fontFamily.ui,
   fontSize: fontSizeXl,
   fontWeight: 700,
   color: colorTextHeading,

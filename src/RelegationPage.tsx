@@ -3,13 +3,20 @@ import { Navigate, useNavigate, useParams } from 'react-router-dom';
 import { NavBar } from './components/NavBar';
 import { AppPanels } from './components/AppPanels';
 import { FixturePanel } from './components/FixturePanel';
-import { StandingsTable, type FormDisplayMode } from './components/StandingsTable/StandingsTable';
+import {
+  StandingsTable,
+  type FormDisplayMode,
+  getRelegationStartPosition,
+  buildThresholdByZoneType,
+  calculateSparklineScale,
+} from '@kapowaz/football';
 import { DeductionsModal } from './components/DeductionsModal';
+import { PanelHeader } from './components/PanelHeader';
 import { hasCompetitionData } from './data';
 import { allCompetitions, getCompetition, type CompetitionConfig } from './data/competitions';
 import { useCompetitionData } from './hooks/useCompetitionData';
 import { useLiveScores } from './hooks/useLiveScores';
-import { useTheme } from './hooks/useTheme';
+import { useColorMode } from './hooks/useColorMode';
 import { useCompetitionSession } from './state/useCompetitionSession';
 import {
   selectAllScheduledPredicted,
@@ -20,7 +27,7 @@ import { usePositionHistory } from './hooks/usePositionHistory';
 import { getEffectivePredictions } from './utils/liveScores';
 import { useZoneGuarantees } from './hooks/useZoneGuarantees';
 import { useZoneThresholds } from './hooks/useZoneThresholds';
-import * as styles from './RelegationPage.css';
+
 
 const RELEGATION_POINTS_MARGIN = 6;
 
@@ -33,7 +40,7 @@ const RelegationContent = ({ slug, config }: RelegationContentProps) => {
   const navigate = useNavigate();
   const competitions = allCompetitions();
   const pageContentRef = useRef<HTMLDivElement>(null);
-  const { theme, toggleTheme } = useTheme();
+  const { colorMode, toggleColorMode } = useColorMode();
   const { teams, matches, defaultDeductions, modelPredictions } = useCompetitionData(slug);
   const { liveScores } = useLiveScores(slug);
   const {
@@ -112,8 +119,8 @@ const RelegationContent = ({ slug, config }: RelegationContentProps) => {
             competitions={competitions}
             activeSlug={slug}
             onCompetitionChange={(nextSlug) => navigate(`/relegation/${nextSlug}/`)}
-            colorMode={theme}
-            onColorModeToggle={toggleTheme}
+            colorMode={colorMode}
+            onColorModeToggle={toggleColorMode}
             onDeductionsClick={() => setDeductionsModalOpen(true)}
             onAIPredictionsClick={
               hasModelPredictions && !allScheduledPredicted
@@ -127,16 +134,16 @@ const RelegationContent = ({ slug, config }: RelegationContentProps) => {
         }
         standingsPanel={
           <>
-            <div className={styles.panelHeader}>
-              <h2 className={styles.panelTitle}>Standings</h2>
-            </div>
+            <PanelHeader title="Standings" />
             <StandingsTable
               standings={standings}
               deductionMarkers={deductionMarkers}
               zoneGuaranteedByTeamId={zoneGuaranteedByTeamId}
               zones={config.zones}
               isRunIn
-              zoneThresholds={zoneThresholds}
+              relegationStartPosition={getRelegationStartPosition(config.zones)}
+              thresholdByZoneType={buildThresholdByZoneType(zoneThresholds)}
+              sparklineScale={formDisplay === 'sparkline' ? calculateSparklineScale(standings, positionHistory, 16) : undefined}
               partial="bottom"
               hasGradient
               onResultClick={(matchId) => {
@@ -154,13 +161,11 @@ const RelegationContent = ({ slug, config }: RelegationContentProps) => {
         }
         fixturesPanel={
           <>
-            <div className={styles.panelHeader}>
-              <h2 className={styles.panelTitle}>Fixtures</h2>
-            </div>
+            <PanelHeader title="Fixtures" />
             <FixturePanel
               slug={slug}
               isVisible={activeTab === 'fixtures'}
-              showFinished={false}
+              isShowingFinished={false}
               filterTeams={relegationTeamIds}
               groupBy="team"
               showDate

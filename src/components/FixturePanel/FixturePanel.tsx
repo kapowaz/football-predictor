@@ -17,7 +17,7 @@ interface FixturePanelProps {
   /** Whether the fixtures panel is currently visible to the user. */
   isVisible?: boolean;
   /** Whether completed fixtures should be included. */
-  showFinished?: boolean;
+  isShowingFinished?: boolean;
   /** Optional list of team IDs to keep in the fixture list. */
   filterTeams?: number[];
   /** How to group the fixtures. */
@@ -37,7 +37,7 @@ const EMPTY_FILTER_TEAMS: number[] = [];
 export const FixturePanel = memo(({
   slug,
   isVisible = true,
-  showFinished = true,
+  isShowingFinished = true,
   filterTeams = EMPTY_FILTER_TEAMS,
   groupBy,
   showDate = false,
@@ -81,8 +81,8 @@ export const FixturePanel = memo(({
   );
 
   const groupOptions = useMemo(
-    () => ({ showFinished, filterTeams }),
-    [showFinished, filterTeams],
+    () => ({ isShowingFinished, filterTeams }),
+    [isShowingFinished, filterTeams],
   );
 
   const dateGroups = useGroupedMatches(matches, predictions, teamsById, groupOptions);

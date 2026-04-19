@@ -1,22 +1,24 @@
-import { style } from '@vanilla-extract/css';
-import {
-  colorTextHeading,
-  colorTextSecondary,
-  fontFamilyDisplay,
-  fontSizeSm,
-  fontSizeXl,
-  maxWidthContent,
-  space2,
-  space3,
-  space4,
-  space6,
-} from '../../theme.css';
+import { createVar, style } from '@vanilla-extract/css';
+import { cssVariablesByColorMode, getDesignTokens } from '@kapowaz/design-tokens';
+
+const { colors, spacing } = getDesignTokens();
+
+const colorTextSecondary = createVar('competition-panels-text-secondary');
+
+cssVariablesByColorMode({
+  light: {
+    [colorTextSecondary]: colors.gray[500],
+  },
+  dark: {
+    [colorTextSecondary]: colors.ink[500],
+  },
+});
 
 export const main = style({
   display: 'grid',
   gridTemplateColumns: 'minmax(640px, 1fr) 1fr',
-  gap: space6,
-  maxWidth: maxWidthContent,
+  gap: spacing.lg,
+  maxWidth: '1400px',
   width: '100%',
   margin: '0 auto',
   flex: 1,
@@ -31,7 +33,7 @@ export const main = style({
 export const panel = style({
   display: 'flex',
   flexDirection: 'column',
-  gap: space4,
+  gap: spacing.md,
   minHeight: 0,
   '@media': {
     'screen and (max-width: 680px)': {
@@ -43,10 +45,10 @@ export const panel = style({
 export const panelGuttered = style([
   panel,
   {
-    padding: `0 ${space2}`,
+    padding: `0 ${spacing.sm}`,
     '@media': {
       'screen and (min-width: 480px)': {
-        padding: `0 ${space4}`,
+        padding: `0 ${spacing.md}`,
       },
       'screen and (min-width: 680px)': {
         padding: 0,
@@ -55,48 +57,20 @@ export const panelGuttered = style([
   },
 ]);
 
-export const panelHeader = style({
-  display: 'flex',
-  justifyContent: 'space-between',
-  alignItems: 'center',
-  height: '36px',
-  '@media': {
-    'screen and (max-width: 680px)': {
-      display: 'none',
-    },
-  },
-});
-
 export const deductionNotes = style({
   display: 'flex',
-  gap: space3,
-  padding: `${space4} 0`,
-  fontSize: fontSizeSm,
+  gap: spacing.sm,
+  padding: `${spacing.md} 0`,
   color: colorTextSecondary,
   '@media': {
     'screen and (max-width: 680px)': {
-      padding: space4,
+      padding: spacing.md,
     },
   },
 });
 
 export const deductionNote = style({
   cursor: 'help',
-});
-
-export const panelTitle = style({
-  fontFamily: fontFamilyDisplay,
-  fontStretch: '75%',
-  fontSize: fontSizeXl,
-  fontWeight: 600,
-  textTransform: 'uppercase',
-  color: colorTextHeading,
-  margin: 0,
-  '@media': {
-    'screen and (max-width: 680px)': {
-      display: 'none',
-    },
-  },
 });
 
 const mobileBreakpoint = 'screen and (max-width: 1024px)';

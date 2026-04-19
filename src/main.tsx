@@ -1,11 +1,12 @@
 import { lazy, StrictMode, Suspense } from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import './fonts.css';
+import '@kapowaz/components/components.css';
+import '@kapowaz/football/football.css';
 import App from './App';
 import * as styles from './App.css';
 import { IndexRedirect } from './IndexRedirect';
-import { LoadingIndicator } from './components/LoadingIndicator';
+import { LoadingIndicator } from '@kapowaz/components';
 
 const CompetitionPage = lazy(() =>
   import('./CompetitionPage').then((m) => ({ default: m.CompetitionPage })),

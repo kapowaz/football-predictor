@@ -3,7 +3,7 @@ import { cssVariablesByColorMode, getDesignTokens } from '@kapowaz/design-tokens
 
 const { colors, spacing } = getDesignTokens();
 
-const colorTextSecondary = createVar('deductions-modal-text-secondary');
+const colorTextSecondary = createVar('add-deduction-form-text-secondary');
 
 cssVariablesByColorMode({
   light: {
@@ -14,24 +14,22 @@ cssVariablesByColorMode({
   },
 });
 
-export const modalBody = style({
-  display: 'flex',
-  flexDirection: 'column',
-});
-
 export const sectionLabel = style({
   color: colorTextSecondary,
   marginBottom: spacing.md,
 });
 
-export const deductionList = style({
+export const addFormRow = style({
   display: 'flex',
-  flexDirection: 'column',
   gap: spacing.md,
+  alignItems: 'center',
 });
 
-export const emptyState = style({
-  color: colorTextSecondary,
-  fontStyle: 'italic',
-  padding: `${spacing.md} 0`,
+export const teamSelectWrapper = style({
+  flex: 1,
+  minWidth: 0,
+});
+
+export const amountInput = style({
+  width: '36px',
 });

@@ -1,11 +1,12 @@
 import type { RefObject } from 'react';
 import clsx from 'clsx';
+import { AbstractText } from '@kapowaz/components';
 import type { ZoneDefinition } from '../../data/competitions';
 import type { DeductionNote } from '../../state/selectors';
 import type { TeamStanding, VariantRulesMode } from '../../types';
-import { StandingsTable } from '../StandingsTable/StandingsTable';
+import { StandingsTable } from '@kapowaz/football';
 import { AppHeading } from '../AppHeading';
-import { KBoltIcon } from '../icons';
+import { KapBoltSimple } from '@kapowaz/icons';
 import * as styles from './StandingsImageView.css';
 
 interface StandingsImageViewProps {
@@ -33,6 +34,12 @@ interface StandingsImageViewProps {
   isHidden?: boolean;
   /** Enable variant rules mode: adds Bonus column and shows point values in form badges. */
   variantRules?: VariantRulesMode;
+  /** Draw dashed zone separators for the run-in phase. */
+  isRunIn?: boolean;
+  /** First league position in the relegation zone. */
+  relegationStartPosition?: number;
+  /** Lookup of zone type to threshold points for boundary labels. */
+  thresholdByZoneType?: Map<string, number>;
 }
 
 const SITE_URL = 'kapowaz.github.io/football-predictor/';
@@ -50,21 +57,29 @@ export const StandingsImageView = ({
   captureRef,
   isHidden = true,
   variantRules = false,
+  isRunIn,
+  relegationStartPosition,
+  thresholdByZoneType,
 }: StandingsImageViewProps) => {
   const showHeading = partial !== 'bottom';
   const showFooter = partial !== 'top';
   const headingExtraContent = (
     <div className={styles.headingExtraContent}>
-      <span className={styles.competitionLabel}>
+      <AbstractText
+        tagName="span"
+        className={styles.competitionLabel}
+        fontSize="lg"
+        fontWeight="semibold"
+      >
         <img
           src={competitionLogo}
           alt={`${competitionName} logo`}
           className={styles.competitionLogo}
         />
         <span>{`${competitionName} ${competitionSeason}`}</span>
-      </span>
+      </AbstractText>
       {deductionNotes.length > 0 && (
-        <div className={styles.deductionNotes}>
+        <AbstractText tagName="div" className={styles.deductionNotes} fontSize="sm">
           {deductionNotes.map((note) => (
             <span
               key={note.label}
@@ -74,7 +89,7 @@ export const StandingsImageView = ({
               {note.label}
             </span>
           ))}
-        </div>
+        </AbstractText>
       )}
     </div>
   );
@@ -92,28 +107,47 @@ export const StandingsImageView = ({
             partial === 'bottom' && styles.innerWrapperBottom,
           )}
         >
-          {showHeading && <AppHeading shouldFullRender extraContent={headingExtraContent} />}
+          {showHeading && <AppHeading isFullRender extraContent={headingExtraContent} />}
           <StandingsTable
             standings={standings}
             deductionMarkers={deductionMarkers}
             zoneGuaranteedByTeamId={zoneGuaranteedByTeamId}
             zones={zones}
             partial={partial}
-            disableVerticalScroll
+            isVerticalScrollDisabled
             isRenderView
             variantRules={variantRules}
+            isRunIn={isRunIn}
+            relegationStartPosition={relegationStartPosition}
+            thresholdByZoneType={thresholdByZoneType}
           />
           {showFooter && (
             <footer className={styles.footerContainer}>
-              <div className={styles.footer}>
+              <AbstractText tagName="div" className={styles.footer} fontSize="md">
                 <div>
-                  Football Predictor by <span className={styles.footerBold}>kapowaz</span>. Make
-                  your own prediction at <span className={styles.footerBold}>{SITE_URL}</span>
+                  Football Predictor by{' '}
+                  <AbstractText
+                    tagName="span"
+                    className={styles.footerBold}
+                    fontSize="md"
+                    fontWeight="medium"
+                  >
+                    kapowaz
+                  </AbstractText>
+                  . Make your own prediction at{' '}
+                  <AbstractText
+                    tagName="span"
+                    className={styles.footerBold}
+                    fontSize="md"
+                    fontWeight="medium"
+                  >
+                    {SITE_URL}
+                  </AbstractText>
                 </div>
                 <span className={styles.footerIconContainer}>
-                  <KBoltIcon size={32} className={styles.footerIcon} />
+                  <KapBoltSimple width={32} height={32} className={styles.footerIcon} />
                 </span>
-              </div>
+              </AbstractText>
             </footer>
           )}
         </div>

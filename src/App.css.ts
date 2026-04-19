@@ -1,5 +1,8 @@
 import { style, globalStyle } from '@vanilla-extract/css';
-import { colorBgPage, colorLoadingProgress, colorTextPrimary, fontFamily, space6 } from './theme.css';
+import { getDesignTokens } from '@kapowaz/design-tokens';
+import { colorBgPage, colorLoadingProgress, colorTextPrimary, space6 } from './theme.css';
+
+const { typography } = getDesignTokens();
 
 globalStyle('*, *::before, *::after', {
   boxSizing: 'border-box',
@@ -7,7 +10,7 @@ globalStyle('*, *::before, *::after', {
 
 globalStyle('body', {
   margin: 0,
-  fontFamily: fontFamily,
+  fontFamily: typography.fontFamily.ui,
   backgroundColor: colorBgPage,
   color: colorTextPrimary,
   lineHeight: 1.5,

@@ -1,19 +1,20 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import clsx from 'clsx';
-import { useTheme } from './hooks/useTheme';
+import { useColorMode } from './hooks/useColorMode';
 import { AppHeading } from './components/AppHeading';
-import { ColorModeToggle } from './components/ColorModeToggle';
-import { ChevronRightIcon } from './components/icons';
+import { LoadingIndicator, ToggleColorMode } from '@kapowaz/components';
+import { getDesignTokens } from '@kapowaz/design-tokens';
+import { ChevronRight } from '@kapowaz/icons';
 import { AllTimeRankTable } from './components/AllTimeRankTable';
-import { LoadingIndicator } from './components/LoadingIndicator';
 import type { AllTimeClubData } from './data/all-time-rank';
 import { loadAllTimeClubs } from './data/all-time-rank';
 import { calculateAllTimeScores, DEFAULT_WEIGHTS, HONOUR_BASE_VALUES } from './utils/allTimeRank';
-import { colorNeutralLight } from './theme.css';
+
+const { colors } = getDesignTokens();
 import * as styles from './AllTimeRankPage.css';
 
 export const AllTimeRankPage = () => {
-  const { theme, toggleTheme } = useTheme();
+  const { colorMode, toggleColorMode } = useColorMode();
   const weights = DEFAULT_WEIGHTS;
   const [isExpanded, setIsExpanded] = useState(false);
   const [clubs, setClubs] = useState<AllTimeClubData[] | null>(null);
@@ -37,10 +38,10 @@ export const AllTimeRankPage = () => {
     <div className={styles.page}>
       <header className={styles.header}>
         <div className={styles.headerLeft}>
-          <AppHeading hideTitle />
+          <AppHeading isTitleHidden />
           <h2 className={styles.title}>All Time Rank</h2>
         </div>
-        <ColorModeToggle colorMode={theme} onColorModeToggle={toggleTheme} />
+        <ToggleColorMode isDarkMode={colorMode === 'dark'} onChange={(dark) => toggleColorMode(dark ? 'dark' : 'light')} />
       </header>
       <div className={styles.descriptionBlock}>
         <button
@@ -48,7 +49,7 @@ export const AllTimeRankPage = () => {
           onClick={toggleExpanded}
           aria-expanded={isExpanded}
         >
-          <ChevronRightIcon
+          <ChevronRight
             className={clsx(styles.chevron, isExpanded && styles.chevronExpanded)}
           />
           How are teams ranked?
@@ -107,7 +108,7 @@ export const AllTimeRankPage = () => {
           <AllTimeRankTable rankedClubs={rankedClubs} weights={weights} />
         ) : (
           <div className={styles.loading}>
-            <LoadingIndicator size="xl" customColor={colorNeutralLight} />
+            <LoadingIndicator size="xl" customColor={{ light: colors.slate[300], dark: colors.ink[700] }} />
           </div>
         )}
       </div>

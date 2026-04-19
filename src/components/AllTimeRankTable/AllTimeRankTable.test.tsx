@@ -10,7 +10,7 @@ const makeRankedClub = (overrides: Partial<RankedClub> = {}): RankedClub => ({
   club: {
     name: 'Test FC',
     shortName: 'Test',
-    crest: 'test',
+    badge: 'test',
     founded: 1900,
     currentTier: 1,
     leagueRecord: { tier1: {}, tier2: {}, tier3: {}, tier4: {} },

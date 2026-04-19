@@ -3,7 +3,7 @@ import { useParams, Navigate, useNavigate } from 'react-router-dom';
 import { useCompetitionData } from './hooks/useCompetitionData';
 import { useImageDownload } from './hooks/useImageDownload';
 import { useLiveScores } from './hooks/useLiveScores';
-import { useTheme } from './hooks/useTheme';
+import { useColorMode } from './hooks/useColorMode';
 import { useCompetitionSession } from './state/useCompetitionSession';
 import {
   selectCaptureSignature,
@@ -26,7 +26,7 @@ interface BonusPointsContentProps {
 
 const BonusPointsContent = ({ slug, config }: BonusPointsContentProps) => {
   const navigate = useNavigate();
-  const { theme, toggleTheme } = useTheme();
+  const { colorMode, toggleColorMode } = useColorMode();
   const { teams, matches, defaultDeductions } = useCompetitionData(slug);
   const { liveScores } = useLiveScores(slug);
   const {
@@ -69,7 +69,7 @@ const BonusPointsContent = ({ slug, config }: BonusPointsContentProps) => {
 
   const competitions = allCompetitions();
 
-  const captureSignature = selectCaptureSignature(standings, deductionMarkers, theme);
+  const captureSignature = selectCaptureSignature(standings, deductionMarkers, colorMode);
 
   const { imageFiles, isRenderingImage, onDownloadImage } = useImageDownload({
     captureRefs: [topStandingsCaptureRef, bottomStandingsCaptureRef],
@@ -119,8 +119,8 @@ const BonusPointsContent = ({ slug, config }: BonusPointsContentProps) => {
           competitions,
           activeSlug: slug,
           onCompetitionChange: (s) => navigate(`/bonus-points/${s}/`),
-          colorMode: theme,
-          onColorModeToggle: toggleTheme,
+          colorMode: colorMode,
+          onColorModeToggle: toggleColorMode,
         }}
         onDownloadImage={onDownloadImage}
         isRenderingImage={isRenderingImage}

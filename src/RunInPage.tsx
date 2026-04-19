@@ -3,13 +3,20 @@ import { Navigate, useNavigate, useParams } from 'react-router-dom';
 import { NavBar } from './components/NavBar';
 import { AppPanels } from './components/AppPanels';
 import { FixturePanel } from './components/FixturePanel';
-import { StandingsTable, type FormDisplayMode } from './components/StandingsTable/StandingsTable';
+import {
+  StandingsTable,
+  type FormDisplayMode,
+  getRelegationStartPosition,
+  buildThresholdByZoneType,
+  calculateSparklineScale,
+} from '@kapowaz/football';
 import { DeductionsModal } from './components/DeductionsModal';
+import { PanelHeader } from './components/PanelHeader';
 import { hasCompetitionData } from './data';
 import { allCompetitions, getCompetition, type CompetitionConfig } from './data/competitions';
 import { useCompetitionData } from './hooks/useCompetitionData';
 import { useLiveScores } from './hooks/useLiveScores';
-import { useTheme } from './hooks/useTheme';
+import { useColorMode } from './hooks/useColorMode';
 import { useCompetitionSession } from './state/useCompetitionSession';
 import {
   selectAllScheduledPredicted,
@@ -21,7 +28,7 @@ import { getEffectivePredictions } from './utils/liveScores';
 import { useZoneGuarantees } from './hooks/useZoneGuarantees';
 import { useZoneThresholds } from './hooks/useZoneThresholds';
 import { getRunInPointsMargin, getTopZoneBoundary } from './utils/zones';
-import * as styles from './RunInPage.css';
+
 
 interface RunInContentProps {
   slug: string;
@@ -32,7 +39,7 @@ const RunInContent = ({ slug, config }: RunInContentProps) => {
   const navigate = useNavigate();
   const competitions = allCompetitions();
   const pageContentRef = useRef<HTMLDivElement>(null);
-  const { theme, toggleTheme } = useTheme();
+  const { colorMode, toggleColorMode } = useColorMode();
   const { teams, matches, defaultDeductions, modelPredictions } = useCompetitionData(slug);
   const { liveScores } = useLiveScores(slug);
   const {
@@ -116,8 +123,8 @@ const RunInContent = ({ slug, config }: RunInContentProps) => {
             competitions={competitions}
             activeSlug={slug}
             onCompetitionChange={(nextSlug) => navigate(`/run-in/${nextSlug}/`)}
-            colorMode={theme}
-            onColorModeToggle={toggleTheme}
+            colorMode={colorMode}
+            onColorModeToggle={toggleColorMode}
             onDeductionsClick={() => setDeductionsModalOpen(true)}
             onAIPredictionsClick={
               hasModelPredictions && !allScheduledPredicted
@@ -131,16 +138,16 @@ const RunInContent = ({ slug, config }: RunInContentProps) => {
         }
         standingsPanel={
           <>
-            <div className={styles.panelHeader}>
-              <h2 className={styles.panelTitle}>Standings</h2>
-            </div>
+            <PanelHeader title="Standings" />
             <StandingsTable
               standings={standings}
               deductionMarkers={deductionMarkers}
               zoneGuaranteedByTeamId={zoneGuaranteedByTeamId}
               zones={config.zones}
               isRunIn
-              zoneThresholds={zoneThresholds}
+              relegationStartPosition={getRelegationStartPosition(config.zones)}
+              thresholdByZoneType={buildThresholdByZoneType(zoneThresholds)}
+              sparklineScale={formDisplay === 'sparkline' ? calculateSparklineScale(standings, positionHistory, 16) : undefined}
               partial="top"
               hasGradient
               onResultClick={(matchId) => {
@@ -158,13 +165,11 @@ const RunInContent = ({ slug, config }: RunInContentProps) => {
         }
         fixturesPanel={
           <>
-            <div className={styles.panelHeader}>
-              <h2 className={styles.panelTitle}>Fixtures</h2>
-            </div>
+            <PanelHeader title="Fixtures" />
             <FixturePanel
               slug={slug}
               isVisible={activeTab === 'fixtures'}
-              showFinished={false}
+              isShowingFinished={false}
               filterTeams={runInTeamIds}
               groupBy="team"
               showDate

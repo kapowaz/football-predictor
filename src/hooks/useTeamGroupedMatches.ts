@@ -3,8 +3,8 @@ import type { Match, PredictionsStore, Team } from '../types';
 import type { FixtureGroupData } from '../components/FixtureList/types';
 
 interface UseTeamGroupedMatchesOptions {
-  /** Include completed fixtures in grouped results. */
-  showFinished?: boolean;
+  /** Whether completed fixtures are included in grouped results. */
+  isShowingFinished?: boolean;
   /** Team IDs to create groups for; matches must involve one of these teams. */
   filterTeams?: number[];
 }
@@ -13,7 +13,7 @@ export const useTeamGroupedMatches = (
   matches: Match[],
   predictions: PredictionsStore,
   teamsById: ReadonlyMap<number, Team>,
-  { showFinished = true, filterTeams = [] }: UseTeamGroupedMatchesOptions = {},
+  { isShowingFinished = true, filterTeams = [] }: UseTeamGroupedMatchesOptions = {},
 ): FixtureGroupData[] => {
   const filterTeamSet = useMemo(() => new Set(filterTeams), [filterTeams]);
   const hasTeamFilter = filterTeams.length > 0;
@@ -21,7 +21,7 @@ export const useTeamGroupedMatches = (
   const visibleMatches = useMemo(() => {
     return matches
       .filter((match) => {
-        if (match.status !== 'SCHEDULED' && !(showFinished && match.status === 'FINISHED')) {
+        if (match.status !== 'SCHEDULED' && !(isShowingFinished && match.status === 'FINISHED')) {
           return false;
         }
 
@@ -32,7 +32,7 @@ export const useTeamGroupedMatches = (
         return filterTeamSet.has(match.homeTeamId) || filterTeamSet.has(match.awayTeamId);
       })
       .sort((a, b) => new Date(a.utcDate).getTime() - new Date(b.utcDate).getTime());
-  }, [filterTeamSet, hasTeamFilter, matches, showFinished]);
+  }, [filterTeamSet, hasTeamFilter, matches, isShowingFinished]);
 
   return useMemo(() => {
     const teamMatchMap = new Map<number, Match[]>();
@@ -57,7 +57,7 @@ export const useTeamGroupedMatches = (
         key: String(teamId),
         label: team.name,
         matches: teamMatches,
-        allPredicted: teamMatches.every(
+        isAllPredicted: teamMatches.every(
           (match) =>
             match.status === 'FINISHED' || predictions.predictions[String(match.id)] != null,
         ),

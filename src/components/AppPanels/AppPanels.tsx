@@ -1,6 +1,8 @@
 import type { ReactNode, RefObject } from 'react';
+import clsx from 'clsx';
+import { LoadingIndicator, TabBar } from '@kapowaz/components';
 import type { CompetitionTabId } from '../../state/competitionSessionStore';
-import { TabBar } from '../TabBar';
+import { useNavigationLoading } from '../../hooks/useNavigationLoading';
 import * as styles from './AppPanels.css';
 
 interface AppPanelsProps {
@@ -32,27 +34,39 @@ export const AppPanels = ({
   standingsPanel,
   fixturesPanel,
 }: AppPanelsProps) => {
+  const { isNavigating } = useNavigationLoading();
+
   return (
     <div ref={pageContentRef} className={styles.pageContent}>
       {header}
-      <TabBar
-        tabs={[
-          { id: 'standings', label: standingsTabLabel },
-          { id: 'fixtures', label: fixturesTabLabel },
-        ]}
-        activeTab={activeTab}
-        onTabChange={(tabId) => onTabChange(tabId === 'fixtures' ? 'fixtures' : 'standings')}
-      />
-      <main className={styles.main}>
-        <div className={`${styles.panel} ${activeTab !== 'standings' ? styles.hiddenOnMobile : ''}`}>
-          {standingsPanel}
+      {isNavigating ? (
+        <div className={styles.loadingArea}>
+          <LoadingIndicator size="xl" />
         </div>
-        <div
-          className={`${styles.panelGuttered} ${activeTab !== 'fixtures' ? styles.hiddenOnMobile : ''}`}
-        >
-          {fixturesPanel}
-        </div>
-      </main>
+      ) : (
+        <>
+          <TabBar
+            tabs={[
+              { id: 'standings', label: standingsTabLabel },
+              { id: 'fixtures', label: fixturesTabLabel },
+            ]}
+            selectedId={activeTab}
+            onTabClick={(tabId) => onTabChange(tabId === 'fixtures' ? 'fixtures' : 'standings')}
+            hasEqualWidth
+            className={styles.mobileTabBar}
+          />
+          <main className={styles.main}>
+            <div className={clsx(styles.panel, activeTab !== 'standings' && styles.hiddenOnMobile)}>
+              {standingsPanel}
+            </div>
+            <div
+              className={clsx(styles.panelGuttered, activeTab !== 'fixtures' && styles.hiddenOnMobile)}
+            >
+              {fixturesPanel}
+            </div>
+          </main>
+        </>
+      )}
     </div>
   );
 };

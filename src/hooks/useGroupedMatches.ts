@@ -5,8 +5,8 @@ import type { FixtureGroupData } from '../components/FixtureList/types';
 export type { FixtureGroupData };
 
 interface UseGroupedMatchesOptions {
-  /** Include completed fixtures in grouped results. */
-  showFinished?: boolean;
+  /** Whether completed fixtures are included in grouped results. */
+  isShowingFinished?: boolean;
   /** Optional team filter; matches must involve one of these team IDs. */
   filterTeams?: number[];
 }
@@ -28,7 +28,7 @@ export const useGroupedMatches = (
   matches: Match[],
   predictions: PredictionsStore,
   teamsById: ReadonlyMap<number, Team>,
-  { showFinished = true, filterTeams = [] }: UseGroupedMatchesOptions = {},
+  { isShowingFinished = true, filterTeams = [] }: UseGroupedMatchesOptions = {},
 ): FixtureGroupData[] => {
   const filterTeamSet = useMemo(() => new Set(filterTeams), [filterTeams]);
   const hasTeamFilter = filterTeams.length > 0;
@@ -36,7 +36,7 @@ export const useGroupedMatches = (
   const visibleMatches = useMemo(() => {
     return matches
       .filter((match) => {
-        if (match.status !== 'SCHEDULED' && !(showFinished && match.status === 'FINISHED')) {
+        if (match.status !== 'SCHEDULED' && !(isShowingFinished && match.status === 'FINISHED')) {
           return false;
         }
 
@@ -53,7 +53,7 @@ export const useGroupedMatches = (
         const homeB = teamsById.get(b.homeTeamId)?.name ?? '';
         return homeA.localeCompare(homeB);
       });
-  }, [filterTeamSet, hasTeamFilter, matches, showFinished, teamsById]);
+  }, [filterTeamSet, hasTeamFilter, matches, isShowingFinished, teamsById]);
 
   return useMemo(() => {
     const groups = new Map<string, Match[]>();
@@ -70,7 +70,7 @@ export const useGroupedMatches = (
         key: date,
         label: formatDateLabel(date),
         matches: dateMatches,
-        allPredicted: dateMatches.every(
+        isAllPredicted: dateMatches.every(
           (match) =>
             match.status === 'FINISHED' || predictions.predictions[String(match.id)] != null,
         ),

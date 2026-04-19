@@ -9,7 +9,7 @@ const makeTeam = (id: number, name: string): Team => ({
   name,
   shortName: name,
   tla: name.slice(0, 3).toUpperCase(),
-  crest: name.toLowerCase(),
+  badge: name.toLowerCase(),
 });
 
 const makeStanding = (team: Team, points: number): TeamStanding => ({

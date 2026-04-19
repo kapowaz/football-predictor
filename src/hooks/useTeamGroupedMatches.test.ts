@@ -9,7 +9,7 @@ const team = (id: number, name: string): Team => ({
   name,
   shortName: name,
   tla: name.slice(0, 3).toUpperCase(),
-  crest: name.toLowerCase(),
+  badge: name.toLowerCase(),
 });
 
 const scheduled = (
@@ -125,7 +125,7 @@ describe('useTeamGroupedMatches', () => {
     expect(arsenalGroup.matches.map((m) => m.id)).toEqual([100, 101, 102]);
   });
 
-  it('excludes finished matches when showFinished is false', () => {
+  it('excludes finished matches when isShowingFinished is false', () => {
     const matches = [
       finished(100, 1, 2, '2025-04-10T15:00:00Z', 2, 1),
       scheduled(101, 1, 3, '2025-04-12T15:00:00Z'),
@@ -134,7 +134,7 @@ describe('useTeamGroupedMatches', () => {
     const { result } = renderHook(() =>
       useTeamGroupedMatches(matches, emptyPredictions, teamsById, {
         filterTeams: [1],
-        showFinished: false,
+        isShowingFinished: false,
       }),
     );
 
@@ -143,7 +143,7 @@ describe('useTeamGroupedMatches', () => {
     expect(arsenalGroup.matches[0].id).toBe(101);
   });
 
-  it('sets allPredicted when all scheduled matches have predictions', () => {
+  it('sets isAllPredicted when all scheduled matches have predictions', () => {
     const matches = [scheduled(100, 1, 2, '2025-04-10T15:00:00Z')];
     const predictions: PredictionsStore = {
       predictions: { '100': { homeGoals: 2, awayGoals: 1 } },
@@ -157,7 +157,7 @@ describe('useTeamGroupedMatches', () => {
     );
 
     const arsenalGroup = result.current.find((g) => g.team?.id === 1)!;
-    expect(arsenalGroup.allPredicted).toBe(true);
+    expect(arsenalGroup.isAllPredicted).toBe(true);
   });
 
   it('populates team field on each group', () => {

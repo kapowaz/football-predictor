@@ -1,99 +1,61 @@
-import { style, keyframes } from '@vanilla-extract/css';
-import {
-  colorTextHeading,
-  colorTextPrimary,
-  colorTextSecondary,
-  colorSuccess,
-  colorDanger,
-  colorFocus,
-  colorTextZoneChampions,
-  colorTextZoneChampionsLeague,
-  colorTextZoneEuropaLeague,
-  colorTextZoneConferenceLeague,
-  fontFamily,
-  fontSizeXxl,
-  fontSizeLg,
-  fontSizeBase,
-  fontSizeSm,
-  space2,
-  space3,
-  space4,
-  space6,
-  radiusLg,
-} from '../../theme.css';
+import { createVar, style, keyframes } from '@vanilla-extract/css';
+import { cssVariablesByColorMode, getDesignTokens } from '@kapowaz/design-tokens';
 
-export const modal = style({
-  maxWidth: '520px',
-  maxHeight: '90vh',
-  display: 'flex',
-  flexDirection: 'column',
-  position: 'relative',
-  overflow: 'hidden',
+const { colors, spacing } = getDesignTokens();
+
+const colorTextHeading = createVar('season-summary-text-heading');
+const colorTextPrimary = createVar('season-summary-text-primary');
+const colorSuccess = createVar('season-summary-success');
+const colorDanger = createVar('season-summary-danger');
+const colorFocus = createVar('season-summary-focus');
+const colorTextZoneChampions = createVar('season-summary-text-zone-champions');
+const colorTextZoneChampionsLeague = createVar('season-summary-text-zone-cl');
+const colorTextZoneEuropaLeague = createVar('season-summary-text-zone-el');
+const colorTextZoneConferenceLeague = createVar('season-summary-text-zone-ecl');
+
+cssVariablesByColorMode({
+  light: {
+    [colorTextHeading]: colors.gray[900],
+    [colorTextPrimary]: colors.gray[800],
+    [colorSuccess]: colors.green[600],
+    [colorDanger]: colors.red[600],
+    [colorFocus]: colors.blue[500],
+    [colorTextZoneChampions]: colors.green[800],
+    [colorTextZoneChampionsLeague]: colors.teal[900],
+    [colorTextZoneEuropaLeague]: colors.cyan[900],
+    [colorTextZoneConferenceLeague]: colors.sky[800],
+  },
+  dark: {
+    [colorTextHeading]: colors.ink[300],
+    [colorTextPrimary]: colors.ink[200],
+    [colorSuccess]: colors.green[400],
+    [colorDanger]: colors.red[400],
+    [colorFocus]: colors.blue[500],
+    [colorTextZoneChampions]: colors.green[300],
+    [colorTextZoneChampionsLeague]: colors.teal[300],
+    [colorTextZoneEuropaLeague]: colors.cyan[300],
+    [colorTextZoneConferenceLeague]: colors.sky[300],
+  },
 });
 
-export const backgroundCrest = style({
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  width: '80%',
-  height: 'auto',
-  transform: 'translate(-50%, -50%) rotate(-15deg)',
-  opacity: 0.06,
-  pointerEvents: 'none',
-  userSelect: 'none',
-  objectFit: 'contain',
-  zIndex: 0,
-});
-
-export const contentLayer = style({
-  position: 'relative',
-  zIndex: 1,
-  display: 'flex',
-  flexDirection: 'column',
-  flex: 1,
-  minHeight: 0,
+export const modalHeading = style({
+  display: 'inline-flex',
+  alignItems: 'center',
+  gap: spacing.sm,
 });
 
 export const championHeading = style({
-  fontSize: fontSizeXxl,
-  fontWeight: 700,
   color: colorTextHeading,
   textAlign: 'center',
-  margin: `0 0 ${space6}`,
-  lineHeight: 1.3,
-});
-
-export const asterisk = style({
-  fontSize: fontSizeSm,
-  verticalAlign: 'text-top',
-});
-
-export const championSubheading = style({
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  gap: space3,
-  fontSize: fontSizeLg,
-  fontWeight: 700,
-  color: colorTextHeading,
-  margin: `0 0 ${space2}`,
+  margin: `0 0 ${spacing.xl}`,
   lineHeight: 1.3,
 });
 
 export const competitionLogo = style({
-  width: '36px',
-  height: '36px',
+  width: '24px',
+  height: '24px',
   objectFit: 'contain',
   flexShrink: 0,
-});
-
-export const predictionParagraph = style({
-  fontSize: fontSizeSm,
-  fontWeight: 500,
-  color: colorTextHeading,
-  textAlign: 'center',
-  margin: 0,
-  lineHeight: 1.3,
 });
 
 const shimmer = keyframes({
@@ -110,7 +72,7 @@ export const championName = style({
 });
 
 export const section = style({
-  marginBottom: space4,
+  marginBottom: spacing.lg,
   selectors: {
     '&:last-child': {
       marginBottom: 0,
@@ -119,11 +81,7 @@ export const section = style({
 });
 
 export const sectionLabel = style({
-  fontSize: fontSizeSm,
-  fontWeight: 600,
-  textTransform: 'uppercase',
-  letterSpacing: '0.05em',
-  marginBottom: space2,
+  marginBottom: spacing.sm,
 });
 
 export const promotedLabel = style([sectionLabel, { color: colorSuccess }]);
@@ -146,62 +104,34 @@ export const conferenceLeagueLabel = style([
 export const teamList = style({
   display: 'flex',
   flexDirection: 'column',
-  gap: space2,
+  gap: spacing.sm,
+});
+
+export const teamListGrid = style({
+  display: 'grid',
+  gridTemplateColumns: '1fr 1fr',
+  gap: spacing.sm,
+  '@media': {
+    '(max-width: 400px)': {
+      gridTemplateColumns: '1fr',
+    },
+  },
 });
 
 export const teamRow = style({
   display: 'flex',
   alignItems: 'center',
-  gap: space3,
-  fontFamily: fontFamily,
-  fontSize: fontSizeBase,
+  gap: spacing.md,
   color: colorTextPrimary,
 });
 
-export const crest = style({
+export const badge = style({
   width: '24px',
   height: '24px',
   objectFit: 'contain',
   flexShrink: 0,
 });
 
-export const teamName = style({
-  fontWeight: 500,
-});
+export const teamName = style({});
 
-export const closeButton = style({
-  position: 'absolute',
-  top: space4,
-  right: space4,
-  background: 'none',
-  border: 'none',
-  fontSize: fontSizeLg,
-  color: colorTextSecondary,
-  cursor: 'pointer',
-  padding: space2,
-  lineHeight: 1,
-  borderRadius: radiusLg,
-  transition: 'color 0.2s',
-  ':hover': {
-    color: colorTextHeading,
-  },
-});
 
-export const scrollableContent = style({
-  overflowY: 'auto',
-  flex: 1,
-  minHeight: 0,
-  position: 'relative',
-});
-
-export const divider = style({
-  border: 'none',
-  borderTop: `1px solid #e5e7eb`,
-  margin: `${space4} 0`,
-});
-
-export const shareButtonWrapper = style({
-  display: 'flex',
-  justifyContent: 'center',
-  marginTop: space6,
-});

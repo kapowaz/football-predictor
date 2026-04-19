@@ -1,9 +1,9 @@
 import { createVar, style } from '@vanilla-extract/css';
 import { cssVariablesByColorMode, getDesignTokens } from '@kapowaz/design-tokens';
 
-const { colors, spacing, typography } = getDesignTokens();
+const { colors } = getDesignTokens();
 
-const colorTextHeading = createVar('app-heading-text-heading');
+const colorTextHeading = createVar('panel-header-text-heading');
 
 cssVariablesByColorMode({
   light: {
@@ -14,26 +14,22 @@ cssVariablesByColorMode({
   },
 });
 
-export const container = style({
+export const panelHeader = style({
   display: 'flex',
+  justifyContent: 'space-between',
   alignItems: 'center',
-  gap: spacing.sm,
+  height: '24px',
+  flexShrink: 0,
+  '@media': {
+    'screen and (max-width: 680px)': {
+      display: 'none',
+    },
+  },
 });
 
-export const logo = style({
-  height: '32px',
-  width: '32px',
-});
-
-export const title = style({
-  fontFamily: typography.fontFamily.ui,
+export const panelTitle = style({
   fontStretch: '75%',
   textTransform: 'uppercase',
   color: colorTextHeading,
   margin: 0,
-  whiteSpace: 'nowrap',
-});
-
-export const extraContent = style({
-  flex: 1,
 });

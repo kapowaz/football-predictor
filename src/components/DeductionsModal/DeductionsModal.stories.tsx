@@ -1,14 +1,14 @@
 import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { action } from 'storybook/actions';
+import { Button } from '@kapowaz/components';
 import { DeductionsModal } from './DeductionsModal';
-import { Button } from '../Button';
 import type { Team, PointDeduction } from '../../types';
 
 const teams: Team[] = [
-  { id: 1, fotmobId: 100, name: 'Arsenal', shortName: 'Arsenal', tla: 'ARS', crest: 'arsenal' },
-  { id: 2, fotmobId: 200, name: 'Chelsea', shortName: 'Chelsea', tla: 'CHE', crest: 'chelsea' },
-  { id: 3, fotmobId: 300, name: 'Manchester United', shortName: 'Man United', tla: 'MUN', crest: 'manchester-united' },
+  { id: 1, fotmobId: 100, name: 'Arsenal', shortName: 'Arsenal', tla: 'ARS', badge: 'arsenal' },
+  { id: 2, fotmobId: 200, name: 'Chelsea', shortName: 'Chelsea', tla: 'CHE', badge: 'chelsea' },
+  { id: 3, fotmobId: 300, name: 'Manchester United', shortName: 'Man United', tla: 'MUN', badge: 'manchester-united' },
 ];
 
 const deductions: PointDeduction[] = [
@@ -40,7 +40,7 @@ export const Default: Story = {
     const [isOpen, setIsOpen] = useState(false);
     return (
       <>
-        <Button variant="danger" onClick={() => setIsOpen(true)}>
+        <Button type="danger" onClick={() => setIsOpen(true)}>
           Open Deductions
         </Button>
         <DeductionsModal
@@ -64,7 +64,7 @@ export const Empty: Story = {
     const [isOpen, setIsOpen] = useState(false);
     return (
       <>
-        <Button variant="danger" onClick={() => setIsOpen(true)}>
+        <Button type="danger" onClick={() => setIsOpen(true)}>
           Open Deductions
         </Button>
         <DeductionsModal

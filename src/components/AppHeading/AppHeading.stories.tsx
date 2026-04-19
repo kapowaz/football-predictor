@@ -5,7 +5,8 @@ const meta = {
   title: 'Components/AppHeading',
   component: AppHeading,
   argTypes: {
-    shouldFullRender: { control: 'boolean' },
+    isFullRender: { control: 'boolean' },
+    isTitleHidden: { control: 'boolean' },
   },
 } satisfies Meta<typeof AppHeading>;
 
@@ -16,13 +17,13 @@ export const Default: Story = {};
 
 export const FullRender: Story = {
   args: {
-    shouldFullRender: true,
+    isFullRender: true,
   },
 };
 
 export const WithExtraContent: Story = {
   args: {
-    shouldFullRender: true,
+    isFullRender: true,
     extraContent: (
       <span style={{ fontSize: 14, opacity: 0.7 }}>Premier League 2025/26</span>
     ),

@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { action } from 'storybook/actions';
+import { Button } from '@kapowaz/components';
 import { Modal } from './Modal';
-import { Button } from '../Button';
 
 const meta = {
   title: 'Components/Modal',
@@ -13,7 +13,7 @@ const meta = {
     children: null,
   },
   argTypes: {
-    shakeOnOpen: { control: 'boolean' },
+    isShakeOnOpen: { control: 'boolean' },
   },
 } satisfies Meta<typeof Modal>;
 
@@ -25,14 +25,14 @@ export const Default: Story = {
     const [isOpen, setIsOpen] = useState(false);
     return (
       <>
-        <Button variant="success" onClick={() => setIsOpen(true)}>
+        <Button type="primary" onClick={() => setIsOpen(true)}>
           Open Modal
         </Button>
         <Modal {...args} isOpen={isOpen} onClose={() => setIsOpen(false)}>
           <div style={{ padding: 24 }}>
             <h2 style={{ margin: '0 0 12px' }}>Modal Title</h2>
             <p style={{ margin: '0 0 16px' }}>This is the modal content.</p>
-            <Button variant="danger" onClick={() => setIsOpen(false)}>
+            <Button type="danger" onClick={() => setIsOpen(false)}>
               Close
             </Button>
           </div>
@@ -47,14 +47,14 @@ export const WithShake: Story = {
     const [isOpen, setIsOpen] = useState(false);
     return (
       <>
-        <Button variant="danger" onClick={() => setIsOpen(true)}>
+        <Button type="danger" onClick={() => setIsOpen(true)}>
           Open Shaking Modal
         </Button>
-        <Modal isOpen={isOpen} onClose={() => setIsOpen(false)} shakeOnOpen>
+        <Modal isOpen={isOpen} onClose={() => setIsOpen(false)} isShakeOnOpen>
           <div style={{ padding: 24 }}>
             <h2 style={{ margin: '0 0 12px' }}>Warning!</h2>
             <p style={{ margin: '0 0 16px' }}>This modal shakes on open.</p>
-            <Button variant="danger" onClick={() => setIsOpen(false)}>
+            <Button type="danger" onClick={() => setIsOpen(false)}>
               Dismiss
             </Button>
           </div>

@@ -2,9 +2,9 @@ import { describe, it, expect } from 'vitest';
 import type { Team, Match, PredictionsStore, PointDeduction } from '../types';
 import { calculateStandings } from './standings';
 
-const teamA: Team = { id: 1, fotmobId: 1, name: 'Alpha', shortName: 'Alpha', tla: 'ALP', crest: 'alpha' };
-const teamB: Team = { id: 2, fotmobId: 2, name: 'Bravo', shortName: 'Bravo', tla: 'BRA', crest: 'bravo' };
-const teamC: Team = { id: 3, fotmobId: 3, name: 'Charlie', shortName: 'Charlie', tla: 'CHA', crest: 'charlie' };
+const teamA: Team = { id: 1, fotmobId: 1, name: 'Alpha', shortName: 'Alpha', tla: 'ALP', badge: 'alpha' };
+const teamB: Team = { id: 2, fotmobId: 2, name: 'Bravo', shortName: 'Bravo', tla: 'BRA', badge: 'bravo' };
+const teamC: Team = { id: 3, fotmobId: 3, name: 'Charlie', shortName: 'Charlie', tla: 'CHA', badge: 'charlie' };
 
 const teams = [teamA, teamB, teamC];
 const emptyPredictions: PredictionsStore = { predictions: {}, lastModified: '' };

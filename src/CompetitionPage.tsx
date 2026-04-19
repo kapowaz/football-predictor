@@ -4,7 +4,7 @@ import { useCompetitionData } from './hooks/useCompetitionData';
 import { useImageDownload } from './hooks/useImageDownload';
 import { useLiveScores } from './hooks/useLiveScores';
 // import { useScreenShake } from './hooks/useScreenShake';
-import { useTheme } from './hooks/useTheme';
+import { useColorMode } from './hooks/useColorMode';
 import { useCompetitionSession } from './state/useCompetitionSession';
 import {
   selectCaptureSignature,
@@ -41,7 +41,7 @@ const CompetitionContent = ({ slug, config }: CompetitionContentProps) => {
       window.history.replaceState(null, '', newUrl);
     }
   }, [slug]);
-  const { theme, toggleTheme } = useTheme();
+  const { colorMode, toggleColorMode } = useColorMode();
   const { teams, matches, defaultDeductions } = useCompetitionData(slug);
   const { liveScores } = useLiveScores(slug);
   const {
@@ -101,7 +101,7 @@ const CompetitionContent = ({ slug, config }: CompetitionContentProps) => {
 
   const competitions = allCompetitions();
 
-  const captureSignature = selectCaptureSignature(standings, deductionMarkers, theme);
+  const captureSignature = selectCaptureSignature(standings, deductionMarkers, colorMode);
 
   const { imageFiles, isRenderingImage, onDownloadImage } = useImageDownload({
     captureRefs: [topStandingsCaptureRef, bottomStandingsCaptureRef],
@@ -153,8 +153,8 @@ const CompetitionContent = ({ slug, config }: CompetitionContentProps) => {
           competitions,
           activeSlug: slug,
           onCompetitionChange: (s) => navigate(`/${s}/`),
-          colorMode: theme,
-          onColorModeToggle: toggleTheme,
+          colorMode: colorMode,
+          onColorModeToggle: toggleColorMode,
         }}
         onDownloadImage={onDownloadImage}
         isRenderingImage={isRenderingImage}
