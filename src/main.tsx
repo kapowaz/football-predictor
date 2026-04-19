@@ -24,9 +24,6 @@ const BonusPointsPage = lazy(() =>
 const StandingsImagePage = lazy(() =>
   import('./StandingsImagePage').then((m) => ({ default: m.StandingsImagePage })),
 );
-const ColorPalettePage = lazy(() =>
-  import('./ColorPalettePage').then((m) => ({ default: m.ColorPalettePage })),
-);
 
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
@@ -37,11 +34,16 @@ if ('serviceWorker' in navigator) {
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <BrowserRouter basename="/football-predictor">
-      <Suspense fallback={<div className={styles.suspenseFallback}><LoadingIndicator size="xl" /></div>}>
+      <Suspense
+        fallback={
+          <div className={styles.suspenseFallback}>
+            <LoadingIndicator size="xl" />
+          </div>
+        }
+      >
         <Routes>
           <Route element={<App />}>
             <Route index element={<IndexRedirect />} />
-            <Route path="colors" element={<ColorPalettePage />} />
             <Route path="relegation/:slug/" element={<RelegationPage />} />
             <Route path="run-in/:slug/" element={<RunInPage />} />
             <Route path="new-rules/:slug/" element={<NewRulesPage />} />
