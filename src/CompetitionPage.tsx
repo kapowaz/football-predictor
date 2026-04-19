@@ -4,7 +4,7 @@ import { useCompetitionData } from './hooks/useCompetitionData';
 import { useImageDownload } from './hooks/useImageDownload';
 import { useLiveScores } from './hooks/useLiveScores';
 // import { useScreenShake } from './hooks/useScreenShake';
-import { useColorMode } from './hooks/useColorMode';
+import { useColorMode } from '@kapowaz/components';
 import { useCompetitionSession } from './state/useCompetitionSession';
 import {
   selectCaptureSignature,
@@ -41,7 +41,7 @@ const CompetitionContent = ({ slug, config }: CompetitionContentProps) => {
       window.history.replaceState(null, '', newUrl);
     }
   }, [slug]);
-  const { colorMode, toggleColorMode } = useColorMode();
+  const { colorMode } = useColorMode();
   const { teams, matches, defaultDeductions } = useCompetitionData(slug);
   const { liveScores } = useLiveScores(slug);
   const {
@@ -153,8 +153,6 @@ const CompetitionContent = ({ slug, config }: CompetitionContentProps) => {
           competitions,
           activeSlug: slug,
           onCompetitionChange: (s) => navigate(`/${s}/`),
-          colorMode: colorMode,
-          onColorModeToggle: toggleColorMode,
         }}
         onDownloadImage={onDownloadImage}
         isRenderingImage={isRenderingImage}

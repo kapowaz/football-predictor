@@ -3,7 +3,7 @@ import { useParams, Navigate, useNavigate } from 'react-router-dom';
 import { useCompetitionData } from './hooks/useCompetitionData';
 import { useImageDownload } from './hooks/useImageDownload';
 import { useLiveScores } from './hooks/useLiveScores';
-import { useColorMode } from './hooks/useColorMode';
+import { useColorMode } from '@kapowaz/components';
 import { useCompetitionSession } from './state/useCompetitionSession';
 import {
   selectCaptureSignature,
@@ -26,7 +26,7 @@ interface NewRulesContentProps {
 
 const NewRulesContent = ({ slug, config }: NewRulesContentProps) => {
   const navigate = useNavigate();
-  const { colorMode, toggleColorMode } = useColorMode();
+  const { colorMode } = useColorMode();
   const { teams, matches, defaultDeductions } = useCompetitionData(slug);
   const { liveScores } = useLiveScores(slug);
   const {
@@ -119,8 +119,6 @@ const NewRulesContent = ({ slug, config }: NewRulesContentProps) => {
           competitions,
           activeSlug: slug,
           onCompetitionChange: (s) => navigate(`/new-rules/${s}/`),
-          colorMode: colorMode,
-          onColorModeToggle: toggleColorMode,
         }}
         onDownloadImage={onDownloadImage}
         isRenderingImage={isRenderingImage}

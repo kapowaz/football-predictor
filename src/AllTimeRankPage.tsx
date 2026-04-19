@@ -1,6 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import clsx from 'clsx';
-import { useColorMode } from './hooks/useColorMode';
 import { AppHeading } from './components/AppHeading';
 import { LoadingIndicator, ToggleColorMode } from '@kapowaz/components';
 import { getDesignTokens } from '@kapowaz/design-tokens';
@@ -14,7 +13,6 @@ const { colors } = getDesignTokens();
 import * as styles from './AllTimeRankPage.css';
 
 export const AllTimeRankPage = () => {
-  const { colorMode, toggleColorMode } = useColorMode();
   const weights = DEFAULT_WEIGHTS;
   const [isExpanded, setIsExpanded] = useState(false);
   const [clubs, setClubs] = useState<AllTimeClubData[] | null>(null);
@@ -41,7 +39,7 @@ export const AllTimeRankPage = () => {
           <AppHeading isTitleHidden />
           <h2 className={styles.title}>All Time Rank</h2>
         </div>
-        <ToggleColorMode isDarkMode={colorMode === 'dark'} onChange={(dark) => toggleColorMode(dark ? 'dark' : 'light')} />
+        <ToggleColorMode />
       </header>
       <div className={styles.descriptionBlock}>
         <button

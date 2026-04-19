@@ -14,18 +14,12 @@ interface AppHeaderProps {
   activeSlug: string;
   /** Called when the user selects a different competition. */
   onCompetitionChange: (slug: string) => void;
-  /** The current active color mode. */
-  colorMode: 'light' | 'dark';
-  /** Called with the next color mode when the user toggles it. */
-  onColorModeToggle: (colorMode: 'light' | 'dark') => void;
 }
 
 export const AppHeader = ({
   competitions,
   activeSlug,
   onCompetitionChange,
-  colorMode,
-  onColorModeToggle,
 }: AppHeaderProps) => {
   const competitionOptions: CompetitionOption[] = useMemo(
     () =>
@@ -49,10 +43,7 @@ export const AppHeader = ({
             />
           </div>
         )}
-        <ToggleColorMode
-          isDarkMode={colorMode === 'dark'}
-          onChange={(dark) => onColorModeToggle(dark ? 'dark' : 'light')}
-        />
+        <ToggleColorMode />
       </div>
     </header>
   );

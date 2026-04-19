@@ -21,10 +21,6 @@ interface NavBarProps {
   activeSlug: string;
   /** Called when the user selects a different competition. */
   onCompetitionChange: (slug: string) => void;
-  /** The current active color mode. */
-  colorMode: 'light' | 'dark';
-  /** Called with the next color mode when the user toggles it. */
-  onColorModeToggle: (colorMode: 'light' | 'dark') => void;
   /** Opens the deductions modal. */
   onDeductionsClick?: () => void;
   /** Fills all remaining fixtures with AI model predictions. Only rendered when provided. */
@@ -41,8 +37,6 @@ export const NavBar = ({
   competitions,
   activeSlug,
   onCompetitionChange,
-  colorMode,
-  onColorModeToggle,
   onDeductionsClick,
   onAIPredictionsClick,
   onResetPredictionsClick,
@@ -128,10 +122,7 @@ export const NavBar = ({
               <MenuSquare width={18} height={18} />
             </button>
             <div className={styles.desktopColorModeToggle}>
-              <ToggleColorMode
-                isDarkMode={colorMode === 'dark'}
-                onChange={(dark) => onColorModeToggle(dark ? 'dark' : 'light')}
-              />
+              <ToggleColorMode />
             </div>
           </div>
         </div>
@@ -217,10 +208,7 @@ export const NavBar = ({
                 transition={{ type: 'spring', damping: 30, stiffness: 300 }}
               >
                 <div className={styles.overlayHeader}>
-                  <ToggleColorMode
-                    isDarkMode={colorMode === 'dark'}
-                    onChange={(dark) => onColorModeToggle(dark ? 'dark' : 'light')}
-                  />
+                  <ToggleColorMode />
                   <button
                     className={styles.overlayCloseButton}
                     onClick={closeMenu}

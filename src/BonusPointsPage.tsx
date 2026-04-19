@@ -3,7 +3,7 @@ import { useParams, Navigate, useNavigate } from 'react-router-dom';
 import { useCompetitionData } from './hooks/useCompetitionData';
 import { useImageDownload } from './hooks/useImageDownload';
 import { useLiveScores } from './hooks/useLiveScores';
-import { useColorMode } from './hooks/useColorMode';
+import { useColorMode } from '@kapowaz/components';
 import { useCompetitionSession } from './state/useCompetitionSession';
 import {
   selectCaptureSignature,
@@ -26,7 +26,7 @@ interface BonusPointsContentProps {
 
 const BonusPointsContent = ({ slug, config }: BonusPointsContentProps) => {
   const navigate = useNavigate();
-  const { colorMode, toggleColorMode } = useColorMode();
+  const { colorMode } = useColorMode();
   const { teams, matches, defaultDeductions } = useCompetitionData(slug);
   const { liveScores } = useLiveScores(slug);
   const {
@@ -119,8 +119,6 @@ const BonusPointsContent = ({ slug, config }: BonusPointsContentProps) => {
           competitions,
           activeSlug: slug,
           onCompetitionChange: (s) => navigate(`/bonus-points/${s}/`),
-          colorMode: colorMode,
-          onColorModeToggle: toggleColorMode,
         }}
         onDownloadImage={onDownloadImage}
         isRenderingImage={isRenderingImage}

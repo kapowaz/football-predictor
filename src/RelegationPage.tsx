@@ -16,7 +16,6 @@ import { hasCompetitionData } from './data';
 import { allCompetitions, getCompetition, type CompetitionConfig } from './data/competitions';
 import { useCompetitionData } from './hooks/useCompetitionData';
 import { useLiveScores } from './hooks/useLiveScores';
-import { useColorMode } from './hooks/useColorMode';
 import { useCompetitionSession } from './state/useCompetitionSession';
 import {
   selectAllScheduledPredicted,
@@ -40,7 +39,6 @@ const RelegationContent = ({ slug, config }: RelegationContentProps) => {
   const navigate = useNavigate();
   const competitions = allCompetitions();
   const pageContentRef = useRef<HTMLDivElement>(null);
-  const { colorMode, toggleColorMode } = useColorMode();
   const { teams, matches, defaultDeductions, modelPredictions } = useCompetitionData(slug);
   const { liveScores } = useLiveScores(slug);
   const {
@@ -119,8 +117,6 @@ const RelegationContent = ({ slug, config }: RelegationContentProps) => {
             competitions={competitions}
             activeSlug={slug}
             onCompetitionChange={(nextSlug) => navigate(`/relegation/${nextSlug}/`)}
-            colorMode={colorMode}
-            onColorModeToggle={toggleColorMode}
             onDeductionsClick={() => setDeductionsModalOpen(true)}
             onAIPredictionsClick={
               hasModelPredictions && !allScheduledPredicted

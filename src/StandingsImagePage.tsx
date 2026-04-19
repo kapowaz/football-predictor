@@ -7,7 +7,6 @@ import { getCompetition, type CompetitionConfig } from './data/competitions';
 import { hasCompetitionData } from './data';
 import { useCompetitionData } from './hooks/useCompetitionData';
 import { useLiveScores } from './hooks/useLiveScores';
-import { useColorMode } from './hooks/useColorMode';
 import { useCompetitionSession } from './state/useCompetitionSession';
 import { selectDeductionNotes, selectStandingsViewModel, selectTeamsById } from './state/selectors';
 import { getEffectivePredictions } from './utils/liveScores';
@@ -33,7 +32,6 @@ const StandingsImageContent = ({ slug, config }: StandingsImageContentProps) => 
   const variantRules = parseVariantRules(searchParams.get('variantRules'));
   const topCaptureRef = useRef<HTMLDivElement>(null);
   const bottomCaptureRef = useRef<HTMLDivElement>(null);
-  const { colorMode, toggleColorMode } = useColorMode();
   const { teams, matches, defaultDeductions } = useCompetitionData(slug);
   const { liveScores } = useLiveScores(slug);
   const { predictions, deductions } = useCompetitionSession({
@@ -64,7 +62,7 @@ const StandingsImageContent = ({ slug, config }: StandingsImageContentProps) => 
   return (
     <div className={styles.page}>
       <header className={styles.toolbar}>
-        <ToggleColorMode isDarkMode={colorMode === 'dark'} onChange={(dark) => toggleColorMode(dark ? 'dark' : 'light')} />
+        <ToggleColorMode />
       </header>
       <StandingsImageView
         standings={standings}
