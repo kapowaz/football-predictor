@@ -9,20 +9,20 @@ import { IndexRedirect } from './IndexRedirect';
 import { LoadingIndicator } from '@kapowaz/components';
 
 const CompetitionPage = lazy(() =>
-  import('./CompetitionPage').then((m) => ({ default: m.CompetitionPage })),
+  import('./pages/CompetitionPage').then((m) => ({ default: m.CompetitionPage })),
 );
 const RelegationPage = lazy(() =>
-  import('./RelegationPage').then((m) => ({ default: m.RelegationPage })),
+  import('./pages/RelegationPage').then((m) => ({ default: m.RelegationPage })),
 );
-const RunInPage = lazy(() => import('./RunInPage').then((m) => ({ default: m.RunInPage })));
+const RunInPage = lazy(() => import('./pages/RunInPage').then((m) => ({ default: m.RunInPage })));
 const NewRulesPage = lazy(() =>
-  import('./NewRulesPage').then((m) => ({ default: m.NewRulesPage })),
+  import('./pages/NewRulesPage').then((m) => ({ default: m.NewRulesPage })),
 );
 const BonusPointsPage = lazy(() =>
-  import('./BonusPointsPage').then((m) => ({ default: m.BonusPointsPage })),
+  import('./pages/BonusPointsPage').then((m) => ({ default: m.BonusPointsPage })),
 );
 const StandingsImagePage = lazy(() =>
-  import('./StandingsImagePage').then((m) => ({ default: m.StandingsImagePage })),
+  import('./pages/StandingsImagePage').then((m) => ({ default: m.StandingsImagePage })),
 );
 
 if ('serviceWorker' in navigator) {

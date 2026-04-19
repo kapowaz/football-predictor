@@ -1,27 +1,27 @@
 import { useEffect, useMemo, useRef } from 'react';
 import { useParams, Navigate, useNavigate } from 'react-router-dom';
-import { useCompetitionData } from './hooks/useCompetitionData';
-import { useImageDownload } from './hooks/useImageDownload';
-import { useLiveScores } from './hooks/useLiveScores';
-// import { useScreenShake } from './hooks/useScreenShake';
+import { useCompetitionData } from '../../hooks/useCompetitionData';
+import { useImageDownload } from '../../hooks/useImageDownload';
+import { useLiveScores } from '../../hooks/useLiveScores';
+// import { useScreenShake } from '../../hooks/useScreenShake';
 import { useColorMode } from '@kapowaz/components';
-import { useCompetitionSession } from './state/useCompetitionSession';
+import { useCompetitionSession } from '../../state/useCompetitionSession';
 import {
   selectCaptureSignature,
   selectDeductionNotes,
   selectStandingsViewModel,
   selectTeamsById,
-} from './state/selectors';
-import { getEffectivePredictions } from './utils/liveScores';
-import { useZoneGuarantees } from './hooks/useZoneGuarantees';
-import { useZoneThresholds } from './hooks/useZoneThresholds';
-import { CompetitionPanels } from './components/CompetitionPanels';
-import { StandingsImageView } from './components/StandingsImageView';
-import { SeasonSummaryModal } from './components/SeasonSummaryModal';
-import { DeductionsModal } from './components/DeductionsModal';
-import { hasCompetitionData } from './data';
-import { getCompetition, allCompetitions, type CompetitionConfig } from './data/competitions';
-import { clearConfettiShown } from './utils/storage';
+} from '../../state/selectors';
+import { getEffectivePredictions } from '../../utils/liveScores';
+import { useZoneGuarantees } from '../../hooks/useZoneGuarantees';
+import { useZoneThresholds } from '../../hooks/useZoneThresholds';
+import { CompetitionPanels } from '../../components/CompetitionPanels';
+import { StandingsImageView } from '../../components/StandingsImageView';
+import { SeasonSummaryModal } from '../../components/SeasonSummaryModal';
+import { DeductionsModal } from '../../components/DeductionsModal';
+import { hasCompetitionData } from '../../data';
+import { getCompetition, allCompetitions, type CompetitionConfig } from '../../data/competitions';
+import { clearConfettiShown } from '../../utils/storage';
 
 interface CompetitionContentProps {
   slug: string;

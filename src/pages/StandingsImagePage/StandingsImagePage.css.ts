@@ -1,5 +1,5 @@
 import { style } from '@vanilla-extract/css';
-import { space4 } from './theme.css';
+import { space4 } from '../../theme.css';
 
 export const page = style({
   display: 'flex',

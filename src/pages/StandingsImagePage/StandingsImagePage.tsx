@@ -1,17 +1,17 @@
 import { Navigate, useParams, useSearchParams } from 'react-router-dom';
 import { useMemo, useRef } from 'react';
-import type { VariantRulesMode } from './types';
-import { StandingsImageView } from './components/StandingsImageView';
+import type { VariantRulesMode } from '../../types';
+import { StandingsImageView } from '../../components/StandingsImageView';
 import { ToggleColorMode } from '@kapowaz/components';
-import { getCompetition, type CompetitionConfig } from './data/competitions';
-import { hasCompetitionData } from './data';
-import { useCompetitionData } from './hooks/useCompetitionData';
-import { useLiveScores } from './hooks/useLiveScores';
-import { useCompetitionSession } from './state/useCompetitionSession';
-import { selectDeductionNotes, selectStandingsViewModel, selectTeamsById } from './state/selectors';
-import { getEffectivePredictions } from './utils/liveScores';
-import { useZoneGuarantees } from './hooks/useZoneGuarantees';
-import { useZoneThresholds } from './hooks/useZoneThresholds';
+import { getCompetition, type CompetitionConfig } from '../../data/competitions';
+import { hasCompetitionData } from '../../data';
+import { useCompetitionData } from '../../hooks/useCompetitionData';
+import { useLiveScores } from '../../hooks/useLiveScores';
+import { useCompetitionSession } from '../../state/useCompetitionSession';
+import { selectDeductionNotes, selectStandingsViewModel, selectTeamsById } from '../../state/selectors';
+import { getEffectivePredictions } from '../../utils/liveScores';
+import { useZoneGuarantees } from '../../hooks/useZoneGuarantees';
+import { useZoneThresholds } from '../../hooks/useZoneThresholds';
 import { getRelegationStartPosition, buildThresholdByZoneType } from '@kapowaz/football';
 import * as styles from './StandingsImagePage.css.ts';
 

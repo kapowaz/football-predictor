@@ -1,13 +1,13 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import clsx from 'clsx';
-import { AppHeading } from './components/AppHeading';
+import { AppHeading } from '../../components/AppHeading';
 import { LoadingIndicator, ToggleColorMode } from '@kapowaz/components';
 import { getDesignTokens } from '@kapowaz/design-tokens';
 import { ChevronRight } from '@kapowaz/icons';
-import { AllTimeRankTable } from './components/AllTimeRankTable';
-import type { AllTimeClubData } from './data/all-time-rank';
-import { loadAllTimeClubs } from './data/all-time-rank';
-import { calculateAllTimeScores, DEFAULT_WEIGHTS, HONOUR_BASE_VALUES } from './utils/allTimeRank';
+import { AllTimeRankTable } from '../../components/AllTimeRankTable';
+import type { AllTimeClubData } from '../../data/all-time-rank';
+import { loadAllTimeClubs } from '../../data/all-time-rank';
+import { calculateAllTimeScores, DEFAULT_WEIGHTS, HONOUR_BASE_VALUES } from '../../utils/allTimeRank';
 
 const { colors } = getDesignTokens();
 import * as styles from './AllTimeRankPage.css';

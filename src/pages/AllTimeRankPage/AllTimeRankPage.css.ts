@@ -15,7 +15,7 @@ import {
   space3,
   space4,
   space6,
-} from './theme.css';
+} from '../../theme.css';
 
 const { typography } = getDesignTokens();
 

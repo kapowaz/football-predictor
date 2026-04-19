@@ -1,30 +1,30 @@
 import { useMemo, useRef } from 'react';
 import { useParams, Navigate, useNavigate } from 'react-router-dom';
-import { useCompetitionData } from './hooks/useCompetitionData';
-import { useImageDownload } from './hooks/useImageDownload';
-import { useLiveScores } from './hooks/useLiveScores';
+import { useCompetitionData } from '../../hooks/useCompetitionData';
+import { useImageDownload } from '../../hooks/useImageDownload';
+import { useLiveScores } from '../../hooks/useLiveScores';
 import { useColorMode } from '@kapowaz/components';
-import { useCompetitionSession } from './state/useCompetitionSession';
+import { useCompetitionSession } from '../../state/useCompetitionSession';
 import {
   selectCaptureSignature,
   selectDeductionNotes,
   selectStandingsViewModel,
   selectTeamsById,
-} from './state/selectors';
-import { getEffectivePredictions } from './utils/liveScores';
-import { useZoneGuarantees } from './hooks/useZoneGuarantees';
-import { CompetitionPanels } from './components/CompetitionPanels';
-import { StandingsImageView } from './components/StandingsImageView';
-import { DeductionsModal } from './components/DeductionsModal';
-import { hasCompetitionData } from './data';
-import { getCompetition, allCompetitions, type CompetitionConfig } from './data/competitions';
+} from '../../state/selectors';
+import { getEffectivePredictions } from '../../utils/liveScores';
+import { useZoneGuarantees } from '../../hooks/useZoneGuarantees';
+import { CompetitionPanels } from '../../components/CompetitionPanels';
+import { StandingsImageView } from '../../components/StandingsImageView';
+import { DeductionsModal } from '../../components/DeductionsModal';
+import { hasCompetitionData } from '../../data';
+import { getCompetition, allCompetitions, type CompetitionConfig } from '../../data/competitions';
 
-interface BonusPointsContentProps {
+interface NewRulesContentProps {
   slug: string;
   config: CompetitionConfig;
 }
 
-const BonusPointsContent = ({ slug, config }: BonusPointsContentProps) => {
+const NewRulesContent = ({ slug, config }: NewRulesContentProps) => {
   const navigate = useNavigate();
   const { colorMode } = useColorMode();
   const { teams, matches, defaultDeductions } = useCompetitionData(slug);
@@ -57,7 +57,7 @@ const BonusPointsContent = ({ slug, config }: BonusPointsContentProps) => {
     effectivePredictions,
     deductions,
     config.zones,
-    'bonus-points',
+    'new-rules',
   );
   const zoneGuaranteedByTeamId = useZoneGuarantees(standings, matches, effectivePredictions, config.zones);
   const teamsById = selectTeamsById(teams);
@@ -95,7 +95,7 @@ const BonusPointsContent = ({ slug, config }: BonusPointsContentProps) => {
         zones={config.zones}
         partial="top"
         captureRef={topStandingsCaptureRef}
-        variantRules="bonus-points"
+        variantRules="new-rules"
       />
       <StandingsImageView
         standings={standings}
@@ -108,7 +108,7 @@ const BonusPointsContent = ({ slug, config }: BonusPointsContentProps) => {
         zones={config.zones}
         partial="bottom"
         captureRef={bottomStandingsCaptureRef}
-        variantRules="bonus-points"
+        variantRules="new-rules"
       />
 
       <CompetitionPanels
@@ -118,12 +118,12 @@ const BonusPointsContent = ({ slug, config }: BonusPointsContentProps) => {
         headerProps={{
           competitions,
           activeSlug: slug,
-          onCompetitionChange: (s) => navigate(`/bonus-points/${s}/`),
+          onCompetitionChange: (s) => navigate(`/new-rules/${s}/`),
         }}
         onDownloadImage={onDownloadImage}
         isRenderingImage={isRenderingImage}
         hasStandingsImage={hasStandingsImage}
-        variantRules="bonus-points"
+        variantRules="new-rules"
         standings={standings}
         deductionMarkers={deductionMarkers}
       />
@@ -143,7 +143,7 @@ const BonusPointsContent = ({ slug, config }: BonusPointsContentProps) => {
   );
 };
 
-export const BonusPointsPage = () => {
+export const NewRulesPage = () => {
   const { slug } = useParams<{ slug: string }>();
 
   if (!slug) {
@@ -159,5 +159,5 @@ export const BonusPointsPage = () => {
     return <Navigate to="/" replace />;
   }
 
-  return <BonusPointsContent key={slug} slug={slug} config={config} />;
+  return <NewRulesContent key={slug} slug={slug} config={config} />;
 };
