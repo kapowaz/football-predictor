@@ -170,57 +170,6 @@ export const FixtureList = ({
     });
   }, [groups, navigateToMatchId]);
 
-  useEffect(() => {
-    if (navigateToMatchId == null) return;
-
-    const group = groups.find((g) =>
-      g.matches.some((m) => m.id === navigateToMatchId),
-    );
-    if (!group) {
-      setNavigateToMatchId(null);
-      pendingScrollMatchId.current = null;
-      return;
-    }
-
-    pendingScrollMatchId.current = navigateToMatchId;
-
-    if (expandedKey === group.key) {
-      requestAnimationFrame(() => {
-        scrollToMatch(navigateToMatchId);
-      });
-    } else {
-      setExpandedKey(() => {
-        expandedKeyRef.current = group.key;
-        return group.key;
-      });
-    }
-  }, [groups, navigateToMatchId, setNavigateToMatchId]); // eslint-disable-line react-hooks/exhaustive-deps
-
-  useEffect(() => {
-    const becameVisible = isVisible && !wasVisibleRef.current;
-    wasVisibleRef.current = isVisible;
-
-    if (!becameVisible) return;
-    if (navigateToMatchId != null) return;
-    if (!containerRef.current) return;
-
-    const key = expandedKeyRef.current;
-    if (!key) return;
-
-    const scrollToExpandedGroup = () => {
-      const el = groupRefs.current.get(key);
-      if (!el || !containerRef.current) return;
-      containerRef.current.scrollTo({
-        top: el.offsetTop,
-        behavior: 'smooth',
-      });
-    };
-
-    requestAnimationFrame(() => {
-      requestAnimationFrame(scrollToExpandedGroup);
-    });
-  }, [isVisible, navigateToMatchId]);
-
   const highlightCard = useCallback((matchId: number) => {
     setHighlightedMatchId(matchId);
 
@@ -277,6 +226,58 @@ export const FixtureList = ({
     },
     [highlightCard, setNavigateToMatchId],
   );
+
+  useEffect(() => {
+    if (navigateToMatchId == null) return;
+
+    const group = groups.find((g) =>
+      g.matches.some((m) => m.id === navigateToMatchId),
+    );
+    if (!group) {
+      setNavigateToMatchId(null);
+      pendingScrollMatchId.current = null;
+      return;
+    }
+
+    pendingScrollMatchId.current = navigateToMatchId;
+
+    if (expandedKey === group.key) {
+      requestAnimationFrame(() => {
+        scrollToMatch(navigateToMatchId);
+      });
+    } else {
+      setExpandedKey(() => {
+        expandedKeyRef.current = group.key;
+        return group.key;
+      });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [groups, navigateToMatchId, setNavigateToMatchId, scrollToMatch]);
+
+  useEffect(() => {
+    const becameVisible = isVisible && !wasVisibleRef.current;
+    wasVisibleRef.current = isVisible;
+
+    if (!becameVisible) return;
+    if (navigateToMatchId != null) return;
+    if (!containerRef.current) return;
+
+    const key = expandedKeyRef.current;
+    if (!key) return;
+
+    const scrollToExpandedGroup = () => {
+      const el = groupRefs.current.get(key);
+      if (!el || !containerRef.current) return;
+      containerRef.current.scrollTo({
+        top: el.offsetTop,
+        behavior: 'smooth',
+      });
+    };
+
+    requestAnimationFrame(() => {
+      requestAnimationFrame(scrollToExpandedGroup);
+    });
+  }, [isVisible, navigateToMatchId]);
 
   const toggleGroup = useCallback((key: string) => {
     setExpandedKey((prev) => {

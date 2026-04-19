@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react';
-import type { Preview } from '@storybook/react-vite';
 import '../src/theme.css';
 import '../src/App.css';
+
+import type { Preview } from '@storybook/react-vite';
+import React, { useEffect } from 'react';
 
 const withColorMode: Preview['decorators'] = [
   (Story, context) => {

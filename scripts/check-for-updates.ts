@@ -8,8 +8,9 @@
  */
 
 import * as fs from 'node:fs';
-import { API_KEY, COMPETITIONS, fetchFromApi } from './common';
+
 import ENABLED_COMPETITION_SLUGS from '../src/data/enabled-competitions.json';
+import { API_KEY, COMPETITIONS, fetchFromApi } from './common';
 
 const STATE_FILE = '.match-state.json';
 

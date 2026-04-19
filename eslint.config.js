@@ -74,5 +74,11 @@ export default defineConfig([
       'react-hooks/rules-of-hooks': 'off',
     },
   },
+  {
+    files: ['vite.config.ts'],
+    rules: {
+      'perfectionist/sort-imports': 'off',
+    },
+  },
   eslintConfigPrettier,
 ]);

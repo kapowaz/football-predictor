@@ -124,12 +124,8 @@ export const useCompetitionSession = ({
   const session = useCompetitionSessionStore((state) =>
     selectSessionForSlug(state.sessions, slug),
   );
-  const initialSessionRef = useRef<{
-    slug: string;
-    session: ReturnType<typeof createDefaultSession>;
-  } | null>(null);
 
-  if (!initialSessionRef.current || initialSessionRef.current.slug !== slug) {
+  const initialSession = useMemo(() => {
     const initialSearchParams = new URLSearchParams(window.location.search);
     const predictions = resolveInitialPredictions(
       slug,
@@ -143,28 +139,25 @@ export const useCompetitionSession = ({
       persistenceMode,
       initialSearchParams,
     );
-    initialSessionRef.current = {
-      slug,
-      session: {
-        ...createDefaultSession(defaultDeductions),
-        predictions,
-        deductions: deductionsState.deductions,
-        deductionsCustomised: deductionsState.deductionsCustomised,
-      },
+    return {
+      ...createDefaultSession(defaultDeductions),
+      predictions,
+      deductions: deductionsState.deductions,
+      deductionsCustomised: deductionsState.deductionsCustomised,
     };
-  }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [slug]);
 
   if (!session) {
     useCompetitionSessionStore.getState().initializeSession(slug, {
-      predictions: initialSessionRef.current.session.predictions,
-      deductions: initialSessionRef.current.session.deductions,
-      deductionsCustomised:
-        initialSessionRef.current.session.deductionsCustomised,
+      predictions: initialSession.predictions,
+      deductions: initialSession.deductions,
+      deductionsCustomised: initialSession.deductionsCustomised,
       defaultDeductions,
     });
   }
 
-  const activeSession = session ?? initialSessionRef.current.session;
+  const activeSession = session ?? initialSession;
   const setPrediction = useCompetitionSessionStore(
     (state) => state.setPrediction,
   );
