@@ -33,7 +33,7 @@ let totalClubsFixed = 0;
 for (const file of fs.readdirSync(clubsDir).filter(f => f.endsWith('.json'))) {
   const filePath = path.join(clubsDir, file);
   const club = JSON.parse(fs.readFileSync(filePath, 'utf8'));
-  const slug = club.crest;
+  const slug = club.badge;
   const clubTierMap = correctTierMap.get(slug);
 
   if (!clubTierMap) continue;

@@ -1,7 +1,7 @@
 {
   "name": "Yeovil Town",
   "shortName": "Yeovil",
-  "crest": "yeovil-town",
+  "badge": "yeovil-town",
   "founded": 1895,
   "currentTier": null,
   "leagueRecord": {

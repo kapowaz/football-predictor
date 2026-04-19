@@ -11,7 +11,7 @@ for (const season of allSeasons) {
 
 const clubsBySlug = new Map<string, AllTimeClubData>();
 for (const club of allTimeClubs) {
-  clubsBySlug.set(club.crest, club);
+  clubsBySlug.set(club.badge, club);
 }
 
 describe('league history – internal consistency', () => {
@@ -187,16 +187,16 @@ describe('league history – cross-validation with per-club data', () => {
           if (!season) continue;
 
           const matchingDiv = season.divisions.find(
-            (d) => d.tier === tierNum && d.teams.length > 0 && d.teams.includes(club.crest),
+            (d) => d.tier === tierNum && d.teams.length > 0 && d.teams.includes(club.badge),
           );
 
           const inDifferentDiv = season.divisions.find(
-            (d) => d.tier !== tierNum && d.teams.length > 0 && d.teams.includes(club.crest),
+            (d) => d.tier !== tierNum && d.teams.length > 0 && d.teams.includes(club.badge),
           );
 
           if (inDifferentDiv && !matchingDiv) {
             mismatches.push(
-              `${club.crest} has ${tier} record for ${year} but historical data ` +
+              `${club.badge} has ${tier} record for ${year} but historical data ` +
                 `places them in ${inDifferentDiv.name} (tier ${inDifferentDiv.tier})`,
             );
           }

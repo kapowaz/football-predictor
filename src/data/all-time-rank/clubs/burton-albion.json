@@ -1,7 +1,7 @@
 {
   "name": "Burton Albion",
   "shortName": "Burton",
-  "crest": "burton-albion",
+  "badge": "burton-albion",
   "founded": 1950,
   "currentTier": 3,
   "leagueRecord": {

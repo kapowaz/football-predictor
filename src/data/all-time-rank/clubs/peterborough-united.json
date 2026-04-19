@@ -1,7 +1,7 @@
 {
   "name": "Peterborough United",
   "shortName": "Peterborough",
-  "crest": "peterborough-united",
+  "badge": "peterborough-united",
   "founded": 1934,
   "currentTier": 3,
   "leagueRecord": {

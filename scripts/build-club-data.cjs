@@ -29,7 +29,7 @@ const emptyTieredHonours = { tier1: [], tier2: [], tier3: [], tier4: [] };
 const output = {
   name: input.name,
   shortName: input.shortName,
-  crest: input.crest,
+  badge: input.badge,
   founded: input.founded,
   currentTier: input.currentTier,
   leagueRecord,

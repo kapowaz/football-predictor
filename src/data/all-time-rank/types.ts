@@ -21,7 +21,7 @@ export interface TieredHonourYears {
 export interface AllTimeClubData {
   name: string;
   shortName: string;
-  crest: string;
+  badge: string;
   founded: number;
   /** 1-4 for current EFL/PL tier, or null if below the football league. */
   currentTier: number | null;

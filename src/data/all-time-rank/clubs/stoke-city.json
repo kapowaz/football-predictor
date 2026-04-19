@@ -1,7 +1,7 @@
 {
   "name": "Stoke City",
   "shortName": "Stoke",
-  "crest": "stoke-city",
+  "badge": "stoke-city",
   "founded": 1863,
   "currentTier": 2,
   "leagueRecord": {

@@ -2,7 +2,7 @@
   {
     "name": "Liverpool",
     "shortName": "Liverpool",
-    "crest": "liverpool",
+    "badge": "liverpool",
     "founded": 1892,
     "currentTier": 1,
     "leagueRecord": {
@@ -272,7 +272,7 @@
   {
     "name": "Arsenal",
     "shortName": "Arsenal",
-    "crest": "arsenal",
+    "badge": "arsenal",
     "founded": 1886,
     "currentTier": 1,
     "leagueRecord": {
@@ -478,7 +478,7 @@
   {
     "name": "Manchester United",
     "shortName": "Man United",
-    "crest": "manchester-united",
+    "badge": "manchester-united",
     "founded": 1878,
     "currentTier": 1,
     "leagueRecord": {
@@ -722,7 +722,7 @@
   {
     "name": "Leeds United",
     "shortName": "Leeds",
-    "crest": "leeds-united",
+    "badge": "leeds-united",
     "founded": 1919,
     "currentTier": 1,
     "leagueRecord": {
@@ -914,7 +914,7 @@
   {
     "name": "Sunderland",
     "shortName": "Sunderland",
-    "crest": "sunderland",
+    "badge": "sunderland",
     "founded": 1879,
     "currentTier": 1,
     "leagueRecord": {
@@ -1093,7 +1093,7 @@
   {
     "name": "Nottingham Forest",
     "shortName": "Forest",
-    "crest": "nottingham-forest",
+    "badge": "nottingham-forest",
     "founded": 1865,
     "currentTier": 1,
     "leagueRecord": {
@@ -1243,7 +1243,7 @@
   {
     "name": "Portsmouth",
     "shortName": "Portsmouth",
-    "crest": "portsmouth",
+    "badge": "portsmouth",
     "founded": 1898,
     "currentTier": 2,
     "leagueRecord": {
@@ -1394,7 +1394,7 @@
   {
     "name": "Rochdale",
     "shortName": "Rochdale",
-    "crest": "rochdale",
+    "badge": "rochdale",
     "founded": 1907,
     "currentTier": null,
     "leagueRecord": {
@@ -1507,7 +1507,7 @@
   {
     "name": "Bolton Wanderers",
     "shortName": "Bolton",
-    "crest": "bolton-wanderers",
+    "badge": "bolton-wanderers",
     "founded": 1874,
     "currentTier": 3,
     "leagueRecord": {
@@ -1661,7 +1661,7 @@
   {
     "name": "Wigan Athletic",
     "shortName": "Wigan",
-    "crest": "wigan-athletic",
+    "badge": "wigan-athletic",
     "founded": 1932,
     "currentTier": 3,
     "leagueRecord": {
@@ -1798,7 +1798,7 @@
   {
     "name": "Blackpool",
     "shortName": "Blackpool",
-    "crest": "blackpool",
+    "badge": "blackpool",
     "founded": 1887,
     "currentTier": 3,
     "leagueRecord": {
@@ -1945,7 +1945,7 @@
   {
     "name": "AFC Wimbledon",
     "shortName": "AFC Wimbledon",
-    "crest": "afc-wimbledon",
+    "badge": "afc-wimbledon",
     "founded": 2002,
     "currentTier": 3,
     "leagueRecord": {
@@ -2032,7 +2032,7 @@
   {
     "name": "Reading",
     "shortName": "Reading",
-    "crest": "reading",
+    "badge": "reading",
     "founded": 1871,
     "currentTier": 3,
     "leagueRecord": {
@@ -2153,7 +2153,7 @@
   {
     "name": "Barnsley",
     "shortName": "Barnsley",
-    "crest": "barnsley",
+    "badge": "barnsley",
     "founded": 1887,
     "currentTier": 3,
     "leagueRecord": {
@@ -2276,7 +2276,7 @@
   {
     "name": "Northampton Town",
     "shortName": "Northampton",
-    "crest": "northampton-town",
+    "badge": "northampton-town",
     "founded": 1897,
     "currentTier": 3,
     "leagueRecord": {
@@ -2392,7 +2392,7 @@
   {
     "name": "Rotherham United",
     "shortName": "Rotherham",
-    "crest": "rotherham-united",
+    "badge": "rotherham-united",
     "founded": 1925,
     "currentTier": 3,
     "leagueRecord": {
@@ -2529,7 +2529,7 @@
   {
     "name": "Luton Town",
     "shortName": "Luton",
-    "crest": "luton-town",
+    "badge": "luton-town",
     "founded": 1885,
     "currentTier": 3,
     "leagueRecord": {
@@ -2673,7 +2673,7 @@
   {
     "name": "Port Vale",
     "shortName": "Port Vale",
-    "crest": "port-vale",
+    "badge": "port-vale",
     "founded": 1876,
     "currentTier": 3,
     "leagueRecord": {
@@ -2785,7 +2785,7 @@
   {
     "name": "Huddersfield Town",
     "shortName": "Huddersfield",
-    "crest": "huddersfield-town",
+    "badge": "huddersfield-town",
     "founded": 1908,
     "currentTier": 3,
     "leagueRecord": {
@@ -2947,7 +2947,7 @@
   {
     "name": "Stockport County",
     "shortName": "Stockport",
-    "crest": "stockport-county",
+    "badge": "stockport-county",
     "founded": 1883,
     "currentTier": 3,
     "leagueRecord": {
@@ -3070,7 +3070,7 @@
   {
     "name": "Leyton Orient",
     "shortName": "Leyton Orient",
-    "crest": "leyton-orient",
+    "badge": "leyton-orient",
     "founded": 1881,
     "currentTier": 3,
     "leagueRecord": {
@@ -3184,7 +3184,7 @@
   {
     "name": "Cardiff City",
     "shortName": "Cardiff",
-    "crest": "cardiff-city",
+    "badge": "cardiff-city",
     "founded": 1899,
     "currentTier": 3,
     "leagueRecord": {
@@ -3331,7 +3331,7 @@
   {
     "name": "Bradford City",
     "shortName": "Bradford",
-    "crest": "bradford-city",
+    "badge": "bradford-city",
     "founded": 1903,
     "currentTier": 3,
     "leagueRecord": {
@@ -3463,7 +3463,7 @@
   {
     "name": "Doncaster Rovers",
     "shortName": "Doncaster",
-    "crest": "doncaster-rovers",
+    "badge": "doncaster-rovers",
     "founded": 1879,
     "currentTier": 3,
     "leagueRecord": {
@@ -3595,7 +3595,7 @@
   {
     "name": "Burton Albion",
     "shortName": "Burton",
-    "crest": "burton-albion",
+    "badge": "burton-albion",
     "founded": 1950,
     "currentTier": 3,
     "leagueRecord": {
@@ -3690,7 +3690,7 @@
   {
     "name": "Peterborough United",
     "shortName": "Peterborough",
-    "crest": "peterborough-united",
+    "badge": "peterborough-united",
     "founded": 1934,
     "currentTier": 3,
     "leagueRecord": {
@@ -3810,7 +3810,7 @@
   {
     "name": "Lincoln City",
     "shortName": "Lincoln",
-    "crest": "lincoln-city",
+    "badge": "lincoln-city",
     "founded": 1884,
     "currentTier": 3,
     "leagueRecord": {
@@ -3938,7 +3938,7 @@
   {
     "name": "Mansfield Town",
     "shortName": "Mansfield",
-    "crest": "mansfield-town",
+    "badge": "mansfield-town",
     "founded": 1897,
     "currentTier": 3,
     "leagueRecord": {
@@ -4042,7 +4042,7 @@
   {
     "name": "Exeter City",
     "shortName": "Exeter",
-    "crest": "exeter-city",
+    "badge": "exeter-city",
     "founded": 1904,
     "currentTier": 3,
     "leagueRecord": {
@@ -4137,7 +4137,7 @@
   {
     "name": "Plymouth Argyle",
     "shortName": "Plymouth",
-    "crest": "plymouth-argyle",
+    "badge": "plymouth-argyle",
     "founded": 1886,
     "currentTier": 3,
     "leagueRecord": {
@@ -4268,7 +4268,7 @@
   {
     "name": "Stevenage",
     "shortName": "Stevenage",
-    "crest": "stevenage",
+    "badge": "stevenage",
     "founded": 1976,
     "currentTier": 3,
     "leagueRecord": {
@@ -4357,7 +4357,7 @@
   {
     "name": "Wycombe Wanderers",
     "shortName": "Wycombe",
-    "crest": "wycombe-wanderers",
+    "badge": "wycombe-wanderers",
     "founded": 1887,
     "currentTier": 3,
     "leagueRecord": {
@@ -4461,7 +4461,7 @@
   {
     "name": "Aston Villa",
     "shortName": "Villa",
-    "crest": "aston-villa",
+    "badge": "aston-villa",
     "founded": 1874,
     "currentTier": 1,
     "leagueRecord": {
@@ -4635,7 +4635,7 @@
   {
     "name": "Chelsea",
     "shortName": "Chelsea",
-    "crest": "chelsea",
+    "badge": "chelsea",
     "founded": 1905,
     "currentTier": 1,
     "leagueRecord": {
@@ -4811,7 +4811,7 @@
   {
     "name": "Everton",
     "shortName": "Everton",
-    "crest": "everton",
+    "badge": "everton",
     "founded": 1878,
     "currentTier": 1,
     "leagueRecord": {
@@ -4968,7 +4968,7 @@
   {
     "name": "Fulham",
     "shortName": "Fulham",
-    "crest": "fulham",
+    "badge": "fulham",
     "founded": 1879,
     "currentTier": 1,
     "leagueRecord": {
@@ -5087,7 +5087,7 @@
   {
     "name": "Manchester City",
     "shortName": "Man City",
-    "crest": "manchester-city",
+    "badge": "manchester-city",
     "founded": 1880,
     "currentTier": 1,
     "leagueRecord": {
@@ -5274,7 +5274,7 @@
   {
     "name": "Newcastle United",
     "shortName": "Newcastle",
-    "crest": "newcastle-united",
+    "badge": "newcastle-united",
     "founded": 1892,
     "currentTier": 1,
     "leagueRecord": {
@@ -5444,7 +5444,7 @@
   {
     "name": "Tottenham Hotspur",
     "shortName": "Spurs",
-    "crest": "tottenham-hotspur",
+    "badge": "tottenham-hotspur",
     "founded": 1882,
     "currentTier": 1,
     "leagueRecord": {
@@ -5608,7 +5608,7 @@
   {
     "name": "Wolverhampton Wanderers",
     "shortName": "Wolves",
-    "crest": "wolverhampton-wanderers",
+    "badge": "wolverhampton-wanderers",
     "founded": 1877,
     "currentTier": 1,
     "leagueRecord": {
@@ -5773,7 +5773,7 @@
   {
     "name": "Burnley",
     "shortName": "Burnley",
-    "crest": "burnley",
+    "badge": "burnley",
     "founded": 1882,
     "currentTier": 1,
     "leagueRecord": {
@@ -5928,7 +5928,7 @@
   {
     "name": "Crystal Palace",
     "shortName": "Palace",
-    "crest": "crystal-palace",
+    "badge": "crystal-palace",
     "founded": 1905,
     "currentTier": 1,
     "leagueRecord": {
@@ -6071,7 +6071,7 @@
   {
     "name": "Brighton & Hove Albion",
     "shortName": "Brighton",
-    "crest": "brighton-and-hove-albion",
+    "badge": "brighton-and-hove-albion",
     "founded": 1901,
     "currentTier": 1,
     "leagueRecord": {
@@ -6209,7 +6209,7 @@
   {
     "name": "Brentford",
     "shortName": "Brentford",
-    "crest": "brentford",
+    "badge": "brentford",
     "founded": 1889,
     "currentTier": 1,
     "leagueRecord": {
@@ -6358,7 +6358,7 @@
   {
     "name": "West Ham United",
     "shortName": "West Ham",
-    "crest": "west-ham-united",
+    "badge": "west-ham-united",
     "founded": 1895,
     "currentTier": 1,
     "leagueRecord": {
@@ -6501,7 +6501,7 @@
   {
     "name": "AFC Bournemouth",
     "shortName": "Bournemouth",
-    "crest": "afc-bournemouth",
+    "badge": "afc-bournemouth",
     "founded": 1899,
     "currentTier": 1,
     "leagueRecord": {
@@ -6615,7 +6615,7 @@
   {
     "name": "Blackburn Rovers",
     "shortName": "Blackburn",
-    "crest": "blackburn-rovers",
+    "badge": "blackburn-rovers",
     "founded": 1875,
     "currentTier": 2,
     "leagueRecord": {
@@ -6754,7 +6754,7 @@
   {
     "name": "Norwich City",
     "shortName": "Norwich",
-    "crest": "norwich-city",
+    "badge": "norwich-city",
     "founded": 1902,
     "currentTier": 2,
     "leagueRecord": {
@@ -6901,7 +6901,7 @@
   {
     "name": "Queens Park Rangers",
     "shortName": "QPR",
-    "crest": "queens-park-rangers",
+    "badge": "queens-park-rangers",
     "founded": 1882,
     "currentTier": 2,
     "leagueRecord": {
@@ -7015,7 +7015,7 @@
   {
     "name": "Stoke City",
     "shortName": "Stoke",
-    "crest": "stoke-city",
+    "badge": "stoke-city",
     "founded": 1863,
     "currentTier": 2,
     "leagueRecord": {
@@ -7138,7 +7138,7 @@
   {
     "name": "Swansea City",
     "shortName": "Swansea",
-    "crest": "swansea-city",
+    "badge": "swansea-city",
     "founded": 1912,
     "currentTier": 2,
     "leagueRecord": {
@@ -7271,7 +7271,7 @@
   {
     "name": "West Bromwich Albion",
     "shortName": "West Brom",
-    "crest": "west-bromwich-albion",
+    "badge": "west-bromwich-albion",
     "founded": 1878,
     "currentTier": 2,
     "leagueRecord": {
@@ -7416,7 +7416,7 @@
   {
     "name": "Hull City",
     "shortName": "Hull",
-    "crest": "hull-city",
+    "badge": "hull-city",
     "founded": 1904,
     "currentTier": 2,
     "leagueRecord": {
@@ -7547,7 +7547,7 @@
   {
     "name": "Birmingham City",
     "shortName": "Birmingham",
-    "crest": "birmingham-city",
+    "badge": "birmingham-city",
     "founded": 1875,
     "currentTier": 2,
     "leagueRecord": {
@@ -7680,7 +7680,7 @@
   {
     "name": "Leicester City",
     "shortName": "Leicester",
-    "crest": "leicester-city",
+    "badge": "leicester-city",
     "founded": 1884,
     "currentTier": 2,
     "leagueRecord": {
@@ -7844,7 +7844,7 @@
   {
     "name": "Southampton",
     "shortName": "Southampton",
-    "crest": "southampton",
+    "badge": "southampton",
     "founded": 1885,
     "currentTier": 2,
     "leagueRecord": {
@@ -7986,7 +7986,7 @@
   {
     "name": "Derby County",
     "shortName": "Derby",
-    "crest": "derby-county",
+    "badge": "derby-county",
     "founded": 1884,
     "currentTier": 2,
     "leagueRecord": {
@@ -8131,7 +8131,7 @@
   {
     "name": "Middlesbrough",
     "shortName": "Boro",
-    "crest": "middlesbrough",
+    "badge": "middlesbrough",
     "founded": 1876,
     "currentTier": 2,
     "leagueRecord": {
@@ -8273,7 +8273,7 @@
   {
     "name": "Sheffield Wednesday",
     "shortName": "Sheffield Wed",
-    "crest": "sheffield-wednesday",
+    "badge": "sheffield-wednesday",
     "founded": 1867,
     "currentTier": 2,
     "leagueRecord": {
@@ -8447,7 +8447,7 @@
   {
     "name": "Watford",
     "shortName": "Watford",
-    "crest": "watford",
+    "badge": "watford",
     "founded": 1881,
     "currentTier": 2,
     "leagueRecord": {
@@ -8591,7 +8591,7 @@
   {
     "name": "Charlton Athletic",
     "shortName": "Charlton",
-    "crest": "charlton-athletic",
+    "badge": "charlton-athletic",
     "founded": 1905,
     "currentTier": 2,
     "leagueRecord": {
@@ -8719,7 +8719,7 @@
   {
     "name": "Ipswich Town",
     "shortName": "Ipswich",
-    "crest": "ipswich-town",
+    "badge": "ipswich-town",
     "founded": 1878,
     "currentTier": 2,
     "leagueRecord": {
@@ -8864,7 +8864,7 @@
   {
     "name": "Sheffield United",
     "shortName": "Sheffield Utd",
-    "crest": "sheffield-united",
+    "badge": "sheffield-united",
     "founded": 1889,
     "currentTier": 2,
     "leagueRecord": {
@@ -9036,7 +9036,7 @@
   {
     "name": "Millwall",
     "shortName": "Millwall",
-    "crest": "millwall",
+    "badge": "millwall",
     "founded": 1885,
     "currentTier": 2,
     "leagueRecord": {
@@ -9154,7 +9154,7 @@
   {
     "name": "Bristol City",
     "shortName": "Bristol City",
-    "crest": "bristol-city",
+    "badge": "bristol-city",
     "founded": 1894,
     "currentTier": 2,
     "leagueRecord": {
@@ -9277,7 +9277,7 @@
   {
     "name": "Wrexham",
     "shortName": "Wrexham",
-    "crest": "wrexham",
+    "badge": "wrexham",
     "founded": 1864,
     "currentTier": 2,
     "leagueRecord": {
@@ -9385,7 +9385,7 @@
   {
     "name": "Coventry City",
     "shortName": "Coventry",
-    "crest": "coventry-city",
+    "badge": "coventry-city",
     "founded": 1883,
     "currentTier": 2,
     "leagueRecord": {
@@ -9519,7 +9519,7 @@
   {
     "name": "Preston North End",
     "shortName": "Preston",
-    "crest": "preston-north-end",
+    "badge": "preston-north-end",
     "founded": 1880,
     "currentTier": 2,
     "leagueRecord": {
@@ -9671,7 +9671,7 @@
   {
     "name": "Oxford United",
     "shortName": "Oxford",
-    "crest": "oxford-united",
+    "badge": "oxford-united",
     "founded": 1893,
     "currentTier": 2,
     "leagueRecord": {
@@ -9788,7 +9788,7 @@
   {
     "name": "Chesterfield",
     "shortName": "Chesterfield",
-    "crest": "chesterfield",
+    "badge": "chesterfield",
     "founded": 1866,
     "currentTier": 4,
     "leagueRecord": {
@@ -9897,7 +9897,7 @@
   {
     "name": "Colchester United",
     "shortName": "Colchester",
-    "crest": "colchester-united",
+    "badge": "colchester-united",
     "founded": 1937,
     "currentTier": 4,
     "leagueRecord": {
@@ -10010,7 +10010,7 @@
   {
     "name": "Walsall",
     "shortName": "Walsall",
-    "crest": "walsall",
+    "badge": "walsall",
     "founded": 1888,
     "currentTier": 4,
     "leagueRecord": {
@@ -10123,7 +10123,7 @@
   {
     "name": "Gillingham",
     "shortName": "Gillingham",
-    "crest": "gillingham",
+    "badge": "gillingham",
     "founded": 1893,
     "currentTier": 4,
     "leagueRecord": {
@@ -10231,7 +10231,7 @@
   {
     "name": "Notts County",
     "shortName": "Notts County",
-    "crest": "notts-county",
+    "badge": "notts-county",
     "founded": 1862,
     "currentTier": 4,
     "leagueRecord": {
@@ -10396,7 +10396,7 @@
   {
     "name": "Bristol Rovers",
     "shortName": "Bristol Rovers",
-    "crest": "bristol-rovers",
+    "badge": "bristol-rovers",
     "founded": 1883,
     "currentTier": 4,
     "leagueRecord": {
@@ -10511,7 +10511,7 @@
   {
     "name": "Milton Keynes Dons",
     "shortName": "MK Dons",
-    "crest": "milton-keynes-dons",
+    "badge": "milton-keynes-dons",
     "founded": 2004,
     "currentTier": 4,
     "leagueRecord": {
@@ -10615,7 +10615,7 @@
   {
     "name": "Cheltenham Town",
     "shortName": "Cheltenham",
-    "crest": "cheltenham-town",
+    "badge": "cheltenham-town",
     "founded": 1887,
     "currentTier": 4,
     "leagueRecord": {
@@ -10713,7 +10713,7 @@
   {
     "name": "Fleetwood Town",
     "shortName": "Fleetwood",
-    "crest": "fleetwood-town",
+    "badge": "fleetwood-town",
     "founded": 1908,
     "currentTier": 4,
     "leagueRecord": {
@@ -10807,7 +10807,7 @@
   {
     "name": "Crewe Alexandra",
     "shortName": "Crewe",
-    "crest": "crewe-alexandra",
+    "badge": "crewe-alexandra",
     "founded": 1877,
     "currentTier": 4,
     "leagueRecord": {
@@ -10933,7 +10933,7 @@
   {
     "name": "Oldham Athletic",
     "shortName": "Oldham",
-    "crest": "oldham-athletic",
+    "badge": "oldham-athletic",
     "founded": 1895,
     "currentTier": 4,
     "leagueRecord": {
@@ -11063,7 +11063,7 @@
   {
     "name": "Swindon Town",
     "shortName": "Swindon",
-    "crest": "swindon-town",
+    "badge": "swindon-town",
     "founded": 1879,
     "currentTier": 4,
     "leagueRecord": {
@@ -11192,7 +11192,7 @@
   {
     "name": "Shrewsbury Town",
     "shortName": "Shrewsbury",
-    "crest": "shrewsbury-town",
+    "badge": "shrewsbury-town",
     "founded": 1886,
     "currentTier": 4,
     "leagueRecord": {
@@ -11305,7 +11305,7 @@
   {
     "name": "Barrow",
     "shortName": "Barrow",
-    "crest": "barrow",
+    "badge": "barrow",
     "founded": 1901,
     "currentTier": 4,
     "leagueRecord": {
@@ -11394,7 +11394,7 @@
   {
     "name": "Bromley",
     "shortName": "Bromley",
-    "crest": "bromley",
+    "badge": "bromley",
     "founded": 1892,
     "currentTier": 4,
     "leagueRecord": {
@@ -11450,7 +11450,7 @@
   {
     "name": "Crawley Town",
     "shortName": "Crawley",
-    "crest": "crawley-town",
+    "badge": "crawley-town",
     "founded": 1896,
     "currentTier": 4,
     "leagueRecord": {
@@ -11546,7 +11546,7 @@
   {
     "name": "Barnet",
     "shortName": "Barnet",
-    "crest": "barnet",
+    "badge": "barnet",
     "founded": 1888,
     "currentTier": 4,
     "leagueRecord": {
@@ -11635,7 +11635,7 @@
   {
     "name": "Grimsby Town",
     "shortName": "Grimsby",
-    "crest": "grimsby-town",
+    "badge": "grimsby-town",
     "founded": 1878,
     "currentTier": 4,
     "leagueRecord": {
@@ -11778,7 +11778,7 @@
   {
     "name": "Newport County",
     "shortName": "Newport",
-    "crest": "newport-county",
+    "badge": "newport-county",
     "founded": 1912,
     "currentTier": 4,
     "leagueRecord": {
@@ -11882,7 +11882,7 @@
   {
     "name": "Accrington Stanley",
     "shortName": "Accrington",
-    "crest": "accrington-stanley",
+    "badge": "accrington-stanley",
     "founded": 1968,
     "currentTier": 4,
     "leagueRecord": {
@@ -11971,7 +11971,7 @@
   {
     "name": "Cambridge United",
     "shortName": "Cambridge",
-    "crest": "cambridge-united",
+    "badge": "cambridge-united",
     "founded": 1912,
     "currentTier": 4,
     "leagueRecord": {
@@ -12076,7 +12076,7 @@
   {
     "name": "Salford City",
     "shortName": "Salford",
-    "crest": "salford-city",
+    "badge": "salford-city",
     "founded": 1940,
     "currentTier": 4,
     "leagueRecord": {
@@ -12156,7 +12156,7 @@
   {
     "name": "Tranmere Rovers",
     "shortName": "Tranmere",
-    "crest": "tranmere-rovers",
+    "badge": "tranmere-rovers",
     "founded": 1884,
     "currentTier": 4,
     "leagueRecord": {
@@ -12270,7 +12270,7 @@
   {
     "name": "Harrogate Town",
     "shortName": "Harrogate",
-    "crest": "harrogate-town",
+    "badge": "harrogate-town",
     "founded": 1914,
     "currentTier": 4,
     "leagueRecord": {
@@ -12348,7 +12348,7 @@
   {
     "name": "Carlisle United",
     "shortName": "Carlisle",
-    "crest": "carlisle-united",
+    "badge": "carlisle-united",
     "founded": 1904,
     "currentTier": null,
     "leagueRecord": {
@@ -12482,7 +12482,7 @@
   {
     "name": "York City",
     "shortName": "York",
-    "crest": "york-city",
+    "badge": "york-city",
     "founded": 1922,
     "currentTier": null,
     "leagueRecord": {
@@ -12588,7 +12588,7 @@
   {
     "name": "Scunthorpe United",
     "shortName": "Scunthorpe",
-    "crest": "scunthorpe-united",
+    "badge": "scunthorpe-united",
     "founded": 1899,
     "currentTier": null,
     "leagueRecord": {
@@ -12703,7 +12703,7 @@
   {
     "name": "Southend United",
     "shortName": "Southend",
-    "crest": "southend-united",
+    "badge": "southend-united",
     "founded": 1906,
     "currentTier": null,
     "leagueRecord": {
@@ -12816,7 +12816,7 @@
   {
     "name": "Hartlepool United",
     "shortName": "Hartlepool",
-    "crest": "hartlepool-united",
+    "badge": "hartlepool-united",
     "founded": 1908,
     "currentTier": null,
     "leagueRecord": {
@@ -12913,7 +12913,7 @@
   {
     "name": "Morecambe",
     "shortName": "Morecambe",
-    "crest": "morecambe",
+    "badge": "morecambe",
     "founded": 1920,
     "currentTier": null,
     "leagueRecord": {
@@ -13001,7 +13001,7 @@
   {
     "name": "Forest Green Rovers",
     "shortName": "Forest Green",
-    "crest": "forest-green-rovers",
+    "badge": "forest-green-rovers",
     "founded": 1889,
     "currentTier": null,
     "leagueRecord": {
@@ -13090,7 +13090,7 @@
   {
     "name": "Gateshead",
     "shortName": "Gateshead",
-    "crest": "gateshead",
+    "badge": "gateshead",
     "founded": 1889,
     "currentTier": null,
     "leagueRecord": {
@@ -13152,7 +13152,7 @@
   {
     "name": "Halifax Town",
     "shortName": "Halifax",
-    "crest": "halifax-town",
+    "badge": "halifax-town",
     "founded": 1911,
     "currentTier": null,
     "leagueRecord": {
@@ -13239,7 +13239,7 @@
   {
     "name": "Aldershot Town",
     "shortName": "Aldershot",
-    "crest": "aldershot-town",
+    "badge": "aldershot-town",
     "founded": 1926,
     "currentTier": null,
     "leagueRecord": {
@@ -13321,7 +13321,7 @@
   {
     "name": "Yeovil Town",
     "shortName": "Yeovil",
-    "crest": "yeovil-town",
+    "badge": "yeovil-town",
     "founded": 1895,
     "currentTier": null,
     "leagueRecord": {

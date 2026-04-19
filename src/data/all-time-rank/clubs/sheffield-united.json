@@ -1,7 +1,7 @@
 {
   "name": "Sheffield United",
   "shortName": "Sheffield Utd",
-  "crest": "sheffield-united",
+  "badge": "sheffield-united",
   "founded": 1889,
   "currentTier": 2,
   "leagueRecord": {

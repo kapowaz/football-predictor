@@ -22,7 +22,7 @@ export interface HistoricalDivision {
   teamCount: number;
   /** Promotion, relegation, and playoff zones for this division. */
   zones: HistoricalZone[];
-  /** Club crest slugs in final league position order. */
+  /** Club badge slugs in final league position order. */
   teams: string[];
 }
 

@@ -1,7 +1,7 @@
 {
   "name": "Exeter City",
   "shortName": "Exeter",
-  "crest": "exeter-city",
+  "badge": "exeter-city",
   "founded": 1904,
   "currentTier": 3,
   "leagueRecord": {

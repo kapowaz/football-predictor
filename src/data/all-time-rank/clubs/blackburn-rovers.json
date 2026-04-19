@@ -1,7 +1,7 @@
 {
   "name": "Blackburn Rovers",
   "shortName": "Blackburn",
-  "crest": "blackburn-rovers",
+  "badge": "blackburn-rovers",
   "founded": 1875,
   "currentTier": 2,
   "leagueRecord": {

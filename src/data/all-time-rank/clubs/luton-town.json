@@ -1,7 +1,7 @@
 {
   "name": "Luton Town",
   "shortName": "Luton",
-  "crest": "luton-town",
+  "badge": "luton-town",
   "founded": 1885,
   "currentTier": 3,
   "leagueRecord": {

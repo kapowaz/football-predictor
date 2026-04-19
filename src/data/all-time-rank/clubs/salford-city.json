@@ -1,7 +1,7 @@
 {
   "name": "Salford City",
   "shortName": "Salford",
-  "crest": "salford-city",
+  "badge": "salford-city",
   "founded": 1940,
   "currentTier": 4,
   "leagueRecord": {

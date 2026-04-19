@@ -1,7 +1,7 @@
 {
   "name": "Huddersfield Town",
   "shortName": "Huddersfield",
-  "crest": "huddersfield-town",
+  "badge": "huddersfield-town",
   "founded": 1908,
   "currentTier": 3,
   "leagueRecord": {

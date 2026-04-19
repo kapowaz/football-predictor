@@ -1,7 +1,7 @@
 {
   "name": "Wycombe Wanderers",
   "shortName": "Wycombe",
-  "crest": "wycombe-wanderers",
+  "badge": "wycombe-wanderers",
   "founded": 1887,
   "currentTier": 3,
   "leagueRecord": {

@@ -1,7 +1,7 @@
 {
   "name": "Port Vale",
   "shortName": "Port Vale",
-  "crest": "port-vale",
+  "badge": "port-vale",
   "founded": 1876,
   "currentTier": 3,
   "leagueRecord": {

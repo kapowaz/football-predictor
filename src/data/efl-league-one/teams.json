@@ -8,7 +8,7 @@
       "name": "Bolton Wanderers",
       "shortName": "Bolton",
       "tla": "BOL",
-      "crest": "bolton-wanderers"
+      "badge": "bolton-wanderers"
     },
     {
       "id": 75,
@@ -16,7 +16,7 @@
       "name": "Wigan Athletic",
       "shortName": "Wigan Athletic",
       "tla": "WIG",
-      "crest": "wigan-athletic"
+      "badge": "wigan-athletic"
     },
     {
       "id": 336,
@@ -24,7 +24,7 @@
       "name": "Blackpool",
       "shortName": "Blackpool",
       "tla": "BPL",
-      "crest": "blackpool"
+      "badge": "blackpool"
     },
     {
       "id": 347,
@@ -32,7 +32,7 @@
       "name": "AFC Wimbledon",
       "shortName": "AFC Wimbledon",
       "tla": "WMB",
-      "crest": "afc-wimbledon"
+      "badge": "afc-wimbledon"
     },
     {
       "id": 355,
@@ -40,7 +40,7 @@
       "name": "Reading",
       "shortName": "Reading",
       "tla": "REA",
-      "crest": "reading"
+      "badge": "reading"
     },
     {
       "id": 357,
@@ -48,7 +48,7 @@
       "name": "Barnsley",
       "shortName": "Barnsley",
       "tla": "BAR",
-      "crest": "barnsley"
+      "badge": "barnsley"
     },
     {
       "id": 376,
@@ -56,7 +56,7 @@
       "name": "Northampton Town",
       "shortName": "Northampton",
       "tla": "NTH",
-      "crest": "northampton-town"
+      "badge": "northampton-town"
     },
     {
       "id": 385,
@@ -64,7 +64,7 @@
       "name": "Rotherham United",
       "shortName": "Rotherham Utd",
       "tla": "ROT",
-      "crest": "rotherham-united"
+      "badge": "rotherham-united"
     },
     {
       "id": 389,
@@ -72,7 +72,7 @@
       "name": "Luton Town",
       "shortName": "Luton Town",
       "tla": "LUT",
-      "crest": "luton-town"
+      "badge": "luton-town"
     },
     {
       "id": 393,
@@ -80,7 +80,7 @@
       "name": "Port Vale",
       "shortName": "Port Vale",
       "tla": "PVL",
-      "crest": "port-vale"
+      "badge": "port-vale"
     },
     {
       "id": 394,
@@ -88,7 +88,7 @@
       "name": "Huddersfield Town",
       "shortName": "Huddersfield",
       "tla": "HUD",
-      "crest": "huddersfield-town"
+      "badge": "huddersfield-town"
     },
     {
       "id": 396,
@@ -96,7 +96,7 @@
       "name": "Stockport County",
       "shortName": "Stockport",
       "tla": "STO",
-      "crest": "stockport-county"
+      "badge": "stockport-county"
     },
     {
       "id": 399,
@@ -104,7 +104,7 @@
       "name": "Leyton Orient",
       "shortName": "Leyton Orient",
       "tla": "LEY",
-      "crest": "leyton-orient"
+      "badge": "leyton-orient"
     },
     {
       "id": 715,
@@ -112,7 +112,7 @@
       "name": "Cardiff City",
       "shortName": "Cardiff",
       "tla": "CAR",
-      "crest": "cardiff-city"
+      "badge": "cardiff-city"
     },
     {
       "id": 1067,
@@ -120,7 +120,7 @@
       "name": "Bradford City",
       "shortName": "Bradford City",
       "tla": "BRA",
-      "crest": "bradford-city"
+      "badge": "bradford-city"
     },
     {
       "id": 1071,
@@ -128,7 +128,7 @@
       "name": "Doncaster Rovers",
       "shortName": "Doncaster",
       "tla": "DON",
-      "crest": "doncaster-rovers"
+      "badge": "doncaster-rovers"
     },
     {
       "id": 1072,
@@ -136,7 +136,7 @@
       "name": "Burton Albion",
       "shortName": "Burton Albion",
       "tla": "BTA",
-      "crest": "burton-albion"
+      "badge": "burton-albion"
     },
     {
       "id": 1077,
@@ -144,7 +144,7 @@
       "name": "Peterborough United",
       "shortName": "Peterborough",
       "tla": "PET",
-      "crest": "peterborough-united"
+      "badge": "peterborough-united"
     },
     {
       "id": 1126,
@@ -152,7 +152,7 @@
       "name": "Lincoln City",
       "shortName": "Lincoln City",
       "tla": "LIN",
-      "crest": "lincoln-city"
+      "badge": "lincoln-city"
     },
     {
       "id": 1133,
@@ -160,7 +160,7 @@
       "name": "Mansfield Town",
       "shortName": "Mansfield Town",
       "tla": "MAN",
-      "crest": "mansfield-town"
+      "badge": "mansfield-town"
     },
     {
       "id": 1135,
@@ -168,7 +168,7 @@
       "name": "Exeter City",
       "shortName": "Exeter City",
       "tla": "EXE",
-      "crest": "exeter-city"
+      "badge": "exeter-city"
     },
     {
       "id": 1138,
@@ -176,7 +176,7 @@
       "name": "Plymouth Argyle",
       "shortName": "Plymouth Arg",
       "tla": "PLY",
-      "crest": "plymouth-argyle"
+      "badge": "plymouth-argyle"
     },
     {
       "id": 1144,
@@ -184,7 +184,7 @@
       "name": "Stevenage",
       "shortName": "Stevenage",
       "tla": "STE",
-      "crest": "stevenage"
+      "badge": "stevenage"
     },
     {
       "id": 1146,
@@ -192,7 +192,7 @@
       "name": "Wycombe Wanderers",
       "shortName": "Wycombe",
       "tla": "WYC",
-      "crest": "wycombe-wanderers"
+      "badge": "wycombe-wanderers"
     }
   ]
 }

@@ -1,7 +1,7 @@
 {
   "name": "Leicester City",
   "shortName": "Leicester",
-  "crest": "leicester-city",
+  "badge": "leicester-city",
   "founded": 1884,
   "currentTier": 2,
   "leagueRecord": {

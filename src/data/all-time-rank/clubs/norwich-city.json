@@ -1,7 +1,7 @@
 {
   "name": "Norwich City",
   "shortName": "Norwich",
-  "crest": "norwich-city",
+  "badge": "norwich-city",
   "founded": 1902,
   "currentTier": 2,
   "leagueRecord": {

@@ -1,7 +1,7 @@
 {
   "name": "Sheffield Wednesday",
   "shortName": "Sheffield Wed",
-  "crest": "sheffield-wednesday",
+  "badge": "sheffield-wednesday",
   "founded": 1867,
   "currentTier": 2,
   "leagueRecord": {

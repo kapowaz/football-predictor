@@ -53,7 +53,7 @@ interface TeamJson {
   name: string;
   shortName: string;
   tla: string;
-  crest: string;
+  badge: string;
 }
 
 interface TeamsJson {

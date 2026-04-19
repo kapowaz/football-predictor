@@ -1,7 +1,7 @@
 {
   "name": "Charlton Athletic",
   "shortName": "Charlton",
-  "crest": "charlton-athletic",
+  "badge": "charlton-athletic",
   "founded": 1905,
   "currentTier": 2,
   "leagueRecord": {

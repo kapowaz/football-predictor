@@ -1,7 +1,7 @@
 {
   "name": "West Ham United",
   "shortName": "West Ham",
-  "crest": "west-ham-united",
+  "badge": "west-ham-united",
   "founded": 1895,
   "currentTier": 1,
   "leagueRecord": {
