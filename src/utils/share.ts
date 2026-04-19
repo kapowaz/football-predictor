@@ -1,5 +1,5 @@
-import type { TeamStanding } from '../types';
 import type { CompetitionConfig } from '../data/competitions';
+import type { TeamStanding } from '../types';
 import { groupStandingsByZone } from './zones';
 
 export const generateShareText = (
@@ -16,7 +16,9 @@ export const generateShareText = (
   ];
 
   for (const { zone, teams } of zoneGroups) {
-    lines.push(`${zone.emoji} ${zone.label}: ${teams.map((s) => s.team.name).join(', ')}`);
+    lines.push(
+      `${zone.emoji} ${zone.label}: ${teams.map((s) => s.team.name).join(', ')}`,
+    );
   }
 
   return lines.join('\n');

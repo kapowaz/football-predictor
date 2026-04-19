@@ -1,4 +1,5 @@
 import { create } from 'zustand';
+
 import type { PointDeduction, PredictionsStore } from '../types';
 
 export type PersistenceMode = 'full' | 'storageOnly';
@@ -21,10 +22,18 @@ interface CompetitionSessionStoreState {
     slug: string,
     initial: Pick<
       CompetitionSessionData,
-      'predictions' | 'deductions' | 'deductionsCustomised' | 'defaultDeductions'
+      | 'predictions'
+      | 'deductions'
+      | 'deductionsCustomised'
+      | 'defaultDeductions'
     >,
   ) => void;
-  setPrediction: (slug: string, matchId: number, homeGoals: number, awayGoals: number) => void;
+  setPrediction: (
+    slug: string,
+    matchId: number,
+    homeGoals: number,
+    awayGoals: number,
+  ) => void;
   removePrediction: (slug: string, matchId: number) => void;
   resetAllPredictions: (slug: string) => void;
   fillFromModel: (
@@ -65,182 +74,186 @@ const withSession = (
   };
 };
 
-export const useCompetitionSessionStore = create<CompetitionSessionStoreState>((set) => ({
-  sessions: {},
+export const useCompetitionSessionStore = create<CompetitionSessionStoreState>(
+  (set) => ({
+    sessions: {},
 
-  initializeSession: (slug, initial) => {
-    set((state) => {
-      const existing = state.sessions[slug];
-      if (existing) {
+    initializeSession: (slug, initial) => {
+      set((state) => {
+        const existing = state.sessions[slug];
+        if (existing) {
+          return {
+            sessions: {
+              ...state.sessions,
+              [slug]: {
+                ...existing,
+                defaultDeductions: initial.defaultDeductions,
+              },
+            },
+          };
+        }
+
         return {
           sessions: {
             ...state.sessions,
             [slug]: {
-              ...existing,
+              predictions: initial.predictions,
+              deductions: initial.deductions,
+              deductionsCustomised: initial.deductionsCustomised,
               defaultDeductions: initial.defaultDeductions,
+              activeTab: 'standings',
+              navigateToMatchId: null,
+              deductionsModalOpen: false,
+              summaryDismissed: false,
             },
           },
         };
-      }
+      });
+    },
 
-      return {
-        sessions: {
-          ...state.sessions,
-          [slug]: {
-            predictions: initial.predictions,
-            deductions: initial.deductions,
-            deductionsCustomised: initial.deductionsCustomised,
-            defaultDeductions: initial.defaultDeductions,
-            activeTab: 'standings',
-            navigateToMatchId: null,
-            deductionsModalOpen: false,
-            summaryDismissed: false,
-          },
-        },
-      };
-    });
-  },
-
-  setPrediction: (slug, matchId, homeGoals, awayGoals) => {
-    set((state) => ({
-      sessions: withSession(state.sessions, slug, (session) => ({
-        ...session,
-        predictions: {
-          predictions: {
-            ...session.predictions.predictions,
-            [String(matchId)]: { homeGoals, awayGoals },
-          },
-          lastModified: nowIso(),
-        },
-      })),
-    }));
-  },
-
-  removePrediction: (slug, matchId) => {
-    set((state) => ({
-      sessions: withSession(state.sessions, slug, (session) => {
-        const updatedPredictions = { ...session.predictions.predictions };
-        delete updatedPredictions[String(matchId)];
-
-        return {
+    setPrediction: (slug, matchId, homeGoals, awayGoals) => {
+      set((state) => ({
+        sessions: withSession(state.sessions, slug, (session) => ({
           ...session,
           predictions: {
-            predictions: updatedPredictions,
+            predictions: {
+              ...session.predictions.predictions,
+              [String(matchId)]: { homeGoals, awayGoals },
+            },
             lastModified: nowIso(),
           },
-        };
-      }),
-    }));
-  },
+        })),
+      }));
+    },
 
-  resetAllPredictions: (slug) => {
-    set((state) => ({
-      sessions: withSession(state.sessions, slug, (session) => ({
-        ...session,
-        predictions: emptyPredictions(),
-      })),
-    }));
-  },
+    removePrediction: (slug, matchId) => {
+      set((state) => ({
+        sessions: withSession(state.sessions, slug, (session) => {
+          const updatedPredictions = { ...session.predictions.predictions };
+          delete updatedPredictions[String(matchId)];
 
-  fillFromModel: (slug, modelPredictions) => {
-    set((state) => ({
-      sessions: withSession(state.sessions, slug, (session) => ({
-        ...session,
-        predictions: {
-          predictions: { ...modelPredictions },
-          lastModified: nowIso(),
-        },
-      })),
-    }));
-  },
+          return {
+            ...session,
+            predictions: {
+              predictions: updatedPredictions,
+              lastModified: nowIso(),
+            },
+          };
+        }),
+      }));
+    },
 
-  updateDeduction: (slug, teamId, amount) => {
-    set((state) => ({
-      sessions: withSession(state.sessions, slug, (session) => ({
-        ...session,
-        deductionsCustomised: true,
-        deductions: session.deductions.map((deduction) =>
-          deduction.teamId === teamId ? { ...deduction, amount } : deduction,
-        ),
-      })),
-    }));
-  },
+    resetAllPredictions: (slug) => {
+      set((state) => ({
+        sessions: withSession(state.sessions, slug, (session) => ({
+          ...session,
+          predictions: emptyPredictions(),
+        })),
+      }));
+    },
 
-  addDeduction: (slug, teamId, amount) => {
-    set((state) => ({
-      sessions: withSession(state.sessions, slug, (session) => ({
-        ...session,
-        deductionsCustomised: true,
-        deductions: [...session.deductions, { teamId, amount }],
-      })),
-    }));
-  },
+    fillFromModel: (slug, modelPredictions) => {
+      set((state) => ({
+        sessions: withSession(state.sessions, slug, (session) => ({
+          ...session,
+          predictions: {
+            predictions: { ...modelPredictions },
+            lastModified: nowIso(),
+          },
+        })),
+      }));
+    },
 
-  removeDeduction: (slug, teamId) => {
-    set((state) => ({
-      sessions: withSession(state.sessions, slug, (session) => ({
-        ...session,
-        deductionsCustomised: true,
-        deductions: session.deductions.filter((deduction) => deduction.teamId !== teamId),
-      })),
-    }));
-  },
+    updateDeduction: (slug, teamId, amount) => {
+      set((state) => ({
+        sessions: withSession(state.sessions, slug, (session) => ({
+          ...session,
+          deductionsCustomised: true,
+          deductions: session.deductions.map((deduction) =>
+            deduction.teamId === teamId ? { ...deduction, amount } : deduction,
+          ),
+        })),
+      }));
+    },
 
-  resetDeductions: (slug) => {
-    set((state) => ({
-      sessions: withSession(state.sessions, slug, (session) => ({
-        ...session,
-        deductionsCustomised: false,
-        deductions: session.defaultDeductions,
-      })),
-    }));
-  },
+    addDeduction: (slug, teamId, amount) => {
+      set((state) => ({
+        sessions: withSession(state.sessions, slug, (session) => ({
+          ...session,
+          deductionsCustomised: true,
+          deductions: [...session.deductions, { teamId, amount }],
+        })),
+      }));
+    },
 
-  setActiveTab: (slug, tabId) => {
-    set((state) => ({
-      sessions: withSession(state.sessions, slug, (session) => ({
-        ...session,
-        activeTab: tabId,
-      })),
-    }));
-  },
+    removeDeduction: (slug, teamId) => {
+      set((state) => ({
+        sessions: withSession(state.sessions, slug, (session) => ({
+          ...session,
+          deductionsCustomised: true,
+          deductions: session.deductions.filter(
+            (deduction) => deduction.teamId !== teamId,
+          ),
+        })),
+      }));
+    },
 
-  setNavigateToMatchId: (slug, matchId) => {
-    set((state) => ({
-      sessions: withSession(state.sessions, slug, (session) => ({
-        ...session,
-        navigateToMatchId: matchId,
-      })),
-    }));
-  },
+    resetDeductions: (slug) => {
+      set((state) => ({
+        sessions: withSession(state.sessions, slug, (session) => ({
+          ...session,
+          deductionsCustomised: false,
+          deductions: session.defaultDeductions,
+        })),
+      }));
+    },
 
-  setDeductionsModalOpen: (slug, isOpen) => {
-    set((state) => ({
-      sessions: withSession(state.sessions, slug, (session) => ({
-        ...session,
-        deductionsModalOpen: isOpen,
-      })),
-    }));
-  },
+    setActiveTab: (slug, tabId) => {
+      set((state) => ({
+        sessions: withSession(state.sessions, slug, (session) => ({
+          ...session,
+          activeTab: tabId,
+        })),
+      }));
+    },
 
-  dismissSummary: (slug) => {
-    set((state) => ({
-      sessions: withSession(state.sessions, slug, (session) => ({
-        ...session,
-        summaryDismissed: true,
-      })),
-    }));
-  },
+    setNavigateToMatchId: (slug, matchId) => {
+      set((state) => ({
+        sessions: withSession(state.sessions, slug, (session) => ({
+          ...session,
+          navigateToMatchId: matchId,
+        })),
+      }));
+    },
 
-  resetSummaryDismissed: (slug) => {
-    set((state) => ({
-      sessions: withSession(state.sessions, slug, (session) => ({
-        ...session,
-        summaryDismissed: false,
-      })),
-    }));
-  },
-}));
+    setDeductionsModalOpen: (slug, isOpen) => {
+      set((state) => ({
+        sessions: withSession(state.sessions, slug, (session) => ({
+          ...session,
+          deductionsModalOpen: isOpen,
+        })),
+      }));
+    },
+
+    dismissSummary: (slug) => {
+      set((state) => ({
+        sessions: withSession(state.sessions, slug, (session) => ({
+          ...session,
+          summaryDismissed: true,
+        })),
+      }));
+    },
+
+    resetSummaryDismissed: (slug) => {
+      set((state) => ({
+        sessions: withSession(state.sessions, slug, (session) => ({
+          ...session,
+          summaryDismissed: false,
+        })),
+      }));
+    },
+  }),
+);
 
 export const createDefaultSession = (
   defaultDeductions: PointDeduction[],

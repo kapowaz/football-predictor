@@ -1,5 +1,6 @@
 import { renderHook } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
+
 import type { Match, PredictionsStore, Team } from '../types';
 import { useTeamGroupedMatches } from './useTeamGroupedMatches';
 
@@ -44,7 +45,10 @@ const finished = (
   awayGoals,
 });
 
-const emptyPredictions: PredictionsStore = { predictions: {}, lastModified: '' };
+const emptyPredictions: PredictionsStore = {
+  predictions: {},
+  lastModified: '',
+};
 
 const teams = [team(1, 'Arsenal'), team(2, 'Chelsea'), team(3, 'Liverpool')];
 const teamsById = new Map(teams.map((t) => [t.id, t]));

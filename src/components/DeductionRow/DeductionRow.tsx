@@ -1,8 +1,10 @@
 import { useCallback } from 'react';
 import { AbstractText, IconButton, TextInput } from '@kapowaz/components';
-import { Trash2 } from '@kapowaz/icons';
 import { getClubBadge } from '@kapowaz/football-badges';
+import { Trash2 } from '@kapowaz/icons';
+
 import type { PointDeduction, Team } from '../../types';
+
 import * as styles from './DeductionRow.css';
 
 export interface DeductionRowProps {
@@ -16,7 +18,12 @@ export interface DeductionRowProps {
   onRemove: (teamId: number) => void;
 }
 
-export const DeductionRow = ({ deduction, team, onUpdate, onRemove }: DeductionRowProps) => {
+export const DeductionRow = ({
+  deduction,
+  team,
+  onUpdate,
+  onRemove,
+}: DeductionRowProps) => {
   const handleAmountChange = useCallback(
     (val: string) => {
       const stripped = val.replace(/\D/g, '');
@@ -34,8 +41,19 @@ export const DeductionRow = ({ deduction, team, onUpdate, onRemove }: DeductionR
   return (
     <div className={styles.deductionRow}>
       <div className={styles.deductionRowTop}>
-        {team && <img src={getClubBadge(team.badge)} alt={team.name} className={styles.badge} />}
-        <AbstractText tagName="span" className={styles.teamName} fontSize="md" fontWeight="medium">
+        {team && (
+          <img
+            src={getClubBadge(team.badge)}
+            alt={team.name}
+            className={styles.badge}
+          />
+        )}
+        <AbstractText
+          tagName="span"
+          className={styles.teamName}
+          fontSize="md"
+          fontWeight="medium"
+        >
           {teamLabel}
         </AbstractText>
         <div className={styles.deductionActions}>
@@ -57,7 +75,11 @@ export const DeductionRow = ({ deduction, team, onUpdate, onRemove }: DeductionR
         </div>
       </div>
       {deduction.reason && (
-        <AbstractText tagName="span" className={styles.deductionReasonText} fontSize="sm">
+        <AbstractText
+          tagName="span"
+          className={styles.deductionReasonText}
+          fontSize="sm"
+        >
           {deduction.reason}
         </AbstractText>
       )}

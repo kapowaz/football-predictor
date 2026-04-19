@@ -1,5 +1,9 @@
 import { describe, it, expect } from 'vitest';
-import type { AllTimeClubData, ScoringWeights } from '../data/all-time-rank/types';
+
+import type {
+  AllTimeClubData,
+  ScoringWeights,
+} from '../data/all-time-rank/types';
 import { calculateAllTimeScores, DEFAULT_WEIGHTS } from './allTimeRank';
 
 const emptyTieredHonours = { tier1: [], tier2: [], tier3: [], tier4: [] };
@@ -12,7 +16,9 @@ const emptyEuropean = {
   conferenceLeagueRunnersUp: [],
 };
 
-const makeClub = (overrides: Partial<AllTimeClubData> = {}): AllTimeClubData => ({
+const makeClub = (
+  overrides: Partial<AllTimeClubData> = {},
+): AllTimeClubData => ({
   name: 'Test Club',
   shortName: 'Test',
   badge: 'test',
@@ -46,7 +52,9 @@ describe('calculateAllTimeScores', () => {
     const clubA = makeClub({
       name: 'Strong Club',
       leagueRecord: {
-        tier1: { 2025: { won: 30, drawn: 5, lost: 3, goalsFor: 90, goalsAgainst: 30 } },
+        tier1: {
+          2025: { won: 30, drawn: 5, lost: 3, goalsFor: 90, goalsAgainst: 30 },
+        },
         tier2: {},
         tier3: {},
         tier4: {},
@@ -58,7 +66,9 @@ describe('calculateAllTimeScores', () => {
         tier1: {},
         tier2: {},
         tier3: {},
-        tier4: { 2025: { won: 10, drawn: 5, lost: 23, goalsFor: 40, goalsAgainst: 70 } },
+        tier4: {
+          2025: { won: 10, drawn: 5, lost: 23, goalsFor: 40, goalsAgainst: 70 },
+        },
       },
     });
 
@@ -71,7 +81,13 @@ describe('calculateAllTimeScores', () => {
   });
 
   it('applies tier weights correctly — tier 1 scores higher than tier 4', () => {
-    const seasonRecord = { won: 20, drawn: 10, lost: 10, goalsFor: 60, goalsAgainst: 40 };
+    const seasonRecord = {
+      won: 20,
+      drawn: 10,
+      lost: 10,
+      goalsFor: 60,
+      goalsAgainst: 40,
+    };
 
     const clubTier1 = makeClub({
       name: 'Tier 1 Club',
@@ -92,7 +108,10 @@ describe('calculateAllTimeScores', () => {
       },
     });
 
-    const results = calculateAllTimeScores([clubTier4, clubTier1], noDecayWeights);
+    const results = calculateAllTimeScores(
+      [clubTier4, clubTier1],
+      noDecayWeights,
+    );
 
     expect(results[0].club.name).toBe('Tier 1 Club');
     expect(results[0].leagueScore).toBe(results[1].leagueScore * 4);
@@ -101,7 +120,9 @@ describe('calculateAllTimeScores', () => {
   it('scores league performance as (3W + D) * tier_weight', () => {
     const club = makeClub({
       leagueRecord: {
-        tier1: { 2025: { won: 10, drawn: 5, lost: 5, goalsFor: 40, goalsAgainst: 25 } },
+        tier1: {
+          2025: { won: 10, drawn: 5, lost: 5, goalsFor: 40, goalsAgainst: 25 },
+        },
         tier2: {},
         tier3: {},
         tier4: {},
@@ -178,7 +199,13 @@ describe('calculateAllTimeScores', () => {
   });
 
   it('reduces scores for older seasons when decay is enabled', () => {
-    const season = { won: 20, drawn: 10, lost: 10, goalsFor: 60, goalsAgainst: 40 };
+    const season = {
+      won: 20,
+      drawn: 10,
+      lost: 10,
+      goalsFor: 60,
+      goalsAgainst: 40,
+    };
 
     const recentClub = makeClub({
       name: 'Recent',
@@ -199,7 +226,10 @@ describe('calculateAllTimeScores', () => {
       },
     });
 
-    const decayWeights: ScoringWeights = { ...noDecayWeights, decayFloor: 0.15 };
+    const decayWeights: ScoringWeights = {
+      ...noDecayWeights,
+      decayFloor: 0.15,
+    };
     const results = calculateAllTimeScores([recentClub, oldClub], decayWeights);
 
     expect(results[0].club.name).toBe('Recent');
@@ -207,7 +237,13 @@ describe('calculateAllTimeScores', () => {
   });
 
   it('produces equal scores with decayFloor 1.0 (no decay)', () => {
-    const season = { won: 20, drawn: 10, lost: 10, goalsFor: 60, goalsAgainst: 40 };
+    const season = {
+      won: 20,
+      drawn: 10,
+      lost: 10,
+      goalsFor: 60,
+      goalsAgainst: 40,
+    };
 
     const clubA = makeClub({
       name: 'Club A',

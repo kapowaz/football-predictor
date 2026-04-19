@@ -1,9 +1,11 @@
 import { useMemo } from 'react';
 import { AbstractText, Modal } from '@kapowaz/components';
 import type { ModalAction } from '@kapowaz/components';
+
 import type { PointDeduction, Team } from '../../types';
-import { DeductionRow } from '../DeductionRow';
 import { AddDeductionForm } from '../AddDeductionForm';
+import { DeductionRow } from '../DeductionRow';
+
 import * as styles from './DeductionsModal.css';
 
 interface DeductionsModalProps {
@@ -38,11 +40,20 @@ export const DeductionsModal = ({
   onRemove,
   onReset,
 }: DeductionsModalProps) => {
-  const teamsById = useMemo(() => new Map(teams.map((t) => [t.id, t])), [teams]);
+  const teamsById = useMemo(
+    () => new Map(teams.map((t) => [t.id, t])),
+    [teams],
+  );
 
   const actions: ModalAction[] = [
     ...(isCustomised
-      ? [{ type: 'danger' as const, label: 'Reset to Defaults', onClick: onReset }]
+      ? [
+          {
+            type: 'danger' as const,
+            label: 'Reset to Defaults',
+            onClick: onReset,
+          },
+        ]
       : []),
     { type: 'primary' as const, label: 'Done', onClick: onClose },
   ];
@@ -54,7 +65,9 @@ export const DeductionsModal = ({
       contentLabel="Point Deductions"
       heading="Point Deductions"
       actions={actions}
-      footerContent={<AddDeductionForm teams={teams} deductions={deductions} onAdd={onAdd} />}
+      footerContent={
+        <AddDeductionForm teams={teams} deductions={deductions} onAdd={onAdd} />
+      }
     >
       <div className={styles.modalBody}>
         <AbstractText
@@ -69,7 +82,11 @@ export const DeductionsModal = ({
         </AbstractText>
         <div className={styles.deductionList}>
           {deductions.length === 0 && (
-            <AbstractText tagName="div" className={styles.emptyState} fontSize="md">
+            <AbstractText
+              tagName="div"
+              className={styles.emptyState}
+              fontSize="md"
+            >
               No point deductions applied.
             </AbstractText>
           )}

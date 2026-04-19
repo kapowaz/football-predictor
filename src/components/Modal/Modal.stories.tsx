@@ -1,7 +1,8 @@
-import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { useState } from 'react';
 import { action } from 'storybook/actions';
 import { Button } from '@kapowaz/components';
+
 import { Modal } from './Modal';
 
 const meta = {

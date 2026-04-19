@@ -49,5 +49,11 @@ export default defineConfig({
     environment: 'jsdom',
     setupFiles: ['./src/test/setup.ts'],
     css: { modules: { classNameStrategy: 'non-scoped' } },
+    // Allow vitest to transform .svg imports from @kapowaz/football-badges
+    server: {
+      deps: {
+        inline: ['@kapowaz/football-badges'],
+      },
+    },
   },
 })

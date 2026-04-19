@@ -1,5 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
-import type { Team, Match, PredictionsStore, PointDeduction, VariantRulesMode } from '../types';
+
+import type {
+  Team,
+  Match,
+  PredictionsStore,
+  PointDeduction,
+  VariantRulesMode,
+} from '../types';
 import type { PositionHistoryResponse } from '../workers/positionHistory.worker';
 
 let worker: Worker | null = null;
@@ -47,7 +54,14 @@ export const usePositionHistory = (
     };
 
     w.addEventListener('message', handler);
-    w.postMessage({ requestId: id, teams, matches, predictions, deductions, variantRules });
+    w.postMessage({
+      requestId: id,
+      teams,
+      matches,
+      predictions,
+      deductions,
+      variantRules,
+    });
 
     return () => {
       w.removeEventListener('message', handler);

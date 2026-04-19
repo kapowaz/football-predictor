@@ -1,7 +1,14 @@
 import { useState, useMemo, useCallback } from 'react';
-import { AbstractSpacer, AbstractText, Button, TextInput } from '@kapowaz/components';
+import {
+  AbstractSpacer,
+  AbstractText,
+  Button,
+  TextInput,
+} from '@kapowaz/components';
 import { TeamSelect } from '@kapowaz/football';
+
 import type { PointDeduction, Team } from '../../types';
+
 import * as styles from './AddDeductionForm.css';
 
 export interface AddDeductionFormProps {
@@ -13,16 +20,23 @@ export interface AddDeductionFormProps {
   onAdd: (teamId: number, amount: number) => void;
 }
 
-export const AddDeductionForm = ({ teams, deductions, onAdd }: AddDeductionFormProps) => {
+export const AddDeductionForm = ({
+  teams,
+  deductions,
+  onAdd,
+}: AddDeductionFormProps) => {
   const availableTeams = useMemo(() => {
     const deductedIds = new Set(deductions.map((d) => d.teamId));
-    return teams.filter((t) => !deductedIds.has(t.id)).sort((a, b) => a.name.localeCompare(b.name));
+    return teams
+      .filter((t) => !deductedIds.has(t.id))
+      .sort((a, b) => a.name.localeCompare(b.name));
   }, [teams, deductions]);
 
   const [newTeamId, setNewTeamId] = useState<number | ''>('');
   const [newAmount, setNewAmount] = useState('');
 
-  const canAdd = newTeamId !== '' && newAmount !== '' && parseInt(newAmount, 10) > 0;
+  const canAdd =
+    newTeamId !== '' && newAmount !== '' && parseInt(newAmount, 10) > 0;
 
   const handleAdd = useCallback(() => {
     if (!canAdd || typeof newTeamId !== 'number') return;

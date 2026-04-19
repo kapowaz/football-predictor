@@ -32,7 +32,9 @@ export const calculatePositionHistory = (
   const teamsById = new Map(teams.map((team) => [team.id, team] as const));
   const results = resolveMatchResults(matches, predictions, teamsById);
 
-  const standingsMap = new Map(teams.map((team) => [team.id, createEmptyStanding(team)] as const));
+  const standingsMap = new Map(
+    teams.map((team) => [team.id, createEmptyStanding(team)] as const),
+  );
 
   for (const deduction of deductions) {
     const standing = standingsMap.get(deduction.teamId);
@@ -42,7 +44,9 @@ export const calculatePositionHistory = (
     }
   }
 
-  const matchCounts = new Map<number, number>(teams.map((team) => [team.id, 0]));
+  const matchCounts = new Map<number, number>(
+    teams.map((team) => [team.id, 0]),
+  );
   const history = new Map<number, number[]>(teams.map((team) => [team.id, []]));
   const processedResults: MatchResult[] = [];
   let currentMinPlayed = 0;
@@ -64,8 +68,17 @@ export const calculatePositionHistory = (
     };
 
     if (homeStanding) {
-      applyResult(homeStanding, result.homeGoals, result.awayGoals, homeEntry, variantRules);
-      matchCounts.set(result.homeTeamId, (matchCounts.get(result.homeTeamId) ?? 0) + 1);
+      applyResult(
+        homeStanding,
+        result.homeGoals,
+        result.awayGoals,
+        homeEntry,
+        variantRules,
+      );
+      matchCounts.set(
+        result.homeTeamId,
+        (matchCounts.get(result.homeTeamId) ?? 0) + 1,
+      );
     }
 
     if (awayStanding) {
@@ -75,8 +88,17 @@ export const calculatePositionHistory = (
         goalsScored: result.awayGoals,
         goalsConceded: result.homeGoals,
       };
-      applyResult(awayStanding, result.awayGoals, result.homeGoals, awayEntry, variantRules);
-      matchCounts.set(result.awayTeamId, (matchCounts.get(result.awayTeamId) ?? 0) + 1);
+      applyResult(
+        awayStanding,
+        result.awayGoals,
+        result.homeGoals,
+        awayEntry,
+        variantRules,
+      );
+      matchCounts.set(
+        result.awayTeamId,
+        (matchCounts.get(result.awayTeamId) ?? 0) + 1,
+      );
     }
 
     processedResults.push(result);

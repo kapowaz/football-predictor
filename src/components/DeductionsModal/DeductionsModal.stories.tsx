@@ -1,14 +1,36 @@
-import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { useState } from 'react';
 import { action } from 'storybook/actions';
 import { Button } from '@kapowaz/components';
-import { DeductionsModal } from './DeductionsModal';
+
 import type { Team, PointDeduction } from '../../types';
+import { DeductionsModal } from './DeductionsModal';
 
 const teams: Team[] = [
-  { id: 1, fotmobId: 100, name: 'Arsenal', shortName: 'Arsenal', tla: 'ARS', badge: 'arsenal' },
-  { id: 2, fotmobId: 200, name: 'Chelsea', shortName: 'Chelsea', tla: 'CHE', badge: 'chelsea' },
-  { id: 3, fotmobId: 300, name: 'Manchester United', shortName: 'Man United', tla: 'MUN', badge: 'manchester-united' },
+  {
+    id: 1,
+    fotmobId: 100,
+    name: 'Arsenal',
+    shortName: 'Arsenal',
+    tla: 'ARS',
+    badge: 'arsenal',
+  },
+  {
+    id: 2,
+    fotmobId: 200,
+    name: 'Chelsea',
+    shortName: 'Chelsea',
+    tla: 'CHE',
+    badge: 'chelsea',
+  },
+  {
+    id: 3,
+    fotmobId: 300,
+    name: 'Manchester United',
+    shortName: 'Man United',
+    tla: 'MUN',
+    badge: 'manchester-united',
+  },
 ];
 
 const deductions: PointDeduction[] = [

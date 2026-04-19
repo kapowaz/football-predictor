@@ -3,7 +3,8 @@ import type { PointDeduction, PredictionsStore } from '../types';
 const LEGACY_PREDICTIONS_KEY = 'football-predictor-predictions';
 const LEGACY_DEDUCTIONS_KEY = 'football-predictor-deductions';
 
-const predictionsKey = (slug: string) => `football-predictor-predictions-${slug}`;
+const predictionsKey = (slug: string) =>
+  `football-predictor-predictions-${slug}`;
 const deductionsKey = (slug: string) => `football-predictor-deductions-${slug}`;
 
 let migrationDone = false;
@@ -50,7 +51,10 @@ export const loadPredictions = (slug: string): PredictionsStore => {
   };
 };
 
-export const savePredictions = (slug: string, store: PredictionsStore): void => {
+export const savePredictions = (
+  slug: string,
+  store: PredictionsStore,
+): void => {
   try {
     const updated: PredictionsStore = {
       ...store,
@@ -98,7 +102,10 @@ export const loadDeductions = (slug: string): PointDeduction[] | null => {
   return null;
 };
 
-export const saveDeductions = (slug: string, deductions: PointDeduction[]): void => {
+export const saveDeductions = (
+  slug: string,
+  deductions: PointDeduction[],
+): void => {
   try {
     localStorage.setItem(deductionsKey(slug), JSON.stringify(deductions));
   } catch (error) {
@@ -114,7 +121,8 @@ export const clearDeductions = (slug: string): void => {
   }
 };
 
-const confettiShownKey = (slug: string) => `football-predictor-confetti-shown-${slug}`;
+const confettiShownKey = (slug: string) =>
+  `football-predictor-confetti-shown-${slug}`;
 
 export const hasConfettiShown = (slug: string): boolean => {
   try {

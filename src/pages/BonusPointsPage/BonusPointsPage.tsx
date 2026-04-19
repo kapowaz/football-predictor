@@ -1,23 +1,28 @@
 import { useMemo, useRef } from 'react';
 import { useParams, Navigate, useNavigate } from 'react-router-dom';
+import { useColorMode } from '@kapowaz/components';
+
+import { CompetitionPanels } from '../../components/CompetitionPanels';
+import { DeductionsModal } from '../../components/DeductionsModal';
+import { StandingsImageView } from '../../components/StandingsImageView';
+import { hasCompetitionData } from '../../data';
+import {
+  getCompetition,
+  allCompetitions,
+  type CompetitionConfig,
+} from '../../data/competitions';
 import { useCompetitionData } from '../../hooks/useCompetitionData';
 import { useImageDownload } from '../../hooks/useImageDownload';
 import { useLiveScores } from '../../hooks/useLiveScores';
-import { useColorMode } from '@kapowaz/components';
-import { useCompetitionSession } from '../../state/useCompetitionSession';
+import { useZoneGuarantees } from '../../hooks/useZoneGuarantees';
 import {
   selectCaptureSignature,
   selectDeductionNotes,
   selectStandingsViewModel,
   selectTeamsById,
 } from '../../state/selectors';
+import { useCompetitionSession } from '../../state/useCompetitionSession';
 import { getEffectivePredictions } from '../../utils/liveScores';
-import { useZoneGuarantees } from '../../hooks/useZoneGuarantees';
-import { CompetitionPanels } from '../../components/CompetitionPanels';
-import { StandingsImageView } from '../../components/StandingsImageView';
-import { DeductionsModal } from '../../components/DeductionsModal';
-import { hasCompetitionData } from '../../data';
-import { getCompetition, allCompetitions, type CompetitionConfig } from '../../data/competitions';
 
 interface BonusPointsContentProps {
   slug: string;
@@ -59,7 +64,12 @@ const BonusPointsContent = ({ slug, config }: BonusPointsContentProps) => {
     config.zones,
     'bonus-points',
   );
-  const zoneGuaranteedByTeamId = useZoneGuarantees(standings, matches, effectivePredictions, config.zones);
+  const zoneGuaranteedByTeamId = useZoneGuarantees(
+    standings,
+    matches,
+    effectivePredictions,
+    config.zones,
+  );
   const teamsById = selectTeamsById(teams);
   const deductionNotes = selectDeductionNotes(deductions, teamsById);
 
@@ -69,7 +79,11 @@ const BonusPointsContent = ({ slug, config }: BonusPointsContentProps) => {
 
   const competitions = allCompetitions();
 
-  const captureSignature = selectCaptureSignature(standings, deductionMarkers, colorMode);
+  const captureSignature = selectCaptureSignature(
+    standings,
+    deductionMarkers,
+    colorMode,
+  );
 
   const { imageFiles, isRenderingImage, onDownloadImage } = useImageDownload({
     captureRefs: [topStandingsCaptureRef, bottomStandingsCaptureRef],
@@ -79,7 +93,9 @@ const BonusPointsContent = ({ slug, config }: BonusPointsContentProps) => {
     captureSignature,
   });
   const standingsImageFiles =
-    imageFiles.top && imageFiles.bottom ? { top: imageFiles.top, bottom: imageFiles.bottom } : null;
+    imageFiles.top && imageFiles.bottom
+      ? { top: imageFiles.top, bottom: imageFiles.bottom }
+      : null;
   const hasStandingsImage = standingsImageFiles !== null;
 
   return (

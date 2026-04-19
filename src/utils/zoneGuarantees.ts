@@ -1,5 +1,5 @@
-import type { Match, PredictionsStore, TeamStanding } from '../types';
 import type { ZoneDefinition } from '../data/competitions';
+import type { Match, PredictionsStore, TeamStanding } from '../types';
 import { getZoneForPosition } from './zones';
 
 export type StandingPositionOutcome =
@@ -100,10 +100,16 @@ const getCurrentZoneDefinition = (
   return null;
 };
 
-const getNearestZoneAbove = (position: number, zones: ZoneDefinition[]): ZoneDefinition | null => {
+const getNearestZoneAbove = (
+  position: number,
+  zones: ZoneDefinition[],
+): ZoneDefinition | null => {
   let nearest: ZoneDefinition | null = null;
   for (const zone of zones) {
-    if (zone.endPosition < position && (!nearest || zone.endPosition > nearest.endPosition)) {
+    if (
+      zone.endPosition < position &&
+      (!nearest || zone.endPosition > nearest.endPosition)
+    ) {
       nearest = zone;
     }
   }
@@ -132,10 +138,20 @@ export const buildTeamState = (
   return state;
 };
 
-export const getUnresolvedMatches = (matches: Match[], predictions: PredictionsStore): UnresolvedMatch[] => {
+export const getUnresolvedMatches = (
+  matches: Match[],
+  predictions: PredictionsStore,
+): UnresolvedMatch[] => {
   return matches
-    .filter((match) => match.status === 'SCHEDULED' && !predictions.predictions[String(match.id)])
-    .map((match) => ({ homeTeamId: match.homeTeamId, awayTeamId: match.awayTeamId }));
+    .filter(
+      (match) =>
+        match.status === 'SCHEDULED' &&
+        !predictions.predictions[String(match.id)],
+    )
+    .map((match) => ({
+      homeTeamId: match.homeTeamId,
+      awayTeamId: match.awayTeamId,
+    }));
 };
 
 export const combinationSearch = (
@@ -152,7 +168,8 @@ export const combinationSearch = (
       return canSubsetReachThreshold(chosen);
     }
     if (index >= candidateTeamIds.length) return false;
-    if (chosen.length + (candidateTeamIds.length - index) < pickCount) return false;
+    if (chosen.length + (candidateTeamIds.length - index) < pickCount)
+      return false;
 
     for (let i = index; i < candidateTeamIds.length; i += 1) {
       chosen.push(candidateTeamIds[i]);
@@ -182,8 +199,10 @@ const canAllTeamsReachThreshold = (
 
     let boostedPoints = state.points;
     for (const match of unresolvedMatches) {
-      if (match.homeTeamId === targetTeamId && match.awayTeamId === teamId) boostedPoints += 3;
-      if (match.awayTeamId === targetTeamId && match.homeTeamId === teamId) boostedPoints += 3;
+      if (match.homeTeamId === targetTeamId && match.awayTeamId === teamId)
+        boostedPoints += 3;
+      if (match.awayTeamId === targetTeamId && match.homeTeamId === teamId)
+        boostedPoints += 3;
     }
 
     const demand = Math.max(0, threshold - boostedPoints);
@@ -196,10 +215,16 @@ const canAllTeamsReachThreshold = (
 
   const selectedTeamIdSet = new Set(selectedTeamIds);
   const relevantMatches = unresolvedMatches.filter((match) => {
-    if (match.homeTeamId === targetTeamId || match.awayTeamId === targetTeamId) {
+    if (
+      match.homeTeamId === targetTeamId ||
+      match.awayTeamId === targetTeamId
+    ) {
       return false;
     }
-    return selectedTeamIdSet.has(match.homeTeamId) || selectedTeamIdSet.has(match.awayTeamId);
+    return (
+      selectedTeamIdSet.has(match.homeTeamId) ||
+      selectedTeamIdSet.has(match.awayTeamId)
+    );
   });
 
   const source = 0;
@@ -277,8 +302,10 @@ const canTeamFinishBelowZone = (
     if (candidateState.remaining > 0 || targetState.remaining > 0) return true;
 
     // With no games left for both, ordering is fixed on current tiebreakers.
-    const candidateIndex = standingsIndexByTeamId.get(candidateTeamId) ?? Number.MAX_SAFE_INTEGER;
-    const targetIndex = standingsIndexByTeamId.get(targetTeamId) ?? Number.MAX_SAFE_INTEGER;
+    const candidateIndex =
+      standingsIndexByTeamId.get(candidateTeamId) ?? Number.MAX_SAFE_INTEGER;
+    const targetIndex =
+      standingsIndexByTeamId.get(targetTeamId) ?? Number.MAX_SAFE_INTEGER;
     return candidateIndex < targetIndex;
   };
   const canReachThreshold = (candidateTeamId: number): boolean => {
@@ -286,7 +313,8 @@ const canTeamFinishBelowZone = (
 
     const candidateState = teamStateById.get(candidateTeamId);
     if (!candidateState) return false;
-    const candidateMaxPoints = candidateState.points + candidateState.remaining * 3;
+    const candidateMaxPoints =
+      candidateState.points + candidateState.remaining * 3;
     if (candidateMaxPoints > threshold) return true;
     if (candidateMaxPoints < threshold) return false;
 
@@ -294,7 +322,9 @@ const canTeamFinishBelowZone = (
     return candidateState.remaining > 0 || targetState.remaining > 0;
   };
 
-  const otherTeamIds = standings.map((standing) => standing.team.id).filter((id) => id !== targetTeamId);
+  const otherTeamIds = standings
+    .map((standing) => standing.team.id)
+    .filter((id) => id !== targetTeamId);
   const guaranteedThresholdTeamIds = otherTeamIds.filter((teamId) => {
     return isAlreadyAtOrAboveThreshold(teamId);
   });
@@ -332,7 +362,9 @@ const isGuaranteedRelegated = (
   const strictlyAbove = standings
     .map((standing) => standing.team.id)
     .filter((id) => id !== targetTeamId)
-    .filter((id) => (teamStateById.get(id)?.points ?? 0) > targetMaxPoints).length;
+    .filter(
+      (id) => (teamStateById.get(id)?.points ?? 0) > targetMaxPoints,
+    ).length;
 
   return strictlyAbove >= zoneStartPosition - 1;
 };
@@ -350,7 +382,9 @@ const cannotReachZoneAbove = (
   const guaranteedAbove = standings
     .map((standing) => standing.team.id)
     .filter((id) => id !== targetTeamId)
-    .filter((id) => (teamStateById.get(id)?.points ?? 0) > targetMaxPoints).length;
+    .filter(
+      (id) => (teamStateById.get(id)?.points ?? 0) > targetMaxPoints,
+    ).length;
 
   return guaranteedAbove >= targetZoneEndPosition;
 };
@@ -372,7 +406,8 @@ const isSafeFromRelegation = (
     if (relegationTeamId === targetTeamId) return false;
     const relegationState = teamStateById.get(relegationTeamId);
     if (!relegationState) return false;
-    const relegationMax = relegationState.points + relegationState.remaining * 3;
+    const relegationMax =
+      relegationState.points + relegationState.remaining * 3;
     return targetState.points > relegationMax;
   });
 };
@@ -389,7 +424,12 @@ const getOutcomeForDefaultZoneTeam = (
   if (position <= midpoint) {
     const zoneAbove = getNearestZoneAbove(position, zones);
     if (!zoneAbove) return null;
-    return cannotReachZoneAbove(targetTeamId, zoneAbove.endPosition, standings, teamStateById)
+    return cannotReachZoneAbove(
+      targetTeamId,
+      zoneAbove.endPosition,
+      standings,
+      teamStateById,
+    )
       ? 'cannotReachZoneAbove'
       : null;
   }
@@ -398,7 +438,12 @@ const getOutcomeForDefaultZoneTeam = (
   if (!relegationZone) return null;
   if (position >= relegationZone.startPosition) return null;
 
-  return isSafeFromRelegation(targetTeamId, standings, teamStateById, relegationZone)
+  return isSafeFromRelegation(
+    targetTeamId,
+    standings,
+    teamStateById,
+    relegationZone,
+  )
     ? 'safeFromRelegation'
     : null;
 };
@@ -438,7 +483,13 @@ export const calculateStandingPositionOutcomeByTeamId = (
     if (zoneType === 'default') {
       outcomeByTeamId.set(
         standing.team.id,
-        getOutcomeForDefaultZoneTeam(standing.team.id, position, standings, zones, teamStateById),
+        getOutcomeForDefaultZoneTeam(
+          standing.team.id,
+          position,
+          standings,
+          zones,
+          teamStateById,
+        ),
       );
       continue;
     }
@@ -452,7 +503,12 @@ export const calculateStandingPositionOutcomeByTeamId = (
     if (zone.type === 'relegation') {
       outcomeByTeamId.set(
         standing.team.id,
-        isGuaranteedRelegated(standing.team.id, zone.startPosition, standings, teamStateById)
+        isGuaranteedRelegated(
+          standing.team.id,
+          zone.startPosition,
+          standings,
+          teamStateById,
+        )
           ? 'zoneGuaranteed'
           : null,
       );
@@ -466,7 +522,10 @@ export const calculateStandingPositionOutcomeByTeamId = (
       teamStateById,
       unresolvedMatches,
     );
-    outcomeByTeamId.set(standing.team.id, canDropBelow ? null : 'zoneGuaranteed');
+    outcomeByTeamId.set(
+      standing.team.id,
+      canDropBelow ? null : 'zoneGuaranteed',
+    );
   }
 
   return outcomeByTeamId;
@@ -487,7 +546,10 @@ export const calculateZoneGuaranteedByTeamId = (
   const guaranteedByTeamId = new Map<number, boolean>();
 
   for (const standing of standings) {
-    guaranteedByTeamId.set(standing.team.id, outcomeByTeamId.get(standing.team.id) != null);
+    guaranteedByTeamId.set(
+      standing.team.id,
+      outcomeByTeamId.get(standing.team.id) != null,
+    );
   }
 
   return guaranteedByTeamId;

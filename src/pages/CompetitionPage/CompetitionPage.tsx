@@ -1,26 +1,31 @@
 import { useEffect, useMemo, useRef } from 'react';
 import { useParams, Navigate, useNavigate } from 'react-router-dom';
+// import { useScreenShake } from '../../hooks/useScreenShake';
+import { useColorMode } from '@kapowaz/components';
+
+import { CompetitionPanels } from '../../components/CompetitionPanels';
+import { DeductionsModal } from '../../components/DeductionsModal';
+import { SeasonSummaryModal } from '../../components/SeasonSummaryModal';
+import { StandingsImageView } from '../../components/StandingsImageView';
+import { hasCompetitionData } from '../../data';
+import {
+  getCompetition,
+  allCompetitions,
+  type CompetitionConfig,
+} from '../../data/competitions';
 import { useCompetitionData } from '../../hooks/useCompetitionData';
 import { useImageDownload } from '../../hooks/useImageDownload';
 import { useLiveScores } from '../../hooks/useLiveScores';
-// import { useScreenShake } from '../../hooks/useScreenShake';
-import { useColorMode } from '@kapowaz/components';
-import { useCompetitionSession } from '../../state/useCompetitionSession';
+import { useZoneGuarantees } from '../../hooks/useZoneGuarantees';
+import { useZoneThresholds } from '../../hooks/useZoneThresholds';
 import {
   selectCaptureSignature,
   selectDeductionNotes,
   selectStandingsViewModel,
   selectTeamsById,
 } from '../../state/selectors';
+import { useCompetitionSession } from '../../state/useCompetitionSession';
 import { getEffectivePredictions } from '../../utils/liveScores';
-import { useZoneGuarantees } from '../../hooks/useZoneGuarantees';
-import { useZoneThresholds } from '../../hooks/useZoneThresholds';
-import { CompetitionPanels } from '../../components/CompetitionPanels';
-import { StandingsImageView } from '../../components/StandingsImageView';
-import { SeasonSummaryModal } from '../../components/SeasonSummaryModal';
-import { DeductionsModal } from '../../components/DeductionsModal';
-import { hasCompetitionData } from '../../data';
-import { getCompetition, allCompetitions, type CompetitionConfig } from '../../data/competitions';
 import { clearConfettiShown } from '../../utils/storage';
 
 interface CompetitionContentProps {
@@ -82,7 +87,12 @@ const CompetitionContent = ({ slug, config }: CompetitionContentProps) => {
     config.zones,
   );
 
-  const zoneThresholds = useZoneThresholds(standings, matches, effectivePredictions, config.zones);
+  const zoneThresholds = useZoneThresholds(
+    standings,
+    matches,
+    effectivePredictions,
+    config.zones,
+  );
 
   const teamsById = selectTeamsById(teams);
   const deductionNotes = selectDeductionNotes(deductions, teamsById);
@@ -101,7 +111,11 @@ const CompetitionContent = ({ slug, config }: CompetitionContentProps) => {
 
   const competitions = allCompetitions();
 
-  const captureSignature = selectCaptureSignature(standings, deductionMarkers, colorMode);
+  const captureSignature = selectCaptureSignature(
+    standings,
+    deductionMarkers,
+    colorMode,
+  );
 
   const { imageFiles, isRenderingImage, onDownloadImage } = useImageDownload({
     captureRefs: [topStandingsCaptureRef, bottomStandingsCaptureRef],
@@ -111,7 +125,9 @@ const CompetitionContent = ({ slug, config }: CompetitionContentProps) => {
     captureSignature,
   });
   const standingsImageFiles =
-    imageFiles.top && imageFiles.bottom ? { top: imageFiles.top, bottom: imageFiles.bottom } : null;
+    imageFiles.top && imageFiles.bottom
+      ? { top: imageFiles.top, bottom: imageFiles.bottom }
+      : null;
   const hasStandingsImage = standingsImageFiles !== null;
 
   return (

@@ -1,8 +1,5 @@
 import { useMemo, useRef, useState } from 'react';
 import { Navigate, useNavigate, useParams } from 'react-router-dom';
-import { NavBar } from '../../components/NavBar';
-import { AppPanels } from '../../components/AppPanels';
-import { FixturePanel } from '../../components/FixturePanel';
 import {
   StandingsTable,
   type FormDisplayMode,
@@ -10,23 +7,30 @@ import {
   buildThresholdByZoneType,
   calculateSparklineScale,
 } from '@kapowaz/football';
+
+import { AppPanels } from '../../components/AppPanels';
 import { DeductionsModal } from '../../components/DeductionsModal';
+import { FixturePanel } from '../../components/FixturePanel';
+import { NavBar } from '../../components/NavBar';
 import { PanelHeader } from '../../components/PanelHeader';
 import { hasCompetitionData } from '../../data';
-import { allCompetitions, getCompetition, type CompetitionConfig } from '../../data/competitions';
+import {
+  allCompetitions,
+  getCompetition,
+  type CompetitionConfig,
+} from '../../data/competitions';
 import { useCompetitionData } from '../../hooks/useCompetitionData';
 import { useLiveScores } from '../../hooks/useLiveScores';
-import { useCompetitionSession } from '../../state/useCompetitionSession';
+import { usePositionHistory } from '../../hooks/usePositionHistory';
+import { useZoneGuarantees } from '../../hooks/useZoneGuarantees';
+import { useZoneThresholds } from '../../hooks/useZoneThresholds';
 import {
   selectAllScheduledPredicted,
   selectPredictedCount,
   selectStandingsViewModel,
 } from '../../state/selectors';
-import { usePositionHistory } from '../../hooks/usePositionHistory';
+import { useCompetitionSession } from '../../state/useCompetitionSession';
 import { getEffectivePredictions } from '../../utils/liveScores';
-import { useZoneGuarantees } from '../../hooks/useZoneGuarantees';
-import { useZoneThresholds } from '../../hooks/useZoneThresholds';
-
 
 const RELEGATION_POINTS_MARGIN = 6;
 
@@ -39,7 +43,8 @@ const RelegationContent = ({ slug, config }: RelegationContentProps) => {
   const navigate = useNavigate();
   const competitions = allCompetitions();
   const pageContentRef = useRef<HTMLDivElement>(null);
-  const { teams, matches, defaultDeductions, modelPredictions } = useCompetitionData(slug);
+  const { teams, matches, defaultDeductions, modelPredictions } =
+    useCompetitionData(slug);
   const { liveScores } = useLiveScores(slug);
   const {
     predictions,
@@ -73,9 +78,24 @@ const RelegationContent = ({ slug, config }: RelegationContentProps) => {
     deductions,
     config.zones,
   );
-  const zoneGuaranteedByTeamId = useZoneGuarantees(standings, matches, effectivePredictions, config.zones);
-  const zoneThresholds = useZoneThresholds(standings, matches, effectivePredictions, config.zones);
-  const positionHistory = usePositionHistory(teams, matches, effectivePredictions, deductions);
+  const zoneGuaranteedByTeamId = useZoneGuarantees(
+    standings,
+    matches,
+    effectivePredictions,
+    config.zones,
+  );
+  const zoneThresholds = useZoneThresholds(
+    standings,
+    matches,
+    effectivePredictions,
+    config.zones,
+  );
+  const positionHistory = usePositionHistory(
+    teams,
+    matches,
+    effectivePredictions,
+    deductions,
+  );
   const [formDisplay, setFormDisplay] = useState<FormDisplayMode>('badges');
   const relegationZone = useMemo(
     () => config.zones.find((z) => z.type === 'relegation'),
@@ -87,14 +107,19 @@ const RelegationContent = ({ slug, config }: RelegationContentProps) => {
     }
     const boundaryPoints = standings[relegationZone.startPosition - 1].points;
     const threshold = boundaryPoints + RELEGATION_POINTS_MARGIN;
-    return standings.filter((entry) => entry.points <= threshold).map((entry) => entry.team.id);
+    return standings
+      .filter((entry) => entry.points <= threshold)
+      .map((entry) => entry.team.id);
   }, [standings, relegationZone]);
   const fixtureMatchIds = useMemo(() => {
     const relegationTeamSet = new Set(relegationTeamIds);
     const ids = new Set<number>();
     for (const match of matches) {
       if (match.status !== 'SCHEDULED') continue;
-      if (relegationTeamSet.has(match.homeTeamId) || relegationTeamSet.has(match.awayTeamId)) {
+      if (
+        relegationTeamSet.has(match.homeTeamId) ||
+        relegationTeamSet.has(match.awayTeamId)
+      ) {
         ids.add(match.id);
       }
     }
@@ -102,7 +127,10 @@ const RelegationContent = ({ slug, config }: RelegationContentProps) => {
   }, [matches, relegationTeamIds]);
   const hasModelPredictions = Object.keys(modelPredictions).length > 0;
   const predictedCount = selectPredictedCount(predictions);
-  const allScheduledPredicted = selectAllScheduledPredicted(matches, predictions);
+  const allScheduledPredicted = selectAllScheduledPredicted(
+    matches,
+    predictions,
+  );
 
   return (
     <>
@@ -116,7 +144,9 @@ const RelegationContent = ({ slug, config }: RelegationContentProps) => {
           <NavBar
             competitions={competitions}
             activeSlug={slug}
-            onCompetitionChange={(nextSlug) => navigate(`/relegation/${nextSlug}/`)}
+            onCompetitionChange={(nextSlug) =>
+              navigate(`/relegation/${nextSlug}/`)
+            }
             onDeductionsClick={() => setDeductionsModalOpen(true)}
             onAIPredictionsClick={
               hasModelPredictions && !allScheduledPredicted
@@ -139,7 +169,11 @@ const RelegationContent = ({ slug, config }: RelegationContentProps) => {
               isRunIn
               relegationStartPosition={getRelegationStartPosition(config.zones)}
               thresholdByZoneType={buildThresholdByZoneType(zoneThresholds)}
-              sparklineScale={formDisplay === 'sparkline' ? calculateSparklineScale(standings, positionHistory, 16) : undefined}
+              sparklineScale={
+                formDisplay === 'sparkline'
+                  ? calculateSparklineScale(standings, positionHistory, 16)
+                  : undefined
+              }
               partial="bottom"
               hasGradient
               onResultClick={(matchId) => {
@@ -150,7 +184,9 @@ const RelegationContent = ({ slug, config }: RelegationContentProps) => {
               formDisplay={formDisplay}
               positionHistory={positionHistory}
               onFormDisplayToggle={() =>
-                setFormDisplay((prev) => (prev === 'badges' ? 'sparkline' : 'badges'))
+                setFormDisplay((prev) =>
+                  prev === 'badges' ? 'sparkline' : 'badges',
+                )
               }
             />
           </>

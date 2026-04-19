@@ -1,8 +1,9 @@
-import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { useState } from 'react';
 import { MemoryRouter } from 'react-router-dom';
-import { NavBar } from './NavBar';
+
 import { allCompetitions } from '../../data/competitions';
+import { NavBar } from './NavBar';
 
 const competitions = allCompetitions();
 const activeSlug = 'premier-league';
@@ -14,7 +15,9 @@ const meta = {
   component: NavBar,
   decorators: [
     (Story, { parameters }) => (
-      <MemoryRouter initialEntries={[parameters.initialPath ?? `/${activeSlug}/`]}>
+      <MemoryRouter
+        initialEntries={[parameters.initialPath ?? `/${activeSlug}/`]}
+      >
         <Story />
       </MemoryRouter>
     ),

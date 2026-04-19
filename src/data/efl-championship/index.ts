@@ -1,8 +1,15 @@
-import teamsData from './teams.json';
-import matchesData from './matches.json';
-import overridesData from './overrides.json';
 import deductionsData from './deductions.json';
-import standingsData from './standings.json';
+import matchesData from './matches.json';
 import modelPredictionsData from './model-predictions.json';
+import overridesData from './overrides.json';
+import standingsData from './standings.json';
+import teamsData from './teams.json';
 
-export { teamsData, matchesData, overridesData, deductionsData, standingsData, modelPredictionsData };
+export {
+  teamsData,
+  matchesData,
+  overridesData,
+  deductionsData,
+  standingsData,
+  modelPredictionsData,
+};

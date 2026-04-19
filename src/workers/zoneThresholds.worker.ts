@@ -1,6 +1,9 @@
-import type { Match, PredictionsStore, TeamStanding } from '../types';
 import type { ZoneDefinition } from '../data/competitions';
-import { calculateZoneThresholds, type ZoneThreshold } from '../utils/zoneThresholds';
+import type { Match, PredictionsStore, TeamStanding } from '../types';
+import {
+  calculateZoneThresholds,
+  type ZoneThreshold,
+} from '../utils/zoneThresholds';
 
 export interface ZoneThresholdsRequest {
   requestId: number;
@@ -15,9 +18,17 @@ export interface ZoneThresholdsResponse {
   result: ZoneThreshold[];
 }
 
-self.addEventListener('message', (event: MessageEvent<ZoneThresholdsRequest>) => {
-  const { requestId, standings, matches, predictions, zones } = event.data;
-  const result = calculateZoneThresholds(standings, matches, predictions, zones);
-  const response: ZoneThresholdsResponse = { requestId, result };
-  self.postMessage(response);
-});
+self.addEventListener(
+  'message',
+  (event: MessageEvent<ZoneThresholdsRequest>) => {
+    const { requestId, standings, matches, predictions, zones } = event.data;
+    const result = calculateZoneThresholds(
+      standings,
+      matches,
+      predictions,
+      zones,
+    );
+    const response: ZoneThresholdsResponse = { requestId, result };
+    self.postMessage(response);
+  },
+);

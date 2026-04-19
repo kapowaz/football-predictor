@@ -28,7 +28,8 @@ export const getFormResult = (
   variantRules: VariantRulesMode = false,
 ): FormResult => {
   if (goalsFor > goalsAgainst) {
-    if (variantRules === 'new-rules' && goalsFor - goalsAgainst >= 2) return 'B';
+    if (variantRules === 'new-rules' && goalsFor - goalsAgainst >= 2)
+      return 'B';
     return 'W';
   }
   if (goalsFor === goalsAgainst) return 'D';
@@ -57,7 +58,10 @@ export const createEmptyStanding = (team: Team): TeamStanding => {
  * 4 for a win, 2 for a draw, 0 for a loss,
  * +1 if you lose by only 1 goal, +1 if you score 3+ goals.
  */
-export const getBonusPointsForResult = (goalsScored: number, goalsConceded: number): number => {
+export const getBonusPointsForResult = (
+  goalsScored: number,
+  goalsConceded: number,
+): number => {
   let points = 0;
   if (goalsScored > goalsConceded) {
     points += 4;
@@ -119,7 +123,11 @@ export const applyResult = (
  * Returns < 0 if team A ranks higher, > 0 if team B ranks higher, 0 if still tied.
  * Compares by: h2h points, then h2h goal difference, then away goals scored.
  */
-export const getHeadToHead = (teamAId: number, teamBId: number, results: MatchResult[]): number => {
+export const getHeadToHead = (
+  teamAId: number,
+  teamBId: number,
+  results: MatchResult[],
+): number => {
   const h2hMatches = results.filter(
     (r) =>
       (r.homeTeamId === teamAId && r.awayTeamId === teamBId) ||
@@ -167,9 +175,14 @@ export const getHeadToHead = (teamAId: number, teamBId: number, results: MatchRe
   return 0;
 };
 
-export const compareTeamStandings = (a: TeamStanding, b: TeamStanding, results: MatchResult[]): number => {
+export const compareTeamStandings = (
+  a: TeamStanding,
+  b: TeamStanding,
+  results: MatchResult[],
+): number => {
   if (b.points !== a.points) return b.points - a.points;
-  if (b.goalDifference !== a.goalDifference) return b.goalDifference - a.goalDifference;
+  if (b.goalDifference !== a.goalDifference)
+    return b.goalDifference - a.goalDifference;
   if (b.goalsFor !== a.goalsFor) return b.goalsFor - a.goalsFor;
 
   const h2h = getHeadToHead(a.team.id, b.team.id, results);
@@ -189,7 +202,11 @@ export const resolveMatchResults = (
     const homeTeamName = teamsById.get(match.homeTeamId)?.shortName ?? '';
     const awayTeamName = teamsById.get(match.awayTeamId)?.shortName ?? '';
 
-    if (match.status === 'FINISHED' && match.homeGoals !== null && match.awayGoals !== null) {
+    if (
+      match.status === 'FINISHED' &&
+      match.homeGoals !== null &&
+      match.awayGoals !== null
+    ) {
       results.push({
         matchId: match.id,
         isPrediction: false,
@@ -255,7 +272,13 @@ export const calculateStandings = (
     };
 
     if (homeStanding) {
-      applyResult(homeStanding, result.homeGoals, result.awayGoals, entry, variantRules);
+      applyResult(
+        homeStanding,
+        result.homeGoals,
+        result.awayGoals,
+        entry,
+        variantRules,
+      );
     }
     if (awayStanding) {
       const awayEntry: FormEntry = {
@@ -264,7 +287,13 @@ export const calculateStandings = (
         goalsScored: result.awayGoals,
         goalsConceded: result.homeGoals,
       };
-      applyResult(awayStanding, result.awayGoals, result.homeGoals, awayEntry, variantRules);
+      applyResult(
+        awayStanding,
+        result.awayGoals,
+        result.homeGoals,
+        awayEntry,
+        variantRules,
+      );
     }
   }
 

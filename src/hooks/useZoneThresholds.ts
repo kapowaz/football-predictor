@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
-import type { Match, PredictionsStore, TeamStanding } from '../types';
+
 import type { ZoneDefinition } from '../data/competitions';
+import type { Match, PredictionsStore, TeamStanding } from '../types';
 import type { ZoneThreshold } from '../utils/zoneThresholds';
 import type { ZoneThresholdsResponse } from '../workers/zoneThresholds.worker';
 

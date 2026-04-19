@@ -5,9 +5,10 @@ export interface NavigationLoadingContextValue {
   startNavigating: (fn: () => void) => void;
 }
 
-export const NavigationLoadingContext = createContext<NavigationLoadingContextValue>({
-  isNavigating: false,
-  startNavigating: (fn) => fn(),
-});
+export const NavigationLoadingContext =
+  createContext<NavigationLoadingContextValue>({
+    isNavigating: false,
+    startNavigating: (fn) => fn(),
+  });
 
 export const useNavigationLoading = () => useContext(NavigationLoadingContext);

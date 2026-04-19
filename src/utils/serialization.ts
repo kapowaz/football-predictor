@@ -5,8 +5,13 @@ type PredictionsPayload = PredictionsStore['predictions'];
 const HEADER_BYTES = 2;
 
 const base64urlEncode = (bytes: Uint8Array): string => {
-  const binString = Array.from(bytes, (byte) => String.fromCharCode(byte)).join('');
-  return btoa(binString).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+  const binString = Array.from(bytes, (byte) => String.fromCharCode(byte)).join(
+    '',
+  );
+  return btoa(binString)
+    .replace(/\+/g, '-')
+    .replace(/\//g, '_')
+    .replace(/=+$/, '');
 };
 
 const base64urlDecode = (encoded: string): Uint8Array => {
@@ -99,8 +104,15 @@ export const decodeDeductions = (
     if (parts.length !== 2) throw new Error(`Invalid deduction pair: ${pair}`);
     const teamId = Number(parts[0]);
     const amount = Number(parts[1]);
-    if (!Number.isInteger(teamId) || !Number.isInteger(amount) || teamId <= 0 || amount < 0) {
-      throw new Error(`Invalid deduction values: teamId=${parts[0]}, amount=${parts[1]}`);
+    if (
+      !Number.isInteger(teamId) ||
+      !Number.isInteger(amount) ||
+      teamId <= 0 ||
+      amount < 0
+    ) {
+      throw new Error(
+        `Invalid deduction values: teamId=${parts[0]}, amount=${parts[1]}`,
+      );
     }
     return { teamId, amount, reason: reasonsByTeamId.get(teamId) ?? '' };
   });

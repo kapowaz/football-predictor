@@ -1,5 +1,8 @@
 import { createVar, style, keyframes } from '@vanilla-extract/css';
-import { cssVariablesByColorMode, getDesignTokens } from '@kapowaz/design-tokens';
+import {
+  cssVariablesByColorMode,
+  getDesignTokens,
+} from '@kapowaz/design-tokens';
 
 const { colors, spacing } = getDesignTokens();
 
@@ -64,7 +67,8 @@ const shimmer = keyframes({
 });
 
 export const championName = style({
-  background: 'linear-gradient(90deg, #d4af37, #f5d76e, #d4af37, #f5d76e, #d4af37)',
+  background:
+    'linear-gradient(90deg, #d4af37, #f5d76e, #d4af37, #f5d76e, #d4af37)',
   backgroundSize: '200% auto',
   WebkitBackgroundClip: 'text',
   WebkitTextFillColor: 'transparent',
@@ -90,11 +94,20 @@ export const playoffsLabel = style([sectionLabel, { color: colorFocus }]);
 
 export const relegatedLabel = style([sectionLabel, { color: colorDanger }]);
 
-export const championsLabel = style([sectionLabel, { color: colorTextZoneChampions }]);
+export const championsLabel = style([
+  sectionLabel,
+  { color: colorTextZoneChampions },
+]);
 
-export const championsLeagueLabel = style([sectionLabel, { color: colorTextZoneChampionsLeague }]);
+export const championsLeagueLabel = style([
+  sectionLabel,
+  { color: colorTextZoneChampionsLeague },
+]);
 
-export const europaLeagueLabel = style([sectionLabel, { color: colorTextZoneEuropaLeague }]);
+export const europaLeagueLabel = style([
+  sectionLabel,
+  { color: colorTextZoneEuropaLeague },
+]);
 
 export const conferenceLeagueLabel = style([
   sectionLabel,
@@ -133,5 +146,3 @@ export const badge = style({
 });
 
 export const teamName = style({});
-
-

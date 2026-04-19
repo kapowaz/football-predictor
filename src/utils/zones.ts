@@ -1,5 +1,5 @@
-import type { Match, PredictionsStore, TeamStanding } from '../types';
 import type { ZoneDefinition, ZoneType } from '../data/competitions';
+import type { Match, PredictionsStore, TeamStanding } from '../types';
 
 export const getZoneForPosition = (
   position: number,
@@ -23,7 +23,9 @@ export interface DefaultZoneExtent {
  * Derives total team count from the highest `endPosition` across all zones
  * (works because the relegation zone always covers the final positions).
  */
-export const getDefaultZoneExtent = (zones: ZoneDefinition[]): DefaultZoneExtent | null => {
+export const getDefaultZoneExtent = (
+  zones: ZoneDefinition[],
+): DefaultZoneExtent | null => {
   if (zones.length === 0) return null;
 
   const teamCount = Math.max(...zones.map((z) => z.endPosition));
@@ -51,7 +53,10 @@ export const getDefaultZoneExtent = (zones: ZoneDefinition[]): DefaultZoneExtent
  * Returns 0–100 representing how far {@link position} sits through the
  * default (un-zoned) range, where 0 = top of the default zone and 100 = bottom.
  */
-export const getDefaultZoneWeight = (position: number, zones: ZoneDefinition[]): number => {
+export const getDefaultZoneWeight = (
+  position: number,
+  zones: ZoneDefinition[],
+): number => {
   const extent = getDefaultZoneExtent(zones);
   if (!extent || extent.start === extent.end) return 0;
   return ((position - extent.start) / (extent.end - extent.start)) * 100;
@@ -88,7 +93,10 @@ export const getRunInPointsMargin = (
   }
 
   for (const match of matches) {
-    if (match.status === 'SCHEDULED' && !predictions.predictions[String(match.id)]) {
+    if (
+      match.status === 'SCHEDULED' &&
+      !predictions.predictions[String(match.id)]
+    ) {
       const home = unresolvedPerTeam.get(match.homeTeamId);
       if (home != null) unresolvedPerTeam.set(match.homeTeamId, home + 1);
       const away = unresolvedPerTeam.get(match.awayTeamId);

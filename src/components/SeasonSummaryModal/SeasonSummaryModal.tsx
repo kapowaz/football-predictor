@@ -2,12 +2,14 @@ import { useState, useEffect, useRef } from 'react';
 import { AbstractText, Confetti, Modal } from '@kapowaz/components';
 import type { ModalAction } from '@kapowaz/components';
 import { Share } from '@kapowaz/icons';
-import type { TeamStanding } from '../../types';
+
 import type { CompetitionConfig, ZoneType } from '../../data/competitions';
-import { groupStandingsByZone } from '../../utils/zones';
+import type { TeamStanding } from '../../types';
 import { generateShareText } from '../../utils/share';
 import { hasConfettiShown, markConfettiShown } from '../../utils/storage';
+import { groupStandingsByZone } from '../../utils/zones';
 import { TeamRow } from './TeamRow';
+
 import * as styles from './SeasonSummaryModal.css';
 
 interface SeasonSummaryModalProps {
@@ -25,7 +27,10 @@ interface SeasonSummaryModalProps {
   isRenderingStandingsImage?: boolean;
 }
 
-const toOrderedShareFiles = (files: { top: File; bottom: File }): [File, File] => {
+const toOrderedShareFiles = (files: {
+  top: File;
+  bottom: File;
+}): [File, File] => {
   const candidates = [files.top, files.bottom];
   const topFile = candidates.find((file) => file.name.includes('-top'));
   const bottomFile = candidates.find((file) => file.name.includes('-bottom'));
@@ -81,7 +86,9 @@ export const SeasonSummaryModal = ({
   const champion = standings[0];
   const zoneGroups = groupStandingsByZone(standings, competition.zones);
   const relegationZone = zoneGroups.find((g) => g.zone.type === 'relegation');
-  const nonRelegationZones = zoneGroups.filter((g) => g.zone.type !== 'relegation');
+  const nonRelegationZones = zoneGroups.filter(
+    (g) => g.zone.type !== 'relegation',
+  );
 
   const handleShare = async () => {
     try {
@@ -109,7 +116,14 @@ export const SeasonSummaryModal = ({
   };
 
   const actions: ModalAction[] = hasShareApi
-    ? [{ type: 'primary' as const, label: 'Share your Predictions', icon: Share, onClick: handleShare }]
+    ? [
+        {
+          type: 'primary' as const,
+          label: 'Share your Predictions',
+          icon: Share,
+          onClick: handleShare,
+        },
+      ]
     : [];
 
   return (
@@ -137,11 +151,13 @@ export const SeasonSummaryModal = ({
           fontSize="xxl"
           fontWeight="bold"
         >
-          Congratulations <span className={styles.championName}>{champion?.team.name}!</span>
+          Congratulations{' '}
+          <span className={styles.championName}>{champion?.team.name}!</span>
         </AbstractText>
 
         {nonRelegationZones.map(({ zone, teams }) => {
-          const isGridZone = zone.type === 'playoff' || zone.type === 'championsLeague';
+          const isGridZone =
+            zone.type === 'playoff' || zone.type === 'championsLeague';
 
           return (
             <div key={zone.name} className={styles.section}>
@@ -155,7 +171,9 @@ export const SeasonSummaryModal = ({
               >
                 {zone.label}
               </AbstractText>
-              <div className={isGridZone ? styles.teamListGrid : styles.teamList}>
+              <div
+                className={isGridZone ? styles.teamListGrid : styles.teamList}
+              >
                 {teams.map((s) => (
                   <TeamRow key={s.team.id} standing={s} />
                 ))}

@@ -1,17 +1,32 @@
+import clsx from 'clsx';
+import { AnimatePresence, motion } from 'motion/react';
 import { useState, useRef, useMemo } from 'react';
 import { createPortal } from 'react-dom';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { AnimatePresence, motion } from 'motion/react';
-import clsx from 'clsx';
-import { AbstractText, Button, IconTextButton, TabBar, ToggleColorMode } from '@kapowaz/components';
+import {
+  AbstractText,
+  Button,
+  IconTextButton,
+  TabBar,
+  ToggleColorMode,
+} from '@kapowaz/components';
 import type { Tab } from '@kapowaz/components';
 import { CompetitionSelect } from '@kapowaz/football';
 import type { CompetitionOption } from '@kapowaz/football';
-import { ArrowDownToDot, ImageDown, MenuSquare, Sparkles, Trash2, X } from '@kapowaz/icons';
 import type { Competition } from '@kapowaz/football-badges';
+import {
+  ArrowDownToDot,
+  ImageDown,
+  MenuSquare,
+  Sparkles,
+  Trash2,
+  X,
+} from '@kapowaz/icons';
+
 import type { CompetitionConfig } from '../../data/competitions';
 import { useNavigationLoading } from '../../hooks/useNavigationLoading';
 import { AppHeading } from '../AppHeading';
+
 import * as styles from './NavBar.css';
 
 interface NavBarProps {
@@ -70,7 +85,11 @@ export const NavBar = ({
   const navItems = [
     { id: 'competition', label: 'Standings', href: `/${activeSlug}/` },
     { id: 'run-in', label: 'Run In', href: `/run-in/${activeSlug}/` },
-    { id: 'relegation', label: 'Relegation', href: `/relegation/${activeSlug}/` },
+    {
+      id: 'relegation',
+      label: 'Relegation',
+      href: `/relegation/${activeSlug}/`,
+    },
   ];
 
   const tabs: Tab[] = navItems.map((item) => ({

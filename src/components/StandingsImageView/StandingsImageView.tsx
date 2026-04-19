@@ -1,12 +1,14 @@
-import type { RefObject } from 'react';
 import clsx from 'clsx';
+import type { RefObject } from 'react';
 import { AbstractText } from '@kapowaz/components';
+import { StandingsTable } from '@kapowaz/football';
+import { KapBoltSimple } from '@kapowaz/icons';
+
 import type { ZoneDefinition } from '../../data/competitions';
 import type { DeductionNote } from '../../state/selectors';
 import type { TeamStanding, VariantRulesMode } from '../../types';
-import { StandingsTable } from '@kapowaz/football';
 import { AppHeading } from '../AppHeading';
-import { KapBoltSimple } from '@kapowaz/icons';
+
 import * as styles from './StandingsImageView.css';
 
 interface StandingsImageViewProps {
@@ -79,7 +81,11 @@ export const StandingsImageView = ({
         <span>{`${competitionName} ${competitionSeason}`}</span>
       </AbstractText>
       {deductionNotes.length > 0 && (
-        <AbstractText tagName="div" className={styles.deductionNotes} fontSize="sm">
+        <AbstractText
+          tagName="div"
+          className={styles.deductionNotes}
+          fontSize="sm"
+        >
           {deductionNotes.map((note) => (
             <span
               key={note.label}
@@ -96,7 +102,10 @@ export const StandingsImageView = ({
 
   return (
     <div
-      className={clsx(styles.outerWrapper, isHidden ? styles.hiddenCaptureRoot : undefined)}
+      className={clsx(
+        styles.outerWrapper,
+        isHidden ? styles.hiddenCaptureRoot : undefined,
+      )}
       aria-hidden="true"
     >
       <div ref={captureRef} className={styles.captureSurface}>
@@ -107,7 +116,9 @@ export const StandingsImageView = ({
             partial === 'bottom' && styles.innerWrapperBottom,
           )}
         >
-          {showHeading && <AppHeading isFullRender extraContent={headingExtraContent} />}
+          {showHeading && (
+            <AppHeading isFullRender extraContent={headingExtraContent} />
+          )}
           <StandingsTable
             standings={standings}
             deductionMarkers={deductionMarkers}
@@ -123,7 +134,11 @@ export const StandingsImageView = ({
           />
           {showFooter && (
             <footer className={styles.footerContainer}>
-              <AbstractText tagName="div" className={styles.footer} fontSize="md">
+              <AbstractText
+                tagName="div"
+                className={styles.footer}
+                fontSize="md"
+              >
                 <div>
                   Football Predictor by{' '}
                   <AbstractText
@@ -145,7 +160,11 @@ export const StandingsImageView = ({
                   </AbstractText>
                 </div>
                 <span className={styles.footerIconContainer}>
-                  <KapBoltSimple width={32} height={32} className={styles.footerIcon} />
+                  <KapBoltSimple
+                    width={32}
+                    height={32}
+                    className={styles.footerIcon}
+                  />
                 </span>
               </AbstractText>
             </footer>

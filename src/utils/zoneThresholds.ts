@@ -1,5 +1,5 @@
-import type { Match, PredictionsStore, TeamStanding } from '../types';
 import type { ZoneDefinition } from '../data/competitions';
+import type { Match, PredictionsStore, TeamStanding } from '../types';
 import {
   Dinic,
   buildTeamState,
@@ -64,7 +64,9 @@ const canSubsetSimultaneouslyReachThreshold = (
 
   const selectedTeamIdSet = new Set(selectedTeamIds);
   const relevantMatches = unresolvedMatches.filter(
-    (match) => selectedTeamIdSet.has(match.homeTeamId) || selectedTeamIdSet.has(match.awayTeamId),
+    (match) =>
+      selectedTeamIdSet.has(match.homeTeamId) ||
+      selectedTeamIdSet.has(match.awayTeamId),
   );
 
   const source = 0;
@@ -118,7 +120,12 @@ const canAnySubsetOfSizeReachThreshold = (
   if (candidates.length < subsetSize) return false;
 
   return combinationSearch(candidates, subsetSize, (selectedIds) =>
-    canSubsetSimultaneouslyReachThreshold(selectedIds, threshold, teamStateById, unresolvedMatches),
+    canSubsetSimultaneouslyReachThreshold(
+      selectedIds,
+      threshold,
+      teamStateById,
+      unresolvedMatches,
+    ),
   );
 };
 
@@ -144,7 +151,13 @@ const findTightThreshold = (
   while (lo < hi) {
     const mid = Math.floor((lo + hi) / 2);
     if (
-      canAnySubsetOfSizeReachThreshold(subsetSize, mid, allTeamIds, teamStateById, unresolvedMatches)
+      canAnySubsetOfSizeReachThreshold(
+        subsetSize,
+        mid,
+        allTeamIds,
+        teamStateById,
+        unresolvedMatches,
+      )
     ) {
       lo = mid + 1;
     } else {
@@ -190,12 +203,16 @@ export const calculateZoneThresholds = (
     };
   });
 
-  const sorted = [...teamMaxPointsList].sort((a, b) => b.maxAchievable - a.maxAchievable);
+  const sorted = [...teamMaxPointsList].sort(
+    (a, b) => b.maxAchievable - a.maxAchievable,
+  );
 
   return zones.map((zone) => {
     const isRelegation = zone.type === 'relegation';
     const subsetSize = isRelegation ? zone.startPosition : zone.endPosition + 1;
-    const naiveBoundaryIndex = isRelegation ? zone.startPosition - 1 : zone.endPosition;
+    const naiveBoundaryIndex = isRelegation
+      ? zone.startPosition - 1
+      : zone.endPosition;
     const boundaryTeam = sorted[naiveBoundaryIndex];
     const naiveThreshold = boundaryTeam.maxAchievable + 1;
 
@@ -229,7 +246,9 @@ export const formatZoneThresholds = (
     lines.push(`\n${zone.emoji} ${label}`);
     lines.push(`  Threshold: ${threshold} points`);
     if (naiveThreshold !== threshold) {
-      lines.push(`  Naive threshold: ${naiveThreshold} points (ignoring head-to-head constraints)`);
+      lines.push(
+        `  Naive threshold: ${naiveThreshold} points (ignoring head-to-head constraints)`,
+      );
     }
     lines.push(
       `  Boundary team: ${boundaryTeam.teamName} ` +

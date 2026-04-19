@@ -1,10 +1,12 @@
 import { useMemo } from 'react';
-import type { CompetitionConfig } from '../../data/competitions';
+import { ToggleColorMode } from '@kapowaz/components';
 import { CompetitionSelect } from '@kapowaz/football';
 import type { CompetitionOption } from '@kapowaz/football';
 import type { Competition } from '@kapowaz/football-badges';
-import { ToggleColorMode } from '@kapowaz/components';
+
+import type { CompetitionConfig } from '../../data/competitions';
 import { AppHeading } from '../AppHeading';
+
 import * as styles from './AppHeader.css';
 
 interface AppHeaderProps {

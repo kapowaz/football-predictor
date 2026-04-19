@@ -1,4 +1,6 @@
 import { use, useEffect, useMemo, useRef } from 'react';
+
+import { loadCompetitionData } from '../data';
 import type {
   Team,
   Match,
@@ -8,7 +10,6 @@ import type {
   ApiStandingsData,
   ModelPredictionsData,
 } from '../types';
-import { loadCompetitionData } from '../data';
 import type { ValidateStandingsResponse } from '../workers/validateStandings.worker';
 
 const applyOverrides = (base: Match[], overrides: Match[]): Match[] => {
@@ -39,7 +40,10 @@ interface CompetitionDataResult {
 export const useCompetitionData = (slug: string): CompetitionDataResult => {
   const data = use(loadCompetitionData(slug));
 
-  const teams = useMemo(() => (data.teamsData as TeamsData).teams, [data.teamsData]);
+  const teams = useMemo(
+    () => (data.teamsData as TeamsData).teams,
+    [data.teamsData],
+  );
   const matches = useMemo(
     () =>
       applyOverrides(
@@ -52,7 +56,10 @@ export const useCompetitionData = (slug: string): CompetitionDataResult => {
     () => data.deductionsData as PointDeduction[],
     [data.deductionsData],
   );
-  const apiStandings = useMemo(() => data.standingsData as ApiStandingsData, [data.standingsData]);
+  const apiStandings = useMemo(
+    () => data.standingsData as ApiStandingsData,
+    [data.standingsData],
+  );
   const modelPredictions = useMemo(
     () => (data.modelPredictionsData as ModelPredictionsData).predictions,
     [data.modelPredictionsData],
@@ -80,7 +87,13 @@ export const useCompetitionData = (slug: string): CompetitionDataResult => {
     };
 
     w.addEventListener('message', handler);
-    w.postMessage({ requestId: id, teams, matches, defaultDeductions, apiStandings });
+    w.postMessage({
+      requestId: id,
+      teams,
+      matches,
+      defaultDeductions,
+      apiStandings,
+    });
 
     return () => {
       w.removeEventListener('message', handler);

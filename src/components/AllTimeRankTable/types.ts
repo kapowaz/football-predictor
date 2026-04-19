@@ -1,4 +1,7 @@
-import type { RankedClub, ScoringWeights } from '../../data/all-time-rank/types';
+import type {
+  RankedClub,
+  ScoringWeights,
+} from '../../data/all-time-rank/types';
 
 export interface AllTimeRankTableProps {
   /** Ranked clubs to display, pre-sorted by composite score. */

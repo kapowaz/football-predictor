@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef } from 'react';
-import type { LiveScore, LiveScoresData } from '../types';
+
 import { useLiveScoresStore } from '../state/liveScoresStore';
+import type { LiveScore, LiveScoresData } from '../types';
 
 const POLL_INTERVAL_MS = 60_000;
 
@@ -13,7 +14,9 @@ interface UseLiveScoresResult {
   hasLiveMatches: boolean;
 }
 
-const fetchLiveScores = async (slug: string): Promise<LiveScoresData | null> => {
+const fetchLiveScores = async (
+  slug: string,
+): Promise<LiveScoresData | null> => {
   const url = new URL(
     `${import.meta.env.BASE_URL}live-scores/${slug}.json`,
     window.location.origin,

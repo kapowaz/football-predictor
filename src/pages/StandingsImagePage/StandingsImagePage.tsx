@@ -1,18 +1,29 @@
-import { Navigate, useParams, useSearchParams } from 'react-router-dom';
 import { useMemo, useRef } from 'react';
-import type { VariantRulesMode } from '../../types';
-import { StandingsImageView } from '../../components/StandingsImageView';
+import { Navigate, useParams, useSearchParams } from 'react-router-dom';
 import { ToggleColorMode } from '@kapowaz/components';
-import { getCompetition, type CompetitionConfig } from '../../data/competitions';
+import {
+  getRelegationStartPosition,
+  buildThresholdByZoneType,
+} from '@kapowaz/football';
+
+import { StandingsImageView } from '../../components/StandingsImageView';
 import { hasCompetitionData } from '../../data';
+import {
+  getCompetition,
+  type CompetitionConfig,
+} from '../../data/competitions';
 import { useCompetitionData } from '../../hooks/useCompetitionData';
 import { useLiveScores } from '../../hooks/useLiveScores';
-import { useCompetitionSession } from '../../state/useCompetitionSession';
-import { selectDeductionNotes, selectStandingsViewModel, selectTeamsById } from '../../state/selectors';
-import { getEffectivePredictions } from '../../utils/liveScores';
 import { useZoneGuarantees } from '../../hooks/useZoneGuarantees';
 import { useZoneThresholds } from '../../hooks/useZoneThresholds';
-import { getRelegationStartPosition, buildThresholdByZoneType } from '@kapowaz/football';
+import {
+  selectDeductionNotes,
+  selectStandingsViewModel,
+  selectTeamsById,
+} from '../../state/selectors';
+import { useCompetitionSession } from '../../state/useCompetitionSession';
+import type { VariantRulesMode } from '../../types';
+import { getEffectivePredictions } from '../../utils/liveScores';
 import * as styles from './StandingsImagePage.css.ts';
 
 const VALID_VARIANT_RULES = new Set<string>(['new-rules', 'bonus-points']);
@@ -27,7 +38,10 @@ interface StandingsImageContentProps {
   config: CompetitionConfig;
 }
 
-const StandingsImageContent = ({ slug, config }: StandingsImageContentProps) => {
+const StandingsImageContent = ({
+  slug,
+  config,
+}: StandingsImageContentProps) => {
   const [searchParams] = useSearchParams();
   const variantRules = parseVariantRules(searchParams.get('variantRules'));
   const topCaptureRef = useRef<HTMLDivElement>(null);
@@ -52,10 +66,20 @@ const StandingsImageContent = ({ slug, config }: StandingsImageContentProps) => 
     config.zones,
     variantRules,
   );
-  const zoneGuaranteedByTeamId = useZoneGuarantees(standings, matches, effectivePredictions, config.zones);
+  const zoneGuaranteedByTeamId = useZoneGuarantees(
+    standings,
+    matches,
+    effectivePredictions,
+    config.zones,
+  );
   const teamsById = selectTeamsById(teams);
   const deductionNotes = selectDeductionNotes(deductions, teamsById);
-  const zoneThresholds = useZoneThresholds(standings, matches, effectivePredictions, config.zones);
+  const zoneThresholds = useZoneThresholds(
+    standings,
+    matches,
+    effectivePredictions,
+    config.zones,
+  );
   const relegationStartPosition = getRelegationStartPosition(config.zones);
   const thresholdByZoneType = buildThresholdByZoneType(zoneThresholds);
 

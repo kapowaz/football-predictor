@@ -1,13 +1,18 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
 import clsx from 'clsx';
-import { AppHeading } from '../../components/AppHeading';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { LoadingIndicator, ToggleColorMode } from '@kapowaz/components';
 import { getDesignTokens } from '@kapowaz/design-tokens';
 import { ChevronRight } from '@kapowaz/icons';
+
 import { AllTimeRankTable } from '../../components/AllTimeRankTable';
+import { AppHeading } from '../../components/AppHeading';
 import type { AllTimeClubData } from '../../data/all-time-rank';
 import { loadAllTimeClubs } from '../../data/all-time-rank';
-import { calculateAllTimeScores, DEFAULT_WEIGHTS, HONOUR_BASE_VALUES } from '../../utils/allTimeRank';
+import {
+  calculateAllTimeScores,
+  DEFAULT_WEIGHTS,
+  HONOUR_BASE_VALUES,
+} from '../../utils/allTimeRank';
 
 const { colors } = getDesignTokens();
 import * as styles from './AllTimeRankPage.css';
@@ -48,7 +53,10 @@ export const AllTimeRankPage = () => {
           aria-expanded={isExpanded}
         >
           <ChevronRight
-            className={clsx(styles.chevron, isExpanded && styles.chevronExpanded)}
+            className={clsx(
+              styles.chevron,
+              isExpanded && styles.chevronExpanded,
+            )}
           />
           How are teams ranked?
         </button>
@@ -60,42 +68,51 @@ export const AllTimeRankPage = () => {
         >
           <div className={styles.descriptionInner}>
             <p className={styles.description}>
-              Each club's score combines four components, with a time decay applied so that recent
-              achievements count for more than older ones.
+              Each club's score combines four components, with a time decay
+              applied so that recent achievements count for more than older
+              ones.
             </p>
             <ul className={styles.componentList}>
               <li>
-                <strong>League:</strong> a total score for wins and draws, with a multiplier for
-                football pyramid level
+                <strong>League:</strong> a total score for wins and draws, with
+                a multiplier for football pyramid level
                 <span className={styles.formula}>
                   Σ (3W + D) × tierMultiplier × decay(year) × 0.5
                 </span>
               </li>
               <li>
-                <strong>Domestic Honours:</strong> a bonus for championships and domestic cups
+                <strong>Domestic Honours:</strong> a bonus for championships and
+                domestic cups
                 <span className={styles.formula}>
-                  titles: {HONOUR_BASE_VALUES.league.champions} × tierMultiplier, runners-up:{' '}
-                  {HONOUR_BASE_VALUES.league.runnersUp} × tierMultiplier, playoffs:{' '}
-                  {HONOUR_BASE_VALUES.league.playoffWinners} × tierMultiplier, FA Cup:{' '}
-                  {HONOUR_BASE_VALUES.faCup.winners}/{HONOUR_BASE_VALUES.faCup.runnersUp}, League
-                  Cup: {HONOUR_BASE_VALUES.leagueCup.winners}/
+                  titles: {HONOUR_BASE_VALUES.league.champions} ×
+                  tierMultiplier, runners-up:{' '}
+                  {HONOUR_BASE_VALUES.league.runnersUp} × tierMultiplier,
+                  playoffs: {HONOUR_BASE_VALUES.league.playoffWinners} ×
+                  tierMultiplier, FA Cup: {HONOUR_BASE_VALUES.faCup.winners}/
+                  {HONOUR_BASE_VALUES.faCup.runnersUp}, League Cup:{' '}
+                  {HONOUR_BASE_VALUES.leagueCup.winners}/
                   {HONOUR_BASE_VALUES.leagueCup.runnersUp}
                 </span>
               </li>
               <li>
-                <strong>European Honours:</strong> a score for European competition cups
+                <strong>European Honours:</strong> a score for European
+                competition cups
                 <span className={styles.formula}>
                   UCL: {HONOUR_BASE_VALUES.championsLeague.winners}/
                   {HONOUR_BASE_VALUES.championsLeague.runnersUp}, UEL:{' '}
                   {HONOUR_BASE_VALUES.europaLeague.winners}/
                   {HONOUR_BASE_VALUES.europaLeague.runnersUp}, UECL:{' '}
                   {HONOUR_BASE_VALUES.conferenceLeague.winners}/
-                  {HONOUR_BASE_VALUES.conferenceLeague.runnersUp} — each × decay(year)
+                  {HONOUR_BASE_VALUES.conferenceLeague.runnersUp} — each ×
+                  decay(year)
                 </span>
               </li>
               <li>
-                <strong>Attendance:</strong> a score based on average historical attendance
-                <span className={styles.formula}>avgAttendance × {weights.attendance}</span>
+                <strong>Attendance:</strong> a score based on average historical
+                attendance
+                <span className={styles.formula}>
+                  avgAttendance × {weights.attendance}
+                </span>
               </li>
             </ul>
           </div>
@@ -106,7 +123,10 @@ export const AllTimeRankPage = () => {
           <AllTimeRankTable rankedClubs={rankedClubs} weights={weights} />
         ) : (
           <div className={styles.loading}>
-            <LoadingIndicator size="xl" customColor={{ light: colors.slate[300], dark: colors.ink[700] }} />
+            <LoadingIndicator
+              size="xl"
+              customColor={{ light: colors.slate[300], dark: colors.ink[700] }}
+            />
           </div>
         )}
       </div>

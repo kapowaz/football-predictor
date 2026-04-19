@@ -1,8 +1,10 @@
-import type { ReactNode, RefObject } from 'react';
 import clsx from 'clsx';
+import type { ReactNode, RefObject } from 'react';
 import { LoadingIndicator, TabBar } from '@kapowaz/components';
-import type { CompetitionTabId } from '../../state/competitionSessionStore';
+
 import { useNavigationLoading } from '../../hooks/useNavigationLoading';
+import type { CompetitionTabId } from '../../state/competitionSessionStore';
+
 import * as styles from './AppPanels.css';
 
 interface AppPanelsProps {
@@ -51,16 +53,26 @@ export const AppPanels = ({
               { id: 'fixtures', label: fixturesTabLabel },
             ]}
             selectedId={activeTab}
-            onTabClick={(tabId) => onTabChange(tabId === 'fixtures' ? 'fixtures' : 'standings')}
+            onTabClick={(tabId) =>
+              onTabChange(tabId === 'fixtures' ? 'fixtures' : 'standings')
+            }
             hasEqualWidth
             className={styles.mobileTabBar}
           />
           <main className={styles.main}>
-            <div className={clsx(styles.panel, activeTab !== 'standings' && styles.hiddenOnMobile)}>
+            <div
+              className={clsx(
+                styles.panel,
+                activeTab !== 'standings' && styles.hiddenOnMobile,
+              )}
+            >
               {standingsPanel}
             </div>
             <div
-              className={clsx(styles.panelGuttered, activeTab !== 'fixtures' && styles.hiddenOnMobile)}
+              className={clsx(
+                styles.panelGuttered,
+                activeTab !== 'fixtures' && styles.hiddenOnMobile,
+              )}
             >
               {fixturesPanel}
             </div>

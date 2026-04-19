@@ -1,5 +1,8 @@
 import { createVar, style } from '@vanilla-extract/css';
-import { cssVariablesByColorMode, getDesignTokens } from '@kapowaz/design-tokens';
+import {
+  cssVariablesByColorMode,
+  getDesignTokens,
+} from '@kapowaz/design-tokens';
 
 const { colors } = getDesignTokens();
 

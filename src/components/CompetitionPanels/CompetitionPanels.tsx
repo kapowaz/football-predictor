@@ -1,25 +1,6 @@
 import { useMemo, useState } from 'react';
 import type { ComponentProps, RefObject } from 'react';
 import { AbstractText } from '@kapowaz/components';
-import type { TeamStanding } from '../../types';
-import { useCompetitionData } from '../../hooks/useCompetitionData';
-import { useLiveScores } from '../../hooks/useLiveScores';
-import {
-  selectAllScheduledPredicted,
-  selectDeductionNotes,
-  selectPredictedCount,
-  selectStandingsViewModel,
-  selectTeamsById,
-} from '../../state/selectors';
-import { usePositionHistory } from '../../hooks/usePositionHistory';
-import { useCompetitionSessionSlice } from '../../state/useCompetitionSessionSlice';
-import { getEffectivePredictions } from '../../utils/liveScores';
-import { useZoneGuarantees } from '../../hooks/useZoneGuarantees';
-import type { CompetitionConfig } from '../../data/competitions';
-import type { VariantRulesMode } from '../../types';
-import type { ZoneThreshold } from '../../utils/zoneThresholds';
-import { NavBar } from '../NavBar';
-import { AppPanels } from '../AppPanels';
 import {
   StandingsTable,
   type FormDisplayMode,
@@ -27,7 +8,27 @@ import {
   buildThresholdByZoneType,
   calculateSparklineScale,
 } from '@kapowaz/football';
+
+import type { CompetitionConfig } from '../../data/competitions';
+import { useCompetitionData } from '../../hooks/useCompetitionData';
+import { useLiveScores } from '../../hooks/useLiveScores';
+import { usePositionHistory } from '../../hooks/usePositionHistory';
+import { useZoneGuarantees } from '../../hooks/useZoneGuarantees';
+import {
+  selectAllScheduledPredicted,
+  selectDeductionNotes,
+  selectPredictedCount,
+  selectStandingsViewModel,
+  selectTeamsById,
+} from '../../state/selectors';
+import { useCompetitionSessionSlice } from '../../state/useCompetitionSessionSlice';
+import type { TeamStanding } from '../../types';
+import type { VariantRulesMode } from '../../types';
+import { getEffectivePredictions } from '../../utils/liveScores';
+import type { ZoneThreshold } from '../../utils/zoneThresholds';
+import { AppPanels } from '../AppPanels';
 import { FixturePanel } from '../FixturePanel';
+import { NavBar } from '../NavBar';
 import { PanelHeader } from '../PanelHeader';
 import * as styles from './CompetitionPanels.css.ts';
 
@@ -89,11 +90,15 @@ export const CompetitionPanels = ({
   const [formDisplay, setFormDisplay] = useState<FormDisplayMode>('badges');
 
   const effectivePredictions = useMemo(
-    () => (session ? getEffectivePredictions(session.predictions, liveScores) : null),
+    () =>
+      session ? getEffectivePredictions(session.predictions, liveScores) : null,
     [session, liveScores],
   );
 
-  const emptyPredictions = useMemo(() => ({ predictions: {}, lastModified: '' }), []);
+  const emptyPredictions = useMemo(
+    () => ({ predictions: {}, lastModified: '' }),
+    [],
+  );
   const positionHistory = usePositionHistory(
     teams,
     matches,
@@ -120,10 +125,14 @@ export const CompetitionPanels = ({
     }
 
     const standings = standingsProp ?? ownViewModel?.standings ?? [];
-    const deductionMarkers = deductionMarkersProp ?? ownViewModel?.deductionMarkers ?? new Map();
+    const deductionMarkers =
+      deductionMarkersProp ?? ownViewModel?.deductionMarkers ?? new Map();
     const deductionNotes = selectDeductionNotes(session.deductions, teamsById);
     const predictedCount = selectPredictedCount(session.predictions);
-    const allScheduledPredicted = selectAllScheduledPredicted(matches, session.predictions);
+    const allScheduledPredicted = selectAllScheduledPredicted(
+      matches,
+      session.predictions,
+    );
 
     return {
       standings,
@@ -178,7 +187,9 @@ export const CompetitionPanels = ({
               ? () => fillFromModel(modelPredictions)
               : undefined
           }
-          onResetPredictionsClick={panelModel.predictedCount > 0 ? resetAllPredictions : undefined}
+          onResetPredictionsClick={
+            panelModel.predictedCount > 0 ? resetAllPredictions : undefined
+          }
         />
       }
       standingsPanel={
@@ -192,11 +203,17 @@ export const CompetitionPanels = ({
             isRunIn={isRunIn}
             relegationStartPosition={getRelegationStartPosition(config.zones)}
             thresholdByZoneType={
-              zoneThresholds ? buildThresholdByZoneType(zoneThresholds) : undefined
+              zoneThresholds
+                ? buildThresholdByZoneType(zoneThresholds)
+                : undefined
             }
             sparklineScale={
               formDisplay === 'sparkline'
-                ? calculateSparklineScale(panelModel.standings, positionHistory, 16)
+                ? calculateSparklineScale(
+                    panelModel.standings,
+                    positionHistory,
+                    16,
+                  )
                 : undefined
             }
             onResultClick={handleResultClick}
@@ -204,7 +221,9 @@ export const CompetitionPanels = ({
             formDisplay={formDisplay}
             positionHistory={positionHistory}
             onFormDisplayToggle={() =>
-              setFormDisplay((prev) => (prev === 'badges' ? 'sparkline' : 'badges'))
+              setFormDisplay((prev) =>
+                prev === 'badges' ? 'sparkline' : 'badges',
+              )
             }
           />
           {panelModel.deductionNotes.length > 0 && (

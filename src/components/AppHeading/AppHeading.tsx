@@ -1,5 +1,7 @@
 import { AbstractText } from '@kapowaz/components';
+
 import footballPredictorLogo from '../../assets/football-predictor-logo.svg';
+
 import * as styles from './AppHeading.css';
 
 interface AppHeadingProps {
@@ -20,7 +22,11 @@ export const AppHeading = ({
 }: AppHeadingProps) => {
   return (
     <div className={styles.container}>
-      <img src={footballPredictorLogo} alt="Football Predictor" className={styles.logo} />
+      <img
+        src={footballPredictorLogo}
+        alt="Football Predictor"
+        className={styles.logo}
+      />
       {!isTitleHidden && (
         <AbstractText
           tagName="h1"
@@ -31,7 +37,9 @@ export const AppHeading = ({
           Predictor
         </AbstractText>
       )}
-      {extraContent && <div className={styles.extraContent}>{extraContent}</div>}
+      {extraContent && (
+        <div className={styles.extraContent}>{extraContent}</div>
+      )}
     </div>
   );
 };

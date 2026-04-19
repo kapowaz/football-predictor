@@ -1,4 +1,3 @@
-import { useCallback, useEffect, useRef, type ReactNode } from 'react';
 import {
   useFloating,
   useDismiss,
@@ -8,8 +7,10 @@ import {
   FloatingFocusManager,
   FloatingPortal,
 } from '@floating-ui/react';
-import { AnimatePresence, motion } from 'motion/react';
 import { clsx } from 'clsx';
+import { AnimatePresence, motion } from 'motion/react';
+import { useCallback, useEffect, useRef, type ReactNode } from 'react';
+
 import * as styles from './Modal.css';
 
 interface ModalProps {
@@ -79,7 +80,10 @@ export const Modal = ({
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
             >
-              <FloatingFocusManager context={context} initialFocus={initialFocus}>
+              <FloatingFocusManager
+                context={context}
+                initialFocus={initialFocus}
+              >
                 <motion.div
                   ref={floatingRef}
                   className={clsx(styles.panel, className)}

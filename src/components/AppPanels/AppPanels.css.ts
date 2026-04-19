@@ -1,5 +1,6 @@
 import { style } from '@vanilla-extract/css';
 import { getDesignTokens } from '@kapowaz/design-tokens';
+
 import { colorLoadingProgress } from '../../theme.css';
 
 const { spacing } = getDesignTokens();

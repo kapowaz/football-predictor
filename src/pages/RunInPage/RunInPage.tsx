@@ -1,8 +1,5 @@
 import { useMemo, useRef, useState } from 'react';
 import { Navigate, useNavigate, useParams } from 'react-router-dom';
-import { NavBar } from '../../components/NavBar';
-import { AppPanels } from '../../components/AppPanels';
-import { FixturePanel } from '../../components/FixturePanel';
 import {
   StandingsTable,
   type FormDisplayMode,
@@ -10,24 +7,31 @@ import {
   buildThresholdByZoneType,
   calculateSparklineScale,
 } from '@kapowaz/football';
+
+import { AppPanels } from '../../components/AppPanels';
 import { DeductionsModal } from '../../components/DeductionsModal';
+import { FixturePanel } from '../../components/FixturePanel';
+import { NavBar } from '../../components/NavBar';
 import { PanelHeader } from '../../components/PanelHeader';
 import { hasCompetitionData } from '../../data';
-import { allCompetitions, getCompetition, type CompetitionConfig } from '../../data/competitions';
+import {
+  allCompetitions,
+  getCompetition,
+  type CompetitionConfig,
+} from '../../data/competitions';
 import { useCompetitionData } from '../../hooks/useCompetitionData';
 import { useLiveScores } from '../../hooks/useLiveScores';
-import { useCompetitionSession } from '../../state/useCompetitionSession';
+import { usePositionHistory } from '../../hooks/usePositionHistory';
+import { useZoneGuarantees } from '../../hooks/useZoneGuarantees';
+import { useZoneThresholds } from '../../hooks/useZoneThresholds';
 import {
   selectAllScheduledPredicted,
   selectPredictedCount,
   selectStandingsViewModel,
 } from '../../state/selectors';
-import { usePositionHistory } from '../../hooks/usePositionHistory';
+import { useCompetitionSession } from '../../state/useCompetitionSession';
 import { getEffectivePredictions } from '../../utils/liveScores';
-import { useZoneGuarantees } from '../../hooks/useZoneGuarantees';
-import { useZoneThresholds } from '../../hooks/useZoneThresholds';
 import { getRunInPointsMargin, getTopZoneBoundary } from '../../utils/zones';
-
 
 interface RunInContentProps {
   slug: string;
@@ -38,7 +42,8 @@ const RunInContent = ({ slug, config }: RunInContentProps) => {
   const navigate = useNavigate();
   const competitions = allCompetitions();
   const pageContentRef = useRef<HTMLDivElement>(null);
-  const { teams, matches, defaultDeductions, modelPredictions } = useCompetitionData(slug);
+  const { teams, matches, defaultDeductions, modelPredictions } =
+    useCompetitionData(slug);
   const { liveScores } = useLiveScores(slug);
   const {
     predictions,
@@ -72,9 +77,24 @@ const RunInContent = ({ slug, config }: RunInContentProps) => {
     deductions,
     config.zones,
   );
-  const zoneGuaranteedByTeamId = useZoneGuarantees(standings, matches, effectivePredictions, config.zones);
-  const zoneThresholds = useZoneThresholds(standings, matches, effectivePredictions, config.zones);
-  const positionHistory = usePositionHistory(teams, matches, effectivePredictions, deductions);
+  const zoneGuaranteedByTeamId = useZoneGuarantees(
+    standings,
+    matches,
+    effectivePredictions,
+    config.zones,
+  );
+  const zoneThresholds = useZoneThresholds(
+    standings,
+    matches,
+    effectivePredictions,
+    config.zones,
+  );
+  const positionHistory = usePositionHistory(
+    teams,
+    matches,
+    effectivePredictions,
+    deductions,
+  );
 
   const [formDisplay, setFormDisplay] = useState<FormDisplayMode>('badges');
   const boundaryPosition = getTopZoneBoundary(config.zones);
@@ -98,7 +118,10 @@ const RunInContent = ({ slug, config }: RunInContentProps) => {
     const ids = new Set<number>();
     for (const match of matches) {
       if (match.status !== 'SCHEDULED') continue;
-      if (runInTeamSet.has(match.homeTeamId) || runInTeamSet.has(match.awayTeamId)) {
+      if (
+        runInTeamSet.has(match.homeTeamId) ||
+        runInTeamSet.has(match.awayTeamId)
+      ) {
         ids.add(match.id);
       }
     }
@@ -106,7 +129,10 @@ const RunInContent = ({ slug, config }: RunInContentProps) => {
   }, [matches, runInTeamIds]);
   const hasModelPredictions = Object.keys(modelPredictions).length > 0;
   const predictedCount = selectPredictedCount(predictions);
-  const allScheduledPredicted = selectAllScheduledPredicted(matches, predictions);
+  const allScheduledPredicted = selectAllScheduledPredicted(
+    matches,
+    predictions,
+  );
 
   return (
     <>
@@ -143,7 +169,11 @@ const RunInContent = ({ slug, config }: RunInContentProps) => {
               isRunIn
               relegationStartPosition={getRelegationStartPosition(config.zones)}
               thresholdByZoneType={buildThresholdByZoneType(zoneThresholds)}
-              sparklineScale={formDisplay === 'sparkline' ? calculateSparklineScale(standings, positionHistory, 16) : undefined}
+              sparklineScale={
+                formDisplay === 'sparkline'
+                  ? calculateSparklineScale(standings, positionHistory, 16)
+                  : undefined
+              }
               partial="top"
               hasGradient
               onResultClick={(matchId) => {
@@ -154,7 +184,9 @@ const RunInContent = ({ slug, config }: RunInContentProps) => {
               formDisplay={formDisplay}
               positionHistory={positionHistory}
               onFormDisplayToggle={() =>
-                setFormDisplay((prev) => (prev === 'badges' ? 'sparkline' : 'badges'))
+                setFormDisplay((prev) =>
+                  prev === 'badges' ? 'sparkline' : 'badges',
+                )
               }
             />
           </>

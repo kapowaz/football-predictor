@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import { AbstractText } from '@kapowaz/components';
+
 import * as styles from './PanelHeader.css';
 
 export interface PanelHeaderProps {

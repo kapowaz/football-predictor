@@ -7,7 +7,9 @@ const DIRECTION_THRESHOLD = 5;
  * elements that overflow in both directions. The dominant direction is
  * determined from the initial gesture and held until the touch ends.
  */
-export function useScrollDirectionLock<T extends HTMLElement>(): RefObject<T | null> {
+export function useScrollDirectionLock<
+  T extends HTMLElement,
+>(): RefObject<T | null> {
   const ref = useRef<T | null>(null);
 
   useEffect(() => {

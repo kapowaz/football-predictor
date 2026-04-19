@@ -1,11 +1,21 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
 import clsx from 'clsx';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { AbstractText } from '@kapowaz/components';
 import { FixtureCard, FixtureGroup } from '@kapowaz/football';
-import type { FixtureIndicator, FixtureIndicatorStatus } from '@kapowaz/football';
-import type { Match, Team, PredictionsStore, VariantRulesMode } from '../../types';
+import type {
+  FixtureIndicator,
+  FixtureIndicatorStatus,
+} from '@kapowaz/football';
+
 import type { ZoneDefinition } from '../../data/competitions';
+import type {
+  Match,
+  Team,
+  PredictionsStore,
+  VariantRulesMode,
+} from '../../types';
 import type { FixtureGroupData } from './types';
+
 import * as styles from './FixtureList.css';
 
 const EMPTY_LIVE_SCORE_MATCH_IDS: ReadonlySet<string> = new Set();
@@ -22,7 +32,11 @@ interface FixtureListProps {
   /** Match ID to scroll to, if any. */
   navigateToMatchId: number | null;
   /** Callback to set a prediction for a match. */
-  setPrediction: (matchId: number, homeGoals: number, awayGoals: number) => void;
+  setPrediction: (
+    matchId: number,
+    homeGoals: number,
+    awayGoals: number,
+  ) => void;
   /** Callback to remove a prediction for a match. */
   removePrediction: (matchId: number) => void;
   /** Callback to clear the navigate-to-match request. */
@@ -41,7 +55,10 @@ interface FixtureListProps {
 
 const formatKickoff = (utcDate: string): string => {
   const date = new Date(utcDate);
-  return date.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
+  return date.toLocaleTimeString('en-GB', {
+    hour: '2-digit',
+    minute: '2-digit',
+  });
 };
 
 const formatDate = (utcDate: string): string => {
@@ -64,11 +81,13 @@ const getIndicatorStatus = (
     const opponentGoals = isHome ? result.awayGoals : result.homeGoals;
 
     if (teamGoals > opponentGoals) {
-      if (useNewRulesIndicators && teamGoals - opponentGoals >= 2) return 'bonus';
+      if (useNewRulesIndicators && teamGoals - opponentGoals >= 2)
+        return 'bonus';
       return 'win';
     }
     if (teamGoals < opponentGoals) {
-      if (useNewRulesIndicators && opponentGoals - teamGoals >= 2) return 'bonusAway';
+      if (useNewRulesIndicators && opponentGoals - teamGoals >= 2)
+        return 'bonusAway';
       return 'loss';
     }
     return 'draw';
@@ -100,7 +119,10 @@ const buildIndicators = (
 
     return {
       id: match.id,
-      status: result != null ? getIndicatorStatus(match, result, team, variantRules) : 'none',
+      status:
+        result != null
+          ? getIndicatorStatus(match, result, team, variantRules)
+          : 'none',
     };
   });
 
@@ -120,7 +142,9 @@ export const FixtureList = ({
   variantRules = false as VariantRulesMode,
 }: FixtureListProps) => {
   const [expandedKey, setExpandedKey] = useState<string | null>(null);
-  const [highlightedMatchId, setHighlightedMatchId] = useState<number | null>(null);
+  const [highlightedMatchId, setHighlightedMatchId] = useState<number | null>(
+    null,
+  );
   const groupRefs = useRef<Map<string, HTMLDivElement>>(new Map());
   const containerRef = useRef<HTMLDivElement>(null);
   const expandedKeyRef = useRef<string | null>(null);
@@ -149,7 +173,9 @@ export const FixtureList = ({
   useEffect(() => {
     if (navigateToMatchId == null) return;
 
-    const group = groups.find((g) => g.matches.some((m) => m.id === navigateToMatchId));
+    const group = groups.find((g) =>
+      g.matches.some((m) => m.id === navigateToMatchId),
+    );
     if (!group) {
       setNavigateToMatchId(null);
       pendingScrollMatchId.current = null;
@@ -198,7 +224,9 @@ export const FixtureList = ({
   const highlightCard = useCallback((matchId: number) => {
     setHighlightedMatchId(matchId);
 
-    const card = containerRef.current?.querySelector(`[data-match-id="${matchId}"]`);
+    const card = containerRef.current?.querySelector(
+      `[data-match-id="${matchId}"]`,
+    );
     const firstInput = card?.querySelector<HTMLInputElement>('input');
     firstInput?.focus();
   }, []);
@@ -207,7 +235,9 @@ export const FixtureList = ({
     (matchId: number) => {
       if (!containerRef.current) return;
 
-      const card = containerRef.current.querySelector(`[data-match-id="${matchId}"]`);
+      const card = containerRef.current.querySelector(
+        `[data-match-id="${matchId}"]`,
+      );
       if (card) {
         card.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
@@ -292,7 +322,12 @@ export const FixtureList = ({
     <div className={styles.container} ref={containerRef}>
       {groups.map((group) => {
         const isExpanded = expandedKey === group.key;
-        const indicators = buildIndicators(group.matches, predictions, group.team, variantRules);
+        const indicators = buildIndicators(
+          group.matches,
+          predictions,
+          group.team,
+          variantRules,
+        );
         return (
           <div
             key={group.key}
@@ -314,7 +349,10 @@ export const FixtureList = ({
               onClick={() => toggleGroup(group.key)}
             />
             <div
-              className={clsx(styles.fixturesWrapper, isExpanded && styles.fixturesWrapperExpanded)}
+              className={clsx(
+                styles.fixturesWrapper,
+                isExpanded && styles.fixturesWrapperExpanded,
+              )}
               onTransitionEnd={(e) => handleTransitionEnd(group.key, e)}
             >
               <div className={styles.fixturesList}>
@@ -324,11 +362,16 @@ export const FixtureList = ({
 
                   if (!homeTeam || !awayTeam) return null;
 
-                  const prediction = predictions.predictions[String(match.id)] ?? null;
+                  const prediction =
+                    predictions.predictions[String(match.id)] ?? null;
                   const isHighlighted = highlightedMatchId === match.id;
 
                   const separator = showDate ? (
-                    <>{formatDate(match.utcDate)}<br />{formatKickoff(match.utcDate)}</>
+                    <>
+                      {formatDate(match.utcDate)}
+                      <br />
+                      {formatKickoff(match.utcDate)}
+                    </>
                   ) : (
                     formatKickoff(match.utcDate)
                   );
@@ -341,10 +384,17 @@ export const FixtureList = ({
                           status={match.status}
                           homeTeam={homeTeam}
                           awayTeam={awayTeam}
-                          homePosition={standingPositionsByTeamId.get(match.homeTeamId)!}
-                          awayPosition={standingPositionsByTeamId.get(match.awayTeamId)!}
+                          homePosition={
+                            standingPositionsByTeamId.get(match.homeTeamId)!
+                          }
+                          awayPosition={
+                            standingPositionsByTeamId.get(match.awayTeamId)!
+                          }
                           zones={zones}
-                          result={{ homeGoals: match.homeGoals, awayGoals: match.awayGoals }}
+                          result={{
+                            homeGoals: match.homeGoals,
+                            awayGoals: match.awayGoals,
+                          }}
                           separator={separator}
                           isHighlighted={isHighlighted}
                         />
@@ -359,8 +409,12 @@ export const FixtureList = ({
                         status={match.status}
                         homeTeam={homeTeam}
                         awayTeam={awayTeam}
-                        homePosition={standingPositionsByTeamId.get(match.homeTeamId)!}
-                        awayPosition={standingPositionsByTeamId.get(match.awayTeamId)!}
+                        homePosition={
+                          standingPositionsByTeamId.get(match.homeTeamId)!
+                        }
+                        awayPosition={
+                          standingPositionsByTeamId.get(match.awayTeamId)!
+                        }
                         zones={zones}
                         result={prediction}
                         isLiveScore={liveScoreMatchIds.has(String(match.id))}

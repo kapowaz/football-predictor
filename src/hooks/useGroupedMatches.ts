@@ -1,6 +1,7 @@
 import { useMemo } from 'react';
-import type { Match, PredictionsStore, Team } from '../types';
+
 import type { FixtureGroupData } from '../components/FixtureList/types';
+import type { Match, PredictionsStore, Team } from '../types';
 
 export type { FixtureGroupData };
 
@@ -36,7 +37,10 @@ export const useGroupedMatches = (
   const visibleMatches = useMemo(() => {
     return matches
       .filter((match) => {
-        if (match.status !== 'SCHEDULED' && !(isShowingFinished && match.status === 'FINISHED')) {
+        if (
+          match.status !== 'SCHEDULED' &&
+          !(isShowingFinished && match.status === 'FINISHED')
+        ) {
           return false;
         }
 
@@ -44,10 +48,14 @@ export const useGroupedMatches = (
           return true;
         }
 
-        return filterTeamSet.has(match.homeTeamId) || filterTeamSet.has(match.awayTeamId);
+        return (
+          filterTeamSet.has(match.homeTeamId) ||
+          filterTeamSet.has(match.awayTeamId)
+        );
       })
       .sort((a, b) => {
-        const timeDiff = new Date(a.utcDate).getTime() - new Date(b.utcDate).getTime();
+        const timeDiff =
+          new Date(a.utcDate).getTime() - new Date(b.utcDate).getTime();
         if (timeDiff !== 0) return timeDiff;
         const homeA = teamsById.get(a.homeTeamId)?.name ?? '';
         const homeB = teamsById.get(b.homeTeamId)?.name ?? '';
@@ -72,7 +80,8 @@ export const useGroupedMatches = (
         matches: dateMatches,
         isAllPredicted: dateMatches.every(
           (match) =>
-            match.status === 'FINISHED' || predictions.predictions[String(match.id)] != null,
+            match.status === 'FINISHED' ||
+            predictions.predictions[String(match.id)] != null,
         ),
       });
     }

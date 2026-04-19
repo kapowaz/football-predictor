@@ -1,5 +1,7 @@
 import { style } from '@vanilla-extract/css';
-import { space4 } from '../../theme.css';
+import { getDesignTokens } from '@kapowaz/design-tokens';
+
+const { spacing } = getDesignTokens();
 
 export const page = style({
   display: 'flex',
@@ -7,7 +9,7 @@ export const page = style({
   alignItems: 'center',
   width: '100%',
   overflow: 'auto',
-  paddingBottom: space4,
+  paddingBottom: spacing.lg,
 });
 
 export const toolbar = style({

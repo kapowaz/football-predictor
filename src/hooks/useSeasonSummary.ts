@@ -1,4 +1,5 @@
 import { useState, useMemo } from 'react';
+
 import type { Match, PredictionsStore } from '../types';
 
 interface SeasonSummaryState {

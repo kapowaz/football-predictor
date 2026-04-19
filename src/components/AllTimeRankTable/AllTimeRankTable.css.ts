@@ -1,5 +1,13 @@
-import { style, createContainer, createVar, fallbackVar } from '@vanilla-extract/css';
-import { cssVariablesByColorMode, getDesignTokens } from '@kapowaz/design-tokens';
+import {
+  style,
+  createContainer,
+  createVar,
+  fallbackVar,
+} from '@vanilla-extract/css';
+import {
+  cssVariablesByColorMode,
+  getDesignTokens,
+} from '@kapowaz/design-tokens';
 
 const { colors, spacing, borderRadius, shadow, typography } = getDesignTokens();
 
@@ -18,26 +26,46 @@ const colorTextStatFaded = createVar('all-time-rank-text-stat-faded');
 const colorTextStatStrong = createVar('all-time-rank-text-stat-strong');
 
 const colorBgZoneChampions = createVar('all-time-rank-bg-zone-champions');
-const colorBgZoneChampionsAlt = createVar('all-time-rank-bg-zone-champions-alt');
+const colorBgZoneChampionsAlt = createVar(
+  'all-time-rank-bg-zone-champions-alt',
+);
 const colorBgZoneChampionsLeague = createVar('all-time-rank-bg-zone-cl');
 const colorBgZoneChampionsLeagueAlt = createVar('all-time-rank-bg-zone-cl-alt');
 const colorBgZoneEuropaLeague = createVar('all-time-rank-bg-zone-el');
 const colorBgZoneEuropaLeagueAlt = createVar('all-time-rank-bg-zone-el-alt');
 const colorBgZoneConferenceLeague = createVar('all-time-rank-bg-zone-ecl');
-const colorBgZoneConferenceLeagueAlt = createVar('all-time-rank-bg-zone-ecl-alt');
+const colorBgZoneConferenceLeagueAlt = createVar(
+  'all-time-rank-bg-zone-ecl-alt',
+);
 
 const colorTextZoneChampions = createVar('all-time-rank-text-zone-champions');
-const colorTextZoneChampionsAlt = createVar('all-time-rank-text-zone-champions-alt');
-const colorTextZoneChampionsTertiary = createVar('all-time-rank-text-zone-champions-tertiary');
+const colorTextZoneChampionsAlt = createVar(
+  'all-time-rank-text-zone-champions-alt',
+);
+const colorTextZoneChampionsTertiary = createVar(
+  'all-time-rank-text-zone-champions-tertiary',
+);
 const colorTextZoneChampionsLeague = createVar('all-time-rank-text-zone-cl');
-const colorTextZoneChampionsLeagueAlt = createVar('all-time-rank-text-zone-cl-alt');
-const colorTextZoneChampionsLeagueTertiary = createVar('all-time-rank-text-zone-cl-tertiary');
+const colorTextZoneChampionsLeagueAlt = createVar(
+  'all-time-rank-text-zone-cl-alt',
+);
+const colorTextZoneChampionsLeagueTertiary = createVar(
+  'all-time-rank-text-zone-cl-tertiary',
+);
 const colorTextZoneEuropaLeague = createVar('all-time-rank-text-zone-el');
-const colorTextZoneEuropaLeagueAlt = createVar('all-time-rank-text-zone-el-alt');
-const colorTextZoneEuropaLeagueTertiary = createVar('all-time-rank-text-zone-el-tertiary');
+const colorTextZoneEuropaLeagueAlt = createVar(
+  'all-time-rank-text-zone-el-alt',
+);
+const colorTextZoneEuropaLeagueTertiary = createVar(
+  'all-time-rank-text-zone-el-tertiary',
+);
 const colorTextZoneConferenceLeague = createVar('all-time-rank-text-zone-ecl');
-const colorTextZoneConferenceLeagueAlt = createVar('all-time-rank-text-zone-ecl-alt');
-const colorTextZoneConferenceLeagueTertiary = createVar('all-time-rank-text-zone-ecl-tertiary');
+const colorTextZoneConferenceLeagueAlt = createVar(
+  'all-time-rank-text-zone-ecl-alt',
+);
+const colorTextZoneConferenceLeagueTertiary = createVar(
+  'all-time-rank-text-zone-ecl-tertiary',
+);
 
 export const colorPremierLeagueFg = createVar('all-time-rank-pl-fg');
 export const colorPremierLeagueBg = createVar('all-time-rank-pl-bg');

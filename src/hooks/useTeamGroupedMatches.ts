@@ -1,6 +1,7 @@
 import { useMemo } from 'react';
-import type { Match, PredictionsStore, Team } from '../types';
+
 import type { FixtureGroupData } from '../components/FixtureList/types';
+import type { Match, PredictionsStore, Team } from '../types';
 
 interface UseTeamGroupedMatchesOptions {
   /** Whether completed fixtures are included in grouped results. */
@@ -13,7 +14,10 @@ export const useTeamGroupedMatches = (
   matches: Match[],
   predictions: PredictionsStore,
   teamsById: ReadonlyMap<number, Team>,
-  { isShowingFinished = true, filterTeams = [] }: UseTeamGroupedMatchesOptions = {},
+  {
+    isShowingFinished = true,
+    filterTeams = [],
+  }: UseTeamGroupedMatchesOptions = {},
 ): FixtureGroupData[] => {
   const filterTeamSet = useMemo(() => new Set(filterTeams), [filterTeams]);
   const hasTeamFilter = filterTeams.length > 0;
@@ -21,7 +25,10 @@ export const useTeamGroupedMatches = (
   const visibleMatches = useMemo(() => {
     return matches
       .filter((match) => {
-        if (match.status !== 'SCHEDULED' && !(isShowingFinished && match.status === 'FINISHED')) {
+        if (
+          match.status !== 'SCHEDULED' &&
+          !(isShowingFinished && match.status === 'FINISHED')
+        ) {
           return false;
         }
 
@@ -29,9 +36,14 @@ export const useTeamGroupedMatches = (
           return true;
         }
 
-        return filterTeamSet.has(match.homeTeamId) || filterTeamSet.has(match.awayTeamId);
+        return (
+          filterTeamSet.has(match.homeTeamId) ||
+          filterTeamSet.has(match.awayTeamId)
+        );
       })
-      .sort((a, b) => new Date(a.utcDate).getTime() - new Date(b.utcDate).getTime());
+      .sort(
+        (a, b) => new Date(a.utcDate).getTime() - new Date(b.utcDate).getTime(),
+      );
   }, [filterTeamSet, hasTeamFilter, matches, isShowingFinished]);
 
   return useMemo(() => {
@@ -39,7 +51,9 @@ export const useTeamGroupedMatches = (
 
     for (const match of visibleMatches) {
       const relevantTeamIds = hasTeamFilter
-        ? [match.homeTeamId, match.awayTeamId].filter((id) => filterTeamSet.has(id))
+        ? [match.homeTeamId, match.awayTeamId].filter((id) =>
+            filterTeamSet.has(id),
+          )
         : [match.homeTeamId, match.awayTeamId];
 
       for (const teamId of relevantTeamIds) {
@@ -59,7 +73,8 @@ export const useTeamGroupedMatches = (
         matches: teamMatches,
         isAllPredicted: teamMatches.every(
           (match) =>
-            match.status === 'FINISHED' || predictions.predictions[String(match.id)] != null,
+            match.status === 'FINISHED' ||
+            predictions.predictions[String(match.id)] != null,
         ),
         team,
       });

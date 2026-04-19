@@ -35,7 +35,9 @@ export const loadCompetitionData = (slug: string): Promise<CompetitionData> => {
   if (!promise) {
     const loader = loaders[slug];
     if (!loader) {
-      return Promise.reject(new Error(`No data loader for competition: ${slug}`));
+      return Promise.reject(
+        new Error(`No data loader for competition: ${slug}`),
+      );
     }
     promise = loader();
     cache.set(slug, promise);
