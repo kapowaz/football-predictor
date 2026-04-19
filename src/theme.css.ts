@@ -13,18 +13,6 @@ export const colorTextHover = createVar();
 
 export const colorLoadingProgress = createVar();
 
-export const fontSizeXs = createVar();
-export const fontSizeSm = createVar();
-export const fontSizeLg = createVar();
-export const fontSizeXl = createVar();
-export const fontSizeXxl = createVar();
-
-export const space1 = createVar();
-export const space2 = createVar();
-export const space3 = createVar();
-export const space4 = createVar();
-export const space6 = createVar();
-
 export const maxWidthContent = createVar();
 
 const lightColorVars = {
@@ -40,18 +28,6 @@ const lightColorVars = {
 globalStyle(':root', {
   vars: {
     ...lightColorVars,
-    [fontSizeXs]: '11px',
-    [fontSizeSm]: '12px',
-    [fontSizeLg]: '18px',
-    [fontSizeXl]: '22px',
-    [fontSizeXxl]: '28px',
-
-    [space1]: '4px',
-    [space2]: '8px',
-    [space3]: '12px',
-    [space4]: '16px',
-    [space6]: '24px',
-
     [maxWidthContent]: '1400px',
   },
 });

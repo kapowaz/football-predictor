@@ -1,23 +1,16 @@
 import { style } from '@vanilla-extract/css';
 import { getDesignTokens } from '@kapowaz/design-tokens';
+
 import {
   colorTextHeading,
   colorTextHover,
   colorTextMuted,
   colorTextSecondary,
-  fontSizeSm,
-  fontSizeXs,
-  fontSizeXl,
-  fontSizeXxl,
   maxWidthContent,
-  space1,
-  space2,
-  space3,
-  space4,
-  space6,
 } from '../../theme.css';
 
-const { typography } = getDesignTokens();
+const { spacing, typography } = getDesignTokens();
+const { fontSize } = typography;
 
 export const page = style({
   display: 'flex',
@@ -26,7 +19,7 @@ export const page = style({
   maxWidth: maxWidthContent,
   width: '100%',
   margin: '0 auto',
-  gap: space4,
+  gap: spacing.lg,
   overflow: 'hidden',
 });
 
@@ -35,10 +28,10 @@ export const header = style({
   alignItems: 'center',
   justifyContent: 'space-between',
   flexShrink: 0,
-  gap: space3,
+  gap: spacing.md,
   '@media': {
     'screen and (max-width: 680px)': {
-      padding: `${space3} ${space4}`,
+      padding: `${spacing.md} ${spacing.lg}`,
     },
   },
 });
@@ -46,18 +39,18 @@ export const header = style({
 export const headerLeft = style({
   display: 'flex',
   alignItems: 'center',
-  gap: space3,
+  gap: spacing.md,
 });
 
 export const title = style({
   fontFamily: typography.fontFamily.ui,
-  fontSize: fontSizeXl,
+  fontSize: fontSize.ui.xl,
   fontWeight: 700,
   color: colorTextHeading,
   margin: 0,
   '@media': {
     'screen and (min-width: 680px)': {
-      fontSize: fontSizeXxl,
+      fontSize: fontSize.ui.xxl,
     },
   },
 });
@@ -66,7 +59,7 @@ export const descriptionBlock = style({
   flexShrink: 0,
   '@media': {
     'screen and (max-width: 680px)': {
-      padding: `0 ${space4}`,
+      padding: `0 ${spacing.lg}`,
     },
   },
 });
@@ -74,16 +67,16 @@ export const descriptionBlock = style({
 export const descriptionToggle = style({
   display: 'flex',
   alignItems: 'center',
-  gap: space2,
+  gap: spacing.sm,
   fontFamily: 'inherit',
-  fontSize: fontSizeSm,
+  fontSize: fontSize.ui.sm,
   fontWeight: 600,
   color: colorTextSecondary,
   cursor: 'pointer',
   userSelect: 'none',
   background: 'none',
   border: 'none',
-  padding: `${space1} 0`,
+  padding: `${spacing.xs} 0`,
   textAlign: 'left',
   transition: 'color 0.2s ease-in-out',
   selectors: {
@@ -123,28 +116,29 @@ export const descriptionInner = style({
 
 export const description = style({
   color: colorTextSecondary,
-  fontSize: fontSizeSm,
+  fontSize: fontSize.ui.sm,
   lineHeight: 1.6,
-  margin: `${space2} 0 0`,
+  margin: `${spacing.sm} 0 0`,
 });
 
 export const componentList = style({
   color: colorTextSecondary,
-  fontSize: fontSizeSm,
+  fontSize: fontSize.ui.sm,
   lineHeight: 1.6,
-  margin: `${space2} 0 0`,
-  paddingLeft: space4,
+  margin: `${spacing.sm} 0 0`,
+  paddingLeft: spacing.lg,
   display: 'flex',
   flexDirection: 'column',
-  gap: space1,
+  gap: spacing.xs,
 });
 
 export const formula = style({
   display: 'block',
-  fontFamily: 'ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, Consolas, "DejaVu Sans Mono", monospace',
-  fontSize: fontSizeXs,
+  fontFamily:
+    'ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, Consolas, "DejaVu Sans Mono", monospace',
+  fontSize: fontSize.ui.xs,
   color: colorTextMuted,
-  marginTop: space1,
+  marginTop: spacing.xs,
 });
 
 export const tableWrapper = style({
@@ -153,7 +147,7 @@ export const tableWrapper = style({
   overflow: 'hidden',
   '@media': {
     'screen and (max-width: 680px)': {
-      padding: `0 0 ${space6}`,
+      padding: `0 0 ${spacing.xxl}`,
     },
   },
 });

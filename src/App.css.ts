@@ -1,8 +1,13 @@
 import { style, globalStyle } from '@vanilla-extract/css';
 import { getDesignTokens } from '@kapowaz/design-tokens';
-import { colorBgPage, colorLoadingProgress, colorTextPrimary, space6 } from './theme.css';
 
-const { typography } = getDesignTokens();
+import {
+  colorBgPage,
+  colorLoadingProgress,
+  colorTextPrimary,
+} from './theme.css';
+
+const { spacing, typography } = getDesignTokens();
 
 globalStyle('*, *::before, *::after', {
   boxSizing: 'border-box',
@@ -20,7 +25,7 @@ export const app = style({
   display: 'flex',
   flexDirection: 'column',
   height: '100dvh',
-  padding: space6,
+  padding: spacing.xxl,
   overflow: 'hidden',
   '@media': {
     'screen and (max-width: 680px)': {
