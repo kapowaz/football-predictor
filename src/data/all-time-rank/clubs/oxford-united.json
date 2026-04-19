@@ -1,7 +1,7 @@
 {
   "name": "Oxford United",
   "shortName": "Oxford",
-  "crest": "oxford-united",
+  "badge": "oxford-united",
   "founded": 1893,
   "currentTier": 2,
   "leagueRecord": {

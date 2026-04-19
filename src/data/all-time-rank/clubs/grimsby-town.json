@@ -1,7 +1,7 @@
 {
   "name": "Grimsby Town",
   "shortName": "Grimsby",
-  "crest": "grimsby-town",
+  "badge": "grimsby-town",
   "founded": 1878,
   "currentTier": 4,
   "leagueRecord": {

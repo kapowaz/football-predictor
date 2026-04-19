@@ -1,7 +1,7 @@
 {
   "name": "Manchester United",
   "shortName": "Man United",
-  "crest": "manchester-united",
+  "badge": "manchester-united",
   "founded": 1878,
   "currentTier": 1,
   "leagueRecord": {

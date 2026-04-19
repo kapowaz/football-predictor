@@ -1,7 +1,7 @@
 {
   "name": "Tottenham Hotspur",
   "shortName": "Spurs",
-  "crest": "tottenham-hotspur",
+  "badge": "tottenham-hotspur",
   "founded": 1882,
   "currentTier": 1,
   "leagueRecord": {

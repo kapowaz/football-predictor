@@ -1,7 +1,7 @@
 {
   "name": "Tranmere Rovers",
   "shortName": "Tranmere",
-  "crest": "tranmere-rovers",
+  "badge": "tranmere-rovers",
   "founded": 1884,
   "currentTier": 4,
   "leagueRecord": {

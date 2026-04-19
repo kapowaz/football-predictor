@@ -1,13 +1,20 @@
+import '@kapowaz/components/components.css';
+import '@kapowaz/football/football.css';
+
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
+import { ColorModeProvider } from '@kapowaz/components';
+
+import { AllTimeRankPage } from './pages/AllTimeRankPage';
+
 import * as appShell from './App.css';
-import './fonts.css';
-import { AllTimeRankPage } from './AllTimeRankPage';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <div className={appShell.app}>
-      <AllTimeRankPage />
-    </div>
+    <ColorModeProvider>
+      <div className={appShell.app}>
+        <AllTimeRankPage />
+      </div>
+    </ColorModeProvider>
   </StrictMode>,
 );

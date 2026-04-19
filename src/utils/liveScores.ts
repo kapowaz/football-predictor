@@ -14,7 +14,10 @@ export const getEffectivePredictions = (
   const merged = { ...userPredictions.predictions };
   for (const [matchId, score] of Object.entries(liveScores)) {
     if (!(matchId in merged)) {
-      merged[matchId] = { homeGoals: score.homeGoals, awayGoals: score.awayGoals };
+      merged[matchId] = {
+        homeGoals: score.homeGoals,
+        awayGoals: score.awayGoals,
+      };
     }
   }
   return { predictions: merged, lastModified: userPredictions.lastModified };

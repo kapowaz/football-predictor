@@ -1,7 +1,7 @@
 {
   "name": "Coventry City",
   "shortName": "Coventry",
-  "crest": "coventry-city",
+  "badge": "coventry-city",
   "founded": 1883,
   "currentTier": 2,
   "leagueRecord": {

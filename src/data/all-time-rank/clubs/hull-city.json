@@ -1,7 +1,7 @@
 {
   "name": "Hull City",
   "shortName": "Hull",
-  "crest": "hull-city",
+  "badge": "hull-city",
   "founded": 1904,
   "currentTier": 2,
   "leagueRecord": {

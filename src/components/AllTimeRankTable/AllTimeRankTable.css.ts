@@ -1,52 +1,155 @@
-import { style, createContainer, createVar, fallbackVar } from '@vanilla-extract/css';
 import {
-  colorBgSurface,
-  colorBgRowEven,
-  colorBgRowAlt,
-  colorBgTableHead,
-  colorTextTableHead,
-  colorTextPrimary,
-  colorTextPosition,
-  colorTextSecondary,
-  colorTextMuted,
-  colorTextStatFaded,
-  colorTextStatStrong,
-  colorBgZoneChampions,
-  colorBgZoneChampionsAlt,
-  colorBgZoneChampionsLeague,
-  colorBgZoneChampionsLeagueAlt,
-  colorBgZoneEuropaLeague,
-  colorBgZoneEuropaLeagueAlt,
-  colorBgZoneConferenceLeague,
-  colorBgZoneConferenceLeagueAlt,
-  colorTextZoneChampions,
-  colorTextZoneChampionsAlt,
-  colorTextZoneChampionsTertiary,
-  colorTextZoneChampionsLeague,
-  colorTextZoneChampionsLeagueAlt,
-  colorTextZoneChampionsLeagueTertiary,
-  colorTextZoneEuropaLeague,
-  colorTextZoneEuropaLeagueAlt,
-  colorTextZoneEuropaLeagueTertiary,
-  colorTextZoneConferenceLeague,
-  colorTextZoneConferenceLeagueAlt,
-  colorTextZoneConferenceLeagueTertiary,
-  colorPremierLeagueFg,
-  colorPremierLeagueBg,
-  fontFamily,
-  fontFamilyDisplay,
-  fontSizeXs,
-  fontSizeSm,
-  fontSizeBase,
-  fontSizeLg,
-  maxWidthContent,
-  space1,
-  space2,
-  space3,
-  space4,
-  radiusLg,
-  shadowMd,
-} from '../../theme.css';
+  style,
+  createContainer,
+  createVar,
+  fallbackVar,
+} from '@vanilla-extract/css';
+import {
+  cssVariablesByColorMode,
+  getDesignTokens,
+} from '@kapowaz/design-tokens';
+
+const { colors, spacing, borderRadius, shadow, typography } = getDesignTokens();
+
+// --- Local CSS variables (color-mode-dependent) ---
+
+const colorBgSurface = createVar('all-time-rank-bg-surface');
+const colorBgRowEven = createVar('all-time-rank-bg-row-even');
+const colorBgRowAlt = createVar('all-time-rank-bg-row-alt');
+const colorBgTableHead = createVar('all-time-rank-bg-table-head');
+const colorTextTableHead = createVar('all-time-rank-text-table-head');
+const colorTextPrimary = createVar('all-time-rank-text-primary');
+const colorTextPosition = createVar('all-time-rank-text-position');
+const colorTextSecondary = createVar('all-time-rank-text-secondary');
+const colorTextMuted = createVar('all-time-rank-text-muted');
+const colorTextStatFaded = createVar('all-time-rank-text-stat-faded');
+const colorTextStatStrong = createVar('all-time-rank-text-stat-strong');
+
+const colorBgZoneChampions = createVar('all-time-rank-bg-zone-champions');
+const colorBgZoneChampionsAlt = createVar(
+  'all-time-rank-bg-zone-champions-alt',
+);
+const colorBgZoneChampionsLeague = createVar('all-time-rank-bg-zone-cl');
+const colorBgZoneChampionsLeagueAlt = createVar('all-time-rank-bg-zone-cl-alt');
+const colorBgZoneEuropaLeague = createVar('all-time-rank-bg-zone-el');
+const colorBgZoneEuropaLeagueAlt = createVar('all-time-rank-bg-zone-el-alt');
+const colorBgZoneConferenceLeague = createVar('all-time-rank-bg-zone-ecl');
+const colorBgZoneConferenceLeagueAlt = createVar(
+  'all-time-rank-bg-zone-ecl-alt',
+);
+
+const colorTextZoneChampions = createVar('all-time-rank-text-zone-champions');
+const colorTextZoneChampionsAlt = createVar(
+  'all-time-rank-text-zone-champions-alt',
+);
+const colorTextZoneChampionsTertiary = createVar(
+  'all-time-rank-text-zone-champions-tertiary',
+);
+const colorTextZoneChampionsLeague = createVar('all-time-rank-text-zone-cl');
+const colorTextZoneChampionsLeagueAlt = createVar(
+  'all-time-rank-text-zone-cl-alt',
+);
+const colorTextZoneChampionsLeagueTertiary = createVar(
+  'all-time-rank-text-zone-cl-tertiary',
+);
+const colorTextZoneEuropaLeague = createVar('all-time-rank-text-zone-el');
+const colorTextZoneEuropaLeagueAlt = createVar(
+  'all-time-rank-text-zone-el-alt',
+);
+const colorTextZoneEuropaLeagueTertiary = createVar(
+  'all-time-rank-text-zone-el-tertiary',
+);
+const colorTextZoneConferenceLeague = createVar('all-time-rank-text-zone-ecl');
+const colorTextZoneConferenceLeagueAlt = createVar(
+  'all-time-rank-text-zone-ecl-alt',
+);
+const colorTextZoneConferenceLeagueTertiary = createVar(
+  'all-time-rank-text-zone-ecl-tertiary',
+);
+
+export const colorPremierLeagueFg = createVar('all-time-rank-pl-fg');
+export const colorPremierLeagueBg = createVar('all-time-rank-pl-bg');
+
+cssVariablesByColorMode({
+  light: {
+    [colorBgSurface]: colors.white,
+    [colorBgRowEven]: colors.white,
+    [colorBgRowAlt]: colors.gray[100],
+    [colorBgTableHead]: colors.slate[200],
+    [colorTextTableHead]: colors.slate[500],
+    [colorTextPrimary]: colors.gray[800],
+    [colorTextPosition]: colors.gray[500],
+    [colorTextSecondary]: colors.gray[500],
+    [colorTextMuted]: colors.neutral[500],
+    [colorTextStatFaded]: colors.gray[300],
+    [colorTextStatStrong]: colors.black,
+
+    [colorBgZoneChampions]: colors.green[100],
+    [colorBgZoneChampionsAlt]: colors.green[200],
+    [colorBgZoneChampionsLeague]: colors.teal[100],
+    [colorBgZoneChampionsLeagueAlt]: colors.teal[200],
+    [colorBgZoneEuropaLeague]: colors.cyan[100],
+    [colorBgZoneEuropaLeagueAlt]: colors.cyan[200],
+    [colorBgZoneConferenceLeague]: colors.sky[100],
+    [colorBgZoneConferenceLeagueAlt]: colors.sky[200],
+
+    [colorTextZoneChampions]: colors.green[800],
+    [colorTextZoneChampionsAlt]: colors.green[700],
+    [colorTextZoneChampionsTertiary]: colors.green[500],
+    [colorTextZoneChampionsLeague]: colors.teal[900],
+    [colorTextZoneChampionsLeagueAlt]: colors.teal[700],
+    [colorTextZoneChampionsLeagueTertiary]: colors.teal[500],
+    [colorTextZoneEuropaLeague]: colors.cyan[900],
+    [colorTextZoneEuropaLeagueAlt]: colors.cyan[700],
+    [colorTextZoneEuropaLeagueTertiary]: colors.cyan[500],
+    [colorTextZoneConferenceLeague]: colors.sky[800],
+    [colorTextZoneConferenceLeagueAlt]: colors.sky[600],
+    [colorTextZoneConferenceLeagueTertiary]: colors.sky[400],
+
+    [colorPremierLeagueFg]: colors.slate[500],
+    [colorPremierLeagueBg]: colors.slate[200],
+  },
+  dark: {
+    [colorBgSurface]: colors.black,
+    [colorBgRowEven]: colors.slate[900],
+    [colorBgRowAlt]: colors.slate[925],
+    [colorBgTableHead]: colors.slate[800],
+    [colorTextTableHead]: colors.slate[500],
+    [colorTextPrimary]: colors.slate[200],
+    [colorTextPosition]: colors.slate[400],
+    [colorTextSecondary]: colors.slate[500],
+    [colorTextMuted]: colors.slate[600],
+    [colorTextStatFaded]: colors.slate[700],
+    [colorTextStatStrong]: colors.white,
+
+    [colorBgZoneChampions]: colors.green[925],
+    [colorBgZoneChampionsAlt]: colors.green[950],
+    [colorBgZoneChampionsLeague]: colors.teal[925],
+    [colorBgZoneChampionsLeagueAlt]: colors.teal[950],
+    [colorBgZoneEuropaLeague]: colors.cyan[925],
+    [colorBgZoneEuropaLeagueAlt]: colors.cyan[950],
+    [colorBgZoneConferenceLeague]: colors.sky[925],
+    [colorBgZoneConferenceLeagueAlt]: colors.sky[950],
+
+    [colorTextZoneChampions]: colors.green[300],
+    [colorTextZoneChampionsAlt]: colors.green[400],
+    [colorTextZoneChampionsTertiary]: colors.green[600],
+    [colorTextZoneChampionsLeague]: colors.teal[300],
+    [colorTextZoneChampionsLeagueAlt]: colors.teal[500],
+    [colorTextZoneChampionsLeagueTertiary]: colors.teal[700],
+    [colorTextZoneEuropaLeague]: colors.cyan[300],
+    [colorTextZoneEuropaLeagueAlt]: colors.cyan[500],
+    [colorTextZoneEuropaLeagueTertiary]: colors.cyan[700],
+    [colorTextZoneConferenceLeague]: colors.sky[300],
+    [colorTextZoneConferenceLeagueAlt]: colors.sky[500],
+    [colorTextZoneConferenceLeagueTertiary]: colors.sky[700],
+
+    [colorPremierLeagueFg]: colors.slate[800],
+    [colorPremierLeagueBg]: colors.slate[500],
+  },
+});
+
+// --- Exported vars for inline-var usage in TSX ---
 
 export const honourRecency = createVar();
 export const zoneTextAlt = createVar();
@@ -59,8 +162,8 @@ export const container = style({
   containerType: 'inline-size',
   isolation: 'isolate',
   backgroundColor: colorBgSurface,
-  borderRadius: radiusLg,
-  boxShadow: shadowMd,
+  borderRadius: borderRadius.lg,
+  boxShadow: shadow.md,
   overflowX: 'auto',
   overflowY: 'auto',
   height: '100%',
@@ -74,12 +177,11 @@ export const container = style({
 
 export const table = style({
   width: '100%',
-  maxWidth: maxWidthContent,
+  maxWidth: '1400px',
   borderCollapse: 'separate',
   borderSpacing: 0,
-  fontSize: fontSizeBase,
   lineHeight: '24px',
-  borderRadius: radiusLg,
+  borderRadius: borderRadius.lg,
   '@media': {
     'screen and (max-width: 680px)': {
       borderRadius: 0,
@@ -104,11 +206,9 @@ export const thead = style({
 });
 
 export const th = style({
-  padding: `${space2} ${space1}`,
+  padding: `${spacing.sm} ${spacing.xs}`,
   textAlign: 'left',
-  fontWeight: 600,
   color: colorTextTableHead,
-  fontSize: fontSizeSm,
   textTransform: 'uppercase',
   letterSpacing: '0.05em',
   fontVariantNumeric: 'tabular-nums',
@@ -118,10 +218,10 @@ export const th = style({
   backgroundColor: colorBgTableHead,
   '@container': {
     [`${tableContainer} (min-width: 480px)`]: {
-      padding: space2,
+      padding: spacing.sm,
     },
     [`${tableContainer} (min-width: 680px)`]: {
-      padding: `${space3} ${space2}`,
+      padding: `${spacing.md} ${spacing.sm}`,
     },
   },
 });
@@ -138,8 +238,6 @@ export const thIcon = style({
   verticalAlign: 'middle',
   color: colorTextTableHead,
 });
-
-export { colorPremierLeagueFg, colorPremierLeagueBg };
 
 export const tr = style({});
 
@@ -216,15 +314,16 @@ export const zoneConferenceLeagueOdd = style({
 });
 
 export const td = style({
-  padding: `${space3} ${space2}`,
+  padding: `${spacing.md} ${spacing.sm}`,
   color: colorTextPrimary,
+  fontFamily: typography.fontFamily.monospace,
   fontVariantNumeric: 'tabular-nums',
   '@container': {
     [`${tableContainer} (max-width: 480px)`]: {
-      padding: `${space2} ${space1}`,
+      padding: `${spacing.sm} ${spacing.xs}`,
     },
     [`${tableContainer} (max-width: 680px)`]: {
-      padding: space2,
+      padding: spacing.sm,
     },
   },
 });
@@ -232,7 +331,7 @@ export const td = style({
 export const tdCenter = style({
   textAlign: 'center',
   whiteSpace: 'nowrap',
-  fontFamily: fontFamily,
+  fontFamily: typography.fontFamily.monospace,
   fontVariantNumeric: 'tabular-nums',
 });
 
@@ -251,14 +350,12 @@ export const stickyCellTh = style({
   top: 0,
   zIndex: 3,
   backgroundColor: colorBgTableHead,
-  paddingLeft: space3,
+  paddingLeft: spacing.md,
   WebkitMaskImage: 'unset',
   maskImage: 'unset',
 });
 
 export const position = style({
-  fontFamily: fontFamily,
-  fontWeight: 600,
   color: colorTextPosition,
   textAlign: 'center',
   fontVariantNumeric: 'tabular-nums',
@@ -289,8 +386,8 @@ export const positionConferenceLeague = style({
 export const teamCell = style({
   display: 'flex',
   alignItems: 'center',
-  gap: space2,
-  paddingRight: space4,
+  gap: spacing.sm,
+  paddingRight: spacing.lg,
   minWidth: '180px',
   '@container': {
     [`${tableContainer} (max-width: 480px)`]: {
@@ -299,7 +396,7 @@ export const teamCell = style({
   },
 });
 
-export const crest = style({
+export const badge = style({
   width: '20px',
   height: '20px',
   flexShrink: 0,
@@ -307,10 +404,8 @@ export const crest = style({
 });
 
 export const teamName = style({
-  fontFamily: fontFamilyDisplay,
-  fontStretch: '75%',
+  fontFamily: typography.fontFamily.monospace,
   fontWeight: 600,
-  fontSize: fontSizeLg,
   textTransform: 'uppercase',
   whiteSpace: 'nowrap',
   overflow: 'hidden',
@@ -318,13 +413,10 @@ export const teamName = style({
 });
 
 export const scoreValue = style({
-  fontWeight: 700,
-  fontFamily: fontFamily,
   fontVariantNumeric: 'tabular-nums',
 });
 
 export const statValue = style({
-  fontFamily: fontFamily,
   fontVariantNumeric: 'tabular-nums',
   color: `color-mix(in lch, ${colorTextStatStrong} ${fallbackVar(honourRecency, '100%')}, ${fallbackVar(zoneTextTertiary, colorTextStatFaded)})`,
 });
@@ -334,47 +426,39 @@ export const statZero = style({
 });
 
 export const leagueScore = style({
-  fontFamily: fontFamily,
   fontVariantNumeric: 'tabular-nums',
   color: fallbackVar(zoneTextAlt, colorTextSecondary),
-  fontSize: fontSizeXs,
 });
 
 export const attendanceValue = style({
-  fontFamily: fontFamily,
   fontVariantNumeric: 'tabular-nums',
-  fontSize: fontSizeSm,
 });
 
 export const popoverContent = style({
-  padding: space2,
+  padding: spacing.sm,
   display: 'flex',
   flexDirection: 'column',
-  gap: space2,
+  gap: spacing.sm,
 });
 
-export const popoverLabel = style({
-  fontWeight: 600,
-});
+export const popoverLabel = style({});
 
 export const popoverYears = style({
   maxWidth: '240px',
+  fontSize: '11px',
   fontVariantNumeric: 'tabular-nums',
 });
 
 export const scoreBreakdownTable = style({
   borderCollapse: 'collapse',
   borderSpacing: 0,
-  fontSize: fontSizeBase,
   fontVariantNumeric: 'tabular-nums',
 });
 
 export const scoreBreakdownLabel = style({
-  fontWeight: 600,
-  paddingRight: space3,
+  paddingRight: spacing.md,
 });
 
 export const scoreBreakdownValue = style({
   textAlign: 'right',
-  fontSize: fontSizeBase,
 });

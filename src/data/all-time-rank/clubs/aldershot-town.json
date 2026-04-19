@@ -1,7 +1,7 @@
 {
   "name": "Aldershot Town",
   "shortName": "Aldershot",
-  "crest": "aldershot-town",
+  "badge": "aldershot-town",
   "founded": 1926,
   "currentTier": null,
   "leagueRecord": {

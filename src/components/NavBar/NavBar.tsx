@@ -1,20 +1,32 @@
-import { useState, useRef } from 'react';
+import clsx from 'clsx';
+import { AnimatePresence, motion } from 'motion/react';
+import { useState, useRef, useMemo } from 'react';
 import { createPortal } from 'react-dom';
-import { Link, useLocation } from 'react-router-dom';
-import { AnimatePresence, motion } from 'framer-motion';
-import type { CompetitionConfig } from '../../data/competitions';
-import { AppHeading } from '../AppHeading';
-import { Button } from '../Button';
-import { CompetitionSelect } from '../CompetitionSelect';
-import { ColorModeToggle } from '../ColorModeToggle';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import {
-  ArrowDownFromDotIcon,
-  ImageDownIcon,
-  MenuSquareIcon,
-  SparklesIcon,
-  TrashIcon,
-  XIcon,
-} from '../icons';
+  AbstractText,
+  Button,
+  IconTextButton,
+  TabBar,
+  ToggleColorMode,
+} from '@kapowaz/components';
+import type { Tab } from '@kapowaz/components';
+import { CompetitionSelect } from '@kapowaz/football';
+import type { CompetitionOption } from '@kapowaz/football';
+import type { Competition } from '@kapowaz/football-badges';
+import {
+  ArrowDownToDot,
+  ImageDown,
+  MenuSquare,
+  Sparkles,
+  Trash2,
+  X,
+} from '@kapowaz/icons';
+
+import type { CompetitionConfig } from '../../data/competitions';
+import { useNavigationLoading } from '../../hooks/useNavigationLoading';
+import { AppHeading } from '../AppHeading';
+
 import * as styles from './NavBar.css';
 
 interface NavBarProps {
@@ -24,10 +36,6 @@ interface NavBarProps {
   activeSlug: string;
   /** Called when the user selects a different competition. */
   onCompetitionChange: (slug: string) => void;
-  /** The current active color mode. */
-  colorMode: 'light' | 'dark';
-  /** Called with the next color mode when the user toggles it. */
-  onColorModeToggle: (colorMode: 'light' | 'dark') => void;
   /** Opens the deductions modal. */
   onDeductionsClick?: () => void;
   /** Fills all remaining fixtures with AI model predictions. Only rendered when provided. */
@@ -44,8 +52,6 @@ export const NavBar = ({
   competitions,
   activeSlug,
   onCompetitionChange,
-  colorMode,
-  onColorModeToggle,
   onDeductionsClick,
   onAIPredictionsClick,
   onResetPredictionsClick,
@@ -53,14 +59,52 @@ export const NavBar = ({
   isSaveImageDisabled,
 }: NavBarProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [optimisticTabId, setOptimisticTabId] = useState<string | null>(null);
+  const [prevPathname, setPrevPathname] = useState<string | null>(null);
   const pendingActionRef = useRef<(() => void) | null>(null);
   const location = useLocation();
+  const navigate = useNavigate();
+  const { startNavigating } = useNavigationLoading();
+
+  const competitionOptions: CompetitionOption[] = useMemo(
+    () =>
+      competitions.map((c) => ({
+        slug: c.slug as Competition,
+        name: c.name,
+      })),
+    [competitions],
+  );
+
+  if (prevPathname !== location.pathname) {
+    setPrevPathname(location.pathname);
+    if (prevPathname !== null) {
+      setOptimisticTabId(null);
+    }
+  }
 
   const navItems = [
     { id: 'competition', label: 'Standings', href: `/${activeSlug}/` },
     { id: 'run-in', label: 'Run In', href: `/run-in/${activeSlug}/` },
-    { id: 'relegation', label: 'Relegation', href: `/relegation/${activeSlug}/` },
+    {
+      id: 'relegation',
+      label: 'Relegation',
+      href: `/relegation/${activeSlug}/`,
+    },
   ];
+
+  const tabs: Tab[] = navItems.map((item) => ({
+    id: item.id,
+    label: item.label,
+    href: item.href,
+  }));
+
+  const handleTabClick = (tabId: string) => {
+    setOptimisticTabId(tabId);
+  };
+
+  const handleNavigate = (href: string) => {
+    startNavigating(() => navigate(href));
+  };
 
   const getActiveItemId = () => {
     const { pathname } = location;
@@ -69,79 +113,92 @@ export const NavBar = ({
     return 'competition';
   };
 
-  const activeItemId = getActiveItemId();
+  const activeItemId = optimisticTabId ?? getActiveItemId();
 
   const closeMenu = () => setIsMenuOpen(false);
 
   return (
-    <header className={styles.navBar}>
-      <AppHeading />
-      <nav className={styles.navTabs}>
-        {navItems.map((item) => (
-          <Link
-            key={item.id}
-            to={item.href}
-            className={`${styles.navTab} ${activeItemId === item.id ? styles.navTabActive : ''}`}
-          >
-            {item.label}
-          </Link>
-        ))}
-      </nav>
-      <div className={styles.controls}>
-        {(onSaveImageClick || onDeductionsClick || onAIPredictionsClick || onResetPredictionsClick) && (
-          <div className={styles.desktopActions}>
-            {onSaveImageClick && (
-              <Button
-                variant="success"
-                aria-label="Save Image"
-                title="Save Image"
-                onClick={onSaveImageClick}
-                disabled={isSaveImageDisabled}
-              >
-                <ImageDownIcon size={16} />
-                <span className={styles.desktopActionLabel}>Save Image</span>
-              </Button>
+    <header className={styles.navBarWrapper}>
+      <div className={styles.navBar}>
+        <div className={styles.navBarHeader}>
+          <AppHeading />
+          <div className={styles.controls}>
+            {competitions.length > 1 && (
+              <div className={styles.competitionSelectWrapper}>
+                <CompetitionSelect
+                  competitions={competitionOptions}
+                  value={activeSlug}
+                  onChange={onCompetitionChange}
+                />
+              </div>
             )}
-            {onDeductionsClick && (
-              <Button variant="danger" aria-label="Deductions" title="Deductions" onClick={onDeductionsClick}>
-                <ArrowDownFromDotIcon size={16} />
-                <span className={styles.desktopActionLabel}>Deductions</span>
-              </Button>
-            )}
-            {onAIPredictionsClick && (
-              <Button variant="success" aria-label="AI Predictions" title="AI Predictions" onClick={onAIPredictionsClick}>
-                <SparklesIcon size={16} />
-                <span className={styles.desktopActionLabel}>AI Predictions</span>
-              </Button>
-            )}
-            {onResetPredictionsClick && (
-              <Button variant="danger" aria-label="Reset Predictions" title="Reset Predictions" onClick={onResetPredictionsClick}>
-                <TrashIcon size={16} />
-                <span className={styles.desktopActionLabel}>Reset Predictions</span>
-              </Button>
-            )}
+            <button
+              className={styles.menuButton}
+              aria-label="Open navigation menu"
+              title="Navigation menu"
+              onClick={() => setIsMenuOpen(true)}
+            >
+              <MenuSquare width={18} height={18} />
+            </button>
+            <div className={styles.desktopColorModeToggle}>
+              <ToggleColorMode />
+            </div>
           </div>
-        )}
-        {competitions.length > 1 && (
-          <div className={styles.competitionSelectWrapper}>
-            <CompetitionSelect
-              competitions={competitions}
-              value={activeSlug}
-              onChange={onCompetitionChange}
-            />
-          </div>
-        )}
-        <button
-          className={styles.menuButton}
-          aria-label="Open navigation menu"
-          title="Navigation menu"
-          onClick={() => setIsMenuOpen(true)}
-        >
-          <MenuSquareIcon size={18} />
-        </button>
-        <div className={styles.desktopColorModeToggle}>
-          <ColorModeToggle colorMode={colorMode} onColorModeToggle={onColorModeToggle} />
         </div>
+        <TabBar
+          tabs={tabs}
+          selectedId={activeItemId}
+          onTabClick={handleTabClick}
+          onNavigate={handleNavigate}
+          className={styles.desktopTabBar}
+          rightContent={
+            onSaveImageClick ||
+            onDeductionsClick ||
+            onAIPredictionsClick ||
+            onResetPredictionsClick ? (
+              <div className={styles.desktopActions}>
+                {onSaveImageClick && (
+                  <IconTextButton
+                    label="Download image"
+                    onClick={onSaveImageClick}
+                    isDisabled={isSaveImageDisabled}
+                    icon={ImageDown}
+                  >
+                    Download
+                  </IconTextButton>
+                )}
+                {onDeductionsClick && (
+                  <IconTextButton
+                    label="Edit points deductions"
+                    onClick={onDeductionsClick}
+                    icon={ArrowDownToDot}
+                  >
+                    Deductions
+                  </IconTextButton>
+                )}
+                {onAIPredictionsClick && (
+                  <IconTextButton
+                    label="Generate AI Predictions"
+                    onClick={onAIPredictionsClick}
+                    icon={Sparkles}
+                  >
+                    Predictions
+                  </IconTextButton>
+                )}
+                {onResetPredictionsClick && (
+                  <IconTextButton
+                    label="Reset Predictions"
+                    onClick={onResetPredictionsClick}
+                    variant="danger"
+                    icon={Trash2}
+                  >
+                    Reset
+                  </IconTextButton>
+                )}
+              </div>
+            ) : undefined
+          }
+        />
       </div>
       {createPortal(
         <AnimatePresence
@@ -170,75 +227,83 @@ export const NavBar = ({
                 transition={{ type: 'spring', damping: 30, stiffness: 300 }}
               >
                 <div className={styles.overlayHeader}>
-                  <ColorModeToggle colorMode={colorMode} onColorModeToggle={onColorModeToggle} />
+                  <ToggleColorMode />
                   <button
                     className={styles.overlayCloseButton}
                     onClick={closeMenu}
                     aria-label="Close navigation menu"
                   >
-                    <XIcon size={18} />
+                    <X width={18} height={18} />
                   </button>
                 </div>
                 <nav className={styles.overlayNavItems}>
                   {navItems.map((item) => (
                     <Link
-                      key={item.id}
                       to={item.href}
-                      className={`${styles.overlayNavItem} ${activeItemId === item.id ? styles.overlayNavItemActive : ''}`}
+                      key={item.id}
                       onClick={closeMenu}
+                      className={clsx(
+                        styles.overlayNavItem,
+                        activeItemId === item.id && styles.overlayNavItemActive,
+                      )}
                     >
-                      {item.label}
+                      <AbstractText fontSize="lg" fontWeight="semibold">
+                        {item.label}
+                      </AbstractText>
                     </Link>
                   ))}
                 </nav>
-                {(onSaveImageClick || onDeductionsClick || onAIPredictionsClick || onResetPredictionsClick) && (
+                {(onSaveImageClick ||
+                  onDeductionsClick ||
+                  onAIPredictionsClick ||
+                  onResetPredictionsClick) && (
                   <div className={styles.overlayActions}>
                     {onSaveImageClick && (
                       <Button
-                        variant="success"
+                        type="primary"
                         onClick={() => {
                           pendingActionRef.current = onSaveImageClick;
                           closeMenu();
                         }}
-                        disabled={isSaveImageDisabled}
+                        isDisabled={isSaveImageDisabled}
+                        icon={ImageDown}
                       >
-                        <ImageDownIcon size={16} />
                         Save Image
                       </Button>
                     )}
                     {onDeductionsClick && (
                       <Button
-                        variant="danger"
+                        type="danger"
                         onClick={() => {
                           pendingActionRef.current = onDeductionsClick;
                           closeMenu();
                         }}
+                        icon={ArrowDownToDot}
                       >
-                        <ArrowDownFromDotIcon size={16} />
                         Deductions
                       </Button>
                     )}
                     {onAIPredictionsClick && (
                       <Button
-                        variant="success"
+                        type="primary"
                         onClick={() => {
                           pendingActionRef.current = onAIPredictionsClick;
                           closeMenu();
                         }}
+                        icon={Sparkles}
                       >
-                        <SparklesIcon size={16} />
                         AI Predictions
                       </Button>
                     )}
                     {onResetPredictionsClick && (
                       <Button
-                        variant="danger"
+                        type="danger"
                         onClick={() => {
                           pendingActionRef.current = onResetPredictionsClick;
                           closeMenu();
                         }}
+                        icon={Trash2}
                       >
-                        <TrashIcon size={16} />
                         Reset Predictions
                       </Button>
                     )}
@@ -247,10 +312,10 @@ export const NavBar = ({
                 {competitions.length > 1 && (
                   <div className={styles.overlayCompetitionSelect}>
                     <CompetitionSelect
-                      competitions={competitions}
+                      competitions={competitionOptions}
                       value={activeSlug}
                       menuPlacement="top"
-                      onChange={(slug) => {
+                      onChange={(slug: string) => {
                         onCompetitionChange(slug);
                         closeMenu();
                       }}

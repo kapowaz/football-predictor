@@ -1,5 +1,6 @@
 import { useMemo, useEffect, useCallback } from 'react';
 import type { RefObject } from 'react';
+
 import { useImageCapture } from './useImageCapture';
 
 interface UseImageDownloadOptions {
@@ -66,13 +67,15 @@ export const useImageDownload = ({
     // Defer image capture to avoid blocking the main thread during navigation/render.
     // requestIdleCallback ensures it runs when the browser is idle; the 2s timeout
     // guarantees it still fires even on busy pages.
-    const scheduleCapture = typeof requestIdleCallback === 'function'
-      ? (cb: () => void) => requestIdleCallback(cb, { timeout: 2000 })
-      : (cb: () => void) => window.setTimeout(cb, 500);
+    const scheduleCapture =
+      typeof requestIdleCallback === 'function'
+        ? (cb: () => void) => requestIdleCallback(cb, { timeout: 2000 })
+        : (cb: () => void) => window.setTimeout(cb, 500);
 
-    const cancelCapture = typeof cancelIdleCallback === 'function'
-      ? (id: number) => cancelIdleCallback(id)
-      : (id: number) => window.clearTimeout(id);
+    const cancelCapture =
+      typeof cancelIdleCallback === 'function'
+        ? (id: number) => cancelIdleCallback(id)
+        : (id: number) => window.clearTimeout(id);
 
     const id = scheduleCapture(() => {
       void Promise.all([renderTopImage(), renderBottomImage()]);

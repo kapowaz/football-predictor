@@ -8,7 +8,7 @@
       "name": "Arsenal",
       "shortName": "Arsenal",
       "tla": "ARS",
-      "crest": "arsenal"
+      "badge": "arsenal"
     },
     {
       "id": 58,
@@ -16,7 +16,7 @@
       "name": "Aston Villa",
       "shortName": "Aston Villa",
       "tla": "AVL",
-      "crest": "aston-villa"
+      "badge": "aston-villa"
     },
     {
       "id": 61,
@@ -24,7 +24,7 @@
       "name": "Chelsea",
       "shortName": "Chelsea",
       "tla": "CHE",
-      "crest": "chelsea"
+      "badge": "chelsea"
     },
     {
       "id": 62,
@@ -32,7 +32,7 @@
       "name": "Everton",
       "shortName": "Everton",
       "tla": "EVE",
-      "crest": "everton"
+      "badge": "everton"
     },
     {
       "id": 63,
@@ -40,7 +40,7 @@
       "name": "Fulham",
       "shortName": "Fulham",
       "tla": "FUL",
-      "crest": "fulham"
+      "badge": "fulham"
     },
     {
       "id": 64,
@@ -48,7 +48,7 @@
       "name": "Liverpool",
       "shortName": "Liverpool",
       "tla": "LIV",
-      "crest": "liverpool"
+      "badge": "liverpool"
     },
     {
       "id": 65,
@@ -56,7 +56,7 @@
       "name": "Manchester City",
       "shortName": "Man City",
       "tla": "MCI",
-      "crest": "manchester-city"
+      "badge": "manchester-city"
     },
     {
       "id": 66,
@@ -64,7 +64,7 @@
       "name": "Manchester United",
       "shortName": "Man United",
       "tla": "MUN",
-      "crest": "manchester-united"
+      "badge": "manchester-united"
     },
     {
       "id": 67,
@@ -72,7 +72,7 @@
       "name": "Newcastle United",
       "shortName": "Newcastle",
       "tla": "NEW",
-      "crest": "newcastle-united"
+      "badge": "newcastle-united"
     },
     {
       "id": 71,
@@ -80,7 +80,7 @@
       "name": "Sunderland",
       "shortName": "Sunderland",
       "tla": "SUN",
-      "crest": "sunderland"
+      "badge": "sunderland"
     },
     {
       "id": 73,
@@ -88,7 +88,7 @@
       "name": "Tottenham Hotspur",
       "shortName": "Tottenham",
       "tla": "TOT",
-      "crest": "tottenham-hotspur"
+      "badge": "tottenham-hotspur"
     },
     {
       "id": 76,
@@ -96,7 +96,7 @@
       "name": "Wolverhampton Wanderers",
       "shortName": "Wolves",
       "tla": "WOL",
-      "crest": "wolverhampton-wanderers"
+      "badge": "wolverhampton-wanderers"
     },
     {
       "id": 328,
@@ -104,7 +104,7 @@
       "name": "Burnley",
       "shortName": "Burnley",
       "tla": "BUR",
-      "crest": "burnley"
+      "badge": "burnley"
     },
     {
       "id": 341,
@@ -112,7 +112,7 @@
       "name": "Leeds United",
       "shortName": "Leeds",
       "tla": "LEE",
-      "crest": "leeds-united"
+      "badge": "leeds-united"
     },
     {
       "id": 351,
@@ -120,7 +120,7 @@
       "name": "Nottingham Forest",
       "shortName": "Forest",
       "tla": "NTF",
-      "crest": "nottingham-forest"
+      "badge": "nottingham-forest"
     },
     {
       "id": 354,
@@ -128,7 +128,7 @@
       "name": "Crystal Palace",
       "shortName": "Palace",
       "tla": "CRY",
-      "crest": "crystal-palace"
+      "badge": "crystal-palace"
     },
     {
       "id": 397,
@@ -136,7 +136,7 @@
       "name": "Brighton & Hove Albion",
       "shortName": "Brighton",
       "tla": "BHA",
-      "crest": "brighton-and-hove-albion"
+      "badge": "brighton-and-hove-albion"
     },
     {
       "id": 402,
@@ -144,7 +144,7 @@
       "name": "Brentford",
       "shortName": "Brentford",
       "tla": "BRE",
-      "crest": "brentford"
+      "badge": "brentford"
     },
     {
       "id": 563,
@@ -152,7 +152,7 @@
       "name": "West Ham United",
       "shortName": "West Ham",
       "tla": "WHU",
-      "crest": "west-ham-united"
+      "badge": "west-ham-united"
     },
     {
       "id": 1044,
@@ -160,7 +160,7 @@
       "name": "AFC Bournemouth",
       "shortName": "Bournemouth",
       "tla": "BOU",
-      "crest": "afc-bournemouth"
+      "badge": "afc-bournemouth"
     }
   ]
 }

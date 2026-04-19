@@ -1,5 +1,6 @@
 import * as fs from 'node:fs';
 import * as path from 'node:path';
+
 import { parseCompetitionArg } from './common';
 import type { ScriptCompetition } from './common';
 
@@ -53,7 +54,7 @@ interface TeamJson {
   name: string;
   shortName: string;
   tla: string;
-  crest: string;
+  badge: string;
 }
 
 interface TeamsJson {

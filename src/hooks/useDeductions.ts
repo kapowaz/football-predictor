@@ -1,6 +1,6 @@
+import { useCompetitionSession } from '../state/useCompetitionSession';
 import type { PointDeduction } from '../types';
 import { useCompetitionData } from './useCompetitionData';
-import { useCompetitionSession } from '../state/useCompetitionSession';
 
 export const useDeductions = (slug: string, defaults: PointDeduction[]) => {
   const { matches } = useCompetitionData(slug);

@@ -1,16 +1,18 @@
 import { style } from '@vanilla-extract/css';
-import { space2, space4, space6, maxWidthContent } from '../../theme.css';
+import { getDesignTokens } from '@kapowaz/design-tokens';
+
+const { spacing } = getDesignTokens();
 
 export const header = style({
   display: 'flex',
   alignItems: 'center',
-  gap: space2,
+  gap: spacing.sm,
   width: '100%',
-  maxWidth: maxWidthContent,
-  margin: `0 auto ${space6}`,
+  maxWidth: '1400px',
+  margin: `0 auto ${spacing.lg}`,
   '@media': {
     'screen and (max-width: 680px)': {
-      padding: `${space6} ${space4} 0`,
+      padding: `${spacing.lg} ${spacing.md} 0`,
     },
   },
 });

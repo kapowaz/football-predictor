@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
-import type { Match, PredictionsStore, TeamStanding } from '../types';
+
 import type { ZoneDefinition } from '../data/competitions';
+import type { Match, PredictionsStore, TeamStanding } from '../types';
 import type { ZoneGuaranteesResponse } from '../workers/zoneGuarantees.worker';
 
 let worker: Worker | null = null;

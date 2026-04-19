@@ -1,7 +1,7 @@
 {
   "name": "Bolton Wanderers",
   "shortName": "Bolton",
-  "crest": "bolton-wanderers",
+  "badge": "bolton-wanderers",
   "founded": 1874,
   "currentTier": 3,
   "leagueRecord": {

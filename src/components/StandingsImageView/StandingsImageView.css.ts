@@ -1,16 +1,30 @@
-import { style } from '@vanilla-extract/css';
+import { createVar, style } from '@vanilla-extract/css';
 import {
-  colorBgPage,
-  colorTextHeading,
-  colorTextSecondary,
-  colorIconFaded,
-  fontSizeLg,
-  fontSizeMd,
-  fontSizeSm,
-  space2,
-  space3,
-  space4,
-} from '../../theme.css';
+  cssVariablesByColorMode,
+  getDesignTokens,
+} from '@kapowaz/design-tokens';
+
+const { colors, spacing } = getDesignTokens();
+
+const colorBgPage = createVar('standings-image-bg-page');
+const colorTextHeading = createVar('standings-image-text-heading');
+const colorTextSecondary = createVar('standings-image-text-secondary');
+const colorIconFaded = createVar('standings-image-icon-faded');
+
+cssVariablesByColorMode({
+  light: {
+    [colorBgPage]: colors.gray[100],
+    [colorTextHeading]: colors.gray[900],
+    [colorTextSecondary]: colors.gray[500],
+    [colorIconFaded]: colors.neutral[300],
+  },
+  dark: {
+    [colorBgPage]: colors.ink[950],
+    [colorTextHeading]: colors.ink[300],
+    [colorTextSecondary]: colors.ink[500],
+    [colorIconFaded]: colors.ink[800],
+  },
+});
 
 export const hiddenCaptureRoot = style({
   position: 'fixed',
@@ -32,8 +46,8 @@ export const captureSurface = style({
 export const innerWrapper = style({
   display: 'flex',
   flexDirection: 'column',
-  gap: space4,
-  padding: space4,
+  gap: spacing.lg,
+  padding: spacing.lg,
   backgroundColor: colorBgPage,
 });
 
@@ -55,9 +69,7 @@ export const headingExtraContent = style({
 export const competitionLabel = style({
   display: 'inline-flex',
   alignItems: 'center',
-  gap: space2,
-  fontSize: fontSizeLg,
-  fontWeight: 600,
+  gap: spacing.sm,
   color: colorTextHeading,
 });
 
@@ -70,8 +82,7 @@ export const competitionLogo = style({
 
 export const deductionNotes = style({
   display: 'flex',
-  gap: space3,
-  fontSize: fontSizeSm,
+  gap: spacing.md,
   color: colorTextSecondary,
 });
 
@@ -91,9 +102,8 @@ export const footer = style({
   alignItems: 'center',
   textAlign: 'center',
   width: '100%',
-  gap: space4,
+  gap: spacing.lg,
   color: colorTextSecondary,
-  fontSize: fontSizeMd,
 });
 
 export const footerIcon = style({

@@ -1,11 +1,21 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
 import clsx from 'clsx';
-import type { Team, PredictionsStore, VariantRulesMode } from '../../types';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { AbstractText } from '@kapowaz/components';
+import { FixtureCard, FixtureGroup } from '@kapowaz/football';
+import type {
+  FixtureIndicator,
+  FixtureIndicatorStatus,
+} from '@kapowaz/football';
+
 import type { ZoneDefinition } from '../../data/competitions';
-import { FixtureCard } from '../FixtureCard/FixtureCard';
-import { cardHighlighted } from '../FixtureCard/FixtureCard.css';
-import { FixtureGroup } from '../FixtureGroup';
+import type {
+  Match,
+  Team,
+  PredictionsStore,
+  VariantRulesMode,
+} from '../../types';
 import type { FixtureGroupData } from './types';
+
 import * as styles from './FixtureList.css';
 
 const EMPTY_LIVE_SCORE_MATCH_IDS: ReadonlySet<string> = new Set();
@@ -22,7 +32,11 @@ interface FixtureListProps {
   /** Match ID to scroll to, if any. */
   navigateToMatchId: number | null;
   /** Callback to set a prediction for a match. */
-  setPrediction: (matchId: number, homeGoals: number, awayGoals: number) => void;
+  setPrediction: (
+    matchId: number,
+    homeGoals: number,
+    awayGoals: number,
+  ) => void;
   /** Callback to remove a prediction for a match. */
   removePrediction: (matchId: number) => void;
   /** Callback to clear the navigate-to-match request. */
@@ -38,6 +52,79 @@ interface FixtureListProps {
   /** Enable variant rules mode for indicator dots. */
   variantRules?: VariantRulesMode;
 }
+
+const formatKickoff = (utcDate: string): string => {
+  const date = new Date(utcDate);
+  return date.toLocaleTimeString('en-GB', {
+    hour: '2-digit',
+    minute: '2-digit',
+  });
+};
+
+const formatDate = (utcDate: string): string => {
+  const date = new Date(utcDate);
+  const day = String(date.getDate()).padStart(2, '0');
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  return `${day}/${month}`;
+};
+
+const getIndicatorStatus = (
+  match: Match,
+  result: { homeGoals: number; awayGoals: number },
+  team?: Team,
+  variantRules: VariantRulesMode = false,
+): FixtureIndicatorStatus => {
+  const useNewRulesIndicators = variantRules === 'new-rules';
+  if (team) {
+    const isHome = match.homeTeamId === team.id;
+    const teamGoals = isHome ? result.homeGoals : result.awayGoals;
+    const opponentGoals = isHome ? result.awayGoals : result.homeGoals;
+
+    if (teamGoals > opponentGoals) {
+      if (useNewRulesIndicators && teamGoals - opponentGoals >= 2)
+        return 'bonus';
+      return 'win';
+    }
+    if (teamGoals < opponentGoals) {
+      if (useNewRulesIndicators && opponentGoals - teamGoals >= 2)
+        return 'bonusAway';
+      return 'loss';
+    }
+    return 'draw';
+  }
+
+  const margin = Math.abs(result.homeGoals - result.awayGoals);
+  if (result.homeGoals > result.awayGoals) {
+    if (useNewRulesIndicators && margin >= 2) return 'bonus';
+    return 'win';
+  }
+  if (result.homeGoals < result.awayGoals) {
+    if (useNewRulesIndicators && margin >= 2) return 'bonusAway';
+    return 'loss';
+  }
+  return 'draw';
+};
+
+const buildIndicators = (
+  matches: Match[],
+  predictions: PredictionsStore,
+  team?: Team,
+  variantRules: VariantRulesMode = false,
+): FixtureIndicator[] =>
+  matches.map((match) => {
+    const result =
+      match.status === 'FINISHED'
+        ? { homeGoals: match.homeGoals, awayGoals: match.awayGoals }
+        : predictions.predictions[String(match.id)];
+
+    return {
+      id: match.id,
+      status:
+        result != null
+          ? getIndicatorStatus(match, result, team, variantRules)
+          : 'none',
+    };
+  });
 
 export const FixtureList = ({
   groups,
@@ -55,6 +142,9 @@ export const FixtureList = ({
   variantRules = false as VariantRulesMode,
 }: FixtureListProps) => {
   const [expandedKey, setExpandedKey] = useState<string | null>(null);
+  const [highlightedMatchId, setHighlightedMatchId] = useState<number | null>(
+    null,
+  );
   const groupRefs = useRef<Map<string, HTMLDivElement>>(new Map());
   const containerRef = useRef<HTMLDivElement>(null);
   const expandedKeyRef = useRef<string | null>(null);
@@ -80,10 +170,69 @@ export const FixtureList = ({
     });
   }, [groups, navigateToMatchId]);
 
+  const highlightCard = useCallback((matchId: number) => {
+    setHighlightedMatchId(matchId);
+
+    const card = containerRef.current?.querySelector(
+      `[data-match-id="${matchId}"]`,
+    );
+    const firstInput = card?.querySelector<HTMLInputElement>('input');
+    firstInput?.focus();
+  }, []);
+
+  const scrollToMatch = useCallback(
+    (matchId: number) => {
+      if (!containerRef.current) return;
+
+      const card = containerRef.current.querySelector(
+        `[data-match-id="${matchId}"]`,
+      );
+      if (card) {
+        card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+        const initialTop = card.getBoundingClientRect().top;
+
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            if (Math.abs(card.getBoundingClientRect().top - initialTop) < 0.5) {
+              highlightCard(matchId);
+              return;
+            }
+
+            let lastTop = card.getBoundingClientRect().top;
+            let stableFrames = 0;
+
+            const waitForScrollEnd = () => {
+              const top = card.getBoundingClientRect().top;
+              if (Math.abs(top - lastTop) < 0.5) {
+                stableFrames++;
+                if (stableFrames >= 3) {
+                  highlightCard(matchId);
+                  return;
+                }
+              } else {
+                stableFrames = 0;
+              }
+              lastTop = top;
+              requestAnimationFrame(waitForScrollEnd);
+            };
+
+            requestAnimationFrame(waitForScrollEnd);
+          });
+        });
+      }
+      pendingScrollMatchId.current = null;
+      setNavigateToMatchId(null);
+    },
+    [highlightCard, setNavigateToMatchId],
+  );
+
   useEffect(() => {
     if (navigateToMatchId == null) return;
 
-    const group = groups.find((g) => g.matches.some((m) => m.id === navigateToMatchId));
+    const group = groups.find((g) =>
+      g.matches.some((m) => m.id === navigateToMatchId),
+    );
     if (!group) {
       setNavigateToMatchId(null);
       pendingScrollMatchId.current = null;
@@ -102,7 +251,8 @@ export const FixtureList = ({
         return group.key;
       });
     }
-  }, [groups, navigateToMatchId, setNavigateToMatchId]); // eslint-disable-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [groups, navigateToMatchId, setNavigateToMatchId, scrollToMatch]);
 
   useEffect(() => {
     const becameVisible = isVisible && !wasVisibleRef.current;
@@ -128,60 +278,6 @@ export const FixtureList = ({
       requestAnimationFrame(scrollToExpandedGroup);
     });
   }, [isVisible, navigateToMatchId]);
-
-  const highlightCard = useCallback((card: Element) => {
-    card.classList.add(cardHighlighted);
-    card.addEventListener('animationend', () => card.classList.remove(cardHighlighted), {
-      once: true,
-    });
-    const firstInput = card.querySelector<HTMLInputElement>('input');
-    firstInput?.focus();
-  }, []);
-
-  const scrollToMatch = useCallback(
-    (matchId: number) => {
-      if (!containerRef.current) return;
-
-      const card = containerRef.current.querySelector(`[data-match-id="${matchId}"]`);
-      if (card) {
-        card.scrollIntoView({ behavior: 'smooth', block: 'center' });
-
-        const initialTop = card.getBoundingClientRect().top;
-
-        requestAnimationFrame(() => {
-          requestAnimationFrame(() => {
-            if (Math.abs(card.getBoundingClientRect().top - initialTop) < 0.5) {
-              highlightCard(card);
-              return;
-            }
-
-            let lastTop = card.getBoundingClientRect().top;
-            let stableFrames = 0;
-
-            const waitForScrollEnd = () => {
-              const top = card.getBoundingClientRect().top;
-              if (Math.abs(top - lastTop) < 0.5) {
-                stableFrames++;
-                if (stableFrames >= 3) {
-                  highlightCard(card);
-                  return;
-                }
-              } else {
-                stableFrames = 0;
-              }
-              lastTop = top;
-              requestAnimationFrame(waitForScrollEnd);
-            };
-
-            requestAnimationFrame(waitForScrollEnd);
-          });
-        });
-      }
-      pendingScrollMatchId.current = null;
-      setNavigateToMatchId(null);
-    },
-    [highlightCard, setNavigateToMatchId],
-  );
 
   const toggleGroup = useCallback((key: string) => {
     setExpandedKey((prev) => {
@@ -216,13 +312,23 @@ export const FixtureList = ({
   );
 
   if (groups.length === 0) {
-    return <div className={styles.emptyState}>No upcoming matches to predict.</div>;
+    return (
+      <AbstractText className={styles.emptyState} fontSize="md">
+        No upcoming matches to predict.
+      </AbstractText>
+    );
   }
 
   return (
     <div className={styles.container} ref={containerRef}>
       {groups.map((group) => {
         const isExpanded = expandedKey === group.key;
+        const indicators = buildIndicators(
+          group.matches,
+          predictions,
+          group.team,
+          variantRules,
+        );
         return (
           <div
             key={group.key}
@@ -239,14 +345,15 @@ export const FixtureList = ({
               label={group.label}
               team={group.team}
               isExpanded={isExpanded}
-              allPredicted={group.allPredicted}
-              matches={group.matches}
-              predictions={predictions}
+              isAllPredicted={group.isAllPredicted}
+              indicators={indicators}
               onClick={() => toggleGroup(group.key)}
-              variantRules={variantRules}
             />
             <div
-              className={clsx(styles.fixturesWrapper, isExpanded && styles.fixturesWrapperExpanded)}
+              className={clsx(
+                styles.fixturesWrapper,
+                isExpanded && styles.fixturesWrapperExpanded,
+              )}
               onTransitionEnd={(e) => handleTransitionEnd(group.key, e)}
             >
               <div className={styles.fixturesList}>
@@ -256,41 +363,68 @@ export const FixtureList = ({
 
                   if (!homeTeam || !awayTeam) return null;
 
-                  const prediction = predictions.predictions[String(match.id)] ?? null;
+                  const prediction =
+                    predictions.predictions[String(match.id)] ?? null;
+                  const isHighlighted = highlightedMatchId === match.id;
+
+                  const separator = showDate ? (
+                    <>
+                      {formatDate(match.utcDate)}
+                      <br />
+                      {formatKickoff(match.utcDate)}
+                    </>
+                  ) : (
+                    formatKickoff(match.utcDate)
+                  );
 
                   if (match.status === 'FINISHED') {
                     return (
-                      <FixtureCard
-                        key={match.id}
-                        match={match}
-                        status={match.status}
-                        homeTeam={homeTeam}
-                        awayTeam={awayTeam}
-                        homePosition={standingPositionsByTeamId.get(match.homeTeamId)!}
-                        awayPosition={standingPositionsByTeamId.get(match.awayTeamId)!}
-                        zones={zones}
-                        result={{ homeGoals: match.homeGoals, awayGoals: match.awayGoals }}
-                        showDate={showDate}
-                      />
+                      <div key={match.id} data-match-id={match.id}>
+                        <FixtureCard
+                          matchId={match.id}
+                          status={match.status}
+                          homeTeam={homeTeam}
+                          awayTeam={awayTeam}
+                          homePosition={
+                            standingPositionsByTeamId.get(match.homeTeamId)!
+                          }
+                          awayPosition={
+                            standingPositionsByTeamId.get(match.awayTeamId)!
+                          }
+                          zones={zones}
+                          result={{
+                            homeGoals: match.homeGoals,
+                            awayGoals: match.awayGoals,
+                          }}
+                          separator={separator}
+                          isHighlighted={isHighlighted}
+                        />
+                      </div>
                     );
                   }
 
                   return (
-                    <FixtureCard
-                      key={match.id}
-                      match={match}
-                      status={match.status}
-                      homeTeam={homeTeam}
-                      awayTeam={awayTeam}
-                      homePosition={standingPositionsByTeamId.get(match.homeTeamId)!}
-                      awayPosition={standingPositionsByTeamId.get(match.awayTeamId)!}
-                      zones={zones}
-                      result={prediction}
-                      isLiveScore={liveScoreMatchIds.has(String(match.id))}
-                      onPredictionChange={setPrediction}
-                      onPredictionRemove={removePrediction}
-                      showDate={showDate}
-                    />
+                    <div key={match.id} data-match-id={match.id}>
+                      <FixtureCard
+                        matchId={match.id}
+                        status={match.status}
+                        homeTeam={homeTeam}
+                        awayTeam={awayTeam}
+                        homePosition={
+                          standingPositionsByTeamId.get(match.homeTeamId)!
+                        }
+                        awayPosition={
+                          standingPositionsByTeamId.get(match.awayTeamId)!
+                        }
+                        zones={zones}
+                        result={prediction}
+                        isLiveScore={liveScoreMatchIds.has(String(match.id))}
+                        onPredictionChange={setPrediction}
+                        onPredictionRemove={removePrediction}
+                        separator={separator}
+                        isHighlighted={isHighlighted}
+                      />
+                    </div>
                   );
                 })}
               </div>

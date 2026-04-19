@@ -2,10 +2,10 @@ const fs = require('fs');
 const path = require('path');
 
 const wikiFile = process.argv[2];
-const clubCrest = process.argv[3];
+const clubBadge = process.argv[3];
 
-if (!wikiFile || !clubCrest) {
-  console.error('Usage: node process-club.cjs <wiki-markdown-file> <club-crest>');
+if (!wikiFile || !clubBadge) {
+  console.error('Usage: node process-club.cjs <wiki-markdown-file> <club-badge>');
   process.exit(1);
 }
 
@@ -13,9 +13,9 @@ const clubsData = JSON.parse(fs.readFileSync(
   path.join(__dirname, '../src/data/all-time-rank/clubs.json'), 'utf8'
 ));
 
-const club = clubsData.find(c => c.crest === clubCrest);
+const club = clubsData.find(c => c.badge === clubBadge);
 if (!club) {
-  console.error(`Club not found: ${clubCrest}`);
+  console.error(`Club not found: ${clubBadge}`);
   process.exit(1);
 }
 
@@ -137,7 +137,7 @@ const emptyTiered = { tier1: [], tier2: [], tier3: [], tier4: [] };
 const output = {
   name: club.name,
   shortName: club.shortName,
-  crest: club.crest,
+  badge: club.badge,
   founded: club.founded,
   currentTier: club.currentTier,
   leagueRecord,
@@ -161,7 +161,7 @@ const output = {
   averageAttendance: club.averageAttendance,
 };
 
-const outFile = path.join(__dirname, '../src/data/all-time-rank/clubs', `${clubCrest}.json`);
+const outFile = path.join(__dirname, '../src/data/all-time-rank/clubs', `${clubBadge}.json`);
 fs.writeFileSync(outFile, JSON.stringify(output, null, 2) + '\n');
 
 const totalSeasons = Object.keys(output.leagueRecord.tier1).length +
@@ -189,8 +189,8 @@ if (allYears.length > 0) {
 }
 
 if (missingYears.length > 0) {
-  console.log(`WARN|${clubCrest}|${totalSeasons} seasons|MISSING: ${missingYears.join(',')}`);
+  console.log(`WARN|${clubBadge}|${totalSeasons} seasons|MISSING: ${missingYears.join(',')}`);
   process.exit(1);
 } else {
-  console.log(`OK|${clubCrest}|${totalSeasons} seasons`);
+  console.log(`OK|${clubBadge}|${totalSeasons} seasons`);
 }

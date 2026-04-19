@@ -1,7 +1,7 @@
 {
   "name": "Newcastle United",
   "shortName": "Newcastle",
-  "crest": "newcastle-united",
+  "badge": "newcastle-united",
   "founded": 1892,
   "currentTier": 1,
   "leagueRecord": {

@@ -1,4 +1,3 @@
-import { useCallback, useEffect, useRef, type ReactNode } from 'react';
 import {
   useFloating,
   useDismiss,
@@ -8,8 +7,10 @@ import {
   FloatingFocusManager,
   FloatingPortal,
 } from '@floating-ui/react';
-import { AnimatePresence, motion } from 'framer-motion';
 import { clsx } from 'clsx';
+import { AnimatePresence, motion } from 'motion/react';
+import { useCallback, useEffect, useRef, type ReactNode } from 'react';
+
 import * as styles from './Modal.css';
 
 interface ModalProps {
@@ -17,6 +18,7 @@ interface ModalProps {
   isOpen: boolean;
   /** Called when the modal requests to close (dismiss, overlay click, etc.) */
   onClose: () => void;
+  /** Content rendered inside the modal panel */
   children: ReactNode;
   /** CSS class applied to the modal panel (controls sizing, padding, etc.) */
   className?: string;
@@ -27,7 +29,7 @@ interface ModalProps {
    */
   initialFocus?: number | React.MutableRefObject<HTMLElement | null>;
   /** When true, the panel shakes on open */
-  shakeOnOpen?: boolean;
+  isShakeOnOpen?: boolean;
   /** Called when the open (entrance) animation finishes */
   onOpenAnimationComplete?: () => void;
 }
@@ -40,7 +42,7 @@ export const Modal = ({
   children,
   className,
   initialFocus,
-  shakeOnOpen,
+  isShakeOnOpen,
   onOpenAnimationComplete,
 }: ModalProps) => {
   const isOpenRef = useRef(isOpen);
@@ -78,19 +80,22 @@ export const Modal = ({
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
             >
-              <FloatingFocusManager context={context} initialFocus={initialFocus}>
+              <FloatingFocusManager
+                context={context}
+                initialFocus={initialFocus}
+              >
                 <motion.div
                   ref={floatingRef}
                   className={clsx(styles.panel, className)}
                   initial={{ opacity: 0, scale: 0.9, y: 20 }}
                   animate={
-                    shakeOnOpen
+                    isShakeOnOpen
                       ? { opacity: 1, scale: 1, y: 0, x: SHAKE_X }
                       : { opacity: 1, scale: 1, y: 0 }
                   }
                   exit={{ opacity: 0, scale: 0.9, y: 20 }}
                   transition={
-                    shakeOnOpen
+                    isShakeOnOpen
                       ? {
                           type: 'spring',
                           damping: 25,

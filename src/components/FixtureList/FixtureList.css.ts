@@ -1,19 +1,27 @@
-import { style } from '@vanilla-extract/css';
+import { createVar, style } from '@vanilla-extract/css';
 import {
-  colorTextSecondary,
-  fontSizeBase,
-  space1,
-  space2,
-  space4,
-  space6,
-  space12,
-} from '../../theme.css';
+  cssVariablesByColorMode,
+  getDesignTokens,
+} from '@kapowaz/design-tokens';
+
+const { colors, spacing } = getDesignTokens();
+
+const colorTextSecondary = createVar('fixture-list-text-secondary');
+
+cssVariablesByColorMode({
+  light: {
+    [colorTextSecondary]: colors.gray[500],
+  },
+  dark: {
+    [colorTextSecondary]: colors.ink[500],
+  },
+});
 
 export const container = style({
   position: 'relative',
   display: 'flex',
   flexDirection: 'column',
-  gap: space4,
+  gap: spacing.md,
   overflow: 'auto',
   flex: 1,
   minHeight: 0,
@@ -22,7 +30,7 @@ export const container = style({
 export const dateGroup = style({
   display: 'flex',
   flexDirection: 'column',
-  gap: space2,
+  gap: spacing.sm,
 });
 
 export const fixturesWrapper = style({
@@ -42,15 +50,14 @@ export const fixturesWrapperExpanded = style({
 export const fixturesList = style({
   display: 'flex',
   flexDirection: 'column',
-  gap: space2,
+  gap: spacing.sm,
   overflow: 'hidden',
   minHeight: 0,
-  padding: space1,
+  padding: spacing.xs,
 });
 
 export const emptyState = style({
   textAlign: 'center',
-  padding: `${space12} ${space6}`,
+  padding: `${spacing.xxl} ${spacing.lg}`,
   color: colorTextSecondary,
-  fontSize: fontSizeBase,
 });

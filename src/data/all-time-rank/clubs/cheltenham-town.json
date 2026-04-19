@@ -1,7 +1,7 @@
 {
   "name": "Cheltenham Town",
   "shortName": "Cheltenham",
-  "crest": "cheltenham-town",
+  "badge": "cheltenham-town",
   "founded": 1887,
   "currentTier": 4,
   "leagueRecord": {

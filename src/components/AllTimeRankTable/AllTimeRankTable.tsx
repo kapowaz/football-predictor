@@ -1,22 +1,29 @@
-import { useMemo } from 'react';
-import clsx from 'clsx';
 import { assignInlineVars } from '@vanilla-extract/dynamic';
-import { getCrest } from '../../assets/crests';
+import clsx from 'clsx';
+import { useMemo } from 'react';
+import { AbstractText } from '@kapowaz/components';
+import { Popover, PopoverGroup } from '@kapowaz/components';
+import { getClubBadge } from '@kapowaz/football-badges';
 import {
-  PremierLeagueLogo,
-  FaCupLogo,
-  EflCupLogo,
-  UefaChampionsLeagueLogo,
-  UefaEuropaLeagueLogo,
-  UefaConferenceLeagueLogo,
-} from '../honours';
-import { Popover, PopoverGroup } from '../Popover';
+  PremierLeague,
+  FACup,
+  EFLCup,
+  UEFAChampionsLeague,
+  UEFAEuropaLeague,
+  UEFAConferenceLeague,
+} from '@kapowaz/football-badges';
+import { Icon } from '@kapowaz/icons';
+
 import { findOldestYear, computeHonourRecency } from '../../utils/allTimeRank';
 import type { AllTimeRankTableProps } from './types';
+
 import * as styles from './AllTimeRankTable.css';
 
 const formatScore = (score: number): string =>
-  score.toLocaleString('en-GB', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+  score.toLocaleString('en-GB', {
+    minimumFractionDigits: 1,
+    maximumFractionDigits: 1,
+  });
 
 const formatAttendance = (attendance: number): string => {
   if (attendance >= 1000) {
@@ -31,17 +38,30 @@ const formatSeasonYear = (year: number): string => {
   return `${startYear}/${endYearShort}`;
 };
 
-const formatYearsList = (years: number[], asSeason = false): string | undefined => {
+const formatYearsList = (
+  years: number[],
+  asSeason = false,
+): string | undefined => {
   if (years.length === 0) return undefined;
-  return years.map((y) => (asSeason ? formatSeasonYear(y) : String(y))).join(', ');
+  return years
+    .map((y) => (asSeason ? formatSeasonYear(y) : String(y)))
+    .join(', ');
 };
 
 const getRowZoneClass = (rank: number, index: number): string => {
   const isEven = index % 2 === 0;
-  if (rank <= 10) return isEven ? styles.zoneChampionsEven : styles.zoneChampionsOdd;
-  if (rank <= 20) return isEven ? styles.zoneChampionsLeagueEven : styles.zoneChampionsLeagueOdd;
-  if (rank <= 40) return isEven ? styles.zoneEuropaLeagueEven : styles.zoneEuropaLeagueOdd;
-  if (rank <= 80) return isEven ? styles.zoneConferenceLeagueEven : styles.zoneConferenceLeagueOdd;
+  if (rank <= 10)
+    return isEven ? styles.zoneChampionsEven : styles.zoneChampionsOdd;
+  if (rank <= 20)
+    return isEven
+      ? styles.zoneChampionsLeagueEven
+      : styles.zoneChampionsLeagueOdd;
+  if (rank <= 40)
+    return isEven ? styles.zoneEuropaLeagueEven : styles.zoneEuropaLeagueOdd;
+  if (rank <= 80)
+    return isEven
+      ? styles.zoneConferenceLeagueEven
+      : styles.zoneConferenceLeagueOdd;
   return isEven ? styles.rowEven : styles.rowOdd;
 };
 
@@ -53,7 +73,10 @@ const getPositionZoneClass = (rank: number): string | undefined => {
   return undefined;
 };
 
-export const AllTimeRankTable = ({ rankedClubs, weights }: AllTimeRankTableProps) => {
+export const AllTimeRankTable = ({
+  rankedClubs,
+  weights,
+}: AllTimeRankTableProps) => {
   const { currentYear, oldestYear, latestYears } = useMemo(() => {
     const clubs = rankedClubs.map((r) => r.club);
 
@@ -74,15 +97,25 @@ export const AllTimeRankTable = ({ rankedClubs, weights }: AllTimeRankTableProps
         t1Titles: maxYear(clubs.map((c) => c.honours.leagueTitles.tier1)),
         faCup: maxYear(clubs.map((c) => c.honours.faCupWinners)),
         leagueCup: maxYear(clubs.map((c) => c.honours.leagueCupWinners)),
-        ucl: maxYear(clubs.map((c) => c.europeanHonours.championsLeagueWinners)),
+        ucl: maxYear(
+          clubs.map((c) => c.europeanHonours.championsLeagueWinners),
+        ),
         uel: maxYear(clubs.map((c) => c.europeanHonours.europaLeagueWinners)),
-        uecl: maxYear(clubs.map((c) => c.europeanHonours.conferenceLeagueWinners)),
+        uecl: maxYear(
+          clubs.map((c) => c.europeanHonours.conferenceLeagueWinners),
+        ),
       },
     };
   }, [rankedClubs]);
 
   const recency = (years: number[], latestYear?: number) =>
-    computeHonourRecency(years, currentYear, oldestYear, weights.decayFloor, latestYear);
+    computeHonourRecency(
+      years,
+      currentYear,
+      oldestYear,
+      weights.decayFloor,
+      latestYear,
+    );
 
   return (
     <PopoverGroup>
@@ -102,44 +135,92 @@ export const AllTimeRankTable = ({ rankedClubs, weights }: AllTimeRankTableProps
           </colgroup>
           <thead className={styles.thead}>
             <tr>
-              <th className={clsx(styles.th, styles.stickyCellTh)}>Team</th>
-              <th className={clsx(styles.th, styles.thCenter)}>Score</th>
-              <th className={clsx(styles.th, styles.thCenter)}>League</th>
-              <th className={clsx(styles.th, styles.thCenter)}>
+              <AbstractText
+                tagName="th"
+                className={clsx(styles.th, styles.stickyCellTh)}
+                fontSize="sm"
+                fontWeight="semibold"
+              >
+                Team
+              </AbstractText>
+              <AbstractText
+                tagName="th"
+                className={clsx(styles.th, styles.thCenter)}
+                fontSize="sm"
+                fontWeight="semibold"
+              >
+                Score
+              </AbstractText>
+              <AbstractText
+                tagName="th"
+                className={clsx(styles.th, styles.thCenter)}
+                fontSize="sm"
+                fontWeight="semibold"
+              >
+                League
+              </AbstractText>
+              <AbstractText
+                tagName="th"
+                className={clsx(styles.th, styles.thCenter)}
+                fontSize="sm"
+                fontWeight="semibold"
+              >
                 <Popover
-                  content={<div className={styles.popoverContent}>Top-flight league titles</div>}
+                  content={
+                    <div className={styles.popoverContent}>
+                      Top-flight league titles
+                    </div>
+                  }
                   placement="top"
                 >
                   <span className={styles.thIcon}>
-                    <PremierLeagueLogo
-                      size={20}
+                    <Icon
+                      component={PremierLeague}
+                      size="lg"
                       foregroundColor={styles.colorPremierLeagueFg}
                       backgroundColor={styles.colorPremierLeagueBg}
                     />
                   </span>
                 </Popover>
-              </th>
-              <th className={clsx(styles.th, styles.thCenter)}>
+              </AbstractText>
+              <AbstractText
+                tagName="th"
+                className={clsx(styles.th, styles.thCenter)}
+                fontSize="sm"
+                fontWeight="semibold"
+              >
                 <Popover
                   content={<div className={styles.popoverContent}>FA Cup</div>}
                   placement="top"
                 >
                   <span className={styles.thIcon}>
-                    <FaCupLogo size={20} />
+                    <Icon component={FACup} size="lg" />
                   </span>
                 </Popover>
-              </th>
-              <th className={clsx(styles.th, styles.thCenter)}>
+              </AbstractText>
+              <AbstractText
+                tagName="th"
+                className={clsx(styles.th, styles.thCenter)}
+                fontSize="sm"
+                fontWeight="semibold"
+              >
                 <Popover
-                  content={<div className={styles.popoverContent}>League Cup</div>}
+                  content={
+                    <div className={styles.popoverContent}>League Cup</div>
+                  }
                   placement="top"
                 >
                   <span className={styles.thIcon}>
-                    <EflCupLogo size={20} />
+                    <Icon component={EFLCup} size="lg" />
                   </span>
                 </Popover>
-              </th>
-              <th className={clsx(styles.th, styles.thCenter)}>
+              </AbstractText>
+              <AbstractText
+                tagName="th"
+                className={clsx(styles.th, styles.thCenter)}
+                fontSize="sm"
+                fontWeight="semibold"
+              >
                 <Popover
                   content={
                     <div className={styles.popoverContent}>
@@ -150,11 +231,16 @@ export const AllTimeRankTable = ({ rankedClubs, weights }: AllTimeRankTableProps
                   hideDelay={50000}
                 >
                   <span className={styles.thIcon}>
-                    <UefaChampionsLeagueLogo size={20} />
+                    <Icon component={UEFAChampionsLeague} size="lg" />
                   </span>
                 </Popover>
-              </th>
-              <th className={clsx(styles.th, styles.thCenter)}>
+              </AbstractText>
+              <AbstractText
+                tagName="th"
+                className={clsx(styles.th, styles.thCenter)}
+                fontSize="sm"
+                fontWeight="semibold"
+              >
                 <Popover
                   content={
                     <div className={styles.popoverContent}>
@@ -164,11 +250,16 @@ export const AllTimeRankTable = ({ rankedClubs, weights }: AllTimeRankTableProps
                   placement="top"
                 >
                   <span className={styles.thIcon}>
-                    <UefaEuropaLeagueLogo size={20} />
+                    <Icon component={UEFAEuropaLeague} size="lg" />
                   </span>
                 </Popover>
-              </th>
-              <th className={clsx(styles.th, styles.thCenter)}>
+              </AbstractText>
+              <AbstractText
+                tagName="th"
+                className={clsx(styles.th, styles.thCenter)}
+                fontSize="sm"
+                fontWeight="semibold"
+              >
                 <Popover
                   content={
                     <div className={styles.popoverContent}>
@@ -178,20 +269,27 @@ export const AllTimeRankTable = ({ rankedClubs, weights }: AllTimeRankTableProps
                   placement="top"
                 >
                   <span className={styles.thIcon}>
-                    <UefaConferenceLeagueLogo size={20} />
+                    <Icon component={UEFAConferenceLeague} size="lg" />
                   </span>
                 </Popover>
-              </th>
-              <th className={clsx(styles.th, styles.thCenter)}>
+              </AbstractText>
+              <AbstractText
+                tagName="th"
+                className={clsx(styles.th, styles.thCenter)}
+                fontSize="sm"
+                fontWeight="semibold"
+              >
                 <Popover
                   content={
-                    <div className={styles.popoverContent}>Historical average home attendance</div>
+                    <div className={styles.popoverContent}>
+                      Historical average home attendance
+                    </div>
                   }
                   placement="top"
                 >
                   <span>Att</span>
                 </Popover>
-              </th>
+              </AbstractText>
             </tr>
           </thead>
           <tbody>
@@ -205,7 +303,7 @@ export const AllTimeRankTable = ({ rankedClubs, weights }: AllTimeRankTableProps
                 europeanScore,
                 attendanceScore,
               } = entry;
-              const crestUrl = getCrest(club.crest);
+              const badgeUrl = getClubBadge(club.badge);
 
               const t1TitleYears = club.honours.leagueTitles.tier1;
               const faCupYears = club.honours.faCupWinners;
@@ -215,22 +313,40 @@ export const AllTimeRankTable = ({ rankedClubs, weights }: AllTimeRankTableProps
               const ueclYears = club.europeanHonours.conferenceLeagueWinners;
 
               return (
-                <tr key={club.name} className={clsx(styles.tr, getRowZoneClass(rank, index))}>
+                <tr
+                  key={club.name}
+                  className={clsx(styles.tr, getRowZoneClass(rank, index))}
+                >
                   <td className={clsx(styles.td, styles.stickyCell)}>
                     <div className={styles.teamCell}>
-                      <span
+                      <AbstractText
+                        tagName="span"
                         className={clsx(
                           styles.position,
                           styles.positionNumber,
                           getPositionZoneClass(rank),
                         )}
+                        fontSize="md"
+                        fontWeight="semibold"
                       >
                         {rank}
-                      </span>
-                      {crestUrl && (
-                        <img className={styles.crest} src={crestUrl} alt="" loading="lazy" />
+                      </AbstractText>
+                      {badgeUrl && (
+                        <img
+                          className={styles.badge}
+                          src={badgeUrl}
+                          alt=""
+                          loading="lazy"
+                        />
                       )}
-                      <span className={styles.teamName}>{club.name}</span>
+                      <AbstractText
+                        tagName="span"
+                        className={styles.teamName}
+                        fontSize="lg"
+                        fontWeight="semibold"
+                      >
+                        {club.name}
+                      </AbstractText>
                     </div>
                   </td>
                   <td className={clsx(styles.td, styles.tdCenter)}>
@@ -238,42 +354,82 @@ export const AllTimeRankTable = ({ rankedClubs, weights }: AllTimeRankTableProps
                       placement="top"
                       content={
                         <div className={styles.popoverContent}>
-                          <table className={styles.scoreBreakdownTable}>
+                          <AbstractText
+                            tagName="table"
+                            className={styles.scoreBreakdownTable}
+                            fontSize="md"
+                          >
                             <tbody>
                               <tr>
-                                <td className={styles.scoreBreakdownLabel}>League</td>
+                                <AbstractText
+                                  tagName="td"
+                                  className={styles.scoreBreakdownLabel}
+                                  fontWeight="semibold"
+                                >
+                                  League
+                                </AbstractText>
                                 <td className={styles.scoreBreakdownValue}>
                                   {formatScore(leagueScore)}
                                 </td>
                               </tr>
                               <tr>
-                                <td className={styles.scoreBreakdownLabel}>Domestic</td>
+                                <AbstractText
+                                  tagName="td"
+                                  className={styles.scoreBreakdownLabel}
+                                  fontWeight="semibold"
+                                >
+                                  Domestic
+                                </AbstractText>
                                 <td className={styles.scoreBreakdownValue}>
                                   {formatScore(domesticScore)}
                                 </td>
                               </tr>
                               <tr>
-                                <td className={styles.scoreBreakdownLabel}>Europe</td>
+                                <AbstractText
+                                  tagName="td"
+                                  className={styles.scoreBreakdownLabel}
+                                  fontWeight="semibold"
+                                >
+                                  Europe
+                                </AbstractText>
                                 <td className={styles.scoreBreakdownValue}>
                                   {formatScore(europeanScore)}
                                 </td>
                               </tr>
                               <tr>
-                                <td className={styles.scoreBreakdownLabel}>Attendance</td>
+                                <AbstractText
+                                  tagName="td"
+                                  className={styles.scoreBreakdownLabel}
+                                  fontWeight="semibold"
+                                >
+                                  Attendance
+                                </AbstractText>
                                 <td className={styles.scoreBreakdownValue}>
                                   {formatScore(attendanceScore)}
                                 </td>
                               </tr>
                             </tbody>
-                          </table>
+                          </AbstractText>
                         </div>
                       }
                     >
-                      <span className={styles.scoreValue}>{formatScore(totalScore)}</span>
+                      <AbstractText
+                        tagName="span"
+                        className={styles.scoreValue}
+                        fontWeight="bold"
+                      >
+                        {formatScore(totalScore)}
+                      </AbstractText>
                     </Popover>
                   </td>
                   <td className={clsx(styles.td, styles.tdCenter)}>
-                    <span className={styles.leagueScore}>{formatScore(leagueScore)}</span>
+                    <AbstractText
+                      tagName="span"
+                      className={styles.leagueScore}
+                      fontSize="xs"
+                    >
+                      {formatScore(leagueScore)}
+                    </AbstractText>
                   </td>
                   <td className={clsx(styles.td, styles.tdCenter)}>
                     <StatCell
@@ -324,9 +480,13 @@ export const AllTimeRankTable = ({ rankedClubs, weights }: AllTimeRankTableProps
                     />
                   </td>
                   <td className={clsx(styles.td, styles.tdCenter)}>
-                    <span className={styles.attendanceValue}>
+                    <AbstractText
+                      tagName="span"
+                      className={styles.attendanceValue}
+                      fontSize="sm"
+                    >
                       {formatAttendance(club.averageAttendance)}
-                    </span>
+                    </AbstractText>
                   </td>
                 </tr>
               );
@@ -339,12 +499,13 @@ export const AllTimeRankTable = ({ rankedClubs, weights }: AllTimeRankTableProps
 };
 
 interface StatCellProps {
+  /** Count of honours (e.g. number of titles won) */
   value: number;
   /** Competition name shown as a label in the popover */
   label: string;
   /** Tooltip listing the years of each win */
   title?: string;
-  /** Normalised recency percentage (0–100) driving the color-mix weighting */
+  /** Normalised recency percentage (0-100) driving the color-mix weighting */
   recency: number;
 }
 
@@ -363,7 +524,13 @@ const StatCell = ({ value, label, title, recency }: StatCellProps) => {
       <Popover
         content={
           <div className={styles.popoverContent}>
-            <span className={styles.popoverLabel}>{label}</span>
+            <AbstractText
+              tagName="span"
+              className={styles.popoverLabel}
+              fontWeight="semibold"
+            >
+              {label}
+            </AbstractText>
             <span className={styles.popoverYears}>{title}</span>
           </div>
         }

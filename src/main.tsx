@@ -1,30 +1,39 @@
+import '@kapowaz/components/components.css';
+import '@kapowaz/football/football.css';
+
 import { lazy, StrictMode, Suspense } from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import './fonts.css';
+import { LoadingIndicator } from '@kapowaz/components';
+
 import App from './App';
-import * as styles from './App.css';
 import { IndexRedirect } from './IndexRedirect';
-import { LoadingIndicator } from './components/LoadingIndicator';
+
+import * as styles from './App.css';
 
 const CompetitionPage = lazy(() =>
-  import('./CompetitionPage').then((m) => ({ default: m.CompetitionPage })),
+  import('./pages/CompetitionPage').then((m) => ({
+    default: m.CompetitionPage,
+  })),
 );
 const RelegationPage = lazy(() =>
-  import('./RelegationPage').then((m) => ({ default: m.RelegationPage })),
+  import('./pages/RelegationPage').then((m) => ({ default: m.RelegationPage })),
 );
-const RunInPage = lazy(() => import('./RunInPage').then((m) => ({ default: m.RunInPage })));
+const RunInPage = lazy(() =>
+  import('./pages/RunInPage').then((m) => ({ default: m.RunInPage })),
+);
 const NewRulesPage = lazy(() =>
-  import('./NewRulesPage').then((m) => ({ default: m.NewRulesPage })),
+  import('./pages/NewRulesPage').then((m) => ({ default: m.NewRulesPage })),
 );
 const BonusPointsPage = lazy(() =>
-  import('./BonusPointsPage').then((m) => ({ default: m.BonusPointsPage })),
+  import('./pages/BonusPointsPage').then((m) => ({
+    default: m.BonusPointsPage,
+  })),
 );
 const StandingsImagePage = lazy(() =>
-  import('./StandingsImagePage').then((m) => ({ default: m.StandingsImagePage })),
-);
-const ColorPalettePage = lazy(() =>
-  import('./ColorPalettePage').then((m) => ({ default: m.ColorPalettePage })),
+  import('./pages/StandingsImagePage').then((m) => ({
+    default: m.StandingsImagePage,
+  })),
 );
 
 if ('serviceWorker' in navigator) {
@@ -36,16 +45,24 @@ if ('serviceWorker' in navigator) {
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <BrowserRouter basename="/football-predictor">
-      <Suspense fallback={<div className={styles.suspenseFallback}><LoadingIndicator size="xl" /></div>}>
+      <Suspense
+        fallback={
+          <div className={styles.suspenseFallback}>
+            <LoadingIndicator size="xl" />
+          </div>
+        }
+      >
         <Routes>
           <Route element={<App />}>
             <Route index element={<IndexRedirect />} />
-            <Route path="colors" element={<ColorPalettePage />} />
             <Route path="relegation/:slug/" element={<RelegationPage />} />
             <Route path="run-in/:slug/" element={<RunInPage />} />
             <Route path="new-rules/:slug/" element={<NewRulesPage />} />
             <Route path="bonus-points/:slug/" element={<BonusPointsPage />} />
-            <Route path="standings-image/:slug/" element={<StandingsImagePage />} />
+            <Route
+              path="standings-image/:slug/"
+              element={<StandingsImagePage />}
+            />
             <Route path=":slug/*" element={<CompetitionPage />} />
           </Route>
         </Routes>

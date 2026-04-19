@@ -1,12 +1,22 @@
 import { describe, it, expect } from 'vitest';
-import type { AllTimeClubData } from './types';
+
 import { allTimeClubs } from './all-clubs';
+import type { AllTimeClubData } from './types';
 
 const clubs = allTimeClubs;
 
 const WAR_YEARS = new Set([
-  1916, 1917, 1918, 1919, // WWI: 1915/16 – 1918/19 seasons not played
-  1940, 1941, 1942, 1943, 1944, 1945, 1946, // WWII: 1939/40 – 1945/46 seasons not played
+  1916,
+  1917,
+  1918,
+  1919, // WWI: 1915/16 – 1918/19 seasons not played
+  1940,
+  1941,
+  1942,
+  1943,
+  1944,
+  1945,
+  1946, // WWII: 1939/40 – 1945/46 seasons not played
 ]);
 
 type TierKey = 'tier1' | 'tier2' | 'tier3' | 'tier4';
@@ -58,9 +68,11 @@ describe('all-time rank club data – season continuity', () => {
         const previousYear = previousYears.length
           ? previousYears[previousYears.length - 1]
           : undefined;
-        const previousTier = previousYear !== undefined ? seasons.get(previousYear) : undefined;
+        const previousTier =
+          previousYear !== undefined ? seasons.get(previousYear) : undefined;
 
-        const bottomTierWhenLeft = previousYear !== undefined ? getBottomTier(previousYear) : undefined;
+        const bottomTierWhenLeft =
+          previousYear !== undefined ? getBottomTier(previousYear) : undefined;
         if (previousTier === bottomTierWhenLeft) continue;
 
         missingYears.push(year);

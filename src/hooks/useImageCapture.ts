@@ -1,6 +1,7 @@
+import { domToPng as modernScreenshotToPng } from 'modern-screenshot';
 import { useState, useCallback } from 'react';
 import type { RefObject } from 'react';
-import { domToPng as modernScreenshotToPng } from 'modern-screenshot';
+
 import { embedPngTextMetadata } from '../utils/pngMetadata';
 
 interface UseImageCaptureOptions {
@@ -64,8 +65,12 @@ export const useImageCapture = ({
       await waitForImages(node);
 
       const dataUrl = await modernScreenshotToPng(node, { scale });
-      const sourceBlob = await fetch(dataUrl).then((response) => response.blob());
-      const outputBlob = metadata ? await embedPngTextMetadata(sourceBlob, metadata) : sourceBlob;
+      const sourceBlob = await fetch(dataUrl).then((response) =>
+        response.blob(),
+      );
+      const outputBlob = metadata
+        ? await embedPngTextMetadata(sourceBlob, metadata)
+        : sourceBlob;
       const file = new File([outputBlob], fileName, { type: 'image/png' });
       setImageFile(file);
     } catch (error) {

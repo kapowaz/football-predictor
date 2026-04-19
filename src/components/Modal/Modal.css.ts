@@ -1,14 +1,24 @@
-import { style } from '@vanilla-extract/css';
+import { createVar, style } from '@vanilla-extract/css';
 import {
-  colorBgBackdrop,
-  colorBgModal,
-  radiusLg,
-  shadowLg,
-  space3,
-  space4,
-  space6,
-  space8,
-} from '../../theme.css';
+  cssVariablesByColorMode,
+  getDesignTokens,
+} from '@kapowaz/design-tokens';
+
+const { colors, spacing, borderRadius, shadow } = getDesignTokens();
+
+const colorBgBackdrop = createVar('modal-bg-backdrop');
+const colorBgModal = createVar('modal-bg-modal');
+
+cssVariablesByColorMode({
+  light: {
+    [colorBgBackdrop]: `color-mix(in oklch, ${colors.black}, transparent 50%)`,
+    [colorBgModal]: colors.white,
+  },
+  dark: {
+    [colorBgBackdrop]: `color-mix(in oklch, ${colors.black}, transparent 40%)`,
+    [colorBgModal]: colors.ink[900],
+  },
+});
 
 export const overlay = style({
   zIndex: 1,
@@ -23,25 +33,25 @@ export const backdrop = style({
   backgroundColor: colorBgBackdrop,
   '@media': {
     'screen and (max-width: 680px)': {
-      padding: `0 ${space6}`,
+      padding: `0 ${spacing.xl}`,
     },
     'screen and (max-width: 550px)': {
-      padding: `0 ${space3}`,
+      padding: `0 ${spacing.md}`,
     },
   },
 });
 
 export const panel = style({
   backgroundColor: colorBgModal,
-  borderRadius: radiusLg,
-  boxShadow: shadowLg,
-  padding: space8,
+  borderRadius: borderRadius.lg,
+  boxShadow: shadow.lg,
+  padding: spacing.xxl,
   width: '90vw',
   position: 'relative',
   outline: 'none',
   '@media': {
     'screen and (max-width: 550px)': {
-      padding: `${space4} ${space3}`,
+      padding: `${spacing.lg} ${spacing.md}`,
     },
   },
 });

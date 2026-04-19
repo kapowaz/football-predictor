@@ -1,7 +1,7 @@
 {
   "name": "Queens Park Rangers",
   "shortName": "QPR",
-  "crest": "queens-park-rangers",
+  "badge": "queens-park-rangers",
   "founded": 1882,
   "currentTier": 2,
   "leagueRecord": {

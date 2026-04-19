@@ -8,7 +8,7 @@
       "name": "Chesterfield",
       "shortName": "Chesterfield",
       "tla": "CFD",
-      "crest": "chesterfield"
+      "badge": "chesterfield"
     },
     {
       "id": 365,
@@ -16,7 +16,7 @@
       "name": "Colchester United",
       "shortName": "Colchester Utd",
       "tla": "COL",
-      "crest": "colchester-united"
+      "badge": "colchester-united"
     },
     {
       "id": 369,
@@ -24,7 +24,7 @@
       "name": "Walsall",
       "shortName": "Walsall",
       "tla": "WAL",
-      "crest": "walsall"
+      "badge": "walsall"
     },
     {
       "id": 370,
@@ -32,7 +32,7 @@
       "name": "Gillingham",
       "shortName": "Gillingham",
       "tla": "GIL",
-      "crest": "gillingham"
+      "badge": "gillingham"
     },
     {
       "id": 391,
@@ -40,7 +40,7 @@
       "name": "Notts County",
       "shortName": "Notts County",
       "tla": "NOT",
-      "crest": "notts-county"
+      "badge": "notts-county"
     },
     {
       "id": 400,
@@ -48,7 +48,7 @@
       "name": "Bristol Rovers",
       "shortName": "Bristol Rovers",
       "tla": "BRV",
-      "crest": "bristol-rovers"
+      "badge": "bristol-rovers"
     },
     {
       "id": 409,
@@ -56,7 +56,7 @@
       "name": "Milton Keynes Dons",
       "shortName": "Milton Keynes",
       "tla": "MKD",
-      "crest": "milton-keynes-dons"
+      "badge": "milton-keynes-dons"
     },
     {
       "id": 411,
@@ -64,7 +64,7 @@
       "name": "Cheltenham Town",
       "shortName": "Cheltenham T",
       "tla": "CHT",
-      "crest": "cheltenham-town"
+      "badge": "cheltenham-town"
     },
     {
       "id": 1073,
@@ -72,7 +72,7 @@
       "name": "Fleetwood Town",
       "shortName": "Fleetwood Town",
       "tla": "FLT",
-      "crest": "fleetwood-town"
+      "badge": "fleetwood-town"
     },
     {
       "id": 1074,
@@ -80,7 +80,7 @@
       "name": "Crewe Alexandra",
       "shortName": "Crewe Alex",
       "tla": "CRE",
-      "crest": "crewe-alexandra"
+      "badge": "crewe-alexandra"
     },
     {
       "id": 1075,
@@ -88,7 +88,7 @@
       "name": "Oldham Athletic",
       "shortName": "Oldham Athl",
       "tla": "OLD",
-      "crest": "oldham-athletic"
+      "badge": "oldham-athletic"
     },
     {
       "id": 1079,
@@ -96,7 +96,7 @@
       "name": "Swindon Town",
       "shortName": "Swindon Town",
       "tla": "SWI",
-      "crest": "swindon-town"
+      "badge": "swindon-town"
     },
     {
       "id": 1080,
@@ -104,7 +104,7 @@
       "name": "Shrewsbury Town",
       "shortName": "Shrewsbury",
       "tla": "SHR",
-      "crest": "shrewsbury-town"
+      "badge": "shrewsbury-town"
     },
     {
       "id": 1110,
@@ -112,7 +112,7 @@
       "name": "Barrow",
       "shortName": "Barrow",
       "tla": "BAW",
-      "crest": "barrow"
+      "badge": "barrow"
     },
     {
       "id": 1118,
@@ -120,7 +120,7 @@
       "name": "Bromley",
       "shortName": "Bromley",
       "tla": "BRO",
-      "crest": "bromley"
+      "badge": "bromley"
     },
     {
       "id": 1132,
@@ -128,7 +128,7 @@
       "name": "Crawley Town",
       "shortName": "Crawley Town",
       "tla": "CRA",
-      "crest": "crawley-town"
+      "badge": "crawley-town"
     },
     {
       "id": 1134,
@@ -136,7 +136,7 @@
       "name": "Barnet",
       "shortName": "Barnet",
       "tla": "BNT",
-      "crest": "barnet"
+      "badge": "barnet"
     },
     {
       "id": 1137,
@@ -144,7 +144,7 @@
       "name": "Grimsby Town",
       "shortName": "Grimsby Town",
       "tla": "GRI",
-      "crest": "grimsby-town"
+      "badge": "grimsby-town"
     },
     {
       "id": 1142,
@@ -152,7 +152,7 @@
       "name": "Newport County",
       "shortName": "Newport County",
       "tla": "NPT",
-      "crest": "newport-county"
+      "badge": "newport-county"
     },
     {
       "id": 1145,
@@ -160,7 +160,7 @@
       "name": "Accrington Stanley",
       "shortName": "Accrington",
       "tla": "ACC",
-      "crest": "accrington-stanley"
+      "badge": "accrington-stanley"
     },
     {
       "id": 1147,
@@ -168,7 +168,7 @@
       "name": "Cambridge United",
       "shortName": "Cambridge Utd",
       "tla": "CAM",
-      "crest": "cambridge-united"
+      "badge": "cambridge-united"
     },
     {
       "id": 1219,
@@ -176,7 +176,7 @@
       "name": "Salford City",
       "shortName": "Salford City",
       "tla": "SAL",
-      "crest": "salford-city"
+      "badge": "salford-city"
     },
     {
       "id": 4536,
@@ -184,7 +184,7 @@
       "name": "Tranmere Rovers",
       "shortName": "Tranmere",
       "tla": "TRA",
-      "crest": "tranmere-rovers"
+      "badge": "tranmere-rovers"
     },
     {
       "id": 4809,
@@ -192,7 +192,7 @@
       "name": "Harrogate Town",
       "shortName": "Harrogate",
       "tla": "HAR",
-      "crest": "harrogate-town"
+      "badge": "harrogate-town"
     }
   ]
 }

@@ -1,7 +1,4 @@
-import eflChampionshipLogo from '../assets/efl-championship-logo.svg';
-import eflLeagueOneLogo from '../assets/efl-league-one-logo.svg';
-import eflLeagueTwoLogo from '../assets/efl-league-two-logo.svg';
-import plLogo from '../assets/premier-league-logo.svg';
+import { getCompetitionLogo } from '@kapowaz/football-badges';
 
 export type ZoneType =
   | 'champions'
@@ -48,7 +45,7 @@ export const COMPETITIONS: Record<string, CompetitionConfig> = {
     teamCount: 20,
     footballDataCode: 'PL',
     fotmobLeagueId: 47,
-    logo: plLogo,
+    logo: getCompetitionLogo('premier-league'),
     zones: [
       {
         name: 'Champions',
@@ -100,7 +97,7 @@ export const COMPETITIONS: Record<string, CompetitionConfig> = {
     teamCount: 24,
     footballDataCode: 'ELC',
     fotmobLeagueId: 48,
-    logo: eflChampionshipLogo,
+    logo: getCompetitionLogo('efl-championship'),
     zones: [
       {
         name: 'Promotion',
@@ -136,7 +133,7 @@ export const COMPETITIONS: Record<string, CompetitionConfig> = {
     teamCount: 24,
     footballDataCode: 'EL1',
     fotmobLeagueId: 108,
-    logo: eflLeagueOneLogo,
+    logo: getCompetitionLogo('efl-league-one'),
     zones: [
       {
         name: 'Promotion',
@@ -172,7 +169,7 @@ export const COMPETITIONS: Record<string, CompetitionConfig> = {
     teamCount: 24,
     footballDataCode: 'EL2',
     fotmobLeagueId: 109,
-    logo: eflLeagueTwoLogo,
+    logo: getCompetitionLogo('efl-league-two'),
     zones: [
       {
         name: 'Promotion',

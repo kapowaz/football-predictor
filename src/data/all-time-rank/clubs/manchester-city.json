@@ -1,7 +1,7 @@
 {
   "name": "Manchester City",
   "shortName": "Man City",
-  "crest": "manchester-city",
+  "badge": "manchester-city",
   "founded": 1880,
   "currentTier": 1,
   "leagueRecord": {

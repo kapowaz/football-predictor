@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef } from 'react';
+
 import type { Match, PointDeduction, PredictionsStore } from '../types';
-import { clearDeductions, loadDeductions, loadPredictions, saveDeductions, savePredictions } from '../utils/storage';
 import {
   decodeDeductions,
   decodePredictions,
@@ -8,12 +8,23 @@ import {
   encodePredictions,
 } from '../utils/serialization';
 import {
+  clearDeductions,
+  loadDeductions,
+  loadPredictions,
+  saveDeductions,
+  savePredictions,
+} from '../utils/storage';
+import {
   createDefaultSession,
   type CompetitionTabId,
   type PersistenceMode,
   useCompetitionSessionStore,
 } from './competitionSessionStore';
-import { selectAllFixturesResolved, selectIsSummaryOpen, selectSessionForSlug } from './selectors';
+import {
+  selectAllFixturesResolved,
+  selectIsSummaryOpen,
+  selectSessionForSlug,
+} from './selectors';
 
 interface UseCompetitionSessionOptions {
   slug: string;
@@ -30,11 +41,19 @@ interface UseCompetitionSessionResult {
   navigateToMatchId: number | null;
   deductionsModalOpen: boolean;
   isSummaryOpen: boolean;
-  setPrediction: (matchId: number, homeGoals: number, awayGoals: number) => void;
+  setPrediction: (
+    matchId: number,
+    homeGoals: number,
+    awayGoals: number,
+  ) => void;
   removePrediction: (matchId: number) => void;
   resetAllPredictions: () => void;
-  fillFromModel: (modelPredictions: Record<string, { homeGoals: number; awayGoals: number }>) => void;
-  getPrediction: (matchId: number) => { homeGoals: number; awayGoals: number } | null;
+  fillFromModel: (
+    modelPredictions: Record<string, { homeGoals: number; awayGoals: number }>,
+  ) => void;
+  getPrediction: (
+    matchId: number,
+  ) => { homeGoals: number; awayGoals: number } | null;
   updateDeduction: (teamId: number, amount: number) => void;
   addDeduction: (teamId: number, amount: number) => void;
   removeDeduction: (teamId: number) => void;
@@ -102,52 +121,82 @@ export const useCompetitionSession = ({
   defaultDeductions,
   persistenceMode = 'full',
 }: UseCompetitionSessionOptions): UseCompetitionSessionResult => {
-  const session = useCompetitionSessionStore((state) => selectSessionForSlug(state.sessions, slug));
-  const initialSessionRef = useRef<{ slug: string; session: ReturnType<typeof createDefaultSession> } | null>(null);
+  const session = useCompetitionSessionStore((state) =>
+    selectSessionForSlug(state.sessions, slug),
+  );
 
-  if (!initialSessionRef.current || initialSessionRef.current.slug !== slug) {
+  const initialSession = useMemo(() => {
     const initialSearchParams = new URLSearchParams(window.location.search);
-    const predictions = resolveInitialPredictions(slug, matches, persistenceMode, initialSearchParams);
+    const predictions = resolveInitialPredictions(
+      slug,
+      matches,
+      persistenceMode,
+      initialSearchParams,
+    );
     const deductionsState = resolveInitialDeductions(
       slug,
       defaultDeductions,
       persistenceMode,
       initialSearchParams,
     );
-    initialSessionRef.current = {
-      slug,
-      session: {
-        ...createDefaultSession(defaultDeductions),
-        predictions,
-        deductions: deductionsState.deductions,
-        deductionsCustomised: deductionsState.deductionsCustomised,
-      },
+    return {
+      ...createDefaultSession(defaultDeductions),
+      predictions,
+      deductions: deductionsState.deductions,
+      deductionsCustomised: deductionsState.deductionsCustomised,
     };
-  }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [slug]);
 
   if (!session) {
     useCompetitionSessionStore.getState().initializeSession(slug, {
-      predictions: initialSessionRef.current.session.predictions,
-      deductions: initialSessionRef.current.session.deductions,
-      deductionsCustomised: initialSessionRef.current.session.deductionsCustomised,
+      predictions: initialSession.predictions,
+      deductions: initialSession.deductions,
+      deductionsCustomised: initialSession.deductionsCustomised,
       defaultDeductions,
     });
   }
 
-  const activeSession = session ?? initialSessionRef.current.session;
-  const setPrediction = useCompetitionSessionStore((state) => state.setPrediction);
-  const removePrediction = useCompetitionSessionStore((state) => state.removePrediction);
-  const resetAllPredictions = useCompetitionSessionStore((state) => state.resetAllPredictions);
-  const fillFromModel = useCompetitionSessionStore((state) => state.fillFromModel);
-  const updateDeduction = useCompetitionSessionStore((state) => state.updateDeduction);
-  const addDeduction = useCompetitionSessionStore((state) => state.addDeduction);
-  const removeDeduction = useCompetitionSessionStore((state) => state.removeDeduction);
-  const resetDeductions = useCompetitionSessionStore((state) => state.resetDeductions);
-  const setActiveTab = useCompetitionSessionStore((state) => state.setActiveTab);
-  const setNavigateToMatchId = useCompetitionSessionStore((state) => state.setNavigateToMatchId);
-  const setDeductionsModalOpen = useCompetitionSessionStore((state) => state.setDeductionsModalOpen);
-  const dismissSummary = useCompetitionSessionStore((state) => state.dismissSummary);
-  const resetSummaryDismissed = useCompetitionSessionStore((state) => state.resetSummaryDismissed);
+  const activeSession = session ?? initialSession;
+  const setPrediction = useCompetitionSessionStore(
+    (state) => state.setPrediction,
+  );
+  const removePrediction = useCompetitionSessionStore(
+    (state) => state.removePrediction,
+  );
+  const resetAllPredictions = useCompetitionSessionStore(
+    (state) => state.resetAllPredictions,
+  );
+  const fillFromModel = useCompetitionSessionStore(
+    (state) => state.fillFromModel,
+  );
+  const updateDeduction = useCompetitionSessionStore(
+    (state) => state.updateDeduction,
+  );
+  const addDeduction = useCompetitionSessionStore(
+    (state) => state.addDeduction,
+  );
+  const removeDeduction = useCompetitionSessionStore(
+    (state) => state.removeDeduction,
+  );
+  const resetDeductions = useCompetitionSessionStore(
+    (state) => state.resetDeductions,
+  );
+  const setActiveTab = useCompetitionSessionStore(
+    (state) => state.setActiveTab,
+  );
+  const setNavigateToMatchId = useCompetitionSessionStore(
+    (state) => state.setNavigateToMatchId,
+  );
+  const setDeductionsModalOpen = useCompetitionSessionStore(
+    (state) => state.setDeductionsModalOpen,
+  );
+  const dismissSummary = useCompetitionSessionStore(
+    (state) => state.dismissSummary,
+  );
+  const resetSummaryDismissed = useCompetitionSessionStore(
+    (state) => state.resetSummaryDismissed,
+  );
 
   useEffect(() => {
     savePredictions(slug, activeSession.predictions);
@@ -177,8 +226,10 @@ export const useCompetitionSession = ({
     const currentEncodedPredictions = currentParams.get('predictions');
     const currentEncodedDeductions = currentParams.get('deductions');
 
-    const shouldUpdatePredictions = currentEncodedPredictions !== encodedPredictions;
-    const shouldUpdateDeductions = currentEncodedDeductions !== encodedDeductions;
+    const shouldUpdatePredictions =
+      currentEncodedPredictions !== encodedPredictions;
+    const shouldUpdateDeductions =
+      currentEncodedDeductions !== encodedDeductions;
 
     if (shouldUpdatePredictions || shouldUpdateDeductions) {
       const params = new URLSearchParams(window.location.search);
@@ -220,7 +271,8 @@ export const useCompetitionSession = ({
   }, [allFixturesResolved, resetSummaryDismissed, slug]);
 
   const isSummaryOpen = useMemo(
-    () => selectIsSummaryOpen(allFixturesResolved, activeSession.summaryDismissed),
+    () =>
+      selectIsSummaryOpen(allFixturesResolved, activeSession.summaryDismissed),
     [activeSession.summaryDismissed, allFixturesResolved],
   );
 
@@ -232,11 +284,13 @@ export const useCompetitionSession = ({
     navigateToMatchId: activeSession.navigateToMatchId,
     deductionsModalOpen: activeSession.deductionsModalOpen,
     isSummaryOpen,
-    setPrediction: (matchId, homeGoals, awayGoals) => setPrediction(slug, matchId, homeGoals, awayGoals),
+    setPrediction: (matchId, homeGoals, awayGoals) =>
+      setPrediction(slug, matchId, homeGoals, awayGoals),
     removePrediction: (matchId) => removePrediction(slug, matchId),
     resetAllPredictions: () => resetAllPredictions(slug),
     fillFromModel: (modelPredictions) => fillFromModel(slug, modelPredictions),
-    getPrediction: (matchId) => activeSession.predictions.predictions[String(matchId)] ?? null,
+    getPrediction: (matchId) =>
+      activeSession.predictions.predictions[String(matchId)] ?? null,
     updateDeduction: (teamId, amount) => updateDeduction(slug, teamId, amount),
     addDeduction: (teamId, amount) => addDeduction(slug, teamId, amount),
     removeDeduction: (teamId) => removeDeduction(slug, teamId),

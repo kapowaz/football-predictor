@@ -1,7 +1,7 @@
 {
   "name": "Doncaster Rovers",
   "shortName": "Doncaster",
-  "crest": "doncaster-rovers",
+  "badge": "doncaster-rovers",
   "founded": 1879,
   "currentTier": 3,
   "leagueRecord": {

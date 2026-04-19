@@ -1,7 +1,7 @@
 {
   "name": "West Bromwich Albion",
   "shortName": "West Brom",
-  "crest": "west-bromwich-albion",
+  "badge": "west-bromwich-albion",
   "founded": 1878,
   "currentTier": 2,
   "leagueRecord": {

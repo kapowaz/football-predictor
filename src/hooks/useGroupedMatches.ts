@@ -1,12 +1,13 @@
 import { useMemo } from 'react';
-import type { Match, PredictionsStore, Team } from '../types';
+
 import type { FixtureGroupData } from '../components/FixtureList/types';
+import type { Match, PredictionsStore, Team } from '../types';
 
 export type { FixtureGroupData };
 
 interface UseGroupedMatchesOptions {
-  /** Include completed fixtures in grouped results. */
-  showFinished?: boolean;
+  /** Whether completed fixtures are included in grouped results. */
+  isShowingFinished?: boolean;
   /** Optional team filter; matches must involve one of these team IDs. */
   filterTeams?: number[];
 }
@@ -28,7 +29,7 @@ export const useGroupedMatches = (
   matches: Match[],
   predictions: PredictionsStore,
   teamsById: ReadonlyMap<number, Team>,
-  { showFinished = true, filterTeams = [] }: UseGroupedMatchesOptions = {},
+  { isShowingFinished = true, filterTeams = [] }: UseGroupedMatchesOptions = {},
 ): FixtureGroupData[] => {
   const filterTeamSet = useMemo(() => new Set(filterTeams), [filterTeams]);
   const hasTeamFilter = filterTeams.length > 0;
@@ -36,7 +37,10 @@ export const useGroupedMatches = (
   const visibleMatches = useMemo(() => {
     return matches
       .filter((match) => {
-        if (match.status !== 'SCHEDULED' && !(showFinished && match.status === 'FINISHED')) {
+        if (
+          match.status !== 'SCHEDULED' &&
+          !(isShowingFinished && match.status === 'FINISHED')
+        ) {
           return false;
         }
 
@@ -44,16 +48,20 @@ export const useGroupedMatches = (
           return true;
         }
 
-        return filterTeamSet.has(match.homeTeamId) || filterTeamSet.has(match.awayTeamId);
+        return (
+          filterTeamSet.has(match.homeTeamId) ||
+          filterTeamSet.has(match.awayTeamId)
+        );
       })
       .sort((a, b) => {
-        const timeDiff = new Date(a.utcDate).getTime() - new Date(b.utcDate).getTime();
+        const timeDiff =
+          new Date(a.utcDate).getTime() - new Date(b.utcDate).getTime();
         if (timeDiff !== 0) return timeDiff;
         const homeA = teamsById.get(a.homeTeamId)?.name ?? '';
         const homeB = teamsById.get(b.homeTeamId)?.name ?? '';
         return homeA.localeCompare(homeB);
       });
-  }, [filterTeamSet, hasTeamFilter, matches, showFinished, teamsById]);
+  }, [filterTeamSet, hasTeamFilter, matches, isShowingFinished, teamsById]);
 
   return useMemo(() => {
     const groups = new Map<string, Match[]>();
@@ -70,9 +78,10 @@ export const useGroupedMatches = (
         key: date,
         label: formatDateLabel(date),
         matches: dateMatches,
-        allPredicted: dateMatches.every(
+        isAllPredicted: dateMatches.every(
           (match) =>
-            match.status === 'FINISHED' || predictions.predictions[String(match.id)] != null,
+            match.status === 'FINISHED' ||
+            predictions.predictions[String(match.id)] != null,
         ),
       });
     }

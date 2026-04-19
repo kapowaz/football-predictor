@@ -2,10 +2,10 @@ const fs = require('fs');
 const path = require('path');
 
 const wikiFile = process.argv[2];
-const clubCrest = process.argv[3];
+const clubBadge = process.argv[3];
 
-if (!wikiFile || !clubCrest) {
-  console.error('Usage: node parse-wiki-seasons.cjs <wiki-markdown-file> <club-crest>');
+if (!wikiFile || !clubBadge) {
+  console.error('Usage: node parse-wiki-seasons.cjs <wiki-markdown-file> <club-badge>');
   process.exit(1);
 }
 
@@ -13,9 +13,9 @@ const clubsData = JSON.parse(fs.readFileSync(
   path.join(__dirname, '../src/data/all-time-rank/clubs.json'), 'utf8'
 ));
 
-const club = clubsData.find(c => c.crest === clubCrest);
+const club = clubsData.find(c => c.badge === clubBadge);
 if (!club) {
-  console.error(`Club not found: ${clubCrest}`);
+  console.error(`Club not found: ${clubBadge}`);
   process.exit(1);
 }
 
@@ -66,7 +66,7 @@ seasons.sort((a, b) => {
 const output = {
   name: club.name,
   shortName: club.shortName,
-  crest: club.crest,
+  badge: club.badge,
   founded: club.founded,
   currentTier: club.currentTier,
   seasons,
@@ -78,7 +78,7 @@ const output = {
 const outDir = path.join(__dirname, 'data');
 if (!fs.existsSync(outDir)) fs.mkdirSync(outDir, { recursive: true });
 
-const outFile = path.join(outDir, `${clubCrest}.json`);
+const outFile = path.join(outDir, `${clubBadge}.json`);
 fs.writeFileSync(outFile, JSON.stringify(output, null, 2) + '\n');
 
 console.log(`Parsed ${seasons.length} seasons for ${club.name}`);

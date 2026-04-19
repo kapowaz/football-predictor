@@ -1,5 +1,6 @@
 import * as fs from 'node:fs';
 import * as path from 'node:path';
+
 import { API_KEY, fetchFromApi, parseCompetitionArg } from './common';
 import type { ScriptCompetition } from './common';
 
@@ -14,7 +15,6 @@ interface ApiTeam {
   name: string;
   shortName: string;
   tla: string;
-  crest: string;
 }
 
 interface ApiTeamsResponse {
@@ -54,7 +54,7 @@ const TLA_OVERRIDES: Record<number, string> = {
 const stripNameSuffix = (name: string): string =>
   name.replace(/\s+(FC|AFC)$/i, '').trim();
 
-const teamNameToCrestKey = (name: string): string => {
+const teamNameToBadgeKey = (name: string): string => {
   return name
     .replace(/\s*(FC|AFC)\s*$/i, '')
     .trim()
@@ -99,7 +99,7 @@ const fetchTeams = async (comp: ScriptCompetition): Promise<void> => {
         name: stripNameSuffix(team.name),
         shortName: existing?.shortName ?? team.shortName,
         tla: TLA_OVERRIDES[team.id] ?? existing?.tla ?? team.tla,
-        crest: teamNameToCrestKey(team.name),
+        badge: teamNameToBadgeKey(team.name),
       };
     }),
   };

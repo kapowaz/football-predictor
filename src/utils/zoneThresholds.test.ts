@@ -1,6 +1,7 @@
 import { describe, it, expect } from 'vitest';
-import type { Team, Match, PredictionsStore, TeamStanding } from '../types';
+
 import type { ZoneDefinition } from '../data/competitions';
+import type { Team, Match, PredictionsStore, TeamStanding } from '../types';
 import { calculateZoneThresholds } from './zoneThresholds';
 
 const makeTeam = (id: number, name: string): Team => ({
@@ -9,7 +10,7 @@ const makeTeam = (id: number, name: string): Team => ({
   name,
   shortName: name,
   tla: name.slice(0, 3).toUpperCase(),
-  crest: name.toLowerCase(),
+  badge: name.toLowerCase(),
 });
 
 const makeStanding = (team: Team, points: number): TeamStanding => ({
@@ -27,7 +28,11 @@ const makeStanding = (team: Team, points: number): TeamStanding => ({
   form: [],
 });
 
-const scheduledMatch = (id: number, homeTeamId: number, awayTeamId: number): Match => ({
+const scheduledMatch = (
+  id: number,
+  homeTeamId: number,
+  awayTeamId: number,
+): Match => ({
   id,
   homeTeamId,
   awayTeamId,
@@ -37,13 +42,32 @@ const scheduledMatch = (id: number, homeTeamId: number, awayTeamId: number): Mat
   awayGoals: null,
 });
 
-const emptyPredictions: PredictionsStore = { predictions: {}, lastModified: '' };
+const emptyPredictions: PredictionsStore = {
+  predictions: {},
+  lastModified: '',
+};
 
-const teams = Array.from({ length: 6 }, (_, i) => makeTeam(i + 1, `Team ${i + 1}`));
+const teams = Array.from({ length: 6 }, (_, i) =>
+  makeTeam(i + 1, `Team ${i + 1}`),
+);
 
 const zones: ZoneDefinition[] = [
-  { name: 'Promotion', type: 'promotion', startPosition: 1, endPosition: 2, emoji: '⬆️', label: 'Promoted' },
-  { name: 'Relegation', type: 'relegation', startPosition: 5, endPosition: 6, emoji: '⬇️', label: 'Relegated' },
+  {
+    name: 'Promotion',
+    type: 'promotion',
+    startPosition: 1,
+    endPosition: 2,
+    emoji: '⬆️',
+    label: 'Promoted',
+  },
+  {
+    name: 'Relegation',
+    type: 'relegation',
+    startPosition: 5,
+    endPosition: 6,
+    emoji: '⬇️',
+    label: 'Relegated',
+  },
 ];
 
 describe('calculateZoneThresholds', () => {
@@ -56,11 +80,14 @@ describe('calculateZoneThresholds', () => {
       makeStanding(teams[4], 40),
       makeStanding(teams[5], 30),
     ];
-    const matches: Match[] = [
-      scheduledMatch(1, teams[2].id, teams[3].id),
-    ];
+    const matches: Match[] = [scheduledMatch(1, teams[2].id, teams[3].id)];
 
-    const thresholds = calculateZoneThresholds(standings, matches, emptyPredictions, zones);
+    const thresholds = calculateZoneThresholds(
+      standings,
+      matches,
+      emptyPredictions,
+      zones,
+    );
     const promotion = thresholds.find((t) => t.zone.type === 'promotion')!;
 
     // Team 3 has 60 pts + 1 remaining = 63 max, which is the 3rd highest.
@@ -82,11 +109,14 @@ describe('calculateZoneThresholds', () => {
       makeStanding(teams[4], 40),
       makeStanding(teams[5], 30),
     ];
-    const matches: Match[] = [
-      scheduledMatch(1, teams[4].id, teams[5].id),
-    ];
+    const matches: Match[] = [scheduledMatch(1, teams[4].id, teams[5].id)];
 
-    const thresholds = calculateZoneThresholds(standings, matches, emptyPredictions, zones);
+    const thresholds = calculateZoneThresholds(
+      standings,
+      matches,
+      emptyPredictions,
+      zones,
+    );
     const relegation = thresholds.find((t) => t.zone.type === 'relegation')!;
 
     // Relegation starts at position 5. Sort by max:
@@ -113,7 +143,12 @@ describe('calculateZoneThresholds', () => {
       scheduledMatch(3, teams[2].id, teams[3].id),
     ];
 
-    const thresholds = calculateZoneThresholds(standings, matches, emptyPredictions, zones);
+    const thresholds = calculateZoneThresholds(
+      standings,
+      matches,
+      emptyPredictions,
+      zones,
+    );
     const promotion = thresholds.find((t) => t.zone.type === 'promotion')!;
 
     // Max achievable: T1=63, T3=59, T2=58, T4=43, T5=35, T6=30
@@ -144,7 +179,12 @@ describe('calculateZoneThresholds', () => {
       lastModified: '',
     };
 
-    const thresholds = calculateZoneThresholds(standings, matches, predictions, zones);
+    const thresholds = calculateZoneThresholds(
+      standings,
+      matches,
+      predictions,
+      zones,
+    );
     const promotion = thresholds.find((t) => t.zone.type === 'promotion')!;
 
     // Match 1 is predicted, so only match 2 is remaining.
@@ -160,7 +200,12 @@ describe('calculateZoneThresholds', () => {
       makeStanding(t, 60 - i * 10),
     );
 
-    const thresholds = calculateZoneThresholds(standings, [], emptyPredictions, zones);
+    const thresholds = calculateZoneThresholds(
+      standings,
+      [],
+      emptyPredictions,
+      zones,
+    );
     expect(thresholds).toHaveLength(2);
     expect(thresholds[0].zone.type).toBe('promotion');
     expect(thresholds[1].zone.type).toBe('relegation');
@@ -176,7 +221,12 @@ describe('calculateZoneThresholds', () => {
       makeStanding(teams[5], 30),
     ];
 
-    const thresholds = calculateZoneThresholds(standings, [], emptyPredictions, zones);
+    const thresholds = calculateZoneThresholds(
+      standings,
+      [],
+      emptyPredictions,
+      zones,
+    );
     const promotion = thresholds.find((t) => t.zone.type === 'promotion')!;
     const relegation = thresholds.find((t) => t.zone.type === 'relegation')!;
 
@@ -190,10 +240,26 @@ describe('calculateZoneThresholds', () => {
     it('produces a tighter threshold when top contenders play each other', () => {
       // 4 teams, zone = top 1. Teams 1-3 play a round-robin among themselves.
       // Since each pair plays, they can't all win, constraining max achievable.
-      const fourTeams = Array.from({ length: 4 }, (_, i) => makeTeam(i + 1, `Team ${i + 1}`));
+      const fourTeams = Array.from({ length: 4 }, (_, i) =>
+        makeTeam(i + 1, `Team ${i + 1}`),
+      );
       const topOneZone: ZoneDefinition[] = [
-        { name: 'Champions', type: 'champions', startPosition: 1, endPosition: 1, emoji: '🏆', label: 'Champions' },
-        { name: 'Relegation', type: 'relegation', startPosition: 4, endPosition: 4, emoji: '⬇️', label: 'Relegated' },
+        {
+          name: 'Champions',
+          type: 'champions',
+          startPosition: 1,
+          endPosition: 1,
+          emoji: '🏆',
+          label: 'Champions',
+        },
+        {
+          name: 'Relegation',
+          type: 'relegation',
+          startPosition: 4,
+          endPosition: 4,
+          emoji: '⬇️',
+          label: 'Relegated',
+        },
       ];
 
       const standings: TeamStanding[] = [
@@ -209,7 +275,12 @@ describe('calculateZoneThresholds', () => {
         scheduledMatch(3, fourTeams[1].id, fourTeams[2].id),
       ];
 
-      const thresholds = calculateZoneThresholds(standings, matches, emptyPredictions, topOneZone);
+      const thresholds = calculateZoneThresholds(
+        standings,
+        matches,
+        emptyPredictions,
+        topOneZone,
+      );
       const champions = thresholds.find((t) => t.zone.type === 'champions')!;
 
       // Naive: all 3 top teams have max = 70 + 6 = 76. 2nd highest = 76.
@@ -225,10 +296,26 @@ describe('calculateZoneThresholds', () => {
     });
 
     it('matches naive threshold when contenders do not play each other', () => {
-      const fourTeams = Array.from({ length: 4 }, (_, i) => makeTeam(i + 1, `Team ${i + 1}`));
+      const fourTeams = Array.from({ length: 4 }, (_, i) =>
+        makeTeam(i + 1, `Team ${i + 1}`),
+      );
       const topOneZone: ZoneDefinition[] = [
-        { name: 'Champions', type: 'champions', startPosition: 1, endPosition: 1, emoji: '🏆', label: 'Champions' },
-        { name: 'Relegation', type: 'relegation', startPosition: 4, endPosition: 4, emoji: '⬇️', label: 'Relegated' },
+        {
+          name: 'Champions',
+          type: 'champions',
+          startPosition: 1,
+          endPosition: 1,
+          emoji: '🏆',
+          label: 'Champions',
+        },
+        {
+          name: 'Relegation',
+          type: 'relegation',
+          startPosition: 4,
+          endPosition: 4,
+          emoji: '⬇️',
+          label: 'Relegated',
+        },
       ];
 
       const standings: TeamStanding[] = [
@@ -244,7 +331,12 @@ describe('calculateZoneThresholds', () => {
         scheduledMatch(3, fourTeams[2].id, fourTeams[3].id),
       ];
 
-      const thresholds = calculateZoneThresholds(standings, matches, emptyPredictions, topOneZone);
+      const thresholds = calculateZoneThresholds(
+        standings,
+        matches,
+        emptyPredictions,
+        topOneZone,
+      );
       const champions = thresholds.find((t) => t.zone.type === 'champions')!;
 
       // All 3 top teams can independently reach 73 by beating Team 4.
@@ -255,10 +347,26 @@ describe('calculateZoneThresholds', () => {
     });
 
     it('tightens relegation safety threshold when bottom teams play each other', () => {
-      const fourTeams = Array.from({ length: 4 }, (_, i) => makeTeam(i + 1, `Team ${i + 1}`));
+      const fourTeams = Array.from({ length: 4 }, (_, i) =>
+        makeTeam(i + 1, `Team ${i + 1}`),
+      );
       const zones4: ZoneDefinition[] = [
-        { name: 'Promotion', type: 'promotion', startPosition: 1, endPosition: 1, emoji: '⬆️', label: 'Promoted' },
-        { name: 'Relegation', type: 'relegation', startPosition: 3, endPosition: 4, emoji: '⬇️', label: 'Relegated' },
+        {
+          name: 'Promotion',
+          type: 'promotion',
+          startPosition: 1,
+          endPosition: 1,
+          emoji: '⬆️',
+          label: 'Promoted',
+        },
+        {
+          name: 'Relegation',
+          type: 'relegation',
+          startPosition: 3,
+          endPosition: 4,
+          emoji: '⬇️',
+          label: 'Relegated',
+        },
       ];
 
       const standings: TeamStanding[] = [
@@ -273,7 +381,12 @@ describe('calculateZoneThresholds', () => {
         scheduledMatch(2, fourTeams[3].id, fourTeams[2].id),
       ];
 
-      const thresholds = calculateZoneThresholds(standings, matches, emptyPredictions, zones4);
+      const thresholds = calculateZoneThresholds(
+        standings,
+        matches,
+        emptyPredictions,
+        zones4,
+      );
       const relegation = thresholds.find((t) => t.zone.type === 'relegation')!;
 
       // Relegation starts at position 3. subsetSize = 3.
@@ -301,8 +414,15 @@ describe('calculateZoneThresholds', () => {
         makeStanding(fourTeams[3], 30),
       ];
 
-      const thresholds2 = calculateZoneThresholds(standings2, matches2, emptyPredictions, zones4);
-      const relegation2 = thresholds2.find((t) => t.zone.type === 'relegation')!;
+      const thresholds2 = calculateZoneThresholds(
+        standings2,
+        matches2,
+        emptyPredictions,
+        zones4,
+      );
+      const relegation2 = thresholds2.find(
+        (t) => t.zone.type === 'relegation',
+      )!;
 
       // Max achievable: T1=60, T2=36, T3=36, T4=36. Naive threshold = 37.
       expect(relegation2.naiveThreshold).toBe(37);
@@ -336,7 +456,9 @@ describe('calculateZoneThresholds', () => {
       // distributions that don't correspond to real match outcomes.
       // This makes the threshold slightly more conservative than necessary.
       // For the purpose of zone thresholds, this is acceptable.
-      expect(relegation2.threshold).toBeLessThanOrEqual(relegation2.naiveThreshold);
+      expect(relegation2.threshold).toBeLessThanOrEqual(
+        relegation2.naiveThreshold,
+      );
     });
   });
 });

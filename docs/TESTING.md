@@ -4,8 +4,27 @@ Every component **must** have tests using React Testing Library with Vitest.
 
 ## Test File Structure
 
-```
-This section to be completed with an example later.
+```tsx
+import React from 'react';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import { ComponentName } from './ComponentName';
+
+describe('ComponentName', () => {
+  it('renders the label text', () => {
+    render(<ComponentName label="Test Label" />);
+    expect(screen.getByText('Test Label')).toBeInTheDocument();
+  });
+
+  it('calls onClick handler when clicked', async () => {
+    const handleClick = vi.fn();
+    render(<ComponentName label="Clickable" onClick={handleClick} />);
+
+    await userEvent.click(screen.getByRole('button', { name: /clickable/i }));
+
+    expect(handleClick).toHaveBeenCalledTimes(1);
+  });
+});
 ```
 
 ## Accessibility-First Query Priority
@@ -18,8 +37,18 @@ Tests **must** find elements the way assistive technologies would:
 4. **`getByText`** - For non-interactive text content
 5. **`getByAltText`** - For images
 
-```
-More examples to be added here.
+```tsx
+// ✅ Preferred: Query by role with accessible name
+screen.getByRole('button', { name: /submit/i });
+screen.getByRole('textbox', { name: /email/i });
+screen.getByRole('checkbox', { name: /agree to terms/i });
+
+// ✅ Acceptable: Query by text for static content
+screen.getByText(/loading.../i);
+
+// ❌ Avoid: Query by test ID or CSS selectors
+screen.getByTestId('submit-button');
+document.querySelector('.submit-btn');
 ```
 
 ## Testing Interactions

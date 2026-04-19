@@ -1,7 +1,7 @@
 {
   "name": "Stockport County",
   "shortName": "Stockport",
-  "crest": "stockport-county",
+  "badge": "stockport-county",
   "founded": 1883,
   "currentTier": 3,
   "leagueRecord": {

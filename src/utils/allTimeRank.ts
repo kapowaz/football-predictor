@@ -77,7 +77,10 @@ export const easeInOut = (t: number): number => {
     const oneMinusU2 = oneMinusU * oneMinusU;
 
     const x = 3 * oneMinusU2 * u * p1x + 3 * oneMinusU * u2 * p2x + u3;
-    const dx = 3 * oneMinusU2 * p1x + 6 * oneMinusU * u * (p2x - p1x) + 3 * u2 * (1 - p2x);
+    const dx =
+      3 * oneMinusU2 * p1x +
+      6 * oneMinusU * u * (p2x - p1x) +
+      3 * u2 * (1 - p2x);
 
     if (Math.abs(dx) < 1e-10) break;
     u -= (x - t) / dx;

@@ -1,7 +1,7 @@
 {
   "name": "Fleetwood Town",
   "shortName": "Fleetwood",
-  "crest": "fleetwood-town",
+  "badge": "fleetwood-town",
   "founded": 1908,
   "currentTier": 4,
   "leagueRecord": {

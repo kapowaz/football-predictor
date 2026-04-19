@@ -1,7 +1,14 @@
-import type { Match, PointDeduction, PredictionsStore, Team, TeamStanding, VariantRulesMode } from '../types';
-import { calculateStandings } from '../utils/standings';
-import { calculatePositionHistory } from '../utils/positionHistory';
 import type { ZoneDefinition } from '../data/competitions';
+import type {
+  Match,
+  PointDeduction,
+  PredictionsStore,
+  Team,
+  TeamStanding,
+  VariantRulesMode,
+} from '../types';
+import { calculatePositionHistory } from '../utils/positionHistory';
+import { calculateStandings } from '../utils/standings';
 import type { CompetitionSessionState } from './competitionSessionStore';
 
 interface DeductionNote {
@@ -39,9 +46,11 @@ const memoizeByReference = <TArgs extends unknown[], TResult>(
   };
 };
 
-export const selectTeamsById = memoizeByReference((teams: Team[]): Map<number, Team> => {
-  return new Map(teams.map((team) => [team.id, team]));
-});
+export const selectTeamsById = memoizeByReference(
+  (teams: Team[]): Map<number, Team> => {
+    return new Map(teams.map((team) => [team.id, team]));
+  },
+);
 
 export const selectStandings = memoizeByReference(
   (
@@ -51,18 +60,32 @@ export const selectStandings = memoizeByReference(
     deductions: PointDeduction[],
     variantRules: VariantRulesMode = false,
   ): TeamStanding[] => {
-    return calculateStandings(teams, matches, predictions, deductions, variantRules);
+    return calculateStandings(
+      teams,
+      matches,
+      predictions,
+      deductions,
+      variantRules,
+    );
   },
 );
 
 export const selectDeductionMarkers = memoizeByReference(
   (deductions: PointDeduction[]): Map<number, string> => {
-    return new Map(deductions.map((deduction, index) => [deduction.teamId, '*'.repeat(index + 1)]));
+    return new Map(
+      deductions.map((deduction, index) => [
+        deduction.teamId,
+        '*'.repeat(index + 1),
+      ]),
+    );
   },
 );
 
 export const selectDeductionNotes = memoizeByReference(
-  (deductions: PointDeduction[], teamsById: Map<number, Team>): DeductionNote[] => {
+  (
+    deductions: PointDeduction[],
+    teamsById: Map<number, Team>,
+  ): DeductionNote[] => {
     return deductions.map((deduction, index) => {
       const team = teamsById.get(deduction.teamId);
       const marker = '*'.repeat(index + 1);
@@ -75,9 +98,11 @@ export const selectDeductionNotes = memoizeByReference(
   },
 );
 
-export const selectPredictedCount = memoizeByReference((predictions: PredictionsStore): number => {
-  return Object.keys(predictions.predictions).length;
-});
+export const selectPredictedCount = memoizeByReference(
+  (predictions: PredictionsStore): number => {
+    return Object.keys(predictions.predictions).length;
+  },
+);
 
 export const selectAllScheduledPredicted = memoizeByReference(
   (matches: Match[], predictions: PredictionsStore): boolean => {
@@ -90,7 +115,9 @@ export const selectAllScheduledPredicted = memoizeByReference(
 export const selectAllFixturesResolved = memoizeByReference(
   (matches: Match[], predictions: PredictionsStore): boolean => {
     return matches.every(
-      (match) => match.status === 'FINISHED' || String(match.id) in predictions.predictions,
+      (match) =>
+        match.status === 'FINISHED' ||
+        String(match.id) in predictions.predictions,
     );
   },
 );
@@ -102,9 +129,16 @@ export const selectIsSummaryOpen = memoizeByReference(
 );
 
 export const selectCaptureSignature = memoizeByReference(
-  (standings: TeamStanding[], deductionMarkers: Map<number, string>, theme: string): string => {
+  (
+    standings: TeamStanding[],
+    deductionMarkers: Map<number, string>,
+    theme: string,
+  ): string => {
     const standingsKey = standings
-      .map((standing) => `${standing.team.id}:${standing.points}:${standing.goalDifference}:${standing.deduction}`)
+      .map(
+        (standing) =>
+          `${standing.team.id}:${standing.points}:${standing.goalDifference}:${standing.deduction}`,
+      )
       .join('|');
     const markerKey = [...deductionMarkers.entries()]
       .map(([teamId, marker]) => `${teamId}:${marker}`)
@@ -123,7 +157,13 @@ export const selectStandingsViewModel = memoizeByReference(
     _zones: ZoneDefinition[],
     variantRules: VariantRulesMode = false,
   ): StandingsViewModel => {
-    const standings = selectStandings(teams, matches, predictions, deductions, variantRules);
+    const standings = selectStandings(
+      teams,
+      matches,
+      predictions,
+      deductions,
+      variantRules,
+    );
     const deductionMarkers = selectDeductionMarkers(deductions);
 
     return { standings, deductionMarkers };
@@ -138,7 +178,13 @@ export const selectPositionHistory = memoizeByReference(
     deductions: PointDeduction[],
     variantRules: VariantRulesMode = false,
   ): Map<number, number[]> => {
-    return calculatePositionHistory(teams, matches, predictions, deductions, variantRules);
+    return calculatePositionHistory(
+      teams,
+      matches,
+      predictions,
+      deductions,
+      variantRules,
+    );
   },
 );
 

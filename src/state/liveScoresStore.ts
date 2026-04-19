@@ -1,4 +1,5 @@
 import { create } from 'zustand';
+
 import type { LiveScoresData } from '../types';
 
 interface LiveScoresStoreState {

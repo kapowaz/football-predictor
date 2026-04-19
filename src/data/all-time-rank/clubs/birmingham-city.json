@@ -1,7 +1,7 @@
 {
   "name": "Birmingham City",
   "shortName": "Birmingham",
-  "crest": "birmingham-city",
+  "badge": "birmingham-city",
   "founded": 1875,
   "currentTier": 2,
   "leagueRecord": {

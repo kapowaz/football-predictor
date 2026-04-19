@@ -7,9 +7,9 @@ Add a Python-based statistical model that generates score predictions for remain
 ```mermaid
 flowchart LR
   subgraph buildTime ["Build Time (CI or Local)"]
-    fetchData["yarn fetch-data"] --> matchesJson["matches.json"]
+    fetchData["pnpm fetch-data"] --> matchesJson["matches.json"]
     fetchData --> standingsJson["standings.json"]
-    fetchFotmob["yarn fetch-fotmob-stats"] --> fotmobStats["fotmob-stats.json"]
+    fetchFotmob["pnpm fetch-fotmob-stats"] --> fotmobStats["fotmob-stats.json"]
     matchesJson --> pythonScript["generate-predictions.py"]
     standingsJson --> pythonScript
     fotmobStats --> pythonScript
@@ -27,11 +27,11 @@ flowchart LR
 
 The prediction model runs as part of the build pipeline, either locally during development or in GitHub Actions during deployment. The pipeline has three stages:
 
-1. **Fetch match data** (`yarn fetch-data`) -- fetches match results and standings from football-data.org
-2. **Fetch FotMob stats** (`yarn fetch-fotmob-stats`) -- fetches season-level xG and other team stats from FotMob's public CDN
-3. **Generate predictions** (`yarn generate-predictions` / `python3 scripts/generate-predictions.py`) -- runs the Poisson model to produce `model-predictions.json`
+1. **Fetch match data** (`pnpm fetch-data`) -- fetches match results and standings from football-data.org
+2. **Fetch FotMob stats** (`pnpm fetch-fotmob-stats`) -- fetches season-level xG and other team stats from FotMob's public CDN
+3. **Generate predictions** (`pnpm generate-predictions` / `python3 scripts/generate-predictions.py`) -- runs the Poisson model to produce `model-predictions.json`
 
-All three stages run sequentially before `yarn build`, which bundles `model-predictions.json` into the static site alongside the other JSON data files.
+All three stages run sequentially before `pnpm build`, which bundles `model-predictions.json` into the static site alongside the other JSON data files.
 
 ## FotMob Data Source
 
@@ -265,10 +265,10 @@ const fillFromModel = useCallback(
 
 **File:** `.github/workflows/deploy.yml`
 
-Added three steps between `yarn install` and `yarn build`:
+Added three steps between `pnpm install` and `pnpm build`:
 
 1. `actions/setup-python@v5` with `python-version: '3.12'`
-2. `yarn fetch-fotmob-stats` (no secrets required)
+2. `pnpm fetch-fotmob-stats` (no secrets required)
 3. `python scripts/generate-predictions.py`
 
 No `pip install` step is needed since the Python script uses only stdlib.
@@ -358,9 +358,9 @@ Added two scripts to `package.json`:
 Added three steps to `.github/workflows/deploy.yml`:
 
 1. `actions/setup-python@v5` with Python 3.12 (placed after Node setup, before install)
-2. `yarn fetch-fotmob-stats` (after `yarn fetch-data`)
-3. `python scripts/generate-predictions.py` (after FotMob stats fetch, before `yarn build`)
+2. `pnpm fetch-fotmob-stats` (after `pnpm fetch-data`)
+3. `python scripts/generate-predictions.py` (after FotMob stats fetch, before `pnpm build`)
 
 ### Verification
 
-Ran a full `yarn build` locally to confirm TypeScript compilation and Vite bundling succeed with all new data files and type changes in place.
+Ran a full `pnpm build` locally to confirm TypeScript compilation and Vite bundling succeed with all new data files and type changes in place.

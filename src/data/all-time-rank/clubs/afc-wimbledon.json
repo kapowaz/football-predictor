@@ -1,7 +1,7 @@
 {
   "name": "AFC Wimbledon",
   "shortName": "AFC Wimbledon",
-  "crest": "afc-wimbledon",
+  "badge": "afc-wimbledon",
   "founded": 2002,
   "currentTier": 3,
   "leagueRecord": {

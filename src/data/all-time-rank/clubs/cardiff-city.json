@@ -1,7 +1,7 @@
 {
   "name": "Cardiff City",
   "shortName": "Cardiff",
-  "crest": "cardiff-city",
+  "badge": "cardiff-city",
   "founded": 1899,
   "currentTier": 3,
   "leagueRecord": {

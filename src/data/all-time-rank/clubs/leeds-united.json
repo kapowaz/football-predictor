@@ -1,7 +1,7 @@
 {
   "name": "Leeds United",
   "shortName": "Leeds",
-  "crest": "leeds-united",
+  "badge": "leeds-united",
   "founded": 1919,
   "currentTier": 1,
   "leagueRecord": {

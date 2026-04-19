@@ -1,7 +1,7 @@
 {
   "name": "Derby County",
   "shortName": "Derby",
-  "crest": "derby-county",
+  "badge": "derby-county",
   "founded": 1884,
   "currentTier": 2,
   "leagueRecord": {

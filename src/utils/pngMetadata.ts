@@ -60,7 +60,9 @@ const createTextChunk = (keyword: string, value: string): Uint8Array => {
   data.set(valueBytes, keyBytes.length + 1);
 
   const length = data.length;
-  const chunk = new Uint8Array(CHUNK_HEADER_SIZE + data.length + CHUNK_CRC_SIZE);
+  const chunk = new Uint8Array(
+    CHUNK_HEADER_SIZE + data.length + CHUNK_CRC_SIZE,
+  );
   const view = new DataView(chunk.buffer);
   view.setUint32(0, length, false);
   chunk.set(type, 4);
@@ -83,7 +85,9 @@ export const embedPngTextMetadata = async (
     throw new Error('Invalid PNG data');
   }
 
-  const metadataEntries = Object.entries(metadata).filter(([, value]) => value.length > 0);
+  const metadataEntries = Object.entries(metadata).filter(
+    ([, value]) => value.length > 0,
+  );
   if (metadataEntries.length === 0) {
     return pngBlob;
   }
@@ -119,7 +123,9 @@ export const embedPngTextMetadata = async (
     throw new Error('PNG is missing IEND chunk');
   }
 
-  const metadataChunks = metadataEntries.map(([key, value]) => createTextChunk(key, value));
+  const metadataChunks = metadataEntries.map(([key, value]) =>
+    createTextChunk(key, value),
+  );
   const output = concatArrays([
     bytes.slice(0, iendOffset),
     ...metadataChunks,

@@ -1,5 +1,12 @@
 import { useMemo } from 'react';
-import type { Team, Match, TeamStanding, PointDeduction, PredictionsStore } from '../types';
+
+import type {
+  Team,
+  Match,
+  TeamStanding,
+  PointDeduction,
+  PredictionsStore,
+} from '../types';
 import { calculateStandings } from '../utils/standings';
 
 export const useStandings = (

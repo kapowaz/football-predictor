@@ -1,6 +1,7 @@
-import type { Match, PredictionsStore, Team, TeamStanding } from '../src/types';
-import type { ZoneDefinition } from '../src/data/competitions';
 import { describe, expect, it } from 'vitest';
+
+import type { ZoneDefinition } from '../src/data/competitions';
+import type { Match, PredictionsStore, Team, TeamStanding } from '../src/types';
 import {
   calculateStandingPositionOutcomeByTeamId,
   calculateZoneGuaranteedByTeamId,

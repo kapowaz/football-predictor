@@ -8,7 +8,7 @@
       "name": "Blackburn Rovers",
       "shortName": "Blackburn",
       "tla": "BLA",
-      "crest": "blackburn-rovers"
+      "badge": "blackburn-rovers"
     },
     {
       "id": 68,
@@ -16,7 +16,7 @@
       "name": "Norwich City",
       "shortName": "Norwich",
       "tla": "NOR",
-      "crest": "norwich-city"
+      "badge": "norwich-city"
     },
     {
       "id": 69,
@@ -24,7 +24,7 @@
       "name": "Queens Park Rangers",
       "shortName": "QPR",
       "tla": "QPR",
-      "crest": "queens-park-rangers"
+      "badge": "queens-park-rangers"
     },
     {
       "id": 70,
@@ -32,7 +32,7 @@
       "name": "Stoke City",
       "shortName": "Stoke",
       "tla": "STK",
-      "crest": "stoke-city"
+      "badge": "stoke-city"
     },
     {
       "id": 72,
@@ -40,7 +40,7 @@
       "name": "Swansea City",
       "shortName": "Swansea",
       "tla": "SWA",
-      "crest": "swansea-city"
+      "badge": "swansea-city"
     },
     {
       "id": 74,
@@ -48,7 +48,7 @@
       "name": "West Bromwich Albion",
       "shortName": "West Brom",
       "tla": "WBA",
-      "crest": "west-bromwich-albion"
+      "badge": "west-bromwich-albion"
     },
     {
       "id": 322,
@@ -56,7 +56,7 @@
       "name": "Hull City",
       "shortName": "Hull City",
       "tla": "HUL",
-      "crest": "hull-city"
+      "badge": "hull-city"
     },
     {
       "id": 325,
@@ -64,7 +64,7 @@
       "name": "Portsmouth",
       "shortName": "Portsmouth",
       "tla": "POR",
-      "crest": "portsmouth"
+      "badge": "portsmouth"
     },
     {
       "id": 332,
@@ -72,7 +72,7 @@
       "name": "Birmingham City",
       "shortName": "Birmingham",
       "tla": "BIR",
-      "crest": "birmingham-city"
+      "badge": "birmingham-city"
     },
     {
       "id": 338,
@@ -80,7 +80,7 @@
       "name": "Leicester City",
       "shortName": "Leicester",
       "tla": "LEI",
-      "crest": "leicester-city"
+      "badge": "leicester-city"
     },
     {
       "id": 340,
@@ -88,7 +88,7 @@
       "name": "Southampton",
       "shortName": "Southampton",
       "tla": "SOU",
-      "crest": "southampton"
+      "badge": "southampton"
     },
     {
       "id": 342,
@@ -96,7 +96,7 @@
       "name": "Derby County",
       "shortName": "Derby",
       "tla": "DER",
-      "crest": "derby-county"
+      "badge": "derby-county"
     },
     {
       "id": 343,
@@ -104,7 +104,7 @@
       "name": "Middlesbrough",
       "shortName": "Middlesbrough",
       "tla": "MID",
-      "crest": "middlesbrough"
+      "badge": "middlesbrough"
     },
     {
       "id": 345,
@@ -112,7 +112,7 @@
       "name": "Sheffield Wednesday",
       "shortName": "Sheff Wed",
       "tla": "SHW",
-      "crest": "sheffield-wednesday"
+      "badge": "sheffield-wednesday"
     },
     {
       "id": 346,
@@ -120,7 +120,7 @@
       "name": "Watford",
       "shortName": "Watford",
       "tla": "WAT",
-      "crest": "watford"
+      "badge": "watford"
     },
     {
       "id": 348,
@@ -128,7 +128,7 @@
       "name": "Charlton Athletic",
       "shortName": "Charlton",
       "tla": "CHA",
-      "crest": "charlton-athletic"
+      "badge": "charlton-athletic"
     },
     {
       "id": 349,
@@ -136,7 +136,7 @@
       "name": "Ipswich Town",
       "shortName": "Ipswich",
       "tla": "IPS",
-      "crest": "ipswich-town"
+      "badge": "ipswich-town"
     },
     {
       "id": 356,
@@ -144,7 +144,7 @@
       "name": "Sheffield United",
       "shortName": "Sheff Utd",
       "tla": "SHU",
-      "crest": "sheffield-united"
+      "badge": "sheffield-united"
     },
     {
       "id": 384,
@@ -152,7 +152,7 @@
       "name": "Millwall",
       "shortName": "Millwall",
       "tla": "MIL",
-      "crest": "millwall"
+      "badge": "millwall"
     },
     {
       "id": 387,
@@ -160,7 +160,7 @@
       "name": "Bristol City",
       "shortName": "Bristol City",
       "tla": "BRI",
-      "crest": "bristol-city"
+      "badge": "bristol-city"
     },
     {
       "id": 404,
@@ -168,7 +168,7 @@
       "name": "Wrexham",
       "shortName": "Wrexham",
       "tla": "WRE",
-      "crest": "wrexham"
+      "badge": "wrexham"
     },
     {
       "id": 1076,
@@ -176,7 +176,7 @@
       "name": "Coventry City",
       "shortName": "Coventry",
       "tla": "COV",
-      "crest": "coventry-city"
+      "badge": "coventry-city"
     },
     {
       "id": 1081,
@@ -184,7 +184,7 @@
       "name": "Preston North End",
       "shortName": "Preston NE",
       "tla": "PNE",
-      "crest": "preston-north-end"
+      "badge": "preston-north-end"
     },
     {
       "id": 1082,
@@ -192,7 +192,7 @@
       "name": "Oxford United",
       "shortName": "Oxford Utd",
       "tla": "OXF",
-      "crest": "oxford-united"
+      "badge": "oxford-united"
     }
   ]
 }

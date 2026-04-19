@@ -1,6 +1,10 @@
 import { render, screen } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
-import type { RankedClub, ScoringWeights } from '../../data/all-time-rank/types';
+
+import type {
+  RankedClub,
+  ScoringWeights,
+} from '../../data/all-time-rank/types';
 import { DEFAULT_WEIGHTS } from '../../utils/allTimeRank';
 import { AllTimeRankTable } from './AllTimeRankTable';
 
@@ -10,7 +14,7 @@ const makeRankedClub = (overrides: Partial<RankedClub> = {}): RankedClub => ({
   club: {
     name: 'Test FC',
     shortName: 'Test',
-    crest: 'test',
+    badge: 'test',
     founded: 1900,
     currentTier: 1,
     leagueRecord: { tier1: {}, tier2: {}, tier3: {}, tier4: {} },
@@ -49,14 +53,24 @@ describe('AllTimeRankTable', () => {
     render(<AllTimeRankTable rankedClubs={[]} weights={weights} />);
 
     expect(screen.getByRole('table')).toBeInTheDocument();
-    expect(screen.getByRole('columnheader', { name: /team/i })).toBeInTheDocument();
-    expect(screen.getByRole('columnheader', { name: /score/i })).toBeInTheDocument();
+    expect(
+      screen.getByRole('columnheader', { name: /team/i }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole('columnheader', { name: /score/i }),
+    ).toBeInTheDocument();
   });
 
   it('renders a row for each ranked club', () => {
     const clubs = [
-      makeRankedClub({ rank: 1, club: { ...makeRankedClub().club, name: 'Liverpool' } }),
-      makeRankedClub({ rank: 2, club: { ...makeRankedClub().club, name: 'Arsenal' } }),
+      makeRankedClub({
+        rank: 1,
+        club: { ...makeRankedClub().club, name: 'Liverpool' },
+      }),
+      makeRankedClub({
+        rank: 2,
+        club: { ...makeRankedClub().club, name: 'Arsenal' },
+      }),
     ];
 
     render(<AllTimeRankTable rankedClubs={clubs} weights={weights} />);
@@ -78,7 +92,12 @@ describe('AllTimeRankTable', () => {
       club: {
         ...makeRankedClub().club,
         honours: {
-          leagueTitles: { tier1: [1990, 2000, 2010], tier2: [], tier3: [], tier4: [] },
+          leagueTitles: {
+            tier1: [1990, 2000, 2010],
+            tier2: [],
+            tier3: [],
+            tier4: [],
+          },
           leagueRunnersUp: { ...emptyTieredHonours },
           playoffWinners: { ...emptyTieredHonours },
           faCupWinners: [1995, 2005],

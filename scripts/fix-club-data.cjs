@@ -3,12 +3,12 @@ const path = require('path');
 
 const clubsDir = path.join(__dirname, '../src/data/all-time-rank/clubs');
 
-function readClub(crest) {
-  return JSON.parse(fs.readFileSync(path.join(clubsDir, `${crest}.json`), 'utf8'));
+function readClub(slug) {
+  return JSON.parse(fs.readFileSync(path.join(clubsDir, `${slug}.json`), 'utf8'));
 }
 
-function writeClub(crest, data) {
-  fs.writeFileSync(path.join(clubsDir, `${crest}.json`), JSON.stringify(data, null, 2) + '\n');
+function writeClub(slug, data) {
+  fs.writeFileSync(path.join(clubsDir, `${slug}.json`), JSON.stringify(data, null, 2) + '\n');
 }
 
 function removeSeasonsBefore(data, firstYear) {
@@ -51,12 +51,12 @@ const flAdmission = {
   'plymouth-argyle': 1921,
 };
 
-for (const [crest, firstYear] of Object.entries(flAdmission)) {
-  const data = readClub(crest);
+for (const [slug, firstYear] of Object.entries(flAdmission)) {
+  const data = readClub(slug);
   const removed = removeSeasonsBefore(data, firstYear);
   if (removed > 0) {
-    writeClub(crest, data);
-    console.log(`${crest}: removed ${removed} pre-FL seasons (before ${firstYear})`);
+    writeClub(slug, data);
+    console.log(`${slug}: removed ${removed} pre-FL seasons (before ${firstYear})`);
   }
 }
 
@@ -85,13 +85,13 @@ const missingSeasons = {
   ],
 };
 
-for (const [crest, seasons] of Object.entries(missingSeasons)) {
-  const data = readClub(crest);
+for (const [slug, seasons] of Object.entries(missingSeasons)) {
+  const data = readClub(slug);
   for (const s of seasons) {
     addSeason(data, s.tier, s.year, s.w, s.d, s.l, s.gf, s.ga);
   }
-  writeClub(crest, data);
-  console.log(`${crest}: added ${seasons.length} missing season(s)`);
+  writeClub(slug, data);
+  console.log(`${slug}: added ${seasons.length} missing season(s)`);
 }
 
 console.log('\nDone.');

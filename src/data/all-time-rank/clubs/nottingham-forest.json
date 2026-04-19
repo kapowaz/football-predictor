@@ -1,7 +1,7 @@
 {
   "name": "Nottingham Forest",
   "shortName": "Forest",
-  "crest": "nottingham-forest",
+  "badge": "nottingham-forest",
   "founded": 1865,
   "currentTier": 1,
   "leagueRecord": {

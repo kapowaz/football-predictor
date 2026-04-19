@@ -1,7 +1,7 @@
 {
   "name": "Ipswich Town",
   "shortName": "Ipswich",
-  "crest": "ipswich-town",
+  "badge": "ipswich-town",
   "founded": 1878,
   "currentTier": 2,
   "leagueRecord": {

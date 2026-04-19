@@ -1,6 +1,6 @@
+import { useCompetitionSession } from '../state/useCompetitionSession';
 import type { Match } from '../types';
 import { useCompetitionData } from './useCompetitionData';
-import { useCompetitionSession } from '../state/useCompetitionSession';
 
 export const usePredictions = (slug: string, matches: Match[]) => {
   const { defaultDeductions } = useCompetitionData(slug);

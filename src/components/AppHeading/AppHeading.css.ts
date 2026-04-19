@@ -1,16 +1,26 @@
-import { style } from '@vanilla-extract/css';
+import { createVar, style } from '@vanilla-extract/css';
 import {
-  colorTextHeading,
-  fontFamilyDisplay,
-  fontSize3xl,
-  fontSizeXl,
-  space2,
-} from '../../theme.css';
+  cssVariablesByColorMode,
+  getDesignTokens,
+} from '@kapowaz/design-tokens';
+
+const { colors, spacing, typography } = getDesignTokens();
+
+const colorTextHeading = createVar('app-heading-text-heading');
+
+cssVariablesByColorMode({
+  light: {
+    [colorTextHeading]: colors.gray[900],
+  },
+  dark: {
+    [colorTextHeading]: colors.ink[300],
+  },
+});
 
 export const container = style({
   display: 'flex',
   alignItems: 'center',
-  gap: space2,
+  gap: spacing.sm,
 });
 
 export const logo = style({
@@ -19,21 +29,8 @@ export const logo = style({
 });
 
 export const title = style({
-  fontFamily: fontFamilyDisplay,
+  fontFamily: typography.fontFamily.ui,
   fontStretch: '75%',
-  fontSize: fontSizeXl,
-  fontWeight: 700,
-  textTransform: 'uppercase',
-  color: colorTextHeading,
-  margin: 0,
-  whiteSpace: 'nowrap',
-});
-
-export const titleFullRender = style({
-  fontFamily: fontFamilyDisplay,
-  fontStretch: '75%',
-  fontSize: fontSize3xl,
-  fontWeight: 700,
   textTransform: 'uppercase',
   color: colorTextHeading,
   margin: 0,

@@ -1,8 +1,9 @@
 import { describe, it, expect } from 'vitest';
-import { allSeasons } from './index';
+
 import { allTimeClubs } from '../all-time-rank/all-clubs';
-import type { HistoricalSeason } from './types';
 import type { AllTimeClubData } from '../all-time-rank/types';
+import { allSeasons } from './index';
+import type { HistoricalSeason } from './types';
 
 const seasonsByYear = new Map<number, HistoricalSeason>();
 for (const season of allSeasons) {
@@ -11,7 +12,7 @@ for (const season of allSeasons) {
 
 const clubsBySlug = new Map<string, AllTimeClubData>();
 for (const club of allTimeClubs) {
-  clubsBySlug.set(club.crest, club);
+  clubsBySlug.set(club.badge, club);
 }
 
 describe('league history – internal consistency', () => {
@@ -49,7 +50,10 @@ describe('league history – internal consistency', () => {
       for (const div of s.divisions) {
         if (div.teams.length === 0) continue;
         const dupes = div.teams.filter((t, i) => div.teams.indexOf(t) !== i);
-        expect(dupes, `${s.season} ${div.name}: duplicate teams: ${dupes.join(', ')}`).toEqual([]);
+        expect(
+          dupes,
+          `${s.season} ${div.name}: duplicate teams: ${dupes.join(', ')}`,
+        ).toEqual([]);
       }
     },
   );
@@ -63,7 +67,10 @@ describe('league history – internal consistency', () => {
         allTeams.push(...div.teams);
       }
       const dupes = allTeams.filter((t, i) => allTeams.indexOf(t) !== i);
-      expect(dupes, `${s.season}: teams in multiple divisions: ${dupes.join(', ')}`).toEqual([]);
+      expect(
+        dupes,
+        `${s.season}: teams in multiple divisions: ${dupes.join(', ')}`,
+      ).toEqual([]);
     },
   );
 
@@ -99,7 +106,9 @@ describe('league history – zone validity', () => {
 });
 
 describe('league history – cross-validation with per-club data', () => {
-  const populatedSeasons = allSeasons.filter((s) => s.divisions.some((d) => d.teams.length > 0));
+  const populatedSeasons = allSeasons.filter((s) =>
+    s.divisions.some((d) => d.teams.length > 0),
+  );
 
   it.each(populatedSeasons.map((s) => [s.season, s]))(
     '%s – where both datasets have data for a club/year, tier assignments agree',
@@ -113,9 +122,12 @@ describe('league history – cross-validation with per-club data', () => {
           if (!club) continue;
 
           const tierKey = `tier${div.tier}` as keyof typeof club.leagueRecord;
-          const hasYearInCorrectTier = String(s.year) in club.leagueRecord[tierKey];
+          const hasYearInCorrectTier =
+            String(s.year) in club.leagueRecord[tierKey];
 
-          const yearInOtherTier = (['tier1', 'tier2', 'tier3', 'tier4'] as const)
+          const yearInOtherTier = (
+            ['tier1', 'tier2', 'tier3', 'tier4'] as const
+          )
             .filter((t) => t !== tierKey)
             .find((t) => String(s.year) in club.leagueRecord[t]);
 
@@ -187,16 +199,22 @@ describe('league history – cross-validation with per-club data', () => {
           if (!season) continue;
 
           const matchingDiv = season.divisions.find(
-            (d) => d.tier === tierNum && d.teams.length > 0 && d.teams.includes(club.crest),
+            (d) =>
+              d.tier === tierNum &&
+              d.teams.length > 0 &&
+              d.teams.includes(club.badge),
           );
 
           const inDifferentDiv = season.divisions.find(
-            (d) => d.tier !== tierNum && d.teams.length > 0 && d.teams.includes(club.crest),
+            (d) =>
+              d.tier !== tierNum &&
+              d.teams.length > 0 &&
+              d.teams.includes(club.badge),
           );
 
           if (inDifferentDiv && !matchingDiv) {
             mismatches.push(
-              `${club.crest} has ${tier} record for ${year} but historical data ` +
+              `${club.badge} has ${tier} record for ${year} but historical data ` +
                 `places them in ${inDifferentDiv.name} (tier ${inDifferentDiv.tier})`,
             );
           }

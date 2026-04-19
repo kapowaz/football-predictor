@@ -1,7 +1,7 @@
 {
   "name": "Blackpool",
   "shortName": "Blackpool",
-  "crest": "blackpool",
+  "badge": "blackpool",
   "founded": 1887,
   "currentTier": 3,
   "leagueRecord": {
