@@ -126,6 +126,8 @@ const BonusPointsContent = ({ slug, config }: BonusPointsContentProps) => {
         isRenderingImage={isRenderingImage}
         hasStandingsImage={hasStandingsImage}
         variantRules="bonus-points"
+        standings={standings}
+        deductionMarkers={deductionMarkers}
       />
 
       <DeductionsModal

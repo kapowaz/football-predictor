@@ -126,6 +126,8 @@ const NewRulesContent = ({ slug, config }: NewRulesContentProps) => {
         isRenderingImage={isRenderingImage}
         hasStandingsImage={hasStandingsImage}
         variantRules="new-rules"
+        standings={standings}
+        deductionMarkers={deductionMarkers}
       />
 
       <DeductionsModal
