@@ -1,1 +1,0 @@
-export { CompetitionSelect } from './CompetitionSelect';
