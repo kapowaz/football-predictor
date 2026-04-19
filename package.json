@@ -10,6 +10,7 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "format": "prettier --write \"src/**/*.{ts,tsx}\"",
+    "format:check": "prettier --check \"src/**/*.{ts,tsx}\"",
     "fetch-data": "tsx scripts/fetch-data.ts --all",
     "fetch-data:championship": "tsx scripts/fetch-data.ts --competition efl-championship",
     "fetch-data:league-one": "tsx scripts/fetch-data.ts --competition efl-league-one",
