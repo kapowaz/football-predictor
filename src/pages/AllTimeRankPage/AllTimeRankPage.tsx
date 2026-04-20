@@ -1,12 +1,11 @@
 import clsx from 'clsx';
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { Suspense, use, useCallback, useMemo, useState } from 'react';
 import { LoadingIndicator, ToggleColorMode } from '@kapowaz/components';
 import { getDesignTokens } from '@kapowaz/design-tokens';
 import { ChevronRight, Icon } from '@kapowaz/icons';
 
 import { AllTimeRankTable } from '../../components/AllTimeRankTable';
 import { AppHeading } from '../../components/AppHeading';
-import type { AllTimeClubData } from '../../data/all-time-rank';
 import { loadAllTimeClubs } from '../../data/all-time-rank';
 import {
   calculateAllTimeScores,
@@ -17,19 +16,13 @@ import {
 const { colors } = getDesignTokens();
 import * as styles from './AllTimeRankPage.css';
 
-export const AllTimeRankPage = () => {
+const AllTimeRankContent = () => {
+  const clubs = use(loadAllTimeClubs());
   const weights = DEFAULT_WEIGHTS;
   const [isExpanded, setIsExpanded] = useState(false);
-  const [clubs, setClubs] = useState<AllTimeClubData[] | null>(null);
-
-  useEffect(() => {
-    loadAllTimeClubs().then((data) => {
-      setTimeout(() => setClubs(data), 1000);
-    });
-  }, []);
 
   const rankedClubs = useMemo(
-    () => (clubs ? calculateAllTimeScores(clubs, weights) : []),
+    () => calculateAllTimeScores(clubs, weights),
     [clubs, weights],
   );
 
@@ -38,14 +31,7 @@ export const AllTimeRankPage = () => {
   }, []);
 
   return (
-    <div className={styles.page}>
-      <header className={styles.header}>
-        <div className={styles.headerLeft}>
-          <AppHeading isTitleHidden />
-          <h2 className={styles.title}>All Time Rank</h2>
-        </div>
-        <ToggleColorMode />
-      </header>
+    <>
       <div className={styles.descriptionBlock}>
         <button
           className={styles.descriptionToggle}
@@ -113,7 +99,7 @@ export const AllTimeRankPage = () => {
                 <strong>Attendance:</strong> a score based on average historical
                 attendance
                 <span className={styles.formula}>
-                  avgAttendance × {weights.attendance}
+                  avgAttendance × {DEFAULT_WEIGHTS.attendance}
                 </span>
               </li>
             </ul>
@@ -121,17 +107,37 @@ export const AllTimeRankPage = () => {
         </div>
       </div>
       <div className={styles.tableWrapper}>
-        {clubs ? (
-          <AllTimeRankTable rankedClubs={rankedClubs} weights={weights} />
-        ) : (
+        <AllTimeRankTable rankedClubs={rankedClubs} weights={weights} />
+      </div>
+    </>
+  );
+};
+
+export const AllTimeRankPage = () => {
+  return (
+    <div className={styles.page}>
+      <header className={styles.header}>
+        <div className={styles.headerLeft}>
+          <AppHeading isTitleHidden />
+          <h2 className={styles.title}>All Time Rank</h2>
+        </div>
+        <ToggleColorMode />
+      </header>
+      <Suspense
+        fallback={
           <div className={styles.loading}>
             <LoadingIndicator
               size="xl"
-              customColor={{ light: colors.slate[300], dark: colors.ink[700] }}
+              customColor={{
+                light: colors.slate[300],
+                dark: colors.ink[700],
+              }}
             />
           </div>
-        )}
-      </div>
+        }
+      >
+        <AllTimeRankContent />
+      </Suspense>
     </div>
   );
 };
