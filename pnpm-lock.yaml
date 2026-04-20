@@ -12,8 +12,8 @@ importers:
         specifier: ^0.27.18
         version: 0.27.19(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
       '@kapowaz/components':
-        specifier: ^13.2.0
-        version: 13.2.0(@types/react@19.2.14)(babel-plugin-macros@3.1.0)(react-dom@19.2.5(react@19.2.5))(react-is@17.0.2)(react@19.2.5)(redux@5.0.1)
+        specifier: ^13.3.0
+        version: 13.3.0(@types/react@19.2.14)(babel-plugin-macros@3.1.0)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(recharts@3.8.1(@types/react@19.2.14)(react-dom@19.2.5(react@19.2.5))(react-is@17.0.2)(react@19.2.5)(redux@5.0.1))
       '@kapowaz/design-tokens':
         specifier: ^0.1.1
         version: 0.1.1(babel-plugin-macros@3.1.0)
@@ -21,14 +21,14 @@ importers:
         specifier: ^0.1.0
         version: 0.1.0
       '@kapowaz/football':
-        specifier: ^0.1.3
-        version: 0.1.3(@types/react@19.2.14)(babel-plugin-macros@3.1.0)(react-dom@19.2.5(react@19.2.5))(react-is@17.0.2)(react@19.2.5)(redux@5.0.1)
+        specifier: ^0.2.0
+        version: 0.2.0(@types/react@19.2.14)(babel-plugin-macros@3.1.0)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(recharts@3.8.1(@types/react@19.2.14)(react-dom@19.2.5(react@19.2.5))(react-is@17.0.2)(react@19.2.5)(redux@5.0.1))
       '@kapowaz/football-badges':
-        specifier: ^0.3.0
-        version: 0.3.0(babel-plugin-macros@3.1.0)(react@19.2.5)
+        specifier: ^0.3.1
+        version: 0.3.1(babel-plugin-macros@3.1.0)(react@19.2.5)
       '@kapowaz/icons':
-        specifier: ^0.3.0
-        version: 0.3.0(babel-plugin-macros@3.1.0)(react@19.2.5)
+        specifier: ^0.4.0
+        version: 0.4.0(babel-plugin-macros@3.1.0)(react@19.2.5)
       '@vanilla-extract/dynamic':
         specifier: ^2.1.5
         version: 2.1.5
@@ -50,9 +50,6 @@ importers:
       react-router-dom:
         specifier: ^7.13.1
         version: 7.14.1(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
-      react-select:
-        specifier: ^5.10.2
-        version: 5.10.2(@types/react@19.2.14)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
       recharts:
         specifier: ^3.8.0
         version: 3.8.1(@types/react@19.2.14)(react-dom@19.2.5(react@19.2.5))(react-is@17.0.2)(react@19.2.5)(redux@5.0.1)
@@ -785,11 +782,15 @@ packages:
   '@jridgewell/trace-mapping@0.3.31':
     resolution: {integrity: sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw==}
 
-  '@kapowaz/components@13.2.0':
-    resolution: {integrity: sha512-Lb01rI0qrLC2u5TV83ZFmN/SQJGRhq1ecXIx+mp9JxlZ75n4cbpfinyhA+2tSesVB2BGlXhTWbMrm9paYxFNXQ==}
+  '@kapowaz/components@13.3.0':
+    resolution: {integrity: sha512-ua79VjgaRvw4FjAIYm8f9N5l3qXZ7JzNa/JSCTFjmtLzGvag/2fHxnHOSEFlP2e4Cjbxcr1iwqgpp6E9+IbaPg==}
     peerDependencies:
       react: '>=18'
       react-dom: '>=18'
+      recharts: ^3.8.1
+    peerDependenciesMeta:
+      recharts:
+        optional: true
 
   '@kapowaz/design-tokens@0.1.1':
     resolution: {integrity: sha512-tFp0J9sa3O8qe5bPdUxH0kAnRUMrTNs8peBWTnTukkYIlLgGEjs1dQxiWFJX7B6OdDWKpbzEudzyizZclUP7SQ==}
@@ -797,18 +798,18 @@ packages:
   '@kapowaz/fonts@0.1.0':
     resolution: {integrity: sha512-zesR8/gBeKa8E8gu5UpFKetFjJWGLtLNBbMtHAE0/HWZqNIDkkxw9Q38uki8wHfu1XRGnZ2d6dQHnHNRFAip6g==}
 
-  '@kapowaz/football-badges@0.3.0':
-    resolution: {integrity: sha512-9UTviLbuupo107muEoQKS+wvymgQ2DWexvnUocCYYprctvbWY7wLzOh840C89hNrRy5FdoYGtwC9FKfQUlsOiA==}
+  '@kapowaz/football-badges@0.3.1':
+    resolution: {integrity: sha512-2wz8K5sfp88MjfSg5w/j2/8ZgvL8mbV/k1pt8JIPWCrur+jANBzL8l+L3TDFSDc7Gvog5OT/57YCXnkBiLt+Gw==}
     peerDependencies:
       react: '>=18'
 
-  '@kapowaz/football@0.1.3':
-    resolution: {integrity: sha512-xCrWIBb6ipC/umeGGPpyH+P66oTRY8TQUUbsdsSwAupJAW1HxO25H+mGMhKnGGQMNKmiO1s0rZGRPDcEfBkXcw==}
+  '@kapowaz/football@0.2.0':
+    resolution: {integrity: sha512-D8HMIhqUIuCI33iT/EmwBsTYfxD3TssEvvWW0/ybQLka+SzVeJPD41/vZLh+SxkYAryC44m1tLlD0u1q0CiSSQ==}
     peerDependencies:
       react: '>= 18'
 
-  '@kapowaz/icons@0.3.0':
-    resolution: {integrity: sha512-9IeIjcoO6zK9/XmX6lIsdWmRFGAuMy33P5hjES5VDmsWPqYl1uSYG+Z93NCexfg0NasDBTDY8nCNaEG3/4hznA==}
+  '@kapowaz/icons@0.4.0':
+    resolution: {integrity: sha512-LU3wEeXdwd1QmUPSpYYeyoK+e3bQ4Suws1k+/WvqokuN3690eO2Qps/+92SsO7g1oKLUoTSLNAPO1hqHrGbzDQ==}
     peerDependencies:
       react: '>=18'
 
@@ -3825,12 +3826,12 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.5
 
-  '@kapowaz/components@13.2.0(@types/react@19.2.14)(babel-plugin-macros@3.1.0)(react-dom@19.2.5(react@19.2.5))(react-is@17.0.2)(react@19.2.5)(redux@5.0.1)':
+  '@kapowaz/components@13.3.0(@types/react@19.2.14)(babel-plugin-macros@3.1.0)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(recharts@3.8.1(@types/react@19.2.14)(react-dom@19.2.5(react@19.2.5))(react-is@17.0.2)(react@19.2.5)(redux@5.0.1))':
     dependencies:
       '@floating-ui/react': 0.27.19(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
       '@kapowaz/design-tokens': 0.1.1(babel-plugin-macros@3.1.0)
       '@kapowaz/fonts': 0.1.0
-      '@kapowaz/icons': 0.3.0(babel-plugin-macros@3.1.0)(react@19.2.5)
+      '@kapowaz/icons': 0.4.0(babel-plugin-macros@3.1.0)(react@19.2.5)
       '@vanilla-extract/css': 1.20.0(babel-plugin-macros@3.1.0)
       '@vanilla-extract/dynamic': 2.1.5
       clsx: 2.1.1
@@ -3839,13 +3840,12 @@ snapshots:
       react: 19.2.5
       react-dom: 19.2.5(react@19.2.5)
       react-select: 5.10.2(@types/react@19.2.14)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
+    optionalDependencies:
       recharts: 3.8.1(@types/react@19.2.14)(react-dom@19.2.5(react@19.2.5))(react-is@17.0.2)(react@19.2.5)(redux@5.0.1)
     transitivePeerDependencies:
       - '@emotion/is-prop-valid'
       - '@types/react'
       - babel-plugin-macros
-      - react-is
-      - redux
       - supports-color
 
   '@kapowaz/design-tokens@0.1.1(babel-plugin-macros@3.1.0)':
@@ -3859,19 +3859,19 @@ snapshots:
       '@fontsource-variable/jetbrains-mono': 5.2.8
       inter-ui: 4.1.1
 
-  '@kapowaz/football-badges@0.3.0(babel-plugin-macros@3.1.0)(react@19.2.5)':
+  '@kapowaz/football-badges@0.3.1(babel-plugin-macros@3.1.0)(react@19.2.5)':
     dependencies:
-      '@kapowaz/icons': 0.3.0(babel-plugin-macros@3.1.0)(react@19.2.5)
+      '@kapowaz/icons': 0.4.0(babel-plugin-macros@3.1.0)(react@19.2.5)
       react: 19.2.5
     transitivePeerDependencies:
       - babel-plugin-macros
 
-  '@kapowaz/football@0.1.3(@types/react@19.2.14)(babel-plugin-macros@3.1.0)(react-dom@19.2.5(react@19.2.5))(react-is@17.0.2)(react@19.2.5)(redux@5.0.1)':
+  '@kapowaz/football@0.2.0(@types/react@19.2.14)(babel-plugin-macros@3.1.0)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(recharts@3.8.1(@types/react@19.2.14)(react-dom@19.2.5(react@19.2.5))(react-is@17.0.2)(react@19.2.5)(redux@5.0.1))':
     dependencies:
-      '@kapowaz/components': 13.2.0(@types/react@19.2.14)(babel-plugin-macros@3.1.0)(react-dom@19.2.5(react@19.2.5))(react-is@17.0.2)(react@19.2.5)(redux@5.0.1)
+      '@kapowaz/components': 13.3.0(@types/react@19.2.14)(babel-plugin-macros@3.1.0)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(recharts@3.8.1(@types/react@19.2.14)(react-dom@19.2.5(react@19.2.5))(react-is@17.0.2)(react@19.2.5)(redux@5.0.1))
       '@kapowaz/design-tokens': 0.1.1(babel-plugin-macros@3.1.0)
-      '@kapowaz/football-badges': 0.3.0(babel-plugin-macros@3.1.0)(react@19.2.5)
-      '@kapowaz/icons': 0.3.0(babel-plugin-macros@3.1.0)(react@19.2.5)
+      '@kapowaz/football-badges': 0.3.1(babel-plugin-macros@3.1.0)(react@19.2.5)
+      '@kapowaz/icons': 0.4.0(babel-plugin-macros@3.1.0)(react@19.2.5)
       '@vanilla-extract/css': 1.20.0(babel-plugin-macros@3.1.0)
       clsx: 2.1.1
       react: 19.2.5
@@ -3880,11 +3880,10 @@ snapshots:
       - '@types/react'
       - babel-plugin-macros
       - react-dom
-      - react-is
-      - redux
+      - recharts
       - supports-color
 
-  '@kapowaz/icons@0.3.0(babel-plugin-macros@3.1.0)(react@19.2.5)':
+  '@kapowaz/icons@0.4.0(babel-plugin-macros@3.1.0)(react@19.2.5)':
     dependencies:
       '@kapowaz/design-tokens': 0.1.1(babel-plugin-macros@3.1.0)
       '@vanilla-extract/css': 1.20.0(babel-plugin-macros@3.1.0)
