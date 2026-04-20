@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import type { RefObject } from 'react';
 import { AbstractText } from '@kapowaz/components';
 import { StandingsTable } from '@kapowaz/football';
-import { KapBoltSimple } from '@kapowaz/icons';
+import { Icon, KapBoltSimple } from '@kapowaz/icons';
 
 import type { ZoneDefinition } from '../../data/competitions';
 import type { DeductionNote } from '../../state/selectors';
@@ -160,9 +160,9 @@ export const StandingsImageView = ({
                   </AbstractText>
                 </div>
                 <span className={styles.footerIconContainer}>
-                  <KapBoltSimple
-                    width={32}
-                    height={32}
+                  <Icon
+                    component={KapBoltSimple}
+                    size="xxxl"
                     className={styles.footerIcon}
                   />
                 </span>

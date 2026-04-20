@@ -22,6 +22,7 @@ import {
   Trash2,
   X,
 } from '@kapowaz/icons';
+import { Icon } from '@kapowaz/icons';
 
 import type { CompetitionConfig } from '../../data/competitions';
 import { useNavigationLoading } from '../../hooks/useNavigationLoading';
@@ -138,7 +139,7 @@ export const NavBar = ({
               title="Navigation menu"
               onClick={() => setIsMenuOpen(true)}
             >
-              <MenuSquare width={18} height={18} />
+              <Icon component={MenuSquare} size="lg" />
             </button>
             <div className={styles.desktopColorModeToggle}>
               <ToggleColorMode />
@@ -233,7 +234,7 @@ export const NavBar = ({
                     onClick={closeMenu}
                     aria-label="Close navigation menu"
                   >
-                    <X width={18} height={18} />
+                    <Icon component={X} size="lg" />
                   </button>
                 </div>
                 <nav className={styles.overlayNavItems}>
