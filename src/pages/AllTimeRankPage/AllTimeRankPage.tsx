@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { LoadingIndicator, ToggleColorMode } from '@kapowaz/components';
 import { getDesignTokens } from '@kapowaz/design-tokens';
-import { ChevronRight } from '@kapowaz/icons';
+import { ChevronRight, Icon } from '@kapowaz/icons';
 
 import { AllTimeRankTable } from '../../components/AllTimeRankTable';
 import { AppHeading } from '../../components/AppHeading';
@@ -52,7 +52,9 @@ export const AllTimeRankPage = () => {
           onClick={toggleExpanded}
           aria-expanded={isExpanded}
         >
-          <ChevronRight
+          <Icon
+            component={ChevronRight}
+            size="md"
             className={clsx(
               styles.chevron,
               isExpanded && styles.chevronExpanded,
