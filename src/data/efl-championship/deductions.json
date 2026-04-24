@@ -8,5 +8,10 @@
     "teamId": 345,
     "amount": 18,
     "reason": "Sheffield Wednesday were deducted twelve points due to filing for administration on 24 October 2025, then deducted a further six points on 1 December 2025 for failing to meet payment obligations."
+  },
+  {
+    "teamId": 74,
+    "amount": 2,
+    "reason": "West Bromwich Albion were deducted two points due to exceeding the Upper Loss Threshold for the three-year period ending 30 June 2025"
   }
 ]
