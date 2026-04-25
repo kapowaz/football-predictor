@@ -21,6 +21,7 @@ import {
 } from '../../data/competitions';
 import { useCompetitionData } from '../../hooks/useCompetitionData';
 import { useLiveScores } from '../../hooks/useLiveScores';
+import { usePositionGuarantees } from '../../hooks/usePositionGuarantees';
 import { usePositionHistory } from '../../hooks/usePositionHistory';
 import { useZoneGuarantees } from '../../hooks/useZoneGuarantees';
 import { useZoneThresholds } from '../../hooks/useZoneThresholds';
@@ -82,6 +83,11 @@ const RunInContent = ({ slug, config }: RunInContentProps) => {
     matches,
     effectivePredictions,
     config.zones,
+  );
+  const positionGuaranteedByTeamId = usePositionGuarantees(
+    standings,
+    matches,
+    effectivePredictions,
   );
   const zoneThresholds = useZoneThresholds(
     standings,
@@ -165,6 +171,7 @@ const RunInContent = ({ slug, config }: RunInContentProps) => {
               standings={standings}
               deductionMarkers={deductionMarkers}
               zoneGuaranteedByTeamId={zoneGuaranteedByTeamId}
+              positionGuaranteedByTeamId={positionGuaranteedByTeamId}
               zones={config.zones}
               isRunIn
               relegationStartPosition={getRelegationStartPosition(config.zones)}

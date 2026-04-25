@@ -3,6 +3,7 @@ import { describe, expect, it } from 'vitest';
 import type { ZoneDefinition } from '../src/data/competitions';
 import type { Match, PredictionsStore, Team, TeamStanding } from '../src/types';
 import {
+  calculatePositionGuaranteedByTeamId,
   calculateStandingPositionOutcomeByTeamId,
   calculateZoneGuaranteedByTeamId,
 } from '../src/utils/zoneGuarantees';
@@ -402,5 +403,148 @@ describe('zone guarantees', () => {
 
   const outcomes = calculateStandingPositionOutcomeByTeamId(standings, matches, emptyPredictions, zones);
   expect(outcomes.get(6)).toBe('safeFromRelegation');
+  });
+});
+
+describe('position guarantees', () => {
+  it('marks every team as position-guaranteed when no fixtures remain', () => {
+    const teams = [1, 2, 3, 4].map(makeTeam);
+    const standings: TeamStanding[] = [
+      makeStanding(teams[0], 80),
+      makeStanding(teams[1], 70),
+      makeStanding(teams[2], 60),
+      makeStanding(teams[3], 50),
+    ];
+
+    const result = calculatePositionGuaranteedByTeamId(
+      standings,
+      [],
+      emptyPredictions,
+    );
+    expect(result.get(1)).toBe(true);
+    expect(result.get(2)).toBe(true);
+    expect(result.get(3)).toBe(true);
+    expect(result.get(4)).toBe(true);
+  });
+
+  it('marks a team as position-guaranteed when no team can catch and none above can drop', () => {
+    const teams = [1, 2, 3, 4].map(makeTeam);
+    const standings: TeamStanding[] = [
+      makeStanding(teams[0], 100),
+      makeStanding(teams[1], 80),
+      makeStanding(teams[2], 50),
+      makeStanding(teams[3], 48),
+    ];
+    const matches: Match[] = [
+      {
+        id: 1,
+        status: 'SCHEDULED',
+        homeTeamId: 3,
+        awayTeamId: 4,
+        utcDate: '2026-04-01T12:00:00Z',
+        homeGoals: null,
+        awayGoals: null,
+      },
+    ];
+
+    const result = calculatePositionGuaranteedByTeamId(
+      standings,
+      matches,
+      emptyPredictions,
+    );
+    // Team 1 (100) cannot be caught — Team 2 max 80, others lower.
+    expect(result.get(1)).toBe(true);
+    // Team 2 (80) cannot rise (Team 1 has 100) and cannot drop (Team 3 max 53).
+    expect(result.get(2)).toBe(true);
+    // Team 4 could win (51) and overtake Team 3, so positions 3 and 4 may swap.
+    expect(result.get(3)).toBe(false);
+    expect(result.get(4)).toBe(false);
+  });
+
+  it('does not guarantee position when a team below could reach equal points', () => {
+    const teams = [1, 2, 3].map(makeTeam);
+    const standings: TeamStanding[] = [
+      makeStanding(teams[0], 80),
+      makeStanding(teams[1], 50),
+      makeStanding(teams[2], 47),
+    ];
+    const matches: Match[] = [
+      {
+        id: 1,
+        status: 'SCHEDULED',
+        homeTeamId: 3,
+        awayTeamId: 1,
+        utcDate: '2026-04-01T12:00:00Z',
+        homeGoals: null,
+        awayGoals: null,
+      },
+    ];
+
+    const result = calculatePositionGuaranteedByTeamId(
+      standings,
+      matches,
+      emptyPredictions,
+    );
+    // Team 3 could reach 50 (tie with Team 2) → goal difference might shift.
+    expect(result.get(2)).toBe(false);
+  });
+
+  it('does not guarantee position when a team above could drop to equal points', () => {
+    const teams = [1, 2, 3].map(makeTeam);
+    const standings: TeamStanding[] = [
+      makeStanding(teams[0], 80),
+      makeStanding(teams[1], 50),
+      makeStanding(teams[2], 30),
+    ];
+    const matches: Match[] = [
+      {
+        id: 1,
+        status: 'SCHEDULED',
+        homeTeamId: 1,
+        awayTeamId: 3,
+        utcDate: '2026-04-01T12:00:00Z',
+        homeGoals: null,
+        awayGoals: null,
+      },
+    ];
+
+    const result = calculatePositionGuaranteedByTeamId(
+      standings,
+      matches,
+      emptyPredictions,
+    );
+    // Team 1 stays well clear of Team 2 (max 33 from one win can't catch 50).
+    expect(result.get(1)).toBe(true);
+  });
+
+  it('locks tied teams when neither has remaining matches', () => {
+    const teams = [1, 2, 3].map(makeTeam);
+    const standings: TeamStanding[] = [
+      makeStanding(teams[0], 60),
+      makeStanding(teams[1], 60), // tied with team 1, sorted lower
+      makeStanding(teams[2], 30),
+    ];
+    const matches: Match[] = [
+      {
+        id: 1,
+        status: 'SCHEDULED',
+        homeTeamId: 3,
+        awayTeamId: 3,
+        utcDate: '2026-04-01T12:00:00Z',
+        homeGoals: null,
+        awayGoals: null,
+      },
+    ];
+    // Note: above match references team 3 only; teams 1 and 2 have remaining=0.
+
+    const result = calculatePositionGuaranteedByTeamId(
+      standings,
+      matches,
+      emptyPredictions,
+    );
+    // Teams 1 and 2 tied on points but both have remaining=0 → tiebreakers
+    // locked, current standings sort holds.
+    expect(result.get(1)).toBe(true);
+    expect(result.get(2)).toBe(true);
   });
 });

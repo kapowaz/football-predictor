@@ -12,6 +12,7 @@ import {
 import type { CompetitionConfig } from '../../data/competitions';
 import { useCompetitionData } from '../../hooks/useCompetitionData';
 import { useLiveScores } from '../../hooks/useLiveScores';
+import { usePositionGuarantees } from '../../hooks/usePositionGuarantees';
 import { usePositionHistory } from '../../hooks/usePositionHistory';
 import { useZoneGuarantees } from '../../hooks/useZoneGuarantees';
 import {
@@ -157,6 +158,11 @@ export const CompetitionPanels = ({
     effectivePredictions ?? { predictions: {}, lastModified: '' },
     config.zones,
   );
+  const positionGuaranteedByTeamId = usePositionGuarantees(
+    panelModel?.standings ?? [],
+    matches,
+    effectivePredictions ?? { predictions: {}, lastModified: '' },
+  );
 
   const hasModelPredictions = Object.keys(modelPredictions).length > 0;
 
@@ -199,6 +205,7 @@ export const CompetitionPanels = ({
             standings={panelModel.standings}
             deductionMarkers={panelModel.deductionMarkers}
             zoneGuaranteedByTeamId={zoneGuaranteedByTeamId}
+            positionGuaranteedByTeamId={positionGuaranteedByTeamId}
             zones={config.zones}
             isRunIn={isRunIn}
             relegationStartPosition={getRelegationStartPosition(config.zones)}
