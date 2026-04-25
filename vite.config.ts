@@ -30,6 +30,16 @@ export default defineConfig({
       '@vanilla-extract/css',
     ],
   },
+  server: {
+    // Allow the dev server to serve files from sibling design-system packages
+    // when they are linked via scripts/toggle-linked-packages.ts. Without this,
+    // requests for assets like jetbrains-mono woff2 files in
+    // ../design-system/packages/fonts/dist hit Vite's default fs allowlist
+    // (project root only) and 403.
+    fs: {
+      allow: ['..'],
+    },
+  },
   build: {
     rollupOptions: {
       input: {

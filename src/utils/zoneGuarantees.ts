@@ -531,6 +531,80 @@ export const calculateStandingPositionOutcomeByTeamId = (
   return outcomeByTeamId;
 };
 
+/**
+ * Returns true when team T at its current league position N is mathematically
+ * guaranteed to finish at exactly N.
+ *
+ * Strict pointwise check: for every team currently above T, their current
+ * points must already exceed T's max achievable; for every team currently
+ * below T, T's current points must already exceed that team's max achievable.
+ * Equal-points boundaries only count when both teams have no remaining
+ * fixtures (in which case the standings sort already pins their order).
+ */
+const isPositionGuaranteed = (
+  targetIndex: number,
+  standings: TeamStanding[],
+  teamStateById: Map<number, TeamState>,
+): boolean => {
+  const target = standings[targetIndex];
+  const targetState = teamStateById.get(target.team.id);
+  if (!targetState) return false;
+
+  const targetMax = targetState.points + targetState.remaining * 3;
+  const targetCurrent = targetState.points;
+
+  for (let j = 0; j < standings.length; j += 1) {
+    if (j === targetIndex) continue;
+    const other = standings[j];
+    const otherState = teamStateById.get(other.team.id);
+    if (!otherState) return false;
+
+    const otherMax = otherState.points + otherState.remaining * 3;
+    const otherCurrent = otherState.points;
+    const tiebreakerLocked =
+      targetState.remaining === 0 && otherState.remaining === 0;
+
+    if (j < targetIndex) {
+      // 'other' is currently above target; they must remain strictly ahead.
+      if (otherCurrent > targetMax) continue;
+      if (otherCurrent === targetMax && tiebreakerLocked) continue;
+      return false;
+    }
+    // 'other' is currently below target; target must remain strictly ahead.
+    if (otherMax < targetCurrent) continue;
+    if (otherMax === targetCurrent && tiebreakerLocked) continue;
+    return false;
+  }
+
+  return true;
+};
+
+export const calculatePositionGuaranteedByTeamId = (
+  standings: TeamStanding[],
+  matches: Match[],
+  predictions: PredictionsStore,
+): Map<number, boolean> => {
+  const unresolvedMatches = getUnresolvedMatches(matches, predictions);
+  const teamStateById = buildTeamState(standings, unresolvedMatches);
+  const result = new Map<number, boolean>();
+
+  if (unresolvedMatches.length === 0) {
+    for (const standing of standings) {
+      result.set(standing.team.id, true);
+    }
+    return result;
+  }
+
+  for (let i = 0; i < standings.length; i += 1) {
+    result.set(
+      standings[i].team.id,
+      isPositionGuaranteed(i, standings, teamStateById),
+    );
+  }
+
+  return result;
+};
+
 export const calculateZoneGuaranteedByTeamId = (
   standings: TeamStanding[],
   matches: Match[],

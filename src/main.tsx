@@ -1,3 +1,4 @@
+import '@fontsource-variable/rubik';
 import '@kapowaz/components/components.css';
 import '@kapowaz/football/football.css';
 

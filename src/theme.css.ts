@@ -3,6 +3,9 @@ import { getDesignTokens } from '@kapowaz/design-tokens';
 
 const { colors } = getDesignTokens();
 
+const FONT_FAMILY_UI =
+  "'Rubik Variable', 'Rubik', system-ui, -apple-system, 'BlinkMacSystemFont', 'Segoe UI', sans-serif";
+
 export const colorBgPage = createVar();
 
 export const colorTextPrimary = createVar();
@@ -57,3 +60,10 @@ globalStyle(':root[data-color-mode="light"]', {
 globalStyle(':root[data-color-mode="dark"]', {
   vars: darkVars,
 });
+
+// Override the design-tokens UI font family with Rubik.
+// Uses the raw CSS property name since --font-family-ui is defined by the
+// design-tokens package, not by a local createVar().
+globalStyle(':root', {
+  '--font-family-ui': FONT_FAMILY_UI,
+} as Record<string, string>);

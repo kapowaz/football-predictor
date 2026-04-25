@@ -14,6 +14,7 @@ import {
 } from '../../data/competitions';
 import { useCompetitionData } from '../../hooks/useCompetitionData';
 import { useLiveScores } from '../../hooks/useLiveScores';
+import { usePositionGuarantees } from '../../hooks/usePositionGuarantees';
 import { useZoneGuarantees } from '../../hooks/useZoneGuarantees';
 import { useZoneThresholds } from '../../hooks/useZoneThresholds';
 import {
@@ -72,6 +73,11 @@ const StandingsImageContent = ({
     effectivePredictions,
     config.zones,
   );
+  const positionGuaranteedByTeamId = usePositionGuarantees(
+    standings,
+    matches,
+    effectivePredictions,
+  );
   const teamsById = selectTeamsById(teams);
   const deductionNotes = selectDeductionNotes(deductions, teamsById);
   const zoneThresholds = useZoneThresholds(
@@ -96,6 +102,7 @@ const StandingsImageContent = ({
         deductionNotes={deductionNotes}
         deductionMarkers={deductionMarkers}
         zoneGuaranteedByTeamId={zoneGuaranteedByTeamId}
+        positionGuaranteedByTeamId={positionGuaranteedByTeamId}
         zones={config.zones}
         partial="top"
         captureRef={topCaptureRef}
@@ -113,6 +120,7 @@ const StandingsImageContent = ({
         deductionNotes={deductionNotes}
         deductionMarkers={deductionMarkers}
         zoneGuaranteedByTeamId={zoneGuaranteedByTeamId}
+        positionGuaranteedByTeamId={positionGuaranteedByTeamId}
         zones={config.zones}
         partial="bottom"
         captureRef={bottomCaptureRef}
