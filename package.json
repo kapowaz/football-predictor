@@ -4,11 +4,13 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
+    "dev": "pnpm prepare:data && vite",
+    "build": "pnpm prepare:data && tsc -b && vite build",
+    "prepare:data": "pnpm ensure-data-stubs && pnpm gen:data-indexes",
+    "gen:data-indexes": "tsx scripts/generate-data-indexes.ts",
     "lint": "eslint .",
-    "test": "vitest run",
-    "test:watch": "vitest",
+    "test": "pnpm prepare:data && vitest run",
+    "test:watch": "pnpm prepare:data && vitest",
     "format": "prettier --write \"src/**/*.{ts,tsx}\"",
     "format:check": "prettier --check \"src/**/*.{ts,tsx}\"",
     "fetch-data": "tsx scripts/fetch-data.ts --all",
@@ -42,7 +44,7 @@
     "check-for-updates": "tsx scripts/check-for-updates.ts",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "typecheck": "tsc --noEmit -p tsconfig.app.json && tsc --noEmit -p tsconfig.node.json",
+    "typecheck": "pnpm prepare:data && tsc --noEmit -p tsconfig.app.json && tsc --noEmit -p tsconfig.node.json",
     "toggle-linked": "tsx scripts/toggle-linked-packages.ts"
   },
   "dependencies": {

@@ -31,6 +31,20 @@ ALL_COMPETITIONS = ["premier-league", "efl-championship", "efl-league-one", "efl
 with open(os.path.join(SCRIPT_DIR, "..", "src", "data", "enabled-competitions.json")) as _f:
     ENABLED_COMPETITIONS = json.load(_f)
 
+
+def get_season_id():
+    """Resolve season identifier from VITE_SEASON / SEASON env vars,
+    falling back to src/data/season.json."""
+    from_env = os.environ.get("VITE_SEASON") or os.environ.get("SEASON")
+    if from_env:
+        return from_env
+    season_json_path = os.path.join(SCRIPT_DIR, "..", "src", "data", "season.json")
+    with open(season_json_path) as f:
+        return json.load(f)["current"]
+
+
+SEASON_ID = get_season_id()
+
 FORM_LENGTH = 6
 FORM_DECAY = 0.85  # exponential decay factor per match in form window
 MAX_GOALS = 7
@@ -379,7 +393,7 @@ def simulate_season(match_params, num_sims):
 
 def run_for_competition(competition_slug, args):
     """Generate predictions for a single competition."""
-    data_dir = os.path.join(BASE_DATA_DIR, competition_slug)
+    data_dir = os.path.join(BASE_DATA_DIR, competition_slug, SEASON_ID)
     matches_path = os.path.join(data_dir, "matches.json")
     fotmob_stats_path = os.path.join(data_dir, "fotmob-stats.json")
     output_path = os.path.join(data_dir, "model-predictions.json")

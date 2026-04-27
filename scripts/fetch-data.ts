@@ -3,6 +3,9 @@ import * as path from 'node:path';
 
 import { API_KEY, fetchFromApi, parseCompetitionArg } from './common';
 import type { ScriptCompetition } from './common';
+import { getSeasonId } from './season';
+
+const seasonId = getSeasonId();
 
 if (!API_KEY) {
   console.error('Error: FOOTBALL_DATA_API_KEY not found in environment');
@@ -69,7 +72,7 @@ interface ApiStandingsResponse {
 }
 
 const dataDir = (comp: ScriptCompetition) =>
-  path.join(import.meta.dirname, '../src/data', comp.slug);
+  path.join(import.meta.dirname, '../src/data', comp.slug, seasonId);
 
 const sanitizeMatch = (match: ApiMatch): SanitizedMatch => {
   const status = match.status === 'FINISHED' ? 'FINISHED' : 'SCHEDULED';
@@ -111,7 +114,9 @@ const fetchMatches = async (comp: ScriptCompetition): Promise<void> => {
   fs.mkdirSync(dir, { recursive: true });
   const outputPath = path.join(dir, 'matches.json');
   fs.writeFileSync(outputPath, JSON.stringify(matchesData, null, 2));
-  console.log(`✓ Wrote ${matchesData.matches.length} matches to src/data/${comp.slug}/matches.json`);
+  console.log(
+    `✓ Wrote ${matchesData.matches.length} matches to src/data/${comp.slug}/${seasonId}/matches.json`,
+  );
 };
 
 const fetchStandings = async (comp: ScriptCompetition): Promise<void> => {
@@ -147,7 +152,7 @@ const fetchStandings = async (comp: ScriptCompetition): Promise<void> => {
   const outputPath = path.join(dir, 'standings.json');
   fs.writeFileSync(outputPath, JSON.stringify(standingsData, null, 2));
   console.log(
-    `✓ Wrote ${standingsData.standings.length} standings to src/data/${comp.slug}/standings.json`,
+    `✓ Wrote ${standingsData.standings.length} standings to src/data/${comp.slug}/${seasonId}/standings.json`,
   );
 };
 

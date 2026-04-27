@@ -1,5 +1,7 @@
 import { getCompetitionLogo } from '@kapowaz/football-badges';
 
+import { seasonDisplay } from './season';
+
 export type ZoneType =
   | 'champions'
   | 'promotion'
@@ -40,8 +42,8 @@ export const COMPETITIONS: Record<string, CompetitionConfig> = {
   'premier-league': {
     slug: 'premier-league',
     name: 'Premier League',
-    fullTitle: 'Premier League 2025/26 Predictions',
-    season: '2025/26',
+    fullTitle: `Premier League ${seasonDisplay} Predictions`,
+    season: seasonDisplay,
     teamCount: 20,
     footballDataCode: 'PL',
     fotmobLeagueId: 47,
@@ -92,8 +94,8 @@ export const COMPETITIONS: Record<string, CompetitionConfig> = {
   'efl-championship': {
     slug: 'efl-championship',
     name: 'EFL Championship',
-    fullTitle: 'EFL Championship 2025/26 Predictions',
-    season: '2025/26',
+    fullTitle: `EFL Championship ${seasonDisplay} Predictions`,
+    season: seasonDisplay,
     teamCount: 24,
     footballDataCode: 'ELC',
     fotmobLeagueId: 48,
@@ -128,8 +130,8 @@ export const COMPETITIONS: Record<string, CompetitionConfig> = {
   'efl-league-one': {
     slug: 'efl-league-one',
     name: 'EFL League One',
-    fullTitle: 'EFL League One 2025/26 Predictions',
-    season: '2025/26',
+    fullTitle: `EFL League One ${seasonDisplay} Predictions`,
+    season: seasonDisplay,
     teamCount: 24,
     footballDataCode: 'EL1',
     fotmobLeagueId: 108,
@@ -164,8 +166,8 @@ export const COMPETITIONS: Record<string, CompetitionConfig> = {
   'efl-league-two': {
     slug: 'efl-league-two',
     name: 'EFL League Two',
-    fullTitle: 'EFL League Two 2025/26 Predictions',
-    season: '2025/26',
+    fullTitle: `EFL League Two ${seasonDisplay} Predictions`,
+    season: seasonDisplay,
     teamCount: 24,
     footballDataCode: 'EL2',
     fotmobLeagueId: 109,

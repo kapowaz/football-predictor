@@ -3,6 +3,9 @@ import * as path from 'node:path';
 
 import { API_KEY, fetchFromApi, parseCompetitionArg } from './common';
 import type { ScriptCompetition } from './common';
+import { getSeasonId } from './season';
+
+const seasonId = getSeasonId();
 
 if (!API_KEY) {
   console.error('Error: FOOTBALL_DATA_API_KEY not found in environment');
@@ -69,7 +72,12 @@ const fetchTeams = async (comp: ScriptCompetition): Promise<void> => {
     `/v4/competitions/${comp.footballDataCode}/teams`,
   );
 
-  const dir = path.join(import.meta.dirname, '../src/data', comp.slug);
+  const dir = path.join(
+    import.meta.dirname,
+    '../src/data',
+    comp.slug,
+    seasonId,
+  );
   fs.mkdirSync(dir, { recursive: true });
   const outputPath = path.join(dir, 'teams.json');
 
@@ -107,7 +115,9 @@ const fetchTeams = async (comp: ScriptCompetition): Promise<void> => {
   const tlaOverrideCount = teamsData.teams.filter((t) => t.id in TLA_OVERRIDES).length;
 
   fs.writeFileSync(outputPath, JSON.stringify(teamsData, null, 2));
-  console.log(`✓ Wrote ${teamsData.teams.length} teams to src/data/${comp.slug}/teams.json`);
+  console.log(
+    `✓ Wrote ${teamsData.teams.length} teams to src/data/${comp.slug}/${seasonId}/teams.json`,
+  );
   if (existingTeams.size > 0) {
     console.log(`  (preserved local overrides from ${existingTeams.size} existing teams)`);
   }
