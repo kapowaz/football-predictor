@@ -12,15 +12,13 @@ import {
   allCompetitions,
   type CompetitionConfig,
 } from '../../data/competitions';
-import { isGenuineCompetition } from '../../data/genuine';
 import { useCompetitionConfig } from '../../hooks/useCompetitionConfig';
 import { useCompetitionData } from '../../hooks/useCompetitionData';
-import { useGenuine } from '../../hooks/useGenuine';
+import { useGenuineToggle } from '../../hooks/useGenuineToggle';
 import { useImageDownload } from '../../hooks/useImageDownload';
 import { useLiveScores } from '../../hooks/useLiveScores';
 import { useZoneGuarantees } from '../../hooks/useZoneGuarantees';
 import { useZoneThresholds } from '../../hooks/useZoneThresholds';
-import { useGenuineStore } from '../../state/genuineStore';
 import {
   selectCaptureSignature,
   selectDeductionNotes,
@@ -50,9 +48,9 @@ const CompetitionContent = ({ slug, config }: CompetitionContentProps) => {
     }
   }, [slug]);
   const { colorMode } = useColorMode();
-  const { teams, matches, defaultDeductions } = useCompetitionData(slug);
-  const isGenuine = useGenuine(slug);
-  const setGenuine = useGenuineStore((state) => state.setGenuine);
+  const { teams, matches, allMatches, defaultDeductions } =
+    useCompetitionData(slug);
+  const genuineToggle = useGenuineToggle(slug);
   const { liveScores } = useLiveScores(slug);
   const {
     predictions,
@@ -68,7 +66,7 @@ const CompetitionContent = ({ slug, config }: CompetitionContentProps) => {
     dismissSummary,
   } = useCompetitionSession({
     slug,
-    matches,
+    matches: allMatches,
     defaultDeductions,
     persistenceMode: 'full',
   });
@@ -190,8 +188,7 @@ const CompetitionContent = ({ slug, config }: CompetitionContentProps) => {
         onAdd={addDeduction}
         onRemove={removeDeduction}
         onReset={resetDeductions}
-        isGenuine={isGenuine}
-        onGenuineChange={isGenuineCompetition(slug) ? setGenuine : undefined}
+        {...genuineToggle}
       />
 
       <SeasonSummaryModal

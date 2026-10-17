@@ -1,4 +1,4 @@
-import { createVar, globalStyle, style } from '@vanilla-extract/css';
+import { createVar, style } from '@vanilla-extract/css';
 import {
   cssVariablesByColorMode,
   getDesignTokens,
@@ -22,20 +22,12 @@ export const modalBody = style({
   flexDirection: 'column',
 });
 
-export const genuineSection = style({
-  marginBottom: spacing.lg,
-});
-
-// Switch renders `<span><label>{toggle}{text}</label></span>`; stretch both
-// across the row and reverse it so the text sits left, the toggle right.
-globalStyle(`${genuineSection} > span`, {
+export const genuineRow = style({
   display: 'flex',
-});
-
-globalStyle(`${genuineSection} label`, {
-  flex: 1,
-  flexDirection: 'row-reverse',
+  alignItems: 'center',
   justifyContent: 'space-between',
+  paddingBottom: spacing.lg,
+  cursor: 'pointer',
 });
 
 export const sectionLabel = style({

@@ -104,3 +104,30 @@ export const Empty: Story = {
     );
   },
 };
+
+export const WithGenuineSwitch: Story = {
+  render: () => {
+    const [isOpen, setIsOpen] = useState(false);
+    const [isGenuine, setIsGenuine] = useState(true);
+    return (
+      <>
+        <Button type="danger" onClick={() => setIsOpen(true)}>
+          Open Deductions
+        </Button>
+        <DeductionsModal
+          isOpen={isOpen}
+          onClose={() => setIsOpen(false)}
+          deductions={deductions}
+          teams={teams}
+          isCustomised
+          onUpdate={() => {}}
+          onAdd={() => {}}
+          onRemove={() => {}}
+          onReset={() => {}}
+          isGenuine={isGenuine}
+          onGenuineChange={setIsGenuine}
+        />
+      </>
+    );
+  },
+};

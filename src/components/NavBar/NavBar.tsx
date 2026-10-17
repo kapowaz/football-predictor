@@ -48,6 +48,8 @@ interface NavBarProps {
   onSaveImageClick?: () => void;
   /** Whether the save image button should be disabled (e.g. image not ready). */
   isSaveImageDisabled?: boolean;
+  /** Show the Run In and Relegation tabs. Defaults to the `runInAndRelegation` feature flag. */
+  showRunInAndRelegation?: boolean;
 }
 
 export const NavBar = ({
@@ -59,6 +61,7 @@ export const NavBar = ({
   onResetPredictionsClick,
   onSaveImageClick,
   isSaveImageDisabled,
+  showRunInAndRelegation = features.runInAndRelegation,
 }: NavBarProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [optimisticTabId, setOptimisticTabId] = useState<string | null>(null);
@@ -86,7 +89,7 @@ export const NavBar = ({
 
   const navItems = [
     { id: 'competition', label: 'Standings', href: `/${activeSlug}/` },
-    ...(features.runInAndRelegation
+    ...(showRunInAndRelegation
       ? [
           { id: 'run-in', label: 'Run In', href: `/run-in/${activeSlug}/` },
           {

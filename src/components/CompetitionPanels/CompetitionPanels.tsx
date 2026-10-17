@@ -129,7 +129,7 @@ export const CompetitionPanels = ({
     const deductionMarkers =
       deductionMarkersProp ?? ownViewModel?.deductionMarkers ?? new Map();
     const deductionNotes = selectDeductionNotes(session.deductions, teamsById);
-    const predictedCount = selectPredictedCount(session.predictions);
+    const predictedCount = selectPredictedCount(session.predictions, matches);
     const allScheduledPredicted = selectAllScheduledPredicted(
       matches,
       session.predictions,

@@ -12,6 +12,7 @@ import {
 } from '../../data/competitions';
 import { useCompetitionConfig } from '../../hooks/useCompetitionConfig';
 import { useCompetitionData } from '../../hooks/useCompetitionData';
+import { useGenuineToggle } from '../../hooks/useGenuineToggle';
 import { useImageDownload } from '../../hooks/useImageDownload';
 import { useLiveScores } from '../../hooks/useLiveScores';
 import { useZoneGuarantees } from '../../hooks/useZoneGuarantees';
@@ -32,8 +33,10 @@ interface BonusPointsContentProps {
 const BonusPointsContent = ({ slug, config }: BonusPointsContentProps) => {
   const navigate = useNavigate();
   const { colorMode } = useColorMode();
-  const { teams, matches, defaultDeductions } = useCompetitionData(slug);
+  const { teams, matches, allMatches, defaultDeductions } =
+    useCompetitionData(slug);
   const { liveScores } = useLiveScores(slug);
+  const genuineToggle = useGenuineToggle(slug);
   const {
     predictions,
     deductions,
@@ -46,7 +49,7 @@ const BonusPointsContent = ({ slug, config }: BonusPointsContentProps) => {
     setDeductionsModalOpen,
   } = useCompetitionSession({
     slug,
-    matches,
+    matches: allMatches,
     defaultDeductions,
     persistenceMode: 'full',
   });
@@ -154,6 +157,7 @@ const BonusPointsContent = ({ slug, config }: BonusPointsContentProps) => {
         onAdd={addDeduction}
         onRemove={removeDeduction}
         onReset={resetDeductions}
+        {...genuineToggle}
       />
     </>
   );

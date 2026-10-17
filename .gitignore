@@ -29,9 +29,6 @@ src/data/*/*/matches.json
 src/data/*/*/model-predictions.json
 src/data/*/*/standings.json
 
-# Generated index files written by scripts/generate-data-indexes.ts
-src/data/*/index.ts
-
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

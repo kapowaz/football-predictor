@@ -1,7 +1,13 @@
-import { Navigate, useParams } from 'react-router-dom';
+import { Navigate, useLocation, useParams } from 'react-router-dom';
 
-/** Redirects a disabled competition sub-page to that competition's standings. */
+/**
+ * Redirects a disabled competition sub-page to that competition's standings,
+ * keeping the query string so shared predictions/deductions survive.
+ */
 export const CompetitionRedirect = () => {
   const { slug } = useParams<{ slug: string }>();
-  return <Navigate to={slug ? `/${slug}/` : '/'} replace />;
+  const { search } = useLocation();
+  return (
+    <Navigate to={{ pathname: slug ? `/${slug}/` : '/', search }} replace />
+  );
 };

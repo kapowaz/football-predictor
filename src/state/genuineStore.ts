@@ -4,7 +4,9 @@ import { features } from '../data/features';
 
 const PARAM = 'genuine';
 
-const readFromUrl = (): boolean => {
+/** Initial state: `?genuine=true|false` if present, else the feature default. */
+export const readGenuineFromUrl = (): boolean => {
+  if (typeof window === 'undefined') return features.genuine;
   const value = new URLSearchParams(window.location.search).get(PARAM);
   if (value === 'true') return true;
   if (value === 'false') return false;
@@ -14,6 +16,7 @@ const readFromUrl = (): boolean => {
 /**
  * Writes `?genuine=<bool>` when the state differs from the feature default,
  * and removes it otherwise. Other query params are left as they are.
+ * Called from `App` on every toggle and navigation.
  */
 export const syncGenuineParam = (genuine: boolean): void => {
   const params = new URLSearchParams(window.location.search);
@@ -36,9 +39,6 @@ interface GenuineStoreState {
 }
 
 export const useGenuineStore = create<GenuineStoreState>((set) => ({
-  genuine: readFromUrl(),
-  setGenuine: (genuine) => {
-    syncGenuineParam(genuine);
-    set({ genuine });
-  },
+  genuine: readGenuineFromUrl(),
+  setGenuine: (genuine) => set({ genuine }),
 }));

@@ -60,9 +60,10 @@ export default defineConfig({
     setupFiles: ['./src/test/setup.ts'],
     css: { modules: { classNameStrategy: 'non-scoped' } },
     // Allow vitest to transform .svg imports from @kapowaz/football-badges
+    // and the .css import in @kapowaz/football's ESM build
     server: {
       deps: {
-        inline: ['@kapowaz/football-badges'],
+        inline: ['@kapowaz/football-badges', '@kapowaz/football'],
       },
     },
   },

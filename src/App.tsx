@@ -13,12 +13,13 @@ const App = () => {
     migrateStorage();
   }, []);
 
-  // In-app links drop the query string; restore `?genuine=` after each navigation.
-  const { pathname } = useLocation();
+  // Writes `?genuine=` on toggle, and restores it after each navigation
+  // (in-app links drop the query string, even to the same path).
+  const { key: locationKey } = useLocation();
   const genuine = useGenuineStore((state) => state.genuine);
   useEffect(() => {
     syncGenuineParam(genuine);
-  }, [pathname, genuine]);
+  }, [locationKey, genuine]);
 
   return (
     <ColorModeProvider>

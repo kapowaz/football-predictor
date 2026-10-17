@@ -1,5 +1,11 @@
 import { useEffect, useMemo, useRef } from 'react';
+import { useLocation } from 'react-router-dom';
 
+import {
+  excludeGenuineDeductions,
+  excludeGenuineMatches,
+} from '../data/genuine';
+import { useGenuine } from '../hooks/useGenuine';
 import type { Match, PointDeduction, PredictionsStore } from '../types';
 import {
   decodeDeductions,
@@ -28,7 +34,13 @@ import {
 
 interface UseCompetitionSessionOptions {
   slug: string;
+  /**
+   * Every match of the season (`allMatches` from `useCompetitionData`), not
+   * the "genuine"-filtered list: URL-encoded predictions are positional over
+   * it. Excluded teams' matches are filtered here where it matters.
+   */
   matches: Match[];
+  /** Unfiltered default deductions; the returned deductions are filtered. */
   defaultDeductions: PointDeduction[];
   persistenceMode?: PersistenceMode;
 }
@@ -124,6 +136,9 @@ export const useCompetitionSession = ({
   const session = useCompetitionSessionStore((state) =>
     selectSessionForSlug(state.sessions, slug),
   );
+  const genuine = useGenuine(slug);
+  // Same-path navigation drops the query string without changing pathname.
+  const { key: locationKey } = useLocation();
 
   const initialSession = useMemo(() => {
     const initialSearchParams = new URLSearchParams(window.location.search);
@@ -256,11 +271,26 @@ export const useCompetitionSession = ({
     activeSession.predictions,
     matches,
     persistenceMode,
+    locationKey,
   ]);
 
+  // The store keeps excluded teams' predictions and deductions so toggling
+  // "genuine" mode off restores them; consumers only see the counted ones.
+  const countedMatches = useMemo(
+    () => (genuine ? excludeGenuineMatches(slug, matches) : matches),
+    [genuine, matches, slug],
+  );
+  const deductions = useMemo(
+    () =>
+      genuine
+        ? excludeGenuineDeductions(slug, activeSession.deductions)
+        : activeSession.deductions,
+    [activeSession.deductions, genuine, slug],
+  );
+
   const allFixturesResolved = useMemo(
-    () => selectAllFixturesResolved(matches, activeSession.predictions),
-    [activeSession.predictions, matches],
+    () => selectAllFixturesResolved(countedMatches, activeSession.predictions),
+    [activeSession.predictions, countedMatches],
   );
   const previousAllResolved = useRef(allFixturesResolved);
   useEffect(() => {
@@ -278,7 +308,7 @@ export const useCompetitionSession = ({
 
   return {
     predictions: activeSession.predictions,
-    deductions: activeSession.deductions,
+    deductions,
     deductionsCustomised: activeSession.deductionsCustomised,
     activeTab: activeSession.activeTab,
     navigateToMatchId: activeSession.navigateToMatchId,

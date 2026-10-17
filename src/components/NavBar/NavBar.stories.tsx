@@ -47,12 +47,18 @@ export const CompetitionActive: Story = {
 };
 
 export const RunInActive: Story = {
+  args: {
+    showRunInAndRelegation: true,
+  },
   parameters: {
     initialPath: `/run-in/${activeSlug}/`,
   },
 };
 
 export const RelegationActive: Story = {
+  args: {
+    showRunInAndRelegation: true,
+  },
   parameters: {
     initialPath: `/relegation/${activeSlug}/`,
   },

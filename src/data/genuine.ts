@@ -18,12 +18,33 @@ export const isGenuineCompetition = (slug: string): boolean =>
 const excludedIdsFor = (slug: string): ReadonlySet<number> =>
   new Set(GENUINE_EXCLUDED_TEAM_IDS[slug] ?? []);
 
-/**
- * Removes excluded teams, every match they play in (results and fixtures)
- * and their deductions.
- */
+/** Removes every match (result or fixture) involving an excluded team. */
+export const excludeGenuineMatches = <
+  T extends Pick<Match, 'homeTeamId' | 'awayTeamId'>,
+>(
+  slug: string,
+  matches: T[],
+): T[] => {
+  const excluded = excludedIdsFor(slug);
+  if (excluded.size === 0) return matches;
+  return matches.filter(
+    (m) => !excluded.has(m.homeTeamId) && !excluded.has(m.awayTeamId),
+  );
+};
+
+/** Removes deductions against excluded teams. */
+export const excludeGenuineDeductions = (
+  slug: string,
+  deductions: PointDeduction[],
+): PointDeduction[] => {
+  const excluded = excludedIdsFor(slug);
+  if (excluded.size === 0) return deductions;
+  return deductions.filter((d) => !excluded.has(d.teamId));
+};
+
+/** Removes excluded teams and every match they play in. */
 export const applyGenuineToData = <
-  T extends { teams: Team[]; matches: Match[]; deductions: PointDeduction[] },
+  T extends { teams: Team[]; matches: Match[] },
 >(
   slug: string,
   data: T,
@@ -33,10 +54,7 @@ export const applyGenuineToData = <
   return {
     ...data,
     teams: data.teams.filter((t) => !excluded.has(t.id)),
-    matches: data.matches.filter(
-      (m) => !excluded.has(m.homeTeamId) && !excluded.has(m.awayTeamId),
-    ),
-    deductions: data.deductions.filter((d) => !excluded.has(d.teamId)),
+    matches: excludeGenuineMatches(slug, data.matches),
   };
 };
 

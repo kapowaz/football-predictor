@@ -34,8 +34,20 @@ const getValidationWorker = (): Worker => {
 };
 
 interface CompetitionDataResult {
+  /** Teams in the table (excluded teams removed in "genuine" mode). */
   teams: Team[];
+  /** Matches that count (excluded teams' matches removed in "genuine" mode). */
   matches: Match[];
+  /**
+   * Every match of the season, regardless of "genuine" mode. Pass this to
+   * `useCompetitionSession`: URL-encoded predictions are positional over it,
+   * so shared links decode the same whichever mode is active.
+   */
+  allMatches: Match[];
+  /**
+   * Default deductions, unfiltered so the session's defaults do not change
+   * when "genuine" mode is toggled; `useCompetitionSession` filters its output.
+   */
   defaultDeductions: PointDeduction[];
   modelPredictions: Record<string, { homeGoals: number; awayGoals: number }>;
 }
@@ -44,47 +56,48 @@ export const useCompetitionData = (slug: string): CompetitionDataResult => {
   const data = use(loadCompetitionData(slug));
   const genuine = useGenuine(slug);
 
-  // In "genuine" mode, excluded teams and all of their matches are removed,
-  // so standings will not match the API's table (validation logs say so).
-  const {
-    teams,
-    matches,
-    deductions: defaultDeductions,
-  } = useMemo(() => {
-    const base = {
-      teams: (data.teamsData as TeamsData).teams,
-      matches: applyOverrides(
+  const allTeams = useMemo(
+    () => (data.teamsData as TeamsData).teams,
+    [data.teamsData],
+  );
+  const allMatches = useMemo(
+    () =>
+      applyOverrides(
         (data.matchesData as MatchesData).matches,
         (data.overridesData as unknown as MatchesData).matches,
       ),
-      deductions: data.deductionsData as PointDeduction[],
-    };
+    [data.matchesData, data.overridesData],
+  );
+  // In "genuine" mode, excluded teams and all of their matches are removed,
+  // so standings will not match the API's table.
+  const { teams, matches } = useMemo(() => {
+    const base = { teams: allTeams, matches: allMatches };
     return genuine ? applyGenuineToData(slug, base) : base;
-  }, [
-    data.teamsData,
-    data.matchesData,
-    data.overridesData,
-    data.deductionsData,
-    genuine,
-    slug,
-  ]);
+  }, [allTeams, allMatches, genuine, slug]);
+  const defaultDeductions = useMemo(
+    () => data.deductionsData as PointDeduction[],
+    [data.deductionsData],
+  );
   const apiStandings = useMemo(
     () => data.standingsData as ApiStandingsData,
     [data.standingsData],
   );
   // Empty when the feature is off, which hides every "AI Predictions" action.
-  const modelPredictions = useMemo(
-    () =>
-      features.aiPredictions
-        ? (data.modelPredictionsData as ModelPredictionsData).predictions
-        : {},
-    [data.modelPredictionsData],
-  );
+  // Limited to counted matches so excluded teams' fixtures are never filled.
+  const modelPredictions = useMemo(() => {
+    if (!features.aiPredictions) return {};
+    const all = (data.modelPredictionsData as ModelPredictionsData).predictions;
+    const ids = new Set(matches.map((m) => String(m.id)));
+    return Object.fromEntries(
+      Object.entries(all).filter(([id]) => ids.has(id)),
+    );
+  }, [data.modelPredictionsData, matches]);
 
   const validationRequestId = useRef(-1);
 
   useEffect(() => {
-    if (apiStandings.standings.length === 0) return;
+    // The API table includes excluded teams, so validation would only warn.
+    if (genuine || apiStandings.standings.length === 0) return;
 
     const id = ++nextValidationRequestId;
     validationRequestId.current = id;
@@ -114,7 +127,7 @@ export const useCompetitionData = (slug: string): CompetitionDataResult => {
     return () => {
       w.removeEventListener('message', handler);
     };
-  }, [teams, matches, defaultDeductions, apiStandings]);
+  }, [genuine, teams, matches, defaultDeductions, apiStandings]);
 
-  return { teams, matches, defaultDeductions, modelPredictions };
+  return { teams, matches, allMatches, defaultDeductions, modelPredictions };
 };

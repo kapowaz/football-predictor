@@ -77,13 +77,16 @@ export const DeductionsModal = ({
     >
       <div className={styles.modalBody}>
         {onGenuineChange && (
-          <div className={styles.genuineSection}>
-            <Switch
-              isOn={isGenuine}
-              onChange={onGenuineChange}
-              label="Genuine"
-            />
-          </div>
+          // A native label forwards clicks on its text to the switch button
+          // and gives it the accessible name "Genuine".
+          <AbstractText
+            tagName="label"
+            className={styles.genuineRow}
+            fontSize="md"
+          >
+            Genuine
+            <Switch isOn={isGenuine} onChange={onGenuineChange} />
+          </AbstractText>
         )}
         <AbstractText
           tagName="div"

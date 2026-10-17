@@ -1,5 +1,7 @@
 import { useMemo } from 'react';
 
+import { excludeGenuineDeductions } from '../data/genuine';
+import { useGenuine } from '../hooks/useGenuine';
 import type { CompetitionSessionState } from './competitionSessionStore';
 import { useCompetitionSessionStore } from './competitionSessionStore';
 import { selectSessionForSlug } from './selectors';
@@ -29,8 +31,24 @@ interface CompetitionSessionSlice {
 export const useCompetitionSessionSlice = (
   slug: string,
 ): CompetitionSessionSlice => {
-  const session = useCompetitionSessionStore((state) =>
+  const storedSession = useCompetitionSessionStore((state) =>
     selectSessionForSlug(state.sessions, slug),
+  );
+  const genuine = useGenuine(slug);
+  // Hide deductions against teams excluded by "genuine" mode; the store
+  // keeps them so toggling the mode off restores them.
+  const session = useMemo(
+    () =>
+      storedSession && genuine
+        ? {
+            ...storedSession,
+            deductions: excludeGenuineDeductions(
+              slug,
+              storedSession.deductions,
+            ),
+          }
+        : storedSession,
+    [genuine, slug, storedSession],
   );
   const setPrediction = useCompetitionSessionStore(
     (state) => state.setPrediction,

@@ -45,11 +45,12 @@ const StandingsImageContent = ({
   const variantRules = parseVariantRules(searchParams.get('variantRules'));
   const topCaptureRef = useRef<HTMLDivElement>(null);
   const bottomCaptureRef = useRef<HTMLDivElement>(null);
-  const { teams, matches, defaultDeductions } = useCompetitionData(slug);
+  const { teams, matches, allMatches, defaultDeductions } =
+    useCompetitionData(slug);
   const { liveScores } = useLiveScores(slug);
   const { predictions, deductions } = useCompetitionSession({
     slug,
-    matches,
+    matches: allMatches,
     defaultDeductions,
     persistenceMode: 'storageOnly',
   });
