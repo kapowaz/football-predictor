@@ -25,6 +25,7 @@ import {
 import { Icon } from '@kapowaz/icons';
 
 import type { CompetitionConfig } from '../../data/competitions';
+import { features } from '../../data/features';
 import { useNavigationLoading } from '../../hooks/useNavigationLoading';
 import { AppHeading } from '../AppHeading';
 
@@ -85,12 +86,16 @@ export const NavBar = ({
 
   const navItems = [
     { id: 'competition', label: 'Standings', href: `/${activeSlug}/` },
-    { id: 'run-in', label: 'Run In', href: `/run-in/${activeSlug}/` },
-    {
-      id: 'relegation',
-      label: 'Relegation',
-      href: `/relegation/${activeSlug}/`,
-    },
+    ...(features.runInAndRelegation
+      ? [
+          { id: 'run-in', label: 'Run In', href: `/run-in/${activeSlug}/` },
+          {
+            id: 'relegation',
+            label: 'Relegation',
+            href: `/relegation/${activeSlug}/`,
+          },
+        ]
+      : []),
   ];
 
   const tabs: Tab[] = navItems.map((item) => ({

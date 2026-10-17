@@ -7,6 +7,11 @@ interface Features {
    * and deploy workflow skip regeneration.
    */
   aiPredictions: boolean;
+  /**
+   * The "Run In" and "Relegation" pages. When false, their tabs are hidden
+   * and their routes redirect to the competition's standings page.
+   */
+  runInAndRelegation: boolean;
 }
 
 /**

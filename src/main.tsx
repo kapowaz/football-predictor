@@ -8,6 +8,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { LoadingIndicator } from '@kapowaz/components';
 
 import App from './App';
+import { CompetitionRedirect } from './CompetitionRedirect';
+import { features } from './data/features';
 import { IndexRedirect } from './IndexRedirect';
 
 import * as styles from './App.css';
@@ -56,8 +58,26 @@ createRoot(document.getElementById('root')!).render(
         <Routes>
           <Route element={<App />}>
             <Route index element={<IndexRedirect />} />
-            <Route path="relegation/:slug/" element={<RelegationPage />} />
-            <Route path="run-in/:slug/" element={<RunInPage />} />
+            <Route
+              path="relegation/:slug/"
+              element={
+                features.runInAndRelegation ? (
+                  <RelegationPage />
+                ) : (
+                  <CompetitionRedirect />
+                )
+              }
+            />
+            <Route
+              path="run-in/:slug/"
+              element={
+                features.runInAndRelegation ? (
+                  <RunInPage />
+                ) : (
+                  <CompetitionRedirect />
+                )
+              }
+            />
             <Route path="new-rules/:slug/" element={<NewRulesPage />} />
             <Route path="bonus-points/:slug/" element={<BonusPointsPage />} />
             <Route
