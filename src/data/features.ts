@@ -18,6 +18,11 @@ interface Features {
    * and their routes redirect to the competition's standings page.
    */
   runInAndRelegation: boolean;
+  /**
+   * Points-threshold labels on zone dividers (e.g. "Champions ≥ 103 pts").
+   * When false, thresholds are not computed and no labels are shown.
+   */
+  zoneThresholdLabels: boolean;
 }
 
 /**

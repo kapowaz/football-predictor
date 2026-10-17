@@ -1,5 +1,6 @@
 {
   "aiPredictions": false,
   "genuine": true,
-  "runInAndRelegation": false
+  "runInAndRelegation": false,
+  "zoneThresholdLabels": false
 }
