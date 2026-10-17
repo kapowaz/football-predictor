@@ -17,6 +17,8 @@ const seasonId = getSeasonId();
 const DATA_DIR = path.join(import.meta.dirname, '../src/data');
 
 const STUBS: Record<string, object> = {
+  'deductions.json': [],
+  'overrides.json': { lastUpdated: '', matches: [] },
   'teams.json': { competition: '', season: '', teams: [] },
   'matches.json': { lastUpdated: '', matches: [] },
   'standings.json': { lastUpdated: '', standings: [] },

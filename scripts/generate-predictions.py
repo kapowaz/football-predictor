@@ -529,6 +529,11 @@ def main():
     )
     args = parser.parse_args()
 
+    with open(os.path.join(BASE_DATA_DIR, "features.json")) as f:
+        if not json.load(f).get("aiPredictions", False):
+            print("aiPredictions feature is disabled in src/data/features.json; skipping.")
+            return
+
     if args.competition:
         if args.competition not in ALL_COMPETITIONS:
             print(f"Unknown competition: {args.competition}", file=sys.stderr)

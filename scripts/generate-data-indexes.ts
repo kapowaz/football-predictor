@@ -1,5 +1,5 @@
 /**
- * Writes `src/data/<slug>/index.ts` for every enabled competition with
+ * Writes `src/data/<slug>/index.ts` for every competition with
  * static imports pointing at the current season's data files. Vite needs
  * literal import paths for static analysis, so this codegen step bakes the
  * season into each barrel file at build time.
@@ -11,7 +11,7 @@
 import * as fs from 'node:fs';
 import * as path from 'node:path';
 
-import ENABLED_COMPETITION_SLUGS from '../src/data/enabled-competitions.json';
+import { COMPETITIONS } from './common';
 import { getSeasonId } from './season';
 
 const seasonId = getSeasonId();
@@ -35,7 +35,9 @@ const banner = `// THIS FILE IS GENERATED. Do not edit by hand.
 
 let written = 0;
 
-for (const slug of ENABLED_COMPETITION_SLUGS) {
+// Every competition, not just enabled ones: `src/data/index.ts` references
+// all barrels, so a disabled competition must still point at this season.
+for (const slug of Object.keys(COMPETITIONS)) {
   const seasonDir = path.join(dataRoot, slug, seasonId);
   if (!fs.existsSync(seasonDir)) {
     console.warn(

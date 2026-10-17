@@ -28,7 +28,11 @@ jobs:
           cache: pnpm
           registry-url: 'https://registry.npmjs.org'
 
-      - uses: actions/setup-python@v5
+      - id: features
+        run: echo "ai_predictions=$(jq -r '.aiPredictions' src/data/features.json)" >> "$GITHUB_OUTPUT"
+
+      - if: steps.features.outputs.ai_predictions == 'true'
+        uses: actions/setup-python@v5
         with:
           python-version: "3.12"
 
@@ -40,7 +44,8 @@ jobs:
         env:
           FOOTBALL_DATA_API_KEY: ${{ secrets.FOOTBALL_DATA_API_KEY }}
       - run: pnpm fetch-fotmob-stats --all
-      - run: pnpm generate-predictions --all --simulations 50000
+      - if: steps.features.outputs.ai_predictions == 'true'
+        run: pnpm generate-predictions --all --simulations 50000
       - run: pnpm generate-live-scores
         env:
           FOOTBALL_DATA_API_KEY: ${{ secrets.FOOTBALL_DATA_API_KEY }}

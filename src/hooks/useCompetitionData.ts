@@ -1,6 +1,7 @@
 import { use, useEffect, useMemo, useRef } from 'react';
 
 import { loadCompetitionData } from '../data';
+import { features } from '../data/features';
 import type {
   Team,
   Match,
@@ -60,8 +61,12 @@ export const useCompetitionData = (slug: string): CompetitionDataResult => {
     () => data.standingsData as ApiStandingsData,
     [data.standingsData],
   );
+  // Empty when the feature is off, which hides every "AI Predictions" action.
   const modelPredictions = useMemo(
-    () => (data.modelPredictionsData as ModelPredictionsData).predictions,
+    () =>
+      features.aiPredictions
+        ? (data.modelPredictionsData as ModelPredictionsData).predictions
+        : {},
     [data.modelPredictionsData],
   );
 
