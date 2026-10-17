@@ -2,6 +2,7 @@ import { use, useEffect, useMemo, useRef } from 'react';
 
 import { loadCompetitionData } from '../data';
 import { features } from '../data/features';
+import { applyGenuineToData } from '../data/genuine';
 import type {
   Team,
   Match,
@@ -12,6 +13,7 @@ import type {
   ModelPredictionsData,
 } from '../types';
 import type { ValidateStandingsResponse } from '../workers/validateStandings.worker';
+import { useGenuine } from './useGenuine';
 
 const applyOverrides = (base: Match[], overrides: Match[]): Match[] => {
   const overrideMap = new Map(overrides.map((m) => [m.id, m]));
@@ -40,23 +42,32 @@ interface CompetitionDataResult {
 
 export const useCompetitionData = (slug: string): CompetitionDataResult => {
   const data = use(loadCompetitionData(slug));
+  const genuine = useGenuine(slug);
 
-  const teams = useMemo(
-    () => (data.teamsData as TeamsData).teams,
-    [data.teamsData],
-  );
-  const matches = useMemo(
-    () =>
-      applyOverrides(
+  // In "genuine" mode, excluded teams and all of their matches are removed,
+  // so standings will not match the API's table (validation logs say so).
+  const {
+    teams,
+    matches,
+    deductions: defaultDeductions,
+  } = useMemo(() => {
+    const base = {
+      teams: (data.teamsData as TeamsData).teams,
+      matches: applyOverrides(
         (data.matchesData as MatchesData).matches,
         (data.overridesData as unknown as MatchesData).matches,
       ),
-    [data.matchesData, data.overridesData],
-  );
-  const defaultDeductions = useMemo(
-    () => data.deductionsData as PointDeduction[],
-    [data.deductionsData],
-  );
+      deductions: data.deductionsData as PointDeduction[],
+    };
+    return genuine ? applyGenuineToData(slug, base) : base;
+  }, [
+    data.teamsData,
+    data.matchesData,
+    data.overridesData,
+    data.deductionsData,
+    genuine,
+    slug,
+  ]);
   const apiStandings = useMemo(
     () => data.standingsData as ApiStandingsData,
     [data.standingsData],

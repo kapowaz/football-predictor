@@ -7,10 +7,10 @@ import { DeductionsModal } from '../../components/DeductionsModal';
 import { StandingsImageView } from '../../components/StandingsImageView';
 import { hasCompetitionData } from '../../data';
 import {
-  getCompetition,
   allCompetitions,
   type CompetitionConfig,
 } from '../../data/competitions';
+import { useCompetitionConfig } from '../../hooks/useCompetitionConfig';
 import { useCompetitionData } from '../../hooks/useCompetitionData';
 import { useImageDownload } from '../../hooks/useImageDownload';
 import { useLiveScores } from '../../hooks/useLiveScores';
@@ -162,11 +162,12 @@ const NewRulesContent = ({ slug, config }: NewRulesContentProps) => {
 export const NewRulesPage = () => {
   const { slug } = useParams<{ slug: string }>();
 
+  const config = useCompetitionConfig(slug);
+
   if (!slug) {
     return <Navigate to="/" replace />;
   }
 
-  const config = getCompetition(slug);
   if (!config) {
     return <Navigate to="/" replace />;
   }

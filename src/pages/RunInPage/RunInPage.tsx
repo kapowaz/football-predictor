@@ -16,9 +16,9 @@ import { PanelHeader } from '../../components/PanelHeader';
 import { hasCompetitionData } from '../../data';
 import {
   allCompetitions,
-  getCompetition,
   type CompetitionConfig,
 } from '../../data/competitions';
+import { useCompetitionConfig } from '../../hooks/useCompetitionConfig';
 import { useCompetitionData } from '../../hooks/useCompetitionData';
 import { useLiveScores } from '../../hooks/useLiveScores';
 import { usePositionGuarantees } from '../../hooks/usePositionGuarantees';
@@ -233,11 +233,12 @@ const RunInContent = ({ slug, config }: RunInContentProps) => {
 export const RunInPage = () => {
   const { slug } = useParams<{ slug: string }>();
 
+  const config = useCompetitionConfig(slug);
+
   if (!slug) {
     return <Navigate to="/" replace />;
   }
 
-  const config = getCompetition(slug);
   if (!config) {
     return <Navigate to="/" replace />;
   }

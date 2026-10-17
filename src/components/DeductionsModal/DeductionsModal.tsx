@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { AbstractText, Modal } from '@kapowaz/components';
+import { AbstractText, Modal, Switch } from '@kapowaz/components';
 import type { ModalAction } from '@kapowaz/components';
 
 import type { PointDeduction, Team } from '../../types';
@@ -27,6 +27,10 @@ interface DeductionsModalProps {
   onRemove: (teamId: number) => void;
   /** Callback fired when deductions are reset to defaults. */
   onReset: () => void;
+  /** Whether "genuine" mode is on. The switch is only rendered when `onGenuineChange` is provided. */
+  isGenuine?: boolean;
+  /** Callback fired when the "genuine" switch is toggled. */
+  onGenuineChange?: (isOn: boolean) => void;
 }
 
 export const DeductionsModal = ({
@@ -39,6 +43,8 @@ export const DeductionsModal = ({
   onAdd,
   onRemove,
   onReset,
+  isGenuine = false,
+  onGenuineChange,
 }: DeductionsModalProps) => {
   const teamsById = useMemo(
     () => new Map(teams.map((t) => [t.id, t])),
@@ -70,6 +76,15 @@ export const DeductionsModal = ({
       }
     >
       <div className={styles.modalBody}>
+        {onGenuineChange && (
+          <div className={styles.genuineSection}>
+            <Switch
+              isOn={isGenuine}
+              onChange={onGenuineChange}
+              label="Genuine"
+            />
+          </div>
+        )}
         <AbstractText
           tagName="div"
           className={styles.sectionLabel}

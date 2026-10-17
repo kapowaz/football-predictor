@@ -9,15 +9,18 @@ import { SeasonSummaryModal } from '../../components/SeasonSummaryModal';
 import { StandingsImageView } from '../../components/StandingsImageView';
 import { hasCompetitionData } from '../../data';
 import {
-  getCompetition,
   allCompetitions,
   type CompetitionConfig,
 } from '../../data/competitions';
+import { isGenuineCompetition } from '../../data/genuine';
+import { useCompetitionConfig } from '../../hooks/useCompetitionConfig';
 import { useCompetitionData } from '../../hooks/useCompetitionData';
+import { useGenuine } from '../../hooks/useGenuine';
 import { useImageDownload } from '../../hooks/useImageDownload';
 import { useLiveScores } from '../../hooks/useLiveScores';
 import { useZoneGuarantees } from '../../hooks/useZoneGuarantees';
 import { useZoneThresholds } from '../../hooks/useZoneThresholds';
+import { useGenuineStore } from '../../state/genuineStore';
 import {
   selectCaptureSignature,
   selectDeductionNotes,
@@ -48,6 +51,8 @@ const CompetitionContent = ({ slug, config }: CompetitionContentProps) => {
   }, [slug]);
   const { colorMode } = useColorMode();
   const { teams, matches, defaultDeductions } = useCompetitionData(slug);
+  const isGenuine = useGenuine(slug);
+  const setGenuine = useGenuineStore((state) => state.setGenuine);
   const { liveScores } = useLiveScores(slug);
   const {
     predictions,
@@ -185,6 +190,8 @@ const CompetitionContent = ({ slug, config }: CompetitionContentProps) => {
         onAdd={addDeduction}
         onRemove={removeDeduction}
         onReset={resetDeductions}
+        isGenuine={isGenuine}
+        onGenuineChange={isGenuineCompetition(slug) ? setGenuine : undefined}
       />
 
       <SeasonSummaryModal
@@ -202,11 +209,12 @@ const CompetitionContent = ({ slug, config }: CompetitionContentProps) => {
 export const CompetitionPage = () => {
   const { slug } = useParams<{ slug: string }>();
 
+  const config = useCompetitionConfig(slug);
+
   if (!slug) {
     return <Navigate to="/" replace />;
   }
 
-  const config = getCompetition(slug);
   if (!config) {
     return <Navigate to="/" replace />;
   }

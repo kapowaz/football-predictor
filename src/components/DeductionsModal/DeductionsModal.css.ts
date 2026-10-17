@@ -22,6 +22,10 @@ export const modalBody = style({
   flexDirection: 'column',
 });
 
+export const genuineSection = style({
+  marginBottom: spacing.lg,
+});
+
 export const sectionLabel = style({
   color: colorTextSecondary,
   marginBottom: spacing.md,

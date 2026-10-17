@@ -8,6 +8,12 @@ interface Features {
    */
   aiPredictions: boolean;
   /**
+   * Default state of "genuine" mode, which removes the teams listed in
+   * `src/data/genuine.ts` from the season. Users can toggle it in the Point
+   * Deductions modal; the non-default state persists as `?genuine=<bool>`.
+   */
+  genuine: boolean;
+  /**
    * The "Run In" and "Relegation" pages. When false, their tabs are hidden
    * and their routes redirect to the competition's standings page.
    */
