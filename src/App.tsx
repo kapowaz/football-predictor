@@ -1,8 +1,9 @@
 import { Suspense, useEffect } from 'react';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 import { ColorModeProvider, LoadingIndicator } from '@kapowaz/components';
 
 import { NavigationLoadingProvider } from './hooks/NavigationLoadingProvider';
+import { syncGenuineParam, useGenuineStore } from './state/genuineStore';
 import { migrateStorage } from './utils/storage';
 
 import * as styles from './App.css';
@@ -11,6 +12,14 @@ const App = () => {
   useEffect(() => {
     migrateStorage();
   }, []);
+
+  // Writes `?genuine=` on toggle, and restores it after each navigation
+  // (in-app links drop the query string, even to the same path).
+  const { key: locationKey } = useLocation();
+  const genuine = useGenuineStore((state) => state.genuine);
+  useEffect(() => {
+    syncGenuineParam(genuine);
+  }, [locationKey, genuine]);
 
   return (
     <ColorModeProvider>

@@ -16,10 +16,11 @@ import { PanelHeader } from '../../components/PanelHeader';
 import { hasCompetitionData } from '../../data';
 import {
   allCompetitions,
-  getCompetition,
   type CompetitionConfig,
 } from '../../data/competitions';
+import { useCompetitionConfig } from '../../hooks/useCompetitionConfig';
 import { useCompetitionData } from '../../hooks/useCompetitionData';
+import { useGenuineToggle } from '../../hooks/useGenuineToggle';
 import { useLiveScores } from '../../hooks/useLiveScores';
 import { usePositionGuarantees } from '../../hooks/usePositionGuarantees';
 import { usePositionHistory } from '../../hooks/usePositionHistory';
@@ -43,9 +44,10 @@ const RunInContent = ({ slug, config }: RunInContentProps) => {
   const navigate = useNavigate();
   const competitions = allCompetitions();
   const pageContentRef = useRef<HTMLDivElement>(null);
-  const { teams, matches, defaultDeductions, modelPredictions } =
+  const { teams, matches, allMatches, defaultDeductions, modelPredictions } =
     useCompetitionData(slug);
   const { liveScores } = useLiveScores(slug);
+  const genuineToggle = useGenuineToggle(slug);
   const {
     predictions,
     deductions,
@@ -63,7 +65,7 @@ const RunInContent = ({ slug, config }: RunInContentProps) => {
     setDeductionsModalOpen,
   } = useCompetitionSession({
     slug,
-    matches,
+    matches: allMatches,
     defaultDeductions,
     persistenceMode: 'full',
   });
@@ -134,7 +136,7 @@ const RunInContent = ({ slug, config }: RunInContentProps) => {
     return ids;
   }, [matches, runInTeamIds]);
   const hasModelPredictions = Object.keys(modelPredictions).length > 0;
-  const predictedCount = selectPredictedCount(predictions);
+  const predictedCount = selectPredictedCount(predictions, matches);
   const allScheduledPredicted = selectAllScheduledPredicted(
     matches,
     predictions,
@@ -225,6 +227,7 @@ const RunInContent = ({ slug, config }: RunInContentProps) => {
         onAdd={addDeduction}
         onRemove={removeDeduction}
         onReset={resetDeductions}
+        {...genuineToggle}
       />
     </>
   );
@@ -233,11 +236,12 @@ const RunInContent = ({ slug, config }: RunInContentProps) => {
 export const RunInPage = () => {
   const { slug } = useParams<{ slug: string }>();
 
+  const config = useCompetitionConfig(slug);
+
   if (!slug) {
     return <Navigate to="/" replace />;
   }
 
-  const config = getCompetition(slug);
   if (!config) {
     return <Navigate to="/" replace />;
   }

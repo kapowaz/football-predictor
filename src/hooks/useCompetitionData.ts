@@ -1,6 +1,8 @@
 import { use, useEffect, useMemo, useRef } from 'react';
 
 import { loadCompetitionData } from '../data';
+import { features } from '../data/features';
+import { applyGenuineToData } from '../data/genuine';
 import type {
   Team,
   Match,
@@ -11,6 +13,7 @@ import type {
   ModelPredictionsData,
 } from '../types';
 import type { ValidateStandingsResponse } from '../workers/validateStandings.worker';
+import { useGenuine } from './useGenuine';
 
 const applyOverrides = (base: Match[], overrides: Match[]): Match[] => {
   const overrideMap = new Map(overrides.map((m) => [m.id, m]));
@@ -31,20 +34,33 @@ const getValidationWorker = (): Worker => {
 };
 
 interface CompetitionDataResult {
+  /** Teams in the table (excluded teams removed in "genuine" mode). */
   teams: Team[];
+  /** Matches that count (excluded teams' matches removed in "genuine" mode). */
   matches: Match[];
+  /**
+   * Every match of the season, regardless of "genuine" mode. Pass this to
+   * `useCompetitionSession`: URL-encoded predictions are positional over it,
+   * so shared links decode the same whichever mode is active.
+   */
+  allMatches: Match[];
+  /**
+   * Default deductions, unfiltered so the session's defaults do not change
+   * when "genuine" mode is toggled; `useCompetitionSession` filters its output.
+   */
   defaultDeductions: PointDeduction[];
   modelPredictions: Record<string, { homeGoals: number; awayGoals: number }>;
 }
 
 export const useCompetitionData = (slug: string): CompetitionDataResult => {
   const data = use(loadCompetitionData(slug));
+  const genuine = useGenuine(slug);
 
-  const teams = useMemo(
+  const allTeams = useMemo(
     () => (data.teamsData as TeamsData).teams,
     [data.teamsData],
   );
-  const matches = useMemo(
+  const allMatches = useMemo(
     () =>
       applyOverrides(
         (data.matchesData as MatchesData).matches,
@@ -52,6 +68,12 @@ export const useCompetitionData = (slug: string): CompetitionDataResult => {
       ),
     [data.matchesData, data.overridesData],
   );
+  // In "genuine" mode, excluded teams and all of their matches are removed,
+  // so standings will not match the API's table.
+  const { teams, matches } = useMemo(() => {
+    const base = { teams: allTeams, matches: allMatches };
+    return genuine ? applyGenuineToData(slug, base) : base;
+  }, [allTeams, allMatches, genuine, slug]);
   const defaultDeductions = useMemo(
     () => data.deductionsData as PointDeduction[],
     [data.deductionsData],
@@ -60,15 +82,22 @@ export const useCompetitionData = (slug: string): CompetitionDataResult => {
     () => data.standingsData as ApiStandingsData,
     [data.standingsData],
   );
-  const modelPredictions = useMemo(
-    () => (data.modelPredictionsData as ModelPredictionsData).predictions,
-    [data.modelPredictionsData],
-  );
+  // Empty when the feature is off, which hides every "AI Predictions" action.
+  // Limited to counted matches so excluded teams' fixtures are never filled.
+  const modelPredictions = useMemo(() => {
+    if (!features.aiPredictions) return {};
+    const all = (data.modelPredictionsData as ModelPredictionsData).predictions;
+    const ids = new Set(matches.map((m) => String(m.id)));
+    return Object.fromEntries(
+      Object.entries(all).filter(([id]) => ids.has(id)),
+    );
+  }, [data.modelPredictionsData, matches]);
 
   const validationRequestId = useRef(-1);
 
   useEffect(() => {
-    if (apiStandings.standings.length === 0) return;
+    // The API table includes excluded teams, so validation would only warn.
+    if (genuine || apiStandings.standings.length === 0) return;
 
     const id = ++nextValidationRequestId;
     validationRequestId.current = id;
@@ -98,7 +127,7 @@ export const useCompetitionData = (slug: string): CompetitionDataResult => {
     return () => {
       w.removeEventListener('message', handler);
     };
-  }, [teams, matches, defaultDeductions, apiStandings]);
+  }, [genuine, teams, matches, defaultDeductions, apiStandings]);
 
-  return { teams, matches, defaultDeductions, modelPredictions };
+  return { teams, matches, allMatches, defaultDeductions, modelPredictions };
 };

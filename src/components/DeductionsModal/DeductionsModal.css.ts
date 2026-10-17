@@ -22,6 +22,14 @@ export const modalBody = style({
   flexDirection: 'column',
 });
 
+export const genuineRow = style({
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'space-between',
+  paddingBottom: spacing.lg,
+  cursor: 'pointer',
+});
+
 export const sectionLabel = style({
   color: colorTextSecondary,
   marginBottom: spacing.md,

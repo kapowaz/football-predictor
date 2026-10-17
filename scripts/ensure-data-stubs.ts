@@ -11,10 +11,14 @@ import * as fs from 'node:fs';
 import * as path from 'node:path';
 
 import { COMPETITIONS } from './common';
+import { getSeasonId } from './season';
 
+const seasonId = getSeasonId();
 const DATA_DIR = path.join(import.meta.dirname, '../src/data');
 
 const STUBS: Record<string, object> = {
+  'deductions.json': [],
+  'overrides.json': { lastUpdated: '', matches: [] },
   'teams.json': { competition: '', season: '', teams: [] },
   'matches.json': { lastUpdated: '', matches: [] },
   'standings.json': { lastUpdated: '', standings: [] },
@@ -25,14 +29,14 @@ const STUBS: Record<string, object> = {
 let created = 0;
 
 for (const slug of Object.keys(COMPETITIONS)) {
-  const dir = path.join(DATA_DIR, slug);
+  const dir = path.join(DATA_DIR, slug, seasonId);
   fs.mkdirSync(dir, { recursive: true });
 
   for (const [file, content] of Object.entries(STUBS)) {
     const filePath = path.join(dir, file);
     if (!fs.existsSync(filePath)) {
       fs.writeFileSync(filePath, JSON.stringify(content, null, 2));
-      console.log(`Created stub: src/data/${slug}/${file}`);
+      console.log(`Created stub: src/data/${slug}/${seasonId}/${file}`);
       created++;
     }
   }

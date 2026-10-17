@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 
 import type { ZoneDefinition } from '../data/competitions';
+import { features } from '../data/features';
 import type { Match, PredictionsStore, TeamStanding } from '../types';
 import type { ZoneThreshold } from '../utils/zoneThresholds';
 import type { ZoneThresholdsResponse } from '../workers/zoneThresholds.worker';
@@ -34,6 +35,9 @@ export const useZoneThresholds = (
   const activeRequestId = useRef(-1);
 
   useEffect(() => {
+    // Empty thresholds render no zone divider labels.
+    if (!features.zoneThresholdLabels) return;
+
     const id = ++nextRequestId;
     activeRequestId.current = id;
 

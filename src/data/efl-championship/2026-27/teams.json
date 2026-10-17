@@ -1,0 +1,198 @@
+{
+  "competition": "Championship",
+  "season": "2026-27",
+  "teams": [
+    {
+      "id": 59,
+      "fotmobId": 8655,
+      "name": "Blackburn Rovers",
+      "shortName": "Blackburn",
+      "tla": "BLA",
+      "badge": "blackburn-rovers"
+    },
+    {
+      "id": 60,
+      "fotmobId": 8559,
+      "name": "Bolton Wanderers",
+      "shortName": "Bolton",
+      "tla": "BOL",
+      "badge": "bolton-wanderers"
+    },
+    {
+      "id": 68,
+      "fotmobId": 9850,
+      "name": "Norwich City",
+      "shortName": "Norwich",
+      "tla": "NOR",
+      "badge": "norwich-city"
+    },
+    {
+      "id": 69,
+      "fotmobId": 10172,
+      "name": "Queens Park Rangers",
+      "shortName": "QPR",
+      "tla": "QPR",
+      "badge": "queens-park-rangers"
+    },
+    {
+      "id": 70,
+      "fotmobId": 10194,
+      "name": "Stoke City",
+      "shortName": "Stoke",
+      "tla": "STK",
+      "badge": "stoke-city"
+    },
+    {
+      "id": 72,
+      "fotmobId": 10003,
+      "name": "Swansea City",
+      "shortName": "Swansea",
+      "tla": "SWA",
+      "badge": "swansea-city"
+    },
+    {
+      "id": 74,
+      "fotmobId": 8659,
+      "name": "West Bromwich Albion",
+      "shortName": "West Brom",
+      "tla": "WBA",
+      "badge": "west-bromwich-albion"
+    },
+    {
+      "id": 76,
+      "fotmobId": 8602,
+      "name": "Wolverhampton Wanderers",
+      "shortName": "Wolves",
+      "tla": "WOL",
+      "badge": "wolverhampton-wanderers"
+    },
+    {
+      "id": 325,
+      "fotmobId": 8462,
+      "name": "Portsmouth",
+      "shortName": "Portsmouth",
+      "tla": "POR",
+      "badge": "portsmouth"
+    },
+    {
+      "id": 328,
+      "fotmobId": 8191,
+      "name": "Burnley",
+      "shortName": "Burnley",
+      "tla": "BUR",
+      "badge": "burnley"
+    },
+    {
+      "id": 332,
+      "fotmobId": 8658,
+      "name": "Birmingham City",
+      "shortName": "Birmingham",
+      "tla": "BIR",
+      "badge": "birmingham-city"
+    },
+    {
+      "id": 340,
+      "fotmobId": 8466,
+      "name": "Southampton",
+      "shortName": "Southampton",
+      "tla": "SOU",
+      "badge": "southampton"
+    },
+    {
+      "id": 342,
+      "fotmobId": 10170,
+      "name": "Derby County",
+      "shortName": "Derby",
+      "tla": "DER",
+      "badge": "derby-county"
+    },
+    {
+      "id": 343,
+      "fotmobId": 8549,
+      "name": "Middlesbrough",
+      "shortName": "Middlesbrough",
+      "tla": "MID",
+      "badge": "middlesbrough"
+    },
+    {
+      "id": 346,
+      "fotmobId": 9817,
+      "name": "Watford",
+      "shortName": "Watford",
+      "tla": "WAT",
+      "badge": "watford"
+    },
+    {
+      "id": 348,
+      "fotmobId": 8451,
+      "name": "Charlton Athletic",
+      "shortName": "Charlton",
+      "tla": "CHA",
+      "badge": "charlton-athletic"
+    },
+    {
+      "id": 356,
+      "fotmobId": 8657,
+      "name": "Sheffield United",
+      "shortName": "Sheff Utd",
+      "tla": "SHU",
+      "badge": "sheffield-united"
+    },
+    {
+      "id": 384,
+      "fotmobId": 10004,
+      "name": "Millwall",
+      "shortName": "Millwall",
+      "tla": "MIL",
+      "badge": "millwall"
+    },
+    {
+      "id": 387,
+      "fotmobId": 8427,
+      "name": "Bristol City",
+      "shortName": "Bristol City",
+      "tla": "BRI",
+      "badge": "bristol-city"
+    },
+    {
+      "id": 404,
+      "fotmobId": 9841,
+      "name": "Wrexham",
+      "shortName": "Wrexham",
+      "tla": "WRE",
+      "badge": "wrexham"
+    },
+    {
+      "id": 563,
+      "fotmobId": 8654,
+      "name": "West Ham United",
+      "shortName": "West Ham",
+      "tla": "WHU",
+      "badge": "west-ham-united"
+    },
+    {
+      "id": 715,
+      "fotmobId": 8344,
+      "name": "Cardiff City",
+      "shortName": "Cardiff",
+      "tla": "CAR",
+      "badge": "cardiff-city"
+    },
+    {
+      "id": 1081,
+      "fotmobId": 8411,
+      "name": "Preston North End",
+      "shortName": "Preston NE",
+      "tla": "PNE",
+      "badge": "preston-north-end"
+    },
+    {
+      "id": 1126,
+      "fotmobId": 8430,
+      "name": "Lincoln City",
+      "shortName": "Lincoln City",
+      "tla": "LIN",
+      "badge": "lincoln-city"
+    }
+  ]
+}

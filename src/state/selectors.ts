@@ -98,10 +98,10 @@ export const selectDeductionNotes = memoizeByReference(
   },
 );
 
+/** Number of `matches` with a prediction (ignores predictions for hidden matches). */
 export const selectPredictedCount = memoizeByReference(
-  (predictions: PredictionsStore): number => {
-    return Object.keys(predictions.predictions).length;
-  },
+  (predictions: PredictionsStore, matches: Pick<Match, 'id'>[]): number =>
+    matches.filter((m) => predictions.predictions[String(m.id)]).length,
 );
 
 export const selectAllScheduledPredicted = memoizeByReference(

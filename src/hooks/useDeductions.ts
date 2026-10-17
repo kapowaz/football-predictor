@@ -3,7 +3,7 @@ import type { PointDeduction } from '../types';
 import { useCompetitionData } from './useCompetitionData';
 
 export const useDeductions = (slug: string, defaults: PointDeduction[]) => {
-  const { matches } = useCompetitionData(slug);
+  const { allMatches } = useCompetitionData(slug);
   const {
     deductions,
     deductionsCustomised,
@@ -13,7 +13,7 @@ export const useDeductions = (slug: string, defaults: PointDeduction[]) => {
     resetDeductions,
   } = useCompetitionSession({
     slug,
-    matches,
+    matches: allMatches,
     defaultDeductions: defaults,
     persistenceMode: 'full',
   });

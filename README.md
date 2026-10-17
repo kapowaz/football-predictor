@@ -65,10 +65,29 @@ The app will be available at `http://localhost:5173`.
 | `pnpm fetch-fotmob-stats:*` | Fetch FotMob stats for all or specific competitions                      |
 | `pnpm generate-predictions:*` | Generate model predictions for all or specific competitions            |
 | `pnpm ensure-data-stubs` | Create empty JSON stubs so static imports still resolve before data fetches |
+| `pnpm prepare:data`      | Create stubs and regenerate the per-competition data barrels (runs before `dev`, `build` and `test`) |
+| `pnpm gen:data-indexes`  | Regenerate `src/data/<competition-slug>/index.ts` for the current season    |
+
+## Seasons
+
+The current season is set in `src/data/season.json` (e.g. `"current": "2026-27"`). Set `VITE_SEASON` or `SEASON` to build or fetch another season, e.g. `VITE_SEASON=2025-26 pnpm build`.
+
+Enabled competitions are listed in `src/data/enabled-competitions.json`. League One and League Two are not in football-data.org's free tier.
+
+## Feature Flags
+
+`src/data/features.json` holds feature flags shared by the app, the data scripts and the GitHub workflows:
+
+| Flag                  | Default | Effect                                                                                                                                                       |
+| --------------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `aiPredictions`       | `false` | Shows the "AI Predictions" action. When off, `generate-predictions` exits early and the deploy workflow skips it.                                            |
+| `genuine`             | `true`  | Default for "genuine" mode: Manchester City are removed from the Premier League (19 teams, relegation 18th–19th). Toggle in Point Deductions; persists as `?genuine=false`. |
+| `runInAndRelegation`  | `false` | Shows the Run In and Relegation tabs. When off, their URLs redirect to the standings page.                                                                   |
+| `zoneThresholdLabels` | `false` | Shows points-threshold labels on zone dividers (e.g. "Champions ≥ 103 pts").                                                                                  |
 
 ## Data Files
 
-Data is organized per competition under `src/data/<competition-slug>/`.
+Data is organized per competition and season under `src/data/<competition-slug>/<season>/` (e.g. `src/data/premier-league/2026-27/`).
 
 ### Generated/fetched automatically
 

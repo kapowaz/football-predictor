@@ -9,11 +9,12 @@ import { SeasonSummaryModal } from '../../components/SeasonSummaryModal';
 import { StandingsImageView } from '../../components/StandingsImageView';
 import { hasCompetitionData } from '../../data';
 import {
-  getCompetition,
   allCompetitions,
   type CompetitionConfig,
 } from '../../data/competitions';
+import { useCompetitionConfig } from '../../hooks/useCompetitionConfig';
 import { useCompetitionData } from '../../hooks/useCompetitionData';
+import { useGenuineToggle } from '../../hooks/useGenuineToggle';
 import { useImageDownload } from '../../hooks/useImageDownload';
 import { useLiveScores } from '../../hooks/useLiveScores';
 import { useZoneGuarantees } from '../../hooks/useZoneGuarantees';
@@ -47,7 +48,9 @@ const CompetitionContent = ({ slug, config }: CompetitionContentProps) => {
     }
   }, [slug]);
   const { colorMode } = useColorMode();
-  const { teams, matches, defaultDeductions } = useCompetitionData(slug);
+  const { teams, matches, allMatches, defaultDeductions } =
+    useCompetitionData(slug);
+  const genuineToggle = useGenuineToggle(slug);
   const { liveScores } = useLiveScores(slug);
   const {
     predictions,
@@ -63,7 +66,7 @@ const CompetitionContent = ({ slug, config }: CompetitionContentProps) => {
     dismissSummary,
   } = useCompetitionSession({
     slug,
-    matches,
+    matches: allMatches,
     defaultDeductions,
     persistenceMode: 'full',
   });
@@ -185,6 +188,7 @@ const CompetitionContent = ({ slug, config }: CompetitionContentProps) => {
         onAdd={addDeduction}
         onRemove={removeDeduction}
         onReset={resetDeductions}
+        {...genuineToggle}
       />
 
       <SeasonSummaryModal
@@ -202,11 +206,12 @@ const CompetitionContent = ({ slug, config }: CompetitionContentProps) => {
 export const CompetitionPage = () => {
   const { slug } = useParams<{ slug: string }>();
 
+  const config = useCompetitionConfig(slug);
+
   if (!slug) {
     return <Navigate to="/" replace />;
   }
 
-  const config = getCompetition(slug);
   if (!config) {
     return <Navigate to="/" replace />;
   }

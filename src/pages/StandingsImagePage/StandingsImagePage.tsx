@@ -8,10 +8,8 @@ import {
 
 import { StandingsImageView } from '../../components/StandingsImageView';
 import { hasCompetitionData } from '../../data';
-import {
-  getCompetition,
-  type CompetitionConfig,
-} from '../../data/competitions';
+import type { CompetitionConfig } from '../../data/competitions';
+import { useCompetitionConfig } from '../../hooks/useCompetitionConfig';
 import { useCompetitionData } from '../../hooks/useCompetitionData';
 import { useLiveScores } from '../../hooks/useLiveScores';
 import { usePositionGuarantees } from '../../hooks/usePositionGuarantees';
@@ -47,11 +45,12 @@ const StandingsImageContent = ({
   const variantRules = parseVariantRules(searchParams.get('variantRules'));
   const topCaptureRef = useRef<HTMLDivElement>(null);
   const bottomCaptureRef = useRef<HTMLDivElement>(null);
-  const { teams, matches, defaultDeductions } = useCompetitionData(slug);
+  const { teams, matches, allMatches, defaultDeductions } =
+    useCompetitionData(slug);
   const { liveScores } = useLiveScores(slug);
   const { predictions, deductions } = useCompetitionSession({
     slug,
-    matches,
+    matches: allMatches,
     defaultDeductions,
     persistenceMode: 'storageOnly',
   });
@@ -137,11 +136,12 @@ const StandingsImageContent = ({
 export const StandingsImagePage = () => {
   const { slug } = useParams<{ slug: string }>();
 
+  const config = useCompetitionConfig(slug);
+
   if (!slug) {
     return <Navigate to="/" replace />;
   }
 
-  const config = getCompetition(slug);
   if (!config) {
     return <Navigate to="/" replace />;
   }

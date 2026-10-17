@@ -3,6 +3,9 @@ import * as path from 'node:path';
 
 import { parseCompetitionArg } from './common';
 import type { ScriptCompetition } from './common';
+import { getSeasonId } from './season';
+
+const seasonId = getSeasonId();
 
 const USER_AGENT =
   'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36';
@@ -139,7 +142,12 @@ const fetchFotmobLeagueStatsOverview = async (
 const fetchStatsForCompetition = async (comp: ScriptCompetition): Promise<void> => {
   console.log(`Fetching FotMob stats for ${comp.name}...\n`);
 
-  const dataDir = path.join(import.meta.dirname, '../src/data', comp.slug);
+  const dataDir = path.join(
+    import.meta.dirname,
+    '../src/data',
+    comp.slug,
+    seasonId,
+  );
   const teamsPath = path.join(dataDir, 'teams.json');
   const teamsData: TeamsJson = JSON.parse(fs.readFileSync(teamsPath, 'utf-8'));
 
@@ -276,7 +284,7 @@ const fetchStatsForCompetition = async (comp: ScriptCompetition): Promise<void> 
     .filter(Boolean)
     .reduce((acc, r) => acc + (r?.TopLists.length ?? 0), 0);
   console.log(
-    `\n✓ Wrote stats for ${teamCount} teams (${statCount} stat categories) to src/data/${comp.slug}/fotmob-stats.json`,
+    `\n✓ Wrote stats for ${teamCount} teams (${statCount} stat categories) to src/data/${comp.slug}/${seasonId}/fotmob-stats.json`,
   );
 
   const unmatchedTeams = teamsData.teams.filter((t) => !t.fotmobId && !fotmobIdByTeamId.has(t.id));
