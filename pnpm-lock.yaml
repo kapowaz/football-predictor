@@ -15,23 +15,23 @@ importers:
         specifier: ^5.2.8
         version: 5.2.8
       '@kapowaz/components':
-        specifier: ^13.3.0
-        version: 13.3.0(@types/react@19.2.14)(babel-plugin-macros@3.1.0)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(recharts@3.8.1(@types/react@19.2.14)(react-dom@19.2.5(react@19.2.5))(react-is@17.0.2)(react@19.2.5)(redux@5.0.1))
+        specifier: ^15.0.0
+        version: 15.0.0(@kapowaz/design-tokens@0.2.1(babel-plugin-macros@3.1.0))(@kapowaz/fonts@0.1.1)(@kapowaz/icons@0.6.0(babel-plugin-macros@3.1.0)(react@19.2.5))(@types/react@19.2.14)(babel-plugin-macros@3.1.0)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(recharts@3.8.1(@types/react@19.2.14)(react-dom@19.2.5(react@19.2.5))(react-is@17.0.2)(react@19.2.5)(redux@5.0.1))
       '@kapowaz/design-tokens':
-        specifier: ^0.1.1
-        version: 0.1.1(babel-plugin-macros@3.1.0)
+        specifier: ^0.2.1
+        version: 0.2.1(babel-plugin-macros@3.1.0)
       '@kapowaz/fonts':
-        specifier: ^0.1.0
-        version: 0.1.0
+        specifier: ^0.1.1
+        version: 0.1.1
       '@kapowaz/football':
-        specifier: ^0.3.0
-        version: 0.3.0(@types/react@19.2.14)(babel-plugin-macros@3.1.0)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(recharts@3.8.1(@types/react@19.2.14)(react-dom@19.2.5(react@19.2.5))(react-is@17.0.2)(react@19.2.5)(redux@5.0.1))
+        specifier: ^0.5.0
+        version: 0.5.0(@kapowaz/fonts@0.1.1)(@kapowaz/icons@0.6.0(babel-plugin-macros@3.1.0)(react@19.2.5))(@types/react@19.2.14)(babel-plugin-macros@3.1.0)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(recharts@3.8.1(@types/react@19.2.14)(react-dom@19.2.5(react@19.2.5))(react-is@17.0.2)(react@19.2.5)(redux@5.0.1))
       '@kapowaz/football-badges':
-        specifier: ^0.3.1
-        version: 0.3.1(babel-plugin-macros@3.1.0)(react@19.2.5)
-      '@kapowaz/icons':
         specifier: ^0.4.0
-        version: 0.4.0(babel-plugin-macros@3.1.0)(react@19.2.5)
+        version: 0.4.0(@kapowaz/icons@0.6.0(babel-plugin-macros@3.1.0)(react@19.2.5))(react@19.2.5)
+      '@kapowaz/icons':
+        specifier: ^0.6.0
+        version: 0.6.0(babel-plugin-macros@3.1.0)(react@19.2.5)
       '@vanilla-extract/dynamic':
         specifier: ^2.1.5
         version: 2.1.5
@@ -719,11 +719,23 @@ packages:
   '@floating-ui/core@1.7.5':
     resolution: {integrity: sha512-1Ih4WTWyw0+lKyFMcBHGbb5U5FtuHJuujoyyr5zTaWS5EYMeT6Jb2AuDeftsCsEuchO+mM2ij5+q9crhydzLhQ==}
 
+  '@floating-ui/core@1.8.0':
+    resolution: {integrity: sha512-0CIZ5itps/8x7BG8dEIhs53BvCUH2PCoogtakwRTut+Arm58sJooJ0AuZhLw2HJYIR5cMLNPBSS728sPho2khQ==}
+
   '@floating-ui/dom@1.7.6':
     resolution: {integrity: sha512-9gZSAI5XM36880PPMm//9dfiEngYoC6Am2izES1FF406YFsjvyBMmeJ2g4SAju3xWwtuynNRFL2s9hgxpLI5SQ==}
 
+  '@floating-ui/dom@1.8.0':
+    resolution: {integrity: sha512-yXSrzeHZBTZadLOlfyhCkJHNeLJnHRnRInwdZ40L7ZiaAtrBwoYlsDrX3v5zB1Utk7CLfzcOVnVVWoXEky7Ceg==}
+
   '@floating-ui/react-dom@2.1.8':
     resolution: {integrity: sha512-cC52bHwM/n/CxS87FH0yWdngEZrjdtLW/qVruo68qg+prK7ZQ4YGdut2GyDVpoGeAYe/h899rVeOVm6Oi40k2A==}
+    peerDependencies:
+      react: '>=16.8.0'
+      react-dom: '>=16.8.0'
+
+  '@floating-ui/react-dom@2.1.9':
+    resolution: {integrity: sha512-JDjEFGCpImxDCA7JJKviA0M9+RtmJdj0m/NVU5IMgBK+AmZouAQQ7/+2GLH0GXXY0YMw9oXPB8hKdbPYg5QLYg==}
     peerDependencies:
       react: '>=16.8.0'
       react-dom: '>=16.8.0'
@@ -734,8 +746,17 @@ packages:
       react: '>=17.0.0'
       react-dom: '>=17.0.0'
 
+  '@floating-ui/react@0.27.20':
+    resolution: {integrity: sha512-CMqMy7OaXl9W0eq1Uy7L7i2Y/anPvHmFmESd2CEw0t5YvZhcVCeo4MBevAmswRllX7Y2dEidA4ozGPunLSTQpw==}
+    peerDependencies:
+      react: '>=17.0.0'
+      react-dom: '>=17.0.0'
+
   '@floating-ui/utils@0.2.11':
     resolution: {integrity: sha512-RiB/yIh78pcIxl6lLMG0CgBXAZ2Y0eVHqMPYugu+9U0AeT6YBeiJpf7lbdJNIugFP5SIjwNRgo4DhR1Qxi26Gg==}
+
+  '@floating-ui/utils@0.2.12':
+    resolution: {integrity: sha512-HpCo8tmWzLVad5s2d19EhAz5zqrrQ6s69qd6moPMQvkOuSwDT1YgRfWSVuc4ennqrgv3OHppiOGMQ7oC13yIww==}
 
   '@fontsource-variable/jetbrains-mono@5.2.8':
     resolution: {integrity: sha512-WBA9elru6Jdp5df2mES55wuOO0WIrn3kpXnI4+W2ek5u3ZgLS9XS4gmIlcQhiZOWEKl95meYdvK7xI+ETLCq/Q==}
@@ -788,9 +809,12 @@ packages:
   '@jridgewell/trace-mapping@0.3.31':
     resolution: {integrity: sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw==}
 
-  '@kapowaz/components@13.3.0':
-    resolution: {integrity: sha512-ua79VjgaRvw4FjAIYm8f9N5l3qXZ7JzNa/JSCTFjmtLzGvag/2fHxnHOSEFlP2e4Cjbxcr1iwqgpp6E9+IbaPg==}
+  '@kapowaz/components@15.0.0':
+    resolution: {integrity: sha512-ZlRVoyFYusIGHoA9nYxnX/VziLBFJLt6QLw1FP8JWLqcqD7Zgj6uAbDcotEcz1kNtv1TEAhi6P5WtjShBIsOLA==}
     peerDependencies:
+      '@kapowaz/design-tokens': '>=0.2.1'
+      '@kapowaz/fonts': '>=0.1.1'
+      '@kapowaz/icons': '>=0.6.0'
       react: '>=18'
       react-dom: '>=18'
       recharts: ^3.8.1
@@ -798,24 +822,26 @@ packages:
       recharts:
         optional: true
 
-  '@kapowaz/design-tokens@0.1.1':
-    resolution: {integrity: sha512-tFp0J9sa3O8qe5bPdUxH0kAnRUMrTNs8peBWTnTukkYIlLgGEjs1dQxiWFJX7B6OdDWKpbzEudzyizZclUP7SQ==}
+  '@kapowaz/design-tokens@0.2.1':
+    resolution: {integrity: sha512-ysvPaVqkXuxA+ZKbm25POYgrKK/2FDVvQbCC5XH5iQEz+s4W47+5T5GaIaUd+k/JB+4F2enQuoHAmZPJx9nuTA==}
 
-  '@kapowaz/fonts@0.1.0':
-    resolution: {integrity: sha512-zesR8/gBeKa8E8gu5UpFKetFjJWGLtLNBbMtHAE0/HWZqNIDkkxw9Q38uki8wHfu1XRGnZ2d6dQHnHNRFAip6g==}
+  '@kapowaz/fonts@0.1.1':
+    resolution: {integrity: sha512-N/0R6YL7q7V7rKPdLlaoAyX/W23QccTnvpKvOBgCNmPFkTgUK8qU4NFJlD74LI2wyUJKTyE/tLVSezN99svE9w==}
 
-  '@kapowaz/football-badges@0.3.1':
-    resolution: {integrity: sha512-2wz8K5sfp88MjfSg5w/j2/8ZgvL8mbV/k1pt8JIPWCrur+jANBzL8l+L3TDFSDc7Gvog5OT/57YCXnkBiLt+Gw==}
+  '@kapowaz/football-badges@0.4.0':
+    resolution: {integrity: sha512-OmYVFJpzCJzirY57klsRbFlrIcNsZn6cCA7vNtiFv/7Vek/HkCsw2CyqY5Hx3YBTKW5NUoL9lQYH8vRJq14IrA==}
     peerDependencies:
+      '@kapowaz/icons': '>=0.5.2'
       react: '>=18'
 
-  '@kapowaz/football@0.3.0':
-    resolution: {integrity: sha512-lkTswxs8kujuGemiiMPmcYcmRQ9grJv2T49TwDeTDAmfcqZLJ8BLhRKP4shsep6D9K4D8sJWinkCliGn5vj2Xw==}
+  '@kapowaz/football@0.5.0':
+    resolution: {integrity: sha512-14Zq5E4oijDw2YBqhdtZUEcLu0XvO92iZrOYl2gS1wsthPRy0aAsKbEPwWLa2V+BqZ2ub8cbG2W3sIMoLdFUqQ==}
     peerDependencies:
+      '@kapowaz/icons': '>=0.6.0'
       react: '>= 18'
 
-  '@kapowaz/icons@0.4.0':
-    resolution: {integrity: sha512-LU3wEeXdwd1QmUPSpYYeyoK+e3bQ4Suws1k+/WvqokuN3690eO2Qps/+92SsO7g1oKLUoTSLNAPO1hqHrGbzDQ==}
+  '@kapowaz/icons@0.6.0':
+    resolution: {integrity: sha512-40Zk12zGHZTj/8Qvs6du640MXCgzE8QJq4yWGIbYsdc0WpqaTdBsp+pElUHpU+/XyiNvAkXFmEKWcmdGyWrlaQ==}
     peerDependencies:
       react: '>=18'
 
@@ -1335,11 +1361,11 @@ packages:
   '@vanilla-extract/compiler@0.7.0':
     resolution: {integrity: sha512-rZQ40HVmsxfGLjoflwwsaUBLfpbpKDoZC19oiDA0FHq4LdrYtyVbFkc0MfqkNo/qBCvaZfsRezCqk0QQxCqZ8w==}
 
-  '@vanilla-extract/css@1.20.0':
-    resolution: {integrity: sha512-yKuajXFlghIjRZmEfy95z6MYj+mzJPoD3nbNLVAUB8Np6I1P9g5vBlznQPD+0A46osCn0za/wIvp/cg8HU3aig==}
-
   '@vanilla-extract/css@1.20.1':
     resolution: {integrity: sha512-5I9RNo5uZW9tsBnqrWzJqELegOqTHBrZyDFnES0gR9gJJHBB9dom1N0bwITM9tKwBcfKrTX4a6DHVeQdJ2ubQA==}
+
+  '@vanilla-extract/css@1.21.2':
+    resolution: {integrity: sha512-ehF/tmv2MxQwOJB1DicALUqnjZTnmY9Y7J2ccKB578JzZpYeL6sLAUqbaXo1taw1Erp0qBq0I4Kejs0uU/pBfg==}
 
   '@vanilla-extract/dynamic@2.1.5':
     resolution: {integrity: sha512-QGIFGb1qyXQkbzx6X6i3+3LMc/iv/ZMBttMBL+Wm/DetQd36KsKsFg5CtH3qy+1hCA/5w93mEIIAiL4fkM8ycw==}
@@ -1591,11 +1617,6 @@ packages:
 
   css.escape@1.5.1:
     resolution: {integrity: sha512-YUifsXXuknHlUsmlgyY0PKzgPOr7/FjCePfHNt0jxm83wHZi44VDMQ7/fGNkjY3/jV1MC+1CmZbaHzugyeRtpg==}
-
-  cssesc@3.0.0:
-    resolution: {integrity: sha512-/Tb/JcjK111nNScGob5MNtsntNM1aCNUDipB/TkwZFhyDrrE47SOx/18wF2bbjgc3ZzCSKW1T5nt5EbFoAz/Vg==}
-    engines: {node: '>=4'}
-    hasBin: true
 
   csstype@3.2.3:
     resolution: {integrity: sha512-z1HGKcYy2xA8AGQfwrn0PAy+PB7X/GSj3UVJW9qKyn43xWa+gl5nXmU4qqLMRzWVLFC8KusUX8T/0kCiOYpAIQ==}
@@ -1979,6 +2000,20 @@ packages:
 
   framer-motion@12.38.0:
     resolution: {integrity: sha512-rFYkY/pigbcswl1XQSb7q424kSTQ8q6eAC+YUsSKooHQYuLdzdHjrt6uxUC+PRAO++q5IS7+TamgIw1AphxR+g==}
+    peerDependencies:
+      '@emotion/is-prop-valid': '*'
+      react: ^18.0.0 || ^19.0.0
+      react-dom: ^18.0.0 || ^19.0.0
+    peerDependenciesMeta:
+      '@emotion/is-prop-valid':
+        optional: true
+      react:
+        optional: true
+      react-dom:
+        optional: true
+
+  framer-motion@12.43.0:
+    resolution: {integrity: sha512-1eaL3RvR/kAlbG7UYcpMptEyzPoENO0c6w7ZnB3/hh2vSAz/6uGAFn6fdoqTBguNstf3MsFhJHsD/0DHiclG+g==}
     peerDependencies:
       '@emotion/is-prop-valid': '*'
       react: ^18.0.0 || ^19.0.0
@@ -2467,11 +2502,31 @@ packages:
   motion-dom@12.38.0:
     resolution: {integrity: sha512-pdkHLD8QYRp8VfiNLb8xIBJis1byQ9gPT3Jnh2jqfFtAsWUA3dEepDlsWe/xMpO8McV+VdpKVcp+E+TGJEtOoA==}
 
+  motion-dom@12.43.0:
+    resolution: {integrity: sha512-azKON4d9S65PEoFUiQTMTgPheEmzf2QngdRc50AKfJp9Q9mmcBVw22c8eMq9k8kxOFHdL7+WZY7N/5F/lwiDag==}
+
   motion-utils@12.36.0:
     resolution: {integrity: sha512-eHWisygbiwVvf6PZ1vhaHCLamvkSbPIeAYxWUuL3a2PD/TROgE7FvfHWTIH4vMl798QLfMw15nRqIaRDXTlYRg==}
 
+  motion-utils@12.39.0:
+    resolution: {integrity: sha512-8nadJAJjTtqRkmRF36FoJTrywK9nnFmnPwnSMyxaOCU7GDjN9RTMJIxx9De8ErM+vpPhMccr/6fo5WciyQLnMQ==}
+
   motion@12.38.0:
     resolution: {integrity: sha512-uYfXzeHlgThchzwz5Te47dlv5JOUC7OB4rjJ/7XTUgtBZD8CchMN8qEJ4ZVsUmTyYA44zjV0fBwsiktRuFnn+w==}
+    peerDependencies:
+      '@emotion/is-prop-valid': '*'
+      react: ^18.0.0 || ^19.0.0
+      react-dom: ^18.0.0 || ^19.0.0
+    peerDependenciesMeta:
+      '@emotion/is-prop-valid':
+        optional: true
+      react:
+        optional: true
+      react-dom:
+        optional: true
+
+  motion@12.43.0:
+    resolution: {integrity: sha512-BQgQbSa9Hn3/mtbib0MK53y6JSANa+YKUKlaYnWzAVDH424RYQ5LVpV3pNiWH00BA2z4ojsSdMzqT7g2FQwjuQ==}
     peerDependencies:
       '@emotion/is-prop-valid': '*'
       react: ^18.0.0 || ^19.0.0
@@ -3766,14 +3821,29 @@ snapshots:
     dependencies:
       '@floating-ui/utils': 0.2.11
 
+  '@floating-ui/core@1.8.0':
+    dependencies:
+      '@floating-ui/utils': 0.2.12
+
   '@floating-ui/dom@1.7.6':
     dependencies:
       '@floating-ui/core': 1.7.5
       '@floating-ui/utils': 0.2.11
 
+  '@floating-ui/dom@1.8.0':
+    dependencies:
+      '@floating-ui/core': 1.8.0
+      '@floating-ui/utils': 0.2.12
+
   '@floating-ui/react-dom@2.1.8(react-dom@19.2.5(react@19.2.5))(react@19.2.5)':
     dependencies:
       '@floating-ui/dom': 1.7.6
+      react: 19.2.5
+      react-dom: 19.2.5(react@19.2.5)
+
+  '@floating-ui/react-dom@2.1.9(react-dom@19.2.5(react@19.2.5))(react@19.2.5)':
+    dependencies:
+      '@floating-ui/dom': 1.8.0
       react: 19.2.5
       react-dom: 19.2.5(react@19.2.5)
 
@@ -3785,7 +3855,17 @@ snapshots:
       react-dom: 19.2.5(react@19.2.5)
       tabbable: 6.4.0
 
+  '@floating-ui/react@0.27.20(react-dom@19.2.5(react@19.2.5))(react@19.2.5)':
+    dependencies:
+      '@floating-ui/react-dom': 2.1.9(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
+      '@floating-ui/utils': 0.2.12
+      react: 19.2.5
+      react-dom: 19.2.5(react@19.2.5)
+      tabbable: 6.4.0
+
   '@floating-ui/utils@0.2.11': {}
+
+  '@floating-ui/utils@0.2.12': {}
 
   '@fontsource-variable/jetbrains-mono@5.2.8': {}
 
@@ -3834,17 +3914,17 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.5
 
-  '@kapowaz/components@13.3.0(@types/react@19.2.14)(babel-plugin-macros@3.1.0)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(recharts@3.8.1(@types/react@19.2.14)(react-dom@19.2.5(react@19.2.5))(react-is@17.0.2)(react@19.2.5)(redux@5.0.1))':
+  '@kapowaz/components@15.0.0(@kapowaz/design-tokens@0.2.1(babel-plugin-macros@3.1.0))(@kapowaz/fonts@0.1.1)(@kapowaz/icons@0.6.0(babel-plugin-macros@3.1.0)(react@19.2.5))(@types/react@19.2.14)(babel-plugin-macros@3.1.0)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(recharts@3.8.1(@types/react@19.2.14)(react-dom@19.2.5(react@19.2.5))(react-is@17.0.2)(react@19.2.5)(redux@5.0.1))':
     dependencies:
-      '@floating-ui/react': 0.27.19(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
-      '@kapowaz/design-tokens': 0.1.1(babel-plugin-macros@3.1.0)
-      '@kapowaz/fonts': 0.1.0
-      '@kapowaz/icons': 0.4.0(babel-plugin-macros@3.1.0)(react@19.2.5)
-      '@vanilla-extract/css': 1.20.0(babel-plugin-macros@3.1.0)
+      '@floating-ui/react': 0.27.20(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
+      '@kapowaz/design-tokens': 0.2.1(babel-plugin-macros@3.1.0)
+      '@kapowaz/fonts': 0.1.1
+      '@kapowaz/icons': 0.6.0(babel-plugin-macros@3.1.0)(react@19.2.5)
+      '@vanilla-extract/css': 1.21.2(babel-plugin-macros@3.1.0)
       '@vanilla-extract/dynamic': 2.1.5
       clsx: 2.1.1
       modern-normalize: 3.0.1
-      motion: 12.38.0(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
+      motion: 12.43.0(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
       react: 19.2.5
       react-dom: 19.2.5(react@19.2.5)
       react-select: 5.10.2(@types/react@19.2.14)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
@@ -3856,45 +3936,44 @@ snapshots:
       - babel-plugin-macros
       - supports-color
 
-  '@kapowaz/design-tokens@0.1.1(babel-plugin-macros@3.1.0)':
+  '@kapowaz/design-tokens@0.2.1(babel-plugin-macros@3.1.0)':
     dependencies:
-      '@vanilla-extract/css': 1.20.0(babel-plugin-macros@3.1.0)
+      '@vanilla-extract/css': 1.21.2(babel-plugin-macros@3.1.0)
     transitivePeerDependencies:
       - babel-plugin-macros
 
-  '@kapowaz/fonts@0.1.0':
+  '@kapowaz/fonts@0.1.1':
     dependencies:
       '@fontsource-variable/jetbrains-mono': 5.2.8
       inter-ui: 4.1.1
 
-  '@kapowaz/football-badges@0.3.1(babel-plugin-macros@3.1.0)(react@19.2.5)':
+  '@kapowaz/football-badges@0.4.0(@kapowaz/icons@0.6.0(babel-plugin-macros@3.1.0)(react@19.2.5))(react@19.2.5)':
     dependencies:
-      '@kapowaz/icons': 0.4.0(babel-plugin-macros@3.1.0)(react@19.2.5)
+      '@kapowaz/icons': 0.6.0(babel-plugin-macros@3.1.0)(react@19.2.5)
       react: 19.2.5
-    transitivePeerDependencies:
-      - babel-plugin-macros
 
-  '@kapowaz/football@0.3.0(@types/react@19.2.14)(babel-plugin-macros@3.1.0)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(recharts@3.8.1(@types/react@19.2.14)(react-dom@19.2.5(react@19.2.5))(react-is@17.0.2)(react@19.2.5)(redux@5.0.1))':
+  '@kapowaz/football@0.5.0(@kapowaz/fonts@0.1.1)(@kapowaz/icons@0.6.0(babel-plugin-macros@3.1.0)(react@19.2.5))(@types/react@19.2.14)(babel-plugin-macros@3.1.0)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(recharts@3.8.1(@types/react@19.2.14)(react-dom@19.2.5(react@19.2.5))(react-is@17.0.2)(react@19.2.5)(redux@5.0.1))':
     dependencies:
-      '@kapowaz/components': 13.3.0(@types/react@19.2.14)(babel-plugin-macros@3.1.0)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(recharts@3.8.1(@types/react@19.2.14)(react-dom@19.2.5(react@19.2.5))(react-is@17.0.2)(react@19.2.5)(redux@5.0.1))
-      '@kapowaz/design-tokens': 0.1.1(babel-plugin-macros@3.1.0)
-      '@kapowaz/football-badges': 0.3.1(babel-plugin-macros@3.1.0)(react@19.2.5)
-      '@kapowaz/icons': 0.4.0(babel-plugin-macros@3.1.0)(react@19.2.5)
-      '@vanilla-extract/css': 1.20.0(babel-plugin-macros@3.1.0)
+      '@kapowaz/components': 15.0.0(@kapowaz/design-tokens@0.2.1(babel-plugin-macros@3.1.0))(@kapowaz/fonts@0.1.1)(@kapowaz/icons@0.6.0(babel-plugin-macros@3.1.0)(react@19.2.5))(@types/react@19.2.14)(babel-plugin-macros@3.1.0)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(recharts@3.8.1(@types/react@19.2.14)(react-dom@19.2.5(react@19.2.5))(react-is@17.0.2)(react@19.2.5)(redux@5.0.1))
+      '@kapowaz/design-tokens': 0.2.1(babel-plugin-macros@3.1.0)
+      '@kapowaz/football-badges': 0.4.0(@kapowaz/icons@0.6.0(babel-plugin-macros@3.1.0)(react@19.2.5))(react@19.2.5)
+      '@kapowaz/icons': 0.6.0(babel-plugin-macros@3.1.0)(react@19.2.5)
+      '@vanilla-extract/css': 1.21.2(babel-plugin-macros@3.1.0)
       clsx: 2.1.1
       react: 19.2.5
     transitivePeerDependencies:
       - '@emotion/is-prop-valid'
+      - '@kapowaz/fonts'
       - '@types/react'
       - babel-plugin-macros
       - react-dom
       - recharts
       - supports-color
 
-  '@kapowaz/icons@0.4.0(babel-plugin-macros@3.1.0)(react@19.2.5)':
+  '@kapowaz/icons@0.6.0(babel-plugin-macros@3.1.0)(react@19.2.5)':
     dependencies:
-      '@kapowaz/design-tokens': 0.1.1(babel-plugin-macros@3.1.0)
-      '@vanilla-extract/css': 1.20.0(babel-plugin-macros@3.1.0)
+      '@kapowaz/design-tokens': 0.2.1(babel-plugin-macros@3.1.0)
+      '@vanilla-extract/css': 1.21.2(babel-plugin-macros@3.1.0)
       clsx: 2.1.1
       react: 19.2.5
     transitivePeerDependencies:
@@ -4373,12 +4452,11 @@ snapshots:
       - tsx
       - yaml
 
-  '@vanilla-extract/css@1.20.0(babel-plugin-macros@3.1.0)':
+  '@vanilla-extract/css@1.20.1(babel-plugin-macros@3.1.0)':
     dependencies:
       '@emotion/hash': 0.9.2
       '@vanilla-extract/private': 1.0.9
       css-what: 6.2.2
-      cssesc: 3.0.0
       csstype: 3.2.3
       dedent: 1.7.2(babel-plugin-macros@3.1.0)
       deep-object-diff: 1.1.9
@@ -4390,7 +4468,7 @@ snapshots:
     transitivePeerDependencies:
       - babel-plugin-macros
 
-  '@vanilla-extract/css@1.20.1(babel-plugin-macros@3.1.0)':
+  '@vanilla-extract/css@1.21.2(babel-plugin-macros@3.1.0)':
     dependencies:
       '@emotion/hash': 0.9.2
       '@vanilla-extract/private': 1.0.9
@@ -4721,8 +4799,6 @@ snapshots:
   css-what@6.2.2: {}
 
   css.escape@1.5.1: {}
-
-  cssesc@3.0.0: {}
 
   csstype@3.2.3: {}
 
@@ -5225,6 +5301,15 @@ snapshots:
       react: 19.2.5
       react-dom: 19.2.5(react@19.2.5)
 
+  framer-motion@12.43.0(react-dom@19.2.5(react@19.2.5))(react@19.2.5):
+    dependencies:
+      motion-dom: 12.43.0
+      motion-utils: 12.39.0
+      tslib: 2.8.1
+    optionalDependencies:
+      react: 19.2.5
+      react-dom: 19.2.5(react@19.2.5)
+
   fsevents@2.3.3:
     optional: true
 
@@ -5674,11 +5759,25 @@ snapshots:
     dependencies:
       motion-utils: 12.36.0
 
+  motion-dom@12.43.0:
+    dependencies:
+      motion-utils: 12.39.0
+
   motion-utils@12.36.0: {}
+
+  motion-utils@12.39.0: {}
 
   motion@12.38.0(react-dom@19.2.5(react@19.2.5))(react@19.2.5):
     dependencies:
       framer-motion: 12.38.0(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
+      tslib: 2.8.1
+    optionalDependencies:
+      react: 19.2.5
+      react-dom: 19.2.5(react@19.2.5)
+
+  motion@12.43.0(react-dom@19.2.5(react@19.2.5))(react@19.2.5):
+    dependencies:
+      framer-motion: 12.43.0(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
       tslib: 2.8.1
     optionalDependencies:
       react: 19.2.5

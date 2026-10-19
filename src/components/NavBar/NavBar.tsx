@@ -17,9 +17,9 @@ import type { Competition } from '@kapowaz/football-badges';
 import {
   ArrowDownToDot,
   ImageDown,
-  MenuSquare,
+  SquareMenu,
   Sparkles,
-  Trash2,
+  Trash,
   X,
 } from '@kapowaz/icons';
 import { Icon } from '@kapowaz/icons';
@@ -147,7 +147,7 @@ export const NavBar = ({
               title="Navigation menu"
               onClick={() => setIsMenuOpen(true)}
             >
-              <Icon component={MenuSquare} size="lg" />
+              <Icon component={SquareMenu} size="lg" />
             </button>
             <div className={styles.desktopColorModeToggle}>
               <ToggleColorMode />
@@ -199,7 +199,7 @@ export const NavBar = ({
                     label="Reset Predictions"
                     onClick={onResetPredictionsClick}
                     variant="danger"
-                    icon={Trash2}
+                    icon={Trash}
                   >
                     Reset
                   </IconTextButton>
@@ -311,7 +311,7 @@ export const NavBar = ({
                           pendingActionRef.current = onResetPredictionsClick;
                           closeMenu();
                         }}
-                        icon={Trash2}
+                        icon={Trash}
                       >
                         Reset Predictions
                       </Button>

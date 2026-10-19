@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
 import { AbstractText, IconButton, TextInput } from '@kapowaz/components';
 import { getClubBadge } from '@kapowaz/football-badges';
-import { Trash2 } from '@kapowaz/icons';
+import { Trash } from '@kapowaz/icons';
 
 import type { PointDeduction, Team } from '../../types';
 
@@ -67,7 +67,7 @@ export const DeductionRow = ({
             aria-label={`Points deduction for ${teamLabel}`}
           />
           <IconButton
-            icon={Trash2}
+            icon={Trash}
             variant="danger"
             onClick={() => onRemove(deduction.teamId)}
             label={`Remove deduction for ${teamLabel}`}
