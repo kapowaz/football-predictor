@@ -40,9 +40,32 @@ const StandingsImagePage = lazy(() =>
 );
 
 if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register(`${import.meta.env.BASE_URL}sw.js`);
-  });
+  if (import.meta.env.PROD) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register(`${import.meta.env.BASE_URL}sw.js`);
+    });
+  } else {
+    // sw.js serves .js and .css cache-first, which would mask Vite's changes in
+    // dev, so remove any worker and caches left by an earlier session. A worker
+    // still controls this page after unregistering, and has already served it
+    // cached assets, so reload once it's gone.
+    void navigator.serviceWorker
+      .getRegistrations()
+      .then((registrations) =>
+        Promise.all(registrations.map((r) => r.unregister())),
+      )
+      .then(() => caches.keys())
+      .then((keys) =>
+        Promise.all(
+          keys
+            .filter((key) => key.startsWith('football-predictor'))
+            .map((key) => caches.delete(key)),
+        ),
+      )
+      .then(() => {
+        if (navigator.serviceWorker.controller) window.location.reload();
+      });
+  }
 }
 
 createRoot(document.getElementById('root')!).render(
