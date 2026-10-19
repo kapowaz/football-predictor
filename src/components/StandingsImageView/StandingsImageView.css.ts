@@ -1,10 +1,26 @@
 import { createVar, fallbackVar, style } from '@vanilla-extract/css';
 import {
   cssVariablesByColorMode,
+  customTokensByColorMode,
   getDesignTokens,
 } from '@kapowaz/design-tokens';
+import { standingsTableTokens } from '@kapowaz/football';
 
 const { colors, spacing } = getDesignTokens();
+
+// The image is 1.91:1 and wider than the 820px layout, so widen the stats and
+// form columns proportionally instead of leaving the extra width to the team
+// column. Widths don't change with colour mode.
+const tableColumnWidths = {
+  [standingsTableTokens.renderStatColumnWidth]: '6%',
+  [standingsTableTokens.renderFormColumnWidth]: '16%',
+};
+
+/** customTokens for the StandingsTable inside the image. */
+export const standingsTableTokensOverride = customTokensByColorMode({
+  light: tableColumnWidths,
+  dark: tableColumnWidths,
+});
 
 const colorBgPage = createVar('standings-image-bg-page');
 const colorTextHeading = createVar('standings-image-text-heading');

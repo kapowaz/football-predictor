@@ -170,6 +170,7 @@ export const StandingsImageView = ({
             isRunIn={isRunIn}
             relegationStartPosition={relegationStartPosition}
             thresholdByZoneType={thresholdByZoneType}
+            customTokens={styles.standingsTableTokensOverride}
           />
           {showFooter && (
             <footer className={styles.footerContainer}>

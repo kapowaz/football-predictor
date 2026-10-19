@@ -24,8 +24,8 @@ importers:
         specifier: ^0.1.1
         version: 0.1.1
       '@kapowaz/football':
-        specifier: ^0.5.0
-        version: 0.5.0(@kapowaz/fonts@0.1.1)(@kapowaz/icons@0.6.0(babel-plugin-macros@3.1.0)(react@19.2.5))(@types/react@19.2.14)(babel-plugin-macros@3.1.0)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(recharts@3.8.1(@types/react@19.2.14)(react-dom@19.2.5(react@19.2.5))(react-is@17.0.2)(react@19.2.5)(redux@5.0.1))
+        specifier: ^0.6.0
+        version: 0.6.0(@kapowaz/fonts@0.1.1)(@kapowaz/icons@0.6.0(babel-plugin-macros@3.1.0)(react@19.2.5))(@types/react@19.2.14)(babel-plugin-macros@3.1.0)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(recharts@3.8.1(@types/react@19.2.14)(react-dom@19.2.5(react@19.2.5))(react-is@17.0.2)(react@19.2.5)(redux@5.0.1))
       '@kapowaz/football-badges':
         specifier: ^0.4.0
         version: 0.4.0(@kapowaz/icons@0.6.0(babel-plugin-macros@3.1.0)(react@19.2.5))(react@19.2.5)
@@ -837,8 +837,8 @@ packages:
       '@kapowaz/icons': '>=0.5.2'
       react: '>=18'
 
-  '@kapowaz/football@0.5.0':
-    resolution: {integrity: sha512-14Zq5E4oijDw2YBqhdtZUEcLu0XvO92iZrOYl2gS1wsthPRy0aAsKbEPwWLa2V+BqZ2ub8cbG2W3sIMoLdFUqQ==}
+  '@kapowaz/football@0.6.0':
+    resolution: {integrity: sha512-AH42U39v9CzgO/ooM+3hFhCV43pp5VudBF8E1bLZMLZ6+IE6s3xXIBX9+4ShdbbaUj4ENd8GLf4d75P0rwlkyg==}
     peerDependencies:
       '@kapowaz/icons': '>=0.6.0'
       react: '>= 18'
@@ -3970,13 +3970,14 @@ snapshots:
       '@kapowaz/icons': 0.6.0(babel-plugin-macros@3.1.0)(react@19.2.5)
       react: 19.2.5
 
-  '@kapowaz/football@0.5.0(@kapowaz/fonts@0.1.1)(@kapowaz/icons@0.6.0(babel-plugin-macros@3.1.0)(react@19.2.5))(@types/react@19.2.14)(babel-plugin-macros@3.1.0)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(recharts@3.8.1(@types/react@19.2.14)(react-dom@19.2.5(react@19.2.5))(react-is@17.0.2)(react@19.2.5)(redux@5.0.1))':
+  '@kapowaz/football@0.6.0(@kapowaz/fonts@0.1.1)(@kapowaz/icons@0.6.0(babel-plugin-macros@3.1.0)(react@19.2.5))(@types/react@19.2.14)(babel-plugin-macros@3.1.0)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(recharts@3.8.1(@types/react@19.2.14)(react-dom@19.2.5(react@19.2.5))(react-is@17.0.2)(react@19.2.5)(redux@5.0.1))':
     dependencies:
       '@kapowaz/components': 15.0.0(@kapowaz/design-tokens@0.2.1(babel-plugin-macros@3.1.0))(@kapowaz/fonts@0.1.1)(@kapowaz/icons@0.6.0(babel-plugin-macros@3.1.0)(react@19.2.5))(@types/react@19.2.14)(babel-plugin-macros@3.1.0)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(recharts@3.8.1(@types/react@19.2.14)(react-dom@19.2.5(react@19.2.5))(react-is@17.0.2)(react@19.2.5)(redux@5.0.1))
       '@kapowaz/design-tokens': 0.2.1(babel-plugin-macros@3.1.0)
       '@kapowaz/football-badges': 0.4.0(@kapowaz/icons@0.6.0(babel-plugin-macros@3.1.0)(react@19.2.5))(react@19.2.5)
       '@kapowaz/icons': 0.6.0(babel-plugin-macros@3.1.0)(react@19.2.5)
       '@vanilla-extract/css': 1.21.2(babel-plugin-macros@3.1.0)
+      '@vanilla-extract/dynamic': 2.1.5
       clsx: 2.1.1
       react: 19.2.5
     transitivePeerDependencies:
