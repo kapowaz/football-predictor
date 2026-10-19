@@ -1,10 +1,26 @@
-import { createVar, style } from '@vanilla-extract/css';
+import { createVar, fallbackVar, style } from '@vanilla-extract/css';
 import {
   cssVariablesByColorMode,
+  customTokensByColorMode,
   getDesignTokens,
 } from '@kapowaz/design-tokens';
+import { standingsTableTokens } from '@kapowaz/football';
 
 const { colors, spacing } = getDesignTokens();
+
+// The image is 1.91:1 and wider than the 820px layout, so widen the stats and
+// form columns proportionally instead of leaving the extra width to the team
+// column. Widths don't change with colour mode.
+const tableColumnWidths = {
+  [standingsTableTokens.renderStatColumnWidth]: '6%',
+  [standingsTableTokens.renderFormColumnWidth]: '16%',
+};
+
+/** customTokens for the StandingsTable inside the image. */
+export const standingsTableTokensOverride = customTokensByColorMode({
+  light: tableColumnWidths,
+  dark: tableColumnWidths,
+});
 
 const colorBgPage = createVar('standings-image-bg-page');
 const colorTextHeading = createVar('standings-image-text-heading');
@@ -34,13 +50,23 @@ export const hiddenCaptureRoot = style({
   zIndex: -1,
 });
 
+/** Set by StandingsImagePair once both halves are measured. */
+export const imageWidth = createVar('standings-image-width');
+export const imageHeight = createVar('standings-image-height');
+
+// 820px is the natural layout width the halves are measured at.
 export const outerWrapper = style({
-  width: '820px',
+  width: fallbackVar(imageWidth, '820px'),
+  height: fallbackVar(imageHeight, 'auto'),
 });
 
+// The background lives here, not on innerWrapper, so the padding that evens
+// out the two halves' heights is page-coloured too.
 export const captureSurface = style({
   width: '100%',
+  height: '100%',
   minWidth: 0,
+  backgroundColor: colorBgPage,
 });
 
 export const innerWrapper = style({

@@ -7,16 +7,13 @@ on:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: pages
-  cancel-in-progress: false
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    outputs:
+      og-key: ${{ steps.og-signature.outputs.key }}
+      og-cached: ${{ steps.og-cache.outputs.cache-hit }}
     steps:
       - uses: actions/checkout@v4
 
@@ -51,13 +48,134 @@ jobs:
           FOOTBALL_DATA_API_KEY: ${{ secrets.FOOTBALL_DATA_API_KEY }}
       - run: pnpm build
 
+      # The key covers each competition's finished results, teams and
+      # deductions plus the render code, so it only changes when a preview
+      # image would.
+      - id: og-signature
+        run: pnpm og:signature --github-output
+
+      # Only checks whether images for these inputs are cached; publish
+      # restores them.
+      - id: og-cache
+        uses: actions/cache/restore@v4
+        with:
+          path: og-cache
+          key: ${{ steps.og-signature.outputs.key }}
+          lookup-only: true
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: site
+          path: dist
+          retention-days: 1
+
+  # Renders the social preview images on macOS for its text rendering, and
+  # only when nothing is cached for these inputs. A newer run cancels an older
+  # render; that run then skips publishing and the newer one publishes.
+  render-og:
+    needs: build
+    if: needs.build.outputs.og-cached != 'true'
+    runs-on: macos-latest
+    concurrency:
+      group: render-og
+      cancel-in-progress: true
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+          registry-url: 'https://registry.npmjs.org'
+
+      - run: pnpm install --frozen-lockfile
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: site
+          path: dist
+
+      - run: pnpm exec playwright install chromium
+      - run: pnpm exec tsx scripts/render-og.ts
+
+      - run: cp -R dist/og og-cache
+      - uses: actions/cache/save@v4
+        with:
+          path: og-cache
+          key: ${{ needs.build.outputs.og-key }}
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: og
+          path: dist/og
+          retention-days: 1
+
+  # Publishes even when rendering failed, falling back to the newest cached
+  # images or else the generic opengraph.png, but not when a newer run
+  # cancelled the render.
+  publish:
+    needs: [build, render-og]
+    if: always() && needs.build.result == 'success' && needs.render-og.result != 'cancelled'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+          registry-url: 'https://registry.npmjs.org'
+
+      - run: pnpm install --frozen-lockfile
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: site
+          path: dist
+
+      - if: needs.render-og.result == 'success'
+        uses: actions/download-artifact@v4
+        with:
+          name: og
+          path: dist/og
+
+      - if: needs.render-og.result != 'success'
+        id: og-fallback
+        uses: actions/cache/restore@v4
+        with:
+          path: og-cache
+          key: ${{ needs.build.outputs.og-key }}
+          restore-keys: og-
+
+      - if: needs.render-og.result != 'success' && steps.og-fallback.outputs.cache-matched-key != ''
+        run: cp -R og-cache dist/og
+
+      - if: needs.render-og.result == 'failure'
+        run: echo "::warning::Preview image rendering failed; publishing with ${{ steps.og-fallback.outputs.cache-matched-key || 'the generic opengraph.png' }}"
+
+      - run: pnpm gen:route-pages
+
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
 
   deploy:
-    needs: build
+    needs: publish
     runs-on: ubuntu-latest
+    concurrency:
+      group: pages
+      cancel-in-progress: false
+    permissions:
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}

@@ -1,17 +1,19 @@
+import { assignInlineVars } from '@vanilla-extract/dynamic';
 import clsx from 'clsx';
-import type { RefObject } from 'react';
+import type { Ref, RefObject } from 'react';
 import { AbstractText } from '@kapowaz/components';
-import { StandingsTable } from '@kapowaz/football';
+import { getStandingsSplit, StandingsTable } from '@kapowaz/football';
 import { Icon, KapBoltSimple } from '@kapowaz/icons';
 
 import type { ZoneDefinition } from '../../data/competitions';
 import type { DeductionNote } from '../../state/selectors';
 import type { TeamStanding, VariantRulesMode } from '../../types';
+import type { StandingsImageSize } from '../../utils/imageLayout';
 import { AppHeading } from '../AppHeading';
 
 import * as styles from './StandingsImageView.css';
 
-interface StandingsImageViewProps {
+export interface StandingsImageViewProps {
   /** Pre-computed standings rows for image rendering. */
   standings: TeamStanding[];
   /** Competition logo shown in image heading. */
@@ -44,9 +46,27 @@ interface StandingsImageViewProps {
   relegationStartPosition?: number;
   /** Lookup of zone type to threshold points for boundary labels. */
   thresholdByZoneType?: Map<string, number>;
+  /**
+   * Fixed size for the captured image. Omit to render at the natural 820px
+   * width and content height (as `StandingsImagePair` does while measuring).
+   */
+  size?: StandingsImageSize;
+  /** Ref to the unsized content, for measuring its natural height. */
+  contentRef?: Ref<HTMLDivElement>;
 }
 
 const SITE_URL = 'kapowaz.github.io/football-predictor/';
+
+/** Table positions shown in a half, e.g. "1-10", read by scripts/render-og.ts. */
+const getPositionRange = (
+  teamCount: number,
+  partial: StandingsImageViewProps['partial'],
+): string => {
+  const { top } = getStandingsSplit(teamCount);
+  if (partial === 'top') return `1-${top}`;
+  if (partial === 'bottom') return `${top + 1}-${teamCount}`;
+  return `1-${teamCount}`;
+};
 
 export const StandingsImageView = ({
   standings,
@@ -65,9 +85,12 @@ export const StandingsImageView = ({
   isRunIn,
   relegationStartPosition,
   thresholdByZoneType,
+  size,
+  contentRef,
 }: StandingsImageViewProps) => {
   const showHeading = partial !== 'bottom';
   const showFooter = partial !== 'top';
+  const positions = getPositionRange(standings.length, partial);
   const headingExtraContent = (
     <div className={styles.headingExtraContent}>
       <AbstractText
@@ -109,10 +132,22 @@ export const StandingsImageView = ({
         styles.outerWrapper,
         isHidden ? styles.hiddenCaptureRoot : undefined,
       )}
+      style={
+        size
+          ? assignInlineVars({
+              [styles.imageWidth]: `${size.width}px`,
+              [styles.imageHeight]: `${size.height}px`,
+            })
+          : undefined
+      }
       aria-hidden="true"
+      data-image-half={partial}
+      data-positions={positions}
+      data-layout-ready={size ? 'true' : undefined}
     >
       <div ref={captureRef} className={styles.captureSurface}>
         <div
+          ref={contentRef}
           className={clsx(
             styles.innerWrapper,
             partial === 'top' && styles.innerWrapperTop,
@@ -135,6 +170,7 @@ export const StandingsImageView = ({
             isRunIn={isRunIn}
             relegationStartPosition={relegationStartPosition}
             thresholdByZoneType={thresholdByZoneType}
+            customTokens={styles.standingsTableTokensOverride}
           />
           {showFooter && (
             <footer className={styles.footerContainer}>
