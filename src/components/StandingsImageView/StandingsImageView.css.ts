@@ -1,4 +1,4 @@
-import { createVar, style } from '@vanilla-extract/css';
+import { createVar, fallbackVar, style } from '@vanilla-extract/css';
 import {
   cssVariablesByColorMode,
   getDesignTokens,
@@ -34,13 +34,23 @@ export const hiddenCaptureRoot = style({
   zIndex: -1,
 });
 
+/** Set by StandingsImagePair once both halves are measured. */
+export const imageWidth = createVar('standings-image-width');
+export const imageHeight = createVar('standings-image-height');
+
+// 820px is the natural layout width the halves are measured at.
 export const outerWrapper = style({
-  width: '820px',
+  width: fallbackVar(imageWidth, '820px'),
+  height: fallbackVar(imageHeight, 'auto'),
 });
 
+// The background lives here, not on innerWrapper, so the padding that evens
+// out the two halves' heights is page-coloured too.
 export const captureSurface = style({
   width: '100%',
+  height: '100%',
   minWidth: 0,
+  backgroundColor: colorBgPage,
 });
 
 export const innerWrapper = style({

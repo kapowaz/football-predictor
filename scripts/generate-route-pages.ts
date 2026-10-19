@@ -90,7 +90,10 @@ export const renderSocialMeta = ({
     `  <title>${escapeAttr(title)}</title>`,
   ].join('\n');
 
-/** Replaces everything from the start marker to the end marker inclusive. */
+/**
+ * Replaces the tags between the start and end markers, keeping the markers so
+ * the page can be rewritten again (the render step reruns this on dist/).
+ */
 export const replaceSocialMeta = (html: string, block: string): string => {
   const start = html.indexOf(START_MARKER);
   const end = html.indexOf(END_MARKER);
@@ -99,8 +102,9 @@ export const replaceSocialMeta = (html: string, block: string): string => {
       'index.html is missing the social-meta:start / social-meta:end markers',
     );
   }
-  const lineStart = html.lastIndexOf('\n', start) + 1;
-  return html.slice(0, lineStart) + block + html.slice(end + END_MARKER.length);
+  const startLineEnd = html.indexOf('\n', start) + 1;
+  const endLineStart = html.lastIndexOf('\n', end) + 1;
+  return html.slice(0, startLineEnd) + block + '\n' + html.slice(endLineStart);
 };
 
 const readManifest = (): PreviewManifest => {

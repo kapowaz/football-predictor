@@ -6,7 +6,7 @@ import {
   buildThresholdByZoneType,
 } from '@kapowaz/football';
 
-import { StandingsImageView } from '../../components/StandingsImageView';
+import { StandingsImagePair } from '../../components/StandingsImagePair';
 import { hasCompetitionData } from '../../data';
 import type { CompetitionConfig } from '../../data/competitions';
 import { useCompetitionConfig } from '../../hooks/useCompetitionConfig';
@@ -21,11 +21,13 @@ import {
   selectTeamsById,
 } from '../../state/selectors';
 import { useCompetitionSession } from '../../state/useCompetitionSession';
-import type { VariantRulesMode } from '../../types';
+import type { PredictionsStore, VariantRulesMode } from '../../types';
 import { getEffectivePredictions } from '../../utils/liveScores';
 import * as styles from './StandingsImagePage.css.ts';
 
 const VALID_VARIANT_RULES = new Set<string>(['new-rules', 'bonus-points']);
+
+const NO_PREDICTIONS: PredictionsStore = { predictions: {}, lastModified: '' };
 
 const parseVariantRules = (value: string | null): VariantRulesMode => {
   if (value && VALID_VARIANT_RULES.has(value)) return value as VariantRulesMode;
@@ -43,6 +45,10 @@ const StandingsImageContent = ({
 }: StandingsImageContentProps) => {
   const [searchParams] = useSearchParams();
   const variantRules = parseVariantRules(searchParams.get('variantRules'));
+  // `?preview` renders the social preview images (scripts/render-og.ts):
+  // finished results only, with no saved predictions or in-play scores, and
+  // no toolbar.
+  const isPreview = searchParams.has('preview');
   const topCaptureRef = useRef<HTMLDivElement>(null);
   const bottomCaptureRef = useRef<HTMLDivElement>(null);
   const { teams, matches, allMatches, defaultDeductions } =
@@ -55,8 +61,11 @@ const StandingsImageContent = ({
     persistenceMode: 'storageOnly',
   });
   const effectivePredictions = useMemo(
-    () => getEffectivePredictions(predictions, liveScores),
-    [predictions, liveScores],
+    () =>
+      isPreview
+        ? NO_PREDICTIONS
+        : getEffectivePredictions(predictions, liveScores),
+    [isPreview, predictions, liveScores],
   );
   const { standings, deductionMarkers } = selectStandingsViewModel(
     teams,
@@ -90,10 +99,12 @@ const StandingsImageContent = ({
 
   return (
     <div className={styles.page}>
-      <header className={styles.toolbar}>
-        <ToggleColorMode />
-      </header>
-      <StandingsImageView
+      {!isPreview && (
+        <header className={styles.toolbar}>
+          <ToggleColorMode />
+        </header>
+      )}
+      <StandingsImagePair
         standings={standings}
         competitionLogo={config.logo}
         competitionName={config.name}
@@ -103,31 +114,12 @@ const StandingsImageContent = ({
         zoneGuaranteedByTeamId={zoneGuaranteedByTeamId}
         positionGuaranteedByTeamId={positionGuaranteedByTeamId}
         zones={config.zones}
-        partial="top"
-        captureRef={topCaptureRef}
         isHidden={false}
         variantRules={variantRules}
         isRunIn
         relegationStartPosition={relegationStartPosition}
         thresholdByZoneType={thresholdByZoneType}
-      />
-      <StandingsImageView
-        standings={standings}
-        competitionLogo={config.logo}
-        competitionName={config.name}
-        competitionSeason={config.season}
-        deductionNotes={deductionNotes}
-        deductionMarkers={deductionMarkers}
-        zoneGuaranteedByTeamId={zoneGuaranteedByTeamId}
-        positionGuaranteedByTeamId={positionGuaranteedByTeamId}
-        zones={config.zones}
-        partial="bottom"
-        captureRef={bottomCaptureRef}
-        isHidden={false}
-        variantRules={variantRules}
-        isRunIn
-        relegationStartPosition={relegationStartPosition}
-        thresholdByZoneType={thresholdByZoneType}
+        captureRefs={[topCaptureRef, bottomCaptureRef]}
       />
     </div>
   );

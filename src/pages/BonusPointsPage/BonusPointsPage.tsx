@@ -4,7 +4,7 @@ import { useColorMode } from '@kapowaz/components';
 
 import { CompetitionPanels } from '../../components/CompetitionPanels';
 import { DeductionsModal } from '../../components/DeductionsModal';
-import { StandingsImageView } from '../../components/StandingsImageView';
+import { StandingsImagePair } from '../../components/StandingsImagePair';
 import { hasCompetitionData } from '../../data';
 import {
   allCompetitions,
@@ -14,6 +14,7 @@ import { useCompetitionConfig } from '../../hooks/useCompetitionConfig';
 import { useCompetitionData } from '../../hooks/useCompetitionData';
 import { useGenuineToggle } from '../../hooks/useGenuineToggle';
 import { useImageDownload } from '../../hooks/useImageDownload';
+import { useImageLayoutKey } from '../../hooks/useImageLayoutKey';
 import { useLiveScores } from '../../hooks/useLiveScores';
 import { useZoneGuarantees } from '../../hooks/useZoneGuarantees';
 import {
@@ -82,6 +83,7 @@ const BonusPointsContent = ({ slug, config }: BonusPointsContentProps) => {
 
   const competitions = allCompetitions();
 
+  const [imageLayoutKey, onImageLayout] = useImageLayoutKey();
   const captureSignature = selectCaptureSignature(
     standings,
     deductionMarkers,
@@ -93,7 +95,7 @@ const BonusPointsContent = ({ slug, config }: BonusPointsContentProps) => {
     slug,
     competitionName: config.name,
     competitionSeason: config.season,
-    captureSignature,
+    captureSignature: `${captureSignature}|${imageLayoutKey}`,
   });
   const standingsImageFiles =
     imageFiles.top && imageFiles.bottom
@@ -103,7 +105,7 @@ const BonusPointsContent = ({ slug, config }: BonusPointsContentProps) => {
 
   return (
     <>
-      <StandingsImageView
+      <StandingsImagePair
         standings={standings}
         competitionLogo={config.logo}
         competitionName={config.name}
@@ -112,22 +114,9 @@ const BonusPointsContent = ({ slug, config }: BonusPointsContentProps) => {
         deductionMarkers={deductionMarkers}
         zoneGuaranteedByTeamId={zoneGuaranteedByTeamId}
         zones={config.zones}
-        partial="top"
-        captureRef={topStandingsCaptureRef}
         variantRules="bonus-points"
-      />
-      <StandingsImageView
-        standings={standings}
-        competitionLogo={config.logo}
-        competitionName={config.name}
-        competitionSeason={config.season}
-        deductionNotes={deductionNotes}
-        deductionMarkers={deductionMarkers}
-        zoneGuaranteedByTeamId={zoneGuaranteedByTeamId}
-        zones={config.zones}
-        partial="bottom"
-        captureRef={bottomStandingsCaptureRef}
-        variantRules="bonus-points"
+        captureRefs={[topStandingsCaptureRef, bottomStandingsCaptureRef]}
+        onLayout={onImageLayout}
       />
 
       <CompetitionPanels

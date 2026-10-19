@@ -6,7 +6,7 @@ import { useColorMode } from '@kapowaz/components';
 import { CompetitionPanels } from '../../components/CompetitionPanels';
 import { DeductionsModal } from '../../components/DeductionsModal';
 import { SeasonSummaryModal } from '../../components/SeasonSummaryModal';
-import { StandingsImageView } from '../../components/StandingsImageView';
+import { StandingsImagePair } from '../../components/StandingsImagePair';
 import { hasCompetitionData } from '../../data';
 import {
   allCompetitions,
@@ -16,6 +16,7 @@ import { useCompetitionConfig } from '../../hooks/useCompetitionConfig';
 import { useCompetitionData } from '../../hooks/useCompetitionData';
 import { useGenuineToggle } from '../../hooks/useGenuineToggle';
 import { useImageDownload } from '../../hooks/useImageDownload';
+import { useImageLayoutKey } from '../../hooks/useImageLayoutKey';
 import { useLiveScores } from '../../hooks/useLiveScores';
 import { useZoneGuarantees } from '../../hooks/useZoneGuarantees';
 import { useZoneThresholds } from '../../hooks/useZoneThresholds';
@@ -114,6 +115,7 @@ const CompetitionContent = ({ slug, config }: CompetitionContentProps) => {
 
   const competitions = allCompetitions();
 
+  const [imageLayoutKey, onImageLayout] = useImageLayoutKey();
   const captureSignature = selectCaptureSignature(
     standings,
     deductionMarkers,
@@ -125,7 +127,7 @@ const CompetitionContent = ({ slug, config }: CompetitionContentProps) => {
     slug,
     competitionName: config.name,
     competitionSeason: config.season,
-    captureSignature,
+    captureSignature: `${captureSignature}|${imageLayoutKey}`,
   });
   const standingsImageFiles =
     imageFiles.top && imageFiles.bottom
@@ -135,7 +137,7 @@ const CompetitionContent = ({ slug, config }: CompetitionContentProps) => {
 
   return (
     <>
-      <StandingsImageView
+      <StandingsImagePair
         standings={standings}
         competitionLogo={config.logo}
         competitionName={config.name}
@@ -144,20 +146,8 @@ const CompetitionContent = ({ slug, config }: CompetitionContentProps) => {
         deductionMarkers={deductionMarkers}
         zoneGuaranteedByTeamId={zoneGuaranteedByTeamId}
         zones={config.zones}
-        partial="top"
-        captureRef={topStandingsCaptureRef}
-      />
-      <StandingsImageView
-        standings={standings}
-        competitionLogo={config.logo}
-        competitionName={config.name}
-        competitionSeason={config.season}
-        deductionNotes={deductionNotes}
-        deductionMarkers={deductionMarkers}
-        zoneGuaranteedByTeamId={zoneGuaranteedByTeamId}
-        zones={config.zones}
-        partial="bottom"
-        captureRef={bottomStandingsCaptureRef}
+        captureRefs={[topStandingsCaptureRef, bottomStandingsCaptureRef]}
+        onLayout={onImageLayout}
       />
 
       <CompetitionPanels
