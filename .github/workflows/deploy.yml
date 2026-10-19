@@ -15,11 +15,11 @@ jobs:
       og-key: ${{ steps.og-signature.outputs.key }}
       og-cached: ${{ steps.og-cache.outputs.cache-hit }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
-      - uses: pnpm/action-setup@v4
+      - uses: pnpm/action-setup@v6.1.0
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           node-version: 24
           cache: pnpm
@@ -29,7 +29,7 @@ jobs:
         run: echo "ai_predictions=$(jq -r '.aiPredictions' src/data/features.json)" >> "$GITHUB_OUTPUT"
 
       - if: steps.features.outputs.ai_predictions == 'true'
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v7
         with:
           python-version: "3.12"
 
@@ -57,13 +57,13 @@ jobs:
       # Only checks whether images for these inputs are cached; publish
       # restores them.
       - id: og-cache
-        uses: actions/cache/restore@v4
+        uses: actions/cache/restore@v6
         with:
           path: og-cache
           key: ${{ steps.og-signature.outputs.key }}
           lookup-only: true
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: site
           path: dist
@@ -80,11 +80,11 @@ jobs:
       group: render-og
       cancel-in-progress: true
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
-      - uses: pnpm/action-setup@v4
+      - uses: pnpm/action-setup@v6.1.0
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           node-version: 24
           cache: pnpm
@@ -94,7 +94,7 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           name: site
           path: dist
@@ -103,12 +103,12 @@ jobs:
       - run: pnpm exec tsx scripts/render-og.ts
 
       - run: cp -R dist/og og-cache
-      - uses: actions/cache/save@v4
+      - uses: actions/cache/save@v6
         with:
           path: og-cache
           key: ${{ needs.build.outputs.og-key }}
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: og
           path: dist/og
@@ -122,11 +122,11 @@ jobs:
     if: always() && needs.build.result == 'success' && needs.render-og.result != 'cancelled'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
-      - uses: pnpm/action-setup@v4
+      - uses: pnpm/action-setup@v6.1.0
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           node-version: 24
           cache: pnpm
@@ -136,20 +136,20 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           name: site
           path: dist
 
       - if: needs.render-og.result == 'success'
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: og
           path: dist/og
 
       - if: needs.render-og.result != 'success'
         id: og-fallback
-        uses: actions/cache/restore@v4
+        uses: actions/cache/restore@v6
         with:
           path: og-cache
           key: ${{ needs.build.outputs.og-key }}
@@ -163,7 +163,7 @@ jobs:
 
       - run: pnpm gen:route-pages
 
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@v5
         with:
           path: dist
 
@@ -181,4 +181,4 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
