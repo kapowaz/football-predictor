@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "pnpm prepare:data && vite",
-    "build": "pnpm prepare:data && tsc -b && vite build",
+    "build": "pnpm prepare:data && tsc -b && vite build && pnpm gen:route-pages",
+    "gen:route-pages": "tsx scripts/generate-route-pages.ts",
     "prepare:data": "pnpm ensure-data-stubs && pnpm gen:data-indexes",
     "gen:data-indexes": "tsx scripts/generate-data-indexes.ts",
     "lint": "eslint .",
