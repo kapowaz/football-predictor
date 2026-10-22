@@ -20,9 +20,6 @@ importers:
       '@kapowaz/design-tokens':
         specifier: ^1.0.0
         version: 1.0.0(babel-plugin-macros@3.1.0)
-      '@kapowaz/fonts':
-        specifier: ^1.0.0
-        version: 1.0.0
       '@kapowaz/football':
         specifier: ^1.0.1
         version: 1.0.1(@types/react@19.2.14)(babel-plugin-macros@3.1.0)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(recharts@3.8.1(@types/react@19.2.14)(react-dom@19.2.5(react@19.2.5))(react-is@17.0.2)(react@19.2.5)(redux@5.0.1))
