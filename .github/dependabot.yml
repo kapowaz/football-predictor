@@ -1,0 +1,17 @@
+version: 2
+updates:
+  # Keeps the workflows' SHA-pinned actions current. Dependabot rewrites both
+  # the SHA and the version comment after it.
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+    # A release under two weeks old is the one most likely to be yanked or
+    # patched straight away. Security updates ignore the cooldown.
+    cooldown:
+      default-days: 14
+    groups:
+      actions:
+        patterns:
+          - '*'
