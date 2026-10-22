@@ -56,7 +56,7 @@
     "@kapowaz/components": "^16.0.1",
     "@kapowaz/design-tokens": "^1.0.0",
     "@kapowaz/fonts": "^1.0.0",
-    "@kapowaz/football": "^1.0.0",
+    "@kapowaz/football": "^1.0.1",
     "@kapowaz/football-badges": "^1.0.0",
     "@kapowaz/icons": "^1.0.1",
     "@vanilla-extract/dynamic": "^2.1.5",

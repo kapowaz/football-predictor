@@ -24,8 +24,8 @@ importers:
         specifier: ^1.0.0
         version: 1.0.0
       '@kapowaz/football':
-        specifier: ^1.0.0
-        version: 1.0.0(@types/react@19.2.14)(babel-plugin-macros@3.1.0)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(recharts@3.8.1(@types/react@19.2.14)(react-dom@19.2.5(react@19.2.5))(react-is@17.0.2)(react@19.2.5)(redux@5.0.1))
+        specifier: ^1.0.1
+        version: 1.0.1(@types/react@19.2.14)(babel-plugin-macros@3.1.0)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(recharts@3.8.1(@types/react@19.2.14)(react-dom@19.2.5(react@19.2.5))(react-is@17.0.2)(react@19.2.5)(redux@5.0.1))
       '@kapowaz/football-badges':
         specifier: ^1.0.0
         version: 1.0.0(babel-plugin-macros@3.1.0)(react@19.2.5)
@@ -812,8 +812,8 @@ packages:
     peerDependencies:
       react: '>=18'
 
-  '@kapowaz/football@1.0.0':
-    resolution: {integrity: sha512-NbArATNXki4r1SOk1dnve3MChXzrBUHi44+rsKSai8DXV/AVy8vOKMGgAPHzGYUHfBU9buLZsFW0fCAJL7zNqA==}
+  '@kapowaz/football@1.0.1':
+    resolution: {integrity: sha512-FeBxpzFkTNmu5T2ZOxriU0PArVlzuYEeziTvTesPlvN/1q0FEg7UbtGyZs3HpnkroD/WL4MDtTsT1M3s1TyI7g==}
     peerDependencies:
       react: '>= 18'
 
@@ -3885,7 +3885,7 @@ snapshots:
     transitivePeerDependencies:
       - babel-plugin-macros
 
-  '@kapowaz/football@1.0.0(@types/react@19.2.14)(babel-plugin-macros@3.1.0)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(recharts@3.8.1(@types/react@19.2.14)(react-dom@19.2.5(react@19.2.5))(react-is@17.0.2)(react@19.2.5)(redux@5.0.1))':
+  '@kapowaz/football@1.0.1(@types/react@19.2.14)(babel-plugin-macros@3.1.0)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(recharts@3.8.1(@types/react@19.2.14)(react-dom@19.2.5(react@19.2.5))(react-is@17.0.2)(react@19.2.5)(redux@5.0.1))':
     dependencies:
       '@kapowaz/components': 16.0.1(@types/react@19.2.14)(babel-plugin-macros@3.1.0)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(recharts@3.8.1(@types/react@19.2.14)(react-dom@19.2.5(react@19.2.5))(react-is@17.0.2)(react@19.2.5)(redux@5.0.1))
       '@kapowaz/design-tokens': 1.0.0(babel-plugin-macros@3.1.0)
