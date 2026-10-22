@@ -164,8 +164,12 @@ jobs:
         with:
           path: dist
 
+  # Without always(), a skipped render-og (images already cached) skips this
+  # job too, because GitHub skips a job when any job it depends on, directly
+  # or not, was skipped.
   deploy:
     needs: publish
+    if: always() && needs.publish.result == 'success'
     runs-on: ubuntu-latest
     concurrency:
       group: pages
