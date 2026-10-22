@@ -117,7 +117,7 @@ jobs:
   # cancelled the render.
   publish:
     needs: [build, render-og]
-    if: always() && needs.build.result == 'success' && needs.render-og.result != 'cancelled'
+    if: ${{ !cancelled() && needs.build.result == 'success' && needs.render-og.result != 'cancelled' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -164,8 +164,11 @@ jobs:
         with:
           path: dist
 
+  # Deploys whatever publish built, including when render-og was skipped
+  # (images cached) or failed (fallback images), which would otherwise skip it.
   deploy:
     needs: publish
+    if: ${{ !cancelled() && needs.publish.result == 'success' }}
     runs-on: ubuntu-latest
     concurrency:
       group: pages
