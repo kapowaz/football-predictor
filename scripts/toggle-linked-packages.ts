@@ -15,7 +15,6 @@ const DESIGN_SYSTEM_PATH = '../design-system/packages';
 const KAPOWAZ_PACKAGES: Record<string, string> = {
   '@kapowaz/components': `link:${DESIGN_SYSTEM_PATH}/components`,
   '@kapowaz/design-tokens': `link:${DESIGN_SYSTEM_PATH}/design-tokens`,
-  '@kapowaz/fonts': `link:${DESIGN_SYSTEM_PATH}/fonts`,
   '@kapowaz/football': `link:${DESIGN_SYSTEM_PATH}/football`,
   '@kapowaz/football-badges': `link:${DESIGN_SYSTEM_PATH}/football-badges`,
   '@kapowaz/icons': `link:${DESIGN_SYSTEM_PATH}/icons`,
