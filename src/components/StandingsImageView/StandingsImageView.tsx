@@ -4,6 +4,7 @@ import type { Ref, RefObject } from 'react';
 import { AbstractText } from '@kapowaz/components';
 import { getStandingsSplit, StandingsTable } from '@kapowaz/football';
 
+import futmegMark from '../../assets/futmeg-mark.svg';
 import type { ZoneDefinition } from '../../data/competitions';
 import type { DeductionNote } from '../../state/selectors';
 import type { TeamStanding, VariantRulesMode } from '../../types';
@@ -153,9 +154,7 @@ export const StandingsImageView = ({
             partial === 'bottom' && styles.innerWrapperBottom,
           )}
         >
-          {showHeading && (
-            <AppHeading isFullRender extraContent={headingExtraContent} />
-          )}
+          {showHeading && <AppHeading extraContent={headingExtraContent} />}
           <StandingsTable
             standings={standings}
             deductionMarkers={deductionMarkers}
@@ -198,11 +197,7 @@ export const StandingsImageView = ({
                     {SITE_URL}
                   </AbstractText>
                 </div>
-                <img
-                  src={`${import.meta.env.BASE_URL}icon.svg`}
-                  alt=""
-                  className={styles.footerIcon}
-                />
+                <img src={futmegMark} alt="" className={styles.footerIcon} />
               </AbstractText>
             </footer>
           )}

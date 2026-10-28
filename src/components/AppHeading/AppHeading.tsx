@@ -5,9 +5,6 @@ import futmegTextLogoLight from '../../assets/futmeg-textlogo-light.svg';
 import * as styles from './AppHeading.css';
 
 interface AppHeadingProps {
-  /** Forces the heading to render in its largest viewport form. */
-  isFullRender?: boolean;
-
   /** Hides the logo text, rendering only the square mark. */
   isTitleHidden?: boolean;
 
@@ -16,12 +13,9 @@ interface AppHeadingProps {
 }
 
 export const AppHeading = ({
-  isFullRender = false,
   isTitleHidden = false,
   extraContent,
 }: AppHeadingProps) => {
-  const size = isFullRender ? 'full' : 'default';
-
   return (
     <div className={styles.container}>
       {isTitleHidden ? (
@@ -31,12 +25,12 @@ export const AppHeading = ({
           <img
             src={futmegTextLogoLight}
             alt="Futmeg"
-            className={styles.logoLight[size]}
+            className={styles.logoLight}
           />
           <img
             src={futmegTextLogoDark}
             alt="Futmeg"
-            className={styles.logoDark[size]}
+            className={styles.logoDark}
           />
         </h1>
       )}
