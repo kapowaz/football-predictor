@@ -14,6 +14,7 @@ The app becomes Futmeg and is served at `https://futmeg.com/`. Hosting stays on 
 | N4 | Hostname and DNS | The apex `futmeg.com` is canonical. `www` is a CNAME to `kapowaz.github.io`, and GitHub redirects it to the apex. The Cloudflare records are DNS-only (grey cloud) | Gives the shortest URL in shares and OG tags. GitHub issues and renews the certificate itself, which a proxied record would block. |
 | N5a | Name styling | "Futmeg" in text, "FUTMEG" in the logo, `futmeg` in identifiers | Decided by the owner. |
 | N5b | Copy | The meta and OG descriptions keep their current text, and only the name changes. The standings image footer reads "Futmeg by kapowaz" | Only the name changes. |
+| N5d | Header logo | A horizontal FUTMEG lockup (mark and text in one SVG) replaces the current 32×32 mark plus live-text `h1` in `AppHeading`. The lockup sits inside the `h1` as an `img` with `alt="Futmeg"`, and its light or dark version switches with colour mode. With `isTitleHidden` (All Time Rank page) the square mark shows on its own, as it does today. `isFullRender` (standings image and OG renders) scales the lockup up instead of switching the text to `huge` | The new logo includes the text, so live text would repeat the name. Keeping the `h1` keeps the page heading for screen readers and SEO. |
 | N5c | Release order | One release, once the final logo SVGs arrive | The name and the logo change together, with no interim wordmark. |
 | N6a | Internal identifiers | `package.json` name, service worker cache prefix, storage keys and User-Agent strings all become `futmeg`. Remove the legacy key migration | The new origin starts with no stored data, so the old keys never exist there. |
 | N6b | License | None (all rights reserved) | The code and the brand stay visible, but nobody gets reuse rights. This discourages forks with nothing to maintain. |
@@ -38,6 +39,8 @@ The app becomes Futmeg and is served at `https://futmeg.com/`. Hosting stays on 
 - The `football-predictor` identifier appears in `public/sw.js:1` (`CACHE_PREFIX`), `src/main.tsx:61` (dev cache cleanup), `src/utils/storage.ts:3-8` (keys), `scripts/build-season-data.cjs:172` and `scripts/populate-all-seasons.cjs:202` (User-Agent), and `package.json` `name`.
 - `src/utils/storage.ts:15-36` moves the pre-multi-competition keys over. These keys cannot exist on `futmeg.com`.
 - `public/sw.js` handles only static assets (cache-first) and `live-scores/*.json` (stale-while-revalidate). It does not intercept page loads, so the Pages 301 reaches returning visitors.
+- `AppHeading` (`src/components/AppHeading/AppHeading.tsx`) renders a 32×32 `img` of the logo next to a live-text `h1` reading "Predictor" (uppercase, condensed UI font; text colour switches with colour mode in `AppHeading.css.ts`). `isFullRender` changes the `h1` size from `xl` to `huge`, and `isTitleHidden` drops the `h1`. It is used in `AppHeader.tsx:37`, `NavBar.tsx:133`, `StandingsImageView.tsx:158` (`isFullRender`) and `AllTimeRankPage.tsx:121` (`isTitleHidden`).
+- `StandingsImagePage.tsx:104` has a colour-mode toggle, so in-app standings downloads can be light or dark. `scripts/render-og.ts:116` renders OG images in dark only.
 - The brand assets to replace are `src/assets/football-predictor-logo.svg` (512×512; used by `AppHeading`, the standings image and the OG renders), `public/icon.svg`, `public/favicon.ico`, `public/icon.icns` (linked as `apple-touch-icon` at `index.html:8`) and `public/opengraph.png` (1200×630).
 
 ## Cutover sequence
@@ -52,13 +55,14 @@ Between steps 3 and 4 the old URL serves a build that expects the root path, so 
 
 ## Still open
 
-- **Final brand assets.** The owner is still working on them, and they block the release (N5c). The owner will provide:
-  1. Mark, SVG, square, replacing `src/assets/football-predictor-logo.svg` (renamed `futmeg-logo.svg`). It renders at 32×32 CSS px in `AppHeading` (`AppHeading.css.ts`, `logo`), the standings image and the OG renders, on both light and dark backgrounds, in fixed colours.
-  2. Favicon, SVG, as `public/icon.svg`. It can be the mark itself or a simplified version for 16 px. It is also the README icon.
-  3. `public/favicon.ico` with 16×16 and 32×32 images.
-  4. `public/apple-touch-icon.png`, 180×180 and opaque, replacing the `icon.icns` link at `index.html:8` and `all-time-rank/index.html:8`.
-  5. `public/opengraph.png`, 1200×630, the generic share image used when no per-competition render exists.
-
-  The wordmark is only needed if FUTMEG is custom lettering. Otherwise `AppHeading` keeps rendering the name as live text (today "Predictor", uppercase, condensed UI font, colour-mode aware), with the text changed to "Futmeg". As an SVG it would need a light and a dark version, or a single colour so it can be inlined with `currentColor`.
+- **Final brand assets.** The owner is still working on them, and they block the release (N5c). They replace `src/assets/football-predictor-logo.svg` (deleted), `public/icon.svg`, `public/favicon.ico`, `public/icon.icns` (deleted) and `public/opengraph.png`. The owner will provide:
+  - In-app logos (SVG):
+    1. `src/assets/futmeg-logo-light.svg`: the horizontal lockup for light backgrounds. It is shown in the app header (`AppHeader`, `NavBar`) and in light-mode standings image downloads.
+    2. `src/assets/futmeg-logo-dark.svg`: the lockup for dark backgrounds. It is shown in dark mode, in the OG renders (`render-og.ts:116` always uses dark) and in dark-mode standings image downloads. One file is enough if its colours work on both backgrounds.
+    3. `src/assets/futmeg-mark.svg`: the square mark without text. It is shown at 32×32 CSS px next to the "All Time Rank" title (`AllTimeRankPage.tsx:121`) on both backgrounds, so it needs fixed colours that work on both, or light and dark versions.
+  - Icons and share image:
+    4. `public/icon.svg` and `public/favicon.ico` (16×16 and 32×32), from the square mark, which can be simplified for 16 px. `icon.svg` is also the README icon.
+    5. `public/apple-touch-icon.png`, 180×180, opaque, no rounded corners. It replaces the `icon.icns` link at `index.html:8` and `all-time-rank/index.html:8`.
+    6. `public/opengraph.png`, 1200×630, the generic share image used when no per-competition render exists. The key content sits in the central 630×630.
 - **Repo rename to `futmeg`.** Deferred "for now". GitHub redirects renamed repos, and the Pages custom domain makes the URL independent of the repo name.
 - **Netlify.** Revisit only if PR deploy previews, redirects and headers, or functions become needed.
