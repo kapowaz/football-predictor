@@ -24,7 +24,7 @@ import { COMPETITIONS } from './common';
 import type { PreviewImage, PreviewManifest } from './generate-route-pages';
 import { getSeasonId } from './season';
 
-const BASE_PATH = '/football-predictor/';
+const BASE_PATH = '/';
 const distDir = path.join(import.meta.dirname, '../dist');
 const ogDir = path.join(distDir, 'og');
 const manifestPath = path.join(ogDir, 'manifest.json');

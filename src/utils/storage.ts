@@ -1,40 +1,7 @@
 import type { PointDeduction, PredictionsStore } from '../types';
 
-const LEGACY_PREDICTIONS_KEY = 'football-predictor-predictions';
-const LEGACY_DEDUCTIONS_KEY = 'football-predictor-deductions';
-
-const predictionsKey = (slug: string) =>
-  `football-predictor-predictions-${slug}`;
-const deductionsKey = (slug: string) => `football-predictor-deductions-${slug}`;
-
-let migrationDone = false;
-
-export const migrateStorage = (): void => {
-  if (migrationDone) return;
-  migrationDone = true;
-
-  try {
-    const legacyPredictions = localStorage.getItem(LEGACY_PREDICTIONS_KEY);
-    if (legacyPredictions !== null) {
-      const targetKey = predictionsKey('efl-championship');
-      if (localStorage.getItem(targetKey) === null) {
-        localStorage.setItem(targetKey, legacyPredictions);
-      }
-      localStorage.removeItem(LEGACY_PREDICTIONS_KEY);
-    }
-
-    const legacyDeductions = localStorage.getItem(LEGACY_DEDUCTIONS_KEY);
-    if (legacyDeductions !== null) {
-      const targetKey = deductionsKey('efl-championship');
-      if (localStorage.getItem(targetKey) === null) {
-        localStorage.setItem(targetKey, legacyDeductions);
-      }
-      localStorage.removeItem(LEGACY_DEDUCTIONS_KEY);
-    }
-  } catch (error) {
-    console.error('Failed to migrate localStorage:', error);
-  }
-};
+const predictionsKey = (slug: string) => `futmeg-predictions-${slug}`;
+const deductionsKey = (slug: string) => `futmeg-deductions-${slug}`;
 
 export const loadPredictions = (slug: string): PredictionsStore => {
   try {
@@ -121,8 +88,7 @@ export const clearDeductions = (slug: string): void => {
   }
 };
 
-const confettiShownKey = (slug: string) =>
-  `football-predictor-confetti-shown-${slug}`;
+const confettiShownKey = (slug: string) => `futmeg-confetti-shown-${slug}`;
 
 export const hasConfettiShown = (slug: string): boolean => {
   try {

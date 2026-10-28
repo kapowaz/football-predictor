@@ -1,4 +1,4 @@
-# <img src="public/icon.svg" alt="Football Predictor icon" width="30" valign="middle" /> Football Predictor
+# <img src="public/icon.svg" alt="Futmeg icon" width="30" valign="middle" /> Futmeg
 
 A web app for predicting the outcome of remaining fixtures and seeing how each competition's final table could look. Enter score predictions manually, optionally seed fixtures with model-generated predictions, and watch standings update in real time.
 

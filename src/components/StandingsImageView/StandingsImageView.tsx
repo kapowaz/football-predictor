@@ -55,7 +55,7 @@ export interface StandingsImageViewProps {
   contentRef?: Ref<HTMLDivElement>;
 }
 
-const SITE_URL = 'kapowaz.github.io/football-predictor/';
+const SITE_URL = 'futmeg.com';
 
 /** Table positions shown in a half, e.g. "1-10", read by scripts/render-og.ts. */
 const getPositionRange = (
@@ -180,7 +180,7 @@ export const StandingsImageView = ({
                 fontSize="md"
               >
                 <div>
-                  Football Predictor by{' '}
+                  Futmeg by{' '}
                   <AbstractText
                     tagName="span"
                     className={styles.footerBold}

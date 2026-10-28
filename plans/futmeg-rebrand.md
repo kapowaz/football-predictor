@@ -55,7 +55,7 @@ Between steps 3 and 4 the old URL serves a build that expects the root path, so 
 
 ## Still open
 
-- **Final brand assets.** The owner is still working on them, and they block the release (N5c). They replace `src/assets/football-predictor-logo.svg` (deleted), `public/icon.svg`, `public/favicon.ico`, `public/icon.icns` (deleted) and `public/opengraph.png`. The owner will provide:
+- **Final brand assets.** Received 2026-10-28 and added on `futmeg-rebrand`; this no longer blocks the release (N5c). They replace `src/assets/football-predictor-logo.svg` (deleted), `public/icon.svg`, `public/favicon.ico`, `public/icon.icns` (deleted) and `public/opengraph.png`. The owner will provide:
   - In-app logos (SVG):
     1. `src/assets/futmeg-logo-light.svg`: the horizontal lockup for light backgrounds. It is shown in the app header (`AppHeader`, `NavBar`) and in light-mode standings image downloads.
     2. `src/assets/futmeg-logo-dark.svg`: the lockup for dark backgrounds. It is shown in dark mode, in the OG renders (`render-og.ts:116` always uses dark) and in dark-mode standings image downloads. One file is enough if its colours work on both backgrounds.

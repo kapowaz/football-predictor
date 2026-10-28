@@ -5,13 +5,13 @@ import { renderSocialMeta, replaceSocialMeta } from './generate-route-pages';
 const template = `<head>
   <meta charset="UTF-8" />
   <!-- social-meta:start (rewritten per route by scripts/generate-route-pages.ts) -->
-  <title>Football Predictor</title>
+  <title>Futmeg</title>
   <!-- social-meta:end -->
 </head>`;
 
 const page = {
-  url: 'https://kapowaz.github.io/football-predictor/premier-league/',
-  title: 'Premier League 2026/27 Table | Football Predictor',
+  url: 'https://futmeg.com/premier-league/',
+  title: 'Premier League 2026/27 Table | Futmeg',
   description: 'Predict every remaining Premier League fixture.',
   images: [
     {
@@ -57,9 +57,9 @@ describe('replaceSocialMeta', () => {
   it('replaces the tags between the markers', () => {
     const html = replaceSocialMeta(template, renderSocialMeta(page));
     expect(html).toContain(
-      '<title>Premier League 2026/27 Table | Football Predictor</title>',
+      '<title>Premier League 2026/27 Table | Futmeg</title>',
     );
-    expect(html).not.toContain('<title>Football Predictor</title>');
+    expect(html).not.toContain('<title>Futmeg</title>');
     expect(html).toContain('<meta charset="UTF-8" />');
   });
 

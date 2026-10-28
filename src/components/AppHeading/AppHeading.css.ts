@@ -1,19 +1,23 @@
-import { createVar, style } from '@vanilla-extract/css';
+import { createVar, style, styleVariants } from '@vanilla-extract/css';
 import {
   cssVariablesByColorMode,
   getDesignTokens,
 } from '@kapowaz/design-tokens';
 
-const { colors, spacing, typography } = getDesignTokens();
+const { spacing } = getDesignTokens();
 
-const colorTextHeading = createVar('app-heading-text-heading');
+// Shows the lockup drawn for the current colour mode's background.
+const lightLogoDisplay = createVar('app-heading-light-logo-display');
+const darkLogoDisplay = createVar('app-heading-dark-logo-display');
 
 cssVariablesByColorMode({
   light: {
-    [colorTextHeading]: colors.gray[900],
+    [lightLogoDisplay]: 'block',
+    [darkLogoDisplay]: 'none',
   },
   dark: {
-    [colorTextHeading]: colors.ink[300],
+    [lightLogoDisplay]: 'none',
+    [darkLogoDisplay]: 'block',
   },
 });
 
@@ -23,19 +27,34 @@ export const container = style({
   gap: spacing.sm,
 });
 
-export const logo = style({
+export const mark = style({
   height: '32px',
   width: '32px',
 });
 
 export const title = style({
-  fontFamily: typography.fontFamily.ui,
-  fontStretch: '75%',
-  textTransform: 'uppercase',
-  color: colorTextHeading,
   margin: 0,
-  whiteSpace: 'nowrap',
+  lineHeight: 0,
 });
+
+const logoHeights = {
+  default: '32px',
+  full: '48px',
+};
+
+const logo = style({
+  width: 'auto',
+});
+
+export const logoLight = styleVariants(logoHeights, (height) => [
+  logo,
+  { display: lightLogoDisplay, height },
+]);
+
+export const logoDark = styleVariants(logoHeights, (height) => [
+  logo,
+  { display: darkLogoDisplay, height },
+]);
 
 export const extraContent = style({
   flex: 1,

@@ -29,7 +29,7 @@ export const useImageDownload = ({
   const [topCaptureRef, bottomCaptureRef] = captureRefs;
   const metadata = useMemo(
     () => ({
-      Title: `Football Predictor ${competitionName} ${competitionSeason}`,
+      Title: `Futmeg ${competitionName} ${competitionSeason}`,
       Source: window.location.href,
     }),
     [competitionName, competitionSeason],
