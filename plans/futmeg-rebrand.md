@@ -52,6 +52,13 @@ Between steps 3 and 4 the old URL serves a build that expects the root path, so 
 
 ## Still open
 
-- **Final logo SVGs.** The owner is still working on them, and they block the release (N5c). On arrival, provide: the FUTMEG logo replacing `src/assets/football-predictor-logo.svg` (rename it to `futmeg-logo.svg`), `public/icon.svg`, and from those generate `favicon.ico`, a 180×180 PNG touch icon in place of `icon.icns`, and a new `opengraph.png`.
+- **Final brand assets.** The owner is still working on them, and they block the release (N5c). The owner will provide:
+  1. Mark, SVG, square, replacing `src/assets/football-predictor-logo.svg` (renamed `futmeg-logo.svg`). It renders at 32×32 CSS px in `AppHeading` (`AppHeading.css.ts`, `logo`), the standings image and the OG renders, on both light and dark backgrounds, in fixed colours.
+  2. Favicon, SVG, as `public/icon.svg`. It can be the mark itself or a simplified version for 16 px. It is also the README icon.
+  3. `public/favicon.ico` with 16×16 and 32×32 images.
+  4. `public/apple-touch-icon.png`, 180×180 and opaque, replacing the `icon.icns` link at `index.html:8` and `all-time-rank/index.html:8`.
+  5. `public/opengraph.png`, 1200×630, the generic share image used when no per-competition render exists.
+
+  The wordmark is only needed if FUTMEG is custom lettering. Otherwise `AppHeading` keeps rendering the name as live text (today "Predictor", uppercase, condensed UI font, colour-mode aware), with the text changed to "Futmeg". As an SVG it would need a light and a dark version, or a single colour so it can be inlined with `currentColor`.
 - **Repo rename to `futmeg`.** Deferred "for now". GitHub redirects renamed repos, and the Pages custom domain makes the URL independent of the repo name.
 - **Netlify.** Revisit only if PR deploy previews, redirects and headers, or functions become needed.
