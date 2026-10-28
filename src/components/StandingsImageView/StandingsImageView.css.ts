@@ -25,20 +25,17 @@ export const standingsTableTokensOverride = customTokensByColorMode({
 const colorBgPage = createVar('standings-image-bg-page');
 const colorTextHeading = createVar('standings-image-text-heading');
 const colorTextSecondary = createVar('standings-image-text-secondary');
-const colorIconFaded = createVar('standings-image-icon-faded');
 
 cssVariablesByColorMode({
   light: {
     [colorBgPage]: colors.gray[100],
     [colorTextHeading]: colors.gray[900],
     [colorTextSecondary]: colors.gray[500],
-    [colorIconFaded]: colors.neutral[300],
   },
   dark: {
     [colorBgPage]: colors.ink[950],
     [colorTextHeading]: colors.ink[300],
     [colorTextSecondary]: colors.ink[500],
-    [colorIconFaded]: colors.ink[800],
   },
 });
 
@@ -134,10 +131,8 @@ export const footer = style({
 
 export const footerIcon = style({
   flexShrink: 0,
-});
-
-export const footerIconContainer = style({
-  color: colorIconFaded,
+  width: '48px',
+  height: '48px',
 });
 
 export const footerBold = style({

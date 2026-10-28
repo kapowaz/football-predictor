@@ -99,28 +99,30 @@ const StandingsImageContent = ({
 
   return (
     <div className={styles.page}>
-      {!isPreview && (
-        <header className={styles.toolbar}>
-          <ToggleColorMode />
-        </header>
-      )}
-      <StandingsImagePair
-        standings={standings}
-        competitionLogo={config.logo}
-        competitionName={config.name}
-        competitionSeason={config.season}
-        deductionNotes={deductionNotes}
-        deductionMarkers={deductionMarkers}
-        zoneGuaranteedByTeamId={zoneGuaranteedByTeamId}
-        positionGuaranteedByTeamId={positionGuaranteedByTeamId}
-        zones={config.zones}
-        isHidden={false}
-        variantRules={variantRules}
-        isRunIn
-        relegationStartPosition={relegationStartPosition}
-        thresholdByZoneType={thresholdByZoneType}
-        captureRefs={[topCaptureRef, bottomCaptureRef]}
-      />
+      <div className={styles.content}>
+        {!isPreview && (
+          <header className={styles.toolbar}>
+            <ToggleColorMode />
+          </header>
+        )}
+        <StandingsImagePair
+          standings={standings}
+          competitionLogo={config.logo}
+          competitionName={config.name}
+          competitionSeason={config.season}
+          deductionNotes={deductionNotes}
+          deductionMarkers={deductionMarkers}
+          zoneGuaranteedByTeamId={zoneGuaranteedByTeamId}
+          positionGuaranteedByTeamId={positionGuaranteedByTeamId}
+          zones={config.zones}
+          isHidden={false}
+          variantRules={variantRules}
+          isRunIn
+          relegationStartPosition={relegationStartPosition}
+          thresholdByZoneType={thresholdByZoneType}
+          captureRefs={[topCaptureRef, bottomCaptureRef]}
+        />
+      </div>
     </div>
   );
 };

@@ -12,8 +12,15 @@ export const page = style({
   paddingBottom: spacing.lg,
 });
 
+// Takes the width of the images, so the toolbar can stretch to match them.
+export const content = style({
+  display: 'flex',
+  flexDirection: 'column',
+});
+
+// Inset by the images' padding, so its edges line up with the table's.
 export const toolbar = style({
-  width: 'calc(820px - 2 * 16px)',
   display: 'flex',
   justifyContent: 'flex-end',
+  marginInline: spacing.lg,
 });

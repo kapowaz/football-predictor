@@ -1,6 +1,6 @@
-import futmegLogoDark from '../../assets/futmeg-logo-dark.svg';
-import futmegLogoLight from '../../assets/futmeg-logo-light.svg';
 import futmegMark from '../../assets/futmeg-mark.svg';
+import futmegTextLogoDark from '../../assets/futmeg-textlogo-dark.svg';
+import futmegTextLogoLight from '../../assets/futmeg-textlogo-light.svg';
 
 import * as styles from './AppHeading.css';
 
@@ -29,12 +29,12 @@ export const AppHeading = ({
       ) : (
         <h1 className={styles.title}>
           <img
-            src={futmegLogoLight}
+            src={futmegTextLogoLight}
             alt="Futmeg"
             className={styles.logoLight[size]}
           />
           <img
-            src={futmegLogoDark}
+            src={futmegTextLogoDark}
             alt="Futmeg"
             className={styles.logoDark[size]}
           />
