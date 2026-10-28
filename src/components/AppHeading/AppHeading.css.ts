@@ -38,7 +38,7 @@ export const title = style({
 });
 
 const logoHeights = {
-  default: '32px',
+  default: '48px',
   full: '48px',
 };
 
