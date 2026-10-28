@@ -1,4 +1,4 @@
-const CACHE_PREFIX = 'football-predictor';
+const CACHE_PREFIX = 'futmeg';
 const STATIC_CACHE = `${CACHE_PREFIX}-static-v1`;
 const RUNTIME_CACHE = `${CACHE_PREFIX}-runtime-v1`;
 

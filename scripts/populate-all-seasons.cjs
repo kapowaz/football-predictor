@@ -199,7 +199,7 @@ const TEAM_NAME_TO_SLUG = {
 function fetchJson(url, retries = 3) {
   return new Promise((resolve, reject) => {
     const request = (u, attempt) => {
-      https.get(u, { headers: { 'User-Agent': 'football-predictor-bot/1.0 (data research project)' } }, (res) => {
+      https.get(u, { headers: { 'User-Agent': 'futmeg-bot/1.0 (data research project)' } }, (res) => {
         if (res.statusCode >= 300 && res.statusCode < 400 && res.headers.location) {
           const loc = res.headers.location.startsWith('http')
             ? res.headers.location

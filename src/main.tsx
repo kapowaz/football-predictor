@@ -58,7 +58,7 @@ if ('serviceWorker' in navigator) {
       .then((keys) =>
         Promise.all(
           keys
-            .filter((key) => key.startsWith('football-predictor'))
+            .filter((key) => key.startsWith('futmeg'))
             .map((key) => caches.delete(key)),
         ),
       )
@@ -70,7 +70,7 @@ if ('serviceWorker' in navigator) {
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <BrowserRouter basename="/football-predictor">
+    <BrowserRouter>
       <Suspense
         fallback={
           <div className={styles.suspenseFallback}>

@@ -3,8 +3,8 @@ import clsx from 'clsx';
 import type { Ref, RefObject } from 'react';
 import { AbstractText } from '@kapowaz/components';
 import { getStandingsSplit, StandingsTable } from '@kapowaz/football';
-import { Icon, KapBoltSimple } from '@kapowaz/icons';
 
+import futmegMark from '../../assets/futmeg-mark.svg';
 import type { ZoneDefinition } from '../../data/competitions';
 import type { DeductionNote } from '../../state/selectors';
 import type { TeamStanding, VariantRulesMode } from '../../types';
@@ -55,7 +55,7 @@ export interface StandingsImageViewProps {
   contentRef?: Ref<HTMLDivElement>;
 }
 
-const SITE_URL = 'kapowaz.github.io/football-predictor/';
+const SITE_URL = 'futmeg.com';
 
 /** Table positions shown in a half, e.g. "1-10", read by scripts/render-og.ts. */
 const getPositionRange = (
@@ -154,9 +154,7 @@ export const StandingsImageView = ({
             partial === 'bottom' && styles.innerWrapperBottom,
           )}
         >
-          {showHeading && (
-            <AppHeading isFullRender extraContent={headingExtraContent} />
-          )}
+          {showHeading && <AppHeading extraContent={headingExtraContent} />}
           <StandingsTable
             standings={standings}
             deductionMarkers={deductionMarkers}
@@ -180,7 +178,7 @@ export const StandingsImageView = ({
                 fontSize="md"
               >
                 <div>
-                  Football Predictor by{' '}
+                  Futmeg by{' '}
                   <AbstractText
                     tagName="span"
                     className={styles.footerBold}
@@ -199,13 +197,7 @@ export const StandingsImageView = ({
                     {SITE_URL}
                   </AbstractText>
                 </div>
-                <span className={styles.footerIconContainer}>
-                  <Icon
-                    component={KapBoltSimple}
-                    size="xxxl"
-                    className={styles.footerIcon}
-                  />
-                </span>
+                <img src={futmegMark} alt="" className={styles.footerIcon} />
               </AbstractText>
             </footer>
           )}

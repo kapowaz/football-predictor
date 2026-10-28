@@ -29,7 +29,7 @@ export interface PreviewImage {
 
 export type PreviewManifest = Record<string, PreviewImage[]>;
 
-const SITE_URL = 'https://kapowaz.github.io/football-predictor/';
+const SITE_URL = 'https://futmeg.com/';
 // Mirrors DEFAULT_COMPETITION in src/data/competitions.ts, which Node can't
 // import because it pulls in SVG logos.
 const DEFAULT_COMPETITION = 'premier-league';
@@ -40,7 +40,7 @@ const GENERIC_IMAGE: PreviewImage = {
   file: 'opengraph.png',
   width: 1200,
   height: 630,
-  alt: 'Football Predictor',
+  alt: 'Futmeg',
 };
 
 const distDir = path.join(import.meta.dirname, '../dist');
@@ -117,7 +117,7 @@ const pageMetaFor = (slug: string, manifest: PreviewManifest): PageMeta => {
   const { name } = COMPETITIONS[slug];
   return {
     url: `${SITE_URL}${slug}/`,
-    title: `${name} ${seasonDisplay} Table | Football Predictor`,
+    title: `${name} ${seasonDisplay} Table | Futmeg`,
     description: `Predict every remaining ${name} fixture and see how the ${seasonDisplay} table could finish.`,
     images: manifest[slug]?.length ? manifest[slug] : [GENERIC_IMAGE],
   };
